@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Authors on Hugo Bootstrap Theme</title>
+    <title>Authors on Hugoplate</title>
     <link>//localhost:1313/authors/</link>
-    <description>Recent content in Authors on Hugo Bootstrap Theme</description>
+    <description>Recent content in Authors on Hugoplate</description>
     <generator>Hugo</generator>
-    <language>en-US</language>
-    <copyright>Open-source &lt;a class=&#34;text-muted text-decoration-none&#34; href=&#34;https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE&#34;&gt;MIT&lt;/a&gt; Licensed.</copyright>
-    <lastBuildDate>Tue, 03 Dec 2024 11:46:35 +0000</lastBuildDate>
+    <language>en-us</language>
     <atom:link href="//localhost:1313/authors/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Bjørn Erik Pedersen</title>
-      <link>//localhost:1313/authors/bj%C3%B8rn-erik-pedersen/</link>
-      <pubDate>Sun, 24 Sep 2023 00:00:00 +0100</pubDate>
-      <guid>//localhost:1313/authors/bj%C3%B8rn-erik-pedersen/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Mark Otto</title>
-      <link>//localhost:1313/authors/mark-otto/</link>
-      <pubDate>Tue, 30 May 2023 00:00:00 +0100</pubDate>
-      <guid>//localhost:1313/authors/mark-otto/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Filipe Carneiro</title>
-      <link>//localhost:1313/authors/filipe-carneiro/</link>
+      <title>John Doe</title>
+      <link>//localhost:1313/authors/john-doe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/authors/filipe-carneiro/</guid>
-      <description>&lt;p&gt;Filipe Carneiro.&lt;/p&gt;</description>
+      <guid>//localhost:1313/authors/john-doe/</guid>
+      <description>&lt;p&gt;lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostr navigation et dolore magna aliqua.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sam Wilson</title>
+      <link>//localhost:1313/authors/sam-wilson/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/authors/sam-wilson/</guid>
+      <description>&lt;p&gt;lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostr navigation et dolore magna aliqua.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>William Jacob</title>
+      <link>//localhost:1313/authors/william-jacob/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/authors/william-jacob/</guid>
+      <description>&lt;p&gt;lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostr navigation et dolore magna aliqua.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
