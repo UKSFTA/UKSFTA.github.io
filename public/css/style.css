@@ -3435,6 +3435,14 @@ input#nav-toggle:checked ~ #nav-menu {
 .gallery-slider {
   margin-left: calc(var(--spacing) * 0) !important;
 }
+.front-page-logo {
+  width: 30%;
+  height: auto;
+}
+.front-page-offer {
+  width: 65%;
+  height: auto;
+}
 @layer base {
   [type='text'],input:where(:not([type])),[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select {
     appearance: none;

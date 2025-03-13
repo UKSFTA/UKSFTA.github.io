@@ -1,1 +1,10 @@
 /* Add your own custom styles here */
+.front-page-logo {
+    width: 30%;  /* Change to whatever size you need */
+    height: auto;
+}
+
+.front-page-offer {
+    width: 65%;
+    height: auto;
+}

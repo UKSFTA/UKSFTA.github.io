@@ -38,10 +38,10 @@
     <loc>//localhost:1313/tags/silicon/</loc>
     <lastmod>2022-04-04T05:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/software/</loc>
+    <loc>//localhost:1313/categories/software/</loc>
     <lastmod>2022-04-04T05:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/software/</loc>
+    <loc>//localhost:1313/tags/software/</loc>
     <lastmod>2022-04-04T05:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/</loc>
@@ -50,10 +50,10 @@
     <loc>//localhost:1313/tags/tailwind/</loc>
     <lastmod>2022-04-04T05:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/technology/</loc>
+    <loc>//localhost:1313/categories/technology/</loc>
     <lastmod>2022-04-04T05:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/technology/</loc>
+    <loc>//localhost:1313/tags/technology/</loc>
     <lastmod>2022-04-04T05:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/authors/</loc>
