@@ -8,3 +8,11 @@
     width: 65%;
     height: auto;
 }
+
+.media-images {
+    width: 100%; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    object-fit: fill; /* Ensures the image fills the box without distortion */
+    border-radius: 10px; /* Slightly rounded corners */
+  }
+  
