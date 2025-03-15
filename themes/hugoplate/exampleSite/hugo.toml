@@ -115,6 +115,9 @@ notAlternative = true
 
 ############################# Plugins ##############################
 
+[security]
+  enableInlineShortcodes = true
+
 # CSS Plugins
 [[params.plugins.css]]
 link = "plugins/swiper/swiper-bundle.css"

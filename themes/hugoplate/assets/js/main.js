@@ -32,5 +32,9 @@
         slidesPerView: 3,
       },
     },
+    autoplay: { // Add autoplay object
+      delay: 3000, // Delay between slides in milliseconds (3000 = 3 seconds)
+      disableOnInteraction: false, // Allow autoplay to continue after user interaction
+    },
   });
 })();
