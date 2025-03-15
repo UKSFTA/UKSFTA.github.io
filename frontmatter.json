@@ -55,6 +55,46 @@
     {
       "title": "images",
       "path": "[[workspace]]/assets/images"
+    },
+    {
+      "path": "[[workspace]]",
+      "title": "[[workspace]]"
+    },
+    {
+      "path": "[[workspace]]/assets",
+      "title": "assets"
+    },
+    {
+      "path": "[[workspace]]/content/english",
+      "title": "english"
+    },
+    {
+      "path": "[[workspace]]/content/english/pages",
+      "title": "pages"
+    },
+    {
+      "title": "about",
+      "path": "[[workspace]]/content/english/about"
+    },
+    {
+      "title": "authors",
+      "path": "[[workspace]]/content/english/authors"
+    },
+    {
+      "title": "blog",
+      "path": "[[workspace]]/content/english/blog"
+    },
+    {
+      "title": "contact",
+      "path": "[[workspace]]/content/english/contact"
+    },
+    {
+      "title": "pages",
+      "path": "[[workspace]]/content/english/pages"
+    },
+    {
+      "title": "sections",
+      "path": "[[workspace]]/content/english/sections"
     }
   ],
   "frontMatter.website.host": "uksfta.github.io"
