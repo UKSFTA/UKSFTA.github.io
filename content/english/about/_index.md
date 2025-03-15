@@ -24,8 +24,8 @@ You'll start off as a Corporal training to fly rotary airframes such as Pumas, L
 Recce:
 As a recon, you'll usually be sent out ahead of SFSG to determine enemy positions, strength and potentially to take out high value targets from afar.
 
-
 #### The Special Forces Units
+
 ##### Special Air Service (SAS)
 
 A British Army unit that specializes in counter-terrorism and reconnaissance. SAS personnel undergo a selection process that ends with the award of a sand-colored beret.

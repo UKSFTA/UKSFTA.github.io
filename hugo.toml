@@ -2,11 +2,11 @@
 # The base URL of your site (required). This will be prepended to all relative URLs.
 baseURL = "/"
 # Title of your website (required).
-title = "Hugoplate"
+title = "AEG | UKSF Taskforce Alpha"
 # Your theme name
 theme = "hugoplate"
 # Default time zone for time stamps; use any valid tz database name: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
-timeZone = "America/New_York"
+timeZone = "Europe/London"
 # post excerpt
 summaryLength = 10 # see https://gohugo.io/content-management/excerpts/
 # disable language
@@ -135,7 +135,7 @@ lazy = true
 # JS Plugins
 [[params.plugins.js]]
 link = "js/search.js"
-lazy = false
+lazy = true
 [[params.plugins.js]]
 link = "plugins/swiper/swiper-bundle.js"
 lazy = false
