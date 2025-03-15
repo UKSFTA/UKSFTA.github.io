@@ -12,12 +12,17 @@ url = "/about"
 weight = 2
 
 [[main]]
-name = "Elements"
-url = "/elements"
+name = "Rules"
+url = "/rules"
 weight = 3
 
 [[main]]
+name = "Elements"
+url = "/elements"
 weight = 4
+
+[[main]]
+weight = 5
 name = "Pages"
 
 [[main]]
