@@ -1059,6 +1059,11 @@
       width: auto;
     }
   }
+  .lg\:\!max-w-\[800px\] {
+    @media (width >= 64rem) {
+      max-width: 800px !important;
+    }
+  }
   .lg\:space-x-2 {
     @media (width >= 64rem) {
       :where(& > :not(:last-child)) {

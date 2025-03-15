@@ -8,7 +8,7 @@ banner:
 # Features
 features:
   - title: "What we offer"
-    image: "/images/pose.png"
+    image: "/images/testimonial/logistics.png"
     content: "Below are some of the things we offer, it is not exhaustive."
     bulletpoints:
       - "Two ops a week"
