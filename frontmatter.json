@@ -97,5 +97,8 @@
       "path": "[[workspace]]/content/english/sections"
     }
   ],
-  "frontMatter.website.host": "uksfta.github.io"
+  "frontMatter.website.host": "uksfta.github.io",
+  "frontMatter.content.publicFolder": "static",
+  "frontMatter.framework.id": "hugo",
+  "frontMatter.preview.host": "http://localhost:1313"
 }
