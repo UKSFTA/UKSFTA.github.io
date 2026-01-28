@@ -1,22 +1,29 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 my-32">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-white/10 border border-white/10 my-32">
     {{ range $id, $unit := .Site.Data.units }}
-    <a href="/{{ $id }}/" class="group bg-black p-12 space-y-12 no-underline relative overflow-hidden transition-all duration-700 hover:bg-[#080808]">
+    <a href="/{{ $id }}/" class="group bg-black p-10 space-y-10 no-underline relative overflow-hidden transition-all duration-700 hover:bg-[#080808]">
         <!-- Tactical Image Layer -->
         <div class="absolute inset-0 z-0 tactical-media opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
             <div class="tint" style="--primary: {{ $unit.color }}"></div>
             <img src="https://images.unsplash.com/photo-1590233064032-909772a6b225?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale brightness-50">
         </div>
 
-        <div class="relative z-10 flex flex-col justify-between h-full min-h-[400px]">
+        <div class="relative z-10 flex flex-col justify-between h-full min-h-[450px]">
             <div class="flex justify-between items-start">
-                <div class="w-14 h-14 border border-white/10 flex items-center justify-center font-black text-xl group-hover:border-white transition-colors">{{ upper $id }}</div>
+                <div class="w-20 h-20 border border-white/10 p-2 flex items-center justify-center bg-black/40 group-hover:border-white transition-colors">
+                    {{ $icon := resources.Get $unit.icon }}
+                    {{ if $icon }}
+                        <img src="{{ $icon.RelPermalink }}" alt="{{ $unit.name }}" class="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    {{ else }}
+                        <span class="font-black text-2xl">{{ upper $id }}</span>
+                    {{ end }}
+                </div>
                 <span class="text-[9px] font-mono text-gray-600 uppercase tracking-widest font-bold group-hover:text-white transition-colors">{{ $unit.id }}</span>
             </div>
 
             <div class="space-y-6">
                 <div class="space-y-2">
                     <span class="sub-header text-[var(--primary)]" style="--primary: {{ $unit.color }}">Command Dossier</span>
-                    <h4 class="text-4xl leading-none">{{ $unit.motto }}</h4>
+                    <h4 class="text-3xl leading-tight">{{ $unit.motto }}</h4>
                 </div>
                 
                 <div class="space-y-4 pt-6 border-t border-white/5 group-hover:border-white/10 transition-colors">
@@ -26,7 +33,7 @@
                     </div>
                     <div class="flex flex-col space-y-1">
                         <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Primary Domain</span>
-                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{{ $unit.specialization }}</span>
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-snug">{{ $unit.specialization }}</span>
                     </div>
                 </div>
             </div>

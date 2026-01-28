@@ -5,7 +5,8 @@
     "specialization": "Counter-Terrorism / Hostage Rescue",
     "theatres": "Global / All Environments",
     "motto": "Who Dares Wins",
-    "color": "#153e35"
+    "color": "#153e35",
+    "icon": "icons/SAS.png"
   },
   "sbs": {
     "id": "SBS_UK",
@@ -13,7 +14,8 @@
     "specialization": "Maritime Counter-Terrorism / Amphibious Recon",
     "theatres": "Maritime / Littoral",
     "motto": "By Strength and Guile",
-    "color": "#000033"
+    "color": "#000033",
+    "icon": "icons/SBS.png"
   },
   "srr": {
     "id": "SRR_INTEL",
@@ -21,7 +23,8 @@
     "specialization": "Covert Surveillance / ISTAR",
     "theatres": "Urban / High-Threat Domains",
     "motto": "Reconnaissance",
-    "color": "#507255"
+    "color": "#507255",
+    "icon": "icons/SRR.png"
   },
   "sfsg": {
     "id": "SFSG_SUPPORT",
@@ -29,6 +32,16 @@
     "specialization": "Direct Action Support / Specialist Infantry",
     "theatres": "Operational Support",
     "motto": "Always A Little Further",
-    "color": "#800000"
+    "color": "#800000",
+    "icon": "icons/SFSG.png"
+  },
+  "jsfaw": {
+    "id": "JSFAW_AIR",
+    "founded": "2001",
+    "specialization": "Special Operations Aviation",
+    "theatres": "Aviation Support",
+    "motto": "Resolute",
+    "color": "#000080",
+    "icon": "icons/JSFAW.png"
   }
 }
