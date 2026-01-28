@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    {{ $style := resources.Get "scss/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+</head>
+<body class="unit-{{ lower (default "sas" .Site.Params.unit_theme) }}">
+    <header class="header-banner">
+        <div class="container">
+            <h1 class="industrial-title">{{ .Site.Title }}</h1>
+            <p>Branch: {{ .Site.Params.unit_theme }}</p>
+        </div>
+    </header>
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer>
+        <p>Built by {{ .Site.Params.builtby }}</p>
+    </footer>
+</body>
+</html>

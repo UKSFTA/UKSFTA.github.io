@@ -1,0 +1,21 @@
+@import "variables";
+
+body {
+  font-family: "GDS Transport", arial, sans-serif;
+  color: $govuk-black;
+  margin: 0;
+  background-color: $govuk-white;
+}
+
+.header-banner {
+  background-color: var(--unit-accent);
+  color: white;
+  padding: 1rem;
+  border-bottom: 5px solid darken(#000, 10%);
+}
+
+.industrial-title {
+  font-family: "Industrial Gothic Pro", "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
