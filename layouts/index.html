@@ -1,143 +1,196 @@
 {{ define "main" }}
 {{ $labels := .Site.Data.labels }}
 
-<!-- Immersive Mega-Hero -->
-<section class="relative min-h-screen flex items-center overflow-hidden bg-black scanlines">
+<!-- 1. HIGH-IMPACT COMMAND HERO -->
+<section class="relative min-h-[90vh] flex items-center bg-black overflow-hidden border-b border-white/5">
     <div class="absolute inset-0 z-0">
         <img src="https://images.unsplash.com/photo-1590233064032-909772a6b225?auto=format&fit=crop&q=80&w=2400" 
-             class="w-full h-full object-cover opacity-30 grayscale blur-[2px] scale-105" alt="UKSF Field Context">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/80"></div>
+             class="w-full h-full object-cover opacity-20 grayscale scale-105" alt="Command Landscape">
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent"></div>
+        <div class="absolute inset-0 bg-grid-white opacity-30"></div>
     </div>
 
-    <div class="tactical-container relative z-10 w-full">
-        <div class="max-w-5xl space-y-12">
-            <div class="space-y-4 animate-slide-in-left">
-                <div class="flex items-center space-x-4">
-                    <div class="w-12 h-px bg-[var(--primary)]"></div>
-                    <span class="text-technical text-[var(--primary)] font-bold">Directorate of Special Forces // JSFC</span>
-                </div>
-                <h1 class="text-display">
-                    The Elite <br><span class="text-gray-500">Global Response</span>
-                </h1>
-            </div>
+    <!-- HUD Elements -->
+    <div class="absolute inset-12 z-10 pointer-events-none opacity-20">
+        <div class="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-[var(--primary)]"></div>
+        <div class="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-[var(--primary)]"></div>
+    </div>
+
+    <div class="tactical-container relative z-20 w-full pt-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-                <p class="text-xl font-light text-gray-400 leading-relaxed border-l-2 border-white/10 pl-8">
-                    Providing high-readiness, world-leading capability across the spectrum of special operations, counter-terrorism, and strategic reconnaissance.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-6">
-                    <a href="/recruitment/" class="btn-elite no-underline">Selection Protocol</a>
-                    <a href="#operational" class="btn-elite bg-transparent border border-white/20 text-white hover:bg-white/10 no-underline">Access Archive</a>
+            <div class="lg:col-span-7 space-y-12 animate-slide-in-left">
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-6">
+                        <span class="w-12 h-px bg-[var(--primary)]"></span>
+                        <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.6em]">System_Status: Optimal</span>
+                    </div>
+                    <h1 class="text-mega text-white select-none">
+                        Always A <br><span class="text-gray-600 italic">Little Further.</span>
+                    </h1>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-8">
+                    <a href="/recruitment/" class="btn-elite no-underline min-w-[280px]">Apply for Selection</a>
+                    <a href="#operational" class="btn-elite bg-transparent border border-white/10 text-white hover:bg-white/5 no-underline min-w-[280px]">Operational Capabilities</a>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Live Telemetry Strip -->
-    <div class="absolute bottom-0 left-0 w-full py-6 border-t border-white/5 bg-black/40 backdrop-blur-xl">
-        <div class="tactical-container flex justify-between items-center text-[9px] font-mono text-gray-600 tracking-widest uppercase">
-            <div class="flex space-x-12">
-                <span>LAT: 51.5074° N // LONG: 0.1278° W</span>
-                <span class="text-[var(--primary)]">Operational Status: Green</span>
-            </div>
-            <div class="hidden md:block">
-                <span>System_Uptime: 99.98% // Secure_Link: Active</span>
+            <!-- Visual Meat: Telemetry Block -->
+            <div class="lg:col-span-5 hidden lg:block">
+                <div class="hud-frame space-y-10 bg-black/40 backdrop-blur-xl">
+                    <div class="flex items-center justify-between border-b border-white/5 pb-6">
+                        <span class="text-[9px] font-bold text-white uppercase tracking-widest">Global_Telemetry_Readout</span>
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-8">
+                        {{ range $labels.stats }}
+                        <div class="stat-block">
+                            <span class="value">{{ .value }}</span>
+                            <span class="label">{{ .label }}</span>
+                        </div>
+                        {{ end }}
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex justify-between items-center text-[8px] font-mono text-gray-600 uppercase tracking-widest">
+                        <span>Encryption: Active</span>
+                        <span class="text-[var(--primary)]">Secure_Line_01</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Capability Matrix (Modular Bento) -->
-<section id="operational" class="py-32 bg-[#050505] border-b border-white/5">
-    <div class="tactical-container">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 space-y-8 md:space-y-0">
-            <div class="space-y-4">
-                <span class="text-technical">Functional Domains</span>
-                <h2 class="text-7xl">Capability Matrix</h2>
+<!-- 2. CAPABILITY COMMAND MATRIX -->
+<section id="operational" class="py-40 bg-[#050505] relative overflow-hidden">
+    <div class="tactical-container relative z-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-32 border-b border-white/10 pb-16">
+            <div class="space-y-6">
+                <span class="text-[10px] font-bold text-[var(--primary)] uppercase tracking-[0.5em]">United Kingdom Special Forces</span>
+                <h2 class="text-9xl tracking-tighter leading-none">The Joint Force</h2>
             </div>
-            <p class="max-w-md text-gray-500 text-sm leading-relaxed">
-                UKSF maintains a diverse range of specialist capabilities, integrated through tri-service cooperation and advanced technological support.
+            <p class="max-w-xs text-gray-500 text-[10px] uppercase tracking-widest font-mono text-right hidden lg:block leading-loose">
+                Coordinates all Tier 1 and Tier 2 Assets. <br>
+                Directorate of Special Forces.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
-            <!-- SAS Block -->
-            <div class="md:col-span-8 bento-card group">
-                <div class="absolute inset-0 bg-white/[0.01] group-hover:bg-white/[0.03] transition-colors"></div>
-                <div class="relative z-10 h-full flex flex-col justify-between">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {{ range $id, $unit := $labels.units }}
+            <a href="/{{ $id }}/" class="unit-card group no-underline">
+                <div class="glow"></div>
+                <div class="relative z-10 space-y-12 h-full flex flex-col justify-between">
                     <div class="flex justify-between items-start">
-                        <span class="text-technical">Regiment_22</span>
-                        <div class="w-10 h-10 border border-white/10 flex items-center justify-center font-bold">SAS</div>
+                        <div class="w-12 h-12 border border-white/10 flex items-center justify-center font-black group-hover:border-[var(--primary)] group-hover:text-[var(--primary)] transition-all">{{ $unit.name }}</div>
+                        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">TIER_{{ $unit.stats.tier }}</span>
                     </div>
-                    <div class="space-y-6">
-                        <h3 class="text-6xl">Special Air Service</h3>
-                        <p class="max-w-xl text-gray-400">The army's primary special forces unit, specialized in counter-terrorism, hostage rescue, and covert reconnaissance.</p>
-                        <a href="/sas/" class="text-[10px] font-bold text-[var(--primary)] uppercase tracking-widest no-underline group-hover:underline">Explore Selection Requirements →</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SBS Block -->
-            <div class="md:col-span-4 bento-card bg-[var(--primary)]/5 border-[var(--primary)]/20">
-                <div class="relative z-10 h-full flex flex-col justify-between">
-                    <div class="flex justify-between items-start">
-                        <span class="text-technical text-white">Maritime_Asset</span>
-                        <div class="w-10 h-10 border border-white/20 flex items-center justify-center font-bold text-white">SBS</div>
-                    </div>
-                    <div class="space-y-6">
-                        <h3 class="text-5xl text-white">Special Boat Service</h3>
-                        <p class="text-white/60 text-sm">Maritime special operations specialists providing amphibious reconnaissance and intervention.</p>
-                        <a href="/sbs/" class="text-[10px] font-bold text-white uppercase tracking-widest no-underline">Initiate Protocol →</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SRR Block -->
-            <div class="md:col-span-4 bento-card">
-                <div class="relative z-10 space-y-6">
-                    <span class="text-technical">Intelligence_ISTAR</span>
-                    <h3 class="text-4xl">Special Reconnaissance</h3>
-                    <p class="text-sm text-gray-500">Gathering strategic intelligence through technical surveillance and human reconnaissance.</p>
-                </div>
-            </div>
-
-            <!-- SFSG Block -->
-            <div class="md:col-span-8 bento-card bg-zinc-900/50">
-                <div class="relative z-10 flex h-full items-center justify-between">
+                    
                     <div class="space-y-4">
-                        <h3 class="text-5xl text-gray-300">Support Group</h3>
-                        <p class="text-gray-500 max-w-sm">Providing specialist infantry support to UKSF Tier 1 units during strike operations.</p>
+                        <h3 class="text-5xl group-hover:text-white transition-colors leading-[0.9]">{{ $unit.full_name }}</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-white/5 text-[7px] text-gray-400 border border-white/5 uppercase font-bold tracking-widest">{{ $unit.stats.domain }}</span>
+                            <span class="px-2 py-1 bg-white/5 text-[7px] text-gray-400 border border-white/5 uppercase font-bold tracking-widest text-[var(--primary)]">{{ $unit.stats.focus }}</span>
+                        </div>
                     </div>
-                    <div class="text-right">
-                        <span class="text-8xl font-black text-white/5">SFSG</span>
+
+                    <div class="pt-8 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[9px] font-bold text-gray-600 uppercase tracking-widest group-hover:text-white transition-colors">Access Capability Profile</span>
+                        <span class="text-[var(--primary)] transform translate-x-[-10px] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">→</span>
                     </div>
                 </div>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<!-- 3. SELECTION PIPELINE (INFOGRAPHIC SECTION) -->
+<section class="py-40 bg-black border-y border-white/5">
+    <div class="tactical-container">
+        <div class="text-center mb-32 space-y-6">
+            <span class="text-[10px] font-bold text-red-600 uppercase tracking-[0.6em]">Avenue to selection</span>
+            <h2 class="text-8xl">The Pipeline</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div class="pipeline-step">
+                <span class="step-num">01</span>
+                <span class="text-[var(--primary)] font-mono text-[9px] tracking-widest">PHASE_ONE</span>
+                <h4 class="text-2xl">Briefing</h4>
+                <p class="text-xs text-gray-500 leading-relaxed font-light">Comprehensive operational briefing and initial security vetting.</p>
+            </div>
+            <div class="pipeline-step">
+                <span class="step-num">02</span>
+                <span class="text-[var(--primary)] font-mono text-[9px] tracking-widest">PHASE_TWO</span>
+                <h4 class="text-2xl">Aptitude</h4>
+                <p class="text-xs text-gray-500 leading-relaxed font-light">Physical and mental resilience testing under extreme pressure.</p>
+            </div>
+            <div class="pipeline-step border-l-4 border-l-[var(--primary)] bg-white/5">
+                <span class="step-num">03</span>
+                <span class="text-[var(--primary)] font-mono text-[9px] tracking-widest">PHASE_THREE</span>
+                <h4 class="text-2xl">Selection</h4>
+                <p class="text-xs text-gray-400 leading-relaxed font-light">The primary endurance and navigation phase in hostile terrain.</p>
+            </div>
+            <div class="pipeline-step">
+                <span class="step-num">04</span>
+                <span class="text-[var(--primary)] font-mono text-[9px] tracking-widest">PHASE_FOUR</span>
+                <h4 class="text-2xl">Tactical</h4>
+                <p class="text-xs text-gray-500 leading-relaxed font-light">Weapon systems, advanced comms, and unconventional tactics.</p>
+            </div>
+            <div class="pipeline-step">
+                <span class="step-num">05</span>
+                <span class="text-[var(--primary)] font-mono text-[9px] tracking-widest">PHASE_FIVE</span>
+                <h4 class="text-2xl">Probation</h4>
+                <p class="text-xs text-gray-500 leading-relaxed font-light">Integration into regimental operational squadrons.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Strategic Intelligence Feed -->
-<section class="py-32 bg-black">
+<!-- 4. OPERATIONAL LOGS FEED -->
+<section class="py-40 bg-[#050505]">
     <div class="tactical-container">
-        <div class="flex items-center justify-between mb-20 border-b border-white/10 pb-10">
-            <h2 class="text-5xl">Command Logs</h2>
-            <a href="/stories/" class="nav-link">Access All Files</a>
+        <div class="flex items-center justify-between mb-24 border-b border-white/10 pb-12">
+            <div class="space-y-4">
+                <span class="text-technical">Classified Archive</span>
+                <h2 class="text-7xl leading-none">Operational Logs</h2>
+            </div>
+            <a href="/stories/" class="nav-link">Access Archive System // →</a>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {{ range first 3 (where .Site.RegularPages "Section" "stories") }}
-            <article class="space-y-6 group cursor-pointer" onclick="location.href='{{ .RelPermalink }}'">
-                <div class="aspect-video overflow-hidden grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700">
-                    <img src="{{ .Params.image }}" class="w-full h-full object-cover">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+            <div class="lg:col-span-4 space-y-6">
+                {{ range first 4 (where .Site.RegularPages "Section" "stories") }}
+                <a href="{{ .RelPermalink }}" class="block p-8 bg-zinc-900/20 border border-white/5 hover:border-[var(--primary)]/30 group transition-all no-underline">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Ref: SF-{{ .Date.Format "2006" }}</span>
+                        <div class="w-1.5 h-1.5 bg-gray-800 rounded-full group-hover:bg-[var(--primary)] transition-colors"></div>
+                    </div>
+                    <span class="text-sm font-bold text-gray-400 group-hover:text-white transition-colors uppercase tracking-widest leading-snug block">{{ .Title }}</span>
+                </a>
+                {{ end }}
+            </div>
+
+            <!-- Large Visual Feature -->
+            <div class="lg:col-span-8">
+                <div class="relative aspect-[16/9] border border-white/5 overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1590233064032-909772a6b225?auto=format&fit=crop&q=80&w=1600" 
+                         class="w-full h-full object-cover opacity-40 grayscale group-hover:scale-105 transition-all duration-[2s]">
+                    <div class="absolute inset-0 bg-grid-white opacity-20"></div>
+                    
+                    <div class="absolute top-10 left-10 p-8 bg-black/60 backdrop-blur-md border-l-4 border-[var(--primary)] space-y-2">
+                        <span class="block text-[10px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">Visual_Intelligence_Feed</span>
+                        <span class="block text-2xl font-black text-white tracking-tighter uppercase">Theatre Awareness: Alpha_Sector</span>
+                    </div>
+
+                    <div class="absolute bottom-10 right-10 flex space-x-6">
+                        <div class="px-6 py-4 border border-white/10 bg-black/40 backdrop-blur-sm">
+                            <span class="block text-[7px] text-gray-600 font-mono uppercase">Coordinates</span>
+                            <span class="text-sm font-bold text-white">51.5074° N, 0.1278° W</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-2">
-                    <span class="text-technical text-[var(--primary)]">Document ID: {{ upper (substr (sha256 .Title) 0 8) }}</span>
-                    <h3 class="text-3xl group-hover:text-white transition-colors">{{ .Title }}</h3>
-                    <p class="text-gray-500 text-sm line-clamp-2">{{ .Summary }}</p>
-                </div>
-            </article>
-            {{ end }}
+            </div>
         </div>
     </div>
 </section>

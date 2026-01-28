@@ -12,59 +12,40 @@
     "description": "Providing the UK's high-readiness, world-leading capability across the spectrum of special operations, counter-terrorism, and strategic reconnaissance.",
     "cta": "Initiate Selection"
   },
-  "sections": {
-    "modernisation": {
-      "title": "Future Commando",
-      "description": "Integrating cutting-edge technological superiority with elite unconventional warfare tactics."
-    },
-    "readiness": {
-      "title": "Global Deployment",
-      "description": "High-readiness task forces prepared for rapid intervention in any theatre of operations."
-    },
-    "people": {
-      "title": "Elite Selection",
-      "description": "Recruiting the most capable operators from across the British Army, Royal Navy, and RAF."
-    }
-  },
+  "stats": [
+    { "label": "Operational Readiness", "value": "98.4%" },
+    { "label": "Active Theatres", "value": "12" },
+    { "label": "Deployment Response", "value": "< 2H" },
+    { "label": "Global Reach", "value": "24/7" }
+  ],
   "units": {
     "sas": {
       "name": "SAS",
       "full_name": "22 Special Air Service Regiment",
       "motto": "Who Dares Wins",
-      "description": "The army's primary special forces unit, specialized in counter-terrorism, hostage rescue, and covert reconnaissance in hostile environments.",
-      "origin": "British Army"
+      "description": "The army's primary special forces unit, specialized in counter-terrorism, hostage rescue, and covert reconnaissance.",
+      "stats": { "tier": "1", "domain": "Land/Air", "focus": "CT / Unconventional Warfare" }
     },
     "sbs": {
       "name": "SBS",
       "full_name": "Special Boat Service",
       "motto": "By Strength and Guile",
       "description": "The maritime special operations unit of the UKSF, specializing in maritime counter-terrorism and amphibious reconnaissance.",
-      "origin": "Royal Marines / Navy"
+      "stats": { "tier": "1", "domain": "Maritime/Land", "focus": "Amphibious / CT" }
     },
     "srr": {
       "name": "SRR",
       "full_name": "Special Reconnaissance Regiment",
       "motto": "Reconnaissance",
-      "description": "Specialized in intelligence gathering, surveillance, and target acquisition (ISTAR) using tech-centric operational methods.",
-      "origin": "Tri-Service"
+      "description": "Specialized in intelligence gathering, surveillance, and target acquisition (ISTAR) using tech-centric methods.",
+      "stats": { "tier": "1", "domain": "Global", "focus": "Covert Surveillance / ISTAR" }
     },
     "sfsg": {
       "name": "SFSG",
       "full_name": "Special Forces Support Group",
       "motto": "Always A Little Further",
-      "description": "Provides specialist infantry support to Tier 1 UKSF units during complex operational tasks and large-scale strikes.",
-      "origin": "1 PARA / Royal Marines / RAF"
-    },
-    "jsfaw": {
-      "name": "JSFAW",
-      "full_name": "Joint Special Forces Aviation Wing",
-      "motto": "Resolute",
-      "description": "Providing high-performance helicopter insertion and aviation support for UKSF operations globally.",
-      "origin": "RAF / Army Air Corps"
+      "description": "Provides specialist infantry support to Tier 1 UKSF units during complex operational tasks.",
+      "stats": { "tier": "2", "domain": "Support", "focus": "Direct Action Support" }
     }
-  },
-  "footer": {
-    "copyright": "© Crown Copyright 2026. All operational data is simulated.",
-    "permission": "Reproduced with permission of the UK MOD."
   }
 }
