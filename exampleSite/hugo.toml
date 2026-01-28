@@ -4,5 +4,35 @@ title = 'UKSF Example Site'
 theme = 'uksf-mod-theme'
 
 [params]
-  unit_theme = 'SAS' # Switch this to SBS, SRR, SFSG, or JSFAW to test
+  unit_theme = 'global'
   builtby = 'Directorate of Special Forces'
+
+[[menus.main]]
+  name = "SAS"
+  url = "/sas/"
+  weight = 10
+
+[[menus.main]]
+  name = "SBS"
+  url = "/sbs/"
+  weight = 20
+
+[[menus.main]]
+  name = "SRR"
+  url = "/srr/"
+  weight = 30
+
+[[menus.main]]
+  name = "SFSG"
+  url = "/sfsg/"
+  weight = 40
+
+[[menus.main]]
+  name = "JSFAW"
+  url = "/jsfaw/"
+  weight = 50
+
+[[menus.main]]
+  name = "Recruitment"
+  url = "/recruitment/"
+  weight = 60

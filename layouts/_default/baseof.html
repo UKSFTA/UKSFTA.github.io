@@ -7,15 +7,26 @@
     {{ $style := resources.Get "scss/main.scss" | css.Sass | resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 </head>
-<body class="unit-{{ lower (default "sas" .Site.Params.unit_theme) }}">
+{{ $unit := .Site.Params.unit_theme | default "sas" }}
+{{ if .Section }}
+    {{ $unit = .Section }}
+{{ end }}
+<body class="unit-{{ lower $unit }}">
     {{ partial "phase-banner.html" . }}
-    <header class="header-banner">
-
-        <div class="container">
-            <h1 class="industrial-title">{{ .Site.Title }}</h1>
-            <p>Branch: {{ .Site.Params.unit_theme }}</p>
-        </div>
-    </header>
+        <header class="header-banner">
+            <div class="container">
+                <h1 class="industrial-title"><a href="/" style="color: inherit; text-decoration: none;">{{ .Site.Title }}</a></h1>
+                <nav class="unit-nav">
+                    <ul>
+                        {{ range .Site.Menus.main }}
+                        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                        {{ end }}
+                    </ul>
+                </nav>
+                <p>Active Section: {{ if .Section }}{{ upper .Section }}{{ else }}HOME{{ end }}</p>
+            </div>
+        </header>
+    
 
     <main>
         {{ block "main" . }}{{ end }}
