@@ -1,10 +1,20 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
+<section class="unit-hero" style="border-left: 15px solid var(--unit-accent); padding: 60px 0; margin-bottom: 60px;">
+  <h1 class="industrial-title" style="font-size: 6rem; line-height: 0.8; margin: 0;">{{ .Title }}</h1>
+  <p class="hero-hook" style="font-size: 1.5rem; margin-top: 1rem; color: rgba(255,255,255,0.6);">Operational Command // UKSF Component</p>
+</section>
+
+<div class="dossier-list" style="display: grid; gap: 20px;">
   {{ range .Pages }}
-    <section>
-      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-      {{ .Summary }}
-    </section>
+    <article class="bento-item" style="min-height: auto; padding: 30px; cursor: pointer;" onclick="location.href='{{ .RelPermalink }}'">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h2 style="font-family: 'Industrial Gothic Pro Single Line', sans-serif; font-size: 2rem; margin: 0; color: #fff; text-transform: uppercase;">{{ .LinkTitle }}</h2>
+          <p style="margin: 10px 0 0; font-size: 14px; color: rgba(255,255,255,0.4);">{{ .Summary | truncate 150 }}</p>
+        </div>
+        <div style="font-family: monospace; color: var(--unit-accent); font-size: 12px; letter-spacing: 2px;">ACCESS_DOSSIER →</div>
+      </div>
+    </article>
   {{ end }}
+</div>
 {{ end }}
