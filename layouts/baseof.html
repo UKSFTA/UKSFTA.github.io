@@ -7,42 +7,40 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
   {{ partial "head/skin.html" . }}
 </head>
 {{ $unit := .Params.unit | default .Section | default "sas" }}
-<body class="unit-{{ lower $unit }} antialiased selection:bg-[var(--primary)] selection:text-white">
+<body class="unit-{{ lower $unit }}">
   
-  <!-- Superior Rule Navigation -->
+  <!-- Institutional Spacing: Superior Rule -->
   <header class="nav-header">
     <div class="container-uksf flex justify-between items-center">
-      <div class="flex items-center space-x-8">
-        <a href="/" class="no-underline group">
-          <div class="flex items-center space-x-4">
-            <img src="/mod-logo.svg" alt="MOD" class="h-6 grayscale brightness-200 opacity-50 group-hover:opacity-100 transition-opacity">
-            <span class="text-white font-black text-xl tracking-tighter">UKSF</span>
-          </div>
+      <div class="flex items-center space-x-10">
+        <a href="/" class="no-underline group flex items-center space-x-4">
+          <img src="/mod-logo.svg" alt="MOD" class="h-6 grayscale brightness-200 opacity-40 group-hover:opacity-100 transition-all">
+          <span class="text-white font-black text-xl tracking-tighter">UKSF</span>
         </a>
-        <div class="hidden lg:flex items-center space-x-2 border-l border-white/10 pl-8">
-          <span class="text-[8px] font-bold text-gray-600 uppercase tracking-widest leading-none">Security Level:</span>
-          <span class="text-[8px] font-bold text-[var(--primary)] uppercase tracking-widest leading-none">Restricted</span>
+        <div class="hidden lg:flex items-center space-x-2 border-l border-white/10 pl-10 h-10">
+          <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest leading-none">Security:</span>
+          <span class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-widest font-black leading-none">RESTRICTED_ACCESS</span>
         </div>
       </div>
       
-      <nav class="hidden md:flex space-x-12">
+      <nav class="hidden md:flex items-center space-x-12">
         {{ range site.Menus.main }}
-        <a href="{{ .URL }}" class="nav-link {{ if eq $.RelPermalink .URL }}text-white{{ end }}">
+        <a href="{{ .URL }}" class="nav-link {{ if eq $.RelPermalink .URL }}active{{ end }}">
           {{ .Name }}
         </a>
         {{ end }}
       </nav>
 
-      <div class="flex items-center space-x-6">
-        <div class="hidden sm:flex flex-col items-end">
-          <span class="text-[7px] font-mono text-gray-600 uppercase">System_Clock</span>
-          <span class="text-[9px] font-mono text-white" id="clock">00:00:00 ZULU</span>
+      <div class="hidden sm:flex items-center space-x-6 border-l border-white/10 pl-10">
+        <div class="flex flex-col items-end">
+          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Zulu_Time</span>
+          <span class="text-[10px] font-mono text-white font-black" id="clock">00:00:00</span>
         </div>
       </div>
     </div>
@@ -52,33 +50,33 @@
     {{ block "main" . }}{{ end }}
   </main>
 
-  <footer class="py-20 bg-black border-t border-white/5">
-    <div class="container-uksf">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
-        <div class="col-span-2 space-y-8">
-          <h2 class="text-4xl">United Kingdom <br>Special Forces</h2>
-          <p class="max-w-md text-gray-500 text-sm">Official digital gateway for Joint Special Forces Command. All operational intelligence is restricted and governed by the Official Secrets Act.</p>
+  <footer class="py-32 bg-black border-t border-white/5 relative overflow-hidden">
+    <div class="container-uksf relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-24 mb-24">
+        <div class="col-span-2 space-y-10">
+          <h2 class="text-5xl">United Kingdom <br>Special Forces</h2>
+          <p class="max-w-md text-gray-500 text-sm font-light leading-relaxed">Official gateway for Joint Special Forces Command. Operational intelligence governed by the Official Secrets Act. All transmissions monitored.</p>
         </div>
-        <div class="space-y-6">
-          <h4 class="text-xs font-bold text-white tracking-widest">Commands</h4>
+        <div class="space-y-8">
+          <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Operational Commands</span>
           <ul class="space-y-4 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600">
             <li><a href="/sas/" class="hover:text-white transition-colors no-underline">22 SAS Regiment</a></li>
             <li><a href="/sbs/" class="hover:text-white transition-colors no-underline">Special Boat Service</a></li>
             <li><a href="/srr/" class="hover:text-white transition-colors no-underline">Special Recon Regiment</a></li>
           </ul>
         </div>
-        <div class="space-y-6">
-          <h4 class="text-xs font-bold text-white tracking-widest">Legal</h4>
+        <div class="space-y-8">
+          <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Legal Directives</span>
           <ul class="space-y-4 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600">
-            <li>Crown Copyright</li>
-            <li>Privacy Policy</li>
+            <li>Crown Copyright 2026</li>
+            <li>Operational Privacy</li>
             <li>OPSEC Mandate</li>
           </ul>
         </div>
       </div>
-      <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        <span class="text-[8px] font-mono text-gray-700 tracking-[0.5em] uppercase">Transmission_End // UK_JSFC_DIRECTORATE</span>
-        <div class="w-12 h-1 bg-[var(--primary)] opacity-30"></div>
+      <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+        <span class="text-[8px] font-mono text-gray-700 tracking-[0.6em] uppercase">Communication_End // Directorate_SF</span>
+        <div class="w-16 h-px bg-[var(--primary)] opacity-40"></div>
       </div>
     </div>
   </footer>
