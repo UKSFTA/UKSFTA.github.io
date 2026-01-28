@@ -1,11 +1,8 @@
 <header class="header-banner">
-    <div class="container">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
         <h1 class="industrial-title"><a href="/">{{ site.Title }}</a></h1>
-        <div class="unit-nav">
+        <nav class="unit-nav">
             {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-        </div>
-        {{ if .Section }}
-        <p class="section-indicator">UNIT: {{ upper .Section }} // OPS_ACTIVE</p>
-        {{ end }}
+        </nav>
     </div>
 </header>

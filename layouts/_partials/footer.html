@@ -1,7 +1,43 @@
 <footer>
   <div class="container">
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-    <p class="govuk-body-s">Built by <a href="{{ .Site.Params.builtbyurl }}" class="govuk-link">{{ .Site.Params.builtby }}</a></p>
-    <p class="govuk-body-xs">© Crown Copyright {{ now.Year }}. All operational data is simulated.</p>
+    <div class="footer-grid">
+      <div>
+        <h4>Commands</h4>
+        <ul>
+          <li><a href="/sas/">Special Air Service</a></li>
+          <li><a href="/sbs/">Special Boat Service</a></li>
+          <li><a href="/srr/">Special Reconnaissance</a></li>
+          <li><a href="/sfsg/">Special Forces Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Recruitment</h4>
+        <ul>
+          <li><a href="/recruitment/">Apply Now</a></li>
+          <li><a href="/recruitment/roles/">Role Finder</a></li>
+          <li><a href="/recruitment/eligibility/">Eligibility</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Feedback</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="legal-bar">
+      <p class="govuk-body-xs">© Crown Copyright {{ now.Year }}. Reproduced with permission of the UK MOD.</p>
+      <p class="govuk-body-xs">Built by <a href="{{ .Site.Params.builtbyurl }}" class="govuk-link">{{ .Site.Params.builtby }}</a></p>
+    </div>
   </div>
 </footer>
