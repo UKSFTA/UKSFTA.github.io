@@ -1,6 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-tactical-black: #050505;
+  --color-tactical-dark: #0a0a0a;
+  --color-tactical-grey: #121212;
+  --color-uksf-gold: #b3995d;
+  --color-uksf-blue: #002366;
+  --color-uksf-green: #153e35;
+  --color-uksf-red: #800000;
+
+  --font-industrial: "Bebas Neue", "Impact", sans-serif;
+  --font-tactical: "JetBrains Mono", monospace;
+  --font-body: "Inter", "Arial", sans-serif;
+
+  --background-image-carbon-pattern: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+  --background-image-noise-pattern: url('https://www.transparenttextures.com/patterns/stardust.png');
+
+  --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-flicker: flicker 0.15s infinite;
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+}
 
 @layer base {
   :root {
@@ -13,24 +37,23 @@
   body {
     background-color: var(--bg-dark);
     color: #d1d5db;
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: 19px; /* Mandatory Blueprint Size */
+    font-family: var(--font-body);
+    font-size: 19px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: var(--header-height);
   }
 
   h1, h2, h3, h4 {
-    font-family: "Industrial Gothic Pro Single Line", "Bebas Neue", "Impact", sans-serif;
+    font-family: "Industrial Gothic Pro Single Line", var(--font-industrial);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: white;
-    line-height: 1.1; /* Adjusted Vertical Rhythm */
+    line-height: 1.1;
   }
 }
 
 @layer components {
-  /* THE GLOBAL CONTAINER */
   .container-uksf {
     width: 100%;
     max-width: 1200px;
@@ -40,7 +63,6 @@
     padding-right: 1.5rem;
   }
 
-  /* 3-Track Tactical Grid (Blueprint Implementation) */
   .mission-grid {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -55,12 +77,10 @@
     }
   }
 
-  /* Safe Zone Header */
   .main-content-block {
-    margin-top: 5vh; /* Mandated Exclusion Zone */
+    margin-top: 5vh;
   }
 
-  /* HUD Box */
   .hud-spec-box {
     position: relative;
     padding: 2rem;
@@ -85,7 +105,7 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 1rem;
   }
-  .sector-ref-box .ref-label { font-size: 9px; font-family: monospace; color: var(--primary); text-transform: uppercase; letter-spacing: 0.4em; }
+  .sector-ref-box .ref-label { font-size: 9px; font-family: var(--font-tactical); color: var(--primary); text-transform: uppercase; letter-spacing: 0.4em; }
   .sector-ref-box .ref-val { font-size: 1.5rem; font-weight: 900; color: white; }
 
   .btn-elite {
