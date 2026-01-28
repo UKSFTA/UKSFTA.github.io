@@ -1,4 +1,5 @@
 <section class="relative min-h-[85vh] flex items-center bg-black overflow-hidden border-b border-white/10">
+    <!-- Visual Underlay -->
     <div class="absolute inset-0 z-0">
         {{ with .Params.hero_image }}
         <img src="{{ . | absURL }}" class="w-full h-full object-cover opacity-20 grayscale" alt="">
@@ -9,21 +10,22 @@
         <div class="absolute inset-0 bg-grid-white opacity-20"></div>
     </div>
 
-    <div class="container-uksf relative z-20 w-full">
+    <!-- Padding-top added to ensure zero header overlap -->
+    <div class="container-uksf relative z-20 w-full pt-32 lg:pt-40">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
             
-            <div class="lg:col-span-8 space-y-12">
+            <div class="lg:col-span-8 space-y-12 animate-slide-in-left">
                 <div class="flex flex-wrap gap-4">
-                    <span class="hero-meta-tag border-[var(--primary)]/30 text-[var(--primary)]">ID: UKSF-{{ upper (substr (sha256 .Title) 0 8) }}</span>
-                    <span class="hero-meta-tag">Security_Level: RESTRICTED</span>
+                    <span class="hero-meta-tag border-[var(--primary)]/30 text-[var(--primary)] font-black tracking-widest">ID: UKSF-{{ upper (substr (sha256 .Title) 0 8) }}</span>
+                    <span class="hero-meta-tag font-black tracking-widest">Security_Level: RESTRICTED</span>
                 </div>
 
-                <h1 class="text-mega leading-[0.8] tracking-tighter text-white">
+                <h1 class="text-display tracking-tighter text-white">
                     {{ .Title | upper }}
                 </h1>
 
                 <div class="max-w-2xl">
-                    <div class="dossier-node">
+                    <div class="dossier-node border-l-4 border-[var(--primary)]">
                         <p class="text-2xl font-light text-gray-400 leading-relaxed italic">
                             "{{ .Description | default .Summary }}"
                         </p>
@@ -39,15 +41,15 @@
                 <div class="bracket-box bg-black/40 backdrop-blur-xl border-white/5">
                     <div class="space-y-10">
                         <div class="flex flex-col border-b border-white/5 pb-6">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2">Operational_Date</span>
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Operational_Date</span>
                             <span class="text-3xl font-black text-white tracking-tighter">{{ .Date.Format "02 JAN 2006" }}</span>
                         </div>
                         <div class="flex flex-col border-b border-white/5 pb-6">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2">Command_Domain</span>
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Command_Domain</span>
                             <span class="text-3xl font-black text-white tracking-tighter">{{ upper .Section | default "JOINT_CMD" }}</span>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2">Link_Status</span>
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Link_Status</span>
                             <span class="text-xl font-black text-[var(--primary)] tracking-widest animate-pulse">ENCRYPTED_LIVE</span>
                         </div>
                     </div>

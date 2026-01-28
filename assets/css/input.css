@@ -6,7 +6,7 @@
   :root {
     --primary: #b3995d;
     --primary-glow: rgba(179, 153, 93, 0.3);
-    --bg-dark: #050505;
+    --bg-dark: #0b0b0b;
     --header-height: 100px;
   }
 
@@ -14,7 +14,7 @@
     background-color: var(--bg-dark);
     color: #d1d5db;
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 18px; /* Professional size */
+    font-size: 18px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: var(--header-height);
@@ -27,89 +27,81 @@
     color: white;
     line-height: 0.85;
   }
+
+  @keyframes slide-in-left {
+    from { transform: translateX(-30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
 }
 
 @layer components {
-  /* THE GLOBAL CONTAINER */
+  /* THE GLOBAL CONTAINER - Mandatory 1200px constraint */
   .container-uksf {
     width: 100%;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
-  /* Cinematic Sectioning */
-  .section-elite {
-    position: relative;
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  /* Capability Cards */
-  .cap-card {
-    position: relative;
-    padding: 2.5rem;
-    background-color: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.5s;
-  }
-  .cap-card:hover {
-    border-color: rgba(179, 153, 93, 0.4);
-    transform: translateY(-0.25rem);
-  }
-  .cap-card::before {
-    content: "";
-    position: absolute;
+  /* High-Integrity Fixed Header */
+  .nav-header {
+    position: fixed;
     top: 0;
     left: 0;
-    width: 2px;
-    height: 100%;
-    background-color: var(--primary);
-    opacity: 0.2;
-  }
-
-  /* Unit Matrix Cards */
-  .unit-matrix-card {
-    position: relative;
-    aspect-ratio: 1 / 1;
-    padding: 3rem;
-    background-color: black;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    height: var(--header-height);
+    z-index: 2000; /* Elevated priority */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(5, 5, 5, 0.95); /* More opaque to prevent overlap visuals */
+    backdrop-filter: blur(20px);
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-  }
-  .unit-matrix-card:hover {
-    border-color: rgba(179, 153, 93, 0.5);
-  }
-  .unit-matrix-card .unit-bg {
-    position: absolute;
-    inset: 0;
-    filter: grayscale(100%);
-    transition: all 3s;
-    opacity: 0;
-  }
-  .unit-matrix-card:hover .unit-bg {
-    opacity: 0.2;
-    transform: scale(1.1);
+    align-items: center;
   }
 
-  /* Big Elite CTA */
-  .recruitment-cta {
-    position: relative;
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-    background-color: black;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    background-image: radial-gradient(circle at 50% 50%, rgba(179, 153, 93, 0.05) 0%, transparent 80%);
+  .nav-link {
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #6b7280;
+    transition: all 0.3s;
+    text-decoration: none !important;
   }
+  .nav-link:hover { color: white; }
+
+  /* Content Nodes */
+  .dossier-node {
+    position: relative;
+    border-left: 4px solid var(--primary);
+    padding-left: 3rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 4rem;
+    background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
+  }
+
+  .bracket-box {
+    position: relative;
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.01);
+  }
+  .bracket-box::before, .bracket-box::after {
+    content: "";
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    border-color: var(--primary);
+    pointer-events: none;
+  }
+  .bracket-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+  .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
 
   .btn-elite {
     display: inline-flex;
@@ -118,27 +110,27 @@
     background-color: white;
     color: black;
     font-weight: 900;
-    font-size: 12px;
+    font-size: 13px;
     text-transform: uppercase;
-    letter-spacing: 0.4em;
+    letter-spacing: 0.3em;
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
-    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    clip-path: polygon(10px 0, 100% 0, 90% 100%, 0% 100%);
     text-decoration: none !important;
   }
   .btn-elite:hover {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 0 50px var(--primary-glow);
+    box-shadow: 0 0 40px var(--primary-glow);
   }
 }
 
 @layer utilities {
   .text-display { 
-    font-size: clamp(4rem, 12vw, 9rem); 
+    font-size: clamp(3rem, 10vw, 7.5rem); 
     font-weight: 900;
-    line-height: 1;
+    line-height: 0.85;
     letter-spacing: -0.05em;
   }
   .bg-grid-white {
