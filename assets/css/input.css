@@ -6,7 +6,7 @@
   :root {
     --primary: #b3995d;
     --primary-glow: rgba(179, 153, 93, 0.3);
-    --bg-dark: #0b0b0b;
+    --bg-dark: #050505;
     --header-height: 100px;
   }
 
@@ -18,6 +18,9 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: var(--header-height);
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 80%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54 48c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM6 48c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM54 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM6 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z' fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
   }
 
   h1, h2, h3, h4 {
@@ -28,54 +31,52 @@
     line-height: 0.85;
   }
 
-  @keyframes slide-in-left {
-    from { transform: translateX(-30px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-
-  .animate-slide-in-left {
-    animation: slide-in-left 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  .sub-header {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    font-variant: small-caps;
   }
 }
 
 @layer components {
-  /* THE GLOBAL CONTAINER - Mandatory 1200px constraint */
+  /* THE GLOBAL CONTAINER */
   .container-uksf {
     width: 100%;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
-  /* High-Integrity Fixed Header */
-  .nav-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--header-height);
-    z-index: 2000; /* Elevated priority */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: rgba(5, 5, 5, 0.95); /* More opaque to prevent overlap visuals */
-    backdrop-filter: blur(20px);
-    display: flex;
-    align-items: center;
+  /* Unit Tactical Filter */
+  .tactical-media {
+    position: relative;
+    overflow: hidden;
+    background-color: black;
+  }
+  .tactical-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.2;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  .tactical-media .tint {
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    mix-blend-mode: color;
+    transition: opacity 0.7s;
+    background-color: var(--primary);
   }
 
-  .nav-link {
-    font-size: 10px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: #6b7280;
-    transition: all 0.3s;
-    text-decoration: none !important;
-  }
-  .nav-link:hover { color: white; }
-
-  /* Content Nodes */
   .dossier-node {
     position: relative;
     border-left: 4px solid var(--primary);
@@ -110,27 +111,27 @@
     background-color: white;
     color: black;
     font-weight: 900;
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.4em;
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
-    clip-path: polygon(10px 0, 100% 0, 90% 100%, 0% 100%);
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
     text-decoration: none !important;
   }
   .btn-elite:hover {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 0 40px var(--primary-glow);
+    box-shadow: 0 0 50px var(--primary-glow);
   }
 }
 
 @layer utilities {
   .text-display { 
-    font-size: clamp(3rem, 10vw, 7.5rem); 
+    font-size: clamp(4rem, 12vw, 9rem); 
     font-weight: 900;
-    line-height: 0.85;
+    line-height: 1;
     letter-spacing: -0.05em;
   }
   .bg-grid-white {
