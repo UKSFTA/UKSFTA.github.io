@@ -7,7 +7,6 @@
     --primary: #b3995d;
     --primary-glow: rgba(179, 153, 93, 0.3);
     --bg-dark: #050505;
-    --header-height: 80px;
   }
 
   body {
@@ -15,13 +14,13 @@
     color: #a1a1aa;
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 80%),
-      linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
-    background-size: auto, 40px 40px, 40px 40px;
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: white;
   }
 
   h1, h2, h3, h4 {
@@ -43,97 +42,82 @@
     padding-right: 2.5rem;
   }
 
-  /* Tactical HUD Frames */
-  .hud-frame {
+  /* Data Node Architecture (Breaking up text) */
+  .data-node {
     position: relative;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .data-node::before {
+    content: "[ DATA_NODE ]";
+    position: absolute;
+    left: -0.5rem;
+    top: 0;
+    font-size: 7px;
+    font-family: monospace;
+    color: var(--primary);
+    background-color: black;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    letter-spacing: 0.3em;
+    font-weight: 700;
+  }
+
+  .bracket-box {
+    position: relative;
+    padding: 2.5rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
     background-color: rgba(255, 255, 255, 0.01);
-    padding: 2rem;
-    transition: all 0.5s;
   }
-  .hud-frame::before, .hud-frame::after {
+  .bracket-box::before, .bracket-box::after {
     content: "";
     position: absolute;
     width: 1.5rem;
     height: 1.5rem;
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(179, 153, 93, 0.4);
     pointer-events: none;
   }
-  .hud-frame::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
-  .hud-frame::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+  .bracket-box::before { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+  .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
 
-  .stat-block {
-    display: flex;
-    flex-direction: column;
-    padding: 1.25rem;
-    border-left: 2px solid rgba(255, 255, 255, 0.05);
+  /* Refined Hero Elements */
+  .hero-meta-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    font-size: 8px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
-  .stat-block .value { font-size: 2.5rem; font-weight: 900; color: white; line-height: 1; letter-spacing: -0.05em; }
-  .stat-block .label { font-size: 9px; font-family: monospace; color: #4b5563; text-transform: uppercase; letter-spacing: 0.2em; margin-top: 0.5rem; }
 
-  /* Interactive Cards */
-  .unit-card {
-    position: relative;
-    overflow: hidden;
-    background-color: rgba(20, 20, 20, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 3rem;
-    height: 100%;
+  .stat-readout {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    align-items: baseline;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
-  .unit-card:hover {
-    border-color: rgba(179, 153, 93, 0.4);
-    transform: translateY(-0.5rem);
-    background-color: rgba(255, 255, 255, 0.02);
-    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.9);
-  }
-  .unit-card .glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, var(--primary-glow) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 1s;
-  }
-  .unit-card:hover .glow { opacity: 1; }
-
-  /* Selection Timeline */
-  .pipeline-step {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: rgba(255, 255, 255, 0.01);
-    transition: all 0.5s;
-  }
-  .pipeline-step:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.03);
-  }
-  .pipeline-step .step-num {
-    font-size: 3rem;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.05);
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-  }
+  .stat-readout .val { font-size: 2.25rem; font-weight: 900; color: white; letter-spacing: -0.05em; margin-right: 1rem; }
+  .stat-readout .lab { font-size: 9px; font-family: monospace; color: #4b5563; text-transform: uppercase; letter-spacing: 0.1em; }
 
   .btn-elite {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 1.5rem 3rem;
+    padding: 1.25rem 3rem;
     background-color: white;
     color: black;
     font-weight: 900;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.4em;
-    transition: all 0.4s;
+    transition: all 0.3s;
     position: relative;
     overflow: hidden;
     clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
@@ -142,12 +126,12 @@
   .btn-elite:hover {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 0 40px var(--primary-glow);
+    box-shadow: 0 0 50px var(--primary-glow);
   }
 }
 
 @layer utilities {
-  .text-mega { font-size: clamp(3rem, 15vw, 13rem); font-weight: 900; line-height: 0.8; letter-spacing: -0.05em; }
+  .text-display { font-size: clamp(3rem, 12vw, 10rem); }
   .bg-grid-white {
     background-size: 40px 40px;
     background-image: 
