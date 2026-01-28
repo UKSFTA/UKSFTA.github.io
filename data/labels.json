@@ -2,50 +2,54 @@
   "site": {
     "title": "United Kingdom Special Forces",
     "motto": "Always A Little Further",
-    "classification": "RESTRICTED // OPS_NETWORK",
-    "status": "SYSTEM_READY // SECURE_LINE",
-    "joint_command": "Directorate of Special Forces (DSF)"
+    "classification": "OFFICIAL_SENSITIVE // UKSF_INTEL",
+    "status": "OPERATIONAL_READY",
+    "joint_command": "Directorate of Special Forces"
   },
   "hero": {
-    "headline": "THE EDGE OF READINESS",
-    "tagline": "GLOBAL OPERATIONAL COMMAND",
-    "description": "Providing the UK's high-readiness, world-leading capability across the spectrum of special operations, counter-terrorism, and strategic reconnaissance.",
+    "headline": "THE SOVEREIGN EDGE",
+    "description": "The Directorate of Special Forces coordinates the UK's high-readiness, world-leading capability across the spectrum of special operations.",
     "cta": "Initiate Selection"
   },
+  "capabilities": [
+    { "title": "Counter Terrorism", "icon": "shield", "desc": "National high-readiness response teams for domestic and overseas CT operations." },
+    { "title": "Strategic Recon", "icon": "eye", "desc": "Deep penetration intelligence gathering in contested and hostile environments." },
+    { "title": "Maritime Ops", "icon": "anchor", "desc": "Specialist amphibious operations and maritime security task forces." },
+    { "title": "Support & Aviation", "icon": "plane", "desc": "Integrated specialist infantry support and high-performance aviation insertion." }
+  ],
   "stats": [
-    { "label": "Operational Readiness", "value": "98.4%" },
-    { "label": "Active Theatres", "value": "12" },
-    { "label": "Deployment Response", "value": "< 2H" },
-    { "label": "Global Reach", "value": "24/7" }
+    { "label": "Readiness", "value": "100%" },
+    { "label": "Response", "value": "SUB_2H" },
+    { "label": "Theatres", "value": "GLOBAL" }
   ],
   "units": {
     "sas": {
       "name": "SAS",
-      "full_name": "22 Special Air Service Regiment",
+      "full_name": "22 Special Air Service",
       "motto": "Who Dares Wins",
-      "description": "The army's primary special forces unit, specialized in counter-terrorism, hostage rescue, and covert reconnaissance.",
-      "stats": { "tier": "1", "domain": "Land/Air", "focus": "CT / Unconventional Warfare" }
+      "description": "Specialized in counter-terrorism, hostage rescue, and covert reconnaissance.",
+      "stats": { "tier": "1", "domain": "Land", "focus": "Global Response" }
     },
     "sbs": {
       "name": "SBS",
       "full_name": "Special Boat Service",
       "motto": "By Strength and Guile",
-      "description": "The maritime special operations unit of the UKSF, specializing in maritime counter-terrorism and amphibious reconnaissance.",
-      "stats": { "tier": "1", "domain": "Maritime/Land", "focus": "Amphibious / CT" }
+      "description": "The maritime special operations unit, specializing in amphibious reconnaissance.",
+      "stats": { "tier": "1", "domain": "Maritime", "focus": "Special Ops" }
     },
     "srr": {
       "name": "SRR",
-      "full_name": "Special Reconnaissance Regiment",
+      "full_name": "Special Recon Regiment",
       "motto": "Reconnaissance",
-      "description": "Specialized in intelligence gathering, surveillance, and target acquisition (ISTAR) using tech-centric methods.",
-      "stats": { "tier": "1", "domain": "Global", "focus": "Covert Surveillance / ISTAR" }
+      "description": "Gathering strategic intelligence through technical and human surveillance.",
+      "stats": { "tier": "1", "domain": "Intelligence", "focus": "ISTAR" }
     },
     "sfsg": {
       "name": "SFSG",
       "full_name": "Special Forces Support Group",
       "motto": "Always A Little Further",
-      "description": "Provides specialist infantry support to Tier 1 UKSF units during complex operational tasks.",
-      "stats": { "tier": "2", "domain": "Support", "focus": "Direct Action Support" }
+      "description": "Providing specialist infantry support to Tier 1 UKSF units.",
+      "stats": { "tier": "2", "domain": "Support", "focus": "Direct Action" }
     }
   }
 }

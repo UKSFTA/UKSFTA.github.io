@@ -6,7 +6,7 @@
   :root {
     --primary: #b3995d;
     --primary-glow: rgba(179, 153, 93, 0.3);
-    --bg-dark: #0b0b0b;
+    --bg-dark: #050505;
     --header-height: 100px;
   }
 
@@ -14,7 +14,7 @@
     background-color: var(--bg-dark);
     color: #d1d5db;
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 16px; /* Professional size */
+    font-size: 18px; /* Professional size */
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: var(--header-height);
@@ -23,14 +23,14 @@
   h1, h2, h3, h4 {
     font-family: "Industrial Gothic Pro Single Line", "Bebas Neue", "Impact", sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: -0.02em;
     color: white;
-    line-height: 0.9;
+    line-height: 0.85;
   }
 }
 
 @layer components {
-  /* THE GLOBAL CONTAINER - Blueprint Mandate */
+  /* THE GLOBAL CONTAINER */
   .container-uksf {
     width: 100%;
     max-width: 1200px;
@@ -40,58 +40,76 @@
     padding-right: 1.5rem;
   }
 
-  /* Navigation */
-  .nav-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+  /* Cinematic Sectioning */
+  .section-elite {
+    position: relative;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    overflow: hidden;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(12px);
   }
 
-  .nav-link {
-    font-size: 10px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: #6b7280;
-    transition: all 0.3s;
-    text-decoration: none;
-  }
-  .nav-link:hover { color: white; }
-
-  /* Intelligence Node */
-  .dossier-node {
+  /* Capability Cards */
+  .cap-card {
     position: relative;
-    border-left: 4px solid var(--primary);
-    padding-left: 3rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-bottom: 4rem;
-    background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
-  }
-
-  .bracket-box {
-    position: relative;
-    padding: 3rem;
+    padding: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: rgba(255, 255, 255, 0.01);
+    transition: all 0.5s;
   }
-  .bracket-box::before, .bracket-box::after {
+  .cap-card:hover {
+    border-color: rgba(179, 153, 93, 0.4);
+    transform: translateY(-0.25rem);
+  }
+  .cap-card::before {
     content: "";
     position: absolute;
-    width: 2rem;
-    height: 2rem;
-    border-color: var(--primary);
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background-color: var(--primary);
+    opacity: 0.2;
   }
-  .bracket-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
-  .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+
+  /* Unit Matrix Cards */
+  .unit-matrix-card {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    padding: 3rem;
+    background-color: black;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  .unit-matrix-card:hover {
+    border-color: rgba(179, 153, 93, 0.5);
+  }
+  .unit-matrix-card .unit-bg {
+    position: absolute;
+    inset: 0;
+    filter: grayscale(100%);
+    transition: all 3s;
+    opacity: 0;
+  }
+  .unit-matrix-card:hover .unit-bg {
+    opacity: 0.2;
+    transform: scale(1.1);
+  }
+
+  /* Big Elite CTA */
+  .recruitment-cta {
+    position: relative;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    background-color: black;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    background-image: radial-gradient(circle at 50% 50%, rgba(179, 153, 93, 0.05) 0%, transparent 80%);
+  }
 
   .btn-elite {
     display: inline-flex;
@@ -100,27 +118,27 @@
     background-color: white;
     color: black;
     font-weight: 900;
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.4em;
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
-    clip-path: polygon(10px 0, 100% 0, 90% 100%, 0% 100%);
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
     text-decoration: none !important;
   }
   .btn-elite:hover {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 0 40px var(--primary-glow);
+    box-shadow: 0 0 50px var(--primary-glow);
   }
 }
 
 @layer utilities {
   .text-display { 
-    font-size: clamp(3rem, 10vw, 7.5rem); 
+    font-size: clamp(4rem, 12vw, 9rem); 
     font-weight: 900;
-    line-height: 0.85;
+    line-height: 1;
     letter-spacing: -0.05em;
   }
   .bg-grid-white {
