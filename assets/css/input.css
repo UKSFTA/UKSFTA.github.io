@@ -11,9 +11,9 @@
 
   body {
     background-color: var(--bg-dark);
-    color: #a1a1aa;
+    color: #d1d5db; /* Lighter for better contrast */
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 14px;
+    font-size: 18px; /* Professional readability */
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
@@ -33,80 +33,59 @@
 }
 
 @layer components {
+  /* Constrained Global Container */
   .tactical-container {
     width: 100%;
-    max-width: 1600px;
+    max-width: 1200px; /* Standard professional width */
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
-  /* Data Node Architecture (Breaking up text) */
+  /* Deconstructed Data Node */
   .data-node {
     position: relative;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    padding-left: 2rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--primary);
+    padding-left: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
   }
   .data-node::before {
-    content: "[ DATA_NODE ]";
+    content: "[ INTEL_NODE ]";
     position: absolute;
-    left: -0.5rem;
-    top: 0;
-    font-size: 7px;
+    left: -1px;
+    top: -12px;
+    font-size: 9px;
     font-family: monospace;
     color: var(--primary);
-    background-color: black;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    letter-spacing: 0.3em;
-    font-weight: 700;
+    background-color: var(--bg-dark);
+    padding: 0 0.5rem;
+    letter-spacing: 0.2em;
+    font-weight: 900;
   }
 
   .bracket-box {
     position: relative;
-    padding: 2.5rem;
+    padding: 3rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
     background-color: rgba(255, 255, 255, 0.01);
   }
   .bracket-box::before, .bracket-box::after {
     content: "";
     position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-color: rgba(179, 153, 93, 0.4);
+    width: 2rem;
+    height: 2rem;
+    border-color: var(--primary);
     pointer-events: none;
+    opacity: 0.5;
   }
-  .bracket-box::before { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
-  .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+  .bracket-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+  .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
 
-  /* Refined Hero Elements */
-  .hero-meta-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: rgba(255, 255, 255, 0.05);
-    font-size: 8px;
-    font-weight: 700;
-    color: #9ca3af;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .stat-readout {
-    display: flex;
-    align-items: baseline;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  .stat-readout .val { font-size: 2.25rem; font-weight: 900; color: white; letter-spacing: -0.05em; margin-right: 1rem; }
-  .stat-readout .lab { font-size: 9px; font-family: monospace; color: #4b5563; text-transform: uppercase; letter-spacing: 0.1em; }
-
+  /* Buttons */
   .btn-elite {
     display: inline-flex;
     align-items: center;
@@ -114,24 +93,28 @@
     background-color: white;
     color: black;
     font-weight: 900;
-    font-size: 11px;
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.4em;
-    transition: all 0.3s;
+    letter-spacing: 0.3em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
     text-decoration: none;
   }
   .btn-elite:hover {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 0 50px var(--primary-glow);
+    box-shadow: 0 0 40px var(--primary-glow);
+    transform: translateY(-2px);
   }
 }
 
 @layer utilities {
-  .text-display { font-size: clamp(3rem, 12vw, 10rem); }
+  .text-display { 
+    font-size: clamp(3.5rem, 10vw, 8rem); 
+    @apply font-black tracking-tighter;
+  }
   .bg-grid-white {
     background-size: 40px 40px;
     background-image: 
