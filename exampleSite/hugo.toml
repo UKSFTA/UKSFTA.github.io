@@ -1,0 +1,8 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-gb'
+title = 'UKSF Example Site'
+theme = 'uksf-mod-theme'
+
+[params]
+  unit_theme = 'SAS' # Switch this to SBS, SRR, SFSG, or JSFAW to test
+  builtby = 'Directorate of Special Forces'

@@ -19,3 +19,25 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
+
+// Phase Banner
+.govuk-phase-banner {
+  padding: 10px 20px;
+  border-bottom: 1px solid #bfc1c3;
+  font-family: sans-serif;
+  font-size: 14px;
+
+  .govuk-tag {
+    background-color: #1d70b8;
+    color: #fff;
+    padding: 2px 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 10px;
+  }
+
+  .govuk-link {
+    color: #1d70b8;
+    text-decoration: underline;
+  }
+}
