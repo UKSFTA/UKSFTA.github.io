@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --unit-accent: #1d70b8;
+  }
+
+  body {
+    background-color: #050505;
+    color: white;
+    font-family: "Effra", "Arial", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Industrial Gothic Pro Single Line", "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    line-height: none;
+  }
+}
+
+@layer components {
+  .tactical-grid {
+    background-image: 
+      linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .unit-bg-sas { background-color: #153e35; }
+  .unit-bg-sbs { background-color: #000033; }
+  .unit-bg-srr { background-color: #507255; }
+}
