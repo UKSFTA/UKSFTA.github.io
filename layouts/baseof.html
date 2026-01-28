@@ -7,11 +7,17 @@
 {{ if .Section }}
     {{ $unit = .Section }}
 {{ end }}
+{{ $labels := .Site.Data.labels }}
 <body class="unit-{{ lower $unit }}">
   <div class="superior-rule">
     <div class="container">
-      <img src="/mod-logo.svg" alt="Ministry of Defence" class="mod-logo">
-      <span class="hmg-tag">HM Government</span>
+      <div style="display: flex; align-items: center;">
+        <img src="/mod-logo.svg" alt="Ministry of Defence" class="mod-logo">
+        <span class="hmg-tag">HM Government</span>
+      </div>
+      <div style="font-family: monospace; font-size: 10px; color: rgba(255,255,255,0.4);">
+        {{ $labels.site.classification }}
+      </div>
     </div>
   </div>
   {{ partial "phase-banner.html" . }}

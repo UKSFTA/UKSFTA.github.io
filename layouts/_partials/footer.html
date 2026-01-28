@@ -1,13 +1,13 @@
+{{ $labels := .Site.Data.labels }}
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div>
         <h4>Commands</h4>
         <ul>
-          <li><a href="/sas/">Special Air Service</a></li>
-          <li><a href="/sbs/">Special Boat Service</a></li>
-          <li><a href="/srr/">Special Reconnaissance</a></li>
-          <li><a href="/sfsg/">Special Forces Support</a></li>
+          {{ range $id, $unit := $labels.units }}
+          <li><a href="/{{ $id }}/">{{ $unit.full_name }}</a></li>
+          {{ end }}
         </ul>
       </div>
       <div>
@@ -36,7 +36,7 @@
     </div>
     
     <div class="legal-bar">
-      <p class="govuk-body-xs">© Crown Copyright {{ now.Year }}. Reproduced with permission of the UK MOD.</p>
+      <p class="govuk-body-xs">{{ $labels.footer.copyright }} {{ $labels.footer.permission }}</p>
       <p class="govuk-body-xs">Built by <a href="{{ .Site.Params.builtbyurl }}" class="govuk-link">{{ .Site.Params.builtby }}</a></p>
     </div>
   </div>

@@ -1,0 +1,49 @@
+{
+  "site": {
+    "title": "UKSF Digital Presence",
+    "motto": "Always A Little Further",
+    "classification": "RESTRICTED",
+    "status": "SYSTEM_READY // SECURE_LINE"
+  },
+  "hero": {
+    "headline": "Serve with the Elite",
+    "tagline": "The Edge of Readiness",
+    "description": "United Kingdom Special Forces (UKSF) provide a unique and world-leading capability in the most challenging and high-stakes environments.",
+    "cta": "Find Your Role"
+  },
+  "sections": {
+    "modernisation": {
+      "title": "Modernisation",
+      "description": "Integrating advanced technology and innovative tactics to maintain a decisive edge."
+    },
+    "readiness": {
+      "title": "Readiness",
+      "description": "High-readiness units prepared for rapid deployment across the globe."
+    },
+    "people": {
+      "title": "People",
+      "description": "Our greatest asset. We recruit the most capable individuals from across the Armed Forces."
+    }
+  },
+  "units": {
+    "sas": {
+      "name": "SAS",
+      "full_name": "Special Air Service",
+      "description": "Experts in counter-terrorism and covert reconnaissance."
+    },
+    "sbs": {
+      "name": "SBS",
+      "full_name": "Special Boat Service",
+      "description": "The UK's maritime special operations unit."
+    },
+    "srr": {
+      "name": "SRR",
+      "full_name": "Special Reconnaissance Regiment",
+      "description": "Intelligence and surveillance specialists."
+    }
+  },
+  "footer": {
+    "copyright": "© Crown Copyright 2026. All operational data is simulated.",
+    "permission": "Reproduced with permission of the UK MOD."
+  }
+}
