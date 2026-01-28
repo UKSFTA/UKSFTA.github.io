@@ -1,23 +1,7 @@
 {{ define "main" }}
-{{ $labels := .Site.Data.labels }}
+{{ partial "hero.html" . }}
 
-<div class="container space-y-20">
-  <!-- 1. Hero Section -->
-  <section class="py-20 border-b border-white/5">
-    <div class="max-w-4xl space-y-10">
-      <span class="text-xs font-bold text-[var(--primary)] uppercase tracking-[0.5em]">{{ $labels.site.status }}</span>
-      <h1 class="text-mega">{{ $labels.hero.headline }}</h1>
-      <p class="text-3xl font-light text-gray-400 leading-relaxed border-l-4 border-[var(--primary)] pl-10 italic">
-        "{{ $labels.hero.description }}"
-      </p>
-      <div class="pt-6">
-        <a href="/recruitment/" class="btn-uksf no-underline">
-          {{ $labels.hero.cta }}
-        </a>
-      </div>
-    </div>
-  </section>
-
+<div class="container space-y-20 py-20">
   <!-- 2. Modular Blocks: Strategic Pillars -->
   <section class="grid grid-cols-1 md:grid-cols-3 gap-10">
     <div class="modular-block">

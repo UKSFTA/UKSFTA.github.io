@@ -11,14 +11,11 @@
   
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
 </head>
-{{ $unit := .Site.Params.unit_theme | default "sas" }}
-{{ if .Section }}
-    {{ $unit = .Section }}
-{{ end }}
-<body class="unit-{{ lower $unit }}">
+{{ $unit := .Params.unit | default .Section | default .Site.Params.unit_theme | default "sas" }}
+<body class="unit-{{ lower $unit }} antialiased">
   
   <!-- Institutional Spacing: Superior Rule -->
-  <header class="superior-header">
+  <header class="superior-header fixed top-0 left-0 w-full z-[1000]">
     <div class="container flex justify-between items-center">
       <div class="flex items-center space-x-6">
         <a href="/">
