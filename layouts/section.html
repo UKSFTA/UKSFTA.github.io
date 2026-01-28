@@ -1,39 +1,52 @@
 {{ define "main" }}
-<section class="py-40 bg-black relative border-b border-white/5 overflow-hidden">
-  <div class="absolute inset-0 opacity-10 pointer-events-none tactical-grid"></div>
+{{ $labels := .Site.Data.labels }}
+
+<section class="py-40 bg-black relative border-b border-white/10 overflow-hidden">
+  <div class="absolute inset-0 bg-grid-white opacity-20 pointer-events-none"></div>
   <div class="tactical-container relative z-10">
-    <div class="space-y-8">
-      <div class="flex items-center space-x-6">
-        <span class="status-tag">COMMAND_OVERVIEW</span>
+    <div class="space-y-10">
+      <div class="flex items-center space-x-6 animate-pulse">
+        <span class="status-tag">COMMAND_INTERFACE // ACTIVE</span>
         <div class="h-px w-24 bg-uksf-gold"></div>
       </div>
-      <h1 class="text-[10rem] leading-none tracking-tighter">{{ .Title }}</h1>
-      <p class="text-3xl text-gray-500 font-light tracking-widest max-w-3xl uppercase">United Kingdom Special Forces Component Command</p>
+      <h1 class="text-[14rem] leading-none tracking-tighter">{{ .Title }}</h1>
+      <p class="text-3xl text-gray-500 font-light tracking-[0.2em] max-w-4xl uppercase">Joint Special Forces Command // Operational Archive</p>
     </div>
   </div>
 </section>
 
-<section class="py-32 bg-[#050505]">
+<section class="py-40 bg-[#050505]">
   <div class="tactical-container">
-    <div class="mb-20">
-      <span class="text-[10px] font-bold text-uksf-gold uppercase tracking-[0.5em]">Operational Logs</span>
+    <div class="flex items-center justify-between mb-32">
+      <div class="space-y-4">
+        <span class="text-[10px] font-mono text-uksf-gold uppercase tracking-[0.5em]">Synchronized logs</span>
+        <h2 class="text-7xl">Operational Dossiers</h2>
+      </div>
+      <div class="text-right text-[8px] font-mono text-gray-600 uppercase tracking-widest leading-loose">
+        Protocol: SF_ACCESS_ARCHIVE_V1.2<br>Encryption: 4096_BIT_AES
+      </div>
     </div>
     
-    <div class="grid gap-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
       {{ range .Pages }}
-      <article class="dossier-card group flex flex-col md:flex-row md:items-center justify-between cursor-pointer" onclick="location.href='{{ .RelPermalink }}'">
-        <div class="space-y-4">
-          <div class="flex items-center space-x-4">
-            <span class="text-[8px] font-bold text-gray-600 uppercase tracking-widest">Entry_{{ .Date.Format "2006" }}</span>
-            <div class="w-8 h-px bg-white/10"></div>
+      <article class="dossier-card group h-[500px] flex flex-col justify-between cursor-pointer" onclick="location.href='{{ .RelPermalink }}'">
+        <div class="flex justify-between items-start">
+          <div class="space-y-2">
+            <span class="block text-[8px] text-gray-600 uppercase tracking-widest font-mono">Archive_Ref</span>
+            <span class="block text-xs text-white font-mono uppercase tracking-widest">SF-{{ .Date.Format "2006" }}-{{ upper (substr .Title 0 4) }}</span>
           </div>
-          <h2 class="text-5xl group-hover:text-uksf-gold transition-colors">{{ .Title }}</h2>
-          <p class="text-gray-500 max-w-2xl line-clamp-2 leading-relaxed">{{ .Summary }}</p>
+          <span class="status-tag">ACTIVE_DOSS</span>
         </div>
-        <div class="mt-8 md:mt-0 flex items-center space-x-6">
-          <span class="text-[10px] font-bold text-white uppercase tracking-[0.3em]">Access Dossier</span>
-          <div class="w-12 h-12 border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
-            <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+
+        <div class="space-y-8">
+          <h3 class="text-6xl group-hover:text-uksf-gold transition-colors leading-none tracking-tighter">{{ .Title }}</h3>
+          <p class="text-gray-500 text-lg leading-relaxed line-clamp-2">{{ .Summary }}</p>
+          
+          <div class="flex items-center justify-between pt-8 border-t border-white/5">
+            <span class="text-[9px] font-bold text-white uppercase tracking-[0.4em]">Initialize Transmission</span>
+            <div class="w-12 h-12 border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+              <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+            </div>
           </div>
         </div>
       </article>
