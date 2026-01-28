@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+  <rect width="400" height="100" fill="#fff"/>
+  <text x="20" y="65" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#000">MINISTRY OF DEFENCE</text>
+  <path d="M350 20 L380 50 L350 80 L320 50 Z" fill="#532a45"/>
+</svg>

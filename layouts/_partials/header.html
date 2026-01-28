@@ -1,11 +1,11 @@
 <header class="header-banner">
     <div class="container">
-        <h1 class="industrial-title"><a href="/" style="color: inherit; text-decoration: none;">{{ site.Title }}</a></h1>
-        <nav class="unit-nav">
+        <h1 class="industrial-title"><a href="/">{{ site.Title }}</a></h1>
+        <div class="unit-nav">
             {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-        </nav>
+        </div>
         {{ if .Section }}
-        <p class="section-indicator">Active Section: {{ upper .Section }}</p>
+        <p class="section-indicator">UNIT: {{ upper .Section }} // OPS_ACTIVE</p>
         {{ end }}
     </div>
 </header>

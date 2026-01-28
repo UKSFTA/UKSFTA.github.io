@@ -1,52 +1,45 @@
 # United Kingdom Special Forces (UKSF) Digital Presence - Agent Guide
 
-This document serves as a foundational blueprint and operational guide for the development of a professional, realistic, and operationally authentic web presence for the UKSF.
+This document provides the foundational blueprint and operational mandates for developing a professional, operationally authentic web presence for the UKSF, adhering to Ministry of Defence (MOD) and regimental standards.
 
 ## 1. Project Vision
-The establishment of a digital presence for the UKSF requires a rigorous synthesis of established Ministry of Defence (MOD) branding, high-performance aesthetics of elite military units, and the technical requirements of modern static site generation. By leveraging the MOD.UK Design System and integrating specific branch identities—SAS, SBS, SRR, SFSG, and JSFAW—this framework ensures that the resulting digital products project an image of institutional authority, technological sophistication, and elite readiness.
+The project synthesizes official MOD branding with elite military aesthetics. The goal is to project institutional authority and technological sophistication while maintaining the distinct identities of the SAS, SBS, SRR, SFSG, and JSFAW.
 
-## 2. Design Principles
-The project aims to replicate the "Modernity, Excitement, and Unity" found in modern British Army, Royal Navy, and RAF websites.
+## 2. Branding & Design Standards
+All development must strictly follow these institutional rules to maintain realism:
 
-| Design Principle | Objective | Digital Manifestation |
+*   **The Superior Rule:** Official MOD branding and logos (including the Royal Coat of Arms) must be placed at the top of the page with mandatory exclusion zones.
+*   **Typography:**
+    - **Headers/Slogans:** *Industrial Gothic Pro Single Line* (Bold, condensed, high-impact).
+    - **Body/Navigation:** *Effra* (Standard: Light/Medium, size 19px). Fallback to Arial for institutional clarity.
+*   **Color Palette:**
+    - **Master MOD Purple:** `#532a45` (Primary brand element).
+    - **Institutional Grey:** `#323e48` (Footers and secondary depth).
+*   **Legal:** Include "Reproduced with permission of the UK MOD" and "© Crown Copyright" attributions.
+
+## 3. Regimental Identities (Skins)
+The theme dynamically adjusts the UI based on the active unit section:
+
+| Unit | Primary Color | Visual Focus |
 | :--- | :--- | :--- |
-| **Modernity** | Refined, future-proof layout | Sleek typography, subtle textures, and restrained color use. |
-| **Excitement** | Target recruit engagement | Micro-animations, immersive video, and interactive role finders. |
-| **Unity** | Accessibility and inclusivity | WCAG 2.2 AA compliance and consistent navigation. |
-
-## 3. Branch-Specific Archetypes
-The theme must support distinct visual identities ("skins") for each unit:
-
-*   **SAS (Special Air Service):** Army Green, Red accents. Focus on Combat and Counter-Terrorism.
-*   **SBS (Special Boat Service):** Navy Blue, Maritime tones. Focus on Amphibious warfare.
-*   **SFSG (Special Forces Support Group):** Olive Green, Red/Black Flash. High-readiness Quick Reaction Force (QRF) aesthetic.
-*   **JSFAW (Joint Special Forces Aviation Wing):** Royal Blue, Eagle/Crown. Focus on Insertion and Air Support.
-*   **SRR (Special Reconnaissance Regiment):** Emerald Grey, Midnight Blue. Focus on ISTAR and SIGINT, using tech-centric, infrared/night-vision aesthetics.
+| **SAS** | Army Green (`#153e35`) | Readiness and high-impact infantry themes. |
+| **SBS** | Navy Blue (`#000033`) | Maritime operations and atmospheric lighting. |
+| **SRR** | Emerald Grey (`#507255`) | ISTAR focus, night-vision aesthetics, and grid overlays. |
+| **SFSG** | Olive/Black/Red | Quick Reaction Force (QRF) action-oriented layouts. |
+| **JSFAW** | Royal Blue (`#000080`) | Aerial insertion and transport focus. |
 
 ## 4. Technical Architecture
-- **Framework:** Hugo (Static Site Generator).
-- **Theme:** `uksf-mod-theme`.
-- **Typography:** Industrial Gothic Pro Single Line (for recruitment headlines).
-- **Directory Structure:**
-    - `content/<unit>/` for unit-specific content.
-    - `assets/scss/skins/` for unit-specific Sass mixins.
-- **Color Palette:**
-    - `$moduk-brand-purple`: `#532a45` (Master MOD brand)
-    - `$sfsg-olive`: `#556b2f`
-    - `$jsfaw-blue`: `#000080`
-    - `$srr-emerald-grey`: `#507255`
+- **Framework:** Hugo (Extended version for SCSS processing).
+- **Theme Base:** Integrated with the **MOD.UK Frontend** library via NPM.
+- **Layout:** Modular, block-based design (e.g., "Modernisation," "Readiness," "People").
+- **Asset Pipeline:** SCSS via Hugo Pipes; components managed via `node_modules`.
 
 ## 5. Operational Mandates (Rules)
-**CRITICAL: Strictly adhere to these rules.**
-- **GPG Signing:** ALL commits MUST be GPG signed (`git commit -S`). No exceptions.
-- **Security:** 
-    - Integrate automated CodeQL security scans.
-    - Follow strict OPSEC rules—obscure personnel identities and use vague locations.
-- **CI/CD:** Use Lighthouse CI for performance, SEO, and accessibility audits.
-- **Git History:** Maintain a linear git history.
+**CRITICAL: No exceptions.**
+- **GPG Signing:** ALL commits MUST be GPG signed (`git commit -S`).
+- **Security:** Follow strict OPSEC—obscure personnel identities and use vague locations. Integrate CodeQL scanning.
+- **Performance:** Maintain Lighthouse scores >90 for Performance, Accessibility (WCAG 2.2 AA), and SEO.
 
-## 6. AI Interaction Guide
-- **Tone:** Professional, direct, "military-grade" precision.
-- **Context:** Assume "digital-first" military interface requirements.
-- **Configuration:** Check `hugo.toml` or `config.yaml` for project settings.
-- **Tools:** Use `gh` CLI for issue management and monitoring workflow health.
+## 6. Execution
+- **Run Development:** `npm start` (Runs the `exampleSite` with the theme).
+- **Build:** `npm run build`.

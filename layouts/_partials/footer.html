@@ -1,1 +1,7 @@
-<p>Copyright {{ now.Year }}. All rights reserved.</p>
+<footer>
+  <div class="container">
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body-s">Built by <a href="{{ .Site.Params.builtbyurl }}" class="govuk-link">{{ .Site.Params.builtby }}</a></p>
+    <p class="govuk-body-xs">© Crown Copyright {{ now.Year }}. All operational data is simulated.</p>
+  </div>
+</footer>

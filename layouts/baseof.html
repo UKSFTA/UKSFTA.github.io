@@ -8,10 +8,17 @@
     {{ $unit = .Section }}
 {{ end }}
 <body class="unit-{{ lower $unit }}">
+  <div class="superior-rule">
+    <div class="container">
+      <img src="/mod-logo.svg" alt="Ministry of Defence" class="mod-logo">
+    </div>
+  </div>
   {{ partial "phase-banner.html" . }}
   {{ partial "header.html" . }}
   <main>
-    {{ block "main" . }}{{ end }}
+    <div class="container">
+      {{ block "main" . }}{{ end }}
+    </div>
   </main>
   <footer>
     {{ partial "footer.html" . }}
