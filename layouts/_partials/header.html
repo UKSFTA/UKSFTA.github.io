@@ -1,2 +1,11 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<header class="header-banner">
+    <div class="container">
+        <h1 class="industrial-title"><a href="/" style="color: inherit; text-decoration: none;">{{ site.Title }}</a></h1>
+        <nav class="unit-nav">
+            {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+        </nav>
+        {{ if .Section }}
+        <p class="section-indicator">Active Section: {{ upper .Section }}</p>
+        {{ end }}
+    </div>
+</header>

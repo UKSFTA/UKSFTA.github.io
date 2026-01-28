@@ -1,0 +1,8 @@
+// themes/uksf-mod-theme/assets/scss/skins/_srr.scss
+body.unit-srr {
+    // SRR specific overrides
+    &.night-vision {
+        background-color: #000;
+        color: #0f0;
+    }
+}

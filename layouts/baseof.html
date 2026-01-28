@@ -3,10 +3,13 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body>
-  <header>
-    {{ partial "header.html" . }}
-  </header>
+{{ $unit := .Site.Params.unit_theme | default "sas" }}
+{{ if .Section }}
+    {{ $unit = .Section }}
+{{ end }}
+<body class="unit-{{ lower $unit }}">
+  {{ partial "phase-banner.html" . }}
+  {{ partial "header.html" . }}
   <main>
     {{ block "main" . }}{{ end }}
   </main>

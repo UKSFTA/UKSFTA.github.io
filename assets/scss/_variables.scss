@@ -1,21 +1,23 @@
 // themes/uksf-mod-theme/assets/scss/_variables.scss
 
-// MOD.UK / GOV.UK Defaults (Approximated)
+// MOD.UK / GOV.UK Defaults
 $govuk-blue: #1d70b8;
 $govuk-black: #0b0c0c;
 $govuk-white: #ffffff;
+$moduk-brand-purple: #532a45;
 
-// UKSF Branch Colors
-$color-sas: #4B5320; // Olive Drab
-$color-sbs: #002366; // Royal Navy Blue
-$color-srr: #54626F; // Grey/Steel
-$color-sfsg: #800000; // Maroon
-$color-jsfaw: #4682B4; // Steel Blue
+// UKSF Branch Colors (Official Blueprint)
+$color-sas: #4B5320; // Army Green
+$color-sbs: #002366; // Navy Blue
+$color-srr: #507255; // Emerald Grey
+$color-sfsg: #556b2f; // SFSG Olive
+$color-jsfaw: #000080; // JSFAW Blue
 $color-global: #333333; // Neutral Dark Grey
 
 :root {
   --primary-color: #{$govuk-blue};
   --unit-accent: #{$color-global};
+  --moduk-purple: #{$moduk-brand-purple};
 }
 
 body.unit-sas { --unit-accent: #{$color-sas}; }
@@ -23,3 +25,4 @@ body.unit-sbs { --unit-accent: #{$color-sbs}; }
 body.unit-srr { --unit-accent: #{$color-srr}; }
 body.unit-sfsg { --unit-accent: #{$color-sfsg}; }
 body.unit-jsfaw { --unit-accent: #{$color-jsfaw}; }
+
