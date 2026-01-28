@@ -2,51 +2,51 @@
 title: "Joint Special Forces Command"
 description: "The Directorate of Special Forces (DSF) coordinates the UK's high-readiness, world-leading capability across the spectrum of special operations."
 date: 2026-01-28
+unit: "sas"
+sections:
+  - title: "Strategic Reconnaissance"
+    content: "Deep-penetration surveillance and target acquisition in contested environments. We integrate elite human selection with technological overmatch to maintain the sovereign edge."
+    image: "https://images.unsplash.com/photo-1590233064032-909772a6b225?auto=format&fit=crop&q=80&w=1200"
+    cta:
+      text: "Explore Capability"
+      url: "/sas/"
+    specs:
+      - label: "Response Time"
+        value: "< 2 Hours"
+      - label: "Tier Level"
+        value: "Tier 1 National"
+      - label: "Operational Depth"
+        value: "Unrestricted"
+  
+  - title: "Direct Action Support"
+    content: "Providing specialist infantry support to Tier 1 UKSF units during complex operational tasks and large-scale strikes. SFSG is the primary kinetic force for Directorate missions."
+    image: "https://images.unsplash.com/photo-1590233064032-909772a6b225?auto=format&fit=crop&q=80&w=1200"
+    cta:
+      text: "View Support Profiles"
+      url: "/sfsg/"
+    specs:
+      - label: "Domain"
+        value: "Joint Support"
+      - label: "Force Strength"
+        value: "Regimental"
+      - label: "Focus"
+        value: "Assault Support"
+
+  - title: "Electronic Superiority"
+    content: "Integration of kinetic physical force with offensive cyber and signals intelligence operations. The SRR provides the technical backbone for modern special operations."
+    image: "https://images.unsplash.com/photo-1590233064032-909772a6b225?auto=format&fit=crop&q=80&w=1200"
+    specs:
+      - label: "Network Tier"
+        value: "Level 4 Secure"
+      - label: "Tech Overmatch"
+        value: "MIL-SPEC Tier 1"
 ---
 
 {{< mandate id="DSF-2026-ALPHA" >}}
-UKSF provides a range of specialist military options to the UK Government. It maintains a diverse range of specialist capabilities, integrated through tri-service cooperation and advanced technological support.
+UKSF delivers strategic utility across all domains of conflict. By integrating elite human selection with technological overmatch, we maintain the sovereign edge in global reconnaissance and intervention.
 {{< /mandate >}}
 
-## Strategic Operational Mandate
-
-United Kingdom Special Forces (UKSF) are a directorate of the Ministry of Defence (MOD) that provides a unique and world-class capability. Our mission is to protect the United Kingdom's interests, at home and overseas, by delivering unconventional military options.
-
-### Operational Philosophy
-
-Our approach is defined by the "Always a Little Further" philosophy. We integrate elite human performance with cutting-edge technological superiority to operate in environments where conventional forces cannot.
-
-1. **Strategic Reconnaissance**: Deep-penetration surveillance and target acquisition in contested environments.
-2. **Direct Action**: High-precision strike operations and counter-terrorism interventions.
-3. **Unconventional Warfare**: Asymmetric operations and support to partner nation forces.
-4. **Counter-Terrorism**: Domestic and international hostage rescue and CT response.
-
-> "The mission of UKSF is to provide the UK with a range of specialist military options to support the government's strategic objectives." — Joint Command Directive
-
-## Command Structure & Deployment
-
-The Joint Special Forces Command coordinates Tier 1 and Tier 2 assets from the British Army, Royal Navy, and Royal Air Force. This tri-service integration ensures that we can project power across land, sea, and air domains with zero latency.
-
-| Regiment | Primary Domain | Focus Area |
-| :--- | :--- | :--- |
-| 22 SAS | Land / Air | Counter-Terrorism & HR |
-| SBS | Maritime | Amphibious Operations |
-| SRR | Global | ISTAR & Surveillance |
-| SFSG | Support | Direct Action Support |
-
-## Selection & Readiness
-
-UKSF selection is widely regarded as one of the most demanding military courses in the world. It is open to all members of the British Armed Forces who demonstrate the requisite physical and mental resilience.
-
-### The Selection Pipeline
-
-The path to the Directorate is broken down into five distinct phases of increasing intensity:
-
-- **Briefing & Vetting**: Initial security screening and operational overview.
-- **Aptitude & Endurance**: The "Hills" phase, testing navigation and stamina.
-- **Selection**: The primary endurance phase in hostile environments.
-- **Tactical Training**: Mastery of weapon systems and unconventional tactics.
-- **Probationary Period**: Integration into active operational squadrons.
+{{< capability-matrix >}}
 
 {{< mandate id="OPSEC-NOTICE-01" >}}
 All personnel information and specific operational methods are classified under the Official Secrets Act. Unauthorized disclosure is a criminal offense.

@@ -1,0 +1,54 @@
+{{ range $index, $section := .Params.sections }}
+<section class="relative min-h-[60vh] flex items-center overflow-hidden border-b border-white/5 {{ if (mod $index 2) }}bg-[#080808]{{ else }}bg-black{{ end }}">
+    <!-- Background Media with Tactical Overlay -->
+    {{ with $section.image }}
+    <div class="absolute inset-0 z-0">
+        <img src="{{ . | absURL }}" class="w-full h-full object-cover opacity-20 grayscale" alt="{{ $section.title }}">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
+        <div class="absolute inset-0 bg-grid-white opacity-20"></div>
+    </div>
+    {{ end }}
+
+    <div class="tactical-container relative z-10 w-full py-32">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+            
+            <!-- Content Block -->
+            <div class="lg:col-span-7 {{ if (mod $index 2) }}lg:order-last{{ end }} space-y-10">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-[0.5em]">Sector_0{{ add $index 1 }}</span>
+                        <div class="h-px w-12 bg-[var(--primary)]/30"></div>
+                    </div>
+                    <h2 class="text-8xl leading-[0.85] tracking-tighter">{{ $section.title }}</h2>
+                </div>
+                
+                <div class="data-node border-l-[var(--primary)]">
+                    <p class="text-xl font-light text-gray-400 leading-relaxed">
+                        {{ $section.content | markdownify }}
+                    </p>
+                </div>
+
+                {{ with $section.cta }}
+                <a href="{{ .url | default "#" }}" class="btn-elite no-underline">{{ .text }}</a>
+                {{ end }}
+            </div>
+
+            <!-- Technical Detail Block -->
+            <div class="lg:col-span-5 hidden lg:block">
+                <div class="bracket-box bg-black/60 backdrop-blur-xl border-[var(--primary)]/10">
+                    <h4 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-8">Operational Parameters</h4>
+                    <div class="space-y-6">
+                        {{ range $section.specs }}
+                        <div class="flex justify-between items-center border-b border-white/5 pb-4">
+                            <span class="text-[8px] font-mono text-gray-600 uppercase">{{ .label }}</span>
+                            <span class="text-xs font-black text-white uppercase tracking-widest">{{ .value }}</span>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{{ end }}

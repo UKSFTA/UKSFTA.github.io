@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+  {{ partial "head/skin.html" . }}
 </head>
 {{ $unit := .Params.unit | default .Section | default "sas" }}
 <body class="unit-{{ lower $unit }} antialiased selection:bg-[var(--primary)] selection:text-white">
