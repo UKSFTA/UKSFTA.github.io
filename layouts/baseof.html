@@ -5,24 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
   
-  <!-- High-Fidelity Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
   
-  <!-- Bespoke Theme CSS -->
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
 </head>
-<body class="bg-tactical-black overflow-x-hidden">
+<body class="bg-[#050505] text-gray-300">
   {{ partial "theme/header.html" . }}
   
-  <main class="min-h-screen">
+  <div class="main-content-wrapper min-h-screen">
     {{ block "main" . }}{{ end }}
-  </main>
+  </div>
 
   {{ partial "theme/footer.html" . }}
   
-  <!-- Theme Logic -->
   <script src="{{ "js/main.js" | relURL }}" defer></script>
 </body>
 </html>

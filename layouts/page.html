@@ -1,30 +1,50 @@
 {{ define "main" }}
-<article class="content-area">
-  <div class="dossier-meta">
-    <div class="meta-item">
-      <label>Dossier ID</label>
-      <span>UKSF-{{ upper (substr (sha256 .Title) 0 8) }}</span>
+<article class="py-40 bg-[#050505]">
+  <div class="tactical-container max-w-4xl">
+    <!-- Dossier Header -->
+    <header class="space-y-12 mb-24">
+      <div class="flex items-center space-x-6">
+        <span class="status-tag">RESTRICTED // OPS_DOSS</span>
+        <div class="h-px flex-1 bg-white/10"></div>
+      </div>
+
+      <h1 class="text-8xl leading-none tracking-tighter">{{ .Title }}</h1>
+
+      <!-- Metadata Dashboard -->
+      <div class="meta-grid">
+        <div class="meta-item">
+          <label>Document ID</label>
+          <span>UKSF-{{ upper (substr (sha256 .Title) 0 8) }}</span>
+        </div>
+        <div class="meta-item">
+          <label>Classification</label>
+          <span>Level 3 Restricted</span>
+        </div>
+        <div class="meta-item">
+          <label>Issued</label>
+          <span>{{ .Date.Format "02 JAN 2006" }}</span>
+        </div>
+        <div class="meta-item">
+          <label>Status</label>
+          <span class="text-green-500 animate-pulse">Active Archive</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <div class="prose prose-invert prose-2xl max-w-none font-light leading-relaxed text-gray-400">
+      {{ .Content }}
     </div>
-    <div class="meta-item">
-      <label>Classification</label>
-      <span>RESTRICTED</span>
-    </div>
-    <div class="meta-item">
-      <label>Issued</label>
-      <span>{{ .Date.Format "02 JAN 2006" }}</span>
-    </div>
-    <div class="meta-item">
-      <label>Operational Status</label>
-      <span>ACTIVE_SERVICE</span>
-    </div>
+
+    <!-- Dossier Footer -->
+    <footer class="mt-32 pt-16 border-t border-white/10">
+      {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+      <div class="mt-12 p-8 border border-dashed border-white/10 bg-white/5">
+        <p class="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] leading-loose">
+          WARNING: THIS DOCUMENT CONTAINS SENSITIVE OPERATIONAL INTELLIGENCE. REPRODUCTION OR DISTRIBUTION WITHOUT EXPLICIT JOINT COMMAND AUTHORIZATION IS A BREACH OF THE OFFICIAL SECRETS ACT.
+        </p>
+      </div>
+    </footer>
   </div>
-
-  <h1>{{ .Title }}</h1>
-
-  <div class="dossier-content">
-    {{ .Content }}
-  </div>
-
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
 </article>
 {{ end }}

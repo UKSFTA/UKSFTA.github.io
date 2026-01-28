@@ -1,20 +1,44 @@
 {{ define "main" }}
-<section class="unit-hero" style="border-left: 15px solid var(--unit-accent); padding: 60px 0; margin-bottom: 60px;">
-  <h1 class="industrial-title" style="font-size: 6rem; line-height: 0.8; margin: 0;">{{ .Title }}</h1>
-  <p class="hero-hook" style="font-size: 1.5rem; margin-top: 1rem; color: rgba(255,255,255,0.6);">Operational Command // UKSF Component</p>
+<section class="py-40 bg-black relative border-b border-white/5 overflow-hidden">
+  <div class="absolute inset-0 opacity-10 pointer-events-none tactical-grid"></div>
+  <div class="tactical-container relative z-10">
+    <div class="space-y-8">
+      <div class="flex items-center space-x-6">
+        <span class="status-tag">COMMAND_OVERVIEW</span>
+        <div class="h-px w-24 bg-uksf-gold"></div>
+      </div>
+      <h1 class="text-[10rem] leading-none tracking-tighter">{{ .Title }}</h1>
+      <p class="text-3xl text-gray-500 font-light tracking-widest max-w-3xl uppercase">United Kingdom Special Forces Component Command</p>
+    </div>
+  </div>
 </section>
 
-<div class="dossier-list" style="display: grid; gap: 20px;">
-  {{ range .Pages }}
-    <article class="bento-item" style="min-height: auto; padding: 30px; cursor: pointer;" onclick="location.href='{{ .RelPermalink }}'">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          <h2 style="font-family: 'Industrial Gothic Pro Single Line', sans-serif; font-size: 2rem; margin: 0; color: #fff; text-transform: uppercase;">{{ .LinkTitle }}</h2>
-          <p style="margin: 10px 0 0; font-size: 14px; color: rgba(255,255,255,0.4);">{{ .Summary | truncate 150 }}</p>
+<section class="py-32 bg-[#050505]">
+  <div class="tactical-container">
+    <div class="mb-20">
+      <span class="text-[10px] font-bold text-uksf-gold uppercase tracking-[0.5em]">Operational Logs</span>
+    </div>
+    
+    <div class="grid gap-12">
+      {{ range .Pages }}
+      <article class="dossier-card group flex flex-col md:flex-row md:items-center justify-between cursor-pointer" onclick="location.href='{{ .RelPermalink }}'">
+        <div class="space-y-4">
+          <div class="flex items-center space-x-4">
+            <span class="text-[8px] font-bold text-gray-600 uppercase tracking-widest">Entry_{{ .Date.Format "2006" }}</span>
+            <div class="w-8 h-px bg-white/10"></div>
+          </div>
+          <h2 class="text-5xl group-hover:text-uksf-gold transition-colors">{{ .Title }}</h2>
+          <p class="text-gray-500 max-w-2xl line-clamp-2 leading-relaxed">{{ .Summary }}</p>
         </div>
-        <div style="font-family: monospace; color: var(--unit-accent); font-size: 12px; letter-spacing: 2px;">ACCESS_DOSSIER →</div>
-      </div>
-    </article>
-  {{ end }}
-</div>
+        <div class="mt-8 md:mt-0 flex items-center space-x-6">
+          <span class="text-[10px] font-bold text-white uppercase tracking-[0.3em]">Access Dossier</span>
+          <div class="w-12 h-12 border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+            <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
 {{ end }}

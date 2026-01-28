@@ -1,29 +1,41 @@
-<header class="fixed top-0 left-0 w-full z-[100] transition-all duration-500" id="main-header">
-  <div class="container mx-auto px-6 py-8 flex justify-between items-center">
-    <div class="flex items-center space-x-6">
-      <a href="/" class="group flex items-center space-x-4 no-underline">
-        <div class="w-12 h-12 bg-white flex items-center justify-center rotate-45 group-hover:rotate-[225deg] transition-transform duration-700">
-          <span class="text-black font-black text-2xl -rotate-45 group-hover:rotate-[-225deg] transition-transform duration-700">U</span>
-        </div>
-        <div class="flex flex-col">
-          <span class="text-white font-industrial text-2xl tracking-[0.3em] leading-none">UKSF</span>
-          <span class="text-[8px] font-tactical text-uksf-gold tracking-[0.5em] opacity-60 uppercase">{{ .Site.Data.labels.site.classification }}</span>
-        </div>
-      </a>
+<header class="header-glass group" id="main-header">
+  <!-- Superior Rule: Official Classification -->
+  <div class="bg-black/80 border-b border-white/5 py-3">
+    <div class="tactical-container flex justify-between items-center text-[8px] font-bold tracking-[0.5em] text-gray-600 uppercase">
+      <div class="flex items-center space-x-4">
+        <img src="/mod-logo.svg" alt="MOD" class="h-4 opacity-40 grayscale brightness-200">
+        <span class="border-l border-white/10 pl-4">HMG // JOINT COMMAND</span>
+      </div>
+      <div class="text-uksf-gold select-none">
+        {{ .Site.Data.labels.site.classification }} // SECURE_ACCESS
+      </div>
     </div>
-    
-    <nav class="hidden md:flex items-center space-x-12">
+  </div>
+
+  <!-- Primary Navigation -->
+  <div class="tactical-container py-6 flex justify-between items-center">
+    <a href="/" class="flex items-center space-x-6 no-underline group/logo">
+      <div class="relative w-10 h-10 border-2 border-white flex items-center justify-center rotate-45 group-hover/logo:rotate-[225deg] transition-transform duration-700">
+        <span class="text-white font-black text-xl -rotate-45 group-hover/logo:rotate-[-225deg] transition-transform duration-700">U</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-white font-bold text-2xl tracking-[0.2em] leading-none">{{ .Site.Data.labels.site.title }}</span>
+        <span class="text-[9px] text-gray-500 tracking-[0.4em] uppercase mt-1">{{ .Site.Data.labels.site.motto }}</span>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex items-center space-x-10">
       {{ range site.Menus.main }}
-      <a href="{{ .URL }}" class="text-white font-tactical text-[10px] uppercase tracking-[0.4em] hover:text-uksf-gold transition-colors no-underline">
+      <a href="{{ .URL }}" class="nav-link {{ if eq $.RelPermalink .URL }}text-white after:w-full{{ end }}">
         {{ .Name }}
       </a>
       {{ end }}
     </nav>
 
-    <div class="flex items-center space-x-8">
-      <div class="status-tag">
-        <span class="w-2 h-2 bg-uksf-gold rounded-full animate-pulse-fast"></span>
-        <span>{{ .Site.Data.labels.site.status }}</span>
+    <div class="flex items-center space-x-6">
+      <div class="hidden sm:flex items-center space-x-3 px-4 py-1.5 border border-uksf-gold/20 bg-uksf-gold/5">
+        <span class="w-1.5 h-1.5 bg-uksf-gold rounded-full animate-pulse-fast"></span>
+        <span class="text-[9px] font-bold text-uksf-gold uppercase tracking-widest">{{ .Site.Data.labels.site.status }}</span>
       </div>
     </div>
   </div>

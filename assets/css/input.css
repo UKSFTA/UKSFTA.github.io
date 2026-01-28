@@ -3,64 +3,129 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --uksf-gold: #b3995d;
+    --uksf-blue: #002366;
+    --uksf-green: #153e35;
+    --uksf-grey: #323e48;
+    --header-height: 100px;
+  }
+
   body {
     background-color: #050505;
     color: #d1d5db;
-    font-family: "Inter", "Arial", sans-serif;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 80%),
+      linear-gradient(rgba(255,255,255,.01) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.01) 1px, transparent 1px);
+    background-size: auto, 40px 40px, 40px 40px;
   }
 
   h1, h2, h3, h4 {
-    font-family: "Industrial Gothic Pro Single Line", "Bebas Neue", sans-serif;
+    font-family: "Industrial Gothic Pro Single Line", "Bebas Neue", "Impact", sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: -0.02em;
     color: white;
+    line-height: 0.9;
   }
 }
 
 @layer components {
-  .tactical-grid {
-    background-image: 
-      linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
-    background-size: 50px 50px;
+  .main-content-wrapper {
+    padding-top: 140px; /* Account for two-tier header */
   }
 
-  .cinematic-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.6) 100%);
+  .tactical-container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
-  .title-mega {
-    font-size: clamp(4rem, 10vw, 12rem);
-    line-height: 0.8;
-    font-weight: 900;
-    filter: drop-shadow(0 0 30px rgba(255,255,255,0.1));
+  /* High-Performance HUD Header */
+  .header-glass {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 500;
+    transition: all 0.5s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(20px);
   }
 
-  .btn-uksf {
+  .nav-link {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: #9ca3af;
+    transition: all 0.3s;
     position: relative;
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+  }
+  .nav-link:hover { color: white; }
+
+  /* High-Fidelity Tactical Cards */
+  .dossier-card {
+    position: relative;
+    background-color: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    transition: all 0.7s;
+    overflow: hidden;
+  }
+  .dossier-card:hover {
+    background-color: #0f0f0f;
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-0.5rem);
+    box-shadow: 0 40px 100px -20px rgba(0,0,0,0.9);
+  }
+
+  .hud-bracket {
+    position: absolute;
+    width: 1rem;
+    height: 1.5rem;
+    border-color: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+  }
+
+  /* Aggressive Buttons */
+  .btn-tactical {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem 3rem;
+    padding: 1.25rem 3rem;
     font-weight: 900;
-    font-size: 0.875rem;
-    letter-spacing: 0.3em;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    letter-spacing: 0.3em;
+    transition: all 0.5s;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+    text-decoration: none;
   }
 
-  .btn-uksf-primary {
-    background-color: white;
+  .btn-tactical-gold {
+    background-color: #b3995d;
     color: black;
   }
-  .btn-uksf-primary:hover {
-    background-color: #b3995d;
+  .btn-tactical-gold:hover {
+    background-color: white;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-tactical-outline {
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
+  }
+  .btn-tactical-outline:hover {
+    background-color: white;
+    color: black;
   }
 
   .status-tag {
@@ -76,17 +141,29 @@
     text-transform: uppercase;
   }
 
-  .tactical-card {
-    position: relative;
-    background-color: rgba(18, 18, 18, 0.8);
-    backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    overflow: hidden;
+  /* Metadata Dashboard */
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 4rem;
   }
-  .tactical-card:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-0.5rem);
-    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8);
+  @media (min-width: 768px) {
+    .meta-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .meta-item label { display: block; font-size: 8px; font-weight: 700; color: #4b5563; text-transform: uppercase; letter-spacing: 0.4em; margin-bottom: 0.5rem; }
+  .meta-item span { display: block; font-size: 0.75rem; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.1em; }
+}
+
+@layer utilities {
+  .text-title-mega {
+    font-size: clamp(3rem, 15vw, 12rem);
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: -0.05em;
   }
 }
