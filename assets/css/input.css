@@ -4,138 +4,108 @@
 
 @layer base {
   :root {
-    --uksf-gold: #b3995d;
-    --uksf-gold-rgb: 179, 153, 93;
-    --sas-green: #153e35;
-    --sbs-blue: #000033;
-    --srr-grey: #507255;
-    --header-height: 140px;
+    --primary: #1d70b8; /* Default MOD Blue */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --exclusion-zone: 4rem;
   }
 
+  /* Dynamic Unit Skins */
+  body.unit-sas { --primary: #153e35; } /* Army Green */
+  body.unit-sbs { --primary: #000033; } /* Navy Blue */
+  body.unit-srr { --primary: #507255; } /* Night-vision Grey */
+  body.unit-sfsg { --primary: #800000; }
+  body.unit-jsfaw { --primary: #000080; }
+
   body {
-    background-color: #020202;
-    color: #a1a1aa;
-    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0b0b0b;
+    color: white;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, .font-industrial {
+  h1, h2, h3, h4 {
     font-family: "Industrial Gothic Pro Single Line", "Bebas Neue", "Impact", sans-serif;
     text-transform: uppercase;
-    line-height: 0.85;
+    letter-spacing: 0.1em;
     color: white;
+    line-height: 0.9;
   }
 
-  /* Markdown Content Tactical Styling */
-  .dossier-body h2 { font-size: 2.25rem; margin-top: 4rem; margin-bottom: 2rem; border-left: 4px solid #b3995d; padding-left: 1.5rem; }
-  .dossier-body h3 { font-size: 1.5rem; margin-top: 3rem; margin-bottom: 1.5rem; color: #e5e7eb; }
-  .dossier-body p { font-size: 1.125rem; line-height: 1.75; margin-bottom: 2rem; font-weight: 300; }
-  .dossier-body ul { margin-bottom: 2rem; padding: 0; list-style: none; }
-  .dossier-body li { display: flex; align-items: flex-start; margin-bottom: 1rem; }
-  .dossier-body li::before { content: "//"; font-family: monospace; font-size: 0.75rem; color: #b3995d; margin-right: 1rem; margin-top: 0.375rem; font-weight: 900; }
-  
-  .dossier-body blockquote {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2.5rem 3rem;
-    margin: 4rem 0;
-    font-style: italic;
-    font-size: 1.5rem;
-    color: #d1d5db;
-    background-color: rgba(255, 255, 255, 0.05);
+  h2, h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
   }
-
-  .dossier-body table { width: 100%; border-collapse: collapse; margin-bottom: 3rem; }
-  .dossier-body th { text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; padding: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.2); color: #b3995d; font-weight: 700; }
-  .dossier-body td { padding: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.875rem; }
 }
 
 @layer components {
-  /* Layout Structure */
-  .main-content-wrapper { padding-top: var(--header-height); }
-  .tactical-container { max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+  /* The Global Container (Blueprint 1) */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
 
-  /* Intel Panel (Sidebar) */
-  .intel-panel {
-    background-color: rgba(255, 255, 255, 0.05);
+  /* Institutional Spacing / Superior Rule (Blueprint 1) */
+  .superior-header {
+    margin-bottom: var(--exclusion-zone);
+    border-bottom: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Modular Block Design (Blueprint 1) */
+  .modular-block {
+    background-color: #121212;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    position: sticky;
-    top: 180px;
-  }
-  .intel-panel h4 { font-size: 10px; color: #b3995d; text-transform: uppercase; letter-spacing: 0.4em; margin-bottom: 1.5rem; }
-
-  /* Dossier Elements */
-  .dossier-header { margin-bottom: 6rem; position: relative; }
-  
-  .status-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.375rem 1rem;
-    background-color: rgba(179, 153, 93, 0.1);
-    border: 1px solid rgba(179, 153, 93, 0.3);
-    font-size: 9px;
-    font-weight: 900;
-    letter-spacing: 0.3em;
-    color: #b3995d;
-    text-transform: uppercase;
-  }
-
-  .dossier-card {
+    padding: 2.5rem;
+    transition: all 0.5s;
     position: relative;
-    background-color: #080808;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 3rem;
-    transition: all 0.7s;
-    overflow: hidden;
   }
-  .dossier-card:hover {
-    background-color: #0c0c0c;
-    border-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-0.5rem);
-    shadow: 0 40px 100px -20px rgba(0,0,0,0.9);
+  .modular-block:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .modular-block::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary);
   }
 
-  .btn-tactical {
+  .btn-uksf {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem 3rem;
+    padding: 1.25rem 2.5rem;
     font-weight: 900;
-    font-size: 10px;
+    font-size: 0.875rem;
     text-transform: uppercase;
-    letter-spacing: 0.4em;
-    transition: all 0.5s;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    letter-spacing: 0.2em;
+    transition: all 0.3s;
+    background-color: var(--primary);
+    color: white;
     text-decoration: none;
   }
-
-  .btn-primary { background-color: white; color: black; }
-  .btn-primary:hover { background-color: #b3995d; color: white; }
-  .btn-outline { border: 1px solid rgba(255, 255, 255, 0.1); color: white; }
-  .btn-outline:hover { background-color: white; color: black; }
-
-  .header-glass {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(2, 2, 2, 0.85);
-    backdrop-filter: blur(24px);
+  .btn-uksf:hover {
+    filter: brightness(1.25);
+    box-shadow: 0 0 30px var(--primary);
   }
 }
 
 @layer utilities {
-  .text-mega { font-size: clamp(4rem, 18vw, 14rem); font-weight: 900; line-height: 1; letter-spacing: -0.05em; }
-  .bg-grid-white {
-    background-size: 40px 40px;
-    background-image: 
-      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  .text-mega {
+    font-size: clamp(3rem, 12vw, 10rem);
+    font-weight: 900;
+    line-height: 0.8;
   }
 }

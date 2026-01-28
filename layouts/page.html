@@ -1,84 +1,46 @@
 {{ define "main" }}
-<article class="py-40 bg-black relative">
-  <div class="absolute inset-0 bg-grid-white opacity-20 pointer-events-none"></div>
-  
-  <div class="tactical-container">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 relative z-10">
-      
-      <!-- Main Dossier Content (Col 1-8) -->
-      <div class="lg:col-span-8">
-        <header class="dossier-header">
-          <div class="flex items-center space-x-6">
-            <span class="status-tag">SECURE_DOSS // ID: {{ upper (substr (sha256 .Title) 0 8) }}</span>
-            <div class="h-px flex-1 bg-white/10"></div>
-          </div>
-          <h1 class="text-9xl leading-none tracking-tighter text-white">{{ .Title }}</h1>
-          <p class="text-xl text-gray-500 font-mono tracking-widest uppercase">Joint Special Forces Command // Internal Archive</p>
-        </header>
-
-        <div class="dossier-body">
-          {{ .Content }}
-        </div>
-
-        <footer class="mt-32 pt-16 border-t border-white/5">
-          {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
-          <div class="mt-12 p-10 border border-white/5 bg-white/5 relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-1 h-full bg-red-600"></div>
-            <p class="text-[10px] font-mono text-gray-500 uppercase tracking-[0.4em] leading-loose">
-              NOTICE: This transmission is intended for authorized UKSF personnel only. Electronic monitoring is in effect. All metadata is logged.
-            </p>
-          </div>
-        </footer>
-      </div>
-
-      <!-- Intel Sidebar (Col 9-12) -->
-      <aside class="lg:col-span-4">
-        <div class="intel-panel">
-          <div class="space-y-10">
-            <div>
-              <h4>Operational Status</h4>
-              <div class="flex items-center space-x-4 bg-green-500/10 border border-green-500/20 px-6 py-4">
-                <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="text-xs font-black text-green-500 tracking-widest uppercase">Mission_Active</span>
-              </div>
-            </div>
-
-            <div>
-              <h4>Dossier Metadata</h4>
-              <ul class="space-y-6 list-none p-0">
-                <li class="flex flex-col border-b border-white/5 pb-4">
-                  <span class="text-[8px] text-gray-600 font-bold uppercase tracking-widest">Classification</span>
-                  <span class="text-xs text-white font-bold tracking-widest uppercase">Level 3 Restricted</span>
-                </li>
-                <li class="flex flex-col border-b border-white/5 pb-4">
-                  <span class="text-[8px] text-gray-600 font-bold uppercase tracking-widest">Date Issued</span>
-                  <span class="text-xs text-white font-bold tracking-widest uppercase">{{ .Date.Format "02 JAN 2006" }}</span>
-                </li>
-                <li class="flex flex-col border-b border-white/5 pb-4">
-                  <span class="text-[8px] text-gray-600 font-bold uppercase tracking-widest">Section</span>
-                  <span class="text-xs text-uksf-gold font-bold tracking-widest uppercase">{{ .Section }}</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4>Related Assets</h4>
-              <div class="grid grid-cols-1 gap-4 pt-4">
-                {{ range first 3 (where .Site.RegularPages "Section" .Section) }}
-                {{ if ne .Permalink $.Permalink }}
-                <a href="{{ .RelPermalink }}" class="block p-6 bg-white/5 border border-white/5 hover:border-uksf-gold transition-colors no-underline group">
-                  <span class="block text-[8px] text-gray-600 uppercase mb-2">ACCESS_LOG</span>
-                  <span class="text-sm font-bold text-gray-300 group-hover:text-white transition-colors">{{ .Title }}</span>
-                </a>
-                {{ end }}
-                {{ end }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
-
+<article class="container py-20">
+  <header class="dossier-header border-b border-white/10 pb-16 mb-20 space-y-8">
+    <div class="flex items-center space-x-6">
+      <span class="status-tag bg-[var(--primary)] text-white px-4 py-1 text-[10px] font-black tracking-widest uppercase">RESTRICTED // DATA_DOSS</span>
+      <div class="h-px flex-1 bg-white/5"></div>
     </div>
+    <h1 class="text-mega leading-none tracking-tighter">{{ .Title }}</h1>
+    <div class="flex space-x-12 text-[10px] font-bold text-gray-600 uppercase tracking-[0.4em]">
+      <span>Ref: UKSF-{{ upper (substr (sha256 .Title) 0 8) }}</span>
+      <span>Issued: {{ .Date.Format "02 JAN 2006" }}</span>
+    </div>
+  </header>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+    <div class="lg:col-span-8 dossier-body">
+      {{ .Content }}
+    </div>
+    
+    <aside class="lg:col-span-4">
+      <div class="bg-[#121212] border border-white/5 p-10 space-y-10 sticky top-[120px]">
+        <div>
+          <h4 class="text-[10px] font-bold text-gray-500 uppercase tracking-[0.4em] mb-6">Status</h4>
+          <div class="flex items-center space-x-4">
+            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+            <span class="text-xs font-black text-white tracking-widest uppercase">Mission_Active</span>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-[10px] font-bold text-gray-500 uppercase tracking-[0.4em] mb-6">Related</h4>
+          <div class="space-y-4">
+            {{ range first 3 (where .Site.RegularPages "Section" .Section) }}
+            {{ if ne .Permalink $.Permalink }}
+            <a href="{{ .RelPermalink }}" class="block p-4 border border-white/5 hover:border-[var(--primary)] no-underline group transition-all">
+              <span class="text-sm font-bold text-gray-400 group-hover:text-white">{{ .Title }}</span>
+            </a>
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </aside>
   </div>
 </article>
 {{ end }}

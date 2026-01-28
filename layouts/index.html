@@ -1,196 +1,79 @@
 {{ define "main" }}
 {{ $labels := .Site.Data.labels }}
 
-<!-- Mega Cinematic Hero -->
-<section class="relative min-h-[95vh] flex items-center bg-black overflow-hidden border-b border-white/5">
-    <!-- Immersive Background -->
-    <div class="absolute inset-0 z-0 select-none pointer-events-none">
-        <img src="https://images.unsplash.com/photo-1590233064032-909772a6b225?auto=format&fit=crop&q=80&w=2400" 
-             class="w-full h-full object-cover object-center opacity-40 grayscale blur-[1px] scale-105" alt="UKSF Field Context">
-        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent"></div>
-        <div class="absolute inset-0 bg-grid-white opacity-40"></div>
+<div class="container space-y-20">
+  <!-- 1. Hero Section -->
+  <section class="py-20 border-b border-white/5">
+    <div class="max-w-4xl space-y-10">
+      <span class="text-xs font-bold text-[var(--primary)] uppercase tracking-[0.5em]">{{ $labels.site.status }}</span>
+      <h1 class="text-mega">{{ $labels.hero.headline }}</h1>
+      <p class="text-3xl font-light text-gray-400 leading-relaxed border-l-4 border-[var(--primary)] pl-10 italic">
+        "{{ $labels.hero.description }}"
+      </p>
+      <div class="pt-6">
+        <a href="/recruitment/" class="btn-uksf no-underline">
+          {{ $labels.hero.cta }}
+        </a>
+      </div>
     </div>
+  </section>
 
-    <!-- HUD Overlay -->
-    <div class="absolute inset-12 z-10 pointer-events-none opacity-30">
-        <div class="hud-bracket top-0 left-0 border-t-2 border-l-2 border-uksf-gold"></div>
-        <div class="hud-bracket top-0 right-0 border-t-2 border-r-2 border-uksf-gold"></div>
-        <div class="hud-bracket bottom-0 left-0 border-b-2 border-l-2 border-uksf-gold"></div>
-        <div class="hud-bracket bottom-0 right-0 border-b-2 border-r-2 border-uksf-gold"></div>
-        
-        <div class="hud-line-h top-1/2"></div>
-        <div class="hud-line-v left-1/2"></div>
+  <!-- 2. Modular Blocks: Strategic Pillars -->
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="modular-block">
+      <h3>{{ $labels.sections.modernisation.title }}</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">{{ $labels.sections.modernisation.description }}</p>
     </div>
+    <div class="modular-block" style="--primary: #b3995d">
+      <h3>{{ $labels.sections.readiness.title }}</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">{{ $labels.sections.readiness.description }}</p>
+    </div>
+    <div class="modular-block">
+      <h3>{{ $labels.sections.people.title }}</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">{{ $labels.sections.people.description }}</p>
+    </div>
+  </section>
 
-    <div class="tactical-container relative z-20">
-        <div class="max-w-6xl space-y-16">
-            <div class="space-y-6 animate-in fade-in slide-in-from-left duration-1000">
-                <div class="flex items-center space-x-6">
-                    <div class="w-16 h-1 bg-uksf-gold"></div>
-                    <span class="text-[10px] font-mono text-uksf-gold uppercase tracking-[0.6em]">{{ $labels.site.joint_command }}</span>
-                </div>
-                <h1 class="text-mega text-white select-none drop-shadow-2xl">
-                    {{ $labels.hero.headline }}
-                </h1>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-200">
-                <p class="text-2xl md:text-3xl text-gray-400 font-light leading-relaxed border-l-2 border-uksf-gold pl-12">
-                    {{ $labels.hero.description }}
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-8">
-                    <a href="/recruitment/" class="btn-primary no-underline min-w-[280px]">
-                        {{ $labels.hero.cta }}
-                    </a>
-                    <a href="#operational" class="btn-outline no-underline min-w-[280px]">
-                        Explore Command Archive
-                    </a>
-                </div>
-            </div>
-        </div>
+  <!-- 3. Operational Archive -->
+  <section class="space-y-12 py-20">
+    <div class="flex items-end justify-between border-b border-white/10 pb-10">
+      <h2 class="text-6xl m-0">Operational awareness</h2>
+      <a href="/stories/" class="text-[10px] font-bold text-gray-500 uppercase tracking-widest no-underline">View Command Logs →</a>
     </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      {{ range first 2 (where .Site.RegularPages "Section" "stories") }}
+      <div class="group cursor-pointer" onclick="location.href='{{ .RelPermalink }}'">
+        <div class="aspect-video bg-[#121212] mb-8 overflow-hidden border border-white/5">
+          <img src="{{ .Params.image }}" class="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-80 transition-opacity duration-700">
+        </div>
+        <div class="space-y-4">
+          <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-widest">DOSS_REF // SF-{{ .Date.Format "2006" }}</span>
+          <h3 class="text-4xl m-0 group-hover:underline">{{ .Title }}</h3>
+          <p class="text-gray-500 text-base leading-relaxed line-clamp-2">{{ .Summary }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
 
-    <!-- Data Strip -->
-    <div class="absolute bottom-0 left-0 w-full py-8 bg-black/60 backdrop-blur-xl border-t border-white/5 z-30">
-        <div class="tactical-container flex justify-between items-center text-[9px] text-gray-600 font-bold tracking-[0.5em] uppercase">
-            <div class="flex space-x-12">
-                <span>COORD: 51.5074° N // 0.1278° W</span>
-                <span class="text-uksf-gold/60">THEATRE: GLOBAL_Special_OPS</span>
-            </div>
-            <div class="flex items-center space-x-4">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span>DATA_LINK: LIVE</span>
-            </div>
-        </div>
+  <!-- 4. Command Matrix -->
+  <section class="py-20">
+    <div class="text-center mb-20">
+      <h2 class="text-7xl">Our Commands</h2>
     </div>
-</section>
-
-<!-- Strategic Mission Matrix -->
-<section class="py-40 bg-[#020202] relative overflow-hidden">
-    <div class="tactical-container">
-        <div class="text-center mb-32 space-y-6">
-            <span class="text-[10px] font-bold text-gray-600 uppercase tracking-[0.6em]">Core Pillars</span>
-            <h2 class="text-8xl">Strategic Intent</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
+      {{ range $id, $unit := $labels.units }}
+      <a href="/{{ $id }}/" class="bg-[#0b0b0b] p-16 hover:bg-black transition-all duration-500 no-underline group block">
+        <div class="space-y-8">
+          <div class="w-12 h-1 bg-[var(--primary)] group-hover:w-full transition-all duration-700"></div>
+          <h3 class="text-6xl m-0 group-hover:text-white transition-colors">{{ $unit.name }}</h3>
+          <p class="text-sm text-gray-500 font-light leading-relaxed">{{ $unit.description }}</p>
+          <span class="inline-block text-[10px] font-bold text-[var(--primary)] uppercase tracking-[0.3em]">Access Capability →</span>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="dossier-card p-16 space-y-8 h-full flex flex-col justify-between">
-                <div class="space-y-6">
-                    <span class="text-uksf-gold text-[10px] font-bold tracking-widest">PILLAR_01</span>
-                    <h3 class="text-5xl leading-none">{{ $labels.sections.modernisation.title }}</h3>
-                    <p class="text-gray-500 font-light leading-relaxed">{{ $labels.sections.modernisation.description }}</p>
-                </div>
-                <div class="w-12 h-px bg-white/20"></div>
-            </div>
-            
-            <div class="dossier-card p-16 space-y-8 h-full flex flex-col justify-between bg-uksf-gold/5 border-uksf-gold/10">
-                <div class="space-y-6">
-                    <span class="text-uksf-gold text-[10px] font-bold tracking-widest">PILLAR_02</span>
-                    <h3 class="text-5xl leading-none text-white">{{ $labels.sections.readiness.title }}</h3>
-                    <p class="text-gray-400 font-light leading-relaxed">{{ $labels.sections.readiness.description }}</p>
-                </div>
-                <div class="w-full h-1 bg-uksf-gold/40"></div>
-            </div>
-            
-            <div class="dossier-card p-16 space-y-8 h-full flex flex-col justify-between">
-                <div class="space-y-6">
-                    <span class="text-uksf-gold text-[10px] font-bold tracking-widest">PILLAR_03</span>
-                    <h3 class="text-5xl leading-none">{{ $labels.sections.people.title }}</h3>
-                    <p class="text-gray-500 font-light leading-relaxed">{{ $labels.sections.people.description }}</p>
-                </div>
-                <div class="w-12 h-px bg-white/20"></div>
-            </div>
-        </div>
+      </a>
+      {{ end }}
     </div>
-</section>
-
-<!-- Joint Command Grid -->
-<section id="operational" class="py-40 bg-black border-y border-white/5 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-5 carbon-texture scale-150"></div>
-    <div class="tactical-container relative z-10">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-32 border-b border-white/10 pb-16">
-            <div class="space-y-6">
-                <span class="text-[10px] font-bold text-uksf-gold uppercase tracking-[0.5em]">United Kingdom Special Forces</span>
-                <h2 class="text-9xl tracking-tighter">Command Structure</h2>
-            </div>
-            <p class="text-gray-500 font-mono text-xs uppercase tracking-widest max-w-xs text-right hidden lg:block">
-                The Joint Special Forces Command (JSFC) coordinates all Tier 1 and Tier 2 assets.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
-            {{ range $id, $unit := $labels.units }}
-            <a href="/{{ $id }}/" class="group bg-[#020202] p-20 space-y-16 transition-all duration-700 hover:bg-black no-underline block relative overflow-hidden">
-                <!-- Unit Identity Glow -->
-                <div class="absolute inset-0 bg-uksf-gold opacity-0 group-hover:opacity-[0.03] transition-opacity"></div>
-                
-                <div class="relative z-10 space-y-12">
-                    <div class="flex justify-between items-start">
-                        <div class="w-12 h-1 bg-uksf-gold/30 group-hover:w-full group-hover:bg-uksf-gold transition-all duration-1000"></div>
-                        <span class="unit-badge text-gray-600 group-hover:text-uksf-gold group-hover:border-uksf-gold transition-colors">{{ $unit.origin }}</span>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <h3 class="text-7xl group-hover:text-uksf-gold transition-colors leading-none tracking-tighter">{{ $unit.name }}</h3>
-                        <span class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.4em] group-hover:text-white transition-colors">"{{ $unit.motto }}"</span>
-                    </div>
-                    
-                    <p class="text-gray-500 font-light text-base leading-relaxed h-32 line-clamp-4 group-hover:text-gray-300 transition-colors">
-                        {{ $unit.description }}
-                    </p>
-                    
-                    <div class="pt-10 flex items-center justify-between border-t border-white/5 group-hover:border-white/10 transition-colors">
-                        <span class="text-[10px] font-bold text-gray-600 uppercase tracking-[0.3em] group-hover:text-white transition-colors">View Operational Archive</span>
-                        <span class="text-uksf-gold opacity-0 group-hover:opacity-100 translate-x-[-20px] group-hover:translate-x-0 transition-all duration-500">→</span>
-                    </div>
-                </div>
-            </a>
-            {{ end }}
-        </div>
-    </div>
-</section>
-
-<!-- Field Reports Dossier -->
-<section class="py-40 bg-[#020202]">
-    <div class="tactical-container">
-        <div class="flex items-center justify-between mb-24">
-            <h2 class="text-7xl">Operational Logs</h2>
-            <a href="/stories/" class="nav-link">Access All Logs</a>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {{ range first 2 (where .Site.RegularPages "Section" "stories") }}
-            <article class="dossier-card h-[650px] cursor-pointer" onclick="location.href='{{ .RelPermalink }}'">
-                <div class="absolute inset-0 grayscale opacity-20 group-hover:opacity-50 group-hover:scale-105 transition-all duration-[2s]">
-                    <img src="{{ .Params.image }}" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                </div>
-                
-                <div class="relative z-10 h-full flex flex-col justify-between">
-                    <div class="flex justify-between items-start">
-                        <div class="space-y-2">
-                            <span class="block text-[8px] text-gray-600 uppercase tracking-widest font-bold font-mono">DOSS_ID</span>
-                            <span class="block text-xs text-white font-mono uppercase tracking-widest">UKSF-{{ .Date.Format "2006" }}-{{ upper (substr .Title 0 4) }}</span>
-                        </div>
-                        <span class="px-4 py-1 border border-red-900/40 bg-red-950/10 text-red-500 text-[10px] font-bold tracking-widest uppercase">Classified</span>
-                    </div>
-                    
-                    <div class="space-y-10">
-                        <div class="space-y-4">
-                            <span class="text-uksf-gold text-[10px] font-bold uppercase tracking-[0.4em]">Field Intelligence</span>
-                            <h3 class="text-6xl group-hover:text-uksf-gold transition-colors leading-none">{{ .Title }}</h3>
-                        </div>
-                        <p class="text-xl text-gray-400 font-light leading-relaxed line-clamp-3">{{ .Summary }}</p>
-                        <div class="flex items-center space-x-6 pt-4 border-t border-white/5 group-hover:border-uksf-gold/20 transition-colors">
-                            <span class="text-[10px] font-bold text-white uppercase tracking-[0.3em]">Access Entry</span>
-                            <div class="h-px flex-1 bg-white/10 group-hover:bg-uksf-gold/40 transition-colors"></div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            {{ end }}
-        </div>
-    </div>
-</section>
+  </section>
+</div>
 {{ end }}
