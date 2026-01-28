@@ -5,36 +5,31 @@
 @layer base {
   :root {
     --uksf-gold: #b3995d;
-    --uksf-blue: #002366;
-    --uksf-green: #153e35;
-    --uksf-grey: #323e48;
-    --header-height: 100px;
+    --uksf-gold-rgb: 179, 153, 93;
+    --sas-green: #153e35;
+    --sbs-blue: #000033;
+    --srr-grey: #507255;
+    --header-height: 140px;
   }
 
   body {
-    background-color: #050505;
-    color: #d1d5db;
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #020202;
+    color: #a1a1aa;
+    font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 80%),
-      linear-gradient(rgba(255,255,255,.01) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.01) 1px, transparent 1px);
-    background-size: auto, 40px 40px, 40px 40px;
   }
 
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, .font-industrial {
     font-family: "Industrial Gothic Pro Single Line", "Bebas Neue", "Impact", sans-serif;
     text-transform: uppercase;
-    letter-spacing: -0.02em;
+    line-height: 0.85;
     color: white;
-    line-height: 0.9;
   }
 }
 
 @layer components {
   .main-content-wrapper {
-    padding-top: 140px; /* Account for two-tier header */
+    padding-top: var(--header-height);
   }
 
   .tactical-container {
@@ -45,88 +40,92 @@
     padding-right: 1.5rem;
   }
 
+  .hud-line-v { position: absolute; width: 1px; background-color: rgba(255,255,255,0.05); top: 0; bottom: 0; }
+  .hud-line-h { position: absolute; height: 1px; background-color: rgba(255,255,255,0.05); left: 0; right: 0; }
+  
+  .hud-bracket {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-color: rgba(255,255,255,0.2);
+    pointer-events: none;
+  }
+
   /* High-Performance HUD Header */
   .header-glass {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 500;
-    transition: all 0.5s;
+    z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(20px);
+    background: rgba(2, 2, 2, 0.85);
+    backdrop-filter: blur(24px) saturate(150%);
   }
 
-  .nav-link {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.4em;
-    color: #9ca3af;
-    transition: all 0.3s;
-    position: relative;
-    padding-bottom: 0.5rem;
-    text-decoration: none;
-  }
-  .nav-link:hover { color: white; }
-
-  /* High-Fidelity Tactical Cards */
   .dossier-card {
     position: relative;
-    background-color: #0a0a0a;
+    background-color: #080808;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 2.5rem;
+    padding: 3rem;
     transition: all 0.7s;
     overflow: hidden;
   }
   .dossier-card:hover {
-    background-color: #0f0f0f;
+    background-color: #0c0c0c;
     border-color: rgba(255, 255, 255, 0.1);
     transform: translateY(-0.5rem);
     box-shadow: 0 40px 100px -20px rgba(0,0,0,0.9);
   }
 
-  .hud-bracket {
-    position: absolute;
-    width: 1rem;
-    height: 1.5rem;
-    border-color: rgba(255, 255, 255, 0.2);
-    pointer-events: none;
-  }
-
-  /* Aggressive Buttons */
   .btn-tactical {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1.25rem 3rem;
+    padding: 1.5rem 3rem;
     font-weight: 900;
-    font-size: 0.75rem;
+    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.4em;
     transition: all 0.5s;
-    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
     text-decoration: none;
   }
 
-  .btn-tactical-gold {
-    background-color: #b3995d;
+  .btn-primary {
+    background-color: white;
     color: black;
   }
-  .btn-tactical-gold:hover {
-    background-color: white;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-  }
-
-  .btn-tactical-outline {
-    border: 1px solid rgba(255, 255, 255, 0.2);
+  .btn-primary:hover {
+    background-color: #b3995d;
     color: white;
   }
-  .btn-tactical-outline:hover {
+
+  .btn-outline {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+  .btn-outline:hover {
     background-color: white;
     color: black;
   }
+
+  .nav-link {
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    color: #6b7280;
+    transition: all 0.3s;
+    position: relative;
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .nav-link:hover { color: white; }
 
   .status-tag {
     display: inline-flex;
@@ -141,29 +140,28 @@
     text-transform: uppercase;
   }
 
-  /* Metadata Dashboard */
-  .meta-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    margin-bottom: 4rem;
+  .unit-badge {
+    padding: 0.25rem 1rem;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.3em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
   }
-  @media (min-width: 768px) {
-    .meta-grid { grid-template-columns: repeat(4, 1fr); }
-  }
-  .meta-item label { display: block; font-size: 8px; font-weight: 700; color: #4b5563; text-transform: uppercase; letter-spacing: 0.4em; margin-bottom: 0.5rem; }
-  .meta-item span { display: block; font-size: 0.75rem; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.1em; }
 }
 
 @layer utilities {
-  .text-title-mega {
-    font-size: clamp(3rem, 15vw, 12rem);
+  .text-mega {
+    font-size: clamp(4rem, 18vw, 14rem);
     font-weight: 900;
-    line-height: 0.8;
+    line-height: 1;
     letter-spacing: -0.05em;
+  }
+  
+  .bg-grid-white {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
   }
 }

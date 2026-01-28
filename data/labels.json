@@ -1,45 +1,66 @@
 {
   "site": {
-    "title": "UKSF Digital Presence",
+    "title": "United Kingdom Special Forces",
     "motto": "Always A Little Further",
-    "classification": "RESTRICTED",
-    "status": "SYSTEM_READY // SECURE_LINE"
+    "classification": "RESTRICTED // OPS_NETWORK",
+    "status": "SYSTEM_READY // SECURE_LINE",
+    "joint_command": "Directorate of Special Forces (DSF)"
   },
   "hero": {
-    "headline": "Serve with the Elite",
-    "tagline": "The Edge of Readiness",
-    "description": "United Kingdom Special Forces (UKSF) provide a unique and world-leading capability in the most challenging and high-stakes environments.",
-    "cta": "Find Your Role"
+    "headline": "THE EDGE OF READINESS",
+    "tagline": "GLOBAL OPERATIONAL COMMAND",
+    "description": "Providing the UK's high-readiness, world-leading capability across the spectrum of special operations, counter-terrorism, and strategic reconnaissance.",
+    "cta": "Initiate Selection"
   },
   "sections": {
     "modernisation": {
-      "title": "Modernisation",
-      "description": "Integrating advanced technology and innovative tactics to maintain a decisive edge."
+      "title": "Future Commando",
+      "description": "Integrating cutting-edge technological superiority with elite unconventional warfare tactics."
     },
     "readiness": {
-      "title": "Readiness",
-      "description": "High-readiness units prepared for rapid deployment across the globe."
+      "title": "Global Deployment",
+      "description": "High-readiness task forces prepared for rapid intervention in any theatre of operations."
     },
     "people": {
-      "title": "People",
-      "description": "Our greatest asset. We recruit the most capable individuals from across the Armed Forces."
+      "title": "Elite Selection",
+      "description": "Recruiting the most capable operators from across the British Army, Royal Navy, and RAF."
     }
   },
   "units": {
     "sas": {
       "name": "SAS",
-      "full_name": "Special Air Service",
-      "description": "Experts in counter-terrorism and covert reconnaissance."
+      "full_name": "22 Special Air Service Regiment",
+      "motto": "Who Dares Wins",
+      "description": "The army's primary special forces unit, specialized in counter-terrorism, hostage rescue, and covert reconnaissance in hostile environments.",
+      "origin": "British Army"
     },
     "sbs": {
       "name": "SBS",
       "full_name": "Special Boat Service",
-      "description": "The UK's maritime special operations unit."
+      "motto": "By Strength and Guile",
+      "description": "The maritime special operations unit of the UKSF, specializing in maritime counter-terrorism and amphibious reconnaissance.",
+      "origin": "Royal Marines / Navy"
     },
     "srr": {
       "name": "SRR",
       "full_name": "Special Reconnaissance Regiment",
-      "description": "Intelligence and surveillance specialists."
+      "motto": "Reconnaissance",
+      "description": "Specialized in intelligence gathering, surveillance, and target acquisition (ISTAR) using tech-centric operational methods.",
+      "origin": "Tri-Service"
+    },
+    "sfsg": {
+      "name": "SFSG",
+      "full_name": "Special Forces Support Group",
+      "motto": "Always A Little Further",
+      "description": "Provides specialist infantry support to Tier 1 UKSF units during complex operational tasks and large-scale strikes.",
+      "origin": "1 PARA / Royal Marines / RAF"
+    },
+    "jsfaw": {
+      "name": "JSFAW",
+      "full_name": "Joint Special Forces Aviation Wing",
+      "motto": "Resolute",
+      "description": "Providing high-performance helicopter insertion and aviation support for UKSF operations globally.",
+      "origin": "RAF / Army Air Corps"
     }
   },
   "footer": {
