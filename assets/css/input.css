@@ -6,7 +6,7 @@
   :root {
     --primary: #b3995d;
     --primary-glow: rgba(179, 153, 93, 0.3);
-    --bg-dark: #050505;
+    --bg-dark: #0b0b0b;
     --header-height: 100px;
   }
 
@@ -14,15 +14,10 @@
     background-color: var(--bg-dark);
     color: #d1d5db;
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 18px;
+    font-size: 18px; /* Force readable size */
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    padding-top: var(--header-height); /* Prevent content hiding under fixed header */
-  }
-
-  ::selection {
-    background-color: var(--primary);
-    color: white;
+    padding-top: var(--header-height);
   }
 
   h1, h2, h3, h4 {
@@ -30,98 +25,72 @@
     text-transform: uppercase;
     letter-spacing: -0.02em;
     color: white;
-    line-height: 0.85;
+    line-height: 0.9;
   }
 }
 
 @layer components {
-  /* Constrained Professional Container */
-  .tactical-container {
+  /* THE GLOBAL CONTAINER - Blueprint Mandate */
+  .container-uksf {
     width: 100%;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
-  /* Intelligence Nodes */
-  .data-node {
+  /* Intelligence Node - Breaking walls of text */
+  .dossier-node {
     position: relative;
-    border-left: 3px solid var(--primary);
+    border-left: 4px solid var(--primary);
     padding-left: 3rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    margin-top: 2rem;
     margin-bottom: 4rem;
-    background: linear-gradient(to right, rgba(179, 153, 93, 0.03), transparent);
-  }
-  .data-node::before {
-    content: "[ INTEL_DOSS_NODE ]";
-    position: absolute;
-    left: -1px;
-    top: -14px;
-    font-size: 10px;
-    font-family: monospace;
-    color: var(--primary);
-    background-color: var(--bg-dark);
-    padding: 0 0.75rem;
-    letter-spacing: 0.3em;
-    font-weight: 900;
+    background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
   }
 
   .bracket-box {
     position: relative;
-    padding: 3.5rem;
+    padding: 3rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
     background-color: rgba(255, 255, 255, 0.01);
   }
   .bracket-box::before, .bracket-box::after {
     content: "";
     position: absolute;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     border-color: var(--primary);
     pointer-events: none;
-    opacity: 0.4;
   }
   .bracket-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
   .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
 
-  /* Interactive Elements */
   .btn-elite {
     display: inline-flex;
     align-items: center;
-    padding: 1.5rem 3.5rem;
+    padding: 1.25rem 3rem;
     background-color: white;
     color: black;
     font-weight: 900;
-    font-size: 12px;
+    font-size: 13px;
     text-transform: uppercase;
-    letter-spacing: 0.4em;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    letter-spacing: 0.3em;
+    transition: all 0.3s;
     position: relative;
     overflow: hidden;
-    clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
     text-decoration: none;
   }
   .btn-elite:hover {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 0 50px var(--primary-glow);
-    transform: translateY(-3px);
+    box-shadow: 0 0 40px var(--primary-glow);
   }
 }
 
 @layer utilities {
-  .text-display { 
-    font-size: clamp(4rem, 12vw, 9rem); 
-    @apply font-black tracking-tighter;
-  }
-  .bg-grid-white {
-    background-size: 50px 50px;
-    background-image: 
-      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-  }
+  .text-mega { font-size: clamp(3rem, 10vw, 8rem); font-weight: 900; }
 }

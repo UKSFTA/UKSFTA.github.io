@@ -1,5 +1,5 @@
 {{ $unit := .Params.unit | default .Section | default "sas" }}
-{{ $primary := "#b3995d" }} {{/* Default Gold */}}
+{{ $primary := "#b3995d" }}
 
 {{ if eq $unit "sas" }}{{ $primary = "#153e35" }}{{ end }}
 {{ if eq $unit "sbs" }}{{ $primary = "#000033" }}{{ end }}
@@ -9,12 +9,6 @@
 <style>
   :root {
     --primary: {{ $primary }};
-    --primary-rgb: {{ range $i, $e := (split (replace (replace $primary "#" "") "" "") "") }}{{ if $i }},{{ end }}{{ $e }}{{ end }}; /* simplified for now */
     --primary-glow: {{ $primary }}4D;
   }
-  
-  /* Skin Overrides */
-  .unit-skin-border { border-color: var(--primary) !important; }
-  .unit-skin-bg { background-color: var(--primary) !important; }
-  .unit-skin-text { color: var(--primary) !important; }
 </style>
