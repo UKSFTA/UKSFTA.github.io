@@ -7,8 +7,8 @@
     "start": "hugo server -s exampleSite --themesDir ../.. --disableFastRender -D",
     "dev": "concurrently -n \"CSS,HUGO\" -c \"magenta,blue\" \"npm run watch:css\" \"npm run start\"",
     "build": "npm run build:css && hugo -s exampleSite --themesDir ../.. --minify",
-    "build:css": "./node_modules/.bin/tailwindcss-cli -i ./assets/css/input.css -o ./static/css/main.css --minify",
-    "watch:css": "./node_modules/.bin/tailwindcss-cli -i ./assets/css/input.css -o ./static/css/main.css --watch",
+    "build:css": "tailwindcss -i ./assets/css/input.css -o ./static/css/main.css --minify",
+    "watch:css": "tailwindcss -i ./assets/css/input.css -o ./static/css/main.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -21,6 +21,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
     "autoprefixer": "^10.4.23",
     "concurrently": "^9.2.1",
     "lucide-static": "^0.563.0",
@@ -28,8 +29,7 @@
     "postcss-cli": "^11.0.1",
     "sass": "^1.97.3",
     "tailwindcss": "^4.1.18",
-    "tailwindcss-animate": "^1.0.7",
-    "tailwindcss-cli": "^0.1.2"
+    "tailwindcss-animate": "^1.0.7"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19"
