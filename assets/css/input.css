@@ -4,118 +4,147 @@
 
 @layer base {
   :root {
-    --primary: #1d70b8; /* Default MOD Blue */
-    --border-color: rgba(255, 255, 255, 0.1);
-    --exclusion-zone: 4rem;
+    --primary: #b3995d; /* Elite Gold */
+    --primary-rgb: 179, 153, 93;
+    --bg-dark: #050505;
+    --panel-bg: rgba(20, 20, 20, 0.8);
+    --header-height: 80px;
   }
-
-  /* Dynamic Unit Skins */
-  body.unit-sas { --primary: #153e35; } /* Army Green */
-  body.unit-sbs { --primary: #000033; } /* Navy Blue */
-  body.unit-srr { --primary: #507255; } /* Night-vision Grey */
-  body.unit-sfsg { --primary: #800000; }
-  body.unit-jsfaw { --primary: #000080; }
 
   body {
-    background-color: #0b0b0b;
-    color: white;
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: 19px;
-    line-height: 1.6;
+    background-color: var(--bg-dark);
+    color: #a1a1aa;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px; /* Technical density */
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    padding-top: 100px; /* Space for fixed header */
-  }
-
-  @keyframes slide-in-left {
-    from { transform: translateX(-30px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-
-  .animate-slide-in-left {
-    animation: slide-in-left 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 30px 30px;
   }
 
   h1, h2, h3, h4 {
     font-family: "Industrial Gothic Pro Single Line", "Bebas Neue", "Impact", sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: -0.02em;
     color: white;
-    line-height: 0.9;
-  }
-
-  h2, h3 {
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
-    letter-spacing: 2px;
+    line-height: 0.85;
   }
 }
 
 @layer components {
-  /* The Global Container (Blueprint 1) */
-  .container {
+  .tactical-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
-  /* Institutional Spacing / Superior Rule (Blueprint 1) */
-  .superior-header {
-    margin-bottom: var(--exclusion-zone);
-    border-bottom: 1px solid var(--border-color);
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(12px);
-  }
-
-  /* Modular Block Design (Blueprint 1) */
-  .modular-block {
-    background-color: #121212;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 2.5rem;
-    transition: all 0.5s;
+  /* Scanline Effect */
+  .scanlines {
     position: relative;
   }
-  .modular-block:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-  }
-  .modular-block::before {
-    content: "";
+  .scanlines::before {
+    content: " ";
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
-    height: 100%;
-    background-color: var(--primary);
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 50;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    background-size: 100% 2px, 3px 100%;
   }
 
-  .btn-uksf {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.25rem 2.5rem;
+  /* High-Fidelity Cards */
+  .bento-card {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    transition: all 0.5s;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  .bento-card:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-0.25rem);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+
+  .hud-bracket {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    border-color: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+  }
+
+  /* Professional Navigation */
+  .nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(20px);
+  }
+
+  .nav-link {
+    font-size: 10px;
     font-weight: 900;
-    font-size: 0.875rem;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.3em;
+    color: #6b7280;
     transition: all 0.3s;
-    background-color: var(--primary);
-    color: white;
     text-decoration: none;
   }
-  .btn-uksf:hover {
-    filter: brightness(1.25);
-    box-shadow: 0 0 30px var(--primary);
+  .nav-link:hover { color: white; }
+
+  /* Technical Buttons */
+  .btn-elite {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    color: black;
+    font-weight: 900;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    text-decoration: none;
+  }
+  .btn-elite:hover {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 0 30px rgba(179, 153, 93, 0.4);
   }
 }
 
 @layer utilities {
-  .text-mega {
-    font-size: clamp(3rem, 12vw, 10rem);
+  .text-display {
+    font-size: clamp(2rem, 8vw, 6rem);
     font-weight: 900;
-    line-height: 0.8;
+    line-height: 0.85;
+  }
+  .text-technical {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b7280;
   }
 }
