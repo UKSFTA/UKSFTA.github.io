@@ -1,47 +1,75 @@
 {{ define "main" }}
-<section class="hero" style="--unit-accent: #532a45;">
+<section class="hero">
     <div class="container">
         <div class="hero-content">
-            <h2 class="industrial-title">Always A Little Further</h2>
-            <p class="hero-hook">
-                United Kingdom Special Forces (UKSF) provide world-leading capability in the most challenging and high-stakes environments.
+            <h2 class="industrial-title">Serve with the Elite</h2>
+            <p class="govuk-body-l" style="color: #fff; max-width: 600px; font-size: 1.5rem;">
+                The United Kingdom Special Forces (UKSF) are the world's leading capability in high-stakes environments.
             </p>
-            <a href="/recruitment/" class="hero-cta">Explore Roles</a>
+            
+            <div class="role-finder">
+                <input type="text" placeholder="Search by role or interest (e.g. Medic, Signals)">
+                <button class="btn-find">Find Your Role</button>
+            </div>
         </div>
     </div>
 </section>
 
-<div class="container">
-    <div class="bento-grid">
-        <div class="bento-item large">
-            <h3>Modernisation</h3>
-            <p>Integrating advanced technology and innovative tactics to maintain a decisive edge on the modern battlefield.</p>
+<section class="section-stories">
+    <div class="container">
+        <div class="section-title">
+            <h2>Latest Stories</h2>
+            <div class="dash"></div>
         </div>
-        <div class="bento-item medium">
-            <h3>Readiness</h3>
-            <p>High-readiness units prepared for rapid deployment across the globe at a moment's notice.</p>
+        
+        <div class="story-grid">
+            {{ range first 2 (where .Site.RegularPages "Section" "stories") }}
+            <article class="story-card">
+                <div class="img-container" style="background-image: url('{{ .Params.image }}');"></div>
+                <div class="content">
+                    <h3>{{ .Title }}</h3>
+                    <p>{{ .Summary | truncate 150 }}</p>
+                    <a href="{{ .RelPermalink }}" class="govuk-link" style="margin-top: 20px; display: inline-block; font-weight: 700;">Read More →</a>
+                </div>
+            </article>
+            {{ end }}
         </div>
     </div>
+</section>
 
-    <div class="unit-row">
-        <div class="unit-card sas" style="--unit-accent: #153e35;">
-            <div class="content">
+<section class="role-categories">
+    <div class="container">
+        <div class="section-title">
+            <h2>Explore Roles</h2>
+            <div class="dash"></div>
+        </div>
+        
+        <div class="category-grid">
+            <a href="/sas/" class="cat-card">
                 <h3>SAS</h3>
-                <a href="/sas/" class="govuk-link">View Command</a>
-            </div>
-        </div>
-        <div class="unit-card sbs" style="--unit-accent: #000033;">
-            <div class="content">
+                <span>Special Air Service</span>
+            </a>
+            <a href="/sbs/" class="cat-card">
                 <h3>SBS</h3>
-                <a href="/sbs/" class="govuk-link">View Command</a>
-            </div>
-        </div>
-        <div class="unit-card srr" style="--unit-accent: #507255;">
-            <div class="content">
+                <span>Special Boat Service</span>
+            </a>
+            <a href="/srr/" class="cat-card">
                 <h3>SRR</h3>
-                <a href="/srr/" class="govuk-link">View Command</a>
-            </div>
+                <span>Special Reconnaissance</span>
+            </a>
+            <a href="/recruitment/medical/" class="cat-card">
+                <h3>Medical</h3>
+                <span>Specialised Care</span>
+            </a>
+            <a href="/recruitment/signals/" class="cat-card">
+                <h3>Signals</h3>
+                <span>Communications Tech</span>
+            </a>
+            <a href="/recruitment/support/" class="cat-card">
+                <h3>Support</h3>
+                <span>Operational Backbone</span>
+            </a>
         </div>
     </div>
-</div>
+</section>
 {{ end }}

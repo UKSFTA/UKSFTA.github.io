@@ -17,9 +17,7 @@
   {{ partial "phase-banner.html" . }}
   {{ partial "header.html" . }}
   <main>
-    <div class="container">
-      {{ block "main" . }}{{ end }}
-    </div>
+    {{ block "main" . }}{{ end }}
   </main>
   <footer>
     {{ partial "footer.html" . }}
