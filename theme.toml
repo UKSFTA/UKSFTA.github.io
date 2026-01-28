@@ -1,7 +1,6 @@
 name = "UKSF MOD-Hugo Theme"
 description = "A high-fidelity, tactical recruitment and operational theme for the UKSF, built to MOD.UK and GDS standards."
 license = "MIT"
-author = "Directorate of Special Forces"
 homepage = "https://github.com/matt/uksf-mod-theme"
 tags = ["military", "mod", "tactical", "recruitment", "dark", "tailwind"]
 features = ["Dynamic Skinning", "Bento Layout", "Tactical HUD", "Data-Driven UI"]

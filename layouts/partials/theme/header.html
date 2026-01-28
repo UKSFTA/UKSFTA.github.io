@@ -1,0 +1,30 @@
+<header class="fixed top-0 left-0 w-full z-[100] transition-all duration-500" id="main-header">
+  <div class="container mx-auto px-6 py-8 flex justify-between items-center">
+    <div class="flex items-center space-x-6">
+      <a href="/" class="group flex items-center space-x-4 no-underline">
+        <div class="w-12 h-12 bg-white flex items-center justify-center rotate-45 group-hover:rotate-[225deg] transition-transform duration-700">
+          <span class="text-black font-black text-2xl -rotate-45 group-hover:rotate-[-225deg] transition-transform duration-700">U</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-white font-industrial text-2xl tracking-[0.3em] leading-none">UKSF</span>
+          <span class="text-[8px] font-tactical text-uksf-gold tracking-[0.5em] opacity-60 uppercase">{{ .Site.Data.labels.site.classification }}</span>
+        </div>
+      </a>
+    </div>
+    
+    <nav class="hidden md:flex items-center space-x-12">
+      {{ range site.Menus.main }}
+      <a href="{{ .URL }}" class="text-white font-tactical text-[10px] uppercase tracking-[0.4em] hover:text-uksf-gold transition-colors no-underline">
+        {{ .Name }}
+      </a>
+      {{ end }}
+    </nav>
+
+    <div class="flex items-center space-x-8">
+      <div class="status-tag">
+        <span class="w-2 h-2 bg-uksf-gold rounded-full animate-pulse-fast"></span>
+        <span>{{ .Site.Data.labels.site.status }}</span>
+      </div>
+    </div>
+  </div>
+</header>

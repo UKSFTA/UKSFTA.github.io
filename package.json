@@ -6,9 +6,9 @@
   "scripts": {
     "start": "hugo server -s exampleSite --themesDir ../.. --disableFastRender -D",
     "dev": "concurrently -n \"CSS,HUGO\" -c \"magenta,blue\" \"npm run watch:css\" \"npm run start\"",
-    "build": "npm run build:css && hugo -s exampleSite --themesDir ../..",
-    "build:css": "npx tailwindcss-cli -i ./assets/css/input.css -o ./static/css/main.css --minify && npx sass --load-path=node_modules assets/scss/main.scss static/css/theme.css --style compressed",
-    "watch:css": "concurrently \"npx tailwindcss-cli -i ./assets/css/input.css -o ./static/css/main.css --watch\" \"npx sass --load-path=node_modules assets/scss/main.scss static/css/theme.css --watch\"",
+    "build": "npm run build:css && hugo -s exampleSite --themesDir ../.. --minify",
+    "build:css": "./node_modules/.bin/tailwindcss-cli -i ./assets/css/input.css -o ./static/css/main.css --minify",
+    "watch:css": "./node_modules/.bin/tailwindcss-cli -i ./assets/css/input.css -o ./static/css/main.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -20,10 +20,6 @@
   ],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@moduk/frontend": "^2.0.31",
-    "govuk-frontend": "^5.14.0"
-  },
   "devDependencies": {
     "autoprefixer": "^10.4.23",
     "concurrently": "^9.2.1",
