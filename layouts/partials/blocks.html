@@ -1,47 +1,41 @@
 {{ range $index, $section := .Params.sections }}
-<section class="relative min-h-[75vh] flex items-center overflow-hidden border-b border-white/5 {{ if (mod $index 2) }}bg-[#0a0a0a]{{ else }}bg-black{{ end }}">
-    {{ with $section.image }}
-    <div class="absolute inset-0 z-0">
-        <img src="{{ . | absURL }}" class="w-full h-full object-cover opacity-10 grayscale" alt="">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black"></div>
-    </div>
-    {{ end }}
-
-    <div class="container-uksf relative z-10 py-40">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+<section class="relative py-48 border-b border-white/5 {{ if (mod $index 2) }}bg-[#080808]{{ else }}bg-black{{ end }} overflow-hidden">
+    <div class="container-uksf main-content-block">
+        <div class="mission-grid">
             
-            <div class="lg:col-span-4 {{ if not (mod $index 2) }}lg:order-last{{ end }}">
-                <div class="bracket-box bg-white/[0.01] backdrop-blur-xl border-white/5">
-                    <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] mb-8 block font-black">// DATA_SPEC</span>
-                    <div class="space-y-6">
-                        {{ range $section.specs }}
-                        <div class="flex justify-between items-baseline border-b border-white/5 pb-4">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase">{{ .label }}</span>
-                            <span class="text-sm font-black text-white uppercase tracking-tighter">{{ .value }}</span>
-                        </div>
-                        {{ end }}
-                    </div>
+            <!-- TRACK 1: SECTOR REF (Left) -->
+            <div class="space-y-6">
+                <div class="sector-ref-box">
+                    <span class="ref-label">Sector_Protocol</span>
+                    <span class="ref-val">0{{ add $index 1 }}</span>
                 </div>
+                <div class="h-px w-full bg-gradient-to-r from-[var(--primary)] to-transparent opacity-20"></div>
             </div>
 
-            <div class="lg:col-span-8 space-y-12">
-                <div class="space-y-6">
-                    <div class="flex items-center space-x-6">
-                        <div class="w-12 h-px bg-[var(--primary)]"></div>
-                        <span class="text-[10px] font-mono text-gray-500 uppercase tracking-[0.6em]">Sector_Ref_0{{ add $index 1 }}</span>
-                    </div>
-                    <h2 class="text-mega leading-none tracking-tighter">{{ $section.title }}</h2>
+            <!-- TRACK 2: OPERATIONAL NARRATIVE (Middle) -->
+            <div class="space-y-10">
+                <h2 class="text-6xl leading-[0.9] tracking-tighter">{{ $section.title }}</h2>
+                <div class="prose prose-invert prose-lg max-w-none font-light text-gray-400">
+                    {{ $section.content | markdownify }}
                 </div>
-                
-                <div class="dossier-node">
-                    <div class="prose prose-invert prose-2xl max-w-none font-light text-gray-300 leading-relaxed">
-                        {{ $section.content | markdownify }}
-                    </div>
-                </div>
-
                 {{ with $section.cta }}
-                <a href="{{ .url | default "#" }}" class="btn-elite no-underline">{{ .text }}</a>
+                <div class="pt-6">
+                    <a href="{{ .url | default "#" }}" class="btn-elite no-underline">{{ .text }}</a>
+                </div>
                 {{ end }}
+            </div>
+
+            <!-- TRACK 3: DATA SPEC (Right) -->
+            <div class="hud-spec-box">
+                <span class="text-[9px] font-mono text-gray-500 uppercase tracking-[0.3em] mb-8 block">// DATA_SPEC_LOCK</span>
+                <div class="space-y-6">
+                    {{ range $section.specs }}
+                    <div class="flex flex-col border-b border-white/5 pb-4">
+                        <span class="text-[7px] font-mono text-[var(--primary)] uppercase tracking-widest">{{ .label }}</span>
+                        <span class="text-xs font-bold text-white uppercase tracking-wider mt-1">{{ .value }}</span>
+                    </div>
+                    {{ end }}
+                </div>
             </div>
 
         </div>

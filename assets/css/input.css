@@ -6,39 +6,26 @@
   :root {
     --primary: #b3995d;
     --primary-glow: rgba(179, 153, 93, 0.3);
-    --bg-dark: #050505;
+    --bg-dark: #0b0b0b;
     --header-height: 100px;
   }
 
   body {
     background-color: var(--bg-dark);
     color: #d1d5db;
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 18px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 19px; /* Mandatory Blueprint Size */
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: var(--header-height);
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 80%),
-      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54 48c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM6 48c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM54 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM6 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z' fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
   }
 
   h1, h2, h3, h4 {
     font-family: "Industrial Gothic Pro Single Line", "Bebas Neue", "Impact", sans-serif;
     text-transform: uppercase;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
     color: white;
-    line-height: 0.85;
-  }
-
-  .sub-header {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5em;
-    color: #6b7280;
-    margin-bottom: 1rem;
-    font-variant: small-caps;
+    line-height: 1.1; /* Adjusted Vertical Rhythm */
   }
 }
 
@@ -53,56 +40,53 @@
     padding-right: 1.5rem;
   }
 
-  /* Unit Tactical Filter */
-  .tactical-media {
-    position: relative;
-    overflow: hidden;
-    background-color: black;
-  }
-  .tactical-media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.2;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
-  .tactical-media .tint {
-    position: absolute;
-    inset: 0;
-    opacity: 0.4;
-    mix-blend-mode: color;
-    transition: opacity 0.7s;
-    background-color: var(--primary);
+  /* 3-Track Tactical Grid (Blueprint Implementation) */
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
   }
 
-  .dossier-node {
-    position: relative;
-    border-left: 4px solid var(--primary);
-    padding-left: 3rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-bottom: 4rem;
-    background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
+  @media (max-width: 1024px) {
+    .mission-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
   }
 
-  .bracket-box {
+  /* Safe Zone Header */
+  .main-content-block {
+    margin-top: 5vh; /* Mandated Exclusion Zone */
+  }
+
+  /* HUD Box */
+  .hud-spec-box {
     position: relative;
-    padding: 3rem;
+    padding: 2rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: rgba(255, 255, 255, 0.01);
+    background-color: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
   }
-  .bracket-box::before, .bracket-box::after {
+  .hud-spec-box::before, .hud-spec-box::after {
     content: "";
     position: absolute;
-    width: 2rem;
-    height: 2rem;
-    border-color: var(--primary);
+    width: 1rem;
+    height: 1rem;
+    border-color: rgba(179, 153, 93, 0.4);
     pointer-events: none;
   }
-  .bracket-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
-  .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+  .hud-spec-box::before { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+  .hud-spec-box::after { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+
+  .sector-ref-box {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+  }
+  .sector-ref-box .ref-label { font-size: 9px; font-family: monospace; color: var(--primary); text-transform: uppercase; letter-spacing: 0.4em; }
+  .sector-ref-box .ref-val { font-size: 1.5rem; font-weight: 900; color: white; }
 
   .btn-elite {
     display: inline-flex;
@@ -111,7 +95,7 @@
     background-color: white;
     color: black;
     font-weight: 900;
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.4em;
     transition: all 0.3s;
@@ -123,21 +107,13 @@
   .btn-elite:hover {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 0 50px var(--primary-glow);
+    box-shadow: 0 0 40px var(--primary-glow);
   }
-}
 
-@layer utilities {
   .text-display { 
-    font-size: clamp(4rem, 12vw, 9rem); 
+    font-size: clamp(3rem, 10vw, 6.5rem); 
     font-weight: 900;
-    line-height: 1;
     letter-spacing: -0.05em;
-  }
-  .bg-grid-white {
-    background-size: 40px 40px;
-    background-image: 
-      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+    line-height: 0.85;
   }
 }
