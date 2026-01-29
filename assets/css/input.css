@@ -127,11 +127,12 @@
     p { @apply text-gray-400 font-light text-xl leading-relaxed; }
 
     ul {
-      @apply border-l border-white/5 pl-10 ml-4 space-y-6 list-none;
+      list-style-type: none !important;
+      @apply border-l border-white/5 pl-10 ml-4 space-y-6;
       li {
-        @apply relative;
+        @apply relative m-0 p-0;
         &::before {
-          content: "//";
+          content: "//" !important;
           @apply absolute -left-10 text-[var(--primary)] font-mono font-black opacity-40;
         }
       }
