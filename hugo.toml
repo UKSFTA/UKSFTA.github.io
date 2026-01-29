@@ -22,7 +22,11 @@ canonifyurls = true
 [params.unitcommander]
   enabled = true
   community_id = "722" # Paste your Community ID here
-  bot_token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJVbml0IENvbW1hbmRlciIsImlhdCI6MTc2OTcxNjY3MX0.F51U2FxtFVB2blAeHvq3KKBs0GC-u0R16V5hZBIlX9Q"    # Paste your Bot Token here (Format: "Bot YOUR_TOKEN")
+  bot_token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJVbml0IENvbW1hbmRlciIsImlhdCI6MTc2OTcxNjY3MX0.F51U2FxtFVB2blAeHvq3KKBs0GC-u0R16V5hZBIlX9Q"    # Paste your Bot Token here
+
+[params.discord]
+  enabled = false
+  server_id = "" # Paste your Discord Server ID here
 
 [module]
   [module.hugoVersion]
