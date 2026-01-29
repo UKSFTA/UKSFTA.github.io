@@ -1,4 +1,9 @@
-@import url("tailwindcss");
+@import "tailwindcss";
+
+@source "../../layouts/**/*.html";
+@source "../../content/**/*.md";
+@source "../../exampleSite/layouts/**/*.html";
+@source "../../exampleSite/content/**/*.md";
 
 @plugin "@tailwindcss/typography";
 
@@ -33,7 +38,9 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: calc(var(--header-height) + var(--hmg-bar-height));
-    font-weight: 400;
+
+    @apply font-normal;
+
     background-image: 
       radial-gradient(circle at 50% 0%, rgb(255 255 255 / 1.5%) 0%, transparent 80%),
       url('https://www.transparenttextures.com/patterns/black-linen.png');
@@ -46,7 +53,8 @@
     letter-spacing: -0.04em;
     color: white;
     line-height: 0.85;
-    font-weight: 900;
+
+    @apply font-black;
   }
 
   img {
@@ -58,11 +66,8 @@
 
   label, .sub-header {
     font-family: var(--font-mono);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: var(--color-gray-500);
-    font-size: 9px;
+
+    @apply text-[9px] font-bold uppercase tracking-[0.3em] text-gray-500;
   }
 }
 
