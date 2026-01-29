@@ -30,7 +30,7 @@
     background-color: var(--bg-dark);
     color: #d1d5db;
     font-family: var(--font-body);
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     padding-top: calc(var(--header-height) + var(--hmg-bar-height));
@@ -46,17 +46,8 @@
     @apply font-black;
   }
 
-  /* Universal Non-Stretching Rule */
-  img {
-    object-fit: contain;
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Background Image Rule */
-  .object-cover {
-    object-fit: cover !important;
-  }
+  img { object-fit: contain; max-width: 100%; height: auto; }
+  .object-cover { object-fit: cover !important; }
 
   label, .sub-header {
     font-family: var(--font-mono);
@@ -66,123 +57,54 @@
 
 @layer components {
   .container-uksf {
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    @apply w-full max-w-[1200px] mx-auto px-10;
   }
 
   .nav-header {
-    position: fixed;
-    left: 0;
-    width: 100%;
-    z-index: 2000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(20px);
+    @apply fixed left-0 w-full z-[2000] border-b border-white/5 bg-black/90 backdrop-blur-2xl;
     height: var(--header-height);
   }
 
   .nav-link {
     font-family: var(--font-mono);
     @apply text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 transition-all no-underline;
+    &:hover, &.active { @apply text-white; }
   }
-  .nav-link:hover, .nav-link.active { @apply text-white; }
 
   .dossier-node {
-    position: relative;
-    border-left: 4px solid var(--primary);
-    padding-left: 4rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    @apply relative border-l-4 border-[var(--primary)] pl-12 py-4 mb-16;
     background: linear-gradient(to right, rgba(179, 153, 93, 0.03), transparent);
   }
 
   .bracket-box {
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: rgba(255, 255, 255, 0.01);
-  }
-  .bracket-box::before, .bracket-box::after {
-    content: "";
-    position: absolute;
-    width: 2rem;
-    height: 2rem;
-    border-color: var(--primary);
-    pointer-events: none;
-  }
-  .bracket-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
-  .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
-
-  /* 3-Track Tactical Grid (Blueprint) */
-  .mission-grid {
-    display: grid;
-    grid-template-columns: 1fr 2.5fr 1fr; 
-    gap: 4rem;
-    align-items: start;
+    @apply relative border border-white/5 bg-white/[0.01];
+    &::before, &::after {
+      content: "";
+      @apply absolute w-6 h-6 border-[var(--primary)]/40 pointer-events-none;
+    }
+    &::before { @apply top-0 left-0 border-t-2 border-l-2; }
+    &::after { @apply bottom-0 right-0 border-b-2 border-r-2; }
   }
 
-  @media (max-width: 1024px) {
-    .mission-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
+  .btn-elite {
+    @apply inline-flex items-center justify-center px-12 py-5 bg-white text-black font-mono font-black text-xs uppercase tracking-[0.5em] transition-all relative overflow-hidden;
+    clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
+    text-decoration: none !important;
+    &:hover {
+      @apply bg-[var(--primary)] text-white shadow-[0_0_60px_var(--primary-glow)] -translate-y-0.5;
     }
   }
 
-  /* HUD Box - Moved down to prevent overlap with long titles */
-  .hud-spec-box {
-    position: relative;
-    padding: 2.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(12px);
-    margin-top: 6rem; /* Mandatory clearance for long titles */
-  }
-  .hud-spec-box::before, .hud-spec-box::after {
-    content: "";
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-color: var(--primary);
-    pointer-events: none;
-  }
-  .hud-spec-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
-  .hud-spec-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
-
-  .btn-elite {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem 3.5rem;
-    background-color: white;
-    color: black;
-    font-family: var(--font-mono);
-    font-weight: 900;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5em;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
-    text-decoration: none !important;
-  }
-  .btn-elite:hover {
-    background-color: var(--primary);
-    color: white;
-    box-shadow: 0 0 60px var(--primary-glow);
-    transform: translateY(-2px);
+  .terminal-input {
+    @apply w-full bg-white/[0.03] border border-white/10 p-5 text-sm font-mono text-white outline-none focus:border-[var(--primary)] transition-all placeholder:text-gray-700;
   }
 
-  /* Monochrome Icon Utility */
   .icon-tactical {
     @apply grayscale brightness-200 contrast-125 mix-blend-lighten;
   }
 
   .text-display { 
-    font-size: clamp(4rem, 12vw, 9.5rem); 
+    font-size: clamp(4rem, 12vw, 9rem); 
     @apply font-black tracking-tighter leading-[0.8];
   }
 }
