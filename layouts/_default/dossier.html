@@ -13,7 +13,7 @@
                         {{ $unit := index .Site.Data.units $id }}
                         {{ $icon := resources.Get $unit.icon }}
                         {{ if $icon }}
-                        <img src="{{ $icon.RelPermalink }}" class="h-32 w-auto mx-auto mb-8 icon-tactical brightness-200">
+                        <img src="{{ $icon.RelPermalink }}" class="h-32 w-auto mx-auto mb-8 icon-tactical">
                         {{ end }}
                         <h2 class="text-3xl m-0 tracking-tighter">{{ .Title }}</h2>
                         <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black mt-2 block">{{ $unit.id }}</span>

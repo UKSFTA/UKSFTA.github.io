@@ -86,9 +86,11 @@
     &::after { @apply bottom-0 right-0 border-b-2 border-r-2; }
   }
 
+  /* REFINED: Box Style Button (No diagonal rectangle) */
   .btn-elite {
     @apply inline-flex items-center justify-center px-12 py-5 bg-white text-black font-mono font-black text-xs uppercase tracking-[0.5em] transition-all relative overflow-hidden;
-    clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
+    /* clip-path removed for standard rectangular box look */
+    border: 1px solid transparent;
     text-decoration: none !important;
     &:hover {
       @apply bg-[var(--primary)] text-white shadow-[0_0_60px_var(--primary-glow)] -translate-y-0.5;
@@ -99,8 +101,10 @@
     @apply w-full bg-white/[0.03] border border-white/10 p-5 text-sm font-mono text-white outline-none focus:border-[var(--primary)] transition-all placeholder:text-gray-700;
   }
 
+  /* REFINED: Natural Color Utility */
   .icon-tactical {
-    @apply grayscale brightness-200 contrast-125 mix-blend-lighten;
+    @apply grayscale-0 brightness-100 contrast-100;
+    transition: filter 0.5s ease;
   }
 
   .text-display { 
