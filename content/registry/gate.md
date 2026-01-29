@@ -1,1 +1,0 @@
----\ntitle: "Registry Gate"\nlayout: "gate"\n---
