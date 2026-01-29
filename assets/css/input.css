@@ -15,12 +15,6 @@
   --font-body: "Inter", "system-ui", "Arial", sans-serif;
 
   --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-float: float 6s ease-in-out infinite;
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
 }
 
 @layer base {
@@ -32,14 +26,6 @@
     --hmg-bar-height: 40px;
   }
 
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg-dark); }
-  ::-webkit-scrollbar-thumb { 
-    background: #222; 
-    transition: background 0.3s;
-  }
-  ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
-
   body {
     background-color: var(--bg-dark);
     color: #d1d5db;
@@ -48,7 +34,7 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: calc(var(--header-height) + var(--hmg-bar-height));
-    @apply font-light;
+    @apply font-normal; /* Increased from light for better legibility */
     background-image: 
       radial-gradient(circle at 50% 0%, rgba(255,255,255,0.015) 0%, transparent 80%),
       url('https://www.transparenttextures.com/patterns/black-linen.png');
@@ -66,7 +52,7 @@
 
   label, .sub-header {
     font-family: var(--font-mono);
-    @apply text-[9px] font-bold uppercase tracking-[0.4em] text-gray-500;
+    @apply text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500;
   }
 }
 
@@ -76,7 +62,7 @@
   }
 
   .nav-header {
-    @apply fixed left-0 w-full z-[2000] border-b border-white/5 bg-black/95 backdrop-blur-2xl;
+    @apply fixed left-0 w-full z-[2000] border-b border-white/5 bg-black/90 backdrop-blur-2xl;
     height: var(--header-height);
   }
 
@@ -86,29 +72,15 @@
     &:hover, &.active { @apply text-white; }
   }
 
-  /* REFINED: TACTICAL SWITCHBOARD */
-  .filter-btn {
-    font-family: var(--font-mono);
-    @apply relative px-8 py-4 text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 border border-white/5 bg-white/[0.01] transition-all cursor-pointer;
-    &.active {
-      @apply text-white border-[var(--primary)] bg-[var(--primary)]/5;
-      box-shadow: inset 0 0 20px rgba(179, 153, 93, 0.05);
-      &::before {
-        content: "";
-        @apply absolute top-0 left-0 w-full h-0.5 bg-[var(--primary)];
-      }
-    }
-    &:hover:not(.active) {
-      @apply border-white/20 text-gray-300;
-    }
-  }
-
+  /* Intelligence Dossier Node */
   .dossier-node {
-    @apply relative border-l-4 border-[var(--primary)] pl-12 py-4 mb-16;
-    background: linear-gradient(to right, rgba(179, 153, 93, 0.04), transparent);
+    @apply relative border-l-4 border-[var(--primary)] pl-12 py-6 mb-16;
+    background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
+    /* Prevent sub-pixel weirdness on hover */
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 
-  /* Technical "HUD" Box */
   .bracket-box {
     @apply relative border border-white/5 bg-white/[0.01] p-12 transition-all duration-500;
     &::before, &::after {
@@ -117,7 +89,6 @@
     }
     &::before { @apply top-0 left-0 border-t-2 border-l-2; }
     &::after { @apply bottom-0 right-0 border-b-2 border-r-2; }
-    &:hover { @apply border-white/10 bg-white/[0.02]; }
   }
 
   .btn-elite {
@@ -138,7 +109,6 @@
   .icon-tactical {
     @apply grayscale-0 brightness-100 contrast-100;
     transition: all 0.5s ease;
-    &:hover { filter: drop-shadow(0 0 10px var(--primary-glow)); }
   }
 
   .text-display { 
@@ -159,7 +129,7 @@
     }
 
     h3 { @apply text-3xl mb-8 mt-20 text-gray-200; }
-    p { @apply text-gray-400 font-light text-xl leading-relaxed; }
+    p { @apply text-gray-400 font-normal text-xl leading-relaxed; }
 
     ul {
       list-style: none !important;
@@ -178,16 +148,6 @@
     blockquote {
       @apply border-l-4 border-gray-800 bg-white/[0.01] p-12 italic text-2xl text-gray-300 rounded-none not-italic font-light mb-20;
     }
-
-    .registry-sources {
-      @apply bg-black/40 border border-white/10 p-10 mt-32 space-y-8;
-      h3 { @apply m-0 text-[10px] text-[var(--primary)] font-mono font-black tracking-[0.4em] opacity-80; }
-      ul { 
-        @apply border-none p-0 m-0 space-y-4; 
-        li { @apply m-0 pl-0 text-sm; &::before { content: none !important; } }
-      }
-      a { @apply text-white/50 no-underline border-b border-white/10 hover:text-white hover:border-[var(--primary)] transition-all leading-relaxed; }
-    }
   }
 }
 
@@ -197,9 +157,5 @@
     background-image: 
       linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-  }
-  
-  .text-shadow-glow {
-    text-shadow: 0 0 20px var(--primary-glow);
   }
 }

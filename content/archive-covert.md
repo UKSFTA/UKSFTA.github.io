@@ -23,16 +23,20 @@ In modern conflict, the "Grey Zone" represents the space between peace and open 
 
 ---
 
-## 18 Special Forces Signals Regiment
+## Intelligence Selection Gateway
 
-Personnel with advanced technical, cyber, or signals expertise may register interest for 18 Signals intake. Vetting at the highest level is mandatory.
+Personnel with advanced technical, cyber, or signals expertise may register interest for covert intelligence roles. Vetting at the highest level is mandatory.
 
-{{< recruitment-form title="COVERT_SIGNALS_INTAKE" headline="Register Intelligence Interest" description="Register for the Special Forces Signals intake pipeline. Advanced technical or signals background required." >}}
+{{< recruitment-form title="COVERT_INTELLIGENCE_INTAKE" headline="Register Intel Interest" description="Register for the covert intelligence selection pipeline. Available for SRR and 18 Signals pathways." >}}
 
 ---
 
-## Special Reconnaissance Regiment (SRR)
+## Restricted Registry Nodes
 
-Access to the SRR selection briefing is restricted. Register below for initial node authorization.
+The following dossiers provide detailed breakdowns of the Directorate's intelligence assets.
 
-{{< recruitment-form title="COVERT_RECON_INTAKE" headline="Register Recon Interest" description="Register for SRR selection briefing. Applicants must have 2 years regular service and elite mental benchmarks." >}}
+| Node | Designation | Specialization |
+| :--- | :--- | :--- |
+| SRR | Shadow | Technical Surveillance |
+| 18 SIG | Link | Signals Intelligence |
+| JSFC | Eye | Theatre Awareness |

@@ -1,91 +1,60 @@
-<div class="recruitment-node bracket-box bg-black/40 backdrop-blur-3xl border-white/5 my-24 overflow-hidden !p-0">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
-        
-        <!-- SIDEBAR: Institutional Directives -->
-        <div class="lg:col-span-4 bg-black/60 p-10 border-r border-white/5 space-y-10">
+<div class="recruitment-node border border-white/5 bg-black/40 backdrop-blur-3xl my-24 overflow-hidden relative group">
+    <!-- Tactical Corner Accents -->
+    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[var(--primary)]/40"></div>
+    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[var(--primary)]/40"></div>
+
+    <div class="p-10 md:p-16 space-y-16">
+        <!-- Header: Institutional Context -->
+        <div class="flex flex-col md:flex-row justify-between items-start gap-10 border-b border-white/5 pb-12">
             <div class="space-y-4">
-                <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black">// REGISTRY_PROTOCOL</span>
-                <h3 class="text-3xl leading-none tracking-tighter uppercase font-black">Selection <br>Briefing</h3>
-            </div>
-
-            <div class="space-y-6">
-                <div class="flex flex-col border-l-2 border-white/10 pl-6 py-1">
-                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Access Required</span>
-                    <span class="text-[10px] font-bold text-white uppercase tracking-wider">Regular Armed Forces</span>
-                </div>
-                <div class="flex flex-col border-l-2 border-white/10 pl-6 py-1">
-                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Node Status</span>
-                    <span class="text-[10px] font-bold text-white uppercase tracking-wider">Awaiting Data Entry</span>
-                </div>
-            </div>
-
-            <div class="pt-8 border-t border-white/5">
-                <p class="text-[10px] text-gray-500 leading-loose uppercase tracking-widest font-light">
-                    Initiate your Selection dossier by transmitting verified service credentials. All entries are cross-referenced against Directorate personnel databases in real-time.
-                </p>
-            </div>
-
-            <!-- Terminal Output (Simulated) -->
-            <div class="mt-10 bg-black p-6 border border-white/5 font-mono text-[8px] text-gray-700 space-y-2 uppercase tracking-widest hidden lg:block">
-                <div class="flex justify-between"><span>LINK_STATE:</span> <span class="text-green-900">SECURE</span></div>
-                <div class="flex justify-between"><span>NODE_SYNC:</span> <span class="text-green-900">ACTIVE</span></div>
-                <div class="flex justify-between"><span>JSFC_ID:</span> <span class="text-gray-800">UKSF-{{ upper (substr (sha256 .Name) 0 6) }}</span></div>
-            </div>
-        </div>
-
-        <!-- MAIN FORM: Functional Interface -->
-        <div class="lg:col-span-8 p-12 space-y-12 bg-white/[0.01]">
-            <div class="flex items-center justify-between border-b border-white/5 pb-8">
-                <div class="flex flex-col">
-                    <span class="text-[10px] font-mono text-white font-black tracking-widest uppercase">{{ replace (.Get "title" | default "Registration of Interest") "_" " " }}</span>
-                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mt-1">Institutional Record Node // JSFC Directorate</span>
-                </div>
                 <div class="flex items-center space-x-4">
-                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest hidden sm:block">Status:</span>
-                    <div class="flex items-center space-x-3 bg-white/5 border border-white/10 px-4 py-2">
-                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                        <span class="text-[9px] font-black text-white tracking-widest uppercase">Direct Link</span>
-                    </div>
+                    <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-bold">Selection Briefing</span>
+                    <div class="h-px w-8 bg-white/10"></div>
                 </div>
+                <h3 class="text-5xl leading-none tracking-tighter uppercase font-black">{{ replace (.Get "title" | default "Registration of Interest") "_" " " }}</h3>
+                <p class="text-lg text-gray-400 font-light max-w-xl leading-relaxed">{{ .Get "description" | default "Submit your service credentials to initiate the Directorate vetting protocol." }}</p>
             </div>
-
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10" onsubmit="return false;">
-                <div class="space-y-3 group">
-                    <label class="form-label">Service Number</label>
-                    <input type="text" placeholder="300XXXXX" class="terminal-input">
+            
+            <div class="flex flex-col items-end text-right space-y-4">
+                <div class="px-4 py-2 bg-white/5 border border-white/10 flex items-center space-x-3">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                    <span class="text-[9px] font-mono text-white uppercase tracking-widest font-black">Registry Active</span>
                 </div>
-                <div class="space-y-3 group">
-                    <label class="form-label">Current Regiment / Unit</label>
-                    <input type="text" placeholder="e.g. 1 PARA / RM" class="terminal-input">
-                </div>
-                <div class="space-y-3 md:col-span-2 group">
-                    <label class="form-label">Current Security Clearance</label>
-                    <div class="relative">
-                        <select class="terminal-input appearance-none bg-black cursor-pointer">
-                            <option>SC (Security Check)</option>
-                            <option>DV (Developed Vetting)</option>
-                            <option>NONE HELD / IN PROGRESS</option>
-                        </select>
-                        <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--primary)] opacity-40 text-[10px]">▼</div>
-                    </div>
-                </div>
-                
-                <div class="md:col-span-2 pt-6">
-                    <button type="button" class="btn-elite bg-white text-black w-full hover:bg-[var(--primary)] hover:text-white transition-all font-black py-6 group/btn">
-                        <span class="flex items-center justify-center space-x-4">
-                            <span>TRANSMIT INTEREST PACKET</span>
-                            <span class="opacity-40 group-hover/btn:opacity-100 transition-opacity font-mono">// INITIATE</span>
-                        </span>
-                    </button>
-                </div>
-            </form>
-
-            <div class="pt-8 border-t border-white/5 text-center">
-                <p class="text-[8px] font-mono text-gray-700 uppercase tracking-[0.4em] leading-loose">
-                    Security Warning: All transmissions are monitored by JSFC Signals Intelligence. False declarations are a breach of the Official Secrets Act.
-                </p>
+                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Node ID: JSFC-{{ upper (substr (sha256 .Name) 0 8) }}</span>
             </div>
         </div>
 
+        <!-- Functional Form -->
+        <form class="grid grid-cols-1 md:grid-cols-12 gap-12" onsubmit="return false;">
+            <div class="md:col-span-6 space-y-3">
+                <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Service Number</label>
+                <input type="text" placeholder="300XXXXX" class="terminal-input">
+            </div>
+            <div class="md:col-span-6 space-y-3">
+                <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Current Regiment / Unit</label>
+                <input type="text" placeholder="e.g. 1 PARA / RM" class="terminal-input">
+            </div>
+            <div class="md:col-span-12 space-y-3">
+                <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Vetting / Security Clearance</label>
+                <select class="terminal-input appearance-none bg-black">
+                    <option>SC (Security Check)</option>
+                    <option>DV (Developed Vetting)</option>
+                    <option>NOT HELD / IN PROGRESS</option>
+                </select>
+            </div>
+            
+            <div class="md:col-span-12 pt-8">
+                <button type="button" class="btn-elite bg-white text-black w-full hover:bg-[var(--primary)] hover:text-white transition-all font-black py-6">
+                    TRANSMIT INTEREST PACKET // INITIATE
+                </button>
+            </div>
+        </form>
+
+        <!-- Footer: Security Mandate -->
+        <div class="pt-8 border-t border-white/5 text-center">
+            <p class="text-[8px] font-mono text-gray-700 uppercase tracking-[0.4em] leading-loose max-w-3xl mx-auto">
+                Security Warning: False declarations are a breach of the Official Secrets Act. All data is cross-referenced against HMG Joint Personnel databases.
+            </p>
+        </div>
     </div>
 </div>
