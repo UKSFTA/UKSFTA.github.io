@@ -46,6 +46,18 @@
     @apply font-black;
   }
 
+  /* Universal Non-Stretching Rule */
+  img {
+    object-fit: contain;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Background Image Rule */
+  .object-cover {
+    object-fit: cover !important;
+  }
+
   label, .sub-header {
     font-family: var(--font-mono);
     @apply text-[10px] font-bold uppercase tracking-[0.5em] text-gray-500;
@@ -104,6 +116,41 @@
   .bracket-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
   .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
 
+  /* 3-Track Tactical Grid (Blueprint) */
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr; 
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 1024px) {
+    .mission-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  /* HUD Box - Moved down to prevent overlap with long titles */
+  .hud-spec-box {
+    position: relative;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(12px);
+    margin-top: 6rem; /* Mandatory clearance for long titles */
+  }
+  .hud-spec-box::before, .hud-spec-box::after {
+    content: "";
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-color: var(--primary);
+    pointer-events: none;
+  }
+  .hud-spec-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+  .hud-spec-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+
   .btn-elite {
     display: inline-flex;
     align-items: center;
@@ -127,6 +174,11 @@
     color: white;
     box-shadow: 0 0 60px var(--primary-glow);
     transform: translateY(-2px);
+  }
+
+  /* Monochrome Icon Utility */
+  .icon-tactical {
+    @apply grayscale brightness-200 contrast-125 mix-blend-lighten;
   }
 
   .text-display { 
