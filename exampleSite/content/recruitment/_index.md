@@ -1,44 +1,47 @@
 ---
 title: "Selection & Recruitment"
-description: "The official gateway for Joint Special Forces Command. Unified assessment for SAS, SBS, and SFSG personnel."
+description: "The official unified selection pipeline for the Directorate of Special Forces. Assessment for SAS, SBS, and SFSG assets."
 date: 2026-01-28
 layout: "page"
 ---
 
 {{< mandate id="JOIN-DSF-01" >}}
-United Kingdom Special Forces recruitment is a multi-tier process. The Directorate operates a unified selection gateway. Most personnel will initiate their special operations career within the Special Forces Support Group (SFSG) before attempting Tier 1 Selection.
+United Kingdom Special Forces recruitment is a joint-service assessment. The Directorate operates a unified selection gateway designed to identify individuals with the mental resilience, physical endurance, and technical aptitude to operate in non-permissive environments.
 {{< /mandate >}}
 
 ## The Selection Standard
 
-The Directorate looks for individuals who demonstrate mental resilience, physical endurance, and technical aptitude beyond the conventional military standard. Selection is not a competition against others, but an unrelenting pursuit of personal excellence.
+UKSF selection is not a competition against other candidates; it is an unrelenting pursuit of personal excellence. The Directorate looks for "The Unrelenting Pursuit of Excellence" and the ability to operate independently under extreme duress.
 
-### Physical Fitness Benchmarks
-Before initiating a selection packet, personnel must achieve the following minimum standards:
-- **Combat Fitness Test (CFT)**: 12.8km (8 miles) in 1h 50m with 25kg load.
-- **Swimming Proficiency**: 500m in uniform followed by 2 minutes of treading water.
-- **Advanced Navigation**: Successful completion of complex night navigation exercises in non-permissive terrain.
+### 1. Phase 0: The Briefing Note
+Once an initial interest packet is accepted and verified against MOD databases, candidates receive a **Briefing Note**. This document provides the specific coordinates, dates, and equipment requirements for the initial assessment week. This phase is conducted under strict confidentiality.
 
-<div class="my-20">
-    {{< recruitment-form title="DIRECTORATE_ENTRY_GATEWAY" headline="Register Selection Interest" description="Register your initial interest for integration into the Joint Special Forces pipeline. All data is verified against MOD databases." >}}
+### 2. Phase 1: Aptitude (The Hills)
+Conducted in the Brecon Beacons, this 4-week phase is designed to test a candidate's endurance and navigation skills. 
+- **The Fan Dance**: A 24km timed march over Pen y Fan with a 25kg load.
+- **Endurance (The Long Drag)**: A final 64km (40-mile) march over the highest peaks of the Beacons, to be completed in under 20 hours.
+
+### 3. Phase 2: Tactical & Jungle
+Successful candidates move to 14 weeks of intensive tactical training.
+- **Advanced Weaponry**: Mastery of foreign and domestic weapon systems.
+- **Combat Medicine**: Specialized training in prolonged field care.
+- **Jungle Phase**: Conducted in Brunei or Belize, testing the ability to live and fight in the world's most demanding tropical environments.
+
+<div class="my-32">
+    {{< recruitment-form title="DIRECTORATE_SELECTION_GATEWAY" headline="Initiate Selection Protocol" description="Submit your credentials for the next UKSF Selection cycle. All submissions are monitored and verified." >}}
 </div>
 
-## The JSFC Career Pathway
+## Minimum Entry Requirements
 
-The path to becoming a UKSF Operator is defined by three primary stages:
+Before submitting an interest packet, personnel must confirm they meet the following baseline criteria:
 
-### 1. The Briefing Note (Phase 0)
-Once an interest packet is accepted, candidates receive a **Briefing Note**. This provides the specific coordinates and dates for the initial assessment week. This phase remains entirely confidential.
+- **Service History**: Minimum 2 years regular service in the British Army, Royal Navy, or Royal Air Force.
+- **Medical Category**: Full Medical Category A (Elite). Candidates with persistent injuries or psychological markers will be automatically filtered.
+- **Vetting Status**: Applicants must be eligible for **Developed Vetting (DV)**. This involves a comprehensive review of personal, financial, and family history.
 
-### 2. SFSG Foundation
-For many, the Special Forces Support Group serves as the primary integration point. SFSG provides the essential tactical depth and high-readiness training required to support Tier 1 missions. Outstanding performers in SFSG are the primary pool for Tier 1 selection scouts.
-
-### 3. Tier 1 Selection (SAS/SBS)
-The 6-month selection course for the SAS and SBS. It is designed to strip away the conventional soldier and find the individual capable of operating in the "Grey Zone" with zero external support.
-
-## Security & Vetting
-All applicants must be able to achieve **Developed Vetting (DV)** status. This involves an extensive background check into personal history, financial status, and international associations.
+### Special Forces Support Group (SFSG) Pathway
+For elite infantry personnel from the Parachute Regiment, Royal Marines, and RAF Regiment, the SFSG provides a high-readiness foundation. While SFSG does not utilize the 6-month Tier 1 selection, it is the primary entry point for candidates aiming for eventual SAS/SBS progression.
 
 {{< mandate id="RECRUIT-SECURITY" >}}
-Specific selection coordinates and briefing dates will only be provided to authorized applicants via secure MOD channels. Unauthorized disclosure is a breach of the Official Secrets Act.
+Specific selection coordinates and briefing dates will only be provided via secure MOD channels. Unauthorized disclosure of selection materials is a breach of the Official Secrets Act.
 {{< /mandate >}}
