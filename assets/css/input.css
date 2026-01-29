@@ -108,7 +108,7 @@
     padding-left: 3rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     background: linear-gradient(to right, rgb(179 153 93 / 5%), transparent);
     backface-visibility: hidden;
     transform: translateZ(0);
@@ -209,8 +209,8 @@
       font-size: 3rem;
       border-bottom: 1px solid rgb(255 255 255 / 10%);
       padding-bottom: 2rem;
-      margin-bottom: 3rem;
-      margin-top: 6rem;
+      margin-bottom: 2rem;
+      margin-top: 4rem;
       display: flex;
       align-items: center;
       gap: 2rem;
@@ -225,8 +225,8 @@
 
     h3 {
       font-size: 1.875rem;
-      margin-bottom: 2rem;
-      margin-top: 5rem;
+      margin-bottom: 1.5rem;
+      margin-top: 3rem;
       color: #e5e7eb;
     }
 
@@ -242,8 +242,8 @@
       border-left: 1px solid rgb(255 255 255 / 5%);
       padding-left: 3rem;
       margin-left: 1rem;
-      margin-top: 4rem;
-      margin-bottom: 4rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
     }
 
     ul > li {
@@ -272,7 +272,7 @@
       font-size: 1.5rem;
       color: #d1d5db;
       font-weight: 300;
-      margin-bottom: 5rem;
+      margin-bottom: 2.5rem;
     }
   }
 
