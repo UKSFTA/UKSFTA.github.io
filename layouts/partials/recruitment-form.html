@@ -1,60 +1,29 @@
-<div class="recruitment-node border border-white/5 bg-black/40 backdrop-blur-3xl my-24 overflow-hidden relative group">
-    <!-- Tactical Corner Accents -->
-    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[var(--primary)]/40"></div>
-    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[var(--primary)]/40"></div>
-
-    <div class="p-10 md:p-16 space-y-16">
-        <!-- Header: Institutional Context -->
-        <div class="flex flex-col md:flex-row justify-between items-start gap-10 border-b border-white/5 pb-12">
-            <div class="space-y-4">
+<div class="bracket-box bg-white/[0.02] border-[var(--primary)]/20 my-24 overflow-hidden !p-0 group">
+    <div class="p-12 md:p-16 space-y-12">
+        <div class="flex flex-col md:flex-row justify-between items-start gap-10">
+            <div class="space-y-6">
                 <div class="flex items-center space-x-4">
-                    <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-bold">Selection Briefing</span>
+                    <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black">Selection Protocol</span>
                     <div class="h-px w-8 bg-white/10"></div>
                 </div>
-                <h3 class="text-5xl leading-none tracking-tighter uppercase font-black">{{ replace (.title | default "Registration of Interest") "_" " " }}</h3>
-                <p class="text-lg text-gray-400 font-light max-w-xl leading-relaxed">{{ .description | default "Submit your service credentials to initiate the Directorate vetting protocol." }}</p>
+                <h3 class="text-5xl leading-none tracking-tighter uppercase font-black">{{ replace (.title | default "Initiate Registration") "_" " " }}</h3>
+                <div class="prose prose-invert prose-xl max-w-2xl font-light text-gray-400 leading-relaxed">
+                    <p>{{ .description | default "The selection pipeline is restricted to active members of the British Armed Forces. Registry authorization is required to initiate a selection packet." }}</p>
+                </div>
             </div>
             
             <div class="flex flex-col items-end text-right space-y-4">
-                <div class="px-4 py-2 bg-white/5 border border-white/10 flex items-center space-x-3">
-                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                    <span class="text-[9px] font-mono text-white uppercase tracking-widest font-black">Registry Active</span>
+                <div class="px-4 py-2 bg-[var(--primary)]/5 border border-[var(--primary)]/20 flex items-center space-x-3">
+                    <span class="w-1.5 h-1.5 bg-[var(--primary)] rounded-full animate-pulse"></span>
+                    <span class="text-[9px] font-mono text-white uppercase tracking-widest font-black">Briefing Locked</span>
                 </div>
-                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Registry Node: JSFC-ENTRY-01</span>
             </div>
         </div>
 
-        <!-- Functional Form -->
-        <form class="grid grid-cols-1 md:grid-cols-12 gap-12" onsubmit="return false;">
-            <div class="md:col-span-6 space-y-3">
-                <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-bold">Service Number</label>
-                <input type="text" placeholder="300XXXXX" class="terminal-input">
-            </div>
-            <div class="md:col-span-6 space-y-3">
-                <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-bold">Current Regiment / Unit</label>
-                <input type="text" placeholder="e.g. 1 PARA / RM" class="terminal-input">
-            </div>
-            <div class="md:col-span-12 space-y-3">
-                <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Vetting / Security Clearance</label>
-                <select class="terminal-input appearance-none bg-black">
-                    <option>SC (Security Check)</option>
-                    <option>DV (Developed Vetting)</option>
-                    <option>NOT HELD / IN PROGRESS</option>
-                </select>
-            </div>
-            
-            <div class="md:col-span-12 pt-8">
-                <button type="button" class="btn-elite bg-white text-black w-full hover:bg-[var(--primary)] hover:text-white transition-all font-black py-6">
-                    TRANSMIT INTEREST PACKET // INITIATE
-                </button>
-            </div>
-        </form>
-
-        <!-- Footer: Security Mandate -->
-        <div class="pt-8 border-t border-white/5 text-center">
-            <p class="text-[8px] font-mono text-gray-700 uppercase tracking-[0.4em] leading-loose max-w-3xl mx-auto">
-                Security Warning: False declarations are a breach of the Official Secrets Act. All data is cross-referenced against HMG Joint Personnel databases.
-            </p>
+        <div class="pt-8 border-t border-white/5">
+            <a href="/register" class="btn-elite bg-white text-black w-full hover:bg-[var(--primary)] hover:text-white transition-all font-black py-6 text-center no-underline">
+                OPEN REGISTRATION TERMINAL // AUTH_REQUIRED
+            </a>
         </div>
     </div>
 </div>
