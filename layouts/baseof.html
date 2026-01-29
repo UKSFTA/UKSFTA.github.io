@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
   {{ partial "head/skin.html" . }}
@@ -15,33 +15,37 @@
 {{ $unit := .Params.unit | default .Section | default "sas" }}
 <body class="unit-{{ lower $unit }}">
   
-  <!-- SUPERIOR RULE: OFFICIAL HMG / MOD INTERFACE -->
-  <header class="nav-header">
+  <!-- Tier 1: HMG Superior Rule (Mandatory Institutional Bar) -->
+  <div class="fixed top-0 left-0 w-full z-[3000] bg-black border-b border-white/5 py-3">
+    <div class="container-uksf flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <img src="/mod-logo.svg" alt="MOD" class="h-4 opacity-40 grayscale brightness-200">
+        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.5em] border-l border-white/10 pl-4">HMG // Ministry of Defence</span>
+      </div>
+      <div class="flex items-center space-x-6 text-[8px] font-mono text-gray-600 uppercase tracking-widest">
+        <span>Classification: {{ .Site.Data.labels.site.classification }}</span>
+        <span class="text-[var(--primary)] font-black">Node: JSFC_01</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tier 2: Operational Navigation -->
+  <header class="nav-header top-10">
     <div class="container-uksf flex justify-between items-center h-full">
-      
-      <!-- Primary Brand Identity -->
-      <div class="flex items-center space-x-12">
+      <div class="flex items-center space-x-10">
         <a href="/" class="no-underline group flex items-center space-x-6">
-          {{ $mod_logo := resources.Get "icons/MOD.png" }}
-          {{ if $mod_logo }}
-          <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-14 w-auto grayscale brightness-200 opacity-60 group-hover:opacity-100 transition-all">
+          {{ $uksf_icon := resources.Get "icons/UKSF.png" }}
+          {{ if $uksf_icon }}
+          <img src="{{ $uksf_icon.RelPermalink }}" alt="UKSF" class="h-12 w-auto grayscale brightness-200 opacity-80 group-hover:opacity-100 transition-all">
           {{ end }}
-          <div class="flex flex-col border-l border-white/10 pl-6">
+          <div class="flex flex-col">
             <span class="text-white font-black text-2xl tracking-tighter leading-none">UKSF</span>
-            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.4em] mt-1 font-bold">Joint Command</span>
+            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em] mt-1">Special Forces Directorate</span>
           </div>
         </a>
-        
-        <div class="hidden lg:flex items-center space-x-4 border-l border-white/10 pl-10 h-10">
-          <div class="flex flex-col">
-            <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-bold">Security_Tier</span>
-            <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">RESTRICTED_ACCESS</span>
-          </div>
-        </div>
       </div>
       
-      <!-- Primary Operational Navigation -->
-      <nav class="hidden md:flex items-center space-x-10">
+      <nav class="hidden md:flex items-center space-x-12">
         {{ range site.Menus.main }}
         <a href="{{ .URL }}" class="nav-link {{ if eq $.RelPermalink .URL }}active{{ end }}">
           {{ .Name }}
@@ -49,17 +53,12 @@
         {{ end }}
       </nav>
 
-      <!-- System Telemetry -->
-      <div class="hidden sm:flex items-center space-x-8 border-l border-white/10 pl-10">
+      <div class="hidden sm:flex items-center space-x-6">
         <div class="flex flex-col items-end">
-          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-bold">System_Zulu</span>
-          <span class="text-[11px] font-mono text-white font-black" id="clock">00:00:00</span>
-        </div>
-        <div class="w-10 h-10 border border-white/10 flex items-center justify-center bg-white/5">
-            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
+          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Zulu_Sync</span>
+          <span class="text-[10px] font-mono text-white font-black" id="clock">00:00:00</span>
         </div>
       </div>
-
     </div>
   </header>
 
@@ -72,7 +71,7 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-24 mb-24">
         <div class="col-span-2 space-y-10">
           <h2 class="text-5xl">United Kingdom <br>Special Forces</h2>
-          <p class="max-w-md text-gray-500 text-sm font-light leading-relaxed">Official gateway for Joint Special Forces Command. Operational intelligence governed by the Official Secrets Act. All transmissions monitored.</p>
+          <p class="max-w-md text-gray-500 text-sm font-light leading-relaxed">Official gateway for the Directorate of Special Forces (DSF). Operational intelligence is restricted and governed by the Official Secrets Act. All transmissions are subject to monitoring.</p>
         </div>
         <div class="space-y-8">
           <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Operational Commands</span>
@@ -83,16 +82,16 @@
           </ul>
         </div>
         <div class="space-y-8">
-          <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Legal Directives</span>
+          <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Institutional Legal</span>
           <ul class="space-y-4 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600">
             <li>Crown Copyright 2026</li>
-            <li>Operational Privacy</li>
-            <li>OPSEC Mandate</li>
+            <li>Freedom of Information</li>
+            <li>Official Secrets Act</li>
           </ul>
         </div>
       </div>
       <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-        <span class="text-[8px] font-mono text-gray-700 tracking-[0.6em] uppercase font-bold">Communication_End // Directorate_SF</span>
+        <span class="text-[8px] font-mono text-gray-700 tracking-[0.6em] uppercase font-bold">End of Transmission // Directorate_SF</span>
         <div class="w-16 h-px bg-[var(--primary)] opacity-40"></div>
       </div>
     </div>
