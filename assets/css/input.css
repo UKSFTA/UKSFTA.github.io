@@ -15,6 +15,12 @@
   --font-body: "Inter", "system-ui", "Arial", sans-serif;
 
   --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
 }
 
 @layer base {
@@ -26,7 +32,6 @@
     --hmg-bar-height: 40px;
   }
 
-  /* Tactical Scrollbar */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg-dark); }
   ::-webkit-scrollbar-thumb { 
@@ -44,7 +49,6 @@
     -webkit-font-smoothing: antialiased;
     padding-top: calc(var(--header-height) + var(--hmg-bar-height));
     @apply font-light;
-    /* Softened background for maximum readability */
     background-image: 
       radial-gradient(circle at 50% 0%, rgba(255,255,255,0.015) 0%, transparent 80%),
       url('https://www.transparenttextures.com/patterns/black-linen.png');
@@ -54,14 +58,11 @@
   h1, h2, h3, h4 {
     font-family: var(--font-industrial);
     text-transform: uppercase;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     color: white;
     line-height: 0.85;
     @apply font-black;
   }
-
-  img { object-fit: contain; max-width: 100%; height: auto; }
-  .object-cover { object-fit: cover !important; }
 
   label, .sub-header {
     font-family: var(--font-mono);
@@ -71,11 +72,11 @@
 
 @layer components {
   .container-uksf {
-    @apply w-full max-w-[1200px] mx-auto px-8 lg:px-12;
+    @apply w-full max-w-[1200px] mx-auto px-10;
   }
 
   .nav-header {
-    @apply fixed left-0 w-full z-[2000] border-b border-white/5 bg-black/95 backdrop-blur-3xl;
+    @apply fixed left-0 w-full z-[2000] border-b border-white/5 bg-black/95 backdrop-blur-2xl;
     height: var(--header-height);
   }
 
@@ -107,14 +108,16 @@
     background: linear-gradient(to right, rgba(179, 153, 93, 0.04), transparent);
   }
 
+  /* Technical "HUD" Box */
   .bracket-box {
-    @apply relative border border-white/5 bg-white/[0.01] p-12;
+    @apply relative border border-white/5 bg-white/[0.01] p-12 transition-all duration-500;
     &::before, &::after {
       content: "";
       @apply absolute w-2 h-2 border-[var(--primary)]/40 pointer-events-none;
     }
     &::before { @apply top-0 left-0 border-t-2 border-l-2; }
     &::after { @apply bottom-0 right-0 border-b-2 border-r-2; }
+    &:hover { @apply border-white/10 bg-white/[0.02]; }
   }
 
   .btn-elite {
@@ -126,7 +129,7 @@
   }
 
   .terminal-input {
-    @apply w-full bg-white/[0.02] border border-white/10 p-5 text-xs font-mono text-white outline-none transition-all placeholder:text-gray-800;
+    @apply w-full bg-black/40 border border-white/10 p-5 text-xs font-mono text-white outline-none transition-all placeholder:text-gray-800;
     &:focus {
       @apply border-[var(--primary)] bg-[var(--primary)]/5 shadow-[0_0_30px_rgba(179,153,93,0.1)];
     }
@@ -134,7 +137,8 @@
 
   .icon-tactical {
     @apply grayscale-0 brightness-100 contrast-100;
-    transition: filter 0.5s ease;
+    transition: all 0.5s ease;
+    &:hover { filter: drop-shadow(0 0 10px var(--primary-glow)); }
   }
 
   .text-display { 
@@ -142,7 +146,7 @@
     @apply font-black tracking-tighter leading-[0.8];
   }
 
-  /* Intelligence Body Polish */
+  /* Intelligence Body Refinement */
   .intelligence-body {
     @apply prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-p:leading-relaxed prose-p:mb-12 prose-strong:text-white prose-strong:font-bold;
     
@@ -174,6 +178,16 @@
     blockquote {
       @apply border-l-4 border-gray-800 bg-white/[0.01] p-12 italic text-2xl text-gray-300 rounded-none not-italic font-light mb-20;
     }
+
+    .registry-sources {
+      @apply bg-black/40 border border-white/10 p-10 mt-32 space-y-8;
+      h3 { @apply m-0 text-[10px] text-[var(--primary)] font-mono font-black tracking-[0.4em] opacity-80; }
+      ul { 
+        @apply border-none p-0 m-0 space-y-4; 
+        li { @apply m-0 pl-0 text-sm; &::before { content: none !important; } }
+      }
+      a { @apply text-white/50 no-underline border-b border-white/10 hover:text-white hover:border-[var(--primary)] transition-all leading-relaxed; }
+    }
   }
 }
 
@@ -183,5 +197,9 @@
     background-image: 
       linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  }
+  
+  .text-shadow-glow {
+    text-shadow: 0 0 20px var(--primary-glow);
   }
 }
