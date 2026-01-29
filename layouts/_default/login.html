@@ -1,0 +1,38 @@
+{{ define "main" }}
+<section class="min-h-screen flex items-center justify-center bg-black relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid-white opacity-10"></div>
+    
+    <div class="container-uksf relative z-10 max-w-md w-full">
+        <div class="bracket-box bg-black/80 backdrop-blur-3xl border-white/10 p-12">
+            <div class="text-center mb-12 space-y-4">
+                <img src="/icons/MOD.png" class="h-16 mx-auto grayscale brightness-200 opacity-40">
+                <h2 class="text-3xl font-black tracking-tighter">UKSF_Terminal</h2>
+                <span class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-[0.4em]">Biometric_Auth_Required</span>
+            </div>
+
+            <form class="space-y-8">
+                <div class="space-y-4">
+                    <div class="flex flex-col space-y-2">
+                        <label class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Operator_ID</label>
+                        <input type="text" class="bg-white/5 border border-white/10 p-4 text-xs font-mono text-white focus:border-[var(--primary)] outline-none transition-all">
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        <label class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Access_Key</label>
+                        <input type="password" class="bg-white/5 border border-white/10 p-4 text-xs font-mono text-white focus:border-[var(--primary)] outline-none transition-all">
+                    </div>
+                </div>
+
+                <button type="button" class="w-full btn-elite bg-[var(--primary)] text-white hover:bg-white hover:text-black">
+                    Initiate Handshake
+                </button>
+            </form>
+
+            <div class="mt-12 pt-8 border-t border-white/5 text-center">
+                <p class="text-[7px] font-mono text-gray-700 uppercase tracking-widest leading-loose">
+                    WARNING: Unauthorized access to this node is a breach of the Official Secrets Act. Your IP has been logged by Joint Command.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
