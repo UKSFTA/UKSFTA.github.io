@@ -11,80 +11,78 @@
             <div class="p-10 md:p-12 space-y-10">
                 <div class="flex flex-col md:flex-row justify-between items-start gap-8 border-b border-white/5 pb-8">
                     <div class="space-y-4">
-                        <div class="flex items-center space-x-6">
-                            {{ $mod_logo := resources.Get "icons/MOD.png" }}
-                            {{ if $mod_logo }}
-                            <img src="{{ $mod_logo.RelPermalink }}" class="h-10 grayscale brightness-200 opacity-60">
-                            {{ end }}
-                            <div class="h-8 w-px bg-white/10"></div>
-                            <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.5em] font-black">Selection Registry</span>
-                        </div>
-                        <h2 class="text-5xl font-black tracking-tighter uppercase m-0 leading-none">Initiate Selection Protocol</h2>
-                        <p class="text-base text-gray-400 font-light max-w-xl leading-relaxed">Authorized entry point for Directorate personnel selection. Enter service credentials to begin the vetting and assessment pipeline.</p>
-                    </div>
-                    
-                    <div class="flex flex-col items-end text-right space-y-4">
-                        <div class="px-4 py-2 bg-white/5 border border-white/10 flex items-center space-x-3">
-                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                            <span class="text-[9px] font-mono text-white uppercase tracking-widest font-black">Registry Live</span>
-                        </div>
-                        <div class="flex flex-col">
-                            <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Node Signature</span>
-                            <span class="text-[10px] font-mono text-white uppercase font-bold">JSFC-AUTH-{{ now.Format "2006" }}</span>
-                        </div>
-                    </div>
+                        <div class="flex items-center space-x-8">
+                    {{ $tfa_logo := resources.Get "icons/TFA.png" }}
+                    {{ if $tfa_logo }}
+                    <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-10 grayscale brightness-200 opacity-60">
+                    {{ end }}
+                    <div class="h-8 w-px bg-white/10"></div>
+                    <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.5em] font-black">Entry Registry</span>
                 </div>
-
-                <form class="grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-8" onsubmit="return false;">
-                    <div class="md:col-span-6 space-y-3">
-                        <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Service Number</label>
-                        <input type="text" placeholder="300XXXXX" class="terminal-input !bg-black/40 !py-4">
-                    </div>
-                    <div class="md:col-span-6 space-y-3">
-                        <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Current Regiment / Unit</label>
-                        <input type="text" placeholder="e.g. 1 PARA / RM" class="terminal-input !bg-black/40 !py-4">
-                    </div>
-                    <div class="md:col-span-6 space-y-3">
-                        <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Target Operational Domain</label>
-                        <div class="relative">
-                            <select id="domain-selector" class="terminal-input appearance-none bg-black cursor-pointer !bg-black/40 !py-4">
-                                <option value="general">General Selection (Joint)</option>
-                                <option value="sas">Special Air Service (Tier 1)</option>
-                                <option value="sbs">Special Boat Service (Tier 1)</option>
-                                <option value="srr">Special Reconnaissance Regiment (Tier 1)</option>
-                                <option value="signals">18 SF Signals Regiment (Tier 1)</option>
-                                <option value="e-squadron">E Squadron (The Increment)</option>
-                                <option value="rangers">Ranger Regiment (Tier 2)</option>
-                                <option value="sfsg">SFSG Foundation (Support)</option>
-                                <option value="jsfaw">Special Forces Aviation (JSFAW)</option>
-                            </select>
-                            <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--primary)] opacity-40 text-xs">▼</div>
-                        </div>
-                    </div>
-                    <div class="md:col-span-6 space-y-3">
-                        <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Vetting / Security Clearance</label>
-                        <select class="terminal-input appearance-none bg-black cursor-pointer !bg-black/40 !py-4">
-                            <option>SC (Security Check)</option>
-                            <option>DV (Developed Vetting)</option>
-                            <option>NOT HELD / IN PROGRESS</option>
-                        </select>
-                    </div>
-                    
-                    <div class="md:col-span-12 pt-4">
-                        <button type="button" class="btn-elite bg-white text-black w-full hover:bg-[var(--primary)] hover:text-white transition-all font-black py-6 text-xs group">
-                            <span class="flex items-center justify-center space-x-6">
-                                <span>TRANSMIT SELECTION PACKET</span>
-                                <span class="opacity-40 group-hover:opacity-100 transition-opacity font-mono">// INITIALIZE HANDSHAKE</span>
-                            </span>
-                        </button>
-                    </div>
-                </form>
-
-                <div class="pt-8 border-t border-white/5 text-center">
-                    <p class="text-[8px] font-mono text-gray-700 uppercase tracking-[0.4em] leading-loose max-w-3xl mx-auto">
-                        Security Warning: Unauthorized submission attempts are a breach of the Official Secrets Act. Your transmission is being monitored by JSFC Signals Intelligence.
-                    </p>
+                <h2 class="text-5xl font-black tracking-tighter uppercase m-0 leading-none">Initiate Entry Protocol</h2>
+                <p class="text-base text-gray-400 font-light max-w-xl leading-relaxed">Authorized entry point for Taskforce Alpha personnel. Enter your details to begin the community assessment pipeline.</p>
+            </div>
+            
+            <div class="flex flex-col items-end text-right space-y-4">
+                <div class="px-4 py-2 bg-white/5 border border-white/10 flex items-center space-x-3">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-[9px] font-mono text-white uppercase tracking-widest font-black">Server Live</span>
                 </div>
+                <div class="flex flex-col">
+                    <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Node Signature</span>
+                    <span class="text-[10px] font-mono text-white uppercase font-bold">TFA-AUTH-{{ now.Format "2006" }}</span>
+                </div>
+            </div>
+        </div>
+
+        <form class="grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-8" onsubmit="return false;">
+            <div class="md:col-span-6 space-y-3">
+                <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Discord Username</label>
+                <input type="text" placeholder="e.g. operator_alpha" class="terminal-input !bg-black/40 !py-4">
+            </div>
+            <div class="md:col-span-6 space-y-3">
+                <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Timezone / Region</label>
+                <input type="text" placeholder="e.g. GMT / Europe" class="terminal-input !bg-black/40 !py-4">
+            </div>
+            <div class="md:col-span-6 space-y-3">
+                <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Target Operational Role</label>
+                <div class="relative">
+                    <select id="domain-selector" class="terminal-input appearance-none bg-black cursor-pointer !bg-black/40 !py-4">
+                        <option value="sfsg">SFSG Support (Phase 1 Entry)</option>
+                        <option value="jsfaw">JSFAW Ground Crew (Aviation Entry)</option>
+                        <option value="sas">22nd SAS (Advanced Specialization)</option>
+                        <option value="sbs">Special Boat Service (Advanced Specialization)</option>
+                        <option value="srr">Special Recon Regiment (Advanced Specialization)</option>
+                        <option value="med-det">Medical Detachment</option>
+                    </select>
+                    <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--primary)] opacity-40 text-xs">▼</div>
+                </div>
+            </div>
+            <div class="md:col-span-6 space-y-3">
+                <label class="text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">Vetting / Experience</label>
+                <select class="terminal-input appearance-none bg-black cursor-pointer !bg-black/40 !py-4">
+                    <option>NEW TO MILSIM</option>
+                    <option>INTERMEDIATE (ARMA 3)</option>
+                    <option>ADVANCED (SOP KNOWLEDGE)</option>
+                    <option>VETERAN / EX-MILITARY</option>
+                </select>
+            </div>
+            
+            <div class="md:col-span-12 pt-4">
+                <button type="button" class="btn-elite bg-white text-black w-full hover:bg-[var(--primary)] hover:text-white transition-all font-black py-6 text-xs group">
+                    <span class="flex items-center justify-center space-x-6">
+                        <span>TRANSMIT ENTRY PACKET</span>
+                        <span class="opacity-40 group-hover:opacity-100 transition-opacity font-mono">// INITIALIZE HANDSHAKE</span>
+                    </span>
+                </button>
+            </div>
+        </form>
+
+        <div class="pt-8 border-t border-white/5 text-center">
+            <p class="text-[8px] font-mono text-gray-700 uppercase tracking-[0.4em] leading-loose max-w-3xl mx-auto">
+                TFA is an unofficial milsim group. We do not represent the Ministry of Defence. Unauthorized entry attempts are logged.
+            </p>
+        </div>
             </div>
         </div>
 

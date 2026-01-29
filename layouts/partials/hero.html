@@ -17,12 +17,12 @@
             <div class="lg:col-span-8 space-y-12 animate-slide-in-left">
                 <!-- Meta Block -->
                 <div class="h-12 flex items-center gap-6">
-                    {{ $mod_logo := resources.Get "icons/MOD.png" }}
-                    {{ if $mod_logo }}
-                    <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-10 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] grayscale brightness-200">
+                    {{ $tfa_logo := resources.Get "icons/TFA.png" }}
+                    {{ if $tfa_logo }}
+                    <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-10 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] grayscale brightness-200">
                     {{ end }}
                     <div class="flex flex-wrap gap-4">
-                        <span class="hero-meta-tag font-black tracking-widest uppercase">Restricted</span>
+                        <span class="hero-meta-tag font-black tracking-widest uppercase">Unofficial</span>
                     </div>
                 </div>
 

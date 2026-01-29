@@ -1,0 +1,39 @@
+### **UKSF TASKFORCE ALPHA | UNIT REFERENCE FILE (UPDATED)**
+
+**CONTEXT:**
+This unit is a semi-realistic Arma 3 Milsim community based on the United Kingdom Special Forces (UKSF). The website must bridge the gap between IRL history/tradition and our active gaming operations while maintaining strict legal boundaries.
+
+**1. LEGAL & COMPLIANCE (CRITICAL)**
+
+* **Non-Affiliation:** This unit is **not** legally affiliated with, endorsed by, or part of the Ministry of Defence (MOD) or the UK Armed Forces.
+* **Intellectual Property:** Use the "look and feel" of the UKSF for immersion, but avoid any claims of official status. Content is for entertainment and simulation purposes within the Arma 3 platform only.
+* **Copyright:** Ensure all site copy respects copyright laws; we are a fan-based simulation community.
+
+**2. CORE OPERATIONAL SCHEDULE**
+
+* **Primary Operations:** Wednesdays at 19:00 (GMT/BST).
+* **Attendance:** Required for progression within the unit.
+
+**3. UNIT STRUCTURE & ENTRY PIPELINE**
+All candidates enter through "Phase 1" gateways:
+
+* **SFSG (Special Forces Support Group):** Logistics, driving, and heavy fire support (GPMG/Static).
+* **JSFAW Ground Crew:** The entry point for aviation. Candidates must prove competence in Pumas, Lynx, and Chinooks before transitioning to Attack/Fixed-wing roles.
+
+**4. ADVANCED SPECIALIZATIONS (Post-Probation)**
+After a trial period, members may qualify for:
+
+* **22nd SAS:** Direct action and counter-terrorism.
+* **SBS:** Maritime and amphibious warfare.
+* **SRR:** Covert surveillance and intelligence gathering.
+* **Medical Detachment:** Field surgery and CASEVAC.
+
+**5. COMMAND & SUPPORT**
+
+* **Task Force HQ:** Intelligence and Zeus/Mission Makers.
+* **QM Department:** Modpack management and technical logistics.
+
+**6. SITE INTEGRATION DIRECTIVES**
+
+* **Tone:** Professional and immersive ("Milsim-grade").
+* **Visuals/Copy:** Focus on the *simulation* aspect. When referencing IRL history, ensure the AI builder phrases it as "Our inspiration" or "The heritage we simulate," rather than "Who we are officially."

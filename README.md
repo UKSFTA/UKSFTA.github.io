@@ -1,18 +1,17 @@
-# UKSF MOD-Hugo Theme
+# TFA UKSF Milsim Theme
 
-A professional, high-fidelity Hugo theme for the United Kingdom Special Forces (UKSF) digital presence, built to Ministry of Defence (MOD) and Government Digital Service (GDS) standards.
+A professional, high-fidelity Hugo theme for Taskforce Alpha (TFA), an unofficial Arma 3 Milsim community inspired by the United Kingdom Special Forces (UKSF).
 
 ## Features
 
-- **Institutional Branding:** Adheres to the MOD "Superior Rule" and HMG identity guidelines.
-- **Dynamic Regimental Skinning:** Automatic UI adjustment for SAS, SBS, SRR, SFSG, and JSFAW sections.
-- **MOD.UK Frontend Integration:** Utilizes official GOV.UK/MOD.UK design system components.
-- **Modular Hub Layout:** Responsive, block-based design optimized for recruitment and operational awareness.
+- **Heritage Branding:** Inspired by UKSF aesthetics and HMG identity guidelines for immersion.
+- **Dynamic Unit Skinning:** Automatic UI adjustment for SAS, SBS, SRR, SFSG, and JSFAW community sections.
+- **Milsim Operations Hub:** Responsive, block-based design optimized for community recruitment and operational awareness.
 
 ## Prerequisites
 
 - **Hugo Extended:** Version 0.154.0 or higher.
-- **Node.js:** To manage MOD.UK frontend assets.
+- **Node.js:** For asset pipeline management.
 
 ## Quick Start
 
@@ -32,15 +31,16 @@ A professional, high-fidelity Hugo theme for the United Kingdom Special Forces (
 
 ## Architecture
 
-- `assets/scss/`: Core styles and regimental overrides.
-- `layouts/`: MOD-compliant HTML structure.
-- `exampleSite/`: Sample content and configuration for testing.
+- `assets/css/`: Core Tailwind CSS v4 styles.
+- `layouts/`: Immersive community-focused HTML structure.
+- `exampleSite/`: Community content and configuration.
 
 ## Security & Governance
 
-- **OPSEC:** All content must obscure personnel identities and specific operational locations.
+- **OPSEC:** All content must obscure real-world personnel identities.
 - **Integrity:** All commits must be GPG signed.
-- **Compliance:** Target WCAG 2.2 AA accessibility.
+- **Unofficial:** This project is for entertainment purposes and has no affiliation with the UK Ministry of Defence.
 
 ---
-*Reproduced with permission of the UK MOD. All operational data is simulated.*
+
+*This is an unofficial community project. All operational data is simulated for milsim purposes.*

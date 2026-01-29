@@ -1,26 +1,27 @@
 {
   "site": {
-    "title": "United Kingdom Special Forces",
+    "title": "Taskforce Alpha",
     "motto": "Always A Little Further",
-    "classification": "OFFICIAL_SENSITIVE // UKSF_INTEL",
-    "status": "OPERATIONAL_READY",
-    "joint_command": "Directorate of Special Forces"
+    "classification": "TFA_INTERNAL // SIMULATION_ONLY",
+    "status": "UNOFFICIAL_COMMUNITY",
+    "joint_command": "Taskforce HQ // Milsim group"
   },
   "hero": {
-    "headline": "THE SOVEREIGN EDGE",
-    "description": "The Directorate of Special Forces coordinates the UK's high-readiness, world-leading capability across the spectrum of special operations.",
-    "cta": "Initiate Selection"
+    "headline": "THE SIMULATED EDGE",
+    "description": "Taskforce Alpha provides a high-fidelity Special Forces simulation for the Arma 3 platform. Authenticity, Maturity, and Professionalism.",
+    "cta": "Join our Discord",
+    "cta_url": "https://discord.gg/2jNqa3zPRH"
   },
   "capabilities": [
-    { "title": "Counter Terrorism", "icon": "shield", "desc": "National high-readiness response teams for domestic and overseas CT operations." },
-    { "title": "Strategic Recon", "icon": "eye", "desc": "Deep penetration intelligence gathering in contested and hostile environments." },
-    { "title": "Maritime Ops", "icon": "anchor", "desc": "Specialist amphibious operations and maritime security task forces." },
-    { "title": "Support & Aviation", "icon": "plane", "desc": "Integrated specialist infantry support and high-performance aviation insertion." }
+    { "title": "Direct Action", "icon": "shield", "desc": "Assault element specializing in CQB and counter-terrorism missions." },
+    { "title": "Intelligence / ISR", "icon": "eye", "desc": "Covert surveillance and technical signals intelligence operations." },
+    { "title": "Maritime Ops", "icon": "anchor", "desc": "Amphibious insertion, extraction, and maritime counter-terrorism." },
+    { "title": "Joint Aviation", "icon": "plane", "desc": "Dedicated rotary and fixed-wing support, CAS, and logistics." }
   ],
   "stats": [
-    { "label": "Readiness", "value": "100%" },
-    { "label": "Response", "value": "SUB_2H" },
-    { "label": "Theatres", "value": "GLOBAL" }
+    { "label": "Operational", "value": "WED_1900" },
+    { "label": "Platform", "value": "ARMA_3" },
+    { "label": "Ethos", "value": "SEMI_REAL" }
   ],
   "units": {
     "sas": {

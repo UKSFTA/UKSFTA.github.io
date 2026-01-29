@@ -5,11 +5,11 @@
     <div class="container-uksf relative z-10 max-w-md w-full">
         <div class="bracket-box bg-black/80 backdrop-blur-3xl border-white/10 p-12 shadow-2xl">
             <div class="text-center mb-12 space-y-4">
-                {{ $mod_logo := resources.Get "icons/MOD.png" }}
-                {{ if $mod_logo }}
-                <img src="{{ $mod_logo.RelPermalink }}" class="h-16 mx-auto grayscale brightness-200 opacity-40">
+                {{ $tfa_logo := resources.Get "icons/TFA.png" }}
+                {{ if $tfa_logo }}
+                <img src="{{ $tfa_logo.RelPermalink }}" class="h-16 mx-auto grayscale brightness-200 opacity-40">
                 {{ end }}
-                <h2 class="text-3xl font-black tracking-tighter uppercase">Directorate Registry</h2>
+                <h2 class="text-3xl font-black tracking-tighter uppercase">TFA Registry</h2>
                 <span id="terminal-status" class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-[0.4em]">Node Authorization Required</span>
             </div>
 
@@ -51,7 +51,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     btn.disabled = true;
 
     setTimeout(() => {
-        if (id === "DSF-ALPHA-01" || id === "SIGINT-RECON") {
+        if (id === "TFA-ALPHA-01" || id === "SIGINT-RECON") {
             status.innerText = "ACCESS GRANTED // REDIRECTING";
             status.style.color = "#22c55e";
             localStorage.setItem('uksf_auth', 'authorized');

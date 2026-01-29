@@ -1,77 +1,72 @@
 {
   "sas": {
     "id": "SAS",
-    "founded": "1941",
-    "specialization": "Counter-Terrorism / Hostage Rescue",
-    "theatres": "Global / All Environments",
+    "name": "22nd Special Air Service",
+    "specialization": "Direct Action / CQB / CT",
+    "role": "Assault Element / Door-Kickers",
     "motto": "Who Dares Wins",
     "color": "#153e35",
-    "icon": "icons/SAS.png"
+    "icon": "icons/SAS.png",
+    "entry": "Internal Transfer Required"
   },
   "sbs": {
     "id": "SBS",
-    "founded": "1940",
-    "specialization": "Maritime Counter-Terrorism / Amphibious Recon",
-    "theatres": "Maritime / Littoral",
+    "name": "Special Boat Service",
+    "specialization": "Amphibious Insertion / EOD / Support",
+    "role": "Maritime & Support Specialists",
     "motto": "By Strength and Guile",
     "color": "#000033",
-    "icon": "icons/SBS.png"
-  },
-  "rangers": {
-    "id": "RANGERS",
-    "founded": "2021",
-    "specialization": "Special Operations / Partner Capacity Building",
-    "theatres": "Complex Contested Environments",
-    "motto": "Ready for Anything",
-    "color": "#4d5d53",
-    "icon": "icons/RANGERS.png"
-  },
-  "sfsg": {
-    "id": "SFSG",
-    "founded": "2006",
-    "specialization": "Direct Action Support / Specialist Infantry",
-    "theatres": "Operational Support",
-    "motto": "Always A Little Further",
-    "color": "#800000",
-    "icon": "icons/SFSG.png"
-  },
-  "jsfaw": {
-    "id": "JSFAW",
-    "founded": "2001",
-    "specialization": "Special Operations Aviation",
-    "theatres": "Aviation Support",
-    "motto": "Resolute",
-    "color": "#000080",
-    "icon": "icons/JSFAW.png"
+    "icon": "icons/SBS.png",
+    "entry": "Internal Transfer Required"
   },
   "srr": {
     "id": "SRR",
-    "hidden": true,
-    "founded": "2005",
-    "specialization": "Covert Surveillance / ISTAR",
-    "theatres": "Urban / High-Threat Domains",
+    "name": "Special Reconnaissance Regiment",
+    "specialization": "Covert Surveillance / ELINT / ISR",
+    "role": "Intelligence & Recce Specialists",
     "motto": "Reconnaissance",
     "color": "#507255",
-    "icon": "icons/SRR.png"
+    "icon": "icons/SRR.png",
+    "entry": "Internal Transfer Only (Command Approved)"
   },
-  "signals": {
-    "id": "SIGNALS",
-    "hidden": true,
-    "founded": "2005",
-    "specialization": "Special Forces Signals / EW",
-    "theatres": "Cyber / Signals Intelligence",
-    "motto": "Swift and Sure",
+  "sfsg": {
+    "id": "SFSG",
+    "name": "Special Forces Support Group",
+    "specialization": "Logistics / Driving / Heavy Weapons",
+    "role": "Primary Entry Point / SOP Mastery",
+    "motto": "Always A Little Further",
+    "color": "#800000",
+    "icon": "icons/SFSG.png",
+    "entry": "Initial Entry"
+  },
+  "jsfaw": {
+    "id": "JSFAW",
+    "name": "Joint Special Forces Aviation Wing",
+    "specialization": "Rotary / Attack / Fixed Wing / Drones",
+    "role": "Aviation Support & CAS",
+    "motto": "Resolute",
     "color": "#000080",
-    "icon": "icons/SIGNALS.png"
+    "icon": "icons/JSFAW.png",
+    "entry": "Initial Entry (Ground Crew Start)"
   },
-  "e-squadron": {
-    "id": "E_SQN",
-    "hidden": true,
-    "founded": "2007",
-    "specialization": "Strategic Deniability / SIS Liaison",
-    "theatres": "Global / Non-Permissive",
-    "motto": "Classified",
+  "med-det": {
+    "id": "MED_DET",
+    "name": "Medical Detachment",
+    "specialization": "Field Surgery / CASEVAC / Medical Training",
+    "role": "Medical Support Specialists",
+    "motto": "In Arduis Fidelis",
+    "color": "#800000",
+    "icon": "icons/MEDIC.png",
+    "entry": "Post-Intro Specialization"
+  },
+  "tfhq": {
+    "id": "TFHQ",
+    "name": "Taskforce Headquarters",
+    "specialization": "Zeus / Mission Making / Intelligence",
+    "role": "Command & Mission Control",
+    "motto": "Vigilance",
     "color": "#1a1a1a",
-    "icon": "icons/SAS.png"
+    "icon": "icons/Intelligence-Corps.png",
+    "entry": "Appointment Only"
   }
 }

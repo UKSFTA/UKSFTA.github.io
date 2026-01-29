@@ -3,7 +3,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <h4>Commands</h4>
+        <h4>Detachments</h4>
         <ul>
           {{ range $id, $unit := $labels.units }}
           <li><a href="/{{ $id }}/">{{ $unit.full_name }}</a></li>
@@ -13,30 +13,30 @@
       <div>
         <h4>Recruitment</h4>
         <ul>
-          <li><a href="/recruitment/">Apply Now</a></li>
-          <li><a href="/recruitment/roles/">Role Finder</a></li>
-          <li><a href="/recruitment/eligibility/">Eligibility</a></li>
+          <li><a href="/recruitment/">Join the Unit</a></li>
+          <li><a href="/med-det/">Medical Detachment</a></li>
+          <li><a href="/tfhq/">HQ Appointment</a></li>
         </ul>
       </div>
       <div>
-        <h4>Legal</h4>
+        <h4>Community</h4>
         <ul>
+          <li><a href="https://discord.gg/2jNqa3zPRH">Unit Discord</a></li>
+          <li><a href="#">Unit Protocols</a></li>
           <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Cookies</a></li>
-          <li><a href="#">Accessibility</a></li>
         </ul>
       </div>
       <div>
-        <h4>Support</h4>
+        <h4>Feedback</h4>
         <ul>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Feedback</a></li>
+          <li><a href="#">Contact HQ</a></li>
+          <li><a href="#">Submit Feedback</a></li>
         </ul>
       </div>
     </div>
     
     <div class="legal-bar">
-      <p class="govuk-body-xs">{{ $labels.footer.copyright }} {{ $labels.footer.permission }}</p>
+      <p class="govuk-body-xs">© 2026 Taskforce Alpha // Milsim Community</p>
       <p class="govuk-body-xs">Built by <a href="{{ .Site.Params.builtbyurl }}" class="govuk-link">{{ .Site.Params.builtby }}</a></p>
     </div>
   </div>

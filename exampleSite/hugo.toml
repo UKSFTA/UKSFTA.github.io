@@ -1,6 +1,6 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-gb'
-title = 'UKSF Example Site'
+title = 'Taskforce Alpha // UKSF Milsim'
 theme = 'uksf-mod-theme'
 
 [markup]
@@ -10,7 +10,7 @@ theme = 'uksf-mod-theme'
 
 [params]
   unit_theme = 'global'
-  builtby = 'Directorate of Special Forces'
+  builtby = 'Taskforce Alpha // Milsim Community'
 
 [[menus.main]]
   name = "SAS"
@@ -23,9 +23,9 @@ theme = 'uksf-mod-theme'
   weight = 20
 
 [[menus.main]]
-  name = "Rangers"
-  url = "/rangers/"
-  weight = 25
+  name = "SRR"
+  url = "/srr/"
+  weight = 30
 
 [[menus.main]]
   name = "SFSG"
@@ -38,6 +38,16 @@ theme = 'uksf-mod-theme'
   weight = 50
 
 [[menus.main]]
-  name = "Recruitment"
+  name = "Med Det"
+  url = "/med-det/"
+  weight = 55
+
+[[menus.main]]
+  name = "HQ"
+  url = "/tfhq/"
+  weight = 58
+
+[[menus.main]]
+  name = "Join"
   url = "/recruitment/"
   weight = 60

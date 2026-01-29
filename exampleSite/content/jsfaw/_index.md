@@ -6,35 +6,25 @@ unit: "jsfaw"
 layout: "dossier"
 ---
 
-The Joint Special Forces Aviation Wing (JSFAW) provides the Directorate with dedicated, high-readiness aviation support. Integrating assets from the RAF and Army Air Corps, JSFAW is the **"Invisible Lift"** of the UKSF, delivering Tier 1 teams into non-permissive environments with zero detection.
+The Joint Special Forces Aviation Wing (JSFAW) provides Taskforce Alpha with essential air capabilities, including transport, reconnaissance, and Close Air Support (CAS).
 
-## Strategic Role & Air Superiority
+## Core Operational Domains
 
-JSFAW is specialized in extreme low-level flight, often utilizing terrain-following radar and advanced night-vision suites to operate in conditions that would ground conventional air assets.
+### Transport & Logistics
+Delivery of SF teams deep into hostile territory and rapid extraction under fire. Platforms include the Wildcat, Merlin, Chinook, and C-130 Hercules.
 
-### Core Operational Domains
+### Air Attack & CAS
+Precision suppression and offensive strikes using platforms such as the Apache or F-35 to secure extraction zones and support ground operations.
 
-* **Covert Air Insertion**: Delivering SAS/SBS teams deep behind enemy lines using high-speed, low-level flight profiles to avoid radar detection.
-* **Tactical Extraction**: Rapid recovery of teams from hostile environments under fire, utilizing specialized fast-rope and winch recovery techniques.
-* **Battlefield Intelligence**: Providing real-time theatre awareness to ground teams via advanced thermal imaging and signals interception sensors.
-* **Aviation Fire Support**: Delivering precision suppression from specialized air platforms to secure extraction zones in contested territory.
+### Intelligence & ISR
+Fixed-wing drone operators provide the unit with persistent surveillance and target acquisition using Predator and Reaper platforms.
 
-## Regimental Composition
+## Entry & Progression
 
-JSFAW consists of two primary operational squadrons, each specializing in a specific platform:
+JSFAW is the entry point for all aviation candidates. You start as **Ground Crew** while training to gain your pilot wings.
 
-* **7 Squadron (RAF)**: Utilizing the Chinook HC6, specialists in heavy-lift tactical insertion, long-range maritime recovery, and high-altitude delivery.
-* **658 Squadron (AAC)**: Utilizing the Gazelle AH1 and Wildcat, experts in rapid urban delivery and covert surveillance.
+* **Rotary Phase**: Master rotary airframes such as Pumas, Lynx, and Chinooks.
+* **Attack Phase**: Earn the rank of Sgt to transition into attack helicopters.
+* **Fixed Wing**: Commission to the RAF as a Flight Lt to operate fixed-wing assets and drones.
 
-## Entry Standards & Training
-
-<div id="intake"></div>
-
-Personnel must already be qualified as pilots or aircrew within the RAF or Army Air Corps. Candidates undergo the **JSFAW Operational Course**, widely considered one of the most dangerous aviation training programs in the military.
-
-### Training Focus
-* **Night-Vision Mastery**: Mastery of high-speed, low-level flight in absolute zero-visibility conditions.
-* **Hostile Environment Landing**: Mastery of landing in unprepared, confined, or contested zones without ground support.
-* **Electronic Warfare**: Operating aircraft within heavy adversary radar and signals jamming environments.
-
-{{< recruitment-form title="JSFAW_PILOT_REGISTER" headline="Register for JSFAW Intake" description="Register your interest for specialized special operations aviation training. Open to qualified RAF and AAC aircrew." >}}
+{{< recruitment-form title="JSFAW_PILOT_REGISTER" headline="Register for Aviation Training" description="Join as Ground Crew and work towards your wings. Urgent need for experienced pilots." >}}

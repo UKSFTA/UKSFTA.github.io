@@ -1,31 +1,30 @@
 ---
-title: 'Special Forces Communicator'
-category: 'Signals'
-role_type: 'Soldier'
-salary: '£22k - £35k'
+title: 'Special Reconnaissance Specialist'
+category: 'Intelligence'
+role_type: 'Community Operator'
 date: 2026-01-20
 ---
 
 ## Role Overview
 
-Special Forces Communicators (SFC) are the technical backbone of elite operations. You will be responsible for maintaining secure, multi-theatre communication links between command and field assets under the most extreme conditions.
+Special Reconnaissance Specialists within Taskforce Alpha are the technical backbone of our intelligence operations. You will be responsible for maintaining secure communication links and gathering SIGINT under the most extreme simulation conditions.
 
 ### Operational Capabilities
 
-- **SATCOM Mastery**: Deploying and maintaining tactical satellite infrastructure in contested environments.
-- **SIGINT**: Gathering and processing signals intelligence to support strategic reconnaissance.
-- **Encryption**: Management of high-level encryption protocols across joint task forces.
+- **Radio Mastery**: Expertise in ACRE2/TFAR radio systems and multi-frequency coordination.
+- **SIGINT**: Gathering and processing simulated signals intelligence to support mission objectives.
+- **Reconnaissance**: Deep observation and target acquisition in non-permissive zones.
 
 > "The mission fails if the link breaks. We ensure the link never breaks."
 
 | Capability | Deployment Level | Technology Tier |
 | :--- | :--- | :--- |
-| HF/VHF/UHF | Tactical | MIL-SPEC Tier 1 |
-| SATCOM | Strategic | MOD Restricted |
-| Cyber Warfare | Support | Advanced |
+| HF/VHF/UHF | Tactical | Unit Standard |
+| ISR | Strategic | TFA Restricted |
+| Cyber Effects | Support | Advanced |
 
 ### Requirements
 
-1. Successful completion of the Special Forces Communicator Course (SFCC).
-2. DV Security Clearance.
-3. Mastery of unconventional warfare survival tactics.
+1. Successful completion of the SRR selection and internal training.
+2. Direct Command approval for transfer.
+3. Mastery of stealth and low-visibility survival tactics.

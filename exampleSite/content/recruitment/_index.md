@@ -5,49 +5,45 @@ date: 2026-01-28
 layout: "page"
 ---
 
-{{< mandate id="JOIN-DSF-01" >}}
-United Kingdom Special Forces recruitment is a joint-service assessment. The Directorate operates a unified selection gateway designed to identify individuals with the mental resilience, physical endurance, and technical aptitude to operate in non-permissive environments.
-{{< /mandate >}}
+United Kingdom Special Forces recruitment is simulated through Taskforce Alpha's joint-service assessment. Our intake process ensures that every member is trained to a high standard before entering the operational rotation.
 
-## The Selection Standard
+## The Recruitment Pipeline
 
-UKSF selection is not a competition against other candidates; it is an unrelenting pursuit of personal excellence. The Directorate looks for "The Unrelenting Pursuit of Excellence" and the ability to operate independently under extreme duress.
+TFA follows a structured entry standard. Candidates move through the following gateways:
 
-### Phase 0: The Briefing Note
+1. **Application & Interview**: Initial screening via our secure Discord to ensure maturity and technical readiness.
+2. **Phase 1: Basic Training (1 Week)**: Mastery of Basic CQB, Section Tactics, Radio Protocols, and the core unit modpack.
+3. **Phase 2: Progression Training (2-4 Weeks)**: Advanced skills development within SFSG, including specialized weaponry and medical training.
+4. **Operational Probation**: Candidates must complete **2 full weeks of operations** within SFSG before they are eligible to apply for advanced specialization.
 
-Once an initial interest packet is accepted and verified against MOD databases, candidates receive a **Briefing Note**. This document provides the specific coordinates, dates, and equipment requirements for the initial assessment week. This phase is conducted under strict confidentiality.
+## The Entry Standard
 
-### Phase 1: Aptitude (The Hills)
+TFA entry is not a competition; it is a validation of your ability to operate as part of a high-fidelity milsim team.
 
-Conducted in the Brecon Beacons, this 4-week phase is designed to test a candidate's endurance and navigation skills.
+### Primary Entry Points
 
-- **The Fan Dance**: A 24km timed march over Pen y Fan with a 25kg load.
-- **Endurance (The Long Drag)**: A final 64km (40-mile) march over the highest peaks of the Beacons, to be completed in under 20 hours.
+- **SFSG Support**: The required starting point for all ground-based operators. Master the fundamentals of Special Forces support.
+- **JSFAW Ground Crew**: The starting point for all aviation candidates. Prove your competence on the ground before moving to rotary flight training.
 
-### Phase 2: Tactical & Jungle
+## Advanced Specialization
 
-Successful candidates move to 14 weeks of intensive tactical training.
+Upon successful completion of the probationary period, members may attempt selection for:
 
-- **Advanced Weaponry**: Mastery of foreign and domestic weapon systems.
-- **Combat Medicine**: Specialized training in prolonged field care.
-- **Jungle Phase**: Conducted in Brunei or Belize, testing the ability to live and fight in the world's most demanding tropical environments.
+- **22nd SAS**: Focused on Direct Action and high-stakes CT.
+- **SBS**: Focused on Maritime Counter-Terrorism and Diving.
+- **SRR**: Focused on Covert Surveillance and Intelligence.
+- **Medical Detachment**: Dedicated field surgery and casualty evacuation.
 
-<div class="my-32">
-    {{< recruitment-form title="DIRECTORATE_SELECTION_GATEWAY" headline="Initiate Selection Protocol" description="Submit your credentials for the next UKSF Selection cycle. All submissions are monitored and verified." >}}
-</div>
+## Minimum Requirements
 
-## Minimum Entry Requirements
+- **Availability**: Commitment to our Primary Operations on **Wednesdays at 19:00 GMT**.
+- **Maturity**: Minimum age of 18 (exceptions after interview).
+- **Communication**: Functional microphone and clear English communication skills.
 
-Before submitting an interest packet, personnel must confirm they meet the following baseline criteria:
+### Unofficial Status Disclosure
 
-- **Service History**: Minimum 2 years regular service in the British Army, Royal Navy, or Royal Air Force.
-- **Medical Category**: Full Medical Category A (Elite). Candidates with persistent injuries or psychological markers will be automatically filtered.
-- **Vetting Status**: Applicants must be eligible for **Developed Vetting (DV)**. This involves a comprehensive review of personal, financial, and family history.
-
-### Special Forces Support Group (SFSG) Pathway
-
-For elite infantry personnel from the Parachute Regiment, Royal Marines, and RAF Regiment, the SFSG provides a high-readiness foundation. While SFSG does not utilize the 6-month Tier 1 selection, it is the primary entry point for candidates aiming for eventual SAS/SBS progression.
+Taskforce Alpha is an unofficial milsim community. We are not affiliated with the UK Ministry of Defence.
 
 {{< mandate id="RECRUIT-SECURITY" >}}
-Specific selection coordinates and briefing dates will only be provided via secure MOD channels. Unauthorized disclosure of selection materials is a breach of the Official Secrets Act.
+Selection coordinates and modpack credentials provided only after successful interview.
 {{< /mandate >}}

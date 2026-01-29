@@ -6,41 +6,22 @@ unit: "sas"
 layout: "dossier"
 ---
 
-The Special Air Service (SAS) remains the model for elite special operations forces globally. Established during the Western Desert Campaign of WWII, the regiment has evolved into a multi-domain force capable of projecting British strategic interests in any environment—land, air, or sea.
+The 22nd Special Air Service (SAS) Regiment within Taskforce Alpha is a highly specialized unit focused on counter-terrorism, hostage rescue, and direct action missions. We model the regular component of the UK's Special Forces with high-standard milsim gameplay.
 
 ## Core Operational Domains
 
 ### Counter-Terrorism (CT)
-
-22 SAS maintains the permanent **National Readiness** unit for domestic and international counter-terrorism. This includes advanced hostage rescue, aircraft/maritime intervention, and counter-insurgency operations. Operators are trained to neutralize threats with surgical precision under extreme time pressure.
-
-### Strategic Reconnaissance (SR)
-
-Gathering strategic and tactical intelligence deep behind enemy lines is a core regimental competency. Utilizing advanced human and technical surveillance assets, SAS teams provide the Directorate with high-fidelity theatre awareness long before overt military presence is initiated.
+TFA SAS maintains readiness for domestic and international counter-terrorism simulation. This includes advanced hostage rescue and high-stakes intervention.
 
 ### Direct Action (DA)
+The conduct of high-precision strikes, raids, and ambushes. These missions are characterized by rapid insertion, decisive kinetic effect, and professional execution.
 
-The conduct of high-precision strikes, technical sabotage, and offensive operations against High-Value Targets (HVTs) or critical infrastructure. These missions are characterized by rapid insertion, decisive kinetic effect, and covert extraction.
+## Entry & Progression
 
-## Regimental Structure
+SAS is an advanced specialization within Taskforce Alpha. All operators must first complete their Phase 1 intro period within SFSG.
 
-The regiment is organized into four operational squadrons (A, B, D, and G), each maintaining a specific insertion and environmental specialization:
+* **Selection**: Requires a proven record of maturity and tactical proficiency during community operations.
+* **Probation**: Newly selected SAS members must complete **2 weeks of probationary operations** before being fully badged.
+* **Training**: Intensive focus on CQB, advanced weaponry, and small-unit tactics.
 
-* **Air Troop**: Specialists in high-altitude parachute insertion (HAHO/HALO).
-* **Boat Troop**: Experts in maritime insertion, tactical diving, and littoral combat.
-* **Mobility Troop**: Specialists in long-range patrolling and vehicle-mounted operations in desert, arctic, and urban environments.
-* **Mountain Troop**: Masters of vertical insertion, high-altitude combat, and extreme cold-weather survival.
-
-## Selection & Training
-
-<div id="selection"></div>
-
-Selection for 22 SAS is widely regarded as the most demanding military assessment in the world. It is designed to find individuals who possess **"The Unrelenting Pursuit of Excellence"** and the cognitive speed to operate independently under extreme psychological and physical duress.
-
-### The Selection Phases
-* **Aptitude Phase (The Hills)**: A 4-week assessment in the Brecon Beacons testing endurance, navigation, and mental resilience under heavy load.
-* **Tactical Phase**: 14 weeks of intensive training in advanced weapon systems, demolition, and tactical medicine.
-* **Jungle Phase**: Combat operations and survival in hostile tropical environments (Brunei/Belize).
-* **Combat Survival (SERE)**: Advanced Survival, Evasion, Resistance, and Extraction assessment.
-
-{{< recruitment-form title="SAS_SELECTION_NODE" headline="Register for SAS Selection" description="Submit your interest packet for the 22 SAS Selection Course. Applicants must meet Directorate physical and mental benchmarks." >}}
+{{< recruitment-form title="SAS_RECRUITMENT_NODE" headline="Apply for SAS Selection" description="Internal transfer only. Proof of excellence in SFSG required for all candidates." >}}

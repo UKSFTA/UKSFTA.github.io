@@ -6,49 +6,22 @@ unit: "sbs"
 layout: "dossier"
 ---
 
-The Special Boat Service (SBS) is the UK's specialist in the littoral and maritime domains. Based at RM Poole, the regiment is primarily composed of Royal Marines but remains a tri-service asset. The SBS projects UK special operations capability from the sea to the shore, mastering the "Transition Zone" where deep water meets contested coastlines.
+The Special Boat Service (SBS) within Taskforce Alpha is our maritime special forces component, primarily focused on counter-terrorism and amphibious warfare. We operate as the sister unit to the SAS, providing specialized capabilities at sea and on the shore.
 
 ## Core Operational Domains
 
 ### Maritime Counter-Terrorism (MCT)
+The SBS maintains readiness for threats to maritime infrastructure, commercial shipping, and naval assets. We specialize in boarding operations and offshore facility recovery.
 
-The SBS maintains the permanent high-readiness response for threats to oil platforms, commercial shipping, and naval assets. They are the world's primary force for **Ship-in-Ship** intervention and offshore facility recovery.
+### Amphibious Warfare
+We are trained in all aspects of amphibious operations, including reconnaissance, raiding, and direct action.
 
-### Amphibious Reconnaissance
+## Entry & Progression
 
-Gathering critical intelligence on coastal defenses, beachheads, and port infrastructure prior to larger-scale military operations. This involves covert sub-surface insertion and persistent monitoring of strategic maritime lanes.
+SBS is an advanced specialization within Taskforce Alpha. Members typically spend an introductory period in SFSG before specializing.
 
-## Specialized Asset Registry
+* **Specialization**: Mastery of sub-surface insertion, Maritime Counter-Terrorism (MCT), and boat handling protocols.
+* **Selection**: Candidates must demonstrate water confidence and diving proficiency within our simulation environment.
+* **Collaboration**: Often operates alongside SAS elements during large-scale joint operations.
 
-{{< capability-spec name="High-Speed Infiltration Craft" id="MCT-V-01" >}}
-    <div class="spec-item"><span>Platform</span><span>Special Forces Support Craft (Medium)</span></div>
-    <div class="spec-item"><span>Max_Velocity</span><span>45+ Knots</span></div>
-    <div class="spec-item"><span>Payload</span><span>8 Operators + Technical Gear</span></div>
-    <div class="spec-item"><span>Sensor_Suite</span><span>Thermal_FLIR / Encrypted_Comms</span></div>
-{{< /capability-spec >}}
-
-{{< capability-spec name="Sub-Surface Delivery Vehicle" id="RECON-S-04" >}}
-    <div class="spec-item"><span>Platform</span><span>Dry Combat Submersible (DCS)</span></div>
-    <div class="spec-item"><span>Depth_Rating</span><span>Classified Level 4</span></div>
-    <div class="spec-item"><span>Range</span><span>Extended Littoral Radius</span></div>
-    <div class="spec-item"><span>Signature</span><span>Ultra-Low Acoustic Footprint</span></div>
-{{< /capability-spec >}}
-
-## Regimental Specialization
-
-The SBS is organized into four specialized squadrons, each maintaining a specific technical and environmental focus:
-
-- **C Squadron**: Specialists in sub-surface insertion, canoeing, and tactical diving.
-- **Z Squadron**: Experts in high-speed surface craft, maritime mobility, and aerial insertion.
-- **M Squadron**: The primary squadron for maritime counter-terrorism and complex ship intervention.
-- **X Squadron**: Focused on technical intelligence gathering and experimental maritime insertion platforms.
-
-## The Selection Standard
-
-<div id="selection"></div>
-
-The SBS selection process mirrors the SAS Aptitude phase but requires an additional, highly specialized **Maritime Phase** at RM Poole.
-
-> "By Strength and Guile" — SBS Regimental Motto
-
-{{< recruitment-form title="SBS_SELECTION_NODE" headline="Register for SBS Selection" description="Submit your interest packet for the Special Boat Service Selection Course. Includes the Specialized Maritime Phase." >}}
+{{< recruitment-form title="SBS_RECRUITMENT_NODE" headline="Apply for SBS Selection" description="Internal transfer only. Maritime aptitude and SFSG tenure required." >}}

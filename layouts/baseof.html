@@ -14,25 +14,25 @@
   <!-- SYSTEM HEADERS // JSFC INTERNAL -->
   <meta name="x-registry-gate" content="L3JlZ2lzdHJ5L2dhdGU=">
   <meta name="x-auth-protocol" content="BASE64">
-  <meta name="x-node-id" content="JSFC-01-PRIMARY">
+  <meta name="x-node-id" content="TFA-01-MILSIM">
   
   {{ partial "head/skin.html" . }}
 </head>
 {{ $unit := .Params.unit | default .Section | default "sas" }}
 <body class="unit-{{ lower $unit }}">
   
-  <!-- Tier 1: HMG Superior Rule -->
+  <!-- Tier 1: Community Superior Rule -->
   <div class="fixed top-0 left-0 w-full z-[3000] bg-black border-b border-white/5 py-3">
     <div class="container-uksf flex justify-between items-center">
       <div class="flex items-center space-x-4">
-        {{ $mod_logo := resources.Get "icons/MOD.png" }}
-        {{ if $mod_logo }}
-        <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-5 opacity-60 grayscale brightness-200">
+        {{ $tfa_logo := resources.Get "icons/TFA.png" }}
+        {{ if $tfa_logo }}
+        <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-5 opacity-80 grayscale brightness-200">
         {{ end }}
-        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.5em] border-l border-white/10 pl-4">HMG // Ministry of Defence</span>
+        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.5em] border-l border-white/10 pl-4">Taskforce Alpha // Milsim Community</span>
       </div>
       <div class="flex items-center space-x-6 text-[8px] font-mono text-gray-600 uppercase tracking-widest">
-        <span>Classification: RESTRICTED</span>
+        <span>Status: UNOFFICIAL</span>
         <span class="text-[var(--primary)] font-black">Node: JSFC 01</span>
       </div>
     </div>
@@ -43,13 +43,12 @@
     <div class="container-uksf flex justify-between items-center h-full">
       <div class="flex items-center space-x-10">
         <a href="/" class="no-underline group flex items-center space-x-6">
-          {{ $uksf_icon := resources.Get "icons/UKSF.png" }}
-          {{ if $uksf_icon }}
-          <img src="{{ $uksf_icon.RelPermalink }}" alt="UKSF" class="h-12 w-auto grayscale brightness-200 opacity-80 group-hover:opacity-100 transition-all">
+          {{ if $tfa_logo }}
+          <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-12 w-auto grayscale brightness-200 opacity-80 group-hover:opacity-100 transition-all">
           {{ end }}
           <div class="flex flex-col">
-            <span class="text-white font-black text-2xl tracking-tighter leading-none">UKSF</span>
-            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em] mt-1">Special Forces Directorate</span>
+            <span class="text-white font-black text-2xl tracking-tighter leading-none">TFA</span>
+            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em] mt-1">UKSF Milsim Group</span>
           </div>
         </a>
       </div>
@@ -82,33 +81,33 @@
         
         <div class="md:col-span-5 space-y-8">
           <div class="flex items-center space-x-6">
-            {{ if $mod_logo }}
-            <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-14 opacity-40 grayscale brightness-200">
+            {{ if $tfa_logo }}
+            <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-14 opacity-60 grayscale brightness-200">
             {{ end }}
             <div class="flex flex-col">
-                <h2 class="text-3xl m-0 tracking-tighter font-black uppercase">Directorate of <br>Special Forces</h2>
-                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mt-2">Ministry of Defence // HMG</span>
+                <h2 class="text-3xl m-0 tracking-tighter font-black uppercase">Taskforce Alpha <br>Joint Operations</h2>
+                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mt-2">Milsim Community // Unofficial</span>
             </div>
           </div>
-          <p class="max-w-md text-gray-500 text-[11px] font-normal leading-relaxed uppercase tracking-wider">The Directorate provides the United Kingdom with a world-class special operations capability. Operational data is restricted under the Official Secrets Act 1989.</p>
+          <p class="max-w-md text-gray-500 text-[11px] font-normal leading-relaxed uppercase tracking-wider">TFA is an unofficial Arma 3 Milsim group. We are not affiliated with, endorsed by, or part of the UK Ministry of Defence or HM Armed Forces.</p>
         </div>
         
         <div class="md:col-span-2 space-y-6">
           <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Operations</span>
           <ul class="space-y-3 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600">
-            <li><a href="/sas/" class="hover:text-white transition-colors no-underline">SAS Domain</a></li>
+            <li><a href="/recruitment/" class="hover:text-white transition-colors no-underline">Join the Unit</a></li>
+            <li><a href="/sas/" class="hover:text-white transition-colors no-underline">22nd SAS Domain</a></li>
             <li><a href="/sbs/" class="hover:text-white transition-colors no-underline">Boat Service</a></li>
-            <li><a href="/rangers/" class="hover:text-white transition-colors no-underline">Army Rangers</a></li>
-            <li><a href="/stories/" class="hover:text-white transition-colors no-underline">System Logs</a></li>
+            <li><a href="/stories/" class="hover:text-white transition-colors no-underline">Operation Logs</a></li>
           </ul>
         </div>
 
         <div class="md:col-span-2 space-y-6">
-          <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Governance</span>
+          <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Community</span>
           <ul class="space-y-3 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600">
-            <li><a href="#" class="hover:text-white transition-colors no-underline">Freedom of Info</a></li>
-            <li><a href="#" class="hover:text-white transition-colors no-underline">Transparency</a></li>
-            <li><a href="#" class="hover:text-white transition-colors no-underline">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white transition-colors no-underline">Unit Discord</a></li>
+            <li><a href="#" class="hover:text-white transition-colors no-underline">Modpack Hub</a></li>
+            <li><a href="#" class="hover:text-white transition-colors no-underline">Server Status</a></li>
           </ul>
         </div>
 
@@ -117,15 +116,15 @@
           <div class="flex flex-col items-end space-y-4">
               <div class="flex items-center space-x-3 bg-green-500/5 border border-green-500/20 px-4 py-2">
                   <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  <span class="text-[9px] font-black text-green-500 tracking-widest uppercase">Registry Live</span>
+                  <span class="text-[9px] font-black text-green-500 tracking-widest uppercase">Server Live</span>
               </div>
-              <span class="text-[8px] font-mono text-gray-800 uppercase">Archive Signature: {{ upper (substr (sha256 .Title) 0 8) }}</span>
+              <span class="text-[8px] font-mono text-gray-800 uppercase">Primary Op: Wed 19:00 GMT</span>
           </div>
         </div>
       </div>
       
       <div class="pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
-        <span class="text-[8px] font-mono text-gray-700 tracking-[0.6em] uppercase font-bold">© Crown Copyright 2026 // Ministry of Defence</span>
+        <span class="text-[8px] font-mono text-gray-700 tracking-[0.6em] uppercase font-bold">© 2026 Taskforce Alpha // Milsim Community</span>
         <div class="w-24 h-px bg-[var(--primary)] opacity-20"></div>
       </div>
     </div>
