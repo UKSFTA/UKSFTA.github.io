@@ -3,36 +3,65 @@
     <div class="absolute inset-0 bg-grid-white opacity-10"></div>
     
     <div class="container-uksf relative z-10 max-w-md w-full">
-        <div class="bracket-box bg-black/80 backdrop-blur-3xl border-white/10 p-12">
+        <div class="bracket-box bg-black/80 backdrop-blur-3xl border-white/10 p-12 shadow-2xl">
             <div class="text-center mb-12 space-y-4">
-                <img src="/icons/MOD.png" class="h-16 mx-auto grayscale brightness-200 opacity-40">
-                <h2 class="text-3xl font-black tracking-tighter">UKSF_Terminal</h2>
-                <span class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-[0.4em]">Biometric_Auth_Required</span>
+                {{ $mod_logo := resources.Get "icons/MOD.png" }}
+                {{ if $mod_logo }}
+                <img src="{{ $mod_logo.RelPermalink }}" class="h-16 mx-auto grayscale brightness-200 opacity-40">
+                {{ end }}
+                <h2 class="text-3xl font-black tracking-tighter uppercase">UKSF_Terminal</h2>
+                <span id="terminal-status" class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-[0.4em]">Biometric_Auth_Required</span>
             </div>
 
-            <form class="space-y-8">
+            <form id="login-form" class="space-y-8">
                 <div class="space-y-4">
                     <div class="flex flex-col space-y-2">
-                        <label class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Operator_ID</label>
-                        <input type="text" class="bg-white/5 border border-white/10 p-4 text-xs font-mono text-white focus:border-[var(--primary)] outline-none transition-all">
+                        <label class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-bold">Operator_ID</label>
+                        <input type="text" id="operator-id" placeholder="DSF-ALPHA-01" class="bg-white/5 border border-white/10 p-4 text-xs font-mono text-white focus:border-[var(--primary)] outline-none transition-all placeholder:opacity-20 uppercase">
                     </div>
                     <div class="flex flex-col space-y-2">
-                        <label class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Access_Key</label>
-                        <input type="password" class="bg-white/5 border border-white/10 p-4 text-xs font-mono text-white focus:border-[var(--primary)] outline-none transition-all">
+                        <label class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-bold">Access_Key</label>
+                        <input type="password" id="access-key" class="bg-white/5 border border-white/10 p-4 text-xs font-mono text-white focus:border-[var(--primary)] outline-none transition-all">
                     </div>
                 </div>
 
-                <button type="button" class="w-full btn-elite bg-[var(--primary)] text-white hover:bg-white hover:text-black">
+                <button type="submit" id="auth-btn" class="w-full btn-elite bg-[var(--primary)] text-white hover:bg-white hover:text-black">
                     Initiate Handshake
                 </button>
             </form>
 
             <div class="mt-12 pt-8 border-t border-white/5 text-center">
                 <p class="text-[7px] font-mono text-gray-700 uppercase tracking-widest leading-loose">
-                    WARNING: Unauthorized access to this node is a breach of the Official Secrets Act. Your IP has been logged by Joint Command.
+                    WARNING: Unauthorized access to this node is a breach of the Official Secrets Act. IP: 192.168.1.99 LOGGED.
                 </p>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const id = document.getElementById('operator-id').value.toUpperCase();
+    const btn = document.getElementById('auth-btn');
+    const status = document.getElementById('terminal-status');
+
+    btn.innerText = "AUTHENTICATING...";
+    btn.disabled = true;
+
+    // Simulated network delay for "Operational Depth"
+    setTimeout(() => {
+        if (id === "DSF-ALPHA-01") {
+            status.innerText = "ACCESS_GRANTED // REDIRECTING";
+            status.style.color = "#22c55e";
+            window.location.href = "/archive/covert";
+        } else {
+            status.innerText = "ACCESS_DENIED // INVALID_ID";
+            status.style.color = "#ef4444";
+            btn.innerText = "Initiate Handshake";
+            btn.disabled = false;
+        }
+    }, 1500);
+});
+</script>
 {{ end }}

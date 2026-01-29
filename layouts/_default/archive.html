@@ -1,0 +1,62 @@
+{{ define "main" }}
+{{ partial "hero.html" . }}
+
+<article class="container-uksf py-20 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+        
+        <div class="lg:col-span-8 space-y-12">
+            <div class="prose prose-invert prose-2xl max-w-none font-light text-gray-400">
+                {{ .Content }}
+            </div>
+            
+            <!-- Hidden Unit Matrix -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-20">
+                {{ range $id, $unit := .Site.Data.units }}
+                {{ if $unit.hidden }}
+                <div class="bracket-box border-[var(--primary)]/20 bg-[var(--primary)]/5">
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-start">
+                            <span class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">Covert_Asset</span>
+                            <span class="text-[8px] font-mono text-gray-600">ID: {{ $unit.id }}</span>
+                        </div>
+                        <h3 class="text-4xl m-0">{{ $unit.name }}</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed font-light">{{ $unit.specialization }}</p>
+                        <div class="pt-4 border-t border-white/5 flex justify-between items-center text-[8px] font-mono text-gray-600">
+                            <span>Founded: {{ $unit.founded }}</span>
+                            <span class="text-[var(--primary)] animate-pulse font-black">ACTIVE_NODE</span>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+
+        <aside class="lg:col-span-4">
+            <div class="bracket-box bg-black/40 backdrop-blur-xl border-white/5 sticky top-[120px]">
+                <div class="space-y-10">
+                    <div>
+                        <h4 class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] mb-6 font-bold">Session_Protocol</h4>
+                        <div class="flex items-center space-x-4 bg-green-500/10 border border-green-500/20 px-6 py-4">
+                            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+                            <span class="text-[10px] font-black text-green-500 tracking-widest uppercase">Encrypted_Link_01</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 border-t border-white/5 pt-10">
+                        <div class="flex flex-col">
+                            <span class="text-[8px] font-mono text-gray-600 uppercase">Session_Key</span>
+                            <span class="text-xs font-bold text-white font-mono uppercase tracking-widest">{{ upper (substr (sha256 .Title) 0 16) }}</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[8px] font-mono text-gray-600 uppercase">Archive_Root</span>
+                            <span class="text-xs font-bold text-white font-mono uppercase tracking-widest">DSF_RESTRICTED_NODE_01</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</article>
+{{ end }}
