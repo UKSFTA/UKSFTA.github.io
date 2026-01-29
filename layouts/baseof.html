@@ -15,21 +15,33 @@
 {{ $unit := .Params.unit | default .Section | default "sas" }}
 <body class="unit-{{ lower $unit }}">
   
-  <!-- Institutional Spacing: Superior Rule -->
+  <!-- SUPERIOR RULE: OFFICIAL HMG / MOD INTERFACE -->
   <header class="nav-header">
-    <div class="container-uksf flex justify-between items-center">
-      <div class="flex items-center space-x-10">
-        <a href="/" class="no-underline group flex items-center space-x-4">
-          <img src="/mod-logo.svg" alt="MOD" class="h-6 grayscale brightness-200 opacity-40 group-hover:opacity-100 transition-all">
-          <span class="text-white font-black text-xl tracking-tighter">UKSF</span>
+    <div class="container-uksf flex justify-between items-center h-full">
+      
+      <!-- Primary Brand Identity -->
+      <div class="flex items-center space-x-12">
+        <a href="/" class="no-underline group flex items-center space-x-6">
+          {{ $mod_logo := resources.Get "icons/MOD.png" }}
+          {{ if $mod_logo }}
+          <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-14 w-auto grayscale brightness-200 opacity-60 group-hover:opacity-100 transition-all">
+          {{ end }}
+          <div class="flex flex-col border-l border-white/10 pl-6">
+            <span class="text-white font-black text-2xl tracking-tighter leading-none">UKSF</span>
+            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.4em] mt-1">Joint Command</span>
+          </div>
         </a>
-        <div class="hidden lg:flex items-center space-x-2 border-l border-white/10 pl-10 h-10">
-          <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest leading-none">Security:</span>
-          <span class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-widest font-black leading-none">RESTRICTED_ACCESS</span>
+        
+        <div class="hidden lg:flex items-center space-x-4 border-l border-white/10 pl-10">
+          <div class="flex flex-col">
+            <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Security_Tier</span>
+            <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">RESTRICTED_ACCESS</span>
+          </div>
         </div>
       </div>
       
-      <nav class="hidden md:flex items-center space-x-12">
+      <!-- Primary Operational Navigation -->
+      <nav class="hidden md:flex items-center space-x-10">
         {{ range site.Menus.main }}
         <a href="{{ .URL }}" class="nav-link {{ if eq $.RelPermalink .URL }}active{{ end }}">
           {{ .Name }}
@@ -37,12 +49,17 @@
         {{ end }}
       </nav>
 
-      <div class="hidden sm:flex items-center space-x-6 border-l border-white/10 pl-10">
+      <!-- System Telemetry -->
+      <div class="hidden sm:flex items-center space-x-8 border-l border-white/10 pl-10">
         <div class="flex flex-col items-end">
-          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Zulu_Time</span>
-          <span class="text-[10px] font-mono text-white font-black" id="clock">00:00:00</span>
+          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">System_Zulu</span>
+          <span class="text-[11px] font-mono text-white font-black" id="clock">00:00:00</span>
+        </div>
+        <div class="w-10 h-10 border border-white/10 flex items-center justify-center bg-white/5">
+            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
         </div>
       </div>
+
     </div>
   </header>
 
@@ -62,7 +79,7 @@
           <ul class="space-y-4 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600">
             <li><a href="/sas/" class="hover:text-white transition-colors no-underline">22 SAS Regiment</a></li>
             <li><a href="/sbs/" class="hover:text-white transition-colors no-underline">Special Boat Service</a></li>
-            <li><a href="/srr/" class="hover:text-white transition-colors no-underline">Special Recon Regiment</a></li>
+            <li><a href="/rangers/" class="hover:text-white transition-colors no-underline">Army Rangers</a></li>
           </ul>
         </div>
         <div class="space-y-8">
@@ -87,7 +104,7 @@
       const h = String(now.getUTCHours()).padStart(2, '0');
       const m = String(now.getUTCMinutes()).padStart(2, '0');
       const s = String(now.getUTCSeconds()).padStart(2, '0');
-      document.getElementById('clock').innerText = `${h}:${m}:${s} ZULU`;
+      document.getElementById('clock').innerText = `${h}:${m}:${s}`;
     }
     setInterval(updateClock, 1000);
     updateClock();

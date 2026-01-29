@@ -24,7 +24,7 @@
     "theatres": "Complex Contested Environments",
     "motto": "Ready for Anything",
     "color": "#4d5d53",
-    "icon": "icons/SAS.png"
+    "icon": "icons/RANGERS.png"
   },
   "sfsg": {
     "id": "SFSG_SUPPORT",
@@ -62,6 +62,6 @@
     "theatres": "Cyber / Signals Intelligence",
     "motto": "Swift and Sure",
     "color": "#000080",
-    "icon": "icons/UKSF.png"
+    "icon": "icons/SIGNALS.png"
   }
 }
