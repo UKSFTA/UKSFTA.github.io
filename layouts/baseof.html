@@ -15,7 +15,7 @@
 {{ $unit := .Params.unit | default .Section | default "sas" }}
 <body class="unit-{{ lower $unit }}">
   
-  <!-- Tier 1: HMG Superior Rule (Mandatory Institutional Bar) -->
+  <!-- Tier 1: HMG Superior Rule -->
   <div class="fixed top-0 left-0 w-full z-[3000] bg-black border-b border-white/5 py-3">
     <div class="container-uksf flex justify-between items-center">
       <div class="flex items-center space-x-4">
@@ -23,8 +23,8 @@
         <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.5em] border-l border-white/10 pl-4">HMG // Ministry of Defence</span>
       </div>
       <div class="flex items-center space-x-6 text-[8px] font-mono text-gray-600 uppercase tracking-widest">
-        <span>Classification: {{ .Site.Data.labels.site.classification }}</span>
-        <span class="text-[var(--primary)] font-black">Node: JSFC_01</span>
+        <span>Classification: RESTRICTED</span>
+        <span class="text-[var(--primary)] font-black">Node: JSFC 01</span>
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@
 
       <div class="hidden sm:flex items-center space-x-6">
         <div class="flex flex-col items-end">
-          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Zulu_Sync</span>
+          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">System Sync</span>
           <span class="text-[10px] font-mono text-white font-black" id="clock">00:00:00</span>
         </div>
       </div>
@@ -66,33 +66,39 @@
     {{ block "main" . }}{{ end }}
   </main>
 
-  <footer class="py-32 bg-black border-t border-white/5 relative overflow-hidden">
+  <!-- COMPACTED FOOTER -->
+  <footer class="py-16 bg-black border-t border-white/5 relative overflow-hidden">
     <div class="container-uksf relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-24 mb-24">
-        <div class="col-span-2 space-y-10">
-          <h2 class="text-5xl">United Kingdom <br>Special Forces</h2>
-          <p class="max-w-md text-gray-500 text-sm font-light leading-relaxed">Official gateway for the Directorate of Special Forces (DSF). Operational intelligence is restricted and governed by the Official Secrets Act. All transmissions are subject to monitoring.</p>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+        <div class="md:col-span-6 space-y-6">
+          <h2 class="text-3xl m-0">United Kingdom Special Forces</h2>
+          <p class="max-w-md text-gray-500 text-xs font-light leading-relaxed">Official gateway for the Directorate of Special Forces. Operational intelligence is governed by the Official Secrets Act. All transmissions subject to monitoring.</p>
         </div>
-        <div class="space-y-8">
-          <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Operational Commands</span>
-          <ul class="space-y-4 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600">
-            <li><a href="/sas/" class="hover:text-white transition-colors no-underline">22 SAS Regiment</a></li>
-            <li><a href="/sbs/" class="hover:text-white transition-colors no-underline">Special Boat Service</a></li>
+        
+        <div class="md:col-span-3 space-y-4">
+          <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Operational</span>
+          <ul class="space-y-2 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600">
+            <li><a href="/sas/" class="hover:text-white transition-colors no-underline">SAS Regiment</a></li>
+            <li><a href="/sbs/" class="hover:text-white transition-colors no-underline">Boat Service</a></li>
             <li><a href="/rangers/" class="hover:text-white transition-colors no-underline">Army Rangers</a></li>
           </ul>
         </div>
-        <div class="space-y-8">
-          <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Institutional Legal</span>
-          <ul class="space-y-4 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600">
+
+        <div class="md:col-span-3 space-y-4">
+          <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Legal</span>
+          <ul class="space-y-2 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600">
             <li>Crown Copyright 2026</li>
-            <li>Freedom of Information</li>
             <li>Official Secrets Act</li>
           </ul>
         </div>
       </div>
-      <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-        <span class="text-[8px] font-mono text-gray-700 tracking-[0.6em] uppercase font-bold">End of Transmission // Directorate_SF</span>
-        <div class="w-16 h-px bg-[var(--primary)] opacity-40"></div>
+      
+      <div class="pt-10 mt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        <span class="text-[8px] font-mono text-gray-700 tracking-[0.6em] uppercase font-bold">End of Transmission // JSFC 01</span>
+        <div class="flex items-center space-x-4">
+            <span class="text-[8px] font-mono text-gray-800 uppercase">Archive Node: {{ upper (substr (sha256 .Title) 0 8) }}</span>
+            <div class="w-12 h-px bg-[var(--primary)] opacity-30"></div>
+        </div>
       </div>
     </div>
   </footer>

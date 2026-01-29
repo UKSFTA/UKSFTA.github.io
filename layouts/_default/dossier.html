@@ -20,27 +20,27 @@
 
                     <div class="space-y-6">
                         <div class="flex flex-col">
-                            <label class="mb-1 text-[8px]">Registry_Status</label>
+                            <label class="mb-1 text-[8px]">Current Status</label>
                             <div class="flex items-center space-x-3 bg-white/5 px-3 py-2 border border-white/10">
-                                <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                                <span class="text-[10px] font-black text-white uppercase tracking-widest">Active_Operational</span>
+                                <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                <span class="text-[10px] font-black text-white uppercase tracking-widest">Active Operational</span>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
                             <div class="flex flex-col">
                                 <label class="mb-0.5 text-[8px]">Founded</label>
-                                <span class="text-xs font-bold text-white">{{ $unit.founded }}</span>
+                                <span class="text-xs font-bold text-white">{{ .Site.Data.units.sas.founded }}</span>
                             </div>
                             <div class="flex flex-col">
-                                <label class="mb-0.5 text-[8px]">Tier_Rank</label>
+                                <label class="mb-0.5 text-[8px]">Tier Rank</label>
                                 <span class="text-xs font-bold text-white uppercase">{{ if or (eq $id "sas") (eq $id "sbs") (eq $id "srr") }}Tier 1{{ else }}Tier 2{{ end }}</span>
                             </div>
                         </div>
 
                         <div class="flex flex-col border-t border-white/5 pt-6">
-                            <label class="mb-1 text-[8px]">Command_Authority</label>
-                            <span class="text-[10px] font-bold text-gray-400 leading-snug uppercase tracking-wider">DSF // Ministry of Defence</span>
+                            <label class="mb-1 text-[8px]">Command Authority</label>
+                            <span class="text-[10px] font-bold text-gray-400 leading-snug uppercase tracking-wider">Directorate Special Forces</span>
                         </div>
                     </div>
 
