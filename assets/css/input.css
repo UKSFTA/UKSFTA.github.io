@@ -60,7 +60,7 @@
 
   label, .sub-header {
     font-family: var(--font-mono);
-    @apply text-[10px] font-bold uppercase tracking-[0.5em] text-gray-500;
+    @apply text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500;
   }
 }
 
