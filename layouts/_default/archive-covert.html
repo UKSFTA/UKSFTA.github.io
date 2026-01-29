@@ -1,4 +1,11 @@
 {{ define "main" }}
+<script>
+    // Priority Authorization Check
+    if (localStorage.getItem('uksf_auth') !== 'authorized') {
+        window.location.href = '/';
+    }
+</script>
+
 {{ $units := .Site.Data.units }}
 
 <div class="snap-y snap-mandatory h-screen overflow-y-auto">
