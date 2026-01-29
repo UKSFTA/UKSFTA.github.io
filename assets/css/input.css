@@ -10,9 +10,9 @@
   --color-uksf-green: #153e35;
   --color-uksf-red: #800000;
 
-  --font-industrial: "Bebas Neue", "Impact", sans-serif;
-  --font-tactical: "JetBrains Mono", monospace;
-  --font-body: "Inter", "Arial", sans-serif;
+  --font-industrial: "Industrial Gothic Pro Single Line", "Bebas Neue", "Impact", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  --font-body: "Inter", "system-ui", "Arial", sans-serif;
 
   --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
@@ -33,18 +33,27 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: var(--header-height);
+    @apply font-light; /* Elite document weight */
   }
 
   h1, h2, h3, h4 {
-    font-family: "Industrial Gothic Pro Single Line", var(--font-industrial);
+    font-family: var(--font-industrial);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: -0.02em;
     color: white;
-    line-height: 1.1;
+    line-height: 0.9;
+    @apply font-black;
+  }
+
+  /* Technical Labels - The "Operational" Font */
+  label, .sub-header, .text-mono-technical {
+    font-family: var(--font-mono);
+    @apply text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500;
   }
 }
 
 @layer components {
+  /* THE GLOBAL CONTAINER */
   .container-uksf {
     width: 100%;
     max-width: 1200px;
@@ -54,52 +63,52 @@
     padding-right: 1.5rem;
   }
 
-  /* 3-Track Tactical Grid (Blueprint) */
-  .mission-grid {
-    display: grid;
-    grid-template-columns: 1fr 2.5fr 1fr; /* Fixed Tracks to prevent overlap */
-    gap: 4rem;
-    align-items: start;
+  /* Navigation Refinement */
+  .nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(16px);
+    height: var(--header-height);
   }
 
-  @media (max-width: 1024px) {
-    .mission-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
+  .nav-link {
+    font-family: var(--font-mono);
+    @apply text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 transition-all no-underline;
   }
+  .nav-link:hover, .nav-link.active { @apply text-white; }
 
-  .safe-zone-block {
-    margin-top: 8vh; /* Exclusion zone for large headers */
-  }
-
-  .hud-spec-box {
+  /* Dossier Elements */
+  .dossier-node {
     position: relative;
-    padding: 2.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(12px);
-    margin-top: 2rem; /* Move down to prevent overlap */
+    border-left: 4px solid var(--primary);
+    padding-left: 3rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 4rem;
+    background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
   }
-  .hud-spec-box::before, .hud-spec-box::after {
+
+  .bracket-box {
+    position: relative;
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.01);
+  }
+  .bracket-box::before, .bracket-box::after {
     content: "";
     position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
     border-color: var(--primary);
     pointer-events: none;
   }
-  .hud-spec-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
-  .hud-spec-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
-
-  .sector-ref-box {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 1.5rem;
-  }
-  .sector-ref-box .ref-label { font-size: 10px; font-family: var(--font-tactical); color: var(--primary); text-transform: uppercase; letter-spacing: 0.4em; }
-  .sector-ref-box .ref-val { font-size: 2.5rem; font-weight: 900; color: white; }
+  .bracket-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+  .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
 
   .btn-elite {
     display: inline-flex;
@@ -107,8 +116,9 @@
     padding: 1.25rem 3rem;
     background-color: white;
     color: black;
-    font-weight: 900;
-    font-size: 12px;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.4em;
     transition: all 0.3s;
@@ -120,19 +130,13 @@
   .btn-elite:hover {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 0 40px var(--primary-glow);
-  }
-
-  .terminal-login {
-    @apply p-8 bg-black border border-white/10 font-mono text-[10px] text-gray-500 uppercase tracking-widest cursor-pointer hover:border-[var(--primary)] transition-all;
+    box-shadow: 0 0 50px var(--primary-glow);
   }
 }
 
 @layer utilities {
   .text-display { 
-    font-size: clamp(3rem, 10vw, 7.5rem); 
-    font-weight: 900;
-    line-height: 0.85;
-    letter-spacing: -0.05em;
+    font-size: clamp(4rem, 12vw, 9rem); 
+    @apply font-black tracking-tighter leading-[0.85];
   }
 }

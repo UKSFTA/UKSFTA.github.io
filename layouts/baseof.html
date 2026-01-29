@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
   {{ partial "head/skin.html" . }}
@@ -28,13 +28,13 @@
           {{ end }}
           <div class="flex flex-col border-l border-white/10 pl-6">
             <span class="text-white font-black text-2xl tracking-tighter leading-none">UKSF</span>
-            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.4em] mt-1">Joint Command</span>
+            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.4em] mt-1 font-bold">Joint Command</span>
           </div>
         </a>
         
-        <div class="hidden lg:flex items-center space-x-4 border-l border-white/10 pl-10">
+        <div class="hidden lg:flex items-center space-x-4 border-l border-white/10 pl-10 h-10">
           <div class="flex flex-col">
-            <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Security_Tier</span>
+            <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-bold">Security_Tier</span>
             <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">RESTRICTED_ACCESS</span>
           </div>
         </div>
@@ -52,7 +52,7 @@
       <!-- System Telemetry -->
       <div class="hidden sm:flex items-center space-x-8 border-l border-white/10 pl-10">
         <div class="flex flex-col items-end">
-          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">System_Zulu</span>
+          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-bold">System_Zulu</span>
           <span class="text-[11px] font-mono text-white font-black" id="clock">00:00:00</span>
         </div>
         <div class="w-10 h-10 border border-white/10 flex items-center justify-center bg-white/5">
@@ -92,7 +92,7 @@
         </div>
       </div>
       <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-        <span class="text-[8px] font-mono text-gray-700 tracking-[0.6em] uppercase">Communication_End // Directorate_SF</span>
+        <span class="text-[8px] font-mono text-gray-700 tracking-[0.6em] uppercase font-bold">Communication_End // Directorate_SF</span>
         <div class="w-16 h-px bg-[var(--primary)] opacity-40"></div>
       </div>
     </div>
