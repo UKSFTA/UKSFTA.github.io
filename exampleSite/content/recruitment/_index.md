@@ -13,15 +13,15 @@ United Kingdom Special Forces recruitment is a joint-service assessment. The Dir
 
 UKSF selection is not a competition against other candidates; it is an unrelenting pursuit of personal excellence. The Directorate looks for "The Unrelenting Pursuit of Excellence" and the ability to operate independently under extreme duress.
 
-### 1. Phase 0: The Briefing Note
+### Phase 0: The Briefing Note
 Once an initial interest packet is accepted and verified against MOD databases, candidates receive a **Briefing Note**. This document provides the specific coordinates, dates, and equipment requirements for the initial assessment week. This phase is conducted under strict confidentiality.
 
-### 2. Phase 1: Aptitude (The Hills)
+### Phase 1: Aptitude (The Hills)
 Conducted in the Brecon Beacons, this 4-week phase is designed to test a candidate's endurance and navigation skills. 
 - **The Fan Dance**: A 24km timed march over Pen y Fan with a 25kg load.
 - **Endurance (The Long Drag)**: A final 64km (40-mile) march over the highest peaks of the Beacons, to be completed in under 20 hours.
 
-### 3. Phase 2: Tactical & Jungle
+### Phase 2: Tactical & Jungle
 Successful candidates move to 14 weeks of intensive tactical training.
 - **Advanced Weaponry**: Mastery of foreign and domestic weapon systems.
 - **Combat Medicine**: Specialized training in prolonged field care.

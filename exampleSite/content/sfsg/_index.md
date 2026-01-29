@@ -29,8 +29,8 @@ SFSG is where most careers in the UKSF begin. It provides the essential tactical
 
 Unlike Tier 1 units, the SFSG does not run a public "Selection" course. Instead, the unit utilizes a **Handpicked Entry** system:
 
-1.  **Regimental Recommendation**: Outstanding performers in parent units are recommended by their Commanding Officers for SF support duty.
-2.  **SFSG Induction**: Selected candidates undergo a rigorous 4-week Special Forces Support course to master the unit's advanced tactics and equipment.
-3.  **Internal Pipeline**: SFSG operators are the primary candidates for future SAS/SBS Selection attempts.
+- **Regimental Recommendation**: Outstanding performers in parent units are recommended by their Commanding Officers for SF support duty.
+- **SFSG Induction**: Selected candidates undergo a rigorous 4-week Special Forces Support course to master the unit's advanced tactics and equipment.
+- **Internal Pipeline**: SFSG operators are the primary candidates for future SAS/SBS Selection attempts.
 
 {{< recruitment-form title="SFSG_INTEREST_REGISTER" headline="Register for SFSG Intake" description="Register your interest for handpicked selection into the Special Forces Support Group. Open to 1 PARA, RM, and RAF Regiment personnel." >}}

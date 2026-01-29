@@ -10,13 +10,13 @@ The Special Air Service (SAS) remains the model for elite special operations for
 
 ## Core Operational Domains
 
-### 1. Counter-Terrorism (CT)
+### Counter-Terrorism (CT)
 22 SAS maintains the permanent **National Readiness** unit for domestic and international counter-terrorism. This includes advanced hostage rescue, aircraft/maritime intervention, and counter-insurgency operations. Operators are trained to neutralize threats with surgical precision under extreme time pressure.
 
-### 2. Strategic Reconnaissance (SR)
+### Strategic Reconnaissance (SR)
 Gathering strategic and tactical intelligence deep behind enemy lines is a core regimental competency. Utilizing advanced human and technical surveillance assets, SAS teams provide the Directorate with high-fidelity theatre awareness long before overt military presence is initiated.
 
-### 3. Direct Action (DA)
+### Direct Action (DA)
 The conduct of high-precision strikes, technical sabotage, and offensive operations against High-Value Targets (HVTs) or critical infrastructure. These missions are characterized by rapid insertion, decisive kinetic effect, and covert extraction.
 
 ## Regimental Structure
@@ -35,9 +35,9 @@ The regiment is organized into four operational squadrons (A, B, D, and G), each
 Selection for 22 SAS is widely regarded as the most demanding military assessment in the world. It is designed to find individuals who possess **"The Unrelenting Pursuit of Excellence"** and the cognitive speed to operate independently under extreme psychological and physical duress.
 
 ### The Selection Phases:
-1.  **Aptitude Phase (The Hills)**: A 4-week assessment in the Brecon Beacons testing endurance, navigation, and mental resilience under heavy load.
-2.  **Tactical Phase**: 14 weeks of intensive training in advanced weapon systems, demolition, and tactical medicine.
-3.  **Jungle Phase**: Combat operations and survival in hostile tropical environments (Brunei/Belize).
-4.  **Combat Survival (SERE)**: Advanced Survival, Evasion, Resistance, and Extraction assessment.
+- **Aptitude Phase (The Hills)**: A 4-week assessment in the Brecon Beacons testing endurance, navigation, and mental resilience under heavy load.
+- **Tactical Phase**: 14 weeks of intensive training in advanced weapon systems, demolition, and tactical medicine.
+- **Jungle Phase**: Combat operations and survival in hostile tropical environments (Brunei/Belize).
+- **Combat Survival (SERE)**: Advanced Survival, Evasion, Resistance, and Extraction assessment.
 
 {{< recruitment-form title="SAS_SELECTION_NODE" headline="Register for SAS Selection" description="Submit your interest packet for the 22 SAS Selection Course. Applicants must meet Directorate physical and mental benchmarks." >}}

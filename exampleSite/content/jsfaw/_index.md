@@ -33,8 +33,8 @@ JSFAW consists of two primary operational squadrons, each specializing in a spec
 Personnel must already be qualified as pilots or aircrew within the RAF or Army Air Corps. Candidates undergo the **JSFAW Operational Course**, widely considered one of the most dangerous aviation training programs in the military.
 
 ### Training Focus:
-1.  **Night-Vision Mastery**: Mastery of high-speed, low-level flight in absolute zero-visibility conditions.
-2.  **Hostile Environment Landing**: Mastery of landing in unprepared, confined, or contested zones without ground support.
-3.  **Electronic Warfare**: Operating aircraft within heavy adversary radar and signals jamming environments.
+- **Night-Vision Mastery**: Mastery of high-speed, low-level flight in absolute zero-visibility conditions.
+- **Hostile Environment Landing**: Mastery of landing in unprepared, confined, or contested zones without ground support.
+- **Electronic Warfare**: Operating aircraft within heavy adversary radar and signals jamming environments.
 
 {{< recruitment-form title="JSFAW_PILOT_REGISTER" headline="Register for JSFAW Intake" description="Register your interest for specialized special operations aviation training. Open to qualified RAF and AAC aircrew." >}}

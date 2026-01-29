@@ -35,8 +35,8 @@ The Regiment consists of four battalions, each regionally aligned to deep cultur
 Ranger Selection is designed to find individuals who possess high intelligence, cultural empathy, and the ability to operate effectively without a standard command structure.
 
 ### The Selection Phases:
-1.  **Ranger Assessment Course**: A rigorous 2-week course testing physical endurance, tactical proficiency, and instructional ability.
-2.  **Special Operations Course**: 10 weeks of advanced training in asymmetric tactics, language skills, and partner-force integration.
-3.  **Regionally Aligned Training**: Specialized training focused on the culture, geography, and language of the operator's assigned theatre of operations.
+- **Ranger Assessment Course**: A rigorous 2-week course testing physical endurance, tactical proficiency, and instructional ability.
+- **Special Operations Course**: 10 weeks of advanced training in asymmetric tactics, language skills, and partner-force integration.
+- **Regionally Aligned Training**: Specialized training focused on the culture, geography, and language of the operator's assigned theatre of operations.
 
 {{< recruitment-form title="RANGER_SELECTION_NODE" headline="Register for Ranger Selection" description="Register your interest for the Ranger Regiment Selection Course. Focusing on asymmetric warfare and partner integration." >}}
