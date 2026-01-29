@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ site.Language.LanguageCode }}">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
-  
-  <!-- SYSTEM HEADERS // JSFC INTERNAL -->
-  <meta name="x-registry-gate" content="L3JlZ2lzdHJ5L2dhdGU=">
-  <meta name="x-priority-node" content="VEZBLUFMUEhBLTAx">
-  <meta name="x-node-id" content="TFA-01-MILSIM">
-  
+  {{ partial "head.html" . }}
   {{ partial "head/skin.html" . }}
 </head>
 {{ $unit := .Params.unit | default .Section | default "sas" }}
