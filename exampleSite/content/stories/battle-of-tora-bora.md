@@ -30,13 +30,3 @@ Teams inserted via high-altitude overland mobility and established observation p
 {{< mandate id="OPSEC-TORA-99" >}}
 Specific laser guidance codes and sub-surface clearance protocols remain TOP SECRET.
 {{< /mandate >}}
-
----
-
-### Technical Archive Metadata
-
-| Field | Data Node |
-| :--- | :--- |
-| Operation Hash | 0x99-TORA-DELTA |
-| Command Key | TFA-ALPHA-01 |
-| Status | Permanently Archived |
