@@ -2,7 +2,7 @@
 title: "Royal Army Medical Corps"
 description: "The primary provider of medical support and CASEVAC training for UKSFTA."
 date: 2026-01-28
-unit: "sfsg"
+unit: "med-det"
 layout: "dossier"
 ---
 
