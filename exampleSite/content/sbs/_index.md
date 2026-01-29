@@ -16,28 +16,36 @@ The SBS maintains the permanent high-readiness response for threats to oil platf
 ### Amphibious Reconnaissance
 Gathering critical intelligence on coastal defenses, beachheads, and port infrastructure prior to larger-scale military operations. This involves covert sub-surface insertion and persistent monitoring of strategic maritime lanes.
 
-### Underwater Demolition & Sabotage
-Specialized sabotage of naval targets, underwater infrastructure, and strategic maritime assets. Operators utilize advanced technical diving equipment and rebreathers to operate undetected for extended periods.
+## Specialized Asset Registry
+
+{{< capability-spec name="High-Speed Infiltration Craft" id="MCT-V-01" >}}
+    <div class="spec-item"><span>Platform</span><span>Special Forces Support Craft (Medium)</span></div>
+    <div class="spec-item"><span>Max_Velocity</span><span>45+ Knots</span></div>
+    <div class="spec-item"><span>Payload</span><span>8 Operators + Technical Gear</span></div>
+    <div class="spec-item"><span>Sensor_Suite</span><span>Thermal_FLIR / Encrypted_Comms</span></div>
+{{< /capability-spec >}}
+
+{{< capability-spec name="Sub-Surface Delivery Vehicle" id="RECON-S-04" >}}
+    <div class="spec-item"><span>Platform</span><span>Dry Combat Submersible (DCS)</span></div>
+    <div class="spec-item"><span>Depth_Rating</span><span>Classified Level 4</span></div>
+    <div class="spec-item"><span>Range</span><span>Extended Littoral Radius</span></div>
+    <div class="spec-item"><span>Signature</span><span>Ultra-Low Acoustic Footprint</span></div>
+{{< /capability-spec >}}
 
 ## Regimental Specialization
 
 The SBS is organized into four specialized squadrons, each maintaining a specific technical and environmental focus:
 
-*   **C Squadron**: Specialists in sub-surface insertion, canoeing, and tactical diving.
-*   **Z Squadron**: Experts in high-speed surface craft, maritime mobility, and aerial insertion.
-*   **M Squadron**: The primary squadron for maritime counter-terrorism and complex ship intervention.
-*   **X Squadron**: Focused on technical intelligence gathering and experimental maritime insertion platforms.
+- **C Squadron**: Specialists in sub-surface insertion, canoeing, and tactical diving.
+- **Z Squadron**: Experts in high-speed surface craft, maritime mobility, and aerial insertion.
+- **M Squadron**: The primary squadron for maritime counter-terrorism and complex ship intervention.
+- **X Squadron**: Focused on technical intelligence gathering and experimental maritime insertion platforms.
 
 ## The Selection Standard
 
 <div id="selection"></div>
 
 The SBS selection process mirrors the SAS Aptitude phase but requires an additional, highly specialized **Maritime Phase** at RM Poole.
-
-### The Selection Phases:
-- **Aptitude Phase**: Shared with 22 SAS, conducted across the Brecon Beacons.
-- **Boats Phase**: Conducted at RM Poole, testing underwater proficiency, cold-water endurance, and the mastery of specialized maritime insertion platforms.
-- **Operational Diving**: Achieving a high standard of tactical diving using rebreathers and technical sub-surface navigation.
 
 > "By Strength and Guile" — SBS Regimental Motto
 
