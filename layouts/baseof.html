@@ -19,7 +19,10 @@
   <div class="fixed top-0 left-0 w-full z-[3000] bg-black border-b border-white/5 py-3">
     <div class="container-uksf flex justify-between items-center">
       <div class="flex items-center space-x-4">
-        <img src="/mod-logo.svg" alt="MOD" class="h-4 opacity-40 grayscale brightness-200">
+        {{ $mod_logo := resources.Get "icons/MOD.png" }}
+        {{ if $mod_logo }}
+        <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-5 opacity-60 grayscale brightness-200">
+        {{ end }}
         <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.5em] border-l border-white/10 pl-4">HMG // Ministry of Defence</span>
       </div>
       <div class="flex items-center space-x-6 text-[8px] font-mono text-gray-600 uppercase tracking-widest">
@@ -69,9 +72,14 @@
   <!-- COMPACTED FOOTER -->
   <footer class="py-16 bg-black border-t border-white/5 relative overflow-hidden">
     <div class="container-uksf relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
-        <div class="md:col-span-6 space-y-6">
-          <h2 class="text-3xl m-0">United Kingdom Special Forces</h2>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-start border-b border-white/5 pb-16">
+        <div class="md:col-span-6 space-y-8">
+          <div class="flex items-center space-x-6">
+            {{ if $mod_logo }}
+            <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-12 opacity-40 grayscale brightness-200">
+            {{ end }}
+            <h2 class="text-3xl m-0">United Kingdom Special Forces</h2>
+          </div>
           <p class="max-w-md text-gray-500 text-xs font-light leading-relaxed">Official gateway for the Directorate of Special Forces. Operational intelligence is governed by the Official Secrets Act. All transmissions subject to monitoring.</p>
         </div>
         
@@ -95,7 +103,7 @@
         </div>
       </div>
       
-      <div class="pt-10 mt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
         <span class="text-[8px] font-mono text-gray-700 tracking-[0.6em] uppercase font-bold">End of Transmission // JSFC 01</span>
         <div class="flex items-center space-x-4">
             <span class="text-[8px] font-mono text-gray-800 uppercase">Archive Node: {{ upper (substr (sha256 .Title) 0 8) }}</span>
