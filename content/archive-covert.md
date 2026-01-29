@@ -1,37 +1,38 @@
 ---
 title: "Restricted Operational Archive"
-description: "Restricted Node: Joint Special Forces Covert Assets and Intelligence Logs."
+description: "Restricted Node: Joint Special Forces Intelligence Assets and Shadow Domain Operations."
 date: 2026-01-28
 layout: "archive"
 url: "/archive/covert"
 ---
 
-{{< mandate id="COVERT-REF-99" >}}
-You have entered a Restricted Intelligence Node. Access to this data is strictly logged by the JSFC Signals Intelligence Directorate.
+{{< mandate id="INTEL-HUB-01" >}}
+OFFICIAL SENSITIVE: This dossier coordinates the Directorate’s covert intelligence capabilities. Access is restricted to personnel operating within the Shadow Domain.
 {{< /mandate >}}
+
+## Special Forces Intelligence Ecosystem
+
+The Directorate projects power through the seamless integration of Human Intelligence (HUMINT) and Signals Intelligence (SIGINT). This ecosystem is composed of the Special Reconnaissance Regiment (SRR) and the 18 Special Forces Signals Regiment, working in tandem to identify, track, and enable Tier 1 kinetic interventions.
+
+### Operational Synergy: The Grey Zone
+In modern conflict, the "Grey Zone" represents the space between peace and open warfare. Our intelligence assets operate persistently in this domain, providing the Directorate with high-fidelity theatre awareness without the signature of a Tier 1 strike force.
+
+- **Phase 1: Identification**: 18 Signals intercept and analyze adversary command networks to identify strategic threats.
+- **Phase 2: Fixation**: SRR urban teams establish persistent surveillance to confirm target identities and environmental dynamics.
+- **Phase 3: Execution**: Intelligence assets provide real-time data-links to SAS or SBS teams to achieve surgical kinetic effect.
+
+---
 
 ## 18 Special Forces Signals Regiment
 
-Specializing in the most advanced electronic warfare and signals intelligence, 18 Signals provide the critical communications backbone for Tier 1 operations. 
+Personnel with advanced technical, cyber, or signals expertise may register interest for 18 Signals intake. Vetting at the highest level is mandatory.
 
-### Capability Profile
-- **Cyber-Kinetic Integration**: Seamlessly blending physical insertion with offensive digital effects.
-- **Signals Intelligence (SIGINT)**: Interception and analysis of adversary command networks in real-time.
-
-{{< mandate id="SIGNAL-REG-01" >}}
-Personnel with advanced technical, cyber, or signals expertise may register interest for 18 Signals selection via the secure terminal below.
-{{< /mandate >}}
-
-{{< recruitment-form title="COVERT_SIGNALS_ENTRY" headline="Register Intelligence Interest" description="Register for the Special Forces Signals selection pipeline. Advanced vetting required." >}}
+{{< recruitment-form title="COVERT_SIGNALS_INTAKE" headline="Register Intelligence Interest" description="Register for the Special Forces Signals intake pipeline. Advanced technical or signals background required." >}}
 
 ---
 
 ## Special Reconnaissance Regiment (SRR)
 
-The SRR provides the Directorate with high-fidelity human and technical intelligence gathering in high-threat environments.
+Access to the SRR selection briefing is restricted. Register below for initial node authorization.
 
-{{< mandate id="SRR-REG-01" >}}
-Access to SRR selection is restricted to Level 4 vetted personnel. Register interest below for initial briefing protocol.
-{{< /mandate >}}
-
-{{< recruitment-form title="COVERT_RECON_ENTRY" headline="Register Recon Interest" description="Register for SRR selection briefing. Applicants must have 2 years regular service." >}}
+{{< recruitment-form title="COVERT_RECON_INTAKE" headline="Register Recon Interest" description="Register for SRR selection briefing. Applicants must have 2 years regular service and elite mental benchmarks." >}}
