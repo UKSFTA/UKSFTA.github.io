@@ -2,76 +2,71 @@
 {{ partial "hero.html" . }}
 
 <div class="container-uksf py-24">
+    
+    <!-- 1. Technical Filter Bar -->
+    <div class="flex flex-wrap items-center gap-6 border-b border-white/5 pb-12 mb-20">
+        <span class="text-[9px] font-mono text-gray-600 uppercase tracking-[0.4em] font-black mr-4">Filter_Domain:</span>
+        <a href="/stories/" class="nav-link !text-white active">All_Logs</a>
+        <a href="/sas/" class="nav-link">SAS_Ops</a>
+        <a href="/sbs/" class="nav-link">SBS_Ops</a>
+        <a href="/rangers/" class="nav-link">Ranger_Ops</a>
+        <a href="/sfsg/" class="nav-link">SFSG_Ops</a>
+    </div>
+
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
         
-        <!-- MAIN CONTENT: Section Narrative -->
-        <main class="lg:col-span-8 space-y-24">
-            
-            <!-- 1. The Executive Summary -->
-            <section class="space-y-10">
+        <!-- MAIN CONTENT: Registry Feed -->
+        <main class="lg:col-span-8 space-y-12">
+            <div class="space-y-8 mb-16">
                 <div class="flex items-center space-x-6">
                     <div class="w-12 h-px bg-[var(--primary)]"></div>
-                    <span class="sub-header m-0">Institutional_Briefing</span>
+                    <span class="sub-header m-0 uppercase">Operational_Registry</span>
                 </div>
-                <div class="dossier-node">
-                    <div class="prose prose-invert prose-2xl max-w-none font-light text-gray-300 leading-relaxed italic">
-                        {{ .Description | default .Summary }}
-                    </div>
-                </div>
-            </section>
+                <h2 class="text-6xl font-black tracking-tighter uppercase">After-Action <br>Reports</h2>
+            </div>
 
-            <!-- 2. Primary Page Content (Markdown) -->
-            <section class="prose prose-invert prose-lg max-w-none font-light text-gray-400 prose-headings:text-white prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-strong:text-white prose-strong:font-bold">
-                {{ .Content }}
-            </section>
-
-            <!-- 3. Sub-Pages / Registry Items -->
-            {{ if .Pages }}
-            <section class="space-y-12 border-t border-white/5 pt-20">
-                <div class="flex items-center justify-between">
-                    <span class="sub-header m-0">Related_Archive_Nodes</span>
-                    <span class="text-[8px] font-mono text-gray-700 uppercase tracking-widest">{{ len .Pages }} Entry Points Detected</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {{ range .Pages }}
-                    <a href="{{ .RelPermalink }}" class="bracket-box group bg-white/[0.01] hover:bg-white/[0.03] border-white/5 hover:border-[var(--primary)]/30 no-underline transition-all duration-500">
-                        <div class="space-y-6">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">ID: {{ upper (substr (sha256 .Title) 0 8) }}</span>
-                            <h3 class="text-3xl m-0 group-hover:text-white transition-colors">{{ .Title }}</h3>
-                            <p class="text-sm text-gray-500 font-light leading-relaxed line-clamp-2">{{ .Description | default .Summary }}</p>
-                            <div class="pt-4 flex items-center justify-between opacity-40 group-hover:opacity-100">
-                                <span class="text-[9px] font-black uppercase tracking-widest text-white">Access_Node</span>
-                                <span class="text-white">→</span>
+            <div class="grid grid-cols-1 gap-8">
+                {{ range .Pages }}
+                <a href="{{ .RelPermalink }}" class="bracket-box group bg-white/[0.01] hover:bg-white/[0.03] border-white/5 hover:border-[var(--primary)]/30 no-underline transition-all duration-500">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 items-center">
+                        <div class="md:col-span-3 space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">NODE ID: {{ upper (substr (sha256 .Title) 0 8) }}</span>
+                                <span class="h-px w-8 bg-white/10"></span>
+                                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{{ upper .Params.unit | default "JOINT" }} // REGISTRY</span>
                             </div>
+                            <h3 class="text-4xl m-0 group-hover:text-white transition-colors uppercase font-black tracking-tighter">{{ .Title }}</h3>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed line-clamp-2 italic">"{{ .Description | default .Summary }}"</p>
                         </div>
-                    </a>
-                    {{ end }}
-                </div>
-            </section>
-            {{ end }}
-
+                        <div class="text-right">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-white border-b border-white/10 group-hover:border-[var(--primary)] pb-2 transition-all">Access Dossier →</span>
+                        </div>
+                    </div>
+                </a>
+                {{ end }}
+            </div>
         </main>
 
-        <!-- SIDEBAR: Technical Context -->
+        <!-- SIDEBAR: Intelligence Status -->
         <aside class="lg:col-span-4 space-y-12">
             <div class="bracket-box bg-black/40 backdrop-blur-xl border-white/5 sticky top-48">
                 <div class="space-y-10">
                     <div>
-                        <h4 class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] mb-6 font-bold">Portal Status</h4>
-                        <div class="flex items-center space-x-4 bg-white/5 border border-white/10 px-6 py-4">
-                            <span class="w-3 h-3 bg-green-500 rounded-full"></span>
-                            <span class="text-[10px] font-black text-green-500 tracking-widest uppercase">Node Connected</span>
+                        <h4 class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] mb-6 font-bold">Registry Status</h4>
+                        <div class="flex items-center space-x-4 bg-green-500/10 border border-green-500/20 px-6 py-4">
+                            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+                            <span class="text-[10px] font-black text-green-500 tracking-widest uppercase">Database Online</span>
                         </div>
                     </div>
 
                     <div class="space-y-6 border-t border-white/5 pt-10">
                         <div class="flex flex-col">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Registry Status</span>
-                            <span class="text-xs font-bold text-white uppercase mt-1">Official Record</span>
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Archive Type</span>
+                            <span class="text-xs font-bold text-white uppercase mt-1">Operational History</span>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Security Access</span>
-                            <span class="text-xs font-bold text-[var(--primary)] uppercase mt-1">Restricted</span>
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Total Reports</span>
+                            <span class="text-xs font-bold text-[var(--primary)] uppercase mt-1">{{ len .Pages }} Classified Entries</span>
                         </div>
                     </div>
                 </div>
