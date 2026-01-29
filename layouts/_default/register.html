@@ -48,10 +48,11 @@
                                 <option value="jsfaw">JSFAW Ground Crew (Aviation Entry)</option>
                                 <option value="sas">22nd SAS (Advanced Specialization)</option>
                                 <option value="sbs">Special Boat Service (Advanced Specialization)</option>
-                                <option value="rangers">British Army Rangers (Internal Transfer)</option>
-                                <option value="srr">Special Recon Regiment (Internal Transfer)</option>
                                 <option value="med-det">Royal Army Medical Corps (Med Det)</option>
-                                <option value="tfhq">Taskforce HQ (Appointment Only)</option>
+                                <!-- Restricted Nodes: Only visible to authenticated personnel -->
+                                <option value="rangers" class="restricted-option hidden">British Army Rangers (Internal Transfer)</option>
+                                <option value="srr" class="restricted-option hidden">Special Recon Regiment (Internal Transfer)</option>
+                                <option value="tfhq" class="restricted-option hidden">Taskforce HQ (Appointment Only)</option>
                             </select>
                             <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--primary)] opacity-40 text-xs">▼</div>
                         </div>
@@ -95,11 +96,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const targetUnit = urlParams.get('unit');
     const selector = document.getElementById('domain-selector');
+    const isAuthenticated = localStorage.getItem('uksf_auth') === 'authorized';
+    
+    // Reveal restricted options if authenticated
+    if (isAuthenticated) {
+        document.querySelectorAll('.restricted-option').forEach(opt => {
+            opt.classList.remove('hidden');
+        });
+    }
     
     if (targetUnit && selector) {
         for (let i = 0; i < selector.options.length; i++) {
             if (selector.options[i].value === targetUnit.toLowerCase()) {
-                selector.selectedIndex = i;
+                // If the option is restricted but user isn't authenticated, don't auto-select it
+                if (selector.options[i].classList.contains('restricted-option') && !isAuthenticated) {
+                    selector.selectedIndex = 0; // Fallback to SFSG
+                } else {
+                    selector.selectedIndex = i;
+                }
                 break;
             }
         }
