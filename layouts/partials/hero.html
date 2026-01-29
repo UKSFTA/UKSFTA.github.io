@@ -39,7 +39,9 @@
                 </div>
                 
                 <div class="pt-6">
+                    {{ if not (or (eq .Type "sas") (eq .Type "sbs") (eq .Type "rangers") (eq .Type "sfsg") (eq .Type "srr") (eq .Type "jsfaw")) }}
                     <a href="/recruitment/" class="btn-elite no-underline">Initiate Selection</a>
+                    {{ end }}
                 </div>
             </div>
 
