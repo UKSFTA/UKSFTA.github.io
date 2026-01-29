@@ -47,8 +47,8 @@
                 <div class="bracket-box bg-black/40 backdrop-blur-xl border-white/5">
                     <div class="space-y-10">
                         <div class="flex flex-col border-b border-white/5 pb-6">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Operational_Date</span>
-                            <span class="text-3xl font-black text-white tracking-tighter">{{ .Date.Format "02 JAN 2006" }}</span>
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Archive_Signature</span>
+                            <span class="text-2xl font-black text-white tracking-widest font-mono">0x{{ upper (substr (sha256 .Title) 0 12) }}</span>
                         </div>
                         <div class="flex flex-col border-b border-white/5 pb-6">
                             <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Command_Domain</span>

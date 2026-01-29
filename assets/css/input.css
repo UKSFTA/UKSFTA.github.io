@@ -77,10 +77,25 @@
   }
 
   .nav-link {
-    font-family: var(--font-mono);
-    @apply text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 transition-all no-underline;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #6b7280;
+    transition: all 0.3s;
+    text-decoration: none;
   }
-  .nav-link:hover, .nav-link.active { @apply text-white; }
+  .nav-link:hover, .nav-link.active { color: white; }
+
+  /* Monochrome Icon Utility */
+  .icon-tactical {
+    @apply grayscale brightness-200 contrast-125 mix-blend-lighten;
+  }
+
+  /* Form Architecture */
+  .terminal-input {
+    @apply w-full bg-white/[0.03] border border-white/10 p-5 text-sm font-mono text-white outline-none focus:border-[var(--primary)] transition-all placeholder:text-gray-700;
+  }
 
   /* Dossier Elements */
   .dossier-node {

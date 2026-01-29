@@ -17,18 +17,25 @@ Specializing in the most advanced electronic warfare and signals intelligence, 1
 ### Capability Profile
 - **Cyber-Kinetic Integration**: Seamlessly blending physical insertion with offensive digital effects.
 - **Signals Intelligence (SIGINT)**: Interception and analysis of adversary command networks in real-time.
-- **Secure Mesh Networking**: Deploying undetectable communication grids in non-permissive environments.
+
+{{< mandate id="SIGNAL-REG-01" >}}
+Personnel with advanced technical, cyber, or signals expertise may register interest for 18 Signals selection via the secure terminal below.
+{{< /mandate >}}
+
+<div class="my-20">
+    {{ partial "recruitment-form.html" (dict "title" "COVERT_SIGNALS_ENTRY" "headline" "Register Intelligence Interest" "description" "Register for the Special Forces Signals selection pipeline. Advanced vetting required.") }}
+</div>
 
 ---
 
-## Technical Visual Intelligence
+## Special Reconnaissance Regiment (SRR)
 
-{{< mandate id="ISTAR-VIS-04" >}}
-Visual confirmation of Sector 4 target acquired via SRR technical surveillance. Metadata sanitized for archive storage.
+The SRR provides the Directorate with high-fidelity human and technical intelligence gathering in high-threat environments.
+
+{{< mandate id="SRR-REG-01" >}}
+Access to SRR selection is restricted to Level 4 vetted personnel. Register interest below for initial briefing protocol.
 {{< /mandate >}}
 
-| Asset | Designation | Clearance |
-| :--- | :--- | :--- |
-| SRR Urban Team | GHOST_WALK | STRAT_LEVEL_5 |
-| 18 Sig EW | SILENT_LINK | STRAT_LEVEL_4 |
-| JSFC Drone | EYE_IN_SKY | RESTRICTED |
+<div class="my-20">
+    {{ partial "recruitment-form.html" (dict "title" "COVERT_RECON_ENTRY" "headline" "Register Recon Interest" "description" "Register for SRR selection briefing. Applicants must have 2 years regular service.") }}
+</div>

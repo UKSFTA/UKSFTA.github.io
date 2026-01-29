@@ -32,7 +32,60 @@
     </div>
 </section>
 
-<!-- 4. RECRUITMENT & SELECTION -->
+<!-- 4. OPERATIONAL LOGS DASHBOARD (OVERHAULED) -->
+<section class="py-64 bg-black">
+    <div class="container-uksf">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-32">
+            
+            <!-- Left Side: Recent Transmission Feed -->
+            <div class="lg:col-span-4 space-y-16">
+                <div class="space-y-6">
+                    <span class="text-[11px] font-bold text-red-600 uppercase tracking-[0.6em]">Secure_Intel_Stream</span>
+                    <h2 class="text-8xl leading-[0.8] tracking-tighter">Command <br>Logs</h2>
+                </div>
+                <div class="space-y-6">
+                    {{ range first 4 (where .Site.RegularPages "Section" "stories") }}
+                    <a href="{{ .RelPermalink }}" class="block p-10 bg-white/[0.02] border border-white/5 hover:border-[var(--primary)]/40 group transition-all duration-500 no-underline relative">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-white/5 group-hover:bg-[var(--primary)] transition-colors duration-500"></div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-[9px] font-mono text-gray-600 uppercase tracking-widest font-bold">TRANS_ID: {{ upper (substr (sha256 .Title) 0 8) }}</span>
+                            <span class="text-[8px] font-black text-white/20 uppercase tracking-[0.2em] border border-white/10 px-2 py-0.5">SECURE_DOSS</span>
+                        </div>
+                        <span class="text-lg font-bold text-gray-400 group-hover:text-white transition-colors uppercase tracking-widest block leading-tight">{{ .Title }}</span>
+                    </a>
+                    {{ end }}
+                </div>
+                <div class="pt-8">
+                    <a href="/stories/" class="nav-link text-[11px] font-black">View All System Logs // →</a>
+                </div>
+            </div>
+
+            <!-- Right Side: Tactical Visual Detail -->
+            <div class="lg:col-span-8">
+                <div class="bracket-box h-full overflow-hidden bg-black relative min-h-[700px] border-white/10 shadow-2xl shadow-black">
+                    <img src="https://images.unsplash.com/photo-1590233064032-909772a6b225?auto=format&fit=crop&q=80&w=1600" 
+                         class="w-full h-full object-cover opacity-30 grayscale scale-105 group-hover:scale-110 transition-transform duration-[10s]" alt="Visual Intelligence">
+                    <div class="absolute inset-0 bg-grid-white opacity-20"></div>
+                    
+                    <div class="absolute top-16 left-16 p-12 bg-black/70 backdrop-blur-2xl border-l-4 border-[var(--primary)] space-y-4">
+                        <span class="block text-[11px] font-mono text-[var(--primary)] uppercase tracking-[0.6em] font-black">Visual_Intel_Locked</span>
+                        <span class="block text-5xl font-black text-white tracking-tighter uppercase leading-none">Theatre <br>Awareness</span>
+                    </div>
+
+                    <div class="absolute bottom-16 right-16">
+                        <div class="px-10 py-8 border border-white/10 bg-black/70 backdrop-blur-2xl">
+                            <span class="block text-[8px] text-gray-600 font-mono uppercase mb-4 text-right tracking-[0.4em]">Sector_Coordinates</span>
+                            <span class="text-2xl font-black text-white font-mono tracking-[0.3em]">51.5074 N // 0.1278 W</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 5. RECRUITMENT & SELECTION -->
 <section class="recruitment-cta relative">
     <div class="container-uksf relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
@@ -77,14 +130,14 @@
     </div>
 </section>
 
-<!-- 5. OPSEC MANDATE FOOTER -->
+<!-- 6. OPSEC MANDATE FOOTER -->
 <section class="py-40 bg-black border-t border-white/10 relative overflow-hidden">
     <div class="container-uksf">
         <div class="p-16 border border-white/10 bg-white/[0.01] flex flex-col md:flex-row items-center justify-between gap-16 relative">
             <div class="absolute top-0 right-0 w-64 h-64 bg-red-600 opacity-[0.02] rounded-full blur-[100px]"></div>
             <div class="flex items-center space-x-12">
                 <div class="w-24 h-24 border-2 border-red-900/40 flex items-center justify-center bg-red-950/10">
-                    <img src="/icons/UKSF.png" alt="UKSF" class="w-16 h-16 grayscale brightness-200 opacity-20">
+                    <img src="/icons/MOD.png" alt="UKSF" class="w-16 h-16 grayscale brightness-200 opacity-20">
                 </div>
                 <div class="space-y-4">
                     <span class="block text-[12px] font-black text-red-600 uppercase tracking-[0.6em]">Operational Security Mandate</span>

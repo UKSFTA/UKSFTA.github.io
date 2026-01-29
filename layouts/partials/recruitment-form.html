@@ -1,0 +1,36 @@
+<div class="bracket-box bg-white/[0.02] border-[var(--primary)]/20 my-20">
+    <div class="space-y-10">
+        <div class="space-y-4">
+            <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black">// {{ .title | default "REGISTRATION_OF_INTEREST" }}</span>
+            <h3 class="text-5xl leading-none">{{ .headline | default "Initiate Selection Protocol" }}</h3>
+            <p class="text-sm text-gray-500 font-light">{{ .description | default "Enter your credentials to register interest for the Joint Special Forces selection pipeline." }}</p>
+        </div>
+
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-2">
+                <label class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Service_Number</label>
+                <input type="text" placeholder="e.g. 30012345" class="terminal-input">
+            </div>
+            <div class="space-y-2">
+                <label class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Current_Unit</label>
+                <input type="text" placeholder="e.g. 1 PARA" class="terminal-input">
+            </div>
+            <div class="space-y-2 md:col-span-2">
+                <label class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Security_Clearance_Status</label>
+                <select class="terminal-input appearance-none">
+                    <option>SC - Security Check</option>
+                    <option>DV - Developed Vetting</option>
+                    <option>None / In Progress</option>
+                </select>
+            </div>
+            <div class="md:col-span-2 pt-6">
+                <button type="button" class="btn-elite bg-[var(--primary)] text-white w-full">Submit Interest Packet</button>
+            </div>
+        </form>
+        
+        <div class="pt-8 border-t border-white/5 flex items-center space-x-4">
+            <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
+            <span class="text-[8px] font-mono text-gray-700 uppercase tracking-[0.3em]">All entries logged by Directorate of Special Forces intelligence.</span>
+        </div>
+    </div>
+</div>

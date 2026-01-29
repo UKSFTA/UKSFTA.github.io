@@ -13,7 +13,7 @@
                 <div class="w-20 h-20 border border-white/10 p-2 flex items-center justify-center bg-zinc-900/40 group-hover:border-white group-hover:bg-transparent transition-all duration-500">
                     {{ $icon := resources.Get $unit.icon }}
                     {{ if $icon }}
-                        <img src="{{ $icon.RelPermalink }}" alt="{{ $unit.name }}" class="w-full h-full object-contain transition-all duration-500">
+                        <img src="{{ $icon.RelPermalink }}" alt="{{ $unit.name }}" class="w-full h-full object-contain transition-all duration-500 icon-tactical group-hover:brightness-100">
                     {{ else }}
                         <span class="font-black text-2xl text-white">{{ upper $id }}</span>
                     {{ end }}
