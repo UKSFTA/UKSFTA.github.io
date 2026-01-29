@@ -23,20 +23,13 @@
             </div>
 
             <!-- 2. MOTTO BLOCK (Height Rigid for horizontal alignment) -->
-            <div class="min-h-[140px] flex flex-col justify-start">
-                <span class="sub-header block mb-4" style="color: {{ $unit.color }}">REGIMENTAL IDENTITY</span>
+            <div class="min-h-[120px] flex flex-col justify-start">
                 <h4 class="text-3xl leading-[1.1] text-white m-0 uppercase font-black tracking-tighter">{{ $unit.motto }}</h4>
             </div>
             
             <!-- 3. METADATA BLOCK (Aligned across row) -->
             <div class="pt-8 border-t border-white/5 flex-grow">
                 <div class="space-y-8">
-                    <!-- DATE LINE: This will now be perfectly aligned -->
-                    <div class="flex justify-between items-center text-[8px] font-mono text-gray-600 uppercase tracking-widest">
-                        <span>Registry_Date</span>
-                        <span class="text-white font-bold">{{ $unit.founded }}</span>
-                    </div>
-                    
                     <!-- DOMAIN BLOCK (Height Rigid) -->
                     <div class="flex flex-col space-y-2">
                         <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Command_Domain</span>
