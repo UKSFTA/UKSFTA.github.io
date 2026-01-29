@@ -1,6 +1,6 @@
 {
   "sas": {
-    "id": "22_SAS",
+    "id": "SAS",
     "founded": "1941",
     "specialization": "Counter-Terrorism / Hostage Rescue",
     "theatres": "Global / All Environments",
@@ -9,7 +9,7 @@
     "icon": "icons/SAS.png"
   },
   "sbs": {
-    "id": "SBS_UK",
+    "id": "SBS",
     "founded": "1940",
     "specialization": "Maritime Counter-Terrorism / Amphibious Recon",
     "theatres": "Maritime / Littoral",
@@ -18,7 +18,7 @@
     "icon": "icons/SBS.png"
   },
   "rangers": {
-    "id": "AR_RANGERS",
+    "id": "RANGERS",
     "founded": "2021",
     "specialization": "Special Operations / Partner Capacity Building",
     "theatres": "Complex Contested Environments",
@@ -27,7 +27,7 @@
     "icon": "icons/RANGERS.png"
   },
   "sfsg": {
-    "id": "SFSG_SUPPORT",
+    "id": "SFSG",
     "founded": "2006",
     "specialization": "Direct Action Support / Specialist Infantry",
     "theatres": "Operational Support",
@@ -36,7 +36,7 @@
     "icon": "icons/SFSG.png"
   },
   "jsfaw": {
-    "id": "JSFAW_AIR",
+    "id": "JSFAW",
     "founded": "2001",
     "specialization": "Special Operations Aviation",
     "theatres": "Aviation Support",
@@ -45,7 +45,7 @@
     "icon": "icons/JSFAW.png"
   },
   "srr": {
-    "id": "SRR_INTEL",
+    "id": "SRR",
     "hidden": true,
     "founded": "2005",
     "specialization": "Covert Surveillance / ISTAR",
@@ -55,7 +55,7 @@
     "icon": "icons/SRR.png"
   },
   "signals": {
-    "id": "18_SIG_REGT",
+    "id": "SIGNALS",
     "hidden": true,
     "founded": "2005",
     "specialization": "Special Forces Signals / EW",

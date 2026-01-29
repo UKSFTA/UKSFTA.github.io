@@ -1,5 +1,5 @@
 ---
-title: "22 Special Air Service"
+title: "Special Air Service"
 description: "The United Kingdom's primary Tier 1 special forces unit. Specialists in global counter-terrorism, hostage rescue, and strategic direct action."
 date: 2026-01-28
 unit: "sas"
