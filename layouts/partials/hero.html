@@ -1,4 +1,4 @@
-<section class="relative h-[80vh] min-h-[700px] flex items-center bg-black overflow-hidden border-b border-white/10">
+<section class="relative h-[75vh] min-h-[650px] bg-black overflow-hidden border-b border-white/10">
     <!-- Visual Underlay -->
     <div class="absolute inset-0 z-0">
         {{ with .Params.hero_image }}
@@ -10,35 +10,41 @@
         <div class="absolute inset-0 bg-grid-white opacity-20"></div>
     </div>
 
-    <!-- Stabilized Content Container -->
-    <div class="container-uksf relative z-20 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+    <!-- Hard Alignment Container: Title starts at fixed Y-offset -->
+    <div class="container-uksf relative z-20 w-full pt-32 lg:pt-40">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-24">
             
             <div class="lg:col-span-8 space-y-10 animate-slide-in-left">
-                <div class="flex flex-wrap gap-6 items-center">
+                <!-- Meta Block -->
+                <div class="h-16 flex items-center gap-6">
                     {{ $mod_logo := resources.Get "icons/MOD.png" }}
                     {{ if $mod_logo }}
-                    <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-14 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] grayscale brightness-200">
+                    <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-12 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] grayscale brightness-200">
                     {{ end }}
                     <div class="flex flex-wrap gap-4">
                         <span class="hero-meta-tag font-black tracking-widest uppercase">Restricted</span>
                     </div>
                 </div>
 
-                <h1 class="text-display tracking-tighter text-white leading-[0.85]">
-                    {{ .Title | upper }}
-                </h1>
+                <!-- Title Block: Stabilized height to prevent line-wrap jumps -->
+                <div class="min-h-[160px] flex items-end">
+                    <h1 class="text-display tracking-tighter text-white leading-[0.8] m-0">
+                        {{ .Title | upper }}
+                    </h1>
+                </div>
 
-                <div class="max-w-2xl">
-                    <div class="dossier-node border-l-4 border-[var(--primary)] !py-2 !mb-0">
-                        <p class="text-xl font-light text-gray-400 leading-relaxed italic">
+                <!-- Description Block: Stabilized position -->
+                <div class="max-w-2xl pt-4">
+                    <div class="dossier-node border-l-4 border-[var(--primary)] !py-3 !mb-0">
+                        <p class="text-xl font-light text-gray-400 leading-relaxed italic m-0">
                             "{{ .Description | default .Summary }}"
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-4 hidden lg:block">
+            <!-- Sidebar Block: Stabilized position -->
+            <div class="lg:col-span-4 hidden lg:block pt-32">
                 <div class="bracket-box bg-black/40 backdrop-blur-xl border-white/5 !p-8">
                     <div class="space-y-8">
                         <div class="flex flex-col border-b border-white/5 pb-6">
