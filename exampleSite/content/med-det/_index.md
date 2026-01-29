@@ -18,9 +18,9 @@ Coordination of rapid casualty evacuation from non-permissive environments, ofte
 
 ## Entry & Specialization
 
-The Medical Detachment is a post-intro specialization.
+The Royal Army Medical Corps is a post-intro specialization.
 
 * **Requirements**: Candidates must have completed their initial introductory period and show an interest in high-standard medical roleplay.
 * **Training**: Mastery of our unit's medical mods and SOPs is mandatory.
 
-{{< recruitment-form unit="med-det" title="MED_DET_INTAKE" headline="Register Medical Interest" description="Specialized role for dedicated medical support personnel. Complete your Phase 1 intro first." >}}
+{{< recruitment-form unit="med-det" title="RAMC_INTAKE" headline="Register RAMC Interest" description="Specialized role for dedicated medical support personnel. Complete your Phase 1 intro first." >}}

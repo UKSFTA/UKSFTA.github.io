@@ -1,5 +1,5 @@
 ---
-title: 'Medical Detachment Specialist'
+title: 'RAMC Specialist'
 category: 'Medical'
 role_type: 'Community Operator'
 date: 2026-01-22
