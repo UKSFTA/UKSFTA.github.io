@@ -6,7 +6,7 @@
             <!-- TRACK 1: SECTOR PROTOCOL (Left) -->
             <div class="space-y-6 {{ if not (mod $index 2) }}lg:order-last{{ end }}">
                 <div class="sector-ref-box">
-                    <span class="ref-label">Protocol_Node</span>
+                    <span class="ref-label">Registry Reference</span>
                     <span class="ref-val">0{{ add $index 1 }}</span>
                 </div>
                 <div class="h-px w-full bg-gradient-to-r from-[var(--primary)] to-transparent opacity-30"></div>
@@ -18,7 +18,7 @@
                     <h2 class="text-7xl leading-none tracking-tighter">{{ $section.title }}</h2>
                     <div class="flex items-center space-x-4">
                         <div class="w-8 h-px bg-white/20"></div>
-                        <span class="text-[9px] font-mono text-gray-600 uppercase tracking-widest">Auth_Level: Restricted</span>
+                        <span class="text-[9px] font-mono text-gray-600 uppercase tracking-widest">Classification: Restricted</span>
                     </div>
                 </div>
                 
@@ -35,7 +35,7 @@
 
             <!-- TRACK 3: DATA SPECS (Right) -->
             <div class="hud-spec-box">
-                <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] mb-10 block font-bold">// ARCHIVE_PARAMS</span>
+                <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] mb-10 block font-bold">// Registry Parameters</span>
                 <div class="space-y-8">
                     {{ range $section.specs }}
                     <div class="flex flex-col border-b border-white/5 pb-6">

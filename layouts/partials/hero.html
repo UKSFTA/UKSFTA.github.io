@@ -21,8 +21,8 @@
                     <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-16 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] grayscale brightness-200">
                     {{ end }}
                     <div class="flex flex-wrap gap-4">
-                        <span class="hero-meta-tag border-[var(--primary)]/30 text-[var(--primary)] font-black tracking-widest uppercase">ID: UKSF-{{ upper (substr (sha256 .Title) 0 8) }}</span>
-                        <span class="hero-meta-tag font-black tracking-widest uppercase">Security_Level: RESTRICTED</span>
+                        <span class="hero-meta-tag border-[var(--primary)]/30 text-[var(--primary)] font-black tracking-widest uppercase">Registry Signature: {{ upper (substr (sha256 .Title) 0 8) }}</span>
+                        <span class="hero-meta-tag font-black tracking-widest uppercase">Restricted</span>
                     </div>
                 </div>
 
@@ -37,28 +37,22 @@
                         </p>
                     </div>
                 </div>
-                
-                <div class="pt-6">
-                    {{ if not (or (eq .Type "sas") (eq .Type "sbs") (eq .Type "rangers") (eq .Type "sfsg") (eq .Type "srr") (eq .Type "jsfaw")) }}
-                    <a href="/recruitment/" class="btn-elite no-underline">Initiate Selection</a>
-                    {{ end }}
-                </div>
             </div>
 
             <div class="lg:col-span-4 hidden lg:block">
                 <div class="bracket-box bg-black/40 backdrop-blur-xl border-white/5">
                     <div class="space-y-10">
                         <div class="flex flex-col border-b border-white/5 pb-6">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Archive_Signature</span>
-                            <span class="text-2xl font-black text-white tracking-widest font-mono">0x{{ upper (substr (sha256 .Title) 0 12) }}</span>
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Archive Signature</span>
+                            <span class="text-2xl font-black text-white tracking-widest font-mono">{{ upper (substr (sha256 .Title) 0 12) }}</span>
                         </div>
                         <div class="flex flex-col border-b border-white/5 pb-6">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Command_Domain</span>
-                            <span class="text-3xl font-black text-white tracking-tighter">{{ upper .Section | default "JOINT_CMD" }}</span>
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Command Domain</span>
+                            <span class="text-3xl font-black text-white tracking-tighter">{{ upper .Section | default "Joint Command" }}</span>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">Link_Status</span>
-                            <span class="text-xl font-black text-[var(--primary)] tracking-widest animate-pulse">ENCRYPTED_LIVE</span>
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-2 font-black">System Status</span>
+                            <span class="text-xl font-black text-[var(--primary)] tracking-widest">ACTIVE</span>
                         </div>
                     </div>
                 </div>
