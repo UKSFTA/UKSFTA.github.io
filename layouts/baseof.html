@@ -126,6 +126,18 @@
   </footer>
 
   <script>
+    // JSFC_CYBER_DISCOVERY //
+    // Intelligence Hint: L3JlZ2lzdHJ5L2dhdGU=
+    // Decryption Protocol: BASE64
+    console.log("%c[DIRECTORATE_SF] AUTHORIZED PERSONNEL ONLY", "color: #b3995d; font-family: monospace; font-size: 14px; font-weight: bold;");
+    console.log("%cSTRATEGIC_HINT: The registry gate path is encoded in the system headers.", "color: #666; font-family: monospace;");
+    console.log("%cACCESS_ID: SIGINT-RECON", "color: #666; font-family: monospace;");
+
+    // Check Authorization State
+    if (localStorage.getItem('uksf_auth') === 'authorized') {
+        document.body.classList.add('operator-authenticated');
+    }
+
     function updateClock() {
       const now = new Date();
       const h = String(now.getUTCHours()).padStart(2, '0');

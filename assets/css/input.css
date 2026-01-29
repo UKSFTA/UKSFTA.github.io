@@ -10,7 +10,7 @@
   --color-uksf-green: #153e35;
   --color-uksf-red: #800000;
 
-  --font-industrial: "Archivo", "Inter", sans-serif;
+  --font-industrial: "Archivo", "Inter", "Impact", sans-serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
   --font-body: "Inter", "system-ui", "Arial", sans-serif;
 
@@ -41,9 +41,8 @@
     background-attachment: fixed;
   }
 
-  /* Primary High-Impact Headers */
-  h1, h2 {
-    font-family: "Archivo", sans-serif;
+  h1, h2, h3, h4 {
+    font-family: var(--font-industrial);
     text-transform: uppercase;
     letter-spacing: -0.04em;
     color: white;
@@ -51,15 +50,8 @@
     @apply font-black;
   }
 
-  /* Secondary Structured Headers */
-  h3, h4 {
-    font-family: "Inter", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: white;
-    line-height: 1.1;
-    @apply font-bold;
-  }
+  img { object-fit: contain; max-width: 100%; height: auto; }
+  .object-cover { object-fit: cover !important; }
 
   label, .sub-header {
     font-family: var(--font-mono);
@@ -86,6 +78,8 @@
   .dossier-node {
     @apply relative border-l-4 border-[var(--primary)] pl-12 py-6 mb-16;
     background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 
   .bracket-box {
@@ -123,6 +117,7 @@
     @apply font-black tracking-tighter leading-[0.8];
   }
 
+  /* Intelligence Body Refinement */
   .intelligence-body {
     @apply prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-p:leading-relaxed prose-p:mb-12 prose-strong:text-white prose-strong:font-bold;
     
@@ -154,6 +149,20 @@
     blockquote {
       @apply border-l-4 border-gray-800 bg-white/[0.01] p-12 italic text-2xl text-gray-300 rounded-none not-italic font-light mb-20;
     }
+  }
+
+  .spec-item {
+    @apply flex justify-between items-center border-b border-white/5 py-3;
+    span:first-child { @apply font-mono text-[9px] text-gray-600 uppercase tracking-widest; }
+    span:last-child { @apply font-mono text-[11px] font-black text-white uppercase tracking-wider; }
+  }
+
+  /* Covert Asset Visibility Logic */
+  .covert-node {
+    display: none !important;
+  }
+  .operator-authenticated .covert-node {
+    display: flex !important;
   }
 }
 

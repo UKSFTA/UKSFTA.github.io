@@ -54,6 +54,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         if (id === "DSF-ALPHA-01" || id === "SIGINT-RECON") {
             status.innerText = "ACCESS GRANTED // REDIRECTING";
             status.style.color = "#22c55e";
+            localStorage.setItem('uksf_auth', 'authorized');
             window.location.href = "/archive/covert";
         } else {
             status.innerText = "INVALID REGISTRY ID";
