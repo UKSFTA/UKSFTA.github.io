@@ -1,36 +1,81 @@
 {{ define "main" }}
 {{ partial "hero.html" . }}
 
-<article class="container-uksf py-20 relative">
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
-    <div class="lg:col-span-8 dossier-body">
-      {{ .Content }}
-    </div>
-    
-    <aside class="lg:col-span-4">
-      <div class="bg-[#121212] border border-white/5 p-10 space-y-10 sticky top-[120px]">
-        <div>
-          <h4 class="text-[10px] font-bold text-gray-500 uppercase tracking-[0.4em] mb-6">Status</h4>
-          <div class="flex items-center space-x-4">
-            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-            <span class="text-xs font-black text-white tracking-widest uppercase">Mission_Active</span>
-          </div>
+<article class="container-uksf py-24 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+        
+        <!-- MAIN CONTENT: Intelligence Narrative -->
+        <div class="lg:col-span-8 space-y-16">
+            
+            <!-- Technical Dossier Node -->
+            <div class="dossier-node !py-4">
+                <p class="text-2xl font-light text-gray-300 leading-relaxed italic">
+                    {{ .Description | default .Summary }}
+                </p>
+            </div>
+
+            <!-- Registry Divider -->
+            <div class="flex items-center space-x-6 opacity-20">
+                <div class="h-px flex-grow bg-white"></div>
+                <span class="text-[8px] font-mono text-white uppercase tracking-[0.6em] font-black">Archive_Narrative_Start</span>
+                <div class="h-px flex-grow bg-white"></div>
+            </div>
+
+            <!-- Enhanced Prose Content -->
+            <div class="intelligence-body prose prose-invert prose-2xl max-w-none font-light text-gray-400">
+                {{ .Content }}
+            </div>
+
+            <!-- Registry Footer -->
+            <section class="pt-20 border-t border-white/5">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-8 opacity-30 grayscale hover:opacity-100 transition-all duration-700">
+                    <div class="flex items-center space-x-8">
+                        {{ $mod_logo := resources.Get "icons/MOD.png" }}
+                        {{ if $mod_logo }}
+                        <img src="{{ $mod_logo.RelPermalink }}" class="h-8">
+                        {{ end }}
+                        <div class="h-10 w-px bg-white/10"></div>
+                        <span class="text-[9px] font-mono text-gray-500 uppercase tracking-[0.4em] font-bold">Registry: JSFC-{{ upper (substr (sha256 .Title) 0 12) }}</span>
+                    </div>
+                    <span class="text-[8px] font-mono text-gray-700 uppercase tracking-widest font-black">Archived // Permanent Record</span>
+                </div>
+            </section>
         </div>
         
-        <div>
-          <h4 class="text-[10px] font-bold text-gray-500 uppercase tracking-[0.4em] mb-6">Related</h4>
-          <div class="space-y-4">
-            {{ range first 3 (where .Site.RegularPages "Section" .Section) }}
-            {{ if ne .Permalink $.Permalink }}
-            <a href="{{ .RelPermalink }}" class="block p-4 border border-white/5 hover:border-[var(--primary)] no-underline group transition-all">
-              <span class="text-sm font-bold text-gray-400 group-hover:text-white">{{ .Title }}</span>
-            </a>
-            {{ end }}
-            {{ end }}
-          </div>
-        </div>
-      </div>
-    </aside>
-  </div>
+        <!-- SIDEBAR: Operational Metadata -->
+        <aside class="lg:col-span-4 space-y-12">
+            <div class="bracket-box bg-black/40 backdrop-blur-xl border-white/5 sticky top-48 !p-10">
+                <div class="space-y-10">
+                    <div>
+                        <h4 class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] mb-6 font-bold">Node Status</h4>
+                        <div class="flex items-center space-x-4 bg-green-500/5 border border-green-500/20 px-6 py-4">
+                            <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+                            <span class="text-[10px] font-black text-green-500 tracking-widest uppercase">Registry Active</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8 border-t border-white/5 pt-10">
+                        <div class="flex flex-col">
+                            <label class="mb-1 text-[8px]">Classification</label>
+                            <span class="text-xs font-bold text-white uppercase tracking-widest">Official Sensitive</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="mb-1 text-[8px]">Archive Type</label>
+                            <span class="text-xs font-bold text-white uppercase tracking-widest">After-Action Report</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="mb-1 text-[8px]">Operational Unit</label>
+                            <span class="text-xs font-bold text-[var(--primary)] uppercase tracking-widest">{{ upper .Params.unit | default "Joint SF Command" }}</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-10 border-t border-white/5">
+                        <a href="/stories/" class="btn-elite w-full text-center py-4 text-[10px]">Return to Registry</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
 </article>
 {{ end }}

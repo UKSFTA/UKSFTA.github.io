@@ -19,10 +19,14 @@ The patrol was eventually scattered. Three members were killed during the E&E ph
 
 Despite the compromise, the mission provided critical intelligence on adversary communication infrastructure and forced the Iraqi command to divert significant assets to MSR protection. The story of Bravo Two Zero has since become a cornerstone of SAS regimental lore, representing the "Unrelenting Pursuit of Excellence" even in the face of tactical failure.
 
+<div class="registry-sources">
+
 ### Registry of Sources
 - [Bravo Two Zero: SAS Patrol (Wikipedia)](https://en.wikipedia.org/wiki/Bravo_Two_Zero)
 - [The Chris Ryan Account: The One That Got Away](https://en.wikipedia.org/wiki/The_One_That_Got_Away_(book))
 - *Bravo Two Zero - The True Story* by Andy McNab.
+
+</div>
 
 {{< mandate id="OPSEC-B20-END" >}}
 Registry closed. Document remains for E&E training reference.

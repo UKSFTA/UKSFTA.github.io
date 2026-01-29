@@ -21,10 +21,14 @@ To prevent the militia at Magbeni from reinforcing Gberi Bana, a reinforced comp
 
 The extraction was completed within 20 minutes of the initial breach. All 11 British personnel were recovered and flown to the RFA Sir Percivale. The West Side Boys' command structure was effectively destroyed. The mission came at a cost, however, with one SAS operator, Sergeant Bradley Tinnion, being killed during the extraction phase.
 
+<div class="registry-sources">
+
 ### Registry of Sources
 - [Operation Barras: Sierra Leone Extraction (Wikipedia)](https://en.wikipedia.org/wiki/Operation_Barras)
 - [British Army: The Story of Operation Barras](https://www.army.mod.uk/)
 - *Operation Barras: The SAS Rescue Mission* by Damien Lewis.
+
+</div>
 
 {{< mandate id="OPSEC-BAR-END" >}}
 Registry closed. Operation Barras remains a primary case study for joint kinetic integration.

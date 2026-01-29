@@ -21,10 +21,14 @@ The room-by-room clearance was surgical. Operators moved through the smoke-fille
 
 The outcome was a resounding validation of Tier 1 urban intervention. Five militants were killed during the assault, and one was captured while attempting to blend in with the extracted hostages. All but one of the remaining hostages were recovered safely.
 
+<div class="registry-sources">
+
 ### Registry of Sources
 - [The Iranian Embassy Siege (Wikipedia)](https://en.wikipedia.org/wiki/Iranian_Embassy_siege)
 - [BBC News: The SAS Iranian Embassy Siege](https://www.bbc.co.uk/news/uk-10063357)
 - *Go! Go! Go! - The Definitive Account of the Iranian Embassy Siege* by Rusty Firmin.
+
+</div>
 
 {{< mandate id="OPSEC-NIM-END" >}}
 Registry closed. Document remains for historical reference.
