@@ -14,7 +14,7 @@
                     <span class="sub-header m-0 uppercase">Operational Briefing</span>
                 </div>
                 <div class="dossier-node !py-4">
-                    <p class="text-2xl font-light text-gray-300 leading-relaxed italic">
+                    <p class="text-2xl font-light text-gray-300 leading-relaxed">
                         {{ .Description | default .Summary }}
                     </p>
                 </div>
@@ -29,12 +29,7 @@
             <section class="pt-20 border-t border-white/5">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-8 opacity-30 grayscale hover:opacity-100 transition-all duration-700">
                     <div class="flex items-center space-x-8">
-                        {{ $tfa_logo := resources.Get "icons/TFA.png" }}
-                        {{ if $tfa_logo }}
-                        <img src="{{ $tfa_logo.RelPermalink }}" class="h-8">
-                        {{ end }}
-                        <div class="h-10 w-px bg-white/10"></div>
-                        <span class="text-[9px] font-mono text-gray-500 uppercase tracking-[0.4em] font-bold">Registry: TFA-{{ upper (substr (sha256 .Title) 0 12) }}</span>
+                        <span class="text-[9px] font-mono text-gray-500 uppercase tracking-[0.4em] font-bold">Registry: UKSFTA-{{ upper (substr (sha256 .Title) 0 12) }}</span>
                     </div>
                     <span class="text-[8px] font-mono text-gray-700 uppercase tracking-widest font-black">Archived // Permanent Record</span>
                 </div>

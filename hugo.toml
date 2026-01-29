@@ -1,6 +1,6 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-gb'
-title = 'Taskforce Alpha // UKSF Milsim'
+title = 'UKSF Taskforce Alpha'
 theme = 'uksf-mod-theme'
 publishDir = 'docs'
 canonifyurls = true
@@ -14,10 +14,10 @@ canonifyurls = true
   govuk = false
   industrial_gothic_enabled = true
   unit_theme = 'SAS' # Default: SAS. Options: SAS, SBS, SRR, SFSG, JSFAW
-  phase = 'unofficial'
+  phase = 'operational'
   feedbackurl = '#'
-  builtby = 'Taskforce Alpha // Milsim Community'
-  builtbyurl = 'https://discord.gg/your-invite-code'
+  builtby = 'UKSF Taskforce Alpha'
+  builtbyurl = 'https://discord.gg/2jNqa3zPRH'
 
 [module]
   [module.hugoVersion]

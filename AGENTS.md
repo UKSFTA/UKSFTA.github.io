@@ -12,8 +12,8 @@ All development must strictly follow these community rules to maintain immersion
 
 * **The Superior Rule:** Taskforce Alpha branding and logos must be placed at the top of the page with mandatory exclusion zones, mirroring the MOD layout.
 * **Typography:**
-  * **Headers/Slogans:** *Industrial Gothic Pro Single Line* (Bold, condensed, high-impact).
-  * **Body/Navigation:** *Effra* (Standard: Light/Medium, size 19px). Fallback to Arial for institutional clarity.
+  * **Headers/Slogans:** *Bebas Neue / Barlow Condensed* (High-impact, condensed tactical).
+  * **Body/Navigation:** *Inter* (Standard: Light/Medium, size 19px). Fallback to Arial for clarity.
 * **Color Palette:**
   * **TFA Primary:** `#b3995d` (Primary brand element).
   * **Institutional Grey:** `#323e48` (Footers and secondary depth).

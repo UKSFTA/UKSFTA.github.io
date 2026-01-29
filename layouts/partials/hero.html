@@ -17,12 +17,8 @@
             <div class="lg:col-span-8 space-y-12 animate-slide-in-left">
                 <!-- Meta Block -->
                 <div class="h-12 flex items-center gap-6">
-                    {{ $tfa_logo := resources.Get "icons/TFA.png" }}
-                    {{ if $tfa_logo }}
-                    <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-10 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] grayscale brightness-200">
-                    {{ end }}
                     <div class="flex flex-wrap gap-4">
-                        <span class="hero-meta-tag font-black tracking-widest uppercase">Unofficial</span>
+                        <span class="hero-meta-tag font-black tracking-widest uppercase">Restricted</span>
                     </div>
                 </div>
 
@@ -36,7 +32,7 @@
                 <!-- Description Block: Stabilized Spacing -->
                 <div class="max-w-2xl pt-8">
                     <div class="dossier-node border-l-4 border-[var(--primary)] !py-4 !mb-0">
-                        <p class="text-xl md:text-2xl font-light text-gray-400 leading-relaxed italic m-0">
+                        <p class="text-xl md:text-2xl font-light text-gray-400 leading-relaxed m-0">
                             "{{ .Description | default .Summary }}"
                         </p>
                     </div>

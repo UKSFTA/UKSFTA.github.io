@@ -19,8 +19,19 @@
     "icon": "icons/SBS.png",
     "entry": "Internal Transfer Required"
   },
+  "rangers": {
+    "id": "RANGERS",
+    "name": "British Army Rangers",
+    "specialization": "Special Operations / Capacity Building",
+    "role": "Tier 2 Special Operations",
+    "motto": "Ready for Anything",
+    "color": "#4d5d53",
+    "icon": "icons/RANGERS.png",
+    "entry": "Internal Transfer Required"
+  },
   "srr": {
     "id": "SRR",
+    "hidden": true,
     "name": "Special Reconnaissance Regiment",
     "specialization": "Covert Surveillance / ELINT / ISR",
     "role": "Intelligence & Recce Specialists",
@@ -51,7 +62,8 @@
   },
   "med-det": {
     "id": "MED_DET",
-    "name": "Medical Detachment",
+    "display_id": "RAMC",
+    "name": "Royal Army Medical Corps",
     "specialization": "Field Surgery / CASEVAC / Medical Training",
     "role": "Medical Support Specialists",
     "motto": "In Arduis Fidelis",
@@ -61,6 +73,8 @@
   },
   "tfhq": {
     "id": "TFHQ",
+    "hidden": true,
+    "display_id": "HQ",
     "name": "Taskforce Headquarters",
     "specialization": "Zeus / Mission Making / Intelligence",
     "role": "Command & Mission Control",

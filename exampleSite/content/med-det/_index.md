@@ -1,12 +1,12 @@
 ---
-title: "Medical Detachment"
-description: "The primary provider of medical support and CASEVAC training for Taskforce Alpha."
+title: "Royal Army Medical Corps"
+description: "The primary provider of medical support and CASEVAC training for UKSFTA."
 date: 2026-01-28
 unit: "sfsg"
 layout: "dossier"
 ---
 
-The Medical Detachment (Med Det) provides critical medical support and training to Taskforce Alpha, including emergency care, treatment, and evacuation of casualties during high-intensity operations.
+The Royal Army Medical Corps (RAMC) provides critical medical support and training to UKSFTA, including emergency care, treatment, and evacuation of casualties during high-intensity operations.
 
 ## Core Operational Domains
 
@@ -23,4 +23,4 @@ The Medical Detachment is a post-intro specialization.
 * **Requirements**: Candidates must have completed their initial introductory period and show an interest in high-standard medical roleplay.
 * **Training**: Mastery of our unit's medical mods and SOPs is mandatory.
 
-{{< recruitment-form title="MED_DET_INTAKE" headline="Register Medical Interest" description="Specialized role for dedicated medical support personnel. Complete your Phase 1 intro first." >}}
+{{< recruitment-form unit="med-det" title="MED_DET_INTAKE" headline="Register Medical Interest" description="Specialized role for dedicated medical support personnel. Complete your Phase 1 intro first." >}}

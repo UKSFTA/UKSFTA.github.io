@@ -11,10 +11,6 @@
                     
                     <!-- Institutional Header -->
                     <div class="flex items-center justify-between border-b border-white/5 pb-6">
-                        {{ $tfa_logo := resources.Get "icons/TFA.png" }}
-                        {{ if $tfa_logo }}
-                        <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-8 opacity-60 grayscale brightness-200">
-                        {{ end }}
                         <span class="text-[7px] font-mono text-gray-600 uppercase tracking-[0.4em] font-black">Unit Record</span>
                     </div>
 
@@ -70,7 +66,7 @@
                     <span class="sub-header m-0 uppercase">Operational Mandate</span>
                 </div>
                 <div class="dossier-node !py-2">
-                    <div class="prose prose-invert prose-xl max-w-none font-light text-gray-300 leading-relaxed italic">
+                    <div class="prose prose-invert prose-xl max-w-none font-light text-gray-300 leading-relaxed">
                         {{ .Description }}
                     </div>
                 </div>
@@ -83,12 +79,7 @@
             <section class="pt-16 border-t border-white/5">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-6 opacity-30 grayscale hover:opacity-100 transition-all duration-700">
                     <div class="flex items-center space-x-6">
-                        {{ $tfa_logo := resources.Get "icons/TFA.png" }}
-                        {{ if $tfa_logo }}
-                        <img src="{{ $tfa_logo.RelPermalink }}" class="h-6">
-                        {{ end }}
-                        <div class="h-8 w-px bg-white/10"></div>
-                        <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em] font-bold">Registry: TFA-{{ upper (substr (sha256 .Title) 0 12) }}</span>
+                        <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em] font-bold">Registry: UKSFTA-{{ upper (substr (sha256 .Title) 0 12) }}</span>
                     </div>
                     <span class="text-[7px] font-mono text-gray-700 uppercase tracking-widest">Permanent Record</span>
                 </div>

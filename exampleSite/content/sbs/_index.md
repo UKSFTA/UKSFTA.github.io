@@ -24,4 +24,4 @@ SBS is an advanced specialization within Taskforce Alpha. Members typically spen
 * **Selection**: Candidates must demonstrate water confidence and diving proficiency within our simulation environment.
 * **Collaboration**: Often operates alongside SAS elements during large-scale joint operations.
 
-{{< recruitment-form title="SBS_RECRUITMENT_NODE" headline="Apply for SBS Selection" description="Internal transfer only. Maritime aptitude and SFSG tenure required." >}}
+{{< recruitment-form unit="sbs" title="SBS_RECRUITMENT_NODE" headline="Apply for SBS Selection" description="Internal transfer only. Maritime aptitude and SFSG tenure required." >}}

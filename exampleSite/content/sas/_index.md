@@ -24,4 +24,4 @@ SAS is an advanced specialization within Taskforce Alpha. All operators must fir
 * **Probation**: Newly selected SAS members must complete **2 weeks of probationary operations** before being fully badged.
 * **Training**: Intensive focus on CQB, advanced weaponry, and small-unit tactics.
 
-{{< recruitment-form title="SAS_RECRUITMENT_NODE" headline="Apply for SAS Selection" description="Internal transfer only. Proof of excellence in SFSG required for all candidates." >}}
+{{< recruitment-form unit="sas" title="SAS_RECRUITMENT_NODE" headline="Apply for SAS Selection" description="Internal transfer only. Proof of excellence in SFSG required for all candidates." >}}

@@ -3,14 +3,10 @@
   <div class="bg-black/80 border-b border-white/5 py-3">
     <div class="tactical-container flex justify-between items-center text-[8px] font-bold tracking-[0.5em] text-gray-600 uppercase">
       <div class="flex items-center space-x-4">
-        {{ $tfa_logo := resources.Get "icons/TFA.png" }}
-        {{ if $tfa_logo }}
-        <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-4 opacity-40 grayscale brightness-200">
-        {{ end }}
-        <span class="border-l border-white/10 pl-4">TFA // JOINT OPERATIONS</span>
+        <span class="pl-4">TFA // JOINT OPERATIONS</span>
       </div>
       <div class="text-uksf-gold select-none">
-        {{ .Site.Data.labels.site.classification }} // UNOFFICIAL_MILSIM
+        {{ .Site.Data.labels.site.classification }} // SECURE_ACCESS
       </div>
     </div>
   </div>

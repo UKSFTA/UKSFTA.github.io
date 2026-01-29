@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&family=Archivo:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
   
@@ -25,14 +25,10 @@
   <div class="fixed top-0 left-0 w-full z-[3000] bg-black border-b border-white/5 py-3">
     <div class="container-uksf flex justify-between items-center">
       <div class="flex items-center space-x-4">
-        {{ $tfa_logo := resources.Get "icons/TFA.png" }}
-        {{ if $tfa_logo }}
-        <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-5 opacity-80 grayscale brightness-200">
-        {{ end }}
-        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.5em] border-l border-white/10 pl-4">Taskforce Alpha // Milsim Community</span>
+        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.5em] pl-4">UKSF TASKFORCE ALPHA // JOINT SPECIAL OPERATIONS COMMAND</span>
       </div>
       <div class="flex items-center space-x-6 text-[8px] font-mono text-gray-600 uppercase tracking-widest">
-        <span>Status: UNOFFICIAL</span>
+        <span>Classification: OFFICIAL_SENSITIVE</span>
         <span class="text-[var(--primary)] font-black">Node: JSFC 01</span>
       </div>
     </div>
@@ -43,12 +39,13 @@
     <div class="container-uksf flex justify-between items-center h-full">
       <div class="flex items-center space-x-10">
         <a href="/" class="no-underline group flex items-center space-x-6">
+          {{ $tfa_logo := resources.Get "icons/TFA.png" }}
           {{ if $tfa_logo }}
-          <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-12 w-auto grayscale brightness-200 opacity-80 group-hover:opacity-100 transition-all">
+          <img src="{{ $tfa_logo.RelPermalink }}" alt="UKSFTA" class="h-12 w-auto grayscale brightness-200 opacity-80 group-hover:opacity-100 transition-all">
           {{ end }}
           <div class="flex flex-col">
-            <span class="text-white font-black text-2xl tracking-tighter leading-none">TFA</span>
-            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em] mt-1">UKSF Milsim Group</span>
+            <span class="text-white font-black text-2xl tracking-tighter leading-none">UKSFTA</span>
+            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em] mt-1">Special Operations Group</span>
           </div>
         </a>
       </div>
@@ -82,14 +79,14 @@
         <div class="md:col-span-5 space-y-8">
           <div class="flex items-center space-x-6">
             {{ if $tfa_logo }}
-            <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-14 opacity-60 grayscale brightness-200">
+            <img src="{{ $tfa_logo.RelPermalink }}" alt="UKSFTA" class="h-14 opacity-60 grayscale brightness-200">
             {{ end }}
             <div class="flex flex-col">
-                <h2 class="text-3xl m-0 tracking-tighter font-black uppercase">Taskforce Alpha <br>Joint Operations</h2>
-                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mt-2">Milsim Community // Unofficial</span>
+                <h2 class="text-3xl m-0 tracking-tighter font-black uppercase">UKSF Taskforce Alpha <br>Joint Operations</h2>
+                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mt-2">Milsim Community // Heritage Simulated</span>
             </div>
           </div>
-          <p class="max-w-md text-gray-500 text-[11px] font-normal leading-relaxed uppercase tracking-wider">TFA is an unofficial Arma 3 Milsim group. We are not affiliated with, endorsed by, or part of the UK Ministry of Defence or HM Armed Forces.</p>
+          <p class="max-w-md text-gray-500 text-[11px] font-normal leading-relaxed uppercase tracking-wider">UKSFTA is an Arma 3 Milsim group. We are not affiliated with, endorsed by, or part of the UK Ministry of Defence or HM Armed Forces.</p>
         </div>
         
         <div class="md:col-span-2 space-y-6">

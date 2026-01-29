@@ -27,12 +27,17 @@ TFA entry is not a competition; it is a validation of your ability to operate as
 
 ## Advanced Specialization
 
-Upon successful completion of the probationary period, members may attempt selection for:
+Upon successful completion of the probationary period, members may apply for selection into specialized detachments:
 
-- **22nd SAS**: Focused on Direct Action and high-stakes CT.
-- **SBS**: Focused on Maritime Counter-Terrorism and Diving.
-- **SRR**: Focused on Covert Surveillance and Intelligence.
-- **Medical Detachment**: Dedicated field surgery and casualty evacuation.
+- **22nd SAS**: Direct Action and Counter-Terrorism specialization.
+- **SBS**: Maritime Operations and Amphibious Warfare.
+- **British Army Rangers**: Partner Force Integration and Asymmetric Warfare.
+- **SRR**: Covert Surveillance and SIGINT specialists.
+- **Royal Army Medical Corps**: Advanced field surgery and CASEVAC simulation.
+
+<div class="my-32">
+    {{< recruitment-form unit="sfsg" title="UKSFTA_GATEWAY" headline="Initiate Entry Protocol" description="Join the Taskforce Alpha intake cycle. All applications are reviewed by Taskforce HQ." >}}
+</div>
 
 ## Minimum Requirements
 

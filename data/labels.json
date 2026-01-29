@@ -1,15 +1,15 @@
 {
   "site": {
-    "title": "Taskforce Alpha",
+    "title": "UKSF Taskforce Alpha",
     "motto": "Always A Little Further",
-    "classification": "TFA_INTERNAL // SIMULATION_ONLY",
-    "status": "UNOFFICIAL_COMMUNITY",
-    "joint_command": "Taskforce HQ // Milsim group"
+    "classification": "OFFICIAL_SENSITIVE // UKSFTA_INTEL",
+    "status": "OPERATIONAL_READY",
+    "joint_command": "Taskforce HQ // UKSFTA"
   },
   "hero": {
-    "headline": "THE SIMULATED EDGE",
-    "description": "Taskforce Alpha provides a high-fidelity Special Forces simulation for the Arma 3 platform. Authenticity, Maturity, and Professionalism.",
-    "cta": "Join our Discord",
+    "headline": "THE SOVEREIGN EDGE",
+    "description": "UKSF Taskforce Alpha provides high-fidelity special operations capability for the Arma 3 platform.",
+    "cta": "Join the Unit",
     "cta_url": "https://discord.gg/2jNqa3zPRH"
   },
   "capabilities": [

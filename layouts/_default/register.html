@@ -12,25 +12,20 @@
                 <div class="flex flex-col md:flex-row justify-between items-start gap-8 border-b border-white/5 pb-8">
                     <div class="space-y-4">
                         <div class="flex items-center space-x-8">
-                    {{ $tfa_logo := resources.Get "icons/TFA.png" }}
-                    {{ if $tfa_logo }}
-                    <img src="{{ $tfa_logo.RelPermalink }}" alt="TFA" class="h-10 grayscale brightness-200 opacity-60">
-                    {{ end }}
-                    <div class="h-8 w-px bg-white/10"></div>
                     <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.5em] font-black">Entry Registry</span>
                 </div>
                 <h2 class="text-5xl font-black tracking-tighter uppercase m-0 leading-none">Initiate Entry Protocol</h2>
-                <p class="text-base text-gray-400 font-light max-w-xl leading-relaxed">Authorized entry point for Taskforce Alpha personnel. Enter your details to begin the community assessment pipeline.</p>
+                <p class="text-base text-gray-400 font-light max-w-xl leading-relaxed">Authorized entry point for UKSFTA personnel. Enter your details to begin the community assessment pipeline.</p>
             </div>
             
             <div class="flex flex-col items-end text-right space-y-4">
                 <div class="px-4 py-2 bg-white/5 border border-white/10 flex items-center space-x-3">
                     <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                    <span class="text-[9px] font-mono text-white uppercase tracking-widest font-black">Server Live</span>
+                    <span class="text-[9px] font-mono text-white uppercase tracking-widest font-black">Registry Live</span>
                 </div>
                 <div class="flex flex-col">
                     <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Node Signature</span>
-                    <span class="text-[10px] font-mono text-white uppercase font-bold">TFA-AUTH-{{ now.Format "2006" }}</span>
+                    <span class="text-[10px] font-mono text-white uppercase font-bold">UKSFTA-AUTH-{{ now.Format "2006" }}</span>
                 </div>
             </div>
         </div>
@@ -52,8 +47,10 @@
                         <option value="jsfaw">JSFAW Ground Crew (Aviation Entry)</option>
                         <option value="sas">22nd SAS (Advanced Specialization)</option>
                         <option value="sbs">Special Boat Service (Advanced Specialization)</option>
-                        <option value="srr">Special Recon Regiment (Advanced Specialization)</option>
-                        <option value="med-det">Medical Detachment</option>
+                        <option value="rangers">British Army Rangers (Internal Transfer)</option>
+                        <option value="srr">Special Recon Regiment (Internal Transfer)</option>
+                        <option value="med-det">Royal Army Medical Corps (Med Det)</option>
+                        <option value="tfhq">Taskforce HQ (Appointment Only)</option>
                     </select>
                     <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--primary)] opacity-40 text-xs">▼</div>
                 </div>
@@ -80,7 +77,7 @@
 
         <div class="pt-8 border-t border-white/5 text-center">
             <p class="text-[8px] font-mono text-gray-700 uppercase tracking-[0.4em] leading-loose max-w-3xl mx-auto">
-                TFA is an unofficial milsim group. We do not represent the Ministry of Defence. Unauthorized entry attempts are logged.
+                Security Warning: Unauthorized submission attempts are a breach of operational protocols. Your transmission is being monitored.
             </p>
         </div>
             </div>

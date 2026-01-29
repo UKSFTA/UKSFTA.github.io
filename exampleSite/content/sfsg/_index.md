@@ -23,4 +23,4 @@ SFSG is the first step in your career within Taskforce Alpha.
 * **Training Platoon**: New members receive high-quality training in basic tactics and community SOPs.
 * **Progression**: After completing a few operations, SFSG members can choose to specialize as a medic or apply for selection into SAS, SBS, or SRR.
 
-{{< recruitment-form title="SFSG_ENTRY_NODE" headline="Register for SFSG Training" description="The gateway to Taskforce Alpha. Open to all skill levels. Mature and serious applicants only." >}}
+{{< recruitment-form unit="sfsg" title="SFSG_ENTRY_NODE" headline="Register for SFSG Training" description="The gateway to Taskforce Alpha. Open to all skill levels. Mature and serious applicants only." >}}

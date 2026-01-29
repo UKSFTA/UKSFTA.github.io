@@ -27,4 +27,4 @@ JSFAW is the entry point for all aviation candidates. You start as **Ground Crew
 * **Attack Phase**: Earn the rank of Sgt to transition into attack helicopters.
 * **Fixed Wing**: Commission to the RAF as a Flight Lt to operate fixed-wing assets and drones.
 
-{{< recruitment-form title="JSFAW_PILOT_REGISTER" headline="Register for Aviation Training" description="Join as Ground Crew and work towards your wings. Urgent need for experienced pilots." >}}
+{{< recruitment-form unit="jsfaw" title="JSFAW_PILOT_REGISTER" headline="Register for Aviation Training" description="Join as Ground Crew and work towards your wings. Urgent need for experienced pilots." >}}

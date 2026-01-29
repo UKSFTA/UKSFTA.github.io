@@ -24,4 +24,4 @@ SRR is a restricted specialization within Taskforce Alpha. It is strictly **Inte
 * **Specialization**: Deep focus on ELINT (Electronic Intelligence), ISR (Intelligence, Surveillance, Reconnaissance), and reconnaissance protocols.
 * **Selection**: Focuses on high-standard cognitive performance and simulation of covert monitoring.
 
-{{< recruitment-form title="SRR_RECRUITMENT_NODE" headline="Apply for SRR Selection" description="Restricted transfer. Excellence in Tier 1 strike operations and Command approval mandatory." >}}
+{{< recruitment-form unit="srr" title="SRR_RECRUITMENT_NODE" headline="Apply for SRR Selection" description="Restricted transfer. Excellence in Tier 1 strike operations and Command approval mandatory." >}}

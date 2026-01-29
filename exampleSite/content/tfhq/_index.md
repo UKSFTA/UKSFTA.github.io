@@ -26,3 +26,5 @@ Roles within TFHQ are primarily **Appointment Only**.
 {{< mandate id="TFHQ-VIGILANCE" >}}
 Command decisions are final. Immersion and community standards are maintained by Taskforce HQ at all times.
 {{< /mandate >}}
+
+{{< recruitment-form unit="tfhq" title="TFHQ_INTEREST_NODE" headline="Register HQ Interest" description="Register your interest for Zeus, Mission Making, or QM roles. Appointment only based on community merit." >}}
