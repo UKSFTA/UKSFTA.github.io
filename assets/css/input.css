@@ -15,9 +15,9 @@
   --color-uksf-blue: #002366;
   --color-uksf-green: #153e35;
   --color-uksf-red: #800000;
-  --font-industrial: "Bebas Neue", "Barlow Condensed", "Impact", sans-serif;
+  --font-industrial: "Barlow Condensed", "Impact", sans-serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", menlo, monaco, consolas, monospace;
-  --font-body: "Inter", "system-ui", "Arial", sans-serif;
+  --font-body: "Public Sans", "system-ui", "Arial", sans-serif;
   --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
@@ -32,15 +32,13 @@
 
   body {
     background-color: var(--bg-dark);
-    color: #d1d5db;
+    color: #cbd5e1;
     font-family: var(--font-body);
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     padding-top: calc(var(--header-height) + var(--hmg-bar-height));
-
-    @apply font-normal;
-
+    font-weight: 450;
     background-image: 
       radial-gradient(circle at 50% 0%, rgb(255 255 255 / 1.5%) 0%, transparent 80%),
       url('https://www.transparenttextures.com/patterns/black-linen.png');
@@ -50,11 +48,10 @@
   h1, h2, h3, h4 {
     font-family: var(--font-industrial);
     text-transform: uppercase;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.02em;
     color: white;
-    line-height: 0.85;
-
-    @apply font-black;
+    line-height: 0.9;
+    font-weight: 800;
   }
 
   img {

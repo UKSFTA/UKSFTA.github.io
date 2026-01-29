@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&family=Saira+Extra+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=JetBrains+Mono:wght@400;700&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
   
@@ -21,50 +21,60 @@
 {{ $unit := .Params.unit | default .Section | default "sas" }}
 <body class="unit-{{ lower $unit }}">
   
-  <!-- Tier 1: Community Superior Rule -->
-  <div class="fixed top-0 left-0 w-full z-[3000] bg-black border-b border-white/5 py-3">
+  <!-- Tier 1: System Status Superior Rule -->
+  <div class="fixed top-0 left-0 w-full z-[3000] bg-black border-b border-white/5 py-2">
     <div class="container-uksf flex justify-between items-center">
-      <div class="flex items-center space-x-4">
-        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.5em] pl-4">UKSF TASKFORCE ALPHA // JOINT SPECIAL OPERATIONS COMMAND</span>
+      <div class="flex items-center space-x-6">
+        <span class="text-[7px] font-mono text-gray-600 uppercase tracking-[0.6em]">UKSF TASKFORCE ALPHA // JOINT COMMAND</span>
+        <div class="h-3 w-px bg-white/10 hidden sm:block"></div>
+        <div class="flex items-center space-x-2">
+            <span class="w-1.5 h-1.5 bg-[var(--primary)] rounded-full animate-pulse-fast"></span>
+            <span class="text-[7px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">Node: JSFC-01</span>
+        </div>
       </div>
-      <div class="flex items-center space-x-6 text-[8px] font-mono text-gray-600 uppercase tracking-widest">
+      <div class="flex items-center space-x-8 text-[7px] font-mono text-gray-600 uppercase tracking-widest">
+        <span class="hidden md:block">Registry: AUTHENTICATED</span>
         <span>Classification: OFFICIAL_SENSITIVE</span>
-        <span class="text-[var(--primary)] font-black">Node: JSFC 01</span>
       </div>
     </div>
   </div>
 
-  <!-- Tier 2: Operational Navigation -->
-  <header class="nav-header top-10">
+  <!-- Tier 2: Institutional Navigation -->
+  <header class="nav-header top-8">
     <div class="container-uksf flex justify-between items-center h-full">
-      <div class="flex items-center space-x-10">
-        <a href="/" class="no-underline group flex items-center space-x-6">
-          {{ $tfa_logo := resources.Get "icons/TFA.png" }}
-          {{ if $tfa_logo }}
-          <img src="{{ $tfa_logo.RelPermalink }}" alt="UKSFTA" class="h-12 w-auto grayscale brightness-200 opacity-80 group-hover:opacity-100 transition-all">
-          {{ end }}
+      <div class="flex items-center space-x-12">
+        <a href="/" class="no-underline group flex items-center space-x-8">
+          <div class="relative">
+            {{ $tfa_logo := resources.Get "icons/TFA.png" }}
+            {{ if $tfa_logo }}
+            <img src="{{ $tfa_logo.RelPermalink }}" alt="UKSFTA" class="h-14 w-auto grayscale brightness-200 opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+            {{ end }}
+            <div class="absolute inset-0 bg-[var(--primary)] mix-blend-color opacity-20 group-hover:opacity-0 transition-opacity"></div>
+          </div>
           <div class="flex flex-col">
-            <span class="text-white font-black text-2xl tracking-tighter leading-none">UKSFTA</span>
-            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em] mt-1">Special Operations Group</span>
+            <span class="text-white font-black text-3xl tracking-tighter leading-none font-industrial">UKSFTA</span>
+            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.5em] mt-1.5 border-t border-white/10 pt-1.5">Special Operations</span>
           </div>
         </a>
       </div>
       
-      <nav class="hidden md:flex items-center space-x-12">
+      <nav class="hidden lg:flex items-center space-x-14">
         {{ range site.Menus.main }}
-        <a href="{{ .URL }}" class="nav-link {{ if eq $.RelPermalink .URL }}active{{ end }}">
+        <a href="{{ .URL }}" class="nav-link !text-[9px] !tracking-[0.5em] {{ if eq $.RelPermalink .URL }}active{{ end }}">
           {{ .Name }}
         </a>
         {{ end }}
       </nav>
 
-      <div class="hidden sm:flex items-center space-x-6">
+      <div class="hidden sm:flex items-center space-x-8 border-l border-white/5 pl-8">
         <div class="flex flex-col items-end">
-          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">System Sync</span>
-          <span class="text-[10px] font-mono text-white font-black" id="clock">00:00:00</span>
+          <span class="text-[6px] font-mono text-gray-600 uppercase tracking-widest mb-1">UTC_SYNC</span>
+          <span class="text-[11px] font-mono text-white font-black tracking-widest" id="clock">00:00:00</span>
         </div>
       </div>
     </div>
+    <!-- Technical Scan Line Decoration -->
+    <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--primary)]/20 to-transparent"></div>
   </header>
 
   <main>
