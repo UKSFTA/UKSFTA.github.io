@@ -1,44 +1,41 @@
 ---
 title: "Special Reconnaissance Regiment"
-description: "The United Kingdom's primary Tier 1 covert surveillance unit. Specialized in human intelligence and Grey Zone operations."
+description: "The United Kingdom's primary Tier 1 covert surveillance unit. Specialized in human intelligence (HUMINT), technical surveillance, and Grey Zone operations."
 date: 2026-01-28
 unit: "srr"
+layout: "dossier"
 ---
 
-{{< mandate id="SRR-DOSS-03" >}}
-The Special Reconnaissance Regiment (SRR) is the Directorate's specialist in covert surveillance. Drawing personnel from across all branches of the British Armed Forces, it is the only UKSF unit to deploy both men and women in frontline operational roles.
-{{< /mandate >}}
+The Special Reconnaissance Regiment (SRR) operates in the **Shadow Domain**, gathering critical human intelligence and technical surveillance data in high-threat environments where overt military presence is impossible. Drawing personnel from across all branches of the British Armed Forces, it is the only UKSF unit to deploy both men and women in frontline operational roles.
 
-<div class="my-20">
-    {{< recruitment-form title="SRR_SELECTION_NODE" headline="Register for SRR Selection" description="Register your interest for the SRR Selection Course. Focuses on advanced surveillance, human intelligence, and urban survival." >}}
-</div>
+## Core Operational Domains
 
-## Strategic Role & The Shadow Domain
+### 1. Covert Urban Surveillance
+Monitoring high-value targets in complex urban environments without detection. This involves mastering the art of blending into local populations and utilizing advanced technical sensors to maintain persistent theatre awareness.
 
-The SRR operates in the "Shadow Domain," gathering critical human intelligence (HUMINT) and technical surveillance data in high-threat environments where overt military presence is impossible.
+### 2. Human Intelligence (HUMINT)
+Establishing and maintaining sources within adversary networks to gather strategic intelligence. SRR operators are specialists in cognitive profiling, language mastery, and social engineering in non-permissive zones.
 
-### Core Operational Domains
+### 3. ISTAR Support
+Providing Tier 1 strike units (SAS/SBS) with the "Eyes and Ears" required for high-precision interventions. The SRR identifies the target, monitors the environment, and guides the strike force to the objective with zero latency.
 
-- **Covert Urban Surveillance**: Monitoring targets in complex urban environments without detection, often for extended periods.
-- **Human Intelligence (HUMINT)**: Establishing and maintaining sources within adversary networks to gather strategic data.
-- **ISTAR Support**: Providing Tier 1 strike units (SAS/SBS) with the "Eyes and Ears" required for high-precision interventions.
-- **Counter-Terrorism Surveillance**: Identifying and tracking terrorist networks both domestically and internationally.
+## Professional Standard & Specialization
 
-## Professional Standard
+SRR operators are specialists in the **"Grey Zone"**—the space between peace and open conflict. They are masters of blending into any environment and possess advanced skills in:
 
-SRR operators are specialists in blending into any environment. They are masters of "Grey Zone" operations, possessing advanced skills in:
-- **Close-Quarters Combat**: High-speed, high-intensity response in confined spaces.
-- **Advanced Communications**: Operating undetectable signals networks in non-permissive zones.
-- **Cultural Mastery**: Deep understanding of local customs, languages, and social dynamics.
+*   **Advanced Communications**: Operating undetectable signals networks and encrypted mesh grids in hostile territory.
+*   **Tactical Driving**: Mastering high-speed vehicle control and covert movement in complex urban traffic.
+*   **Cultural Mastery**: Deep understanding of local customs, multiple languages, and regional social dynamics.
 
 ## The SRR Selection Course
 
-Selection for the SRR focuses on cognitive speed, emotional intelligence, and the ability to operate under extreme isolation.
+<div id="selection"></div>
 
-1. **Assesment Phase**: Testing physical and mental resilience over a 2-week course.
-2. **Surveillance Training**: 14 weeks of intensive training in human and technical surveillance methods.
-3. **Advanced Combat Phase**: Mastering tactical driving, close-quarters weaponry, and escape & evasion.
+Selection for the SRR focuses on cognitive speed, emotional intelligence, and the ability to operate under extreme isolation for extended periods.
 
-{{< mandate id="OPSEC-SRR-ALPHA" >}}
-Operator identities, technical surveillance methods, and current target locations are HIGHEST CLASSIFICATION.
-{{< /mandate >}}
+### The Selection Phases:
+1.  **Assessment Phase**: Testing physical and mental resilience over a rigorous 2-week course.
+2.  **Surveillance Training**: 14 weeks of intensive training in human and technical surveillance methods, including covert photography and sensor deployment.
+3.  **Advanced Combat Phase**: Mastering tactical weaponry, close-quarters combat, and escape & evasion protocols.
+
+{{< recruitment-form title="SRR_SELECTION_NODE" headline="Register for SRR Selection" description="Register your interest for the SRR Selection Course. Focuses on advanced surveillance, human intelligence, and urban survival." >}}
