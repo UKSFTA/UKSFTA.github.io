@@ -14,17 +14,17 @@ JSFAW is specialized in extreme low-level flight, often utilizing terrain-follow
 
 ### Core Operational Domains
 
-*   **Covert Air Insertion**: Delivering SAS/SBS teams deep behind enemy lines using high-speed, low-level flight profiles to avoid radar detection.
-*   **Tactical Extraction**: Rapid recovery of teams from hostile environments under fire, utilizing specialized fast-rope and winch recovery techniques.
-*   **Battlefield Intelligence**: Providing real-time theatre awareness to ground teams via advanced thermal imaging and signals interception sensors.
-*   **Aviation Fire Support**: Delivering precision suppression from specialized air platforms to secure extraction zones in contested territory.
+* **Covert Air Insertion**: Delivering SAS/SBS teams deep behind enemy lines using high-speed, low-level flight profiles to avoid radar detection.
+* **Tactical Extraction**: Rapid recovery of teams from hostile environments under fire, utilizing specialized fast-rope and winch recovery techniques.
+* **Battlefield Intelligence**: Providing real-time theatre awareness to ground teams via advanced thermal imaging and signals interception sensors.
+* **Aviation Fire Support**: Delivering precision suppression from specialized air platforms to secure extraction zones in contested territory.
 
 ## Regimental Composition
 
 JSFAW consists of two primary operational squadrons, each specializing in a specific platform:
 
-*   **7 Squadron (RAF)**: Utilizing the Chinook HC6, specialists in heavy-lift tactical insertion, long-range maritime recovery, and high-altitude delivery.
-*   **658 Squadron (AAC)**: Utilizing the Gazelle AH1 and Wildcat, experts in rapid urban delivery and covert surveillance.
+* **7 Squadron (RAF)**: Utilizing the Chinook HC6, specialists in heavy-lift tactical insertion, long-range maritime recovery, and high-altitude delivery.
+* **658 Squadron (AAC)**: Utilizing the Gazelle AH1 and Wildcat, experts in rapid urban delivery and covert surveillance.
 
 ## Entry Standards & Training
 
@@ -32,9 +32,9 @@ JSFAW consists of two primary operational squadrons, each specializing in a spec
 
 Personnel must already be qualified as pilots or aircrew within the RAF or Army Air Corps. Candidates undergo the **JSFAW Operational Course**, widely considered one of the most dangerous aviation training programs in the military.
 
-### Training Focus:
-- **Night-Vision Mastery**: Mastery of high-speed, low-level flight in absolute zero-visibility conditions.
-- **Hostile Environment Landing**: Mastery of landing in unprepared, confined, or contested zones without ground support.
-- **Electronic Warfare**: Operating aircraft within heavy adversary radar and signals jamming environments.
+### Training Focus
+* **Night-Vision Mastery**: Mastery of high-speed, low-level flight in absolute zero-visibility conditions.
+* **Hostile Environment Landing**: Mastery of landing in unprepared, confined, or contested zones without ground support.
+* **Electronic Warfare**: Operating aircraft within heavy adversary radar and signals jamming environments.
 
 {{< recruitment-form title="JSFAW_PILOT_REGISTER" headline="Register for JSFAW Intake" description="Register your interest for specialized special operations aviation training. Open to qualified RAF and AAC aircrew." >}}

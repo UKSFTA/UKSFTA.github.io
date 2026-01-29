@@ -22,6 +22,7 @@ The entire vessel was under official control within nine minutes of the first op
 The Nave Andromeda intervention served as a high-visibility demonstration of the SBS's ability to project power and restore order to high-tonnage assets under extreme time pressure.
 
 ### Registry of Sources
+
 - [MV Nave Andromeda Intervention (Wikipedia)](https://en.wikipedia.org/wiki/MV_Nave_Andromeda)
 - [BBC News: SBS Boarding Operation](https://www.bbc.co.uk/news/uk-54685165)
 - [Sky News: Special Forces End Tanker Hijack](https://news.sky.com/story/isle-of-wight-special-forces-end-suspected-hijacking-of-tanker-12114441)

@@ -14,6 +14,7 @@ Directorate of Special Forces Registry: Long-range reconnaissance and target neu
 Operating from autonomous forward bases, SAS patrols conducted persistent monitoring of High-Value Targets (HVTs) within contested mountain environments. The mission demonstrated the Regiment's capacity for extreme-endurance patrolling and decisive kinetic effect with zero external footprint.
 
 ### Key Objectives
+
 - **Persistent Surveillance**: 14-day covert observation of trans-border adversary logistics networks.
 - **Kinetic Intervention**: Precision strike against strategic command and control nodes.
 - **Intelligence Gathering**: Recovery of sensitive technical documents and communication hardware.

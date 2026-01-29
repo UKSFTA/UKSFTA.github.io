@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import url("tailwindcss");
+
 @plugin "@tailwindcss/typography";
 
 @theme {
@@ -9,18 +10,16 @@
   --color-uksf-blue: #002366;
   --color-uksf-green: #153e35;
   --color-uksf-red: #800000;
-
   --font-industrial: "Archivo", "Inter", "Impact", sans-serif;
-  --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", menlo, monaco, consolas, monospace;
   --font-body: "Inter", "system-ui", "Arial", sans-serif;
-
   --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @layer base {
   :root {
     --primary: #b3995d;
-    --primary-glow: rgba(179, 153, 93, 0.3);
+    --primary-glow: rgb(179 153 93 / 30%);
     --bg-dark: #0b0b0b;
     --header-height: 100px;
     --hmg-bar-height: 40px;
@@ -34,9 +33,11 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: calc(var(--header-height) + var(--hmg-bar-height));
+
     @apply font-normal;
+
     background-image: 
-      radial-gradient(circle at 50% 0%, rgba(255,255,255,0.015) 0%, transparent 80%),
+      radial-gradient(circle at 50% 0%, rgb(255 255 255 / 1.5%) 0%, transparent 80%),
       url('https://www.transparenttextures.com/patterns/black-linen.png');
     background-attachment: fixed;
   }
@@ -47,14 +48,20 @@
     letter-spacing: -0.04em;
     color: white;
     line-height: 0.85;
+
     @apply font-black;
   }
 
-  img { object-fit: contain; max-width: 100%; height: auto; }
+  img {
+    object-fit: contain;
+    max-width: 100%;
+    height: auto;
+  }
   .object-cover { object-fit: cover !important; }
 
   label, .sub-header {
     font-family: var(--font-mono);
+
     @apply text-[9px] font-bold uppercase tracking-[0.3em] text-gray-500;
   }
 }
@@ -66,26 +73,31 @@
 
   .nav-header {
     @apply fixed left-0 w-full z-[2000] border-b border-white/5 bg-black/90 backdrop-blur-2xl;
+
     height: var(--header-height);
   }
 
   .nav-link {
     font-family: var(--font-mono);
+
     @apply text-[10px] font-black uppercase tracking-[0.4em] text-gray-600 transition-all no-underline;
     &:hover, &.active { @apply text-white; }
   }
 
   .dossier-node {
     @apply relative border-l-4 border-[var(--primary)] pl-12 py-6 mb-16;
-    background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
+
+    background: linear-gradient(to right, rgb(179 153 93 / 5%), transparent);
     backface-visibility: hidden;
     transform: translateZ(0);
   }
 
   .bracket-box {
     @apply relative border border-white/5 bg-white/[0.01] p-12 transition-all duration-500;
+
     &::before, &::after {
       content: "";
+
       @apply absolute w-2 h-2 border-[var(--primary)]/40 pointer-events-none;
     }
     &::before { @apply top-0 left-0 border-t-2 border-l-2; }
@@ -94,7 +106,9 @@
 
   .btn-elite {
     @apply inline-flex items-center justify-center px-12 py-5 bg-white text-black font-mono font-black text-xs uppercase tracking-[0.5em] transition-all relative overflow-hidden;
+
     text-decoration: none !important;
+
     &:hover {
       @apply bg-[var(--primary)] text-white shadow-[0_0_60px_var(--primary-glow)] -translate-y-0.5;
     }
@@ -102,6 +116,7 @@
 
   .terminal-input {
     @apply w-full bg-black/40 border border-white/10 p-5 text-xs font-mono text-white outline-none transition-all placeholder:text-gray-800;
+
     &:focus {
       @apply border-[var(--primary)] bg-[var(--primary)]/5 shadow-[0_0_30px_rgba(179,153,93,0.1)];
     }
@@ -109,11 +124,13 @@
 
   .icon-tactical {
     @apply grayscale-0 brightness-100 contrast-100;
+
     transition: all 0.5s ease;
   }
 
   .text-display { 
     font-size: clamp(4rem, 12vw, 9.5rem); 
+
     @apply font-black tracking-tighter leading-[0.8];
   }
 
@@ -123,8 +140,10 @@
     
     h2 {
       @apply text-5xl border-b border-white/10 pb-8 mb-12 mt-24 flex items-center gap-8;
+
       &::before {
         content: "";
+
         @apply w-12 h-1 bg-[var(--primary)];
       }
     }
@@ -134,15 +153,20 @@
 
     ul {
       list-style: none !important;
+
       @apply border-l border-white/5 pl-12 ml-4 space-y-8 my-16;
     }
+
     ul > li {
       @apply relative m-0 p-0;
+
       list-style-type: none !important;
     }
     ul > li::marker { content: none !important; }
+
     ul > li::before {
       content: "//" !important;
+
       @apply absolute -left-12 text-[var(--primary)] font-mono font-black opacity-30;
     }
 
@@ -161,6 +185,7 @@
   .covert-node {
     display: none !important;
   }
+
   .operator-authenticated .covert-node {
     display: flex !important;
   }
@@ -170,7 +195,7 @@
   .bg-grid-white {
     background-size: 60px 60px;
     background-image: 
-      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      linear-gradient(to right, rgb(255 255 255 / 2%) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 2%) 1px, transparent 1px);
   }
 }

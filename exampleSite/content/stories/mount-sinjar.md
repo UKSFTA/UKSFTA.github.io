@@ -20,6 +20,7 @@ The presence of the UKSF teams was critical in stabilizing the mountain's defens
 The Mount Sinjar intervention demonstrated the Directorate's ability to operate in the complex 'Grey Zone', where humanitarian protection and strategic kinetic effect must be perfectly balanced.
 
 ### Registry of Sources
+
 - [Persecution of Yazidis by ISIL (Wikipedia)](https://en.wikipedia.org/wiki/Persecution_of_Yazidis_by_ISIL)
 - [BBC News: SAS on Mount Sinjar](https://www.bbc.co.uk/news/uk-28770866)
 - [The Independent: UK Special Forces in Iraq](https://www.independent.co.uk/news/uk/politics/iraq-crisis-sas-sent-to-mount-sinjar-to-help-rescue-trapped-yazidis-9666246.html)

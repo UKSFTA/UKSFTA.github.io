@@ -18,6 +18,7 @@ Working alongside US Special Forces and Northern Alliance units, the SBS utilize
 The intervention successfully neutralized the uprising and prevented a large-scale escape of high-value detainees. While one US intelligence officer was killed in the initial uprising, the SBS's rapid response was critical in preventing further loss of life and securing the strategic fortress. Two SBS operators were awarded the Distinguished Service Order (DSO) and Conspicuous Gallantry Cross (CGC) for their actions during the battle.
 
 ### Registry of Sources
+
 - [Battle of Qala-i-Jangi (Wikipedia)](https://en.wikipedia.org/wiki/Battle_of_Qala-i-Jangi)
 - [The Guardian: The Bloody Battle of Qala-i-Jangi](https://www.theguardian.com/world/2001/dec/01/afghanistan.terrorism)
 - *First In: An Insider's Account of How the CIA Spearheaded the War on Terror* by Gary Schroen.

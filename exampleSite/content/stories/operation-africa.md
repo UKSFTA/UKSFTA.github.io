@@ -14,6 +14,7 @@ Joint Special Forces Command Registry: Partner Force Integration and Asymmetric 
 1 RANGERS initiated a persistent deployment within the West African domain to enhance the counter-insurgency capabilities of local partner forces. This operation serves as a validation of the Ranger Regiment's ability to operate embedded within foreign command structures to achieve strategic influence.
 
 ### Key Objectives
+
 - **Tactical Mentorship**: Training local infantry units in advanced asymmetric tactics and precision strike operations.
 - **Intelligence Liaison**: Establishing a persistent human intelligence network to monitor regional insurgency threats.
 - **Grey Zone Persistence**: Maintaining a continuous British presence to stabilize contested geographic zones without a Tier 1 footprint.

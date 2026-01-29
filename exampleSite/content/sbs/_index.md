@@ -11,9 +11,11 @@ The Special Boat Service (SBS) is the UK's specialist in the littoral and mariti
 ## Core Operational Domains
 
 ### Maritime Counter-Terrorism (MCT)
+
 The SBS maintains the permanent high-readiness response for threats to oil platforms, commercial shipping, and naval assets. They are the world's primary force for **Ship-in-Ship** intervention and offshore facility recovery.
 
 ### Amphibious Reconnaissance
+
 Gathering critical intelligence on coastal defenses, beachheads, and port infrastructure prior to larger-scale military operations. This involves covert sub-surface insertion and persistent monitoring of strategic maritime lanes.
 
 ## Specialized Asset Registry

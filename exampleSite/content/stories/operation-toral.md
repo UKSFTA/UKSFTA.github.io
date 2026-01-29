@@ -14,6 +14,7 @@ Joint Special Forces Command Registry: Specialist Support and Cordon Operations 
 During the transition phase of Operation Toral, SFSG provided the critical kinetic depth required to secure diplomatic and strategic assets. The unit maintained a constant high-readiness state, capable of projecting a reinforced assault company into contested urban zones with minimal notice.
 
 ### Key Objectives
+
 - **Secure Cordon Operations**: Establishing impenetrable perimeters around Tier 1 intervention sites to isolate targets.
 - **QRF Readiness**: Maintaining a 24/7 Quick Reaction Force to support Directorate assets under duress.
 - **Assault Reinforcement**: Providing secondary strike waves during large-scale kinetic interventions.

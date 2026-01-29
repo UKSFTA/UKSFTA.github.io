@@ -20,6 +20,7 @@ Two C-130s conducted a daring landing at a remote location south of Benghazi, wh
 Operation Liddard was a total success, resulting in the safe recovery of over 500 international workers with zero casualties. The mission demonstrated the Directorate’s ability to project power into vast, non-permissive geographic zones to achieve humanitarian and strategic objectives.
 
 ### Registry of Sources
+
 - [2011 British Extraction from Libya (Wikipedia)](https://en.wikipedia.org/wiki/Operation_Deference)
 - [The Telegraph: SAS Desert Rescue in Libya](https://www.telegraph.co.uk/news/worldnews/africaandindianocean/libya/8349214/Libya-SAS-leads-rescue-of-oil-workers.html)
 - *UKSF in the Grey Zone* (Internal Directorate Summary).

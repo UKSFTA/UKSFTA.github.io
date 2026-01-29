@@ -24,6 +24,7 @@ The outcome was a resounding validation of Tier 1 urban intervention. Five milit
 <div class="registry-sources">
 
 ### Registry of Sources
+
 - [The Iranian Embassy Siege (Wikipedia)](https://en.wikipedia.org/wiki/Iranian_Embassy_siege)
 - [BBC News: The SAS Iranian Embassy Siege](https://www.bbc.co.uk/news/uk-10063357)
 - *Go! Go! Go! - The Definitive Account of the Iranian Embassy Siege* by Rusty Firmin.

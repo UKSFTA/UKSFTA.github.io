@@ -22,6 +22,7 @@ The Battle of Nad-e Ali demonstrated the SFSG's foundational importance to the D
 <div class="registry-sources">
 
 ### Registry of Sources
+
 - [Operation Moshtarak (Wikipedia)](https://en.wikipedia.org/wiki/Operation_Moshtarak)
 - [The Guardian: British Forces in Helmand Offensive](https://www.theguardian.com/world/2010/feb/13/operation-moshtarak-afghanistan-marjah-helmand)
 - *The Special Forces Support Group - An Official History* (HMG Archives).

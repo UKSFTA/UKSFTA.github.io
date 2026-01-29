@@ -22,6 +22,7 @@ Despite the compromise, the mission provided critical intelligence on adversary 
 <div class="registry-sources">
 
 ### Registry of Sources
+
 - [Bravo Two Zero: SAS Patrol (Wikipedia)](https://en.wikipedia.org/wiki/Bravo_Two_Zero)
 - [The Chris Ryan Account: The One That Got Away](https://en.wikipedia.org/wiki/The_One_That_Got_Away_(book))
 - *Bravo Two Zero - The True Story* by Andy McNab.

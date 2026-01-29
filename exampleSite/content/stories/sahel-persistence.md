@@ -13,6 +13,7 @@ Asset: 2 RANGERS.
 {{< /mandate >}}
 
 ## 1. Situation
+
 Transnational insurgent movements in the Sahel domain required a persistent, lighter-footprint British military capability to stabilize key geographic zones and enhance local counter-terrorism effectiveness.
 
 - **Adversary**: Transnational insurgent cells (Decentralized / Asymmetric).
@@ -20,9 +21,11 @@ Transnational insurgent movements in the Sahel domain required a persistent, lig
 - **ROE**: Mentorship and leadership authorized; kinetic force authorized for self-defense and partner protection.
 
 ## 2. Mission
+
 To provide high-fidelity training, leadership, and technical intelligence support to partner nation forces to degrade insurgent capabilities and stabilize regional border zones.
 
 ## 3. Execution (CONOPS)
+
 The operation utilized a persistent, embedded presence to achieve strategic influence over a 6-month rotation.
 
 - **Phase 1: Integration**: Ranger teams established long-term residency within partner command structures, mastering local linguistic and cultural dynamics.
@@ -30,6 +33,7 @@ The operation utilized a persistent, embedded presence to achieve strategic infl
 - **Phase 3: Persistence**: Leading joint partner-nation patrols into non-permissive border zones to monitor insurgent transit and disrupt logistics networks.
 
 ## 4. Mission Assessment
+
 - **Capability Increase**: Partner nation kinetic effectiveness improved by 35% across monitored units.
 - **Strategic Impact**: Persistent presence established without the requirement for large-scale conventional forces.
 - **Logistics Effect**: 40% reduction in trans-border insurgent traffic within the primary sector.

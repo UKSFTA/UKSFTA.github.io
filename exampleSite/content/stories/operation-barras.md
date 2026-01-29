@@ -24,6 +24,7 @@ The extraction was completed within 20 minutes of the initial breach. All 11 Bri
 <div class="registry-sources">
 
 ### Registry of Sources
+
 - [Operation Barras: Sierra Leone Extraction (Wikipedia)](https://en.wikipedia.org/wiki/Operation_Barras)
 - [British Army: The Story of Operation Barras](https://www.army.mod.uk/)
 - *Operation Barras: The SAS Rescue Mission* by Damien Lewis.

@@ -20,6 +20,7 @@ Despite the fact that the primary kinetic phase was eventually aborted due to th
 This redeployment significantly degraded the adversary's defensive posture in the primary theatre of operations, contributing to the eventual success of the British land campaign. Operation Mikado remains a primary example of how Tier 1 assets can achieve strategic deterrence and influence without firing a shot.
 
 ### Registry of Sources
+
 - [Operation Mikado: SAS Raid (Wikipedia)](https://en.wikipedia.org/wiki/Operation_Mikado)
 - [British Falklands War Archives: Special Forces Operations](https://www.falklands-war.org.uk/)
 - *Exocet Falklands - The Untold Story of Special Forces Operations* by Ewen Southby-Tailyour.

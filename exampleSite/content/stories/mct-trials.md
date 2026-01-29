@@ -14,6 +14,7 @@ Joint Special Forces Command After-Action Report: Maritime Counter-Terrorism (MC
 Following intelligence reports of a non-conventional threat to strategic maritime infrastructure in the London domain, M Squadron (SBS) initiated a high-speed intervention protocol. This operation served as a critical validation of the Directorate's ability to project Tier 1 power into complex urban-maritime environments.
 
 ### Key Objectives
+
 - **Vessel Intervention**: Covert boarding and securing of high-tonnage commercial assets.
 - **Infrastructure Protection**: Establishing secure cordons around strategic river crossings and utility nodes.
 - **Inter-Agency Coordination**: Seamless integration with the Metropolitan Police Specialist Firearms Command (CTSFO) and the Royal Navy.

@@ -10,6 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&family=Archivo:wght@900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+  
+  <!-- SYSTEM HEADERS // JSFC INTERNAL -->
+  <meta name="x-registry-gate" content="L3JlZ2lzdHJ5L2dhdGU=">
+  <meta name="x-auth-protocol" content="BASE64">
+  <meta name="x-node-id" content="JSFC-01-PRIMARY">
+  
   {{ partial "head/skin.html" . }}
 </head>
 {{ $unit := .Params.unit | default .Section | default "sas" }}

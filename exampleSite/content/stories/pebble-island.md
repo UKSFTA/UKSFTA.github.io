@@ -18,6 +18,7 @@ The SAS teams moved covertly toward the airfield, carrying heavy loads of explos
 The entire ground phase lasted less than 45 minutes. Despite being engaged by Argentine small arms fire, the SAS teams successfully extracted via the Sea Kings with only two minor casualties. The raid effectively neutralized the threat from Pebble Island, ensuring the British task force could proceed with the San Carlos landings with reduced risk from land-based air assets.
 
 ### Registry of Sources
+
 - [Pebble Island Raid (Wikipedia)](https://en.wikipedia.org/wiki/Raid_on_Pebble_Island)
 - [British Falklands War Archives: Pebble Island](https://www.falklands-war.org.uk/pebble_island.htm)
 - *SAS: Sea King Down* by Mark Aston.

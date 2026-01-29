@@ -14,6 +14,7 @@ Joint Special Forces Command Registry: High-Altitude Kinetic Integration report.
 During the primary offensive in the Tora Bora cave complex, SBS teams conducted a high-stakes interdiction mission to trap Al-Qaeda leadership. The operation demonstrated the SBS's versatility in extreme mountain environments, far removed from their traditional maritime specialization.
 
 ### Key Objectives
+
 - **Target Containment**: Blocking strategic mountain passes to prevent HVT escape.
 - **Precision CAS Integration**: Guiding high-fidelity air strikes onto deep-cave fortifications.
 - **Direct Action Assault**: Clearing non-permissive subterranean complexes under extreme environmental duress.

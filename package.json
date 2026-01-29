@@ -1,6 +1,7 @@
 {
   "name": "uksf-mod-theme",
   "version": "1.0.0",
+  "type": "module",
   "description": "United Kingdom Special Forces (UKSF) Digital Presence - Hugo Theme",
   "main": "index.js",
   "scripts": {
@@ -9,6 +10,11 @@
     "build": "npm run build:css && hugo -s exampleSite --themesDir ../.. --minify",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./static/css/main.css --minify",
     "watch:css": "tailwindcss -i ./assets/css/input.css -o ./static/css/main.css --watch",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:md",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"assets/**/*.css\"",
+    "lint:md": "markdownlint \"**/*.md\" --ignore node_modules --ignore exampleSite/public",
+    "lint:html": "html-validate \"layouts/**/*.html\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -21,13 +27,21 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@tailwindcss/cli": "^4.1.18",
     "autoprefixer": "^10.4.23",
     "concurrently": "^9.2.1",
+    "eslint": "^9.39.2",
+    "globals": "^17.2.0",
+    "html-validate": "^10.7.0",
     "lucide-static": "^0.563.0",
+    "markdownlint-cli": "^0.47.0",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
+    "prettier": "^3.8.1",
     "sass": "^1.97.3",
+    "stylelint": "^17.0.0",
+    "stylelint-config-standard": "^40.0.0",
     "tailwindcss": "^4.1.18",
     "tailwindcss-animate": "^1.0.7"
   },
