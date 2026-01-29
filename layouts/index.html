@@ -94,13 +94,13 @@
                     </div>
                 </div>
 
-                <div class="bracket-box h-full overflow-hidden bg-black relative min-h-[650px] border-white/10 group">
+                <div class="bracket-box !p-0 h-full overflow-hidden bg-black relative border-white/10 group">
                     {{ $map := resources.Get "icons/UKSF-MAP.png" }}
                     {{ if $map }}
                     <img src="{{ $map.RelPermalink }}" 
-                         class="w-full h-full object-contain opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000" alt="Strategic Asset Map">
+                         class="w-full h-full object-cover opacity-100 transition-all duration-1000" alt="Strategic Asset Map">
                     {{ end }}
-                    <div class="absolute inset-0 bg-grid-white opacity-10 pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-grid-white opacity-5 pointer-events-none"></div>
                     
                     <div class="absolute bottom-10 right-10 flex flex-col items-end">
                         <div class="px-8 py-6 border border-white/10 bg-black/60 backdrop-blur-xl">
