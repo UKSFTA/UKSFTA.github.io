@@ -202,7 +202,7 @@
   }
 
   .text-display { 
-    font-size: clamp(4rem, 12vw, 9.5rem); 
+    font-size: clamp(3rem, 8vw, 6rem); 
     font-weight: 900;
     letter-spacing: -0.05em;
     line-height: 0.8;
