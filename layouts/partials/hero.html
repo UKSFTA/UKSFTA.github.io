@@ -1,6 +1,6 @@
 <section class="relative min-h-screen bg-black border-b border-white/10 snap-start">
     <!-- Visual Underlay -->
-    <div class="absolute inset-0 z-0 overflow-hidden">
+    <div class="absolute inset-0 z-0 overflow-hidden hud-image">
         {{ with .Params.hero_image }}
         <img src="{{ . | absURL }}" class="w-full h-full object-cover opacity-20 grayscale" alt="">
         {{ else }}
