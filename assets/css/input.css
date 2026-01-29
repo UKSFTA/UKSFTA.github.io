@@ -71,6 +71,22 @@
     &:hover, &.active { @apply text-white; }
   }
 
+  /* TACTICAL SWITCHBOARD FILTERS */
+  .filter-btn {
+    font-family: var(--font-mono);
+    @apply relative px-6 py-3 text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 border border-white/5 bg-white/[0.02] transition-all cursor-pointer overflow-hidden;
+    &.active {
+      @apply text-white border-[var(--primary)] bg-[var(--primary)]/5 shadow-[0_0_20px_var(--primary-glow)];
+      &::before {
+        content: "";
+        @apply absolute top-0 left-0 w-full h-0.5 bg-[var(--primary)];
+      }
+    }
+    &:hover:not(.active) {
+      @apply border-white/20 text-gray-300 bg-white/5;
+    }
+  }
+
   .dossier-node {
     @apply relative border-l-4 border-[var(--primary)] pl-10 py-3 mb-12;
     background: linear-gradient(to right, rgba(179, 153, 93, 0.03), transparent);
@@ -107,13 +123,8 @@
       }
     }
 
-    h3 {
-      @apply text-3xl mb-8 mt-16 text-gray-300;
-    }
-
-    p {
-      @apply text-gray-400 font-light text-xl leading-relaxed;
-    }
+    h3 { @apply text-3xl mb-8 mt-16 text-gray-300; }
+    p { @apply text-gray-400 font-light text-xl leading-relaxed; }
 
     ul {
       @apply border-l border-white/5 pl-10 ml-4 space-y-6 list-none;
@@ -128,16 +139,6 @@
 
     blockquote {
       @apply border-l-4 border-gray-700 bg-white/[0.02] p-10 italic text-2xl text-gray-300 rounded-none not-italic font-light mb-16;
-    }
-
-    hr {
-      @apply border-white/5 my-24;
-    }
-
-    table {
-      @apply w-full border-collapse mb-16;
-      th { @apply text-[9px] font-mono text-gray-500 uppercase tracking-widest text-left p-4 border-b border-white/10; }
-      td { @apply p-4 border-b border-white/5 text-sm text-gray-400; }
     }
 
     /* Source Box Styling - Readability Pass */
