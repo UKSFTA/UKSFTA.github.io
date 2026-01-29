@@ -1,6 +1,6 @@
 ---
-title: "Operation Nimrod: Urban Intervention Protocol"
-description: " Concept of Operations (CONOPS) for the high-precision neutralization of armed militants and recovery of diplomatic assets."
+title: "Operation Nimrod: Iranian Embassy Intervention"
+description: "High-precision counter-terrorism and hostage recovery protocol in an urban stronghold."
 date: 2026-01-28
 unit: "sas"
 ---
@@ -13,27 +13,32 @@ Asset: 22 SAS / B Squadron.
 {{< /mandate >}}
 
 ## 1. Situation
-On 30 April 1980, six armed militants seized the Iranian Embassy, London, taking 26 hostages. Following the execution of a diplomatic staff member, the Directorate initiated a Tier 1 intervention protocol.
+On 30 April 1980, six armed militants of the Democratic Revolutionary Front for the Liberation of Arabistan (DRFLA) seized the Iranian Embassy in London. Following the execution of a hostage on Day 6, the Home Secretary authorized the Directorate to initiate a kinetic solution.
 
-- **Adversary**: Democratic Revolutionary Front for the Liberation of Arabistan (DRFLA).
-- **Environment**: Multi-storey urban stronghold with reinforced structural barriers.
-- **ROE**: Lethal force authorized for threat neutralization and asset protection.
+- **Adversary**: 6 armed militants (DRFLA).
+- **Environment**: Multi-storey urban townhouse, heavily barricaded.
+- **ROE**: Hostage extraction primary; lethal force authorized for threat neutralization.
 
 ## 2. Mission
-To conduct a synchronized assault on the target location to extract all remaining hostages and neutralize the militant threat with zero civilian latency.
+To conduct a synchronized, multi-point assault on 16 Princes Gate to extract all remaining assets and neutralize the militant threat with surgical precision.
 
 ## 3. Execution (CONOPS)
-The operation was executed in three primary phases, utilizing synchronized explosive breaching and vertical insertion.
+The operation (designated 'Operation Nimrod') was executed via two main assault teams (Red Team and Blue Team).
 
-- **Phase 1: Infiltration**: Technical teams established covert observation posts and multi-point audio surveillance. Direct action teams positioned on the roof and rear balconies.
-- **Phase 2: Breach & Entry**: Synchronized explosive breaching of the first-floor windows and roof sky-lights. Deployment of chemical agents (CS Gas) to degrade adversary visibility and response speed.
-- **Phase 3: Clearance & Recovery**: Systematic room-clearance by autonomous four-man teams. Strategic recovery of assets via rear extraction nodes.
+- **Phase 1: Infiltration**: Red Team established positions on the roof while Blue Team prepared first-floor entry points. Technical surveillance (microphones and optical probes) provided real-time HVT locations.
+- **Phase 2: Breach & Entry**: At 19:23 ZULU, Red Team fast-roped from the roof to the rear balconies while Blue Team utilized explosive frame-charges on the first-floor windows. CS gas was deployed to saturate the interior.
+- **Phase 3: Clearance**: Operators conducted systematic room-by-room clearance. Five of the six militants were neutralized within the structure; one was identified while attempting to blend with hostages and detained.
 
 ## 4. Mission Assessment
-- **Hostage Status**: 25/26 assets successfully recovered.
-- **Adversary Status**: 5 militants neutralized; 1 captured.
-- **Validation**: High-fidelity confirmation of Tier 1 urban intervention capability.
+- **Asset Status**: 25 hostages successfully recovered; 1 civilian fatality (pre-assault).
+- **Adversary Status**: 5 KIA; 1 detainee.
+- **Strategic Effect**: Global validation of the 'Black Role' counter-terrorism capability.
 
-{{< mandate id="OPSEC-NIM-01" >}}
-Specific chemical compositions and assault floor-plans remain RESTRICTED under HMG Archive Node 4.
+### Registry of Sources
+- [The Iranian Embassy Siege (Wikipedia)](https://en.wikipedia.org/wiki/Iranian_Embassy_siege)
+- [BBC News: The SAS Iranian Embassy Siege](https://www.bbc.co.uk/news/uk-10063357)
+- *Go! Go! Go! - The Definitive Account of the Iranian Embassy Siege* by Rusty Firmin.
+
+{{< mandate id="OPSEC-NIM-ARCHIVE" >}}
+Assault blueprints and specific chemical compositions remain RESTRICTED under HMG Archive Node 4.
 {{< /mandate >}}

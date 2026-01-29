@@ -1,39 +1,42 @@
 ---
 title: "Operation Trent: Strategic Logistics Interdiction"
-description: "Tier 1 Direct Action (DA) Concept of Operations (CONOPS) against a primary adversary narcotics and logistics node."
+description: "Tier 1 high-precision strike on strategic adversary logistics nodes in Southern Afghanistan."
 date: 2026-01-28
 unit: "sbs"
 ---
 
 {{< mandate id="AAR-SBS-TRN-2001" >}}
-OFFICIAL SENSITIVE: Long-Range Kinetic After-Action Report.
-Subject: Logistics Destruction / Command Node Neutralization.
-Location: Southern Afghanistan.
-Asset: Special Boat Service (Full Regiment Deployment).
+OFFICIAL SENSITIVE: Joint Operational After-Action Report.
+Subject: Logistics Destruction / Al-Qaeda Node Neutralization.
+Location: Southern Afghanistan / Desert Domain.
+Asset: Special Boat Service (SBS).
 {{< /mandate >}}
 
 ## 1. Situation
-UKSF intelligence identified a strategic Al-Qaeda opium processing facility being used to fund regional insurgency and global logistics. The target was heavily fortified and located in non-permissive high-desert terrain.
+In November 2001, intelligence identified a primary Al-Qaeda narcotics processing and logistics facility in the Helmand domain. The facility served as a key financial and command node for regional insurgency operations.
 
-- **Adversary**: Al-Qaeda fortified garrison (approx. 100+ combatants).
-- **Environment**: High-Arid Desert / Fortified Compound.
-- **ROE**: Decisive kinetic effect authorized for facility destruction and command neutralization.
+- **Adversary**: Al-Qaeda fortified garrison (approx. 100 combatants).
+- **Environment**: Arid high-desert with reinforced defensive compounds.
+- **ROE**: Decisive kinetic effect authorized for facility destruction.
 
 ## 2. Mission
-To conduct a long-range desert incursion to destroy the logistics facility, neutralize the occupying force, and recover strategic communication intelligence.
+To conduct a long-range desert incursion to achieve total neutralization of the Al-Qaeda facility and recover strategic technical intelligence.
 
 ## 3. Execution (CONOPS)
-The operation was characterized by its massive scale and use of high-mobility ground platforms coordinated with air superioriy.
-
-- **Phase 1: Incursion**: A multi-day, 1000km overland penetration using heavily armed Mobility Troop Land Rovers and ATVs.
-- **Phase 2: Strike**: Coordinated assault utilizing US Navy Close Air Support (CAS) to soften perimeter defenses. High-speed ground assault by 80+ Tier 1 operators.
-- **Phase 3: Exploitation**: Seizure of technical documents and hard-drives followed by total demolition of the target facility.
+- **Phase 1: Incursion**: The SBS utilized heavily armed Mobility Troop 'Pink Panther' Land Rovers and ATVs for a high-speed overland penetration of over 1000km.
+- **Phase 2: Air-Kinetic Integration**: US Navy Close Air Support (CAS) conducted precision strikes on outer-perimeter defensive positions.
+- **Phase 3: Direct Action**: 80+ SBS operators conducted a high-speed vehicle-borne assault, engaging the adversary at close quarters and clearing the compound.
 
 ## 4. Mission Assessment
-- **Logistics Effect**: Processing facility 100% neutralized. Adversary funding pipeline significantly degraded.
-- **Intel Recovery**: High-fidelity data recovered for Directorate analysis.
-- **Casualties**: Four Tier 1 operators WIA; zero KIA.
+- **Logistics Status**: 100% destruction of target processing facility and associated infrastructure.
+- **Intel Status**: Seizure of high-value hard-drives and technical communication hardware.
+- **Casualties**: 4 Tier 1 operators WIA (all recovered); zero KIA.
+
+### Registry of Sources
+- [Operation Trent: SBS Assault (Wikipedia)](https://en.wikipedia.org/wiki/Operation_Trent)
+- [The Telegraph: The Largest SBS Mission in History](https://www.telegraph.co.uk/news/worldnews/asia/afghanistan/1366141/SAS-smashes-Al-Qaeda-opium-base.html)
+- *Special Boat Service - The Official History* by Mortimer.
 
 {{< mandate id="OPSEC-TRN-01" >}}
-Specific overland GPS routes and cryptographic analysis of seized data remain TOP SECRET.
+Recovered cryptographic analysis and specific overland GPS routes remain Top Secret.
 {{< /mandate >}}
