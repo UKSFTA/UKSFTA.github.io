@@ -19,7 +19,7 @@
   {{ partial "head/skin.html" . }}
 </head>
 {{ $unit := .Params.unit | default .Section | default "sas" }}
-<body class="unit-{{ lower $unit }}">
+<body class="unit-{{ lower $unit }} {{ if .IsHome }}snap-y snap-mandatory h-screen overflow-y-auto{{ end }}">
   
   <!-- Tier 1: System Status Superior Rule -->
   <div class="fixed top-0 left-0 w-full z-[3000] bg-black border-b border-white/5 py-2">
