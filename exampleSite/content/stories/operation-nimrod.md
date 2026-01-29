@@ -1,31 +1,39 @@
 ---
-title: "Operation Nimrod: Iranian Embassy Intervention"
-description: "High-precision counter-terrorism and hostage rescue protocol in an urban stronghold."
+title: "Operation Nimrod: Urban Intervention Protocol"
+description: " Concept of Operations (CONOPS) for the high-precision neutralization of armed militants and recovery of diplomatic assets."
 date: 2026-01-28
 unit: "sas"
 ---
 
-{{< mandate id="AAR-SAS-NIM" >}}
-Joint Special Forces Command Historical Registry: Strategic Counter-Terrorism validation. Location: Princes Gate, London. Asset: 22 SAS / B Squadron.
+{{< mandate id="AAR-SAS-NIM-1980" >}}
+OFFICIAL SENSITIVE: After-Action Report (AAR). 
+Subject: Iranian Embassy Siege / Strategic Counter-Terrorism Validation.
+Location: Princes Gate, London.
+Asset: 22 SAS / B Squadron.
 {{< /mandate >}}
 
-## Operational Overview
+## 1. Situation
+On 30 April 1980, six armed militants seized the Iranian Embassy, London, taking 26 hostages. Following the execution of a diplomatic staff member, the Directorate initiated a Tier 1 intervention protocol.
 
-Following the illegal seizure of the Iranian Embassy by armed militants, the Directorate initiated a high-readiness intervention protocol. Operation Nimrod remains the global benchmark for surgical urban intervention, demonstrating the SAS's ability to operate under intense public and technical scrutiny.
+- **Adversary**: Democratic Revolutionary Front for the Liberation of Arabistan (DRFLA).
+- **Environment**: Multi-storey urban stronghold with reinforced structural barriers.
+- **ROE**: Lethal force authorized for threat neutralization and asset protection.
 
-### Key Objectives
-- **Hostage Recovery**: Extraction of 26 embassy staff and visitors.
-- **Threat Neutralization**: Elimination of six armed militants with zero collateral latency.
-- **Technical Sabotage**: Utilizing specialized demolition to gain multiple entry points simultaneously.
+## 2. Mission
+To conduct a synchronized assault on the target location to extract all remaining hostages and neutralize the militant threat with zero civilian latency.
 
-## Technical Execution
+## 3. Execution (CONOPS)
+The operation was executed in three primary phases, utilizing synchronized explosive breaching and vertical insertion.
 
-The assault was characterized by synchronized insertion from the roof and first-floor balconies. Operators utilized experimental flash-bang distraction devices and respirators to maintain tactical superiority in gas-filled environments.
+- **Phase 1: Infiltration**: Technical teams established covert observation posts and multi-point audio surveillance. Direct action teams positioned on the roof and rear balconies.
+- **Phase 2: Breach & Entry**: Synchronized explosive breaching of the first-floor windows and roof sky-lights. Deployment of chemical agents (CS Gas) to degrade adversary visibility and response speed.
+- **Phase 3: Clearance & Recovery**: Systematic room-clearance by autonomous four-man teams. Strategic recovery of assets via rear extraction nodes.
 
-- **Insertion Method**: Fast-rope / Explosive Breaching.
-- **Environmental State**: Multi-Storey Urban.
-- **Outcome**: 25/26 hostages recovered. All primary threats neutralized.
+## 4. Mission Assessment
+- **Hostage Status**: 25/26 assets successfully recovered.
+- **Adversary Status**: 5 militants neutralized; 1 captured.
+- **Validation**: High-fidelity confirmation of Tier 1 urban intervention capability.
 
 {{< mandate id="OPSEC-NIM-01" >}}
-Assault blueprints and specific chemical compositions used for breaching remain ARCHIVED under Level 4 protocols.
+Specific chemical compositions and assault floor-plans remain RESTRICTED under HMG Archive Node 4.
 {{< /mandate >}}

@@ -1,31 +1,39 @@
 ---
-title: "Battle of Nad-e Ali: Specialist Assault Support"
-description: "High-readiness infantry cordon and kinetic reinforcement during Operation Moshtarak."
+title: "Nad-e Ali: Specialist Cordon Protocol"
+description: "SFSG Concept of Operations (CONOPS) for kinetic support and perimeter maintenance during Operation Moshtarak."
 date: 2026-01-28
 unit: "sfsg"
 ---
 
-{{< mandate id="AAR-SFSG-NAD" >}}
-Joint Special Forces Command Registry: Kinetic Support and Cordon Validation report. Location: Helmand Province / Nad-e Ali. Asset: SFSG / 1 PARA Integration.
+{{< mandate id="AAR-SFSG-NAD-2010" >}}
+OFFICIAL SENSITIVE: Specialist Support After-Action Report.
+Subject: Kinetic Cordon / Tier 1 Reinforcement.
+Location: Nad-e Ali, Helmand Province.
+Asset: SFSG / 1 PARA Integration.
 {{< /mandate >}}
 
-## Operational Overview
+## 1. Situation
+During the initial assault phases of Operation Moshtarak, SAS/SBS interdiction teams targeted high-level insurgent command nodes within Nad-e Ali. Superior adversary numbers required the deployment of high-readiness specialist support.
 
-During the opening phases of Operation Moshtarak, SFSG provided the critical tactical depth required for SAS/SBS interdiction teams to neutralize strategic command nodes. The unit maintained impenetrable cordons against overwhelming insurgent numbers, allowing Tier 1 assets to achieve surgical precision.
+- **Adversary**: Reinforced insurgent defensive units.
+- **Environment**: Densely packaged urban agricultural centre.
+- **ROE**: Lethal suppressive fire authorized to protect Tier 1 maneuver and secure extraction.
 
-### Key Objectives
-- **Secure Cordon Maintenance**: Blocking insurgent escape routes and preventing external reinforcement of the target zone.
-- **Heavy Weapons Support**: Suppressing adversary defensive positions using mortars and anti-tank missiles.
-- **Decisive Reinforcement**: Providing secondary assault waves to secure large-scale urban compounds.
+## 2. Mission
+To establish and maintain impenetrable cordons around target compounds, provide heavy-weapons suppression of adversary counter-attacks, and reinforce Tier 1 assets during large-scale room clearance.
 
-## Technical Execution
+## 3. Execution (CONOPS)
+SFSG provided the "Combat Power" layer, allowing Tier 1 teams to focus on surgical intervention.
 
-The operation was a validation of the SFSG's mastery of combined-arms support. Working in seamless integration with armored assets and Tier 1 teams, the unit demonstrated the ability to hold ground in non-permissive urban environments.
+- **Deployment**: Rapid insertion via heli-borne and ground-mobility layers.
+- **Perimeter Control**: Establishment of technical observation posts and heavy-weapons (L111A1 / Javelin) positions to block insurgent reinforcement.
+- **Kinetic Support**: Providing secondary assault waves to secure large-scale agricultural compounds once the primary threat was neutralized.
 
-- **Insertion Method**: Ground Infiltration / Air Assault.
-- **Environmental State**: Densely Packaged Urban.
-- **Outcome**: All primary objectives secured. Secure operational zones maintained for 72+ hours.
+## 4. Mission Assessment
+- **Cordon Integrity**: Zero breach of secure zones during the 72-hour operational window.
+- **Tactical Support**: Successfully enabled four Tier 1 HVT interdictions.
+- **Outcome**: Insurgent command structure in Nad-e Ali effectively degraded.
 
-{{< mandate id="OPSEC-NAD-04" >}}
-Specific squadron availability and heavy weapons deployment metrics are LEVEL 3 RESTRICTED.
+{{< mandate id="OPSEC-NAD-01" >}}
+Specific heavy-weapons ammunition expenditure and QRF response metrics are LEVEL 3 RESTRICTED.
 {{< /mandate >}}

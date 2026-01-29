@@ -1,31 +1,39 @@
 ---
-title: "MV Nave Andromeda: Maritime Intervention Node"
-description: "High-readiness MCT boarding and control protocol on a high-tonnage commercial asset."
+title: "MV Nave Andromeda: Maritime Intervention"
+description: "MCT Concept of Operations (CONOPS) for the recovery of a high-tonnage commercial asset under duress."
 date: 2026-01-28
 unit: "sbs"
 ---
 
-{{< mandate id="AAR-SBS-AND" >}}
-Joint Special Forces Command Registry: Maritime Counter-Terrorism validation. Location: Isle of Wight / Channel Domain. Asset: SBS M Squadron.
+{{< mandate id="AAR-SBS-AND-2020" >}}
+OFFICIAL SENSITIVE: Maritime After-Action Report.
+Subject: Ship-in-Ship Intervention / Threat Neutralization.
+Location: English Channel / Isle of Wight Domain.
+Asset: SBS M Squadron.
 {{< /mandate >}}
 
-## Operational Overview
+## 1. Situation
+On 25 October 2020, the crude oil tanker MV Nave Andromeda reported a violent stowaway situation while in transit near the Isle of Wight. Non-conventional threats to the crew and vessel navigation were identified.
 
-Following reports of a violent stowaway situation on the tanker MV Nave Andromeda, M Squadron (SBS) initiated a high-speed MCT intervention. The operation demonstrated the SBS's ability to project power onto high-tonnage assets under nighttime conditions with absolute precision.
+- **Adversary**: Seven irregular stowaway militants.
+- **Environment**: High-tonnage commercial tanker in open water (Night Conditions).
+- **ROE**: Non-lethal dominance preferred; lethal force authorized for crew protection.
 
-### Key Objectives
-- **Secure Vessel Control**: Rapidly boarding and gaining control of the bridge and engine room.
-- **Threat Containment**: Neutralizing non-conventional threats to the crew and navigation systems.
-- **Night-Vision Validation**: Executing a multi-team insertion in near-zero visibility.
+## 2. Mission
+To conduct a rapid, nighttime boarding of the vessel to secure the crew, neutralize the onboard threat, and restore official control of the asset.
 
-## Technical Execution
+## 3. Execution (CONOPS)
+The operation utilized a synchronized multi-platform approach to achieve total vessel dominance within minutes of the handshake.
 
-The assault was conducted utilizing JSFAW Wildcat assets for fast-rope insertion and high-speed surface craft for rear-boarding. The entire vessel was secured within 9 minutes of the first boots on deck.
+- **Phase 1: Overwatch**: JSFAW Wildcat assets established persistent thermal surveillance and provided sniper coverage.
+- **Phase 2: Boarding**: Four high-speed surface craft conducted a stern approach while two teams fast-roped onto the deck from Chinook assets.
+- **Phase 3: Control**: Systematic clearance of the bridge, engine room, and crew quarters. Total vessel control achieved within 9 minutes.
 
-- **Insertion Method**: Fast-Rope / Vertical Boarding.
-- **Environmental State**: Open Water / Night.
-- **Outcome**: Vessel secured. Crew safe. Zero casualties.
+## 4. Mission Assessment
+- **Asset Status**: Vessel secured with zero structural damage.
+- **Crew Status**: All members recovered without injury.
+- **Detainees**: Seven individuals transferred to domestic security services.
 
-{{< mandate id="OPSEC-AND-01" >}}
-Boarding team thermal signatures and secure command-link metadata are LEVEL 4 RESTRICTED.
+{{< mandate id="OPSEC-AND-99" >}}
+Boarding team night-vision signatures and JSFAW approach profiles are RESTRICTED.
 {{< /mandate >}}

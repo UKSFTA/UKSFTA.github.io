@@ -1,31 +1,39 @@
 ---
-title: "Operation Trent: Long-Range Kinetic Strike"
-description: "Tier 1 high-precision strike on strategic adversary logistics nodes in the Afghan theatre."
+title: "Operation Trent: Strategic Logistics Interdiction"
+description: "Tier 1 Direct Action (DA) Concept of Operations (CONOPS) against a primary adversary narcotics and logistics node."
 date: 2026-01-28
 unit: "sbs"
 ---
 
-{{< mandate id="AAR-SBS-TRN" >}}
-Joint Special Forces Command Registry: Long-Range Desert Mobility and Strike report. Location: Southern Afghanistan. Asset: Special Boat Service.
+{{< mandate id="AAR-SBS-TRN-2001" >}}
+OFFICIAL SENSITIVE: Long-Range Kinetic After-Action Report.
+Subject: Logistics Destruction / Command Node Neutralization.
+Location: Southern Afghanistan.
+Asset: Special Boat Service (Full Regiment Deployment).
 {{< /mandate >}}
 
-## Operational Overview
+## 1. Situation
+UKSF intelligence identified a strategic Al-Qaeda opium processing facility being used to fund regional insurgency and global logistics. The target was heavily fortified and located in non-permissive high-desert terrain.
 
-Operation Trent remains one of the largest SBS deployments in modern history. The mission involved a long-range desert penetration to destroy a strategic Al-Qaeda logistics and funding node. The operation utilized over 80 operators and demonstrated the unit's ability to operate far outside of its traditional maritime domain.
+- **Adversary**: Al-Qaeda fortified garrison (approx. 100+ combatants).
+- **Environment**: High-Arid Desert / Fortified Compound.
+- **ROE**: Decisive kinetic effect authorized for facility destruction and command neutralization.
 
-### Key Objectives
-- **Logistics Destruction**: Total neutralization of an industrial-scale opium processing facility.
-- **Intelligence Recovery**: Seizure of high-level adversary communication hardware.
-- **Strategic Disruption**: Breaking the financial link between regional narcotics and global terrorism.
+## 2. Mission
+To conduct a long-range desert incursion to destroy the logistics facility, neutralize the occupying force, and recover strategic communication intelligence.
 
-## Technical Execution
+## 3. Execution (CONOPS)
+The operation was characterized by its massive scale and use of high-mobility ground platforms coordinated with air superioriy.
 
-The operation utilized heavily armed Pink Panther Land Rovers and ATVs for a multi-day desert infiltration. The assault was coordinated with Close Air Support (CAS) to suppress superior adversary numbers during the final breach.
+- **Phase 1: Incursion**: A multi-day, 1000km overland penetration using heavily armed Mobility Troop Land Rovers and ATVs.
+- **Phase 2: Strike**: Coordinated assault utilizing US Navy Close Air Support (CAS) to soften perimeter defenses. High-speed ground assault by 80+ Tier 1 operators.
+- **Phase 3: Exploitation**: Seizure of technical documents and hard-drives followed by total demolition of the target facility.
 
-- **Insertion Method**: Long-Range Mobility / Overland.
-- **Environmental State**: High-Desert / Arid.
-- **Outcome**: Target facility destroyed. Significant intelligence recovered. Several Tier 1 operators wounded but recovered.
+## 4. Mission Assessment
+- **Logistics Effect**: Processing facility 100% neutralized. Adversary funding pipeline significantly degraded.
+- **Intel Recovery**: High-fidelity data recovered for Directorate analysis.
+- **Casualties**: Four Tier 1 operators WIA; zero KIA.
 
-{{< mandate id="OPSEC-TRN-99" >}}
-Specific overland routes and cryptographic analysis of recovered data remain TOP SECRET.
+{{< mandate id="OPSEC-TRN-01" >}}
+Specific overland GPS routes and cryptographic analysis of seized data remain TOP SECRET.
 {{< /mandate >}}

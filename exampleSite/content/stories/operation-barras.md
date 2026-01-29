@@ -1,31 +1,39 @@
 ---
-title: "Operation Barras: Joint-Service Tactical Extraction"
-description: "Rapid high-risk extraction and hostage recovery in a non-permissive jungle stronghold."
+title: "Operation Barras: Multi-Domain Extraction"
+description: "Joint-Service Concept of Operations (CONOPS) for the extraction of captive British personnel in non-permissive terrain."
 date: 2026-01-28
-unit: "sas"
+unit: "joint"
 ---
 
-{{< mandate id="AAR-JSFC-BAR" >}}
-Joint Special Forces Command Registry: Joint-Service Kinetic Integration report. Location: Gberi Bana, Sierra Leone. Assets: 22 SAS, SBS, SFSG, JSFAW.
+{{< mandate id="AAR-JSFC-BAR-2000" >}}
+OFFICIAL SENSITIVE: Joint After-Action Report.
+Subject: Hostage Recovery / Militia Neutralization.
+Location: Gberi Bana / Magbeni, Sierra Leone.
+Assets: 22 SAS, SBS, SFSG, JSFAW.
 {{< /mandate >}}
 
-## Operational Overview
+## 1. Situation
+Members of the Royal Irish Regiment were illegally detained by the West Side Boys militia in a reinforced jungle stronghold. Diplomatic negotiation reached a terminal state, necessitating a kinetic extraction.
 
-Operation Barras demonstrated the Directorate's ability to coordinate a multi-domain strike with zero margin for error. The mission required the simultaneous assault on two separate jungle strongholds to rescue members of the Royal Irish Regiment held by the West Side Boys militia.
+- **Adversary**: West Side Boys Militia (Irregular / Non-State).
+- **Environment**: Riparian Jungle with dense vegetation and river-access dependencies.
+- **ROE**: Decisive kinetic force authorized to secure hostages and degrade militia command.
 
-### Key Objectives
-- **Simultaneous Strike**: Coordinated assault on Gberi Bana and Magbeni to prevent hostage execution.
-- **Militia Neutralization**: Complete degradation of the West Side Boys' command structure.
-- **Strategic Recovery**: Extraction of 11 hostages and their British liaison officer.
+## 2. Mission
+To conduct a simultaneous, multi-point assault on Gberi Bana and Magbeni to recover all captives and achieve total neutralization of the militia presence.
 
-## Technical Execution
+## 3. Execution (CONOPS)
+The operation required the highest level of joint-service synchronization, utilizing air-assault and ground-cordon layers.
 
-The operation utilized JSFAW Chinook and Lynx assets for high-speed insertion. SFSG provided the critical heavy weapons cordon, while SAS and SBS assault teams conducted the precision recovery.
+- **Insertion Phase**: JSFAW Chinook and Lynx assets conducted a low-level, terrain-following approach to achieve acoustic surprise.
+- **Assault Phase**: SAS and SBS teams conducted fast-rope insertion directly into the compound centers. Simultaneous strike at Gberi Bana (Hostage Node) and Magbeni (Militia Base).
+- **Cordon Phase**: SFSG provided a high-readiness kinetic perimeter using heavy weapons to suppress external militia reinforcement.
 
-- **Insertion Method**: Low-Level Heli-Borne Assault.
-- **Environmental State**: Tropical Jungle / Riparian.
-- **Outcome**: All hostages recovered. Militia neutralized. One SAS operator KIA.
+## 4. Mission Assessment
+- **Asset Recovery**: 11/11 hostages successfully extracted.
+- **Operational Effect**: West Side Boys command structure effectively neutralized.
+- **Casualties**: One Tier 1 operator KIA; 12 WIA.
 
-{{< mandate id="OPSEC-BAR-99" >}}
-Aviation terrain-following flight profiles and specific SFSG heavy weapons deployment zones remain RESTRICTED.
+{{< mandate id="OPSEC-BAR-01" >}}
+Aviation flight profiles and specific heavy-weapons suppression patterns remain RESTRICTED.
 {{< /mandate >}}
