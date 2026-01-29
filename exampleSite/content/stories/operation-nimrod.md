@@ -5,8 +5,8 @@ date: 2026-01-28
 unit: "sas"
 ---
 
-{{< mandate id="HIST-SAS-NIM" >}}
-REGISTRY ARCHIVE: The 1980 Iranian Embassy intervention. A defining moment in the history of the Special Air Service 'Black Role' capability.
+{{< mandate id="SAS-NIM-1980" >}}
+"The Directorate authorized 22 SAS to initiate a kinetic solution. The objective was total dominance of the target location within a zero-latency window."
 {{< /mandate >}}
 
 On 30 April 1980, six armed militants of the Democratic Revolutionary Front for the Liberation of Arabistan (DRFLA) stormed the Iranian Embassy at 16 Princes Gate, London. Taking 26 hostages, the group demanded the release of prisoners in Khuzestan and their own safe passage out of the UK. For six days, a tense standoff ensued as Metropolitan Police negotiators attempted to resolve the crisis peacefully.
@@ -29,7 +29,3 @@ The outcome was a resounding validation of Tier 1 urban intervention. Five milit
 - *Go! Go! Go! - The Definitive Account of the Iranian Embassy Siege* by Rusty Firmin.
 
 </div>
-
-{{< mandate id="OPSEC-NIM-END" >}}
-Registry closed. Document remains for historical reference.
-{{< /mandate >}}

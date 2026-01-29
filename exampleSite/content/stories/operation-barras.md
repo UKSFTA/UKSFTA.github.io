@@ -5,8 +5,8 @@ date: 2026-01-28
 unit: "joint"
 ---
 
-{{< mandate id="HIST-JSFC-BAR" >}}
-REGISTRY ARCHIVE: Operation Barras. A cornerstone of modern Joint Special Forces Command (JSFC) kinetic integration.
+{{< mandate id="JSFC-BAR-2000" >}}
+"A simultaneous multi-point assault was required to achieve decisive kinetic effect. Integration of SAS, SBS, and SFSG assets ensured zero breach of the secure zones."
 {{< /mandate >}}
 
 In late August 2000, 11 members of the Royal Irish Regiment and their Sierra Leonean liaison officer were captured by the 'West Side Boys' militia while on patrol. The captives were taken to Gberi Bana, a reinforced stronghold deep in the riparian jungle of Sierra Leone. When negotiations by the British Army liaison team broke down and threats of execution became credible, the Directorate of Special Forces was tasked with a rescue mission.
@@ -29,7 +29,3 @@ The extraction was completed within 20 minutes of the initial breach. All 11 Bri
 - *Operation Barras: The SAS Rescue Mission* by Damien Lewis.
 
 </div>
-
-{{< mandate id="OPSEC-BAR-END" >}}
-Registry closed. Operation Barras remains a primary case study for joint kinetic integration.
-{{< /mandate >}}

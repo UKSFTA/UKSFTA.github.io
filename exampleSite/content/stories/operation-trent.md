@@ -5,8 +5,8 @@ date: 2026-01-28
 unit: "sbs"
 ---
 
-{{< mandate id="HIST-SBS-TRN" >}}
-REGISTRY ARCHIVE: Operation Trent. The validation of long-range desert mobility and Tier 1 direct action capability.
+{{< mandate id="SBS-TRN-2001" >}}
+"The objective was the total neutralization of Al-Qaeda strategic logistics. Operation Trent demonstrated the Special Boat Service's capacity for extreme-range autonomous strike."
 {{< /mandate >}}
 
 In November 2001, following the coalition invasion of Afghanistan, intelligence identified a primary Al-Qaeda narcotics processing and logistics facility in the Helmand domain. This compound served as a critical financial and command node for the regional insurgency. The Directorate authorized a large-scale kinetic strike, designated 'Operation Trent', to neutralize the facility.
@@ -21,11 +21,11 @@ The fighting was intense and lasted several hours. Operators methodically cleare
 
 The mission was a total success. The Al-Qaeda funding and logistics pipeline in the sector was 100% neutralized, and critical intelligence was recovered for Directorate analysis. While four Tier 1 operators were wounded during the assault, all were successfully extracted and recovered.
 
+<div class="registry-sources">
+
 ### Registry of Sources
 - [Operation Trent: SBS Mission (Wikipedia)](https://en.wikipedia.org/wiki/Operation_Trent)
 - [The Telegraph: The Largest SBS Mission in History](https://www.telegraph.co.uk/news/worldnews/asia/afghanistan/1366141/SAS-smashes-Al-Qaeda-opium-base.html)
 - *Special Boat Service - The Official History* by Mortimer.
 
-{{< mandate id="OPSEC-TRN-END" >}}
-Registry closed. Operation Trent remains a benchmark for Tier 1 direct action.
-{{< /mandate >}}
+</div>

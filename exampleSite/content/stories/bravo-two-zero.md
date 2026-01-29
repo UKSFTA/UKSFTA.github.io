@@ -5,8 +5,8 @@ date: 2026-01-28
 unit: "sas"
 ---
 
-{{< mandate id="HIST-SAS-B20" >}}
-REGISTRY ARCHIVE: Bravo Two Zero. A seminal study in long-range desert reconnaissance and autonomous operation under duress.
+{{< mandate id="SAS-B20-1991" >}}
+"Autonomous operation behind enemy lines remains the ultimate test of Special Air Service resilience. Bravo Two Zero defined the modern standard for extreme-endurance E&E."
 {{< /mandate >}}
 
 In January 1991, during the opening nights of the Gulf War, an eight-man patrol from B Squadron (22 SAS) inserted deep behind enemy lines into Northern Iraq. The patrol, designated 'Bravo Two Zero', was tasked with establishing an observation post along the primary Main Supply Route (MSR) between Baghdad and Syria. Their objective was to identify and interdict mobile Scud missile launchers being used against coalition cities.
@@ -27,7 +27,3 @@ Despite the compromise, the mission provided critical intelligence on adversary 
 - *Bravo Two Zero - The True Story* by Andy McNab.
 
 </div>
-
-{{< mandate id="OPSEC-B20-END" >}}
-Registry closed. Document remains for E&E training reference.
-{{< /mandate >}}
