@@ -10,29 +10,29 @@
                 <img src="{{ $mod_logo.RelPermalink }}" class="h-16 mx-auto grayscale brightness-200 opacity-40">
                 {{ end }}
                 <h2 class="text-3xl font-black tracking-tighter uppercase">Directorate Registry</h2>
-                <span id="terminal-status" class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-[0.4em]">Official Credentials Required</span>
+                <span id="terminal-status" class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-[0.4em]">Node Authorization Required</span>
             </div>
 
             <form id="login-form" class="space-y-8">
                 <div class="space-y-4">
                     <div class="flex flex-col space-y-2">
-                        <label class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-bold">Operator ID</label>
-                        <input type="text" id="operator-id" placeholder="DSF-ALPHA-01" class="bg-white/5 border border-white/10 p-4 text-xs font-mono text-white focus:border-[var(--primary)] outline-none transition-all placeholder:opacity-20 uppercase">
+                        <label class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-bold">Registry ID</label>
+                        <input type="text" id="operator-id" placeholder="ID_ALPHA_99" class="bg-white/5 border border-white/10 p-4 text-xs font-mono text-white focus:border-[var(--primary)] outline-none transition-all placeholder:opacity-20 uppercase">
                     </div>
                     <div class="flex flex-col space-y-2">
-                        <label class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-bold">Registry Access Key</label>
+                        <label class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-bold">Authorization Key</label>
                         <input type="password" id="access-key" class="bg-white/5 border border-white/10 p-4 text-xs font-mono text-white focus:border-[var(--primary)] outline-none transition-all">
                     </div>
                 </div>
 
                 <button type="submit" id="auth-btn" class="w-full btn-elite bg-[var(--primary)] text-white hover:bg-white hover:text-black">
-                    Authorize Access
+                    Initiate Authorization
                 </button>
             </form>
 
             <div class="mt-12 pt-8 border-t border-white/5 text-center">
                 <p class="text-[7px] font-mono text-gray-700 uppercase tracking-widest leading-loose">
-                    WARNING: Access to this node is governed by the Official Secrets Act. Unauthorized entry is a criminal offence.
+                    Security Warning: Access to this registry is logged. Unauthorized entry attempts are flagged for Signals Intelligence review.
                 </p>
             </div>
         </div>
@@ -40,24 +40,25 @@
 </section>
 
 <script>
+// The "Secret" Credentials for those who find the gate
 document.getElementById('login-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const id = document.getElementById('operator-id').value.toUpperCase();
     const btn = document.getElementById('auth-btn');
     const status = document.getElementById('terminal-status');
 
-    btn.innerText = "VERIFYING...";
+    btn.innerText = "AUTHORIZING...";
     btn.disabled = true;
 
     setTimeout(() => {
-        if (id === "DSF-ALPHA-01") {
-            status.innerText = "ACCESS AUTHORIZED // REDIRECTING";
+        if (id === "DSF-ALPHA-01" || id === "SIGINT-RECON") {
+            status.innerText = "ACCESS GRANTED // REDIRECTING";
             status.style.color = "#22c55e";
             window.location.href = "/archive/covert";
         } else {
-            status.innerText = "INVALID CREDENTIALS";
+            status.innerText = "INVALID REGISTRY ID";
             status.style.color = "#ef4444";
-            btn.innerText = "Authorize Access";
+            btn.innerText = "Initiate Authorization";
             btn.disabled = false;
         }
     }, 1500);

@@ -1,5 +1,5 @@
 ---
 title: "Terminal Login"
 layout: "login"
-url: "/login"
+url: "/registry/gate"
 ---
