@@ -1,34 +1,31 @@
 ---
 title: "Special Forces Support Group"
-description: "High-readiness specialist infantry support for Tier 1 UKSF assets. The primary kinetic support force for the Directorate."
+description: "The foundation unit of the Directorate. High-readiness specialist infantry and the primary gateway to Tier 1 operations."
 date: 2026-01-28
 unit: "sfsg"
 ---
 
 {{< mandate id="SFSG-DOSS-04" >}}
-The Special Forces Support Group (SFSG) provides specialist infantry support to the SAS and SBS during complex operational tasks and large-scale strikes. The unit draws personnel from 1 PARA, the Royal Marines, and the RAF Regiment.
+The Special Forces Support Group (SFSG) is the Directorate's primary kinetic force multiplier. It serves as the bedrock of the JSFC, where elite personnel from the Parachute Regiment, Royal Marines, and RAF Regiment are forged into special operations support specialists.
 {{< /mandate >}}
 
-## Operational Role & Use Case
+## The Directorate Foundation
 
-SFSG acts as the primary force multiplier for Tier 1 UKSF missions. Operators are trained to provide secure cordons, secondary assault waves, and heavy weapons support in hostile environments.
+SFSG is where most careers in the UKSF begin. It provides the essential combat support and tactical depth required for SAS and SBS missions. 
 
-### Core Competencies
-- **Direct Action Support**: Assault support for Tier 1 counter-terrorism and hostage rescue missions.
-- **Cordon Operations**: Establishing secure operational zones in contested urban or rural environments.
-- **Specialist Weaponry**: Mastery of heavy tactical weapon systems and mortars.
-- **CBRN Response**: Specialist training in chemical, biological, radiological, and nuclear environments.
+### Entry Protocol
+Unlike Tier 1 units, the SFSG does not run a public "Selection" course. Instead, the unit utilizes a **Handpicked Entry** system:
+- **Regimental Recommendation**: Outstanding performers in donor units are recommended by their COs.
+- **Registration of Interest**: Personnel can register interest via the terminal below to be tracked for future intake cycles.
+- **Internal Progression**: SFSG operators are the primary candidates for eventual SAS/SBS Selection attempts.
 
-## SFSG Application Protocol
+<div class="my-24">
+    {{< recruitment-form title="SFSG_INTEREST_REGISTER" headline="Register for SFSG Intake" description="Register your interest for handpicked selection into the Special Forces Support Group. Open to 1 PARA, RM, and RAF Regiment personnel." >}}
+</div>
 
-Unlike the SAS/SBS Selection, the SFSG allows for a direct application process for qualified infantry personnel from the Parachute Regiment, Royal Marines, and RAF Regiment.
+## Operational Role
+SFSG operators are masters of the high-readiness assault. They provide secure perimeters, secondary strike waves, and specialized weapon support during Tier 1 counter-terrorism and direct action missions globally.
 
-{{< mandate id="SFSG-APP-01" >}}
-Personnel from authorized donor units may submit a formal application for SFSG integration via the secure terminal below.
-{{< /mandate >}}
-
-{{< recruitment-form title="SFSG_FORMAL_APPLICATION" headline="Submit SFSG Application" description="Formal application for SFSG selection training. Available only to 1 PARA, RM, and RAF Regt personnel." >}}
-
-{{< mandate id="OPSEC-SFSG" >}}
-Deployment locations and current squadron status are classified LEVEL 3 RESTRICTED.
+{{< mandate id="SFSG-PATHWAY" >}}
+Entry into SFSG is the first step toward the Tier 1 Selection pipeline.
 {{< /mandate >}}

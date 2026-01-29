@@ -1,34 +1,34 @@
 ---
 title: "Selection & Recruitment"
-description: "The official gateway for British Armed Forces personnel to join the Joint Special Forces Directorate."
+description: "The unified entry point for all Joint Special Forces Command assets."
 date: 2026-01-28
 ---
 
 {{< mandate id="JOIN-DSF-01" >}}
-United Kingdom Special Forces recruitment is open to all members of the British Army, Royal Navy, and Royal Air Force. We look for individuals who demonstrate the highest standards of mental resilience, physical endurance, and technical mastery.
+United Kingdom Special Forces recruitment is a multi-tier process. The Directorate operates a unified selection gateway. Most personnel will initiate their special operations career within the Special Forces Support Group (SFSG) before attempting Tier 1 Selection.
 {{< /mandate >}}
 
-## Unified Selection Gateway
+## The JSFC Career Pathway
 
-UKSF selection is a joint process. Applicants register interest for the Directorate in general, before undergoing regimental-specific training phases. 
+The Directorate looks for elite performance across all domains. Whether you are aiming for the SAS, SBS, or the Rangers, the journey begins here.
 
-### Minimal Requirements
-- **Regular Service**: Minimum 2 years active service in the British Armed Forces.
-- **Medical**: Full Medical Category A (Elite).
-- **Vetting**: Ability to achieve Developed Vetting (DV) security clearance.
-- **Recommendation**: Formal recommendation from your Commanding Officer.
+### 1. Foundation: SFSG Entry
+The Special Forces Support Group serves as the primary integration point for elite infantry and specialist support personnel. While SFSG does not utilize a "Selection" phase in the traditional SAS sense, entry is highly competitive and based on regimental recommendation or handpicked selection during high-readiness training.
 
-{{< recruitment-form title="GENERAL_SELECTION_ENTRY" headline="UKSF Selection Registration" description="Submit your initial interest packet for the next Selection cycle. All data is verified against MOD databases." >}}
+### 2. Tier 1 & Tier 2 Selection
+Once established within the Directorate support framework, or if highly qualified from regular units, personnel may register interest for the formal Selection pipelines:
+- **22 SAS / SBS Selection**: The world's most rigorous assessment.
+- **Ranger Regiment Selection**: Focused on partner-nation integration and asymmetric warfare.
 
-## Command Unit Pathways
+<div class="my-32">
+    {{< recruitment-form title="DIRECTORATE_ENTRY_GATEWAY" headline="Initiate Directorate Entry" description="Register your initial interest for integration into the Joint Special Forces pipeline. This is the first step for SFSG, SAS, SBS, and Ranger pathways." >}}
+</div>
 
-While selection is unified, operators will eventually specialize within one of the core command units:
-
-- **22 SAS**: Focused on land-based counter-terrorism and unconventional warfare.
-- **Special Boat Service**: Specialists in maritime, amphibious, and littoral operations.
-- **Special Forces Support Group**: High-readiness specialist infantry support for Tier 1 assets.
-- **Army Rangers**: Tier 2 special operations focusing on partner nation capacity building.
+## Minimum Entry Requirements
+- **Active Service**: Minimum 2 years regular service in the British Armed Forces.
+- **Performance**: Consistent 'A' grade performance in your parent unit.
+- **Clearance**: Ability to maintain Developed Vetting (DV) status.
 
 {{< mandate id="RECRUIT-SECURITY" >}}
-Specific selection coordinates and briefing dates will only be provided to authorized applicants via secure MOD channels.
+All interest packets are reviewed by the Directorate. Successful candidates will be contacted via secure MOD channels for initial briefing.
 {{< /mandate >}}

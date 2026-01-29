@@ -9,7 +9,9 @@ unit: "rangers"
 The Ranger Regiment is a special operations unit of the British Army, formed in 2021 as part of the Future Soldier modernisation program. It serves as a core component of the Army Special Operations Brigade.
 {{< /mandate >}}
 
-{{< recruitment-form title="RANGER_SELECTION_REGISTER" headline="Register for Rangers Selection" description="Register for the Ranger Regiment selection course. Focusing on partner-force integration and complex strike ops." >}}
+<div class="my-20">
+    {{< recruitment-form title="RANGER_SELECTION_NODE" headline="Register for Ranger Selection" description="Register your interest for the Ranger Regiment Selection Course. Focusing on asymmetric warfare and partner integration." >}}
+</div>
 
 ## Operational Role & Use Case
 

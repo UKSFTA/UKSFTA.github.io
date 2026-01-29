@@ -9,7 +9,7 @@ unit: "sas"
 The Special Air Service (SAS) is a special forces unit of the British Army. It has served as a model for special forces around the world. The SAS forms a core part of the United Kingdom Special Forces (UKSF) under the functional command of the Directorate of Special Forces.
 {{< /mandate >}}
 
-{{< recruitment-form title="SAS_SELECTION_REGISTER" headline="Register for SAS Selection" description="Register your interest for the next 22 SAS selection cycle. Open to all regular armed forces personnel." >}}
+{{< recruitment-form title="SAS_SELECTION_NODE" headline="Register for SAS Selection" description="Register your interest for the 22 SAS Selection Course. Applicants must meet Directorate physical and mental benchmarks." >}}
 
 ## Operational Role & Use Case
 
