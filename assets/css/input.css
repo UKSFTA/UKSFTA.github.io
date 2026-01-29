@@ -15,12 +15,6 @@
   --font-body: "Inter", "Arial", sans-serif;
 
   --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-scanline: scanline 8s linear infinite;
-
-  @keyframes scanline {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-  }
 }
 
 @layer base {
@@ -31,15 +25,6 @@
     --header-height: 100px;
   }
 
-  /* Tactical Scrollbar */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg-dark); }
-  ::-webkit-scrollbar-thumb { 
-    background: #333; 
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
-
   body {
     background-color: var(--bg-dark);
     color: #d1d5db;
@@ -48,26 +33,14 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: var(--header-height);
-    overflow-x: hidden;
-  }
-
-  /* Universal Noise Overlay */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.03;
-    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
   }
 
   h1, h2, h3, h4 {
     font-family: "Industrial Gothic Pro Single Line", var(--font-industrial);
     text-transform: uppercase;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
     color: white;
-    line-height: 0.85;
+    line-height: 1.1;
   }
 }
 
@@ -81,56 +54,52 @@
     padding-right: 1.5rem;
   }
 
-  /* Unit Tactical Filter */
-  .tactical-media {
-    position: relative;
-    overflow: hidden;
-    background-color: black;
-  }
-  .tactical-media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.2;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
-  .tactical-media .tint {
-    position: absolute;
-    inset: 0;
-    opacity: 0.4;
-    mix-blend-mode: color;
-    transition: opacity 0.7s;
-    background-color: var(--primary);
+  /* 3-Track Tactical Grid (Blueprint) */
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr; /* Fixed Tracks to prevent overlap */
+    gap: 4rem;
+    align-items: start;
   }
 
-  .dossier-node {
-    position: relative;
-    border-left: 4px solid var(--primary);
-    padding-left: 3rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-bottom: 4rem;
-    background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
+  @media (max-width: 1024px) {
+    .mission-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
   }
 
-  .bracket-box {
+  .safe-zone-block {
+    margin-top: 8vh; /* Exclusion zone for large headers */
+  }
+
+  .hud-spec-box {
     position: relative;
-    padding: 3rem;
+    padding: 2.5rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: rgba(255, 255, 255, 0.01);
+    background-color: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(12px);
+    margin-top: 2rem; /* Move down to prevent overlap */
   }
-  .bracket-box::before, .bracket-box::after {
+  .hud-spec-box::before, .hud-spec-box::after {
     content: "";
     position: absolute;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     border-color: var(--primary);
     pointer-events: none;
   }
-  .bracket-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
-  .bracket-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+  .hud-spec-box::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+  .hud-spec-box::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+
+  .sector-ref-box {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+  }
+  .sector-ref-box .ref-label { font-size: 10px; font-family: var(--font-tactical); color: var(--primary); text-transform: uppercase; letter-spacing: 0.4em; }
+  .sector-ref-box .ref-val { font-size: 2.5rem; font-weight: 900; color: white; }
 
   .btn-elite {
     display: inline-flex;
@@ -151,74 +120,19 @@
   .btn-elite:hover {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 0 50px var(--primary-glow);
+    box-shadow: 0 0 40px var(--primary-glow);
   }
 
-  .sub-header {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5em;
-    color: #6b7280;
-    margin-bottom: 1rem;
-    font-variant: small-caps;
-  }
-
-  .nav-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(12px);
-  }
-
-  .nav-link {
-    font-size: 10px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: #6b7280;
-    transition: all 0.3s;
-    text-decoration: none;
-  }
-  .nav-link:hover, .nav-link.active { color: white; }
-
-  /* 3-Track Tactical Grid */
-  .mission-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  @media (max-width: 1024px) {
-    .mission-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-  }
-
-  .main-content-block {
-    margin-top: 5vh;
+  .terminal-login {
+    @apply p-8 bg-black border border-white/10 font-mono text-[10px] text-gray-500 uppercase tracking-widest cursor-pointer hover:border-[var(--primary)] transition-all;
   }
 }
 
 @layer utilities {
   .text-display { 
-    font-size: clamp(4rem, 12vw, 9rem); 
+    font-size: clamp(3rem, 10vw, 7.5rem); 
     font-weight: 900;
-    line-height: 1;
+    line-height: 0.85;
     letter-spacing: -0.05em;
-  }
-  .bg-grid-white {
-    background-size: 40px 40px;
-    background-image: 
-      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
   }
 }

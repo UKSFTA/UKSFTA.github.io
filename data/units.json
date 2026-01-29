@@ -17,14 +17,14 @@
     "color": "#000033",
     "icon": "icons/SBS.png"
   },
-  "srr": {
-    "id": "SRR_INTEL",
-    "founded": "2005",
-    "specialization": "Covert Surveillance / ISTAR",
-    "theatres": "Urban / High-Threat Domains",
-    "motto": "Reconnaissance",
-    "color": "#507255",
-    "icon": "icons/SRR.png"
+  "rangers": {
+    "id": "AR_RANGERS",
+    "founded": "2021",
+    "specialization": "Special Operations / Partner Capacity Building",
+    "theatres": "Complex Contested Environments",
+    "motto": "Ready for Anything",
+    "color": "#4d5d53",
+    "icon": "icons/SAS.png"
   },
   "sfsg": {
     "id": "SFSG_SUPPORT",
@@ -43,5 +43,25 @@
     "motto": "Resolute",
     "color": "#000080",
     "icon": "icons/JSFAW.png"
+  },
+  "srr": {
+    "id": "SRR_INTEL",
+    "hidden": true,
+    "founded": "2005",
+    "specialization": "Covert Surveillance / ISTAR",
+    "theatres": "Urban / High-Threat Domains",
+    "motto": "Reconnaissance",
+    "color": "#507255",
+    "icon": "icons/SRR.png"
+  },
+  "signals": {
+    "id": "18_SIG_REGT",
+    "hidden": true,
+    "founded": "2005",
+    "specialization": "Special Forces Signals / EW",
+    "theatres": "Cyber / Signals Intelligence",
+    "motto": "Swift and Sure",
+    "color": "#000080",
+    "icon": "icons/UKSF.png"
   }
 }

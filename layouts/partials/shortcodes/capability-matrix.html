@@ -1,5 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-white/10 border border-white/10 my-32">
     {{ range $id, $unit := .Site.Data.units }}
+    {{ if not $unit.hidden }}
     <a href="/{{ $id }}/" class="group bg-black p-10 space-y-10 no-underline relative overflow-hidden transition-all duration-700 hover:bg-[#080808]">
         <!-- Tactical Image Layer -->
         <div class="absolute inset-0 z-0 tactical-media opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
@@ -12,7 +13,6 @@
                 <div class="w-20 h-20 border border-white/10 p-2 flex items-center justify-center bg-zinc-900/40 group-hover:border-white group-hover:bg-transparent transition-all duration-500">
                     {{ $icon := resources.Get $unit.icon }}
                     {{ if $icon }}
-                        <!-- Removed grayscale and brightness filters to show natural asset colors -->
                         <img src="{{ $icon.RelPermalink }}" alt="{{ $unit.name }}" class="w-full h-full object-contain transition-all duration-500">
                     {{ else }}
                         <span class="font-black text-2xl text-white">{{ upper $id }}</span>
@@ -45,5 +45,6 @@
             </div>
         </div>
     </a>
+    {{ end }}
     {{ end }}
 </div>

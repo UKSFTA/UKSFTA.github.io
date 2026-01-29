@@ -1,56 +1,50 @@
 {{ range $index, $section := .Params.sections }}
-<section class="relative min-h-[85vh] flex items-center overflow-hidden border-b border-white/5 {{ if (mod $index 2) }}bg-[#080808]{{ else }}bg-black{{ end }}">
-    <!-- Background Content -->
-    {{ with $section.image }}
-    <div class="absolute inset-0 z-0 opacity-10 grayscale brightness-125">
-        <img src="{{ . | absURL }}" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black"></div>
-    </div>
-    {{ end }}
-
-    <div class="container-uksf relative z-20 py-48">
+<section class="relative py-48 border-b border-white/5 {{ if (mod $index 2) }}bg-[#080808]{{ else }}bg-black{{ end }} overflow-hidden">
+    <div class="container-uksf safe-zone-block">
         <div class="mission-grid">
             
-            <!-- Technical Track (L/R dependent on index) -->
-            <div class="track-left {{ if not (mod $index 2) }}lg:order-last{{ end }}">
-                <div class="bracket-box bg-white/[0.01] backdrop-blur-xl">
-                    <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.5em] mb-10 block font-black">// ARCHIVE_DETAILS</span>
-                    <div class="space-y-8">
-                        {{ range $section.specs }}
-                        <div class="flex flex-col border-b border-white/5 pb-6">
-                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{{ .label }}</span>
-                            <span class="text-sm font-black text-white uppercase tracking-tighter mt-1">{{ .value }}</span>
-                        </div>
-                        {{ end }}
-                    </div>
+            <!-- TRACK 1: SECTOR PROTOCOL (Left) -->
+            <div class="space-y-6 {{ if not (mod $index 2) }}lg:order-last{{ end }}">
+                <div class="sector-ref-box">
+                    <span class="ref-label">Protocol_Node</span>
+                    <span class="ref-val">0{{ add $index 1 }}</span>
                 </div>
+                <div class="h-px w-full bg-gradient-to-r from-[var(--primary)] to-transparent opacity-30"></div>
             </div>
 
-            <!-- Content Track (Center) -->
-            <div class="track-mid space-y-12">
+            <!-- TRACK 2: OPERATIONAL NARRATIVE (Center) -->
+            <div class="space-y-12">
                 <div class="space-y-6">
-                    <div class="flex items-center space-x-6">
-                        <div class="w-12 h-px bg-[var(--primary)]"></div>
-                        <span class="text-[10px] font-mono text-gray-500 uppercase tracking-[0.8em]">Operational_Node // 0{{ add $index 1 }}</span>
+                    <h2 class="text-7xl leading-none tracking-tighter">{{ $section.title }}</h2>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-8 h-px bg-white/20"></div>
+                        <span class="text-[9px] font-mono text-gray-600 uppercase tracking-widest">Auth_Level: Restricted</span>
                     </div>
-                    <h2 class="text-display">{{ $section.title }}</h2>
                 </div>
                 
-                <div class="dossier-node">
-                    <div class="prose prose-invert prose-2xl max-w-none font-light text-gray-300 leading-relaxed">
-                        {{ $section.content | markdownify }}
-                    </div>
+                <div class="prose prose-invert prose-2xl max-w-none font-light text-gray-400 leading-relaxed">
+                    {{ $section.content | markdownify }}
                 </div>
 
                 {{ with $section.cta }}
-                <div class="pt-6">
+                <div class="pt-8">
                     <a href="{{ .url | default "#" }}" class="btn-elite no-underline">{{ .text }}</a>
                 </div>
                 {{ end }}
             </div>
 
-            <!-- Spacer Track -->
-            <div class="track-right hidden lg:block"></div>
+            <!-- TRACK 3: DATA SPECS (Right) -->
+            <div class="hud-spec-box">
+                <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] mb-10 block font-bold">// ARCHIVE_PARAMS</span>
+                <div class="space-y-8">
+                    {{ range $section.specs }}
+                    <div class="flex flex-col border-b border-white/5 pb-6">
+                        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{{ .label }}</span>
+                        <span class="text-sm font-black text-white uppercase tracking-tighter mt-1">{{ .value }}</span>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
 
         </div>
     </div>
