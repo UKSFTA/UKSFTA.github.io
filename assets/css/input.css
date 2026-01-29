@@ -113,7 +113,7 @@
 
   /* Intelligence Body Refinement */
   .intelligence-body {
-    @apply prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-p:leading-relaxed prose-p:mb-10 prose-li:mb-4 prose-strong:text-white prose-strong:font-bold;
+    @apply prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-p:leading-relaxed prose-p:mb-10 prose-strong:text-white prose-strong:font-bold;
     
     h2 {
       @apply text-5xl border-b border-white/10 pb-6 mb-12 mt-20 flex items-center gap-6;
@@ -126,16 +126,20 @@
     h3 { @apply text-3xl mb-8 mt-16 text-gray-300; }
     p { @apply text-gray-400 font-light text-xl leading-relaxed; }
 
+    /* HARD RESET OF ALL PROSE LIST MARKERS */
     ul {
-      list-style-type: none !important;
+      list-style: none !important;
       @apply border-l border-white/5 pl-10 ml-4 space-y-6;
-      li {
-        @apply relative m-0 p-0;
-        &::before {
-          content: "//" !important;
-          @apply absolute -left-10 text-[var(--primary)] font-mono font-black opacity-40;
-        }
-      }
+    }
+    ul > li {
+      @apply relative m-0 p-0;
+      list-style-type: none !important;
+    }
+    ul > li::marker { content: none !important; }
+    ul > li::before {
+      content: "//" !important;
+      @apply absolute -left-10 text-[var(--primary)] font-mono font-black opacity-40;
+      display: inline-block !important;
     }
 
     blockquote {
@@ -148,7 +152,7 @@
       h3 { @apply m-0 text-[10px] text-[var(--primary)] font-mono font-black tracking-[0.4em] opacity-80; }
       ul { 
         @apply border-none p-0 m-0 space-y-3; 
-        li { @apply m-0 pl-0 text-sm; &::before { content: none; } }
+        li { @apply m-0 pl-0 text-sm; &::before { content: none !important; } }
       }
       a { @apply text-white/50 no-underline border-b border-white/10 hover:text-white hover:border-[var(--primary)] transition-all leading-relaxed; }
     }
