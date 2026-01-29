@@ -9,9 +9,7 @@ unit: "sbs"
 The Special Boat Service (SBS) is the maritime special forces unit of the United Kingdom Special Forces. The unit is based at RM Poole and is primarily composed of Royal Marines, though it remains a tri-service command asset.
 {{< /mandate >}}
 
-<div class="my-20">
-    {{ partial "recruitment-form.html" (dict "title" "SBS_SELECTION_REGISTER" "headline" "Register for SBS Selection" "description" "Register for the Special Boat Service selection pipeline. Includes the specialized maritime endurance phase.") }}
-</div>
+{{< recruitment-form title="SBS_SELECTION_REGISTER" headline="Register for SBS Selection" description="Register for the Special Boat Service selection pipeline. Includes the specialized maritime endurance phase." >}}
 
 ## Operational Role & Use Case
 

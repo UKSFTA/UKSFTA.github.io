@@ -22,9 +22,7 @@ Specializing in the most advanced electronic warfare and signals intelligence, 1
 Personnel with advanced technical, cyber, or signals expertise may register interest for 18 Signals selection via the secure terminal below.
 {{< /mandate >}}
 
-<div class="my-20">
-    {{ partial "recruitment-form.html" (dict "title" "COVERT_SIGNALS_ENTRY" "headline" "Register Intelligence Interest" "description" "Register for the Special Forces Signals selection pipeline. Advanced vetting required.") }}
-</div>
+{{< recruitment-form title="COVERT_SIGNALS_ENTRY" headline="Register Intelligence Interest" description="Register for the Special Forces Signals selection pipeline. Advanced vetting required." >}}
 
 ---
 
@@ -36,6 +34,4 @@ The SRR provides the Directorate with high-fidelity human and technical intellig
 Access to SRR selection is restricted to Level 4 vetted personnel. Register interest below for initial briefing protocol.
 {{< /mandate >}}
 
-<div class="my-20">
-    {{ partial "recruitment-form.html" (dict "title" "COVERT_RECON_ENTRY" "headline" "Register Recon Interest" "description" "Register for SRR selection briefing. Applicants must have 2 years regular service.") }}
-</div>
+{{< recruitment-form title="COVERT_RECON_ENTRY" headline="Register Recon Interest" description="Register for SRR selection briefing. Applicants must have 2 years regular service." >}}

@@ -18,9 +18,7 @@ UKSF selection is a joint process. Applicants register interest for the Director
 - **Vetting**: Ability to achieve Developed Vetting (DV) security clearance.
 - **Recommendation**: Formal recommendation from your Commanding Officer.
 
-<div class="my-32">
-    {{ partial "recruitment-form.html" (dict "title" "GENERAL_SELECTION_ENTRY" "headline" "UKSF Selection Registration" "description" "Submit your initial interest packet for the next Selection cycle. All data is verified against MOD databases.") }}
-</div>
+{{< recruitment-form title="GENERAL_SELECTION_ENTRY" headline="UKSF Selection Registration" description="Submit your initial interest packet for the next Selection cycle. All data is verified against MOD databases." >}}
 
 ## Command Unit Pathways
 

@@ -27,9 +27,7 @@ Unlike the SAS/SBS Selection, the SFSG allows for a direct application process f
 Personnel from authorized donor units may submit a formal application for SFSG integration via the secure terminal below.
 {{< /mandate >}}
 
-<div class="my-20">
-    {{ partial "recruitment-form.html" (dict "title" "SFSG_FORMAL_APPLICATION" "headline" "Submit SFSG Application" "description" "Formal application for SFSG selection training. Available only to 1 PARA, RM, and RAF Regt personnel.") }}
-</div>
+{{< recruitment-form title="SFSG_FORMAL_APPLICATION" headline="Submit SFSG Application" description="Formal application for SFSG selection training. Available only to 1 PARA, RM, and RAF Regt personnel." >}}
 
 {{< mandate id="OPSEC-SFSG" >}}
 Deployment locations and current squadron status are classified LEVEL 3 RESTRICTED.

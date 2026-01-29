@@ -3,6 +3,11 @@ languageCode = 'en-gb'
 title = 'UKSF Example Site'
 theme = 'uksf-mod-theme'
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [params]
   unit_theme = 'global'
   builtby = 'Directorate of Special Forces'
