@@ -30,7 +30,7 @@
             <span class="text-[7px] font-mono text-green-500 uppercase tracking-widest font-black">STABLE</span>
         </div>
         <div class="h-3 w-px bg-white/10 hidden sm:block"></div>
-        <span class="text-[7px] font-mono text-gray-600 uppercase tracking-[0.6em]">UKSF TASKFORCE ALPHA // COMMAND_PORTAL</span>
+        <span class="text-[7px] font-mono text-gray-600 uppercase tracking-[0.6em] cursor-default select-none" id="ghost-node">UKSF TASKFORCE ALPHA // COMMAND_PORTAL</span>
       </div>
       <div class="flex items-center space-x-8 text-[7px] font-mono text-gray-600 uppercase tracking-widest">
         <span class="hidden md:block">NODE: JSFC-01</span>
@@ -141,12 +141,22 @@
   </footer>
 
   <script>
-    // JSFC_CYBER_DISCOVERY //
-    // Intelligence Hint: L3JlZ2lzdHJ5L2dhdGU=
-    // Decryption Protocol: BASE64
-    console.log("%c[DIRECTORATE_SF] AUTHORIZED PERSONNEL ONLY", "color: #b3995d; font-family: monospace; font-size: 14px; font-weight: bold;");
-    console.log("%cSTRATEGIC_HINT: The registry gate path is encoded in the system headers.", "color: #666; font-family: monospace;");
-    console.log("%cACCESS_ID: SIGINT-RECON", "color: #666; font-family: monospace;");
+    // [INTEL_OVERRIDE] //
+    // Gate Signature: /registry/gate
+    // Protocol: SECURE_AUTH
+    console.log("%c[UKSFTA_INTEL] SYSTEM_PORTAL_DETECTED", "color: #b3995d; font-family: monospace; font-size: 14px; font-weight: bold;");
+    console.log("%cDECRYPTION_HINT: The authorized access path is encoded in the system headers.", "color: #666; font-family: monospace;");
+    console.log("%cAUTH_ID: GHOST-OPERATOR", "color: #666; font-family: monospace;");
+
+    // Hidden Trigger for curious personnel
+    let clicks = 0;
+    document.getElementById('ghost-node').addEventListener('click', () => {
+        clicks++;
+        if (clicks === 5) {
+            console.log("%c[OVERRIDE_SEQUENCE_INITIATED]", "color: #ef4444; font-weight: bold;");
+            console.log("%cPATH_DECRYPTED: /registry/gate", "color: #22c55e;");
+        }
+    });
 
     // Check Authorization State
     if (localStorage.getItem('uksf_auth') === 'authorized') {
