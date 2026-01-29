@@ -1,0 +1,182 @@
+{{ define "main" }}
+{{ $units := .Site.Data.units }}
+
+<div class="snap-y snap-mandatory h-screen overflow-y-auto">
+    <!-- 1. HUB ENTRY: Restricted Hero -->
+    <section class="min-h-screen flex items-center relative overflow-hidden snap-start">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=2400" 
+                 class="w-full h-full object-cover opacity-20 grayscale brightness-50" alt="">
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black"></div>
+            <div class="absolute inset-0 bg-grid-white opacity-10"></div>
+        </div>
+
+        <div class="container-uksf relative z-10 pt-20">
+            <div class="max-w-4xl space-y-8 animate-slide-in-left">
+                <div class="flex items-center space-x-6">
+                    <span class="px-4 py-1.5 bg-red-600/10 border border-red-600/20 text-red-500 text-[10px] font-mono font-black uppercase tracking-[0.4em]">Restricted Access Area</span>
+                    <div class="h-px w-12 bg-white/10"></div>
+                    <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Registry: NODE_COVERT_01</span>
+                </div>
+                <h1 class="text-display leading-[0.85] text-white">Shadow <br><span class="text-[var(--primary)]">Domain.</span></h1>
+                <p class="text-2xl font-light text-gray-400 max-w-2xl leading-relaxed">
+                    Welcome to the UKSFTA Joint Intelligence Hub. This portal coordinates all non-conventional assets, mission design protocols, and strategic signals intelligence.
+                </p>
+                <div class="pt-8 flex items-center space-x-10">
+                    <div class="flex flex-col">
+                        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-1">Node Signature</span>
+                        <span class="text-xs font-bold text-white font-mono uppercase">AUTHENTICATED_OPERATOR</span>
+                    </div>
+                    <div class="w-px h-8 bg-white/10"></div>
+                    <div class="flex flex-col">
+                        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-1">Clearance</span>
+                        <span class="text-xs font-bold text-uksf-gold font-mono uppercase">Level 5 // UKSFTA_RESTRICTED</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- HUD Scroll Indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4 opacity-40">
+            <span class="text-[8px] font-mono text-white uppercase tracking-[0.5em]">Initialize Protocol</span>
+            <div class="w-px h-12 bg-gradient-to-b from-[var(--primary)] to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- 2. INTELLIGENCE PILLARS -->
+    <section class="min-h-screen flex items-center bg-[#050505] border-y border-white/5 snap-start">
+        <div class="container-uksf w-full py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
+                <div class="lg:col-span-5 space-y-12">
+                    <div class="space-y-6">
+                        <span class="sub-header text-[var(--primary)] m-0">Institutional Intelligence</span>
+                        <h2 class="text-6xl tracking-tighter uppercase font-industrial text-white leading-none">The Find <br>& Fix.</h2>
+                    </div>
+                    <div class="prose prose-invert max-w-none font-light text-gray-400 leading-relaxed">
+                        <p>Our intelligence ecosystem bridges the gap between raw data collection and kinetic execution. We utilize a multi-disciplinary approach to ensure Taskforce elements have total situational awareness.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="bracket-box p-8 bg-white/[0.02] space-y-4">
+                            <span class="text-[10px] font-mono text-[var(--primary)] uppercase font-black tracking-widest">// SRR_HUMINT</span>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider leading-loose">Special Reconnaissance elements provide the "Human Eye" on the ground. Covert surveillance, urban target fixation, and close-target reconnaissance.</p>
+                        </div>
+                        <div class="bracket-box p-8 bg-white/[0.02] space-y-4">
+                            <span class="text-[10px] font-mono text-uksf-blue uppercase font-black tracking-widest">// SIGINT_DECRYPT</span>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider leading-loose">Signals Intelligence intercepts and decrypts adversary command networks. Providing the electronic signature required to locate high-value targets.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-7">
+                    <!-- Unit Cards for Hidden Assets -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/5 shadow-2xl">
+                        {{ range $id := slice "srr" "tfhq" }}
+                        {{ with (index $units $id) }}
+                        <a href="/{{ $id }}/" class="group bg-black p-12 no-underline relative overflow-hidden transition-all duration-700 hover:bg-[#080808] flex flex-col h-full">
+                            <!-- HUD Bracket Decorations -->
+                            <div class="absolute top-4 left-4 w-2 h-2 border-t border-l border-white/10 group-hover:border-[var(--primary)]/40 transition-colors"></div>
+                            
+                            <div class="flex justify-between items-start mb-12">
+                                <div class="w-16 h-16 border border-white/10 p-2 flex items-center justify-center bg-zinc-900/40 group-hover:border-white transition-all duration-500">
+                                    {{ $icon := resources.Get .icon }}
+                                    {{ if $icon }}
+                                        <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="max-w-full max-h-full object-contain icon-tactical transition-all duration-500">
+                                    {{ end }}
+                                </div>
+                                <span class="text-[8px] font-mono text-gray-600 font-black tracking-widest">{{ .id }}</span>
+                            </div>
+                            <h3 class="text-3xl m-0 uppercase font-black tracking-tighter text-white">{{ .name }}</h3>
+                            <p class="text-sm text-gray-500 mt-4 font-light leading-relaxed">"{{ .specialization }}"</p>
+                            
+                            <div class="mt-auto pt-8 border-t border-white/5 flex items-center justify-between opacity-40 group-hover:opacity-100 transition-all">
+                                <span class="text-[9px] font-black uppercase tracking-widest text-white">Registry Path: {{ $id }}</span>
+                                <span class="text-white text-xl">→</span>
+                            </div>
+                        </a>
+                        {{ end }}
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MISSION DESIGN & ZEUS PROTOCOLS -->
+    <section class="min-h-screen flex items-center bg-black snap-start">
+        <div class="container-uksf w-full">
+            <div class="flex flex-col items-center text-center mb-20 space-y-6">
+                <span class="sub-header text-[var(--primary)] m-0">Operational Architecture</span>
+                <h2 class="text-display leading-none text-white">Mission <br><span class="text-gray-600">Creation.</span></h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-4">
+                        <span class="w-8 h-px bg-[var(--primary)]"></span>
+                        <h4 class="text-xl font-bold uppercase tracking-tighter font-industrial text-white">The Intelligence Cell</h4>
+                    </div>
+                    <p class="text-gray-400 font-light leading-relaxed">Our mission makers utilize the Zeus interface to manage real-time battlefield dynamics. Every op is a handcrafted narrative designed for maximum immersion.</p>
+                    <ul class="space-y-4 text-[11px] font-mono text-gray-500 uppercase tracking-widest list-none p-0">
+                        <li class="flex items-start space-x-3">
+                            <span class="text-[var(--primary)]">//</span>
+                            <span>Dynamic AI Reactivity</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-[var(--primary)]">//</span>
+                            <span>Atmospheric FX Management</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-[var(--primary)]">//</span>
+                            <span>Integrated Scripting Protocols</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-4">
+                        <span class="w-8 h-px bg-uksf-blue"></span>
+                        <h4 class="text-xl font-bold uppercase tracking-tighter font-industrial text-white">Infrastructure (QM)</h4>
+                    </div>
+                    <p class="text-gray-400 font-light leading-relaxed">The Quartermasters manage the technical backbone. From server stability to modpack optimization, they ensure the Taskforce is operational 24/7.</p>
+                    <div class="p-6 bg-white/[0.02] border border-white/5 rounded-none">
+                        <span class="block text-[8px] font-mono text-gray-600 uppercase mb-4 tracking-widest">System Health</span>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[10px] font-mono text-white">UPTIME</span>
+                            <span class="text-[10px] font-mono text-green-500">99.9%</span>
+                        </div>
+                        <div class="w-full h-1 bg-white/10">
+                            <div class="w-[99.9%] h-full bg-green-500"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-4">
+                        <span class="w-8 h-px bg-red-600"></span>
+                        <h4 class="text-xl font-bold uppercase tracking-tighter font-industrial text-white">Specialization Selection</h4>
+                    </div>
+                    <p class="text-gray-400 font-light leading-relaxed">Intelligence roles are restricted. Members must demonstrate tactical mastery and a commitment to high-standard roleplay before applying for Zeus or SRR roles.</p>
+                    <a href="/register?unit=tfhq" class="btn-elite w-full text-center py-4 bg-[var(--primary)] text-white">Apply for Intel Selection</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. FOOTER REGISTRY -->
+    <section class="py-24 bg-black border-t border-white/5 snap-start">
+        <div class="container-uksf flex flex-col md:flex-row justify-between items-center gap-12 opacity-40 hover:opacity-100 transition-all duration-1000">
+            <div class="flex items-center space-x-10">
+                <div class="flex flex-col">
+                    <span class="text-[9px] font-mono text-white font-black uppercase tracking-[0.4em]">Hub Registry: COVERT-RECON-ALPHA</span>
+                    <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest mt-1">Classification: E_SQUADRON_CLEARANCE</span>
+                </div>
+            </div>
+            <div class="text-right">
+                <span class="text-[8px] font-mono text-gray-700 uppercase tracking-widest block">Unit Permanent Record // JSFC Internal</span>
+                <span class="text-[8px] font-mono text-gray-800 uppercase tracking-widest mt-1">Active Archive Node</span>
+            </div>
+        </div>
+    </section>
+</div>
+{{ end }}

@@ -2,7 +2,7 @@
 title: "Restricted Operational Archive"
 description: "Restricted Node: Joint Special Forces Intelligence Assets and Shadow Domain Operations."
 date: 2026-01-28
-layout: "archive"
+layout: "archive-covert"
 url: "/archive/covert"
 ---
 
