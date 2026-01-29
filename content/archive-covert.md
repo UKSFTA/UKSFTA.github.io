@@ -7,36 +7,40 @@ url: "/archive/covert"
 ---
 
 {{< mandate id="INTEL-HUB-01" >}}
-OFFICIAL SENSITIVE: This dossier coordinates the Directorate’s covert intelligence capabilities. Access is restricted to personnel operating within the Shadow Domain.
+OFFICIAL SENSITIVE: This dossier coordinates the Directorate’s covert intelligence and deniable capabilities. Access is restricted to personnel operating within the Shadow Domain.
 {{< /mandate >}}
 
-## Special Forces Intelligence Ecosystem
+## The Strategic Intelligence Triad
 
-The Directorate projects power through the seamless integration of Human Intelligence (HUMINT) and Signals Intelligence (SIGINT). This ecosystem is composed of the Special Reconnaissance Regiment (SRR) and the 18 Special Forces Signals Regiment, working in tandem to identify, track, and enable Tier 1 kinetic interventions.
+The Directorate projects power through three specialized pillars of intelligence. This ecosystem integrates human surveillance, signals interception, and strategic deniability to identify and neutralize threats globally before they reach a kinetic threshold.
 
-### Operational Synergy: The Grey Zone
-In modern conflict, the "Grey Zone" represents the space between peace and open warfare. Our intelligence assets operate persistently in this domain, providing the Directorate with high-fidelity theatre awareness without the signature of a Tier 1 strike force.
+### 1. Special Reconnaissance Regiment (SRR)
+The **Find** component. Specialists in high-fidelity human intelligence (HUMINT) and covert urban surveillance. The SRR provides the persistent "eyes on target" required for Tier 1 intervention.
 
-- **Phase 1: Identification**: 18 Signals intercept and analyze adversary command networks to identify strategic threats.
-- **Phase 2: Fixation**: SRR urban teams establish persistent surveillance to confirm target identities and environmental dynamics.
-- **Phase 3: Execution**: Intelligence assets provide real-time data-links to SAS or SBS teams to achieve surgical kinetic effect.
+### 2. 18 Special Forces Signals Regiment
+The **Fix** component. Experts in signals intelligence (SIGINT) and electronic warfare. 18 Signals intercept and analyze adversary networks, providing the technical data-links that anchor all UKSF operations.
+
+### 3. E Squadron (The Increment)
+The **Finish & Support** component. A joint-service unit composed of handpicked SAS, SBS, and SRR personnel. E Squadron operates in direct support of the Secret Intelligence Service (SIS/MI6), conducting the most sensitive missions requiring total strategic deniability.
 
 ---
 
 ## Intelligence Selection Gateway
 
-Personnel with advanced technical, cyber, or signals expertise may register interest for covert intelligence roles. Vetting at the highest level is mandatory.
+Personnel with advanced technical, cyber, or surveillance expertise may register interest for covert roles. Vetting at the highest level (DV) is mandatory for all pathways.
 
-{{< recruitment-form title="COVERT_INTELLIGENCE_INTAKE" headline="Register Intel Interest" description="Register for the covert intelligence selection pipeline. Available for SRR and 18 Signals pathways." >}}
+{{< recruitment-form title="COVERT_INTELLIGENCE_INTAKE" headline="Register Intel Interest" description="Register for the covert intelligence selection pipeline. Available for SRR, 18 Signals, and joint-service pathways." >}}
 
 ---
 
-## Restricted Registry Nodes
+## Technical Visual Intelligence
 
-The following dossiers provide detailed breakdowns of the Directorate's intelligence assets.
+{{< mandate id="DENIABILITY-01" >}}
+Assets operating under E Squadron mandate possess zero official signature. All operational footprints are sanitized prior to extraction.
+{{< /mandate >}}
 
-| Node | Designation | Specialization |
+| Asset Node | Capability | Authority |
 | :--- | :--- | :--- |
-| SRR | Shadow | Technical Surveillance |
-| 18 SIG | Link | Signals Intelligence |
-| JSFC | Eye | Theatre Awareness |
+| SRR Urban | Covert Surveillance | Tier 1 |
+| 18 SIG | Cyber-Kinetic | Tier 1 |
+| E SQN | Strategic Deniability | Joint / SIS |

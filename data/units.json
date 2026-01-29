@@ -63,5 +63,15 @@
     "motto": "Swift and Sure",
     "color": "#000080",
     "icon": "icons/SIGNALS.png"
+  },
+  "e-squadron": {
+    "id": "E_SQN",
+    "hidden": true,
+    "founded": "2007",
+    "specialization": "Strategic Deniability / SIS Liaison",
+    "theatres": "Global / Non-Permissive",
+    "motto": "Classified",
+    "color": "#1a1a1a",
+    "icon": "icons/MOD.png"
   }
 }
