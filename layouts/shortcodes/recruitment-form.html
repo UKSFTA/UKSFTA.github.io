@@ -21,8 +21,9 @@
         </div>
 
         <div class="pt-8 border-t border-white/5">
-            <a href="/register" class="btn-elite bg-white text-black w-full hover:bg-[var(--primary)] hover:text-white transition-all font-black py-6 text-center no-underline">
-                OPEN REGISTRATION TERMINAL // 0x{{ upper (substr (sha256 .Name) 0 6) }}
+            {{ $unit := .Page.Params.unit | default .Page.Section | default "general" }}
+            <a href="/register?unit={{ $unit }}" class="btn-elite bg-white text-black w-full hover:bg-[var(--primary)] hover:text-white transition-all font-black py-6 text-center no-underline">
+                OPEN REGISTRATION TERMINAL // AUTH REQUIRED
             </a>
         </div>
     </div>
