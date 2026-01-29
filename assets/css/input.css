@@ -31,7 +31,7 @@
     color: #d1d5db;
     font-family: var(--font-body);
     font-size: 18px;
-    line-height: 1.65;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: calc(var(--header-height) + var(--hmg-bar-height));
     @apply font-light;
@@ -51,7 +51,7 @@
 
   label, .sub-header {
     font-family: var(--font-mono);
-    @apply text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500;
+    @apply text-[9px] font-bold uppercase tracking-[0.3em] text-gray-500;
   }
 }
 
@@ -72,43 +72,42 @@
   }
 
   .dossier-node {
-    @apply relative border-l-4 border-[var(--primary)] pl-12 py-4 mb-16;
+    @apply relative border-l-4 border-[var(--primary)] pl-10 py-3 mb-12;
     background: linear-gradient(to right, rgba(179, 153, 93, 0.03), transparent);
   }
 
+  /* Compacted Bracket Box */
   .bracket-box {
-    @apply relative border border-white/5 bg-white/[0.01] p-12;
+    @apply relative border border-white/5 bg-white/[0.01] p-10;
     &::before, &::after {
       content: "";
-      @apply absolute w-6 h-6 border-[var(--primary)]/40 pointer-events-none;
+      @apply absolute w-1.5 h-1.5 border-[var(--primary)]/40 pointer-events-none;
     }
     &::before { @apply top-0 left-0 border-t-2 border-l-2; }
     &::after { @apply bottom-0 right-0 border-b-2 border-r-2; }
   }
 
-  /* REFINED: Box Style Button (No diagonal rectangle) */
+  /* Tightened Button */
   .btn-elite {
-    @apply inline-flex items-center justify-center px-12 py-5 bg-white text-black font-mono font-black text-xs uppercase tracking-[0.5em] transition-all relative overflow-hidden;
-    /* clip-path removed for standard rectangular box look */
+    @apply inline-flex items-center justify-center px-10 py-4 bg-white text-black font-mono font-black text-[11px] uppercase tracking-[0.4em] transition-all relative overflow-hidden;
     border: 1px solid transparent;
     text-decoration: none !important;
     &:hover {
-      @apply bg-[var(--primary)] text-white shadow-[0_0_60px_var(--primary-glow)] -translate-y-0.5;
+      @apply bg-[var(--primary)] text-white shadow-[0_0_40px_var(--primary-glow)] -translate-y-0.5;
     }
   }
 
   .terminal-input {
-    @apply w-full bg-white/[0.03] border border-white/10 p-5 text-sm font-mono text-white outline-none focus:border-[var(--primary)] transition-all placeholder:text-gray-700;
+    @apply w-full bg-white/[0.03] border border-white/10 p-4 text-xs font-mono text-white outline-none focus:border-[var(--primary)] transition-all placeholder:text-gray-700;
   }
 
-  /* REFINED: Natural Color Utility */
   .icon-tactical {
     @apply grayscale-0 brightness-100 contrast-100;
     transition: filter 0.5s ease;
   }
 
   .text-display { 
-    font-size: clamp(4rem, 12vw, 9rem); 
+    font-size: clamp(3.5rem, 10vw, 8.5rem); 
     @apply font-black tracking-tighter leading-[0.8];
   }
 }
