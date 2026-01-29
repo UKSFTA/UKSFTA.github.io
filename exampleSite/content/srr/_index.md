@@ -1,33 +1,44 @@
 ---
 title: "Special Reconnaissance Regiment"
-description: "The United Kingdom's specialist covert intelligence unit. Gathering high-fidelity surveillance intelligence in high-threat environments."
+description: "The United Kingdom's primary Tier 1 covert surveillance unit. Specialized in human intelligence and Grey Zone operations."
 date: 2026-01-28
 unit: "srr"
 ---
 
 {{< mandate id="SRR-DOSS-03" >}}
-The Special Reconnaissance Regiment (SRR) provides the Directorate of Special Forces with a dedicated covert surveillance capability. Unlike other UKSF units, the SRR draws personnel from across all branches of the British Armed Forces and is the only unit to recruit women for frontline operational roles.
+The Special Reconnaissance Regiment (SRR) is the Directorate's specialist in covert surveillance. Drawing personnel from across all branches of the British Armed Forces, it is the only UKSF unit to deploy both men and women in frontline operational roles.
 {{< /mandate >}}
 
-## Operational Role & Use Case
+<div class="my-20">
+    {{< recruitment-form title="SRR_SELECTION_NODE" headline="Register for SRR Selection" description="Register your interest for the SRR Selection Course. Focuses on advanced surveillance, human intelligence, and urban survival." >}}
+</div>
 
-The SRR operates at the strategic and tactical levels, gathering human intelligence (HUMINT) and signals intelligence (SIGINT) in environments where overt military presence is not possible.
+## Strategic Role & The Shadow Domain
 
-### Core Competencies
+The SRR operates in the "Shadow Domain," gathering critical human intelligence (HUMINT) and technical surveillance data in high-threat environments where overt military presence is impossible.
 
-- **Covert Surveillance**: Monitoring high-value targets in urban and rural environments without detection.
-- **ISTAR**: Intelligence, Surveillance, Target Acquisition, and Reconnaissance supporting Tier 1 strike operations.
-- **Technical Intelligence**: Integration of advanced sensors, electronic warfare assets, and cyber-insertion tools.
-- **Target Tracking**: Persistent monitoring of strategic threats across international borders.
+### Core Operational Domains
+
+- **Covert Urban Surveillance**: Monitoring targets in complex urban environments without detection, often for extended periods.
+- **Human Intelligence (HUMINT)**: Establishing and maintaining sources within adversary networks to gather strategic data.
+- **ISTAR Support**: Providing Tier 1 strike units (SAS/SBS) with the "Eyes and Ears" required for high-precision interventions.
+- **Counter-Terrorism Surveillance**: Identifying and tracking terrorist networks both domestically and internationally.
 
 ## Professional Standard
 
-SRR operators are specialists in the "grey zone"—the space between peace and open conflict. They are trained in advanced close-quarters combat, technical surveillance, and the mastery of multiple languages and local customs.
+SRR operators are specialists in blending into any environment. They are masters of "Grey Zone" operations, possessing advanced skills in:
+- **Close-Quarters Combat**: High-speed, high-intensity response in confined spaces.
+- **Advanced Communications**: Operating undetectable signals networks in non-permissive zones.
+- **Cultural Mastery**: Deep understanding of local customs, languages, and social dynamics.
 
-### Integration
+## The SRR Selection Course
 
-The SRR works in seamless integration with the SAS and SBS, providing the "eyes and ears" required for successful direct action missions and counter-terrorism response.
+Selection for the SRR focuses on cognitive speed, emotional intelligence, and the ability to operate under extreme isolation.
 
-{{< mandate id="OPSEC-SRR-INT" >}}
-Operational methods, facial identities, and specific technical tracking assets remain HIGHEST CLASSIFICATION. Disclosure is punishable under the Official Secrets Act.
+1. **Assesment Phase**: Testing physical and mental resilience over a 2-week course.
+2. **Surveillance Training**: 14 weeks of intensive training in human and technical surveillance methods.
+3. **Advanced Combat Phase**: Mastering tactical driving, close-quarters weaponry, and escape & evasion.
+
+{{< mandate id="OPSEC-SRR-ALPHA" >}}
+Operator identities, technical surveillance methods, and current target locations are HIGHEST CLASSIFICATION.
 {{< /mandate >}}

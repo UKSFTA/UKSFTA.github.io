@@ -1,40 +1,45 @@
 ---
 title: "22 Special Air Service"
-description: "The British Army's primary special forces unit. Specialized in counter-terrorism, hostage rescue, and covert reconnaissance."
+description: "The United Kingdom's primary Tier 1 special forces unit. Specialized in global counter-terrorism, hostage rescue, and covert reconnaissance."
 date: 2026-01-28
 unit: "sas"
 ---
 
 {{< mandate id="SAS-DOSS-01" >}}
-The Special Air Service (SAS) is a special forces unit of the British Army. It has served as a model for special forces around the world. The SAS forms a core part of the United Kingdom Special Forces (UKSF) under the functional command of the Directorate of Special Forces.
+The Special Air Service (SAS) is the British Army's most elite special operations force. As the cornerstone of the United Kingdom Special Forces (UKSF), it provides the Government with a versatile range of military options to support strategic objectives in any environment.
 {{< /mandate >}}
 
 {{< recruitment-form title="SAS_SELECTION_NODE" headline="Register for SAS Selection" description="Register your interest for the 22 SAS Selection Course. Applicants must meet Directorate physical and mental benchmarks." >}}
 
-## Operational Role & Use Case
+## Strategic Role & Deployment
 
-The primary mission of 22 SAS is to provide the UK government with a range of specialized military options. Operators are trained to insert into any environment—land, air, or sea—to achieve strategic objectives with zero latency.
+22 SAS maintains a global presence, operating in small, autonomous teams to achieve high-impact strategic outcomes. The regiment is designed for "zero-latency" deployment, capable of inserting into non-permissive environments with minimal notice.
 
-### Core Competencies
+### Core Operational Domains
 
-- **Counter-Terrorism (CT)**: Maintaining the national high-readiness response team for domestic and international hostage rescue and strike operations.
-- **Direct Action**: High-precision offensive operations against high-value targets and strategic infrastructure.
-- **Special Reconnaissance**: Gathering intelligence deep behind enemy lines through human and technical surveillance.
-- **Unconventional Warfare**: Training partner nation forces and supporting revolutionary insurgent operations.
+- **Counter-Terrorism (CT)**: 22 SAS maintains the permanent National Readiness unit for domestic and international counter-terrorism. This includes advanced hostage rescue, aircraft/maritime intervention, and counter-insurgency operations.
+- **Direct Action (DA)**: Conduct of high-precision strikes, technical sabotage, and offensive operations against High-Value Targets (HVTs) or critical infrastructure.
+- **Special Reconnaissance (SR)**: Gathering strategic and tactical intelligence deep behind enemy lines using advanced human and technical surveillance assets.
+- **Unconventional Warfare**: Training and leading partner nation forces, supporting revolutionary insurgent operations, and conducting asymmetric warfare.
 
-## Structure & Selection
+## Regimental Structure
 
-The regiment is structured into several operational squadrons, each specializing in a specific insertion method (Air, Boat, Mobility, Mountain).
+The regiment is organized into four operational squadrons (A, B, D, and G), each specializing in a specific insertion and environmental domain:
 
-### The Selection Pipeline
+- **Air Troop**: Specialists in HAHO (High Altitude High Opening) and HALO (High Altitude Low Opening) parachute insertion.
+- **Boat Troop**: Specialists in maritime insertion, diving, and littoral operations.
+- **Mobility Troop**: Experts in desert, arctic, and urban vehicle operations and long-range patrolling.
+- **Mountain Troop**: Specialists in high-altitude combat, vertical insertion, and extreme cold-weather survival.
 
-Selection for the SAS is widely regarded as the most demanding military assessment in the world. It tests mental resilience, physical endurance, and the ability to operate independently under extreme duress.
+## The Selection Pipeline
 
-1. **Aptitude Phase**: The "Hills" phase, involving heavy load-bearing and complex navigation across the Brecon Beacons.
-2. **Tactical Phase**: Mastery of advanced weapon systems, demolition, and medical protocols.
-3. **Jungle Phase**: Survival and combat operations in hostile tropical environments.
-4. **SERE**: Survival, Evasion, Resistance, and Extraction training.
+Selection for the SAS is the most demanding military assessment in the world. It is designed to find individuals who possess "The Unrelenting Pursuit of Excellence" and the ability to operate independently under extreme psychological and physical duress.
 
-{{< mandate id="OPSEC-SAS-22" >}}
-Specific squadron numbers, current deployment coordinates, and individual operator identities remain classified LEVEL 4 RESTRICTED.
+1. **Aptitude Phase (The Hills)**: A 4-week assessment in the Brecon Beacons testing endurance, navigation, and mental resilience under heavy load.
+2. **Tactical Phase**: Intensive training in advanced weapon systems, demolition, and tactical medicine.
+3. **Jungle Phase**: Combat operations and survival in hostile tropical environments.
+4. **Combat Survival (SERE)**: Advanced Survival, Evasion, Resistance, and Extraction assessment.
+
+{{< mandate id="OPSEC-SAS-ALPHA" >}}
+Current operational coordinates, squadron numbering, and operator identities remain LEVEL 5 CLASSIFIED.
 {{< /mandate >}}
