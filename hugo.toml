@@ -19,6 +19,11 @@ canonifyurls = true
   builtby = 'UKSF Taskforce Alpha'
   builtbyurl = 'https://discord.gg/2jNqa3zPRH'
 
+[params.unitcommander]
+  enabled = true
+  community_id = "" # Paste your Community ID here
+  bot_token = ""    # Paste your Bot Token here (Format: "Bot YOUR_TOKEN")
+
 [module]
   [module.hugoVersion]
     extended = true

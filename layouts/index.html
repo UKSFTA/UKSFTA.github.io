@@ -58,10 +58,28 @@
     <div class="container-uksf w-full">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-24">
             
-            <!-- Left: System Logs -->
+            <!-- Left: Intelligence Feed (Logs & Live Ops) -->
             <div class="lg:col-span-4 space-y-12">
+                <!-- 4a. Live Operations (Unit Commander) -->
+                {{ if site.Params.unitcommander.enabled }}
                 <div class="space-y-6">
-                    <span class="text-[11px] font-bold text-red-600 uppercase tracking-[0.6em]">Operational Activity</span>
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold text-[var(--primary)] uppercase tracking-[0.6em]">Active Operations</span>
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse-fast"></span>
+                    </div>
+                    <div id="live-ops-feed" class="space-y-4">
+                        <!-- Placeholder while loading -->
+                        <div class="p-6 bg-white/[0.02] border border-white/5 animate-pulse">
+                            <div class="h-4 w-2/3 bg-white/5 mb-3"></div>
+                            <div class="h-3 w-1/2 bg-white/5"></div>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+
+                <!-- 4b. System Logs (Historical) -->
+                <div class="space-y-6">
+                    <span class="text-[11px] font-bold text-gray-600 uppercase tracking-[0.6em]">Historical Archive</span>
                     <h2 class="text-6xl leading-[0.8] tracking-tighter">System <br>Logs</h2>
                 </div>
                 <div class="space-y-4">

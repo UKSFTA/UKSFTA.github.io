@@ -177,6 +177,46 @@
     console.log("%cDECRYPTION_HINT: The authorized access path is encoded in the system headers.", "color: #666; font-family: monospace;");
     console.log("%cAUTH_ID: GHOST-OPERATOR", "color: #666; font-family: monospace;");
 
+    // UNIT_COMMANDER_INTEGRATION
+    const ucConfig = {{ site.Params.unitcommander | jsonify | safeJS }};
+    if (ucConfig.enabled && ucConfig.community_id && ucConfig.bot_token) {
+        async function fetchEvents() {
+            const feed = document.getElementById('live-ops-feed');
+            if (!feed) return;
+
+            try {
+                const response = await fetch(`https://api.unitcommander.co.uk/community/${ucConfig.community_id}/events`, {
+                    headers: { 'Authorization': `Bot ${ucConfig.bot_token}` }
+                });
+                const data = await response.json();
+                
+                if (data && data.length > 0) {
+                    feed.innerHTML = '';
+                    data.slice(0, 2).forEach(op => {
+                        const date = new Date(op.startTime).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+                        feed.innerHTML += `
+                            <div class="p-6 bg-white/[0.02] border border-white/5 relative group overflow-hidden">
+                                <div class="absolute top-0 left-0 w-1 h-full bg-[var(--primary)] opacity-40"></div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">${date} // ${op.type || 'OPERATION'}</span>
+                                    <span class="text-[8px] font-black text-[var(--primary)] uppercase tracking-widest">${op.attendanceCount || 0} DEPLOYED</span>
+                                </div>
+                                <span class="text-sm font-bold text-white uppercase tracking-widest block">${op.title}</span>
+                            </div>
+                        `;
+                    });
+                } else {
+                    feed.innerHTML = '<div class="text-[8px] font-mono text-gray-700 uppercase tracking-widest p-6 border border-dashed border-white/5">No active operations detected.</div>';
+                }
+            } catch (err) {
+                feed.innerHTML = '<div class="text-[8px] font-mono text-red-900 uppercase tracking-widest p-6 border border-dashed border-red-900/20">Link failure: UC_NODE_OFFLINE</div>';
+            }
+        }
+        fetchEvents();
+    } else if (document.getElementById('live-ops-feed')) {
+        document.getElementById('live-ops-feed').innerHTML = '<div class="text-[8px] font-mono text-gray-700 uppercase tracking-widest p-6 border border-dashed border-white/5">Awaiting API Authorization...</div>';
+    }
+
     // Hidden Trigger for curious personnel
     let clicks = 0;
     document.getElementById('ghost-node').addEventListener('click', () => {
