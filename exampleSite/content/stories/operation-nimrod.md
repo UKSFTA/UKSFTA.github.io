@@ -1,44 +1,31 @@
 ---
-title: "Operation Nimrod: Iranian Embassy Intervention"
-description: "High-precision counter-terrorism and hostage recovery protocol in an urban stronghold."
+title: "The Iranian Embassy Siege: Operation Nimrod"
+description: "A narrative account of the 1980 SAS intervention that defined modern urban counter-terrorism."
 date: 2026-01-28
 unit: "sas"
 ---
 
-{{< mandate id="AAR-SAS-NIM-1980" >}}
-OFFICIAL SENSITIVE: After-Action Report (AAR). 
-Subject: Iranian Embassy Siege / Strategic Counter-Terrorism Validation.
-Location: Princes Gate, London.
-Asset: 22 SAS / B Squadron.
+{{< mandate id="HIST-SAS-NIM" >}}
+REGISTRY ARCHIVE: The 1980 Iranian Embassy intervention. A defining moment in the history of the Special Air Service 'Black Role' capability.
 {{< /mandate >}}
 
-## 1. Situation
-On 30 April 1980, six armed militants of the Democratic Revolutionary Front for the Liberation of Arabistan (DRFLA) seized the Iranian Embassy in London. Following the execution of a hostage on Day 6, the Home Secretary authorized the Directorate to initiate a kinetic solution.
+On 30 April 1980, six armed militants of the Democratic Revolutionary Front for the Liberation of Arabistan (DRFLA) stormed the Iranian Embassy at 16 Princes Gate, London. Taking 26 hostages, the group demanded the release of prisoners in Khuzestan and their own safe passage out of the UK. For six days, a tense standoff ensued as Metropolitan Police negotiators attempted to resolve the crisis peacefully.
 
-- **Adversary**: 6 armed militants (DRFLA).
-- **Environment**: Multi-storey urban townhouse, heavily barricaded.
-- **ROE**: Hostage extraction primary; lethal force authorized for threat neutralization.
+The turning point occurred on the sixth day when the militants executed a diplomatic staff member and threw his body onto the street. Within minutes, the Home Secretary authorized the Special Air Service to initiate a kinetic solution.
 
-## 2. Mission
-To conduct a synchronized, multi-point assault on 16 Princes Gate to extract all remaining assets and neutralize the militant threat with surgical precision.
+Under the cover of darkness and intense public scrutiny, B Squadron (22 SAS) prepared for 'Operation Nimrod'. Red Team established positions on the roof while Blue Team moved to the rear balconies and first-floor entry points. Technical teams had spent days drilling through adjacent walls to plant microphones and optical probes, providing the assault teams with high-fidelity target locations.
 
-## 3. Execution (CONOPS)
-The operation (designated 'Operation Nimrod') was executed via two main assault teams (Red Team and Blue Team).
+At 19:23 ZULU, the assault began. Synchronized explosive frame-charges shattered the first-floor windows as Red Team operators fast-roped from the roof to the rear balconies. Despite a minor complication where one operator became entangled in his rope, the teams breached the structure simultaneously. CS gas was deployed to saturate the interior, creating a disorienting environment for the militants.
 
-- **Phase 1: Infiltration**: Red Team established positions on the roof while Blue Team prepared first-floor entry points. Technical surveillance (microphones and optical probes) provided real-time HVT locations.
-- **Phase 2: Breach & Entry**: At 19:23 ZULU, Red Team fast-roped from the roof to the rear balconies while Blue Team utilized explosive frame-charges on the first-floor windows. CS gas was deployed to saturate the interior.
-- **Phase 3: Clearance**: Operators conducted systematic room-by-room clearance. Five of the six militants were neutralized within the structure; one was identified while attempting to blend with hostages and detained.
+The room-by-room clearance was surgical. Operators moved through the smoke-filled embassy with respirators, identifying and neutralizing the militants while shielding hostages. In the library, where the majority of hostages were held, SAS teams neutralized several gunmen before they could execute their captives. In total, the assault lasted only 17 minutes.
 
-## 4. Mission Assessment
-- **Asset Status**: 25 hostages successfully recovered; 1 civilian fatality (pre-assault).
-- **Adversary Status**: 5 KIA; 1 detainee.
-- **Strategic Effect**: Global validation of the 'Black Role' counter-terrorism capability.
+The outcome was a resounding validation of Tier 1 urban intervention. Five militants were killed during the assault, and one was captured while attempting to blend in with the extracted hostages. All but one of the remaining hostages were recovered safely.
 
 ### Registry of Sources
 - [The Iranian Embassy Siege (Wikipedia)](https://en.wikipedia.org/wiki/Iranian_Embassy_siege)
 - [BBC News: The SAS Iranian Embassy Siege](https://www.bbc.co.uk/news/uk-10063357)
 - *Go! Go! Go! - The Definitive Account of the Iranian Embassy Siege* by Rusty Firmin.
 
-{{< mandate id="OPSEC-NIM-ARCHIVE" >}}
-Assault blueprints and specific chemical compositions remain RESTRICTED under HMG Archive Node 4.
+{{< mandate id="OPSEC-NIM-END" >}}
+Registry closed. Document remains for historical reference.
 {{< /mandate >}}

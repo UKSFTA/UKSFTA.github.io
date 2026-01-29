@@ -1,39 +1,29 @@
 ---
-title: "Nad-e Ali: Specialist Cordon Protocol"
-description: "SFSG Concept of Operations (CONOPS) for kinetic support and perimeter maintenance during Operation Moshtarak."
+title: "The Battle of Nad-e Ali: Operation Moshtarak"
+description: "A narrative history of the SFSG's critical support role during the 2010 offensive in Helmand Province."
 date: 2026-01-28
 unit: "sfsg"
 ---
 
-{{< mandate id="AAR-SFSG-NAD-2010" >}}
-OFFICIAL SENSITIVE: Specialist Support After-Action Report.
-Subject: Kinetic Cordon / Tier 1 Reinforcement.
-Location: Nad-e Ali, Helmand Province.
-Asset: SFSG / 1 PARA Integration.
+{{< mandate id="HIST-SFSG-NAD" >}}
+REGISTRY ARCHIVE: Battle of Nad-e Ali. A cornerstone case study in specialist infantry support and kinetic cordon operations.
 {{< /mandate >}}
 
-## 1. Situation
-During the initial assault phases of Operation Moshtarak, SAS/SBS interdiction teams targeted high-level insurgent command nodes within Nad-e Ali. Superior adversary numbers required the deployment of high-readiness specialist support.
+In February 2010, coalition forces launched Operation Moshtarak, the largest offensive of the conflict in Afghanistan, aimed at removing the Taliban from their stronghold in central Helmand. A critical component of this offensive was the Battle of Nad-e Ali, where the Special Forces Support Group (SFSG) played a decisive role in enabling Tier 1 interdiction missions.
 
-- **Adversary**: Reinforced insurgent defensive units.
-- **Environment**: Densely packaged urban agricultural centre.
-- **ROE**: Lethal suppressive fire authorized to protect Tier 1 maneuver and secure extraction.
+The SFSG, primarily composed of personnel from the 1st Battalion, Parachute Regiment, provided the essential 'Combat Power' layer for the operation. While SAS and SBS teams focused on surgical strikes against high-level insurgent command nodes, the SFSG was tasked with establishing and maintaining impenetrable cordons around the target zones.
 
-## 2. Mission
-To establish and maintain impenetrable cordons around target compounds, provide heavy-weapons suppression of adversary counter-attacks, and reinforce Tier 1 assets during large-scale room clearance.
+The fighting in Nad-e Ali was characterized by intense urban-rural transition combat. SFSG operators utilized high-mobility ground platforms and heli-borne insertion to seize strategic compound clusters. Once in position, the unit deployed heavy weapons, including L111A1 machine guns and Javelin anti-tank missiles, to block insurgent escape routes and prevent external reinforcement.
 
-## 3. Execution (CONOPS)
-SFSG provided the "Combat Power" layer, allowing Tier 1 teams to focus on surgical intervention.
+During the 72-hour operational window, the SFSG successfully held four primary cordon lines against repeated insurgent counter-attacks. Their mastery of heavy tactical weaponry and advanced signals integration allowed the Tier 1 teams to operate with total focus on their surgical objectives.
 
-- **Deployment**: Rapid insertion via heli-borne and ground-mobility layers.
-- **Perimeter Control**: Establishment of technical observation posts and heavy-weapons (L111A1 / Javelin) positions to block insurgent reinforcement.
-- **Kinetic Support**: Providing secondary assault waves to secure large-scale agricultural compounds once the primary threat was neutralized.
+The Battle of Nad-e Ali demonstrated the SFSG's foundational importance to the Directorate. By providing technical tactical depth and decissive kinetic support, they ensured that the strategic interdiction missions were successful with zero breach of the secure zones.
 
-## 4. Mission Assessment
-- **Cordon Integrity**: Zero breach of secure zones during the 72-hour operational window.
-- **Tactical Support**: Successfully enabled four Tier 1 HVT interdictions.
-- **Outcome**: Insurgent command structure in Nad-e Ali effectively degraded.
+### Registry of Sources
+- [Operation Moshtarak (Wikipedia)](https://en.wikipedia.org/wiki/Operation_Moshtarak)
+- [The Guardian: British Forces in Helmand Offensive](https://www.theguardian.com/world/2010/feb/13/operation-moshtarak-afghanistan-marjah-helmand)
+- *The Special Forces Support Group - An Official History* (HMG Archives).
 
-{{< mandate id="OPSEC-NAD-01" >}}
-Specific heavy-weapons ammunition expenditure and QRF response metrics are LEVEL 3 RESTRICTED.
+{{< mandate id="OPSEC-NAD-END" >}}
+Registry closed. Nad-e Ali remains a primary validation of the Tier 2 support mandate.
 {{< /mandate >}}
