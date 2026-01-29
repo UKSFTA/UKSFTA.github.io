@@ -23,11 +23,6 @@ theme = 'uksf-mod-theme'
   weight = 20
 
 [[menus.main]]
-  name = "SRR"
-  url = "/srr/"
-  weight = 30
-
-[[menus.main]]
   name = "SFSG"
   url = "/sfsg/"
   weight = 40

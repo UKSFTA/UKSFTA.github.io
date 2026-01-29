@@ -1,21 +1,83 @@
 {{ define "main" }}
 {{ partial "hero.html" . }}
 
-<div class="container-uksf py-20 space-y-24">
+<div class="container-uksf py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+        
+        <!-- MAIN CONTENT: Section Narrative -->
+        <main class="lg:col-span-8 space-y-24">
+            
+            <!-- 1. The Executive Summary -->
+            <section class="space-y-10">
+                <div class="flex items-center space-x-6">
+                    <div class="w-12 h-px bg-[var(--primary)]"></div>
+                    <span class="sub-header m-0">Institutional_Briefing</span>
+                </div>
+                <div class="dossier-node">
+                    <div class="prose prose-invert prose-2xl max-w-none font-light text-gray-300 leading-relaxed italic">
+                        {{ .Description | default .Summary }}
+                    </div>
+                </div>
+            </section>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-    {{ range .Pages }}
-    <article class="modular-block group cursor-pointer h-full" onclick="location.href='{{ .RelPermalink }}'">
-      <div class="space-y-6">
-        <span class="text-[8px] font-bold text-gray-600 uppercase tracking-widest">SF-{{ .Date.Format "2006" }}-{{ upper (substr .Title 0 4) }}</span>
-        <h2 class="text-5xl m-0 group-hover:text-[var(--primary)] transition-colors">{{ .Title }}</h2>
-        <p class="text-sm text-gray-500 leading-relaxed line-clamp-3">{{ .Summary }}</p>
-        <div class="pt-6">
-          <span class="text-[10px] font-bold text-white uppercase tracking-widest border-b border-white/10 group-hover:border-[var(--primary)] pb-2 transition-all">Access Dossier →</span>
-        </div>
-      </div>
-    </article>
-    {{ end }}
-  </div>
+            <!-- 2. Primary Page Content (Markdown) -->
+            <section class="prose prose-invert prose-lg max-w-none font-light text-gray-400 prose-headings:text-white prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-strong:text-white prose-strong:font-bold">
+                {{ .Content }}
+            </section>
+
+            <!-- 3. Sub-Pages / Registry Items -->
+            {{ if .Pages }}
+            <section class="space-y-12 border-t border-white/5 pt-20">
+                <div class="flex items-center justify-between">
+                    <span class="sub-header m-0">Related_Archive_Nodes</span>
+                    <span class="text-[8px] font-mono text-gray-700 uppercase tracking-widest">{{ len .Pages }} Entry Points Detected</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {{ range .Pages }}
+                    <a href="{{ .RelPermalink }}" class="bracket-box group bg-white/[0.01] hover:bg-white/[0.03] border-white/5 hover:border-[var(--primary)]/30 no-underline transition-all duration-500">
+                        <div class="space-y-6">
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">ID: {{ upper (substr (sha256 .Title) 0 8) }}</span>
+                            <h3 class="text-3xl m-0 group-hover:text-white transition-colors">{{ .Title }}</h3>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed line-clamp-2">{{ .Description | default .Summary }}</p>
+                            <div class="pt-4 flex items-center justify-between opacity-40 group-hover:opacity-100">
+                                <span class="text-[9px] font-black uppercase tracking-widest text-white">Access_Node</span>
+                                <span class="text-white">→</span>
+                            </div>
+                        </div>
+                    </a>
+                    {{ end }}
+                </div>
+            </section>
+            {{ end }}
+
+        </main>
+
+        <!-- SIDEBAR: Technical Context -->
+        <aside class="lg:col-span-4 space-y-12">
+            <div class="bracket-box bg-black/40 backdrop-blur-xl border-white/5 sticky top-48">
+                <div class="space-y-10">
+                    <div>
+                        <h4 class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] mb-6 font-bold">Node_Protocol</h4>
+                        <div class="flex items-center space-x-4 bg-white/5 border border-white/10 px-6 py-4">
+                            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+                            <span class="text-[10px] font-black text-white tracking-widest uppercase">Encryption_Active</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 border-t border-white/5 pt-10">
+                        <div class="flex flex-col">
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Registry_Status</span>
+                            <span class="text-xs font-bold text-white uppercase mt-1">Institutional_Record</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Security_Auth</span>
+                            <span class="text-xs font-bold text-[var(--primary)] uppercase mt-1">Level_3_Restricted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
 </div>
 {{ end }}
