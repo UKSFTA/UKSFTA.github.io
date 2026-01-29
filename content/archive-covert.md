@@ -10,26 +10,23 @@ url: "/archive/covert"
 OFFICIAL SENSITIVE: This dossier coordinates the Directorate’s covert intelligence and deniable capabilities. Access is restricted to personnel operating within the Shadow Domain.
 {{< /mandate >}}
 
-## The Strategic Intelligence Triad
+## Military Intelligence Integration
 
-The Directorate projects power through three specialized pillars of intelligence. This ecosystem integrates human surveillance, signals interception, and strategic deniability to identify and neutralize threats globally before they reach a kinetic threshold.
+The Directorate’s intelligence capability is a multi-layered ecosystem designed to bridge the gap between technical signals interception and human-centric surveillance. By integrating the Special Reconnaissance Regiment (SRR), the 18 Special Forces Signals Regiment, and E Squadron (The Increment), the Directorate maintains a persistent, deniable presence in high-threat environments.
 
-### 1. Special Reconnaissance Regiment (SRR)
-The **Find** component. Specialists in high-fidelity human intelligence (HUMINT) and covert urban surveillance. The SRR provides the persistent "eyes on target" required for Tier 1 intervention.
+### The Intelligence Lifecycle: Find, Fix, Finish
 
-### 2. 18 Special Forces Signals Regiment
-The **Fix** component. Experts in signals intelligence (SIGINT) and electronic warfare. 18 Signals intercept and analyze adversary networks, providing the technical data-links that anchor all UKSF operations.
+In the Shadow Domain, operational success is defined by the seamless linkage of these three distinct pillars:
 
-### 3. E Squadron (The Increment)
-The **Finish & Support** component. A joint-service unit composed of handpicked SAS, SBS, and SRR personnel. E Squadron operates in direct support of the Secret Intelligence Service (SIS/MI6), conducting the most sensitive missions requiring total strategic deniability.
+- **18 Signals Regiment (SIGINT/Fix)**: The technical baseline. 18 Signals intercept, decrypt, and analyze adversary command networks. They provide the "Electronic Fingerprint" required to fix a target's location and communication patterns.
+- **Special Reconnaissance Regiment (HUMINT/Find)**: The human-centric fixation. Once a technical lead is established, SRR urban teams deploy to provide persistent, covert surveillance. They confirm identities, monitor social dynamics, and identify kinetic entry points with zero visual signature.
+- **E Squadron (Strategic Finish/Liaison)**: The deniable effect. Working in direct liaison with the Secret Intelligence Service (SIS/MI6), E Squadron utilizes the data provided by SRR and Signals to conduct sensitive, non-conventional missions where official military footprint must be sanitized.
 
----
+## Strategic Intelligence Selection
 
-## Intelligence Selection Gateway
+Personnel with advanced technical, cyber, or linguistic expertise may register interest for the intelligence selection pipeline. This assessment focuses on cognitive speed, technical mastery, and the ability to operate under extreme isolation.
 
-Personnel with advanced technical, cyber, or surveillance expertise may register interest for covert roles. Vetting at the highest level (DV) is mandatory for all pathways.
-
-{{< recruitment-form title="COVERT_INTELLIGENCE_INTAKE" headline="Register Intel Interest" description="Register for the covert intelligence selection pipeline. Available for SRR, 18 Signals, and joint-service pathways." >}}
+{{< recruitment-form title="INTELLIGENCE_SYNERGY_GATEWAY" headline="Register Intelligence Interest" description="Register for the Joint Intelligence selection pipeline. Available pathways: SRR (HUMINT), 18 SIG (SIGINT), and Joint-Service (E SQN)." >}}
 
 ---
 
@@ -39,8 +36,8 @@ Personnel with advanced technical, cyber, or surveillance expertise may register
 Assets operating under E Squadron mandate possess zero official signature. All operational footprints are sanitized prior to extraction.
 {{< /mandate >}}
 
-| Asset Node | Capability | Authority |
+| Asset Node | Command Domain | Lineage |
 | :--- | :--- | :--- |
-| SRR Urban | Covert Surveillance | Tier 1 |
-| 18 SIG | Cyber-Kinetic | Tier 1 |
-| E SQN | Strategic Deniability | Joint / SIS |
+| SRR Shadow | Human Intelligence | Special Reconnaissance |
+| 18 SIG Link | Signals / EW | SF Signals |
+| E SQN Increment | Deniable Ops | Joint (SAS/SBS/SRR) |
