@@ -7,37 +7,33 @@ url: "/archive/covert"
 ---
 
 {{< mandate id="INTEL-HUB-01" >}}
-OFFICIAL SENSITIVE: This dossier coordinates the Directorate’s covert intelligence and deniable capabilities. Access is restricted to personnel operating within the Shadow Domain.
+OFFICIAL SENSITIVE: This dossier coordinates the Taskforce's covert intelligence and deniable capabilities. Access is strictly limited to authorized operators.
 {{< /mandate >}}
 
-## Military Intelligence Integration
+## Shadow Domain Integration
 
-The Directorate’s intelligence capability is a multi-layered ecosystem designed to bridge the gap between technical signals interception and human-centric surveillance. By integrating the Special Reconnaissance Regiment (SRR), the 18 Special Forces Signals Regiment, and E Squadron (The Increment), the Directorate maintains a persistent, deniable presence in high-threat environments.
+UKSFTA's intelligence capability is a multi-layered ecosystem designed to bridge the gap between technical signals interception and human-centric surveillance. By integrating the **Special Reconnaissance Regiment (SRR)** and **SF Signals**, the Taskforce maintains a persistent presence in high-threat environments.
 
 ### The Intelligence Lifecycle: Find, Fix, Finish
 
-In the Shadow Domain, operational success is defined by the seamless linkage of these three distinct pillars:
+In the Shadow Domain, operational success is defined by the seamless linkage of these distinct pillars:
 
-- **18 Signals Regiment (SIGINT/Fix)**: The technical baseline. 18 Signals intercept, decrypt, and analyze adversary command networks. They provide the "Electronic Fingerprint" required to fix a target's location and communication patterns.
-- **Special Reconnaissance Regiment (HUMINT/Find)**: The human-centric fixation. Once a technical lead is established, SRR urban teams deploy to provide persistent, covert surveillance. They confirm identities, monitor social dynamics, and identify kinetic entry points with zero visual signature.
-- **E Squadron (Strategic Finish/Liaison)**: The deniable effect. Working in direct liaison with the Secret Intelligence Service (SIS/MI6), E Squadron utilizes the data provided by SRR and Signals to conduct sensitive, non-conventional missions where official military footprint must be sanitized.
+- **SF Signals (SIGINT/Fix)**: The technical baseline. They intercept, decrypt, and analyze adversary command networks, providing the "Electronic Fingerprint" required to fix a target's location.
+- **Special Reconnaissance Regiment (HUMINT/Find)**: The human-centric fixation. SRR urban teams provide persistent, covert surveillance to confirm identities and identify kinetic entry points.
+- **Taskforce Alpha Elements (Strategic Finish)**: The final effect. Utilizing the data provided by SRR and Signals to conduct high-precision strikes and non-conventional missions.
 
-## Strategic Intelligence Selection
+## Strategic Selection Node
 
-Personnel with advanced technical, cyber, or linguistic expertise may register interest for the intelligence selection pipeline. This assessment focuses on cognitive speed, technical mastery, and the ability to operate under extreme isolation.
+Personnel with advanced technical, cyber, or Zeus expertise may register interest for the intelligence selection pipeline.
 
-{{< recruitment-form title="INTELLIGENCE_SYNERGY_GATEWAY" headline="Register Intelligence Interest" description="Register for the Joint Intelligence selection pipeline. Available pathways: SRR (HUMINT), 18 SIG (SIGINT), and Joint-Service (E SQN)." >}}
+{{< recruitment-form unit="srr" title="INTELLIGENCE_SYNERGY_GATEWAY" headline="Register Intelligence Interest" description="Register for the Joint Intelligence selection pipeline. Available pathways: SRR (HUMINT) and Technical Support (Zeus/Intel)." >}}
 
 ---
 
 ## Technical Visual Intelligence
 
-{{< mandate id="DENIABILITY-01" >}}
-Assets operating under E Squadron mandate possess zero official signature. All operational footprints are sanitized prior to extraction.
-{{< /mandate >}}
-
 | Asset Node | Command Domain | Lineage |
 | :--- | :--- | :--- |
-| SRR Shadow | Human Intelligence | Special Reconnaissance |
-| 18 SIG Link | Signals / EW | SF Signals |
-| E SQN Increment | Deniable Ops | Joint (SAS/SBS/SRR) |
+| SRR_SHADOW_01 | Human Intelligence | Special Reconnaissance |
+| SIGINT_LINK_UK | Signals / Electronic Warfare | SF Signals |
+| COMMAND_TFHQ | Strategic Oversight | Taskforce HQ |
