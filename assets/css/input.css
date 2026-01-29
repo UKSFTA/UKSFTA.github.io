@@ -77,7 +77,7 @@
   }
 
   .bracket-box {
-    @apply relative border border-white/5 bg-white/[0.01];
+    @apply relative border border-white/5 bg-white/[0.01] p-12;
     &::before, &::after {
       content: "";
       @apply absolute w-6 h-6 border-[var(--primary)]/40 pointer-events-none;
