@@ -19,7 +19,7 @@
                     {{ if $icon }}
                         <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="max-w-full max-h-full object-contain icon-tactical group-hover:brightness-100 transition-all duration-500">
                     {{ else }}
-                        <span class="font-black text-xl text-white">{{ upper $id }}</span>
+                        <span class="font-bold text-xl text-white">{{ upper $id }}</span>
                     {{ end }}
                 </div>
                 <div class="flex flex-col items-end text-right">
@@ -28,13 +28,13 @@
                 </div>
             </div>
 
-            <!-- 2. MOTTO SECTION (Height Rigid) -->
+            <!-- 2. MOTTO SECTION (Using Inter Bold H3) -->
             <div class="h-32 flex flex-col justify-center border-b border-white/5 mb-12">
                 <span class="text-[7px] font-mono text-gray-600 uppercase tracking-[0.4em] mb-3 block">Regimental Motto</span>
-                <h4 class="text-2xl leading-tight text-white m-0 uppercase font-black tracking-tighter italic">"{{ .motto }}"</h4>
+                <h3 class="text-xl leading-tight text-white m-0 uppercase font-bold italic">"{{ .motto }}"</h3>
             </div>
             
-            <!-- 3. DOMAIN SECTION (Height Rigid) -->
+            <!-- 3. DOMAIN SECTION -->
             <div class="h-32 flex flex-col justify-start border-b border-white/5 mb-12">
                 <span class="text-[7px] font-mono text-gray-600 uppercase tracking-[0.4em] mb-4 block">Primary Specialization</span>
                 <span class="text-[11px] font-bold text-gray-400 uppercase tracking-widest leading-snug">
@@ -42,7 +42,7 @@
                 </span>
             </div>
 
-            <!-- 4. ACTION SECTION (Bottom Anchored) -->
+            <!-- 4. ACTION SECTION -->
             <div class="mt-auto pt-6 flex items-center justify-between opacity-40 group-hover:opacity-100 transition-all duration-500">
                 <div class="flex flex-col">
                     <span class="text-[7px] font-mono text-gray-700 uppercase tracking-widest">Registry Path</span>
@@ -54,4 +54,13 @@
     </a>
     {{ end }}
     {{ end }}
+</div>
+
+<!-- CTF BREADCRUMB: Subtle hint for hidden nodes -->
+<div class="mt-16 border-t border-white/5 pt-8 flex justify-center">
+    <div class="flex items-center space-x-6 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
+        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Restricted Entry Node detected. manual discovery required.</span>
+        <div class="h-10 w-px bg-white/10"></div>
+        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Check system telemetry headers for authorization path.</span>
+    </div>
 </div>
