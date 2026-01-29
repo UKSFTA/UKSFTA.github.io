@@ -16,9 +16,9 @@
             
             <div class="lg:col-span-8 space-y-12 animate-slide-in-left">
                 <div class="flex flex-wrap gap-6 items-center">
-                    {{ $uksf_icon := resources.Get "icons/UKSF.png" }}
-                    {{ if $uksf_icon }}
-                    <img src="{{ $uksf_icon.RelPermalink }}" alt="UKSF" class="h-16 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    {{ $mod_logo := resources.Get "icons/MOD.png" }}
+                    {{ if $mod_logo }}
+                    <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="h-16 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] grayscale brightness-200">
                     {{ end }}
                     <div class="flex flex-wrap gap-4">
                         <span class="hero-meta-tag border-[var(--primary)]/30 text-[var(--primary)] font-black tracking-widest uppercase">ID: UKSF-{{ upper (substr (sha256 .Title) 0 8) }}</span>

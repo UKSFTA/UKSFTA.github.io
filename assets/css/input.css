@@ -71,6 +71,12 @@
     &:hover, &.active { @apply text-white; }
   }
 
+  .filter-btn {
+    font-family: var(--font-mono);
+    @apply text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 transition-all cursor-pointer;
+    &:hover, &.active { @apply text-white; }
+  }
+
   .dossier-node {
     @apply relative border-l-4 border-[var(--primary)] pl-10 py-3 mb-12;
     background: linear-gradient(to right, rgba(179, 153, 93, 0.03), transparent);

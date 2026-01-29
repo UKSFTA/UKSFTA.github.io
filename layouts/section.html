@@ -4,13 +4,13 @@
 <div class="container-uksf py-24">
     
     <!-- 1. Technical Filter Bar -->
-    <div class="flex flex-wrap items-center gap-6 border-b border-white/5 pb-12 mb-20">
+    <div class="flex flex-wrap items-center gap-6 border-b border-white/5 pb-12 mb-20" id="registry-filters">
         <span class="text-[9px] font-mono text-gray-600 uppercase tracking-[0.4em] font-black mr-4">Filter_Domain:</span>
-        <a href="/stories/" class="nav-link !text-white active">All_Logs</a>
-        <a href="/sas/" class="nav-link">SAS_Ops</a>
-        <a href="/sbs/" class="nav-link">SBS_Ops</a>
-        <a href="/rangers/" class="nav-link">Ranger_Ops</a>
-        <a href="/sfsg/" class="nav-link">SFSG_Ops</a>
+        <button data-filter="all" class="filter-btn active">All_Logs</button>
+        <button data-filter="sas" class="filter-btn">SAS_Ops</button>
+        <button data-filter="sbs" class="filter-btn">SBS_Ops</button>
+        <button data-filter="rangers" class="filter-btn">Ranger_Ops</button>
+        <button data-filter="sfsg" class="filter-btn">SFSG_Ops</button>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
@@ -25,15 +25,16 @@
                 <h2 class="text-6xl font-black tracking-tighter uppercase">After-Action <br>Reports</h2>
             </div>
 
-            <div class="grid grid-cols-1 gap-8">
+            <div class="grid grid-cols-1 gap-8" id="stories-grid">
                 {{ range .Pages }}
-                <a href="{{ .RelPermalink }}" class="bracket-box group bg-white/[0.01] hover:bg-white/[0.03] border-white/5 hover:border-[var(--primary)]/30 no-underline transition-all duration-500">
+                {{ $unit := .Params.unit | default "joint" }}
+                <a href="{{ .RelPermalink }}" data-unit="{{ lower $unit }}" class="story-card bracket-box group bg-white/[0.01] hover:bg-white/[0.03] border-white/5 hover:border-[var(--primary)]/30 no-underline transition-all duration-500">
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-10 items-center">
                         <div class="md:col-span-3 space-y-6">
                             <div class="flex items-center space-x-4">
                                 <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">NODE ID: {{ upper (substr (sha256 .Title) 0 8) }}</span>
                                 <span class="h-px w-8 bg-white/10"></span>
-                                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{{ upper .Params.unit | default "JOINT" }} // REGISTRY</span>
+                                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{{ upper $unit }} // REGISTRY</span>
                             </div>
                             <h3 class="text-4xl m-0 group-hover:text-white transition-colors uppercase font-black tracking-tighter">{{ .Title }}</h3>
                             <p class="text-sm text-gray-500 font-light leading-relaxed line-clamp-2 italic">"{{ .Description | default .Summary }}"</p>
@@ -66,7 +67,7 @@
                         </div>
                         <div class="flex flex-col">
                             <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Total Reports</span>
-                            <span class="text-xs font-bold text-[var(--primary)] uppercase mt-1">{{ len .Pages }} Classified Entries</span>
+                            <span class="text-xs font-bold text-[var(--primary)] uppercase mt-1" id="report-count">{{ len .Pages }} Classified Entries</span>
                         </div>
                     </div>
                 </div>
@@ -75,4 +76,35 @@
 
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const filters = document.querySelectorAll('.filter-btn');
+    const stories = document.querySelectorAll('.story-card');
+    const countDisplay = document.getElementById('report-count');
+
+    filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+            
+            // Update Active State
+            filters.forEach(f => f.classList.remove('active', '!text-white'));
+            btn.classList.add('active', '!text-white');
+
+            let visibleCount = 0;
+
+            stories.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-unit') === filter) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            countDisplay.innerText = `${visibleCount} Classified Entries`;
+        });
+    });
+});
+</script>
 {{ end }}
