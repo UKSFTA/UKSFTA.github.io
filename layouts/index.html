@@ -103,10 +103,10 @@
                     <div class="absolute inset-0 bg-grid-white opacity-5 pointer-events-none"></div>
                     
                     <div class="absolute top-10 left-10 p-8 bg-black/80 backdrop-blur-xl border border-white/10 space-y-4">
-                        <span class="block text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">// DOMESTIC_ASSETS</span>
+                        <span class="block text-[9px] font-mono text-gray-500 uppercase tracking-widest font-black">// DOMESTIC ASSETS</span>
                         <div class="space-y-2">
-                            <span class="block text-[10px] font-black text-white tracking-widest uppercase">Registry: UK_JSFC_01</span>
-                            <span class="block text-[10px] font-black text-[var(--primary)] tracking-widest uppercase">Status: NODES_LOCKED</span>
+                            <span class="block text-[10px] font-black text-white tracking-widest uppercase">Registry: UK JSFC 01</span>
+                            <span class="block text-[10px] font-black text-[var(--primary)] tracking-widest uppercase">Status: NODES LOCKED</span>
                         </div>
                     </div>
                 </div>
@@ -117,68 +117,24 @@
 </section>
 
 <!-- 5. RECRUITMENT & SELECTION -->
-<section class="recruitment-cta py-64">
+<section class="recruitment-cta py-64 relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1544411047-c491e34a2450?auto=format&fit=crop&q=80&w=2400" 
+             class="w-full h-full object-cover opacity-10 grayscale scale-105" alt="">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black"></div>
+    </div>
     <div class="container-uksf relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-32 items-center">
-            <div class="lg:col-span-7 space-y-16">
+            <div class="lg:col-span-12 space-y-16">
                 <div class="space-y-8">
-                    <span class="sub-header text-[var(--primary)] m-0">Selection Pathway</span>
-                    <h2 class="text-display">Enter the <br><span class="text-[var(--primary)] italic">Capability.</span></h2>
-                </div>
-                <div class="prose prose-invert prose-2xl font-light text-gray-400 leading-relaxed max-w-2xl">
-                    Applications are open to all regular members of the British Armed Forces. We look for resilience, technical aptitude, and cognitive speed beyond the conventional standard.
-                </div>
-                <div class="pt-10">
-                    <a href="/recruitment/" class="btn-elite bg-[var(--primary)] text-white hover:bg-white hover:text-black">Selection Parameters</a>
-                </div>
-            </div>
-            <div class="lg:col-span-5">
-                <div class="hud-spec-box border-[var(--primary)]/20 p-16">
-                    <div class="space-y-12">
-                        <span class="sub-header text-gray-500 m-0">// Entry Vetting Protocol</span>
-                        <ul class="space-y-10 list-none p-0 text-[13px] uppercase tracking-[0.2em] font-black text-white/80">
-                            <li class="flex items-center space-x-8 border-b border-white/5 pb-8">
-                                <span class="text-[var(--primary)] text-xl">01</span>
-                                <span>Minimum 2 Years Regular Service</span>
-                            </li>
-                            <li class="flex items-center space-x-8 border-b border-white/5 pb-8">
-                                <span class="text-[var(--primary)] text-xl">02</span>
-                                <span>Medical Category A (Elite)</span>
-                            </li>
-                            <li class="flex items-center space-x-8">
-                                <span class="text-[var(--primary)] text-xl">03</span>
-                                <span>Developed Vetting (DV) Status</span>
-                            </li>
-                        </ul>
+                    <div class="flex items-center space-x-6">
+                        <div class="w-12 h-px bg-[var(--primary)]"></div>
+                        <span class="sub-header text-[var(--primary)] m-0">Selection Pathway</span>
                     </div>
+                    <h2 class="text-display">Enter the <br><span class="text-gray-600 italic">Capability.</span></h2>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 6. OPSEC MANDATE FOOTER -->
-<section class="py-40 bg-black border-t border-white/5 relative overflow-hidden">
-    <div class="container-uksf">
-        <div class="p-16 border border-white/10 bg-white/[0.01] flex flex-col md:flex-row items-center justify-between gap-16 relative">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-red-600 opacity-[0.02] rounded-full blur-[100px]"></div>
-            <div class="flex items-center space-x-12">
-                <div class="w-24 h-24 border-2 border-red-900/40 flex items-center justify-center bg-red-950/10 p-4">
-                    {{ $mod_logo := resources.Get "icons/MOD.png" }}
-                    {{ if $mod_logo }}
-                    <img src="{{ $mod_logo.RelPermalink }}" alt="MOD" class="w-full h-full object-contain grayscale brightness-200 opacity-20">
-                    {{ end }}
-                </div>
-                <div class="space-y-4">
-                    <span class="block text-[12px] font-black text-red-600 uppercase tracking-[0.6em]">Operational Security Mandate</span>
-                    <p class="text-gray-500 text-sm uppercase tracking-[0.2em] font-bold leading-loose max-w-3xl">
-                        Unauthorized reproduction or distribution of regimental dossiers is a breach of the Official Secrets Act. Electronic monitoring is in effect. Joint Command signals intelligence active.
-                    </p>
-                </div>
-            </div>
-            <div class="text-right shrink-0">
-                <span class="block text-[11px] font-mono text-gray-700 tracking-[0.4em] font-bold uppercase">Archive End Point</span>
-                <span class="block text-[11px] font-mono text-gray-800 tracking-[0.4em] mt-2 font-bold uppercase">Ref: OPS-ALPHA-99</span>
+                
+                {{ partial "recruitment-form.html" (dict "title" "DIRECTORATE_GATEWAY" "description" "Applications are open to all regular members of the British Armed Forces. We look for resilience, technical aptitude, and cognitive speed beyond the conventional standard.") }}
             </div>
         </div>
     </div>

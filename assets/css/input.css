@@ -10,7 +10,7 @@
   --color-uksf-green: #153e35;
   --color-uksf-red: #800000;
 
-  --font-industrial: "Industrial Gothic Pro Single Line", "Bebas Neue", "Impact", sans-serif;
+  --font-industrial: "Archivo", "Inter", "Impact", sans-serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
   --font-body: "Inter", "system-ui", "Arial", sans-serif;
 
@@ -34,7 +34,7 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: calc(var(--header-height) + var(--hmg-bar-height));
-    @apply font-normal; /* Increased from light for better legibility */
+    @apply font-normal;
     background-image: 
       radial-gradient(circle at 50% 0%, rgba(255,255,255,0.015) 0%, transparent 80%),
       url('https://www.transparenttextures.com/patterns/black-linen.png');
@@ -44,7 +44,7 @@
   h1, h2, h3, h4 {
     font-family: var(--font-industrial);
     text-transform: uppercase;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em; /* Tightened for Archivo */
     color: white;
     line-height: 0.85;
     @apply font-black;
@@ -76,7 +76,6 @@
   .dossier-node {
     @apply relative border-l-4 border-[var(--primary)] pl-12 py-6 mb-16;
     background: linear-gradient(to right, rgba(179, 153, 93, 0.05), transparent);
-    /* Prevent sub-pixel weirdness on hover */
     backface-visibility: hidden;
     transform: translateZ(0);
   }
@@ -148,6 +147,12 @@
     blockquote {
       @apply border-l-4 border-gray-800 bg-white/[0.01] p-12 italic text-2xl text-gray-300 rounded-none not-italic font-light mb-20;
     }
+  }
+
+  .spec-item {
+    @apply flex justify-between items-center border-b border-white/5 py-3;
+    span:first-child { @apply font-mono text-[9px] text-gray-600 uppercase tracking-widest; }
+    span:last-child { @apply font-mono text-[11px] font-black text-white uppercase tracking-wider; }
   }
 }
 

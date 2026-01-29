@@ -1,32 +1,37 @@
-// UKSF Digital Presence - Main Entry Point
+// UKSF Directorate Gateway - Interface Logic
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('UKSF Interface // Initialized');
-
-    // Role Finder Mock Functionality
-    const findBtn = document.querySelector('.btn-find');
-    const roleInput = document.querySelector('.role-finder input');
-
-    if (findBtn && roleInput) {
-        findBtn.addEventListener('click', () => {
-            const query = roleInput.value.trim();
-            if (query) {
-                alert(`Searching for roles related to: "${query}"...\nThis would normally filter the roles database.`);
-            } else {
-                alert('Please enter a role or interest.');
-            }
-        });
-    }
-
-    // Scroll Effects for Sticky Header
+    const header = document.querySelector('.nav-header');
+    
+    // 1. Technical Scroll Interaction
     window.addEventListener('scroll', () => {
-        const header = document.querySelector('.header-banner');
-        if (window.scrollY > 100) {
-            header.style.background = 'rgba(255, 255, 255, 1)';
-            header.style.padding = '0.8rem 0';
+        if (!header) return;
+
+        if (window.scrollY > 50) {
+            // High-Density State
+            header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+            header.style.backdropFilter = 'blur(30px)';
+            header.style.height = '80px';
+            header.classList.add('shadow-2xl');
         } else {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.padding = '1.5rem 0';
+            // Floating State
+            header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.height = '100px';
+            header.classList.remove('shadow-2xl');
         }
     });
+
+    // 2. Technical Link State Handlers
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentPath = window.location.pathname;
+
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+
+    // 3. System Console Initialization
+    console.log("%c[JSFC_NODE] HANDSHAKE_COMPLETE", "color: #b3995d; font-weight: bold; font-family: monospace;");
 });
