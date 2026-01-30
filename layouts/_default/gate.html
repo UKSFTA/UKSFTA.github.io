@@ -78,6 +78,17 @@ input.addEventListener('keypress', async function(e) {
         
         // HQ_HASH: 8a054bcd07afcf1c2aad9fb9547ec94e83735f0cc38cafbe0bd11def265608f8
         const HQ_AUTH_KEY = "8a054bcd07afcf1c2aad9fb9547ec94e83735f0cc38cafbe0bd11def265608f8";
+        
+        // CTF Keywords for Standard Covert Access
+        const CTF_KEYWORDS = [
+            'TFA-ALPHA-01', 
+            'SIGINT-RECON', 
+            'GHOST-OPERATOR', 
+            'NORTHWOOD', 
+            'ZERO-TRUST', 
+            'RECON-5-0',
+            'SABRE-3-0'
+        ];
 
         setTimeout(() => {
             if (hashHex === HQ_AUTH_KEY) {
@@ -89,10 +100,11 @@ input.addEventListener('keypress', async function(e) {
                 setTimeout(() => {
                     window.location.href = '/archive/covert';
                 }, 1500);
-            } else if (code === 'TFA-ALPHA-01' || code === 'SIGINT-RECON') {
+            } else if (CTF_KEYWORDS.includes(code)) {
                 addLog('CREDENTIALS_ACCEPTED', 'success');
                 addLog('AUTHORIZING_DEEP_RECON_ACCESS...', 'success');
                 localStorage.setItem('uksf_auth', 'authorized');
+                localStorage.setItem('uksf_hq_auth', 'false'); // Ensure no admin perms
                 
                 setTimeout(() => {
                     window.location.href = '/archive/covert';
