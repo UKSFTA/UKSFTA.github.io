@@ -345,6 +345,9 @@
   .z-\[6000\] {
     z-index: 6000;
   }
+  .z-\[7000\] {
+    z-index: 7000;
+  }
   .order-1 {
     order: 1;
   }
@@ -1582,6 +1585,9 @@
   .h-px {
     height: 1px;
   }
+  .max-h-\[60vh\] {
+    max-height: 60vh;
+  }
   .max-h-\[80\%\] {
     max-height: 80%;
   }
@@ -1794,6 +1800,9 @@
   }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .flex-col {
     flex-direction: column;
@@ -3115,6 +3124,20 @@
       }
     }
   }
+  .group-hover\/icon\:text-white {
+    &:is(:where(.group\/icon):hover *) {
+      @media (hover: hover) {
+        color: var(--color-white);
+      }
+    }
+  }
+  .group-hover\/icon\:opacity-100 {
+    &:is(:where(.group\/icon):hover *) {
+      @media (hover: hover) {
+        opacity: 100%;
+      }
+    }
+  }
   .group-hover\/logo\:rotate-\[-225deg\] {
     &:is(:where(.group\/logo):hover *) {
       @media (hover: hover) {
@@ -3281,6 +3304,11 @@
       display: inline;
     }
   }
+  .sm\:grid-cols-4 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
   .sm\:flex-row {
     @media (width >= 40rem) {
       flex-direction: row;
@@ -3339,6 +3367,11 @@
   .md\:grid-cols-4 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-6 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
     }
   }
   .md\:grid-cols-12 {
