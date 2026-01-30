@@ -2,19 +2,22 @@
 {{ $units := .Site.Data.units }}
 
 <div class="orbat-canvas-area relative w-[5000px] h-[5000px]">
+    <!-- Visual Grid Backdrop -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.03]" 
+         style="background-image: radial-gradient(var(--primary) 1px, transparent 1px); background-size: 50px 50px;"></div>
+
     <!-- SVG Connector Layer -->
     <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-none">
         <defs>
             <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(179, 153, 93, 0.3)" />
+                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(179, 153, 93, 0.5)" />
             </marker>
         </defs>
         {{ range $orbat.links }}
-        <line class="orbat-link" data-source="{{ .source }}" data-target="{{ .target }}" 
-              x1="0" y1="0" x2="0" y2="0" 
-              stroke="rgba(179, 153, 93, 0.2)" stroke-width="1" marker-end="url(#arrowhead)" />
+        <path class="orbat-link" data-source="{{ .source }}" data-target="{{ .target }}" 
+              d="" fill="none" stroke="rgba(179, 153, 93, 0.3)" stroke-width="1.5" marker-end="url(#arrowhead)" />
         {{ end }}
-        <line id="temp-link" x1="0" y1="0" x2="0" y2="0" stroke="var(--primary)" stroke-width="2" stroke-dasharray="5,5" class="hidden" />
+        <path id="temp-link" d="" fill="none" stroke="var(--primary)" stroke-width="2" stroke-dasharray="5,5" class="hidden" />
     </svg>
 
     <!-- Node Layer -->

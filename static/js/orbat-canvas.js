@@ -1,4 +1,4 @@
-// Institutional ORBAT - Canvas Controller v2.5 (Workflow Mode)
+// Institutional ORBAT - Canvas Controller v3.0 (Workflow Pro)
 
 const canvas = document.getElementById('orbat-canvas');
 const content = document.getElementById('canvas-content');
@@ -6,7 +6,8 @@ const zoomDisplay = document.getElementById('zoom-level');
 const svgLayer = document.getElementById('orbat-connectors');
 const tempLink = document.getElementById('temp-link');
 
-const SNAP_SIZE = 50; // Grid snapping size
+const SNAP_SIZE = 50; 
+const OFFSET = 2500; // Center offset
 
 let scale = 1;
 let translateX = 0;
@@ -16,16 +17,23 @@ let isDraggingNode = false;
 let isDrawingLink = false;
 let dragNode = null;
 let linkSourceId = null;
-let startX, startY;
+let lastMouseX, lastMouseY;
 
-// 1. Core Transform Logic
+// 1. Path Calculation (Cubic Bezier)
+function getBezierPath(x1, y1, x2, y2) {
+    const dy = Math.abs(y2 - y1);
+    const cp1y = y1 + dy / 2;
+    const cp2y = y2 - dy / 2;
+    return `M ${x1} ${y1} C ${x1} ${cp1y}, ${x2} ${cp2y}, ${x2} ${y2}`;
+}
+
+// 2. Core Transform & Rendering
 function updateTransform() {
     content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
     zoomDisplay.innerText = `Zoom: ${Math.round(scale * 100)}%`;
     updateLinks();
 }
 
-// 2. SVG Link Drawing
 function updateLinks() {
     const links = document.querySelectorAll('.orbat-link');
     links.forEach(link => {
@@ -36,20 +44,124 @@ function updateLinks() {
         const targetEl = document.getElementById(`node-${targetId}`);
         
         if (sourceEl && targetEl) {
-            const sX = parseFloat(sourceEl.getAttribute('data-x')) + 2500;
-            const sY = parseFloat(sourceEl.getAttribute('data-y')) + 2500;
-            const tX = parseFloat(targetEl.getAttribute('data-x')) + 2500;
-            const tY = parseFloat(targetEl.getAttribute('data-y')) + 2500;
+            const sX = parseFloat(sourceEl.getAttribute('data-x')) + OFFSET;
+            const sY = parseFloat(sourceEl.getAttribute('data-y')) + OFFSET;
+            const tX = parseFloat(targetEl.getAttribute('data-x')) + OFFSET;
+            const tY = parseFloat(targetEl.getAttribute('data-y')) + OFFSET;
             
-            link.setAttribute('x1', sX);
-            link.setAttribute('y1', sY);
-            link.setAttribute('x2', tX);
-            link.setAttribute('y2', tY);
+            link.setAttribute('d', getBezierPath(sX, sY, tX, tY));
         }
     });
 }
 
-// 3. Interaction Handlers
+// 3. Mouse Interaction
+canvas.addEventListener('mousedown', (e) => {
+    // A. Link Drawing Handler
+    if (isDrawingLink) {
+        const targetNode = e.target.closest('.orbat-node-wrapper');
+        if (targetNode) {
+            const targetId = targetNode.getAttribute('data-id');
+            if (targetId !== linkSourceId) {
+                createNewLink(linkSourceId, targetId);
+            }
+        }
+        stopDrawingLink();
+        return;
+    }
+
+    // B. Node Drag Handler
+    const dragHandle = e.target.closest('.node-drag-handle');
+    if (dragHandle) {
+        isDraggingNode = true;
+        dragNode = dragHandle.closest('.orbat-node-wrapper');
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+        e.stopPropagation();
+        return;
+    }
+
+    // C. Panning Handler (Left Click)
+    if (e.button === 0) {
+        isPanning = true;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+    }
+});
+
+window.addEventListener('mousemove', (e) => {
+    // 1. Update Temporary Link
+    if (isDrawingLink) {
+        const rect = canvas.getBoundingClientRect();
+        const mX = (e.clientX - rect.left - translateX) / scale;
+        const mY = (e.clientY - rect.top - translateY) / scale;
+        
+        const sourceEl = document.getElementById(`node-${linkSourceId}`);
+        const sX = parseFloat(sourceEl.getAttribute('data-x')) + OFFSET;
+        const sY = parseFloat(sourceEl.getAttribute('data-y')) + OFFSET;
+        
+        tempLink.setAttribute('d', getBezierPath(sX, sY, mX, mY));
+        return;
+    }
+
+    // 2. Handle Node Dragging
+    if (isDraggingNode && dragNode) {
+        const dx = (e.clientX - lastMouseX) / scale;
+        const dy = (e.clientY - lastMouseY) / scale;
+        
+        let curX = parseFloat(dragNode.getAttribute('data-x'));
+        let curY = parseFloat(dragNode.getAttribute('data-y'));
+        
+        let newX = curX + dx;
+        let newY = curY + dy;
+
+        // Visual feedback during drag (unsnapped for smoothness)
+        dragNode.style.left = `${OFFSET + newX}px`;
+        dragNode.style.top = `${OFFSET + newY}px`;
+        
+        dragNode.setAttribute('data-x', newX);
+        dragNode.setAttribute('data-y', newY);
+        
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+        updateLinks();
+        return;
+    }
+
+    // 3. Handle Canvas Panning
+    if (isPanning) {
+        const dx = e.clientX - lastMouseX;
+        const dy = e.clientY - lastMouseY;
+        
+        translateX += dx;
+        translateY += dy;
+        
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+        updateTransform();
+    }
+});
+
+window.addEventListener('mouseup', () => {
+    if (isDraggingNode && dragNode) {
+        // Apply snapping on drop
+        let x = parseFloat(dragNode.getAttribute('data-x'));
+        let y = parseFloat(dragNode.getAttribute('data-y'));
+        
+        x = Math.round(x / SNAP_SIZE) * SNAP_SIZE;
+        y = Math.round(y / SNAP_SIZE) * SNAP_SIZE;
+        
+        dragNode.setAttribute('data-x', x);
+        dragNode.setAttribute('data-y', y);
+        dragNode.style.left = `${OFFSET + x}px`;
+        dragNode.style.top = `${OFFSET + y}px`;
+        
+        updateLinks();
+    }
+    isPanning = false;
+    isDraggingNode = false;
+    dragNode = null;
+});
+
 canvas.addEventListener('wheel', (e) => {
     e.preventDefault();
     const factor = e.deltaY > 0 ? 0.9 : 1.1;
@@ -58,97 +170,17 @@ canvas.addEventListener('wheel', (e) => {
     updateTransform();
 }, { passive: false });
 
-canvas.addEventListener('mousedown', (e) => {
-    // A. Handle Link Finalization (Target Click)
-    if (isDrawingLink) {
-        const targetNode = e.target.closest('.orbat-node-wrapper');
-        if (targetNode && targetNode.getAttribute('data-id') !== linkSourceId) {
-            createNewLink(linkSourceId, targetNode.getAttribute('data-id'));
-        }
-        stopDrawingLink();
-        return;
-    }
-
-    // B. Handle Node Dragging
-    if (e.target.classList.contains('node-drag-handle')) {
-        isDraggingNode = true;
-        dragNode = e.target.closest('.orbat-node-wrapper');
-        startX = e.clientX;
-        startY = e.clientY;
-        e.stopPropagation();
-        return;
-    }
-
-    // C. Handle Panning
-    if (e.button === 0) {
-        isPanning = true;
-        startX = e.clientX - translateX;
-        startY = e.clientY - translateY;
-    }
-});
-
-window.addEventListener('mousemove', (e) => {
-    // 1. Draw Temp Link
-    if (isDrawingLink) {
-        const rect = canvas.getBoundingClientRect();
-        const mouseX = (e.clientX - rect.left - translateX) / scale;
-        const mouseY = (e.clientY - rect.top - translateY) / scale;
-        
-        tempLink.setAttribute('x2', mouseX);
-        tempLink.setAttribute('y2', mouseY);
-        return;
-    }
-
-    // 2. Node Dragging with Snapping
-    if (isDraggingNode && dragNode) {
-        const dx = (e.clientX - startX) / scale;
-        const dy = (e.clientY - startY) / scale;
-        
-        let newX = (parseFloat(dragNode.getAttribute('data-x')) || 0) + dx;
-        let newY = (parseFloat(dragNode.getAttribute('data-y')) || 0) + dy;
-        
-        // Apply Grid Snapping
-        newX = Math.round(newX / SNAP_SIZE) * SNAP_SIZE;
-        newY = Math.round(newY / SNAP_SIZE) * SNAP_SIZE;
-        
-        dragNode.style.left = `calc(2500px + ${newX}px)`;
-        dragNode.style.top = `calc(2500px + ${newY}px)`;
-        dragNode.setAttribute('data-x', newX);
-        dragNode.setAttribute('data-y', newY);
-        
-        startX = e.clientX;
-        startY = e.clientY;
-        updateLinks();
-        return;
-    }
-
-    // 3. View Panning
-    if (isPanning) {
-        translateX = e.clientX - startX;
-        translateY = e.clientY - startY;
-        updateTransform();
-    }
-});
-
-window.addEventListener('mouseup', () => {
-    isPanning = false;
-    isDraggingNode = false;
-});
-
-// 4. Link Creation Logic
+// 4. Link & Structure Logic
 window.startDrawingLink = function(e, handle) {
     e.stopPropagation();
     isDrawingLink = true;
     const node = handle.closest('.orbat-node-wrapper');
     linkSourceId = node.getAttribute('data-id');
     
-    const sX = parseFloat(node.getAttribute('data-x')) + 2500;
-    const sY = parseFloat(node.getAttribute('data-y')) + 2500;
+    const sX = parseFloat(node.getAttribute('data-x')) + OFFSET;
+    const sY = parseFloat(node.getAttribute('data-y')) + OFFSET;
     
-    tempLink.setAttribute('x1', sX);
-    tempLink.setAttribute('y1', sY);
-    tempLink.setAttribute('x2', sX);
-    tempLink.setAttribute('y2', sY);
+    tempLink.setAttribute('d', getBezierPath(sX, sY, sX, sY));
     tempLink.classList.remove('hidden');
 };
 
@@ -159,39 +191,19 @@ function stopDrawingLink() {
 }
 
 function createNewLink(source, target) {
-    // Prevent duplicates
     if (document.querySelector(`.orbat-link[data-source="${source}"][data-target="${target}"]`)) return;
 
-    const newLink = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    const newLink = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     newLink.setAttribute('class', 'orbat-link');
     newLink.setAttribute('data-source', source);
     newLink.setAttribute('data-target', target);
-    newLink.setAttribute('stroke', 'rgba(179, 153, 93, 0.2)');
-    newLink.setAttribute('stroke-width', '1');
+    newLink.setAttribute('fill', 'none');
+    newLink.setAttribute('stroke', 'rgba(179, 153, 93, 0.3)');
+    newLink.setAttribute('stroke-width', '1.5');
     newLink.setAttribute('marker-end', 'url(#arrowhead)');
     svgLayer.appendChild(newLink);
     updateLinks();
 }
-
-// 5. HQ Administrative Logic
-window.toggleEditMode = function() {
-    const editMode = document.getElementById('hq-admin-bar').classList.toggle('edit-active');
-    const btn = document.getElementById('edit-mode-btn');
-    const adminControls = document.querySelectorAll('.admin-controls');
-    const editableFields = document.querySelectorAll('.editable-field');
-
-    if (document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
-        btn.innerText = 'DISABLE_STRUCTURAL_EDIT';
-        btn.classList.add('!bg-red-600/20', '!text-red-500', '!border-red-500/40');
-        adminControls.forEach(el => el.classList.remove('hidden'));
-        editableFields.forEach(el => el.setAttribute('contenteditable', 'true'));
-    } else {
-        btn.innerText = 'ENABLE_STRUCTURAL_EDIT';
-        btn.classList.remove('!bg-red-600/20', '!text-red-500', '!border-red-500/40');
-        adminControls.forEach(el => el.classList.add('hidden'));
-        editableFields.forEach(el => el.removeAttribute('contenteditable'));
-    }
-};
 
 window.addOrbatChild = function(btn) {
     const parentNode = btn ? btn.closest('.orbat-node-wrapper') : null;
@@ -205,8 +217,8 @@ window.addOrbatChild = function(btn) {
     newNode.setAttribute('data-id', newId);
     newNode.setAttribute('data-x', pX);
     newNode.setAttribute('data-y', pY);
-    newNode.style.left = `calc(2500px + ${pX}px)`;
-    newNode.style.top = `calc(2500px + ${pY}px)`;
+    newNode.style.left = `${OFFSET + pX}px`;
+    newNode.style.top = `${OFFSET + pY}px`;
     
     newNode.innerHTML = `
         <div class="orbat-node-container flex flex-col items-center">
@@ -230,10 +242,16 @@ window.addOrbatChild = function(btn) {
     
     document.getElementById('orbat-nodes-layer').appendChild(newNode);
     if (parentNode) createNewLink(parentNode.getAttribute('data-id'), newId);
+    
+    // Ensure edit mode styles are applied if active
+    if (document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
+        newNode.querySelectorAll('.admin-controls').forEach(el => el.classList.remove('hidden'));
+        newNode.querySelectorAll('.editable-field').forEach(el => el.setAttribute('contenteditable', 'true'));
+    }
 };
 
 window.removeOrbatNode = function(btn) {
-    if (confirm('Remove unit?')) {
+    if (confirm('Decommission unit?')) {
         const node = btn.closest('.orbat-node-wrapper');
         const id = node.getAttribute('data-id');
         document.querySelectorAll(`.orbat-link[data-source="${id}"], .orbat-link[data-target="${id}"]`).forEach(l => l.remove());
@@ -265,7 +283,27 @@ window.exportOrbatJSON = function() {
     a.click();
 };
 
-// 6. Bootstrap
+window.toggleEditMode = function() {
+    const adminBar = document.getElementById('hq-admin-bar');
+    const isActive = adminBar.classList.toggle('edit-active');
+    const btn = document.getElementById('edit-mode-btn');
+    const adminControls = document.querySelectorAll('.admin-controls');
+    const editableFields = document.querySelectorAll('.editable-field');
+
+    if (isActive) {
+        btn.innerText = 'DISABLE_STRUCTURAL_EDIT';
+        btn.classList.add('!bg-red-600/20', '!text-red-500', '!border-red-500/40');
+        adminControls.forEach(el => el.classList.remove('hidden'));
+        editableFields.forEach(el => el.setAttribute('contenteditable', 'true'));
+    } else {
+        btn.innerText = 'ENABLE_STRUCTURAL_EDIT';
+        btn.classList.remove('!bg-red-600/20', '!text-red-500', '!border-red-500/40');
+        adminControls.forEach(el => el.classList.add('hidden'));
+        editableFields.forEach(el => el.removeAttribute('contenteditable'));
+    }
+};
+
+// 5. Bootstrap
 if (localStorage.getItem('uksf_hq_auth') === 'true') {
     document.getElementById('hq-admin-bar').classList.remove('hidden');
 }
