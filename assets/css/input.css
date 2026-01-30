@@ -448,6 +448,28 @@
       display: none;
     }
   }
+
+  .logo-plate {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #fff 0%, #e2e8f0 100%);
+    border: 1px solid #94a3b8;
+    box-shadow: 
+      inset 0 2px 4px rgb(0 0 0 / 10%),
+      0 0 20px rgb(179 153 93 / 15%);
+    transition: all 0.5s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border: 1px solid rgb(179 153 93 / 30%);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+  }
 }
 
 @layer utilities {

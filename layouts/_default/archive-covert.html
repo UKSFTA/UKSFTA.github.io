@@ -32,9 +32,9 @@
                         {{ $rsis_logo := resources.Get "icons/RSIS.png" }}
                         {{ if $rsis_logo }}
                         <div class="relative">
-                            <div class="absolute -inset-4 bg-white/[0.03] blur-xl rounded-full"></div>
-                            <div class="bg-white/[0.03] p-4 rounded-full backdrop-blur-sm border border-white/5 relative">
-                                <img src="{{ $rsis_logo.RelPermalink }}" class="h-24 w-auto opacity-90" alt="RSIS">
+                            <div class="absolute -inset-4 bg-[var(--primary)]/10 blur-xl rounded-full opacity-50"></div>
+                            <div class="logo-plate p-4 rounded-full w-24 h-24 relative shadow-2xl">
+                                <img src="{{ $rsis_logo.RelPermalink }}" class="h-16 w-auto" alt="RSIS">
                             </div>
                         </div>
                         {{ end }}
@@ -219,10 +219,10 @@
                         <div class="absolute top-0 left-0 w-1 h-full bg-white/5 group-hover:bg-[var(--primary)] transition-colors duration-500"></div>
                         
                         <div class="flex items-center space-x-3">
-                            <div class="w-8 h-8 opacity-60 group-hover:opacity-100 transition-opacity bg-white/[0.03] p-1.5 rounded-full backdrop-blur-sm border border-white/5 flex items-center justify-center">
+                            <div class="logo-plate w-8 h-8 p-1 rounded-full shadow-sm group-hover:border-white transition-all duration-500">
                                  {{ $icon := resources.Get .icon }}
                                  {{ if $icon }}
-                                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="w-full h-full object-contain">
+                                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="max-w-[80%] max-h-[80%] object-contain">
                                  {{ end }}
                             </div>
                             <div class="flex flex-col">
