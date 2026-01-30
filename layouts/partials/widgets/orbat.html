@@ -1,85 +1,27 @@
-{{ $orbat := .Site.Data.orbat }}
-<div class="orbat-institutional space-y-16">
-    <!-- Command Element -->
-    <div class="bracket-box bg-white/[0.02] border-[var(--primary)]/20 !p-8 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-40"></div>
-        <div class="flex flex-col lg:flex-row justify-between items-center gap-8">
-            <div class="text-center lg:text-left space-y-2">
-                <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.5em] font-black">Institutional Command</span>
-                <h3 class="text-4xl font-black text-white m-0 tracking-tighter uppercase">{{ $orbat.command.name }}</h3>
-                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest">{{ $orbat.command.location }} // SIG_ID: {{ $orbat.command.callsign }}</p>
-            </div>
-            <div class="flex flex-col items-center lg:items-end space-y-2 border-l border-white/10 pl-8 hidden lg:flex">
-                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Command Role</span>
-                <span class="text-lg font-bold text-white uppercase tracking-tighter">{{ $orbat.command.role }}</span>
-            </div>
-        </div>
+{{ $orbat := .Site.Data.orbat_v2 }}
+{{ $units := .Site.Data.units }}
+
+<div class="orbat-proper flex flex-col items-center">
+    <!-- Visual Branding -->
+    <div class="w-full text-center mb-16 space-y-4">
+        <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.6em] font-black">Tactical Command Hierarchy</span>
+        <div class="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent"></div>
     </div>
 
-    <!-- Branch Grid -->
-    <div class="space-y-16">
-        {{ range $orbat.branches }}
-        <div class="space-y-8">
-            <div class="flex items-center space-x-6">
-                <h4 class="text-xl font-black text-white uppercase tracking-[0.3em] m-0 shrink-0">{{ .name }}</h4>
-                <div class="h-px w-full bg-white/10"></div>
-            </div>
+    <!-- Tree Container -->
+    <div class="tf-tree">
+        <ul>
+            <li>
+                {{ partial "widgets/orbat-node.html" (dict "node" $orbat "units" $units) }}
+            </li>
+        </ul>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {{ range .units }}
-                <div class="flex flex-col h-full bg-white/[0.01] border border-white/5 group hover:border-[var(--primary)]/30 transition-all duration-500">
-                    <!-- Unit Header -->
-                    <div class="p-5 border-b border-white/5 bg-white/[0.02]">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">{{ .callsign | default "UNIT_LEVEL" }}</span>
-                            <span class="text-[7px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">Operational</span>
-                        </div>
-                        <h5 class="text-lg font-bold text-white uppercase tracking-tight m-0">{{ .name }}</h5>
-                        <p class="text-[9px] text-gray-500 font-mono uppercase mt-1">{{ .role }}</p>
-                    </div>
-
-                    <!-- Unit Sub-Structure -->
-                    <div class="p-5 flex-grow font-mono text-[10px] space-y-4">
-                        {{ with .detachments }}
-                        <div class="space-y-2.5">
-                            <span class="text-[8px] text-gray-600 uppercase tracking-widest block border-b border-white/5 pb-1">// Sub-Units</span>
-                            {{ range . }}
-                            <div class="flex justify-between items-start group/node">
-                                <div class="flex flex-col">
-                                    <span class="text-gray-300 font-bold uppercase">{{ .name }}</span>
-                                    <span class="text-[8px] text-gray-600 uppercase">{{ .role }}</span>
-                                </div>
-                                <span class="w-1 h-1 rounded-full bg-white/20 mt-1.5"></span>
-                            </div>
-                            {{ end }}
-                        </div>
-                        {{ end }}
-
-                        {{ with .teams }}
-                        <div class="space-y-2.5">
-                            <span class="text-[8px] text-gray-600 uppercase tracking-widest block border-b border-white/5 pb-1">// Tactical Teams</span>
-                            <div class="grid grid-cols-1 gap-2">
-                                {{ range . }}
-                                <div class="flex justify-between items-center p-2 bg-white/[0.02] border border-white/5">
-                                    <div class="flex flex-col">
-                                        <span class="text-[9px] text-white font-bold uppercase">{{ .name }}</span>
-                                        <span class="text-[7px] text-gray-600 uppercase">{{ .role }}</span>
-                                    </div>
-                                    <div class="flex space-x-1">
-                                        <div class="w-1 h-1 bg-[var(--primary)]/40 rounded-full"></div>
-                                        <div class="w-1 h-1 bg-[var(--primary)]/40 rounded-full"></div>
-                                        <div class="w-1 h-1 bg-[var(--primary)]/40 rounded-full"></div>
-                                    </div>
-                                </div>
-                                {{ end }}
-                            </div>
-                        </div>
-                        {{ end }}
-                    </div>
-                </div>
-                {{ end }}
-            </div>
-        </div>
-        {{ end }}
+    <!-- Disclaimer / Legend -->
+    <div class="mt-20 p-6 border border-white/5 bg-white/[0.01] max-w-2xl text-center">
+        <p class="text-[9px] font-mono text-gray-600 uppercase leading-relaxed m-0">
+            Institutional Order of Battle (ORBAT) v2.0 // Deep Recon & Special Operations Command.
+            Live synchronization active. Unauthorized reproduction strictly prohibited.
+        </p>
     </div>
 </div>

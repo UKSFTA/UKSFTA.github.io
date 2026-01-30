@@ -487,7 +487,177 @@
   }
 }
 
+/* ORBAT Tree Diagram Styles */
+.tf-tree {
+  display: inline-block;
+  width: 100%;
+  overflow-x: auto;
+  text-align: center;
+}
+
+.tf-tree ul {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+}
+
+.tf-tree li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 1rem 0.5rem;
+  list-style-type: none;
+}
+
+.tf-tree li::before,
+.tf-tree li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  width: 50%;
+  height: 1rem;
+}
+
+.tf-tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid rgb(255 255 255 / 10%);
+}
+
+.tf-tree li:only-child::after,
+.tf-tree li:only-child::before {
+  display: none;
+}
+
+.tf-tree li:only-child {
+  padding-top: 0;
+}
+
+.tf-tree li:first-child::before,
+.tf-tree li:last-child::after {
+  border: 0 none;
+}
+
+.tf-tree li:last-child::before {
+  border-right: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 0 5px 0 0;
+}
+
+.tf-tree li:first-child::after {
+  border-radius: 5px 0 0;
+}
+
+.tf-tree ul ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px solid rgb(255 255 255 / 10%);
+  width: 0;
+  height: 1rem;
+}
+
+.tf-nc {
+  position: relative;
+  display: inline-block;
+  padding: 1rem;
+  background: rgb(255 255 255 / 2%);
+  border: 1px solid rgb(255 255 255 / 5%);
+  min-width: 180px;
+  z-index: 10;
+}
+
+  .tf-nc:hover {
+    border-color: var(--primary);
+    background: rgba(179, 153, 93, 0.05);
+  }
+
+  /* ORBAT Canvas Implementation */
+  .orbat-canvas-viewport {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #020202;
+    overflow: hidden;
+    z-index: 5000;
+  }
+
+  .orbat-canvas-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: 
+      radial-gradient(circle at center, rgba(179, 153, 93, 0.03) 0%, transparent 70%),
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+  }
+
+  .orbat-canvas-content {
+    transform-origin: center center;
+    transition: transform 0.1s ease-out;
+    padding: 500px; /* Buffer for panning */
+  }
+
+  .canvas-overlay {
+    position: absolute;
+    z-index: 5100;
+    pointer-events: none;
+  }
+
+  .canvas-overlay > * {
+    pointer-events: auto;
+  }
+
+  .canvas-overlay.top-left { top: 2rem; left: 2rem; }
+  .canvas-overlay.top-right { top: 2rem; right: 2rem; }
+  .canvas-overlay.bottom-right { bottom: 2rem; right: 2rem; }
+
+  .btn-canvas-ctrl {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+  }
+
+  .btn-terminal {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #9ca3af;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-color: var(--primary);
+    }
+  }
+}
+
 @layer utilities {
+  .pointer-events-auto { pointer-events: auto !important; }
   .bg-grid-white {
     background-size: 60px 60px;
     background-image: 

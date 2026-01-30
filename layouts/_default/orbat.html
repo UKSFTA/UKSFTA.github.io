@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="orbat-canvas-viewport">
+    <!-- 1. System Overlay: Controls -->
+    <div class="canvas-overlay top-left">
+        <div class="flex items-center space-x-4">
+            <a href="/archive/covert" class="btn-terminal !py-2 !px-4 text-[9px]">
+                <span class="mr-2">←</span> RETURN_TO_DIRECTORATE
+            </a>
+            <div class="h-8 w-px bg-white/10"></div>
+            <div class="flex flex-col">
+                <span class="text-[10px] font-black text-white tracking-tighter uppercase">Institutional ORBAT</span>
+                <span class="text-[7px] font-mono text-gray-500 uppercase tracking-widest">v2.1 // LIVE_SYNC</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="canvas-overlay top-right text-right">
+        <div class="font-mono text-[8px] text-gray-500 space-y-1 uppercase tracking-widest">
+            <span class="block text-white font-black">Auth: JSFC_DIRECTORATE</span>
+            <span class="block text-green-500">Integrity: VERIFIED</span>
+            <span id="zoom-level">Zoom: 100%</span>
+        </div>
+    </div>
+
+    <!-- 2. Interactive Canvas -->
+    <div id="orbat-canvas" class="orbat-canvas-container cursor-grab active:cursor-grabbing">
+        <div id="canvas-content" class="orbat-canvas-content">
+            {{ partial "widgets/orbat.html" . }}
+        </div>
+    </div>
+
+    <!-- 3. Canvas Controls -->
+    <div class="canvas-overlay bottom-right">
+        <div class="flex flex-col space-y-2">
+            <button onclick="adjustZoom(0.1)" class="btn-canvas-ctrl">+</button>
+            <button onclick="resetCanvas()" class="btn-canvas-ctrl">⊙</button>
+            <button onclick="adjustZoom(-0.1)" class="btn-canvas-ctrl">-</button>
+        </div>
+    </div>
+</div>
+
+<script src="{{ "js/orbat-canvas.js" | relURL }}"></script>
+{{ end }}

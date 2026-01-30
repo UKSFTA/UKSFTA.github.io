@@ -318,25 +318,4 @@
         }
     </script>
 </section>
-
-<!-- 4. INSTITUTIONAL ORDER OF BATTLE (ORBAT) -->
-<section id="orbat-section" class="min-h-dvh flex flex-col bg-black snap-start relative py-24 border-t border-white/5">
-    <div class="absolute inset-0 bg-grid-white opacity-5 pointer-events-none"></div>
-    <div class="container-uksf relative z-10 w-full">
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 border-b border-white/10 pb-10 gap-8">
-            <div class="space-y-4">
-                <div class="flex items-center space-x-6">
-                    <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black">Strategic Registry</span>
-                    <div class="w-px h-12 bg-white/10"></div>
-                    <h2 class="text-4xl lg:text-6xl tracking-tighter text-white uppercase font-black m-0">Order of <span class="text-gray-600">Battle.</span></h2>
-                </div>
-            </div>
-            <p class="max-w-xl text-gray-500 font-mono text-[11px] uppercase tracking-widest leading-loose lg:text-right">
-                Live verification of Taskforce Alpha personnel strength, detachment readiness, and current operational tasking across all Tier 1 and Tier 2 elements.
-            </p>
-        </div>
-
-        {{ partial "widgets/orbat.html" . }}
-    </div>
-</section>
 {{ end }}
