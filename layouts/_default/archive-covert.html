@@ -162,10 +162,10 @@
 </script>
 
 <!-- 2. INTEL CORPS (DIRECTORATE S) -->
-<section class="min-h-[50dvh] flex flex-col bg-black border-y border-white/5 snap-start relative py-12 lg:py-24 overflow-hidden">
+<section class="min-h-dvh flex flex-col bg-black border-y border-white/5 snap-start relative py-24 lg:justify-center overflow-hidden">
     <div class="absolute inset-0 bg-grid-white opacity-5 pointer-events-none"></div>
     <div class="container-uksf flex flex-col relative z-10">
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 border-b border-white/10 pb-8 gap-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 border-b border-white/10 pb-10 gap-8">
             <div class="space-y-4">
                 <div class="flex items-center space-x-6">
                     {{ $intIcon := resources.Get "icons/Intelligence-Corps.png" }}
@@ -175,62 +175,69 @@
                     <div class="w-px h-12 bg-white/10"></div>
                     <div class="flex flex-col">
                         <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black">Branch Registry</span>
-                        <h2 class="text-4xl tracking-tighter text-white uppercase font-black m-0">Directorate <span class="text-gray-600">S.</span></h2>
+                        <h2 class="text-4xl lg:text-6xl tracking-tighter text-white uppercase font-black m-0">Directorate <span class="text-gray-600">S.</span></h2>
                     </div>
                 </div>
             </div>
-            <p class="max-w-xl text-gray-500 font-mono text-[11px] uppercase tracking-widest leading-loose text-right lg:text-left">
+            <p class="max-w-xl text-gray-500 font-mono text-[11px] uppercase tracking-widest leading-loose lg:text-right">
                 Institutional oversight of G2 intelligence, tactical Zeus coordination, and technical infrastructure protocols for Taskforce Alpha operations.
             </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bracket-box bg-white/[0.02] border-white/5 !p-8 space-y-4 group">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-[8px] font-mono text-gray-600 uppercase">Registry: G2_ZEUS</span>
-                    <span class="w-2 h-2 bg-[var(--primary)]/40 rounded-full group-hover:bg-[var(--primary)] transition-colors"></span>
+            <div class="bracket-box bg-white/[0.02] border-white/5 !p-10 space-y-6 group min-h-[300px] flex flex-col justify-between">
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[8px] font-mono text-gray-600 uppercase">Registry: G2_ZEUS</span>
+                        <span class="w-2 h-2 bg-[var(--primary)]/40 rounded-full group-hover:bg-[var(--primary)] transition-colors"></span>
+                    </div>
+                    <h4 class="text-2xl font-bold uppercase tracking-tighter text-white">Battlespace Control</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Management of real-time battlespace dynamics and narrative reactivity for ground elements.</p>
                 </div>
-                <h4 class="text-xl font-bold uppercase tracking-tighter text-white">Battlespace Control</h4>
-                <p class="text-gray-500 text-xs font-light leading-relaxed">Management of real-time battlespace dynamics and narrative reactivity for ground elements.</p>
+                <div class="h-px w-full bg-white/5"></div>
             </div>
 
-            <div class="bracket-box bg-white/[0.02] border-white/5 !p-8 space-y-4 group">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-[8px] font-mono text-gray-600 uppercase">Registry: G2_ANALYTICS</span>
-                    <span class="w-2 h-2 bg-uksf-blue/40 rounded-full group-hover:bg-uksf-blue transition-colors"></span>
+            <div class="bracket-box bg-white/[0.02] border-white/5 !p-10 space-y-6 group min-h-[300px] flex flex-col justify-between">
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[8px] font-mono text-gray-600 uppercase">Registry: G2_ANALYTICS</span>
+                        <span class="w-2 h-2 bg-uksf-blue/40 rounded-full group-hover:bg-uksf-blue transition-colors"></span>
+                    </div>
+                    <h4 class="text-2xl font-bold uppercase tracking-tighter text-white">Intelligence Analysis</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Development of operational dossiers, adversary ORBAT reports, and theater campaign arcs.</p>
                 </div>
-                <h4 class="text-xl font-bold uppercase tracking-tighter text-white">Intelligence Analysis</h4>
-                <p class="text-gray-500 text-xs font-light leading-relaxed">Development of operational dossiers, adversary ORBAT reports, and theater campaign arcs.</p>
+                <div class="h-px w-full bg-white/5"></div>
             </div>
 
-            <div class="bracket-box bg-white/[0.02] border-white/5 !p-8 space-y-4 group">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-[8px] font-mono text-gray-600 uppercase">Registry: QM_TECH</span>
-                    <span class="w-2 h-2 bg-red-600/40 rounded-full group-hover:bg-red-600 transition-colors"></span>
+            <div class="bracket-box bg-white/[0.02] border-white/5 !p-10 space-y-6 group min-h-[300px] flex flex-col justify-between">
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[8px] font-mono text-gray-600 uppercase">Registry: QM_TECH</span>
+                        <span class="w-2 h-2 bg-red-600/40 rounded-full group-hover:bg-red-600 transition-colors"></span>
+                    </div>
+                    <h4 class="text-2xl font-bold uppercase tracking-tighter text-white">Technical Standards</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Oversight of modpack integrity, server-side infrastructure, and mission scripting protocols.</p>
                 </div>
-                <h4 class="text-xl font-bold uppercase tracking-tighter text-white">Technical Standards</h4>
-                <p class="text-gray-500 text-xs font-light leading-relaxed">Oversight of modpack integrity, server-side infrastructure, and mission scripting protocols.</p>
+                <div class="h-px w-full bg-white/5"></div>
             </div>
         </div>
-    </div>
-</section>
-        
-        <div class="mt-12 flex justify-center">
+
+        <div class="mt-16 flex justify-center">
              <a href="/register?unit=int-corps" class="btn-elite px-12 py-4 bg-white text-black hover:bg-[var(--primary)] hover:text-white transition-all text-[11px] font-black uppercase tracking-[0.4em]">Register Intelligence Interest</a>
         </div>
     </div>
 </section>
 
 <!-- 3. OPERATIONAL DETACHMENTS (AOR) -->
-<section id="intel-map-section" class="min-h-dvh flex flex-col bg-[#020202] snap-start relative py-12 lg:py-0 lg:justify-center border-t border-white/5">
+<section id="intel-map-section" class="min-h-dvh flex flex-col bg-[#020202] snap-start relative py-24 lg:justify-center border-t border-white/5 overflow-hidden">
     <div class="absolute inset-0 z-0 os-interface-grid opacity-10"></div>
     
-    <div class="container-uksf flex flex-col pt-4 pb-4 relative z-10">
+    <div class="container-uksf flex flex-col relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch lg:h-[700px]">
             
             <!-- Left: Strategic Overview & Live Comms -->
-            <div class="lg:col-span-4 flex flex-col space-y-6 h-full overflow-hidden">
-                <div class="space-y-4 shrink-0">
+            <div class="lg:col-span-4 flex flex-col space-y-8 h-full">
+                <div class="space-y-6 shrink-0">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
                             <span class="w-2 h-2 bg-red-600 rounded-full"></span>
@@ -241,22 +248,22 @@
                             <span class="text-[8px] font-mono text-green-500 font-black">ACTIVE_UPLINK</span>
                         </div>
                     </div>
-                    <h2 class="text-4xl lg:text-5xl leading-none tracking-tighter text-white uppercase font-black">Branch <br>Registry</h2>
+                    <h2 class="text-4xl lg:text-6xl leading-none tracking-tighter text-white uppercase font-black">Branch <br>Registry</h2>
                     <div class="h-px w-full bg-white/10"></div>
                 </div>
 
-                <div class="space-y-3 shrink-0">
-                     {{ partial "widgets/unitcommander.html" (dict "class" "!p-4") }}
-                     {{ partial "widgets/discord.html" (dict "class" "!p-4") }}
+                <div class="space-y-4 shrink-0">
+                     {{ partial "widgets/unitcommander.html" (dict "class" "!p-6") }}
+                     {{ partial "widgets/discord.html" (dict "class" "!p-6") }}
                 </div>
 
-                <div class="flex-grow overflow-y-auto custom-scrollbar space-y-2 pr-4">
-                    <p class="text-[9px] font-mono text-gray-600 uppercase tracking-widest mb-2 sticky top-0 bg-[#020202] py-2 z-10 border-b border-white/5">// SELECT_ASSET_NODE</p>
+                <div class="flex-grow overflow-y-auto custom-scrollbar space-y-3 pr-6">
+                    <p class="text-[9px] font-mono text-gray-600 uppercase tracking-widest mb-4 sticky top-0 bg-[#020202] py-3 z-10 border-b border-white/5">// SELECT_ASSET_NODE</p>
                     {{ range $id := slice "int-corps" "srr" "signals" "e-squadron" }}
                     {{ with (index $units $id) }}
-                    <a href="/{{ $id }}/" class="group flex items-center justify-between p-3 bg-black/40 border border-white/5 hover:border-[var(--primary)]/40 hover:bg-white/[0.02] transition-all no-underline">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-8 h-8 flex items-center justify-center">
+                    <a href="/{{ $id }}/" class="group flex items-center justify-between p-4 bg-black/40 border border-white/5 hover:border-[var(--primary)]/40 hover:bg-white/[0.02] transition-all no-underline">
+                        <div class="flex items-center space-x-5">
+                            <div class="w-10 h-10 flex items-center justify-center">
                                  {{ $icon := resources.Get .icon }}
                                  {{ if $icon }}
                                     <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="w-full h-full object-contain group-hover:opacity-100 transition-opacity">
@@ -264,10 +271,10 @@
                             </div>
                             <div class="flex flex-col">
                                 <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{{ .id }}</span>
-                                <span class="text-sm font-bold text-gray-400 group-hover:text-white transition-colors uppercase leading-none">{{ .name }}</span>
+                                <span class="text-base font-bold text-gray-400 group-hover:text-white transition-colors uppercase leading-tight">{{ .name }}</span>
                             </div>
                         </div>
-                        <span class="text-gray-800 group-hover:text-[var(--primary)] group-hover:translate-x-1 transition-all">→</span>
+                        <span class="text-gray-800 group-hover:text-[var(--primary)] group-hover:translate-x-2 transition-all">→</span>
                     </a>
                     {{ end }}
                     {{ end }}
@@ -276,18 +283,18 @@
 
             <!-- Right: Intelligence Map Switcher -->
             <div class="lg:col-span-8 flex flex-col h-full min-h-0">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-0 mb-4 shrink-0 gap-4">
-                    <div class="flex items-center space-x-6">
-                        <button onclick="switchMap('intel')" id="btn-intel" class="text-[10px] font-bold text-white uppercase tracking-[0.2em] border-b-2 border-[var(--primary)] pb-4 -mb-px transition-all duration-300">RSIS Global</button>
-                        <button onclick="switchMap('uksf')" id="btn-uksf" class="text-[10px] font-bold text-gray-600 hover:text-white uppercase tracking-[0.2em] border-b-2 border-transparent pb-4 -mb-px transition-all duration-300">Unit Locations</button>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-6 mb-8 shrink-0 gap-4">
+                    <div class="flex items-center space-x-10">
+                        <button onclick="switchMap('intel')" id="btn-intel" class="text-[11px] font-bold text-white uppercase tracking-[0.3em] border-b-2 border-[var(--primary)] pb-6 -mb-px transition-all duration-300">RSIS Global</button>
+                        <button onclick="switchMap('uksf')" id="btn-uksf" class="text-[11px] font-bold text-gray-600 hover:text-white uppercase tracking-[0.3em] border-b-2 border-transparent pb-6 -mb-px transition-all duration-300">Unit Locations</button>
                     </div>
-                    <div class="text-right hidden sm:block pb-4">
-                        <span class="block text-[7px] font-mono text-gray-600 uppercase tracking-widest">Network: {{ site.Params.intelligence.network | default "RSIS_GLOBAL" }}</span>
-                        <span class="block text-[7px] font-mono text-green-500 uppercase tracking-widest font-black">LIVE_SYNC</span>
+                    <div class="text-right hidden sm:block">
+                        <span class="block text-[8px] font-mono text-gray-600 uppercase tracking-widest">Network: {{ site.Params.intelligence.network | default "RSIS_GLOBAL" }}</span>
+                        <span class="block text-[8px] font-mono text-green-500 uppercase tracking-widest font-black">LIVE_SYNC</span>
                     </div>
                 </div>
 
-                <div class="bracket-box !p-0 overflow-hidden bg-[#1a1a1a] relative border-white/10 group flex items-center justify-center flex-1 min-h-0 w-full">
+                <div class="bracket-box !p-0 overflow-hidden bg-[#080808] relative border-white/10 group flex items-center justify-center flex-1 min-h-0 w-full shadow-2xl">
                     <div class="absolute inset-0 bg-grid-white opacity-5 pointer-events-none"></div>
                     
                     <!-- Map: Intel -->
@@ -298,10 +305,10 @@
                         <img src="{{ $mapIntel.RelPermalink }}" 
                              class="w-full h-full object-contain p-4 opacity-100 transition-all duration-1000" alt="Intel Map">
                         {{ end }}
-                        <div class="absolute bottom-4 left-4 lg:bottom-6 lg:left-6 p-3 lg:p-4 bg-black/80 backdrop-blur-xl border border-white/10 space-y-2">
+                        <div class="absolute bottom-6 left-6 p-4 lg:p-6 bg-black/80 backdrop-blur-2xl border border-white/10 space-y-3 shadow-2xl">
                             <span class="block text-[8px] font-mono text-gray-500 uppercase tracking-widest font-black">// UPLINK_SOURCE</span>
                             <div class="space-y-1">
-                                <span class="block text-[9px] font-black text-white tracking-widest uppercase">INTEL_NODE: {{ site.Params.intelligence.intel_node | default "PRIMARY_ALPHA" }}</span>
+                                <span class="block text-[10px] font-black text-white tracking-[0.2em] uppercase">INTEL_NODE: {{ site.Params.intelligence.intel_node | default "PRIMARY_ALPHA" }}</span>
                             </div>
                         </div>
                     </div>
@@ -312,13 +319,13 @@
                         {{ $mapUksf := resources.Get $map_path }}
                         {{ if $mapUksf }}
                         <img src="{{ $mapUksf.RelPermalink }}" 
-                                 class="w-full h-full object-contain p-4 opacity-100 transition-all duration-1000" alt="UKSF Map">
+                                 class="w-full h-full object-contain p-8 opacity-100 transition-all duration-1000" alt="UKSF Map">
                         {{ end }}
-                        <div class="absolute bottom-4 left-4 lg:bottom-6 lg:left-6 p-3 lg:p-4 bg-black/80 backdrop-blur-xl border border-white/10 space-y-2">
+                        <div class="absolute bottom-6 left-6 p-4 lg:p-6 bg-black/80 backdrop-blur-2xl border border-white/10 space-y-3 shadow-2xl">
                             <span class="block text-[8px] font-mono text-gray-500 uppercase tracking-widest font-black">// UPLINK_SOURCE</span>
                             <div class="space-y-1">
-                                <span class="block text-[9px] font-black text-white tracking-widest uppercase">UKSF_GRID: SECTOR_7</span>
-                                <span class="block text-[9px] font-black text-[var(--primary)] tracking-widest uppercase">OPERATIONAL_STATUS: ENCRYPTED</span>
+                                <span class="block text-[10px] font-black text-white tracking-[0.2em] uppercase">UKSF_GRID: SECTOR_7</span>
+                                <span class="block text-[10px] font-black text-[var(--primary)] tracking-[0.2em] uppercase">OPERATIONAL_STATUS: ENCRYPTED</span>
                             </div>
                         </div>
                     </div>
