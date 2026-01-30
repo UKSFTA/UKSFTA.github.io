@@ -570,13 +570,69 @@
   z-index: 10;
 }
 
-.tf-nc:hover {
-  border-color: var(--primary);
-  background: rgb(179 153 93 / 5%);
-}
+  .tf-nc:hover {
+    border-color: var(--primary);
+    background: rgb(179 153 93 / 5%);
+  }
 
-/* ORBAT Canvas Implementation */
-.orbat-canvas-viewport {
+  /* ORBAT Card Styling (Obsidian Style) */
+  .orbat-node-card {
+    transition: box-shadow 0.2s, border-color 0.2s;
+    user-select: none;
+  }
+
+  .orbat-node-card:hover {
+    border-color: rgb(179 153 93 / 40%);
+  }
+
+  /* Connection Points */
+  .c-point {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+    pointer-events: auto;
+    cursor: crosshair;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 100;
+  }
+
+  .orbat-node-card:hover .c-point {
+    opacity: 0.6;
+  }
+
+  .c-point:hover {
+    opacity: 1 !important;
+    transform: scale(1.3);
+  }
+
+  .c-point.top {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .c-point.right {
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  .c-point.bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+
+  .c-point.left {
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  /* ORBAT Canvas Implementation */.orbat-canvas-viewport {
   position: fixed;
   inset: 0;
   width: 100vw;

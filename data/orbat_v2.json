@@ -1,44 +1,17 @@
 {
   "nodes": [
-    { "id": "tfhq", "name": "TFHQ", "callsign": "0-", "icon": "icons/TFA.png", "x": 0, "y": -300 },
-    { "id": "intel", "name": "Intelligence Cell", "callsign": "--", "icon": "icons/Intelligence-Corps.png", "x": -400, "y": 0 },
-    { "id": "sfsg_hq", "name": "SFSG Training Plt HQ", "callsign": "Bulldog 10", "icon": "icons/SFSG.png", "x": -150, "y": 0 },
-    { "id": "jsfaw_hq", "name": "JSFAW HQ", "callsign": "Guardian 2-0", "icon": "icons/JSFAW.png", "x": 150, "y": 0 },
-    { "id": "med_hq", "name": "Med Det HQ", "callsign": "Bulldog 15", "icon": "icons/MEDIC.png", "x": 400, "y": 0 },
-    { "id": "uksf_hq", "name": "UKSF HQ", "callsign": "JSFC", "icon": "icons/MOD.png", "x": 700, "y": 0 },
-    { "id": "rac_hq", "name": "1 Troop RAC", "callsign": "Panzer 14", "icon": "icons/RSIS.png", "x": 950, "y": 0 },
-    
-    { "id": "sfsg_plt", "name": "SFSG Training Plt", "callsign": "Bulldog 10", "x": -150, "y": 250 },
-    { "id": "jsfaw_fw", "name": "JSFAW Fixed Wing", "callsign": "21", "x": 50, "y": 250 },
-    { "id": "jsfaw_rot", "name": "JSFAW Rotary", "callsign": "22", "x": 250, "y": 250 },
-    { "id": "med_det", "name": "Medical Det", "callsign": "Bulldog 15", "x": 400, "y": 250 },
-    
-    { "id": "sas_hq", "name": "SAS Troop HQ", "callsign": "Sabre 3-0", "icon": "icons/SAS.png", "x": 600, "y": 250 },
-    { "id": "sbs_hq", "name": "SBS Troop HQ", "callsign": "Trident 4-0", "icon": "icons/SBS.png", "x": 800, "y": 250 },
-    { "id": "srr_hq", "name": "SRR Troop HQ", "callsign": "Raven 5-0", "icon": "icons/SRR.png", "x": 1000, "y": 250 },
-    
-    { "id": "sas_a", "name": "SAS Team Alpha", "callsign": "3-1", "x": 600, "y": 450 },
-    { "id": "sas_b", "name": "SAS Team Bravo", "callsign": "3-2", "x": 600, "y": 600 },
-    { "id": "sbs_a", "name": "SBS Team Alpha", "callsign": "4-1", "x": 800, "y": 450 },
-    { "id": "srr_a", "name": "SRR Team Alpha", "callsign": "5-1", "x": 1000, "y": 450 }
+    { "id": "tfhq", "type": "unit", "x": 850, "y": -270, "width": 250, "height": 200, "name": "TFHQ", "callsign": "0-", "icon": "icons/TFA.png" },
+    { "id": "intel", "type": "unit", "x": -109, "y": 307, "width": 220, "height": 180, "name": "Intelligence Cell", "callsign": "--", "icon": "icons/Intelligence-Corps.png" },
+    { "id": "sfsg_hq", "type": "unit", "x": 141, "y": 307, "width": 220, "height": 180, "name": "SFSG HQ", "callsign": "Bulldog 10", "icon": "icons/SFSG.png" },
+    { "id": "jsfaw_hq", "type": "unit", "x": 511, "y": 307, "width": 220, "height": 180, "name": "JSFAW HQ", "callsign": "Guardian 2-0", "icon": "icons/JSFAW.png" },
+    { "id": "med_hq", "type": "unit", "x": 881, "y": 307, "width": 220, "height": 180, "name": "Med Det HQ", "callsign": "Bulldog 15", "icon": "icons/MEDIC.png" },
+    { "id": "uksf_hq", "type": "unit", "x": 1356, "y": 307, "width": 250, "height": 180, "name": "UKSF HQ", "callsign": "JSFC", "icon": "icons/MOD.png" }
   ],
-  "links": [
-    { "source": "tfhq", "target": "intel" },
-    { "source": "tfhq", "target": "sfsg_hq" },
-    { "source": "tfhq", "target": "jsfaw_hq" },
-    { "source": "tfhq", "target": "med_hq" },
-    { "source": "tfhq", "target": "uksf_hq" },
-    { "source": "tfhq", "target": "rac_hq" },
-    { "source": "sfsg_hq", "target": "sfsg_plt" },
-    { "source": "jsfaw_hq", "target": "jsfaw_fw" },
-    { "source": "jsfaw_hq", "target": "jsfaw_rot" },
-    { "source": "med_hq", "target": "med_det" },
-    { "source": "uksf_hq", "target": "sas_hq" },
-    { "source": "uksf_hq", "target": "sbs_hq" },
-    { "source": "uksf_hq", "target": "srr_hq" },
-    { "source": "sas_hq", "target": "sas_a" },
-    { "source": "sas_a", "target": "sas_b" },
-    { "source": "sbs_hq", "target": "sbs_a" },
-    { "source": "srr_hq", "target": "srr_a" }
+  "edges": [
+    { "id": "e1", "fromNode": "tfhq", "fromSide": "bottom", "toNode": "intel", "toSide": "top" },
+    { "id": "e2", "fromNode": "tfhq", "fromSide": "bottom", "toNode": "sfsg_hq", "toSide": "top" },
+    { "id": "e3", "fromNode": "tfhq", "fromSide": "bottom", "toNode": "jsfaw_hq", "toSide": "top" },
+    { "id": "e4", "fromNode": "tfhq", "fromSide": "bottom", "toNode": "med_hq", "toSide": "top" },
+    { "id": "e5", "fromNode": "tfhq", "fromSide": "bottom", "toNode": "uksf_hq", "toSide": "top" }
   ]
 }

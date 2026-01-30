@@ -1,21 +1,26 @@
 {{ $orbat := .Site.Data.orbat_v2 }}
 {{ $units := .Site.Data.units }}
 
-<div class="orbat-canvas-area relative w-[5000px] h-[5000px]">
-    <!-- Visual Grid Backdrop -->
-    <div class="absolute inset-0 pointer-events-none opacity-[0.03]" 
-         style="background-image: radial-gradient(var(--primary) 1px, transparent 1px); background-size: 50px 50px;"></div>
+<div class="orbat-canvas-area relative w-[10000px] h-[10000px]">
+    <!-- Visual Grid Backdrop (Subtle dots like Obsidian) -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.05]" 
+         style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
 
     <!-- SVG Connector Layer -->
     <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-none">
         <defs>
             <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(179, 153, 93, 0.5)" />
+                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(179, 153, 93, 0.8)" />
             </marker>
         </defs>
-        {{ range $orbat.links }}
-        <path class="orbat-link" data-source="{{ .source }}" data-target="{{ .target }}" 
-              d="" fill="none" stroke="rgba(179, 153, 93, 0.3)" stroke-width="1.5" marker-end="url(#arrowhead)" />
+        {{ range $orbat.edges }}
+        <path class="orbat-link" 
+              id="edge-{{ .id }}"
+              data-source="{{ .fromNode }}" 
+              data-target="{{ .toNode }}" 
+              data-from-side="{{ .fromSide }}" 
+              data-to-side="{{ .toSide }}"
+              d="" fill="none" stroke="rgba(179, 153, 93, 0.4)" stroke-width="2" marker-end="url(#arrowhead)" />
         {{ end }}
         <path id="temp-link" d="" fill="none" stroke="var(--primary)" stroke-width="2" stroke-dasharray="5,5" class="hidden" />
     </svg>
@@ -23,12 +28,14 @@
     <!-- Node Layer -->
     <div id="orbat-nodes-layer" class="absolute inset-0">
         {{ range $orbat.nodes }}
-        <div class="orbat-node-wrapper absolute transform -translate-x-1/2 -translate-y-1/2" 
+        <div class="orbat-node-wrapper absolute shadow-2xl" 
              id="node-{{ .id }}" 
-             style="left: calc(2500px + {{ .x }}px); top: calc(2500px + {{ .y }}px);"
+             style="left: calc(5000px + {{ .x }}px); top: calc(5000px + {{ .y }}px); width: {{ .width }}px; height: {{ .height }}px;"
              data-id="{{ .id }}"
              data-x="{{ .x }}"
-             data-y="{{ .y }}">
+             data-y="{{ .y }}"
+             data-w="{{ .width }}"
+             data-h="{{ .height }}">
             {{ partial "widgets/orbat-node.html" (dict "node" . "units" $units "Site" $.Site) }}
         </div>
         {{ end }}
