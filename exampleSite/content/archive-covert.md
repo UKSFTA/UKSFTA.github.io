@@ -4,6 +4,7 @@ description: "Restricted Node: Joint Special Forces Intelligence Assets and Shad
 date: 2026-01-28
 layout: "archive-covert"
 url: "/archive/covert"
+unit: "sis"
 ---
 
 {{< mandate id="INTEL-HUB-01" >}}

@@ -26,20 +26,23 @@
     --primary: #b3995d;
     --primary-glow: rgb(179 153 93 / 30%);
     --bg-dark: #0b0b0b;
-    --header-height: 100px;
-    --hmg-bar-height: 40px;
+    --top-bar-height: 32px;
+    --nav-height: 100px;
+    --total-header-height: calc(var(--top-bar-height) + var(--nav-height));
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--total-header-height);
+    height: 100%;
   }
 
   body {
     background-color: var(--bg-dark);
     color: #cbd5e1;
     font-family: var(--font-body);
-    font-size: 17px;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-top: 0;
     font-weight: 450;
@@ -58,26 +61,36 @@
     font-weight: 800;
   }
 
+  /* Responsive Typography Overrides */
+  h1 { font-size: clamp(2.5rem, 10vw, 8rem); }
+  h2 { font-size: clamp(2rem, 8vw, 5rem); }
+
   img {
     object-fit: contain;
     max-width: 100%;
     height: auto;
   }
   .object-cover { object-fit: cover !important; }
-
-  label, .sub-header {
-    font-family: var(--font-mono);
-
-    @apply text-[9px] font-bold uppercase tracking-[0.3em] text-gray-500;
-  }
 }
 
 @layer components {
   .container-uksf {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin-inline: auto;
-    padding-inline: 2.5rem;
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 640px) {
+    .container-uksf {
+      padding-inline: 3rem;
+    }
+  }
+
+  @media (width >= 1024px) {
+    .container-uksf {
+      padding-inline: 5rem;
+    }
   }
 
   .nav-header {
@@ -88,7 +101,7 @@
     border-bottom: 1px solid rgb(255 255 255 / 5%);
     background-color: rgb(0 0 0 / 90%);
     backdrop-filter: blur(24px);
-    height: var(--header-height);
+    height: var(--nav-height);
   }
 
   .nav-link {
@@ -350,6 +363,34 @@
 
   .operator-authenticated .covert-node {
     display: flex !important;
+  }
+
+  /* Custom Scrollbar Utility */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 20px;
+        }
+      }
+    
+      .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 

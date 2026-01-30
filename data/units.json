@@ -21,11 +21,11 @@
   },
   "rangers": {
     "id": "RANGERS",
-    "name": "British Army Rangers",
+    "name": "The Ranger Regiment",
     "specialization": "Special Operations / Capacity Building",
     "role": "Tier 2 Special Operations",
-    "motto": "Ready for Anything",
-    "color": "#4d5d53",
+    "motto": "By All Means",
+    "color": "#536878",
     "icon": "icons/RANGERS.png",
     "entry": "Internal Transfer Required"
   },
@@ -70,6 +70,61 @@
     "color": "#800000",
     "icon": "icons/MEDIC.png",
     "entry": "Post-Intro Specialization"
+  },
+  "signals": {
+    "id": "SIGNALS",
+    "hidden": true,
+    "name": "18 (UKSF) Signal Regiment",
+    "specialization": "SIGINT / Cyber / Electronic Warfare",
+    "role": "Technical Intelligence",
+    "motto": "Colloquendo Imperamus",
+    "color": "#002366",
+    "icon": "icons/SIGNALS.png",
+    "entry": "Internal Transfer Only"
+  },
+  "section6": {
+    "id": "SECTION_6",
+    "hidden": true,
+    "name": "Secret Intelligence Service (MI6)",
+    "specialization": "Clandestine Operations / Black Ops",
+    "role": "Deniable Assets",
+    "motto": "Semper Occultus",
+    "color": "#093388",
+    "icon": "icons/section6.png",
+    "entry": "Invitation Only"
+  },
+  "sis": {
+    "id": "SIS",
+    "hidden": true,
+    "name": "Secret Intelligence Service",
+    "specialization": "Strategic Oversight / Intelligence",
+    "role": "Command Directorate",
+    "motto": "Semper Occultus",
+    "color": "#093388",
+    "icon": "icons/RSIS.png",
+    "entry": "Directorate Only"
+  },
+  "int-corps": {
+    "id": "INT_CORPS",
+    "hidden": true,
+    "name": "Intelligence Corps",
+    "specialization": "Mission Design / Narrative / Zeus",
+    "role": "Operational Architects",
+    "motto": "Manui Dat Cognitio Vires",
+    "color": "#1b4d3e",
+    "icon": "icons/Intelligence-Corps.png",
+    "entry": "Application Only"
+  },
+  "e-squadron": {
+    "id": "E_SQN",
+    "hidden": true,
+    "name": "E Squadron (UKSF)",
+    "specialization": "Clandestine / Deniable Operations",
+    "role": "Covert Strike Element",
+    "motto": "Semper Occultus",
+    "color": "#093388",
+    "icon": "icons/SAS.png",
+    "entry": "Selection Required"
   },
   "tfhq": {
     "id": "TFHQ",

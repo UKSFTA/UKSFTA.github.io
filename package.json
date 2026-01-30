@@ -15,7 +15,7 @@
     "lint:css": "stylelint \"assets/**/*.css\"",
     "lint:md": "markdownlint \"**/*.md\" --ignore node_modules --ignore exampleSite/public",
     "lint:html": "html-validate \"layouts/**/*.html\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node scripts/test.js"
   },
   "keywords": [
     "hugo",
