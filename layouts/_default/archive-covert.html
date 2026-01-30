@@ -8,98 +8,191 @@
 
 {{ $units := .Site.Data.units }}
 
-<!-- 1. HUB ENTRY: Restricted Hero -->
-<section class="min-h-dvh flex flex-col bg-black relative overflow-hidden snap-start py-12 lg:py-0 lg:justify-center">
+<!-- 1. SIS EXECUTIVE INTERFACE: Restricted Entry -->
+<section class="min-h-dvh flex flex-col bg-black relative overflow-hidden snap-start lg:justify-center">
+    <!-- Immersive Background Layers -->
     <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=2400" 
-             class="w-full h-full object-cover opacity-20 grayscale" alt="">
-        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent"></div>
-        <div class="absolute inset-0 bg-grid-white opacity-20"></div>
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2400" 
+             class="w-full h-full object-cover opacity-30 grayscale brightness-[0.3]" alt="">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black"></div>
+        <div class="absolute inset-0 bg-grid-white opacity-10"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(179,153,93,0.15),transparent_70%)]"></div>
     </div>
 
-    <div class="container-uksf relative z-10 flex flex-col pt-8 pb-12">
-        <div class="max-w-4xl space-y-8 animate-slide-in-left">
-            <div class="flex flex-wrap items-center gap-6">
-                <span class="px-4 py-1.5 bg-red-600/10 border border-red-600/20 text-red-500 text-[9px] lg:text-[10px] font-mono font-black uppercase tracking-[0.4em]">Directorate Access Only</span>
-                <div class="hidden sm:block h-px w-12 bg-white/10"></div>
-                <span class="text-[9px] lg:text-[10px] font-mono text-gray-500 uppercase tracking-widest">Registry: NODE_COVERT_SIS</span>
-            </div>
-            <h1 class="text-display leading-[0.85] text-white">Secret <br><span class="text-[var(--primary)]">Intelligence.</span></h1>
-            <p class="text-lg lg:text-2xl font-light text-gray-400 max-w-2xl leading-relaxed">
-                Welcome to the Secret Intelligence Service (SIS). The overarching authority for all clandestine operations, mission architecture, and deniable assets within the Taskforce.
-            </p>
-            <div class="pt-4 lg:pt-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:gap-10">
-                <div class="flex flex-col">
-                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-1">Node Signature</span>
-                    <span class="text-xs font-bold text-white font-mono uppercase">AUTHENTICATED_DIRECTOR</span>
+    <!-- Animated Scanlines -->
+    <div class="absolute inset-0 pointer-events-none opacity-20 hud-image"></div>
+
+    <div class="container-uksf relative z-10 w-full py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            <!-- Left: Agency Identity -->
+            <div class="lg:col-span-8 space-y-12">
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-8">
+                        {{ $rsis_logo := resources.Get "icons/RSIS.png" }}
+                        {{ if $rsis_logo }}
+                        <div class="relative">
+                            <div class="absolute -inset-4 bg-white/[0.03] blur-xl rounded-full"></div>
+                            <div class="bg-white/[0.03] p-4 rounded-full backdrop-blur-sm border border-white/5 relative">
+                                <img src="{{ $rsis_logo.RelPermalink }}" class="h-24 w-auto opacity-90" alt="RSIS">
+                            </div>
+                        </div>
+                        {{ end }}
+                        <div class="flex flex-col space-y-3">
+                            <div class="flex items-center space-x-4 animate-pulse">
+                                <span class="w-2.5 h-2.5 bg-red-600 rounded-full"></span>
+                                <span class="text-[11px] font-mono text-red-500 font-black uppercase tracking-[0.5em]">Secure Uplink: ESTABLISHED // UKSFTA_SIGINT</span>
+                            </div>
+                            <span class="sub-header text-[var(--primary)] m-0 block typewriter-text w-fit">Joint Command Intelligence Node // Royal Secret Intelligence Service</span>
+                        </div>
+                    </div>
+                    
+                    <h1 class="text-6xl md:text-8xl lg:text-9xl tracking-tighter text-white leading-none font-black uppercase">
+                        ORBAT <br><span class="text-gray-600">Access.</span>
+                    </h1>
                 </div>
-                <div class="hidden sm:block w-px h-8 bg-white/10"></div>
-                <div class="flex flex-col">
-                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mb-1">Clearance</span>
-                    <span class="text-xs font-bold text-uksf-gold font-mono uppercase">Level 6 // SIS_DIRECTORATE</span>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="dossier-node !mb-0 border-l-2 border-[var(--primary)]/40 bg-white/[0.02] p-8">
+                        <p class="text-xl font-light text-gray-400 leading-relaxed italic">
+                            "Strategic superiority through technical intelligence and deniable action. Maintaining the Taskforce sovereign edge."
+                        </p>
+                    </div>
+                    <div class="flex flex-col justify-center space-y-6">
+                        <div class="flex items-center space-x-6 text-[10px] font-mono text-gray-500">
+                            <span class="uppercase tracking-widest">Authority: UKSFTA-SIS</span>
+                            <div class="w-px h-4 bg-white/10"></div>
+                            <span class="uppercase tracking-widest text-[var(--primary)]">Clearance: STRATSEC</span>
+                        </div>
+                        <div class="h-px w-full bg-gradient-to-r from-[var(--primary)]/40 to-transparent"></div>
+                        <p class="text-[10px] font-mono text-gray-600 uppercase tracking-widest leading-loose">Authorized personnel only. Registry access logged and monitored under Operational Protocol 99-A.</p>
+                    </div>
                 </div>
             </div>
+
+            <!-- Right: Dynamic Data Signature -->
+            <div class="lg:col-span-4 hidden lg:block">
+                <div class="bracket-box bg-black/60 backdrop-blur-3xl border-white/5 !p-10 space-y-10 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4">
+                        <span class="text-[8px] font-mono text-[var(--primary)]/40">DV_VETTING_v2.6</span>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <!-- Personnel Biometrics -->
+                        <div class="space-y-4">
+                            <span class="text-[9px] font-mono text-gray-600 uppercase tracking-widest font-black block border-b border-white/5 pb-2">Biometric Verification (DV)</span>
+                            <div class="flex items-end space-x-1 h-16">
+                                {{ range (seq 20) }}
+                                <div class="w-1 bg-[var(--primary)]/40 animate-pulse" style="height: {{ (add 30 (mul (add . 13) 7)) | mod 100 }}%;"></div>
+                                {{ end }}
+                            </div>
+                        </div>
+
+                        <!-- Data Nodes -->
+                        <div class="space-y-4 pt-4 border-t border-white/5">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[8px] font-mono text-gray-600 uppercase">Uplink Bridge</span>
+                                <span class="text-[10px] font-mono text-white">SIGINT_HUB_JSFC</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[8px] font-mono text-gray-600 uppercase">Vetting Status</span>
+                                <span class="text-[10px] font-mono text-uksf-gold font-bold">DV_CLEARED</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[8px] font-mono text-gray-600 uppercase">Targeting ID</span>
+                                <span class="text-[10px] font-mono text-gray-400 uppercase">{{ upper (substr (sha256 now) 0 12) }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <div class="flex items-center space-x-4 bg-[var(--primary)]/5 border border-[var(--primary)]/20 p-4">
+                            <div class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--primary)]"></span>
+                            </div>
+                            <span class="text-[9px] font-mono text-white font-black uppercase tracking-widest">BRIDGE_LINK: ACTIVE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-    
-    <!-- HUD Scroll Indicator -->
-    <div class="absolute bottom-6 lg:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4 opacity-40">
-        <span class="text-[8px] font-mono text-white uppercase tracking-[0.5em]">Initialize Protocol</span>
-        <div class="w-px h-8 lg:h-12 bg-gradient-to-b from-[var(--primary)] to-transparent"></div>
+
+    <!-- HUD Decorative Elements -->
+    <div class="absolute top-48 left-12 hidden xl:block">
+        <div class="flex flex-col space-y-2 opacity-20">
+            <span class="text-[8px] font-mono text-white uppercase tracking-widest rotate-90 origin-left translate-y-24">GRID: JSFC-01</span>
+            <span class="text-[8px] font-mono text-white uppercase tracking-widest rotate-90 origin-left translate-y-48">ZONE: COVERT_SIS</span>
+        </div>
+    </div>
+
+    <!-- Scrolling CTA -->
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4">
+        <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.6em] animate-bounce">Access Asset ORBAT</span>
+        <div class="w-px h-16 bg-gradient-to-b from-[var(--primary)] to-transparent"></div>
     </div>
 </section>
 
-<!-- 2. INTELLIGENCE CORPS (MISSION & ZEUS) -->
-<section class="min-h-dvh flex flex-col bg-black border-y border-white/5 snap-start relative py-12 lg:py-0 lg:justify-center">
-    <div class="container-uksf flex flex-col pt-8 pb-12">
-        <div class="flex flex-col items-center text-center mb-8 space-y-4">
-            {{ $intIcon := resources.Get "icons/Intelligence-Corps.png" }}
-            {{ if $intIcon }}
-            <img src="{{ $intIcon.RelPermalink }}" class="w-12 h-12 lg:w-16 lg:h-16 object-contain opacity-80" alt="Intelligence Corps">
-            {{ end }}
-            <div class="space-y-1">
-                <span class="sub-header text-[var(--primary)] m-0">Operational Architects</span>
-                <h2 class="tracking-tighter text-white leading-none">Intelligence <span class="text-gray-600">Corps.</span></h2>
+<!-- 2. INTEL CORPS (DIRECTORATE S) -->
+<section class="min-h-dvh flex flex-col bg-black border-y border-white/5 snap-start relative py-12 lg:py-0 lg:justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-grid-white opacity-5 pointer-events-none"></div>
+    <div class="container-uksf flex flex-col pt-8 pb-12 relative z-10">
+        <div class="flex flex-col items-center text-center mb-12 space-y-6">
+            <div class="relative">
+                <div class="absolute -inset-4 bg-[var(--primary)]/20 blur-xl rounded-full opacity-50"></div>
+                {{ $intIcon := resources.Get "icons/Intelligence-Corps.png" }}
+                {{ if $intIcon }}
+                <img src="{{ $intIcon.RelPermalink }}" class="w-20 h-20 object-contain opacity-90 relative" alt="Intelligence Corps">
+                {{ end }}
             </div>
-            <p class="max-w-2xl text-gray-400 font-light leading-relaxed text-[10px] lg:text-xs uppercase tracking-wider">
-                The Intelligence Corps serves as the "Game Masters" of the Taskforce. They design the narrative, control the AI (Zeus), and curate the operational experience.
+            <div class="space-y-2">
+                <span class="sub-header text-[var(--primary)] m-0">Mission Directorate // SIS</span>
+                <h2 class="text-4xl lg:text-6xl tracking-tighter text-white leading-none uppercase font-black">Intel <span class="text-gray-600">Corps.</span></h2>
+            </div>
+            <p class="max-w-3xl text-gray-400 font-light leading-relaxed text-sm lg:text-base uppercase tracking-wider">
+                Directorate S: Operational Architects. Curating simulation battlespaces through tactical Zeus manipulation, G2 intelligence delivery, and Deniable Asset oversight.
             </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div class="space-y-3">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/5 mb-12 shadow-2xl">
+            <div class="bg-black p-8 lg:p-10 space-y-6 group hover:bg-[#050505] transition-colors duration-500">
                 <div class="flex items-center space-x-4">
-                    <span class="w-8 h-px bg-[var(--primary)]"></span>
-                    <h4 class="text-lg font-bold uppercase tracking-tighter text-white">The Zeus Cell</h4>
+                    <div class="w-10 h-10 border border-[var(--primary)]/20 flex items-center justify-center font-mono text-[var(--primary)] font-black text-xs">01</div>
+                    <h4 class="text-xl font-bold uppercase tracking-tighter text-white">Zeus Control</h4>
                 </div>
-                <p class="text-gray-500 text-[11px] font-light leading-relaxed">The active mission controllers. Using the Zeus interface to manipulate the battlespace in real-time, responding to player actions.</p>
+                <p class="text-gray-500 text-xs font-light leading-relaxed">Tactical Oversight. Utilizing the SIS interface to manage real-time battlespace dynamics, responding to ground element maneuvers with high-fidelity narrative reactivity.</p>
+                <div class="h-px w-full bg-gradient-to-r from-[var(--primary)]/20 to-transparent"></div>
             </div>
 
-            <div class="space-y-3">
+            <div class="bg-black p-8 lg:p-10 space-y-6 group hover:bg-[#050505] transition-colors duration-500">
                 <div class="flex items-center space-x-4">
-                    <span class="w-8 h-px bg-uksf-blue"></span>
-                    <h4 class="text-lg font-bold uppercase tracking-tighter text-white">The Scribes</h4>
+                    <div class="w-10 h-10 border border-uksf-blue/20 flex items-center justify-center font-mono text-uksf-blue font-black text-xs">02</div>
+                    <h4 class="text-xl font-bold uppercase tracking-tighter text-white">G2 Branch</h4>
                 </div>
-                <p class="text-gray-500 text-[11px] font-light leading-relaxed">The narrative designers. Writing the intelligence dossiers, enemy orders of battle, and campaign arcs that drive the Taskforce's deployment cycle.</p>
+                <p class="text-gray-500 text-xs font-light leading-relaxed">Intelligence & Analysis. Drafting operational dossiers, adversary Order of Battle (ORBAT) reports, and theater-wide campaign arcs for Taskforce deployment.</p>
+                <div class="h-px w-full bg-gradient-to-r from-uksf-blue/20 to-transparent"></div>
             </div>
 
-            <div class="space-y-3">
+            <div class="bg-black p-8 lg:p-10 space-y-6 group hover:bg-[#050505] transition-colors duration-500">
                 <div class="flex items-center space-x-4">
-                    <span class="w-8 h-px bg-red-600"></span>
-                    <h4 class="text-lg font-bold uppercase tracking-tighter text-white">Technical QM</h4>
+                    <div class="w-10 h-10 border border-red-600/20 flex items-center justify-center font-mono text-red-600 font-black text-xs">03</div>
+                    <h4 class="text-xl font-bold uppercase tracking-tighter text-white">QM Technical</h4>
                 </div>
-                <p class="text-gray-500 text-[11px] font-light leading-relaxed">The Quartermasters ensure the technical platform is stable. Managing the modpack, server infrastructure, and scripting requirements.</p>
+                <p class="text-gray-500 text-xs font-light leading-relaxed">Platform Stability. Managing technical requirements including modpack integrity, server-side infrastructure, and specialized mission scripting protocols.</p>
+                <div class="h-px w-full bg-gradient-to-r from-red-600/20 to-transparent"></div>
             </div>
         </div>
         
         <div class="text-center">
-             <a href="/register?unit=int-corps" class="btn-elite inline-block px-10 py-3 bg-[var(--primary)] text-white hover:bg-white hover:text-black transition-all text-[10px] font-bold uppercase tracking-[0.3em]">Apply for Intelligence Corps</a>
+             <a href="/register?unit=int-corps" class="btn-elite inline-block px-12 py-4 bg-[var(--primary)] text-white hover:bg-white hover:text-black transition-all text-[11px] font-black uppercase tracking-[0.4em]">Initiate Selection Protocol</a>
         </div>
     </div>
 </section>
 
-<!-- 3. JOINT DIRECTORATE: UNITS & MAP -->
-<section class="min-h-dvh flex flex-col bg-black snap-start relative py-12 lg:py-0 lg:justify-center">
+<!-- 3. OPERATIONAL DETACHMENTS (AOR) -->
+<section id="intel-map-section" class="min-h-dvh flex flex-col bg-black snap-start relative py-12 lg:py-0 lg:justify-center">
     <div class="container-uksf flex flex-col pt-4 pb-4">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
             
@@ -107,10 +200,10 @@
             <div class="lg:col-span-4 flex flex-col space-y-6">
                 <div class="space-y-3 mb-2 shrink-0">
                     <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-bold text-[var(--primary)] uppercase tracking-[0.4em]">Directorate Assets</span>
+                        <span class="text-[10px] font-bold text-[var(--primary)] uppercase tracking-[0.4em]">Asset Inventory</span>
                         <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse-fast"></span>
                     </div>
-                    <h2 class="text-3xl lg:text-4xl leading-none tracking-tighter text-white">Special Sections</h2>
+                    <h2 class="text-3xl lg:text-4xl leading-none tracking-tighter text-white uppercase">Operational <br>Detachments</h2>
                 </div>
 
                 <!-- LIVE DASHBOARDS -->
@@ -126,7 +219,7 @@
                         <div class="absolute top-0 left-0 w-1 h-full bg-white/5 group-hover:bg-[var(--primary)] transition-colors duration-500"></div>
                         
                         <div class="flex items-center space-x-3">
-                            <div class="w-6 h-6 opacity-40 group-hover:opacity-100 transition-opacity">
+                            <div class="w-8 h-8 opacity-60 group-hover:opacity-100 transition-opacity bg-white/[0.03] p-1.5 rounded-full backdrop-blur-sm border border-white/5 flex items-center justify-center">
                                  {{ $icon := resources.Get .icon }}
                                  {{ if $icon }}
                                     <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="w-full h-full object-contain">
@@ -145,12 +238,12 @@
 
             <!-- Right: Intelligence Map Switcher -->
             <div class="lg:col-span-8 flex flex-col min-h-0">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-4 mb-4 shrink-0 gap-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-0 mb-4 shrink-0 gap-4">
                     <div class="flex items-center space-x-6">
-                        <button onclick="switchMap('intel')" id="btn-intel" class="text-[10px] font-bold text-white uppercase tracking-[0.2em] border-b-2 border-[var(--primary)] pb-2 -mb-[17px] transition-colors">RSIS Global</button>
-                        <button onclick="switchMap('uksf')" id="btn-uksf" class="text-[10px] font-bold text-gray-600 hover:text-white uppercase tracking-[0.2em] pb-2 -mb-[17px] transition-colors">Unit Locations</button>
+                        <button onclick="switchMap('intel')" id="btn-intel" class="text-[10px] font-bold text-white uppercase tracking-[0.2em] border-b-2 border-[var(--primary)] pb-4 -mb-px transition-all duration-300">RSIS Global</button>
+                        <button onclick="switchMap('uksf')" id="btn-uksf" class="text-[10px] font-bold text-gray-600 hover:text-white uppercase tracking-[0.2em] border-b-2 border-transparent pb-4 -mb-px transition-all duration-300">Unit Locations</button>
                     </div>
-                    <div class="text-right hidden sm:block">
+                    <div class="text-right hidden sm:block pb-4">
                         <span class="block text-[7px] font-mono text-gray-600 uppercase tracking-widest">Network: {{ site.Params.intelligence.network | default "RSIS_GLOBAL" }}</span>
                         <span class="block text-[7px] font-mono text-green-500 uppercase tracking-widest font-black">LIVE_SYNC</span>
                     </div>
@@ -218,11 +311,11 @@
                 mapUksf.classList.remove('opacity-0', 'pointer-events-none');
                 mapIntel.classList.add('opacity-0', 'pointer-events-none');
                 
-                btnUksf.classList.add('text-white', 'border-b-2', 'border-[var(--primary)]');
+                btnUksf.classList.add('text-white', 'border-[var(--primary)]');
                 btnUksf.classList.remove('text-gray-600', 'border-transparent');
                 
                 btnIntel.classList.add('text-gray-600', 'border-transparent');
-                btnIntel.classList.remove('text-white', 'border-[var(--primary)]', 'border-b-2');
+                btnIntel.classList.remove('text-white', 'border-[var(--primary)]');
             }
         }
     </script>
