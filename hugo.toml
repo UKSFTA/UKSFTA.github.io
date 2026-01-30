@@ -34,6 +34,10 @@ canonifyurls = true
   node_id = "JSFC-01"
   classification = "OFFICIAL_SENSITIVE"
 
+[params.discord]
+  enabled = true
+  server_id = "1321236261553573928"
+
 [module]
   [module.hugoVersion]
     extended = true
