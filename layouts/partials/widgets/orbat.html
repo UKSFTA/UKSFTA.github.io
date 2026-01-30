@@ -1,27 +1,32 @@
 {{ $orbat := .Site.Data.orbat_v2 }}
 {{ $units := .Site.Data.units }}
 
-<div class="orbat-proper flex flex-col items-center">
-    <!-- Visual Branding -->
-    <div class="w-full text-center mb-16 space-y-4">
-        <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.6em] font-black">Tactical Command Hierarchy</span>
-        <div class="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent"></div>
-    </div>
+<div class="orbat-canvas-area relative w-[5000px] h-[5000px]">
+    <!-- SVG Connector Layer -->
+    <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-none">
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(179, 153, 93, 0.3)" />
+            </marker>
+        </defs>
+        {{ range $orbat.links }}
+        <line class="orbat-link" data-source="{{ .source }}" data-target="{{ .target }}" 
+              x1="0" y1="0" x2="0" y2="0" 
+              stroke="rgba(179, 153, 93, 0.2)" stroke-width="1" marker-end="url(#arrowhead)" />
+        {{ end }}
+    </svg>
 
-    <!-- Tree Container -->
-    <div class="tf-tree">
-        <ul>
-            <li>
-                {{ partial "widgets/orbat-node.html" (dict "node" $orbat "units" $units "Site" .Site) }}
-            </li>
-        </ul>
-    </div>
-
-    <!-- Disclaimer / Legend -->
-    <div class="mt-20 p-6 border border-white/5 bg-white/[0.01] max-w-2xl text-center">
-        <p class="text-[9px] font-mono text-gray-600 uppercase leading-relaxed m-0">
-            Institutional Order of Battle (ORBAT) v2.0 // Deep Recon & Special Operations Command.
-            Live synchronization active. Unauthorized reproduction strictly prohibited.
-        </p>
+    <!-- Node Layer -->
+    <div id="orbat-nodes-layer" class="absolute inset-0">
+        {{ range $orbat.nodes }}
+        <div class="orbat-node-wrapper absolute transform -translate-x-1/2 -translate-y-1/2" 
+             id="node-{{ .id }}" 
+             style="left: calc(2500px + {{ .x }}px); top: calc(2500px + {{ .y }}px);"
+             data-id="{{ .id }}"
+             data-x="{{ .x }}"
+             data-y="{{ .y }}">
+            {{ partial "widgets/orbat-node.html" (dict "node" . "units" $units "Site" $.Site) }}
+        </div>
+        {{ end }}
     </div>
 </div>
