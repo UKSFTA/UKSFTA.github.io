@@ -485,23 +485,6 @@
       display: none;
     }
   }
-
-  .badge-icon {
-    filter: brightness(0) invert(1) opacity(0.8);
-    transition: all 0.5s ease;
-    
-    &.gold {
-      filter: brightness(0) saturate(100%) invert(72%) sepia(18%) saturate(1042%) hue-rotate(1deg) brightness(92%) contrast(88%);
-    }
-
-    &:hover {
-      filter: brightness(0) invert(1) opacity(1);
-      
-      &.gold {
-        filter: brightness(0) saturate(100%) invert(72%) sepia(18%) saturate(1042%) hue-rotate(1deg) brightness(105%) contrast(100%) drop-shadow(0 0 10px rgb(179 153 93 / 40%));
-      }
-    }
-  }
 }
 
 @layer utilities {

@@ -13,19 +13,17 @@
             </div>
 
             <div class="relative z-10 flex flex-col h-full space-y-0">
-                                                    <!-- 1. HEADER SECTION -->
-                                                    <div class="h-24 flex justify-between items-start border-b border-white/5 pb-4 mb-6">
-                                                        <div class="w-14 h-14 border border-white/10 p-2 flex items-center justify-center bg-zinc-900/40 group-hover:border-white transition-all duration-500 rounded-full overflow-hidden">
-                                                            {{ $icon := resources.Get .icon }}
-                                                            {{ if $icon }}
-                                                                <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="max-w-[80%] max-h-[80%] object-contain badge-icon gold transition-all duration-500">
-                                                            {{ else }}
-                                                                <span class="font-bold text-xl text-white">{{ upper $id }}</span>
-                                                            {{ end }}
-                                                        </div>
-                                        
-                            
-                                <div class="flex flex-col items-end text-right">
+                                                                            <!-- 1. HEADER SECTION -->
+                                                                            <div class="h-24 flex justify-between items-start border-b border-white/5 pb-4 mb-6">
+                                                                                <div class="w-14 h-14 border border-white/10 p-2 flex items-center justify-center bg-zinc-900/40 group-hover:border-white transition-all duration-500 rounded-full overflow-hidden">
+                                                                                    {{ $icon := resources.Get .icon }}
+                                                                                    {{ if $icon }}
+                                                                                        <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="max-w-[80%] max-h-[80%] object-contain transition-all duration-500">
+                                                                                    {{ else }}
+                                                                                        <span class="font-bold text-xl text-white">{{ upper $id }}</span>
+                                                                                    {{ end }}
+                                                                                </div>
+                                                                                                <div class="flex flex-col items-end text-right">
                                     <span class="text-[10px] font-mono text-white font-black tracking-widest">{{ .display_id | default (upper $id) }}</span>
                                     <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest mt-1">Tier {{ if or (eq $id "sas") (eq $id "sbs") (eq $id "srr") }}1{{ else }}2{{ end }} // Active</span>
                                 </div>
