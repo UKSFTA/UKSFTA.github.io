@@ -575,37 +575,52 @@
     background: rgb(179 153 93 / 5%);
   }
 
-  /* ORBAT Card Styling (Obsidian Style) */
+  /* ORBAT Card Styling (Institutional Style) */
   .orbat-node-card {
-    transition: box-shadow 0.2s, border-color 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     user-select: none;
+    background: rgb(0 0 0 / 80%) !important;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 40px rgb(0 0 0 / 50%);
   }
 
   .orbat-node-card:hover {
-    border-color: rgb(179 153 93 / 40%);
+    border-color: var(--primary);
+    box-shadow: 0 0 30px var(--primary-glow);
   }
 
-  /* Connection Points */
+  .orbat-link {
+    filter: drop-shadow(0 0 5px var(--primary-glow));
+    transition: stroke 0.3s, stroke-width 0.3s;
+  }
+
+  .orbat-link:hover {
+    stroke: var(--primary);
+    stroke-width: 3px;
+  }
+
+  /* Connection Points - Institutional UI */
   .c-point {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background: var(--primary);
-    border-radius: 50%;
+    border: 2px solid black;
     pointer-events: auto;
     cursor: crosshair;
     opacity: 0;
-    transition: opacity 0.2s, transform 0.2s;
+    transition: all 0.2s;
     z-index: 100;
   }
 
-  .orbat-node-card:hover .c-point {
-    opacity: 0.6;
+  .orbat-node-wrapper:hover .c-point {
+    opacity: 0.4;
   }
 
   .c-point:hover {
     opacity: 1 !important;
-    transform: scale(1.3);
+    transform: scale(1.5);
+    box-shadow: 0 0 15px var(--primary);
   }
 
   .c-point.top {
@@ -632,28 +647,29 @@
     transform: translate(-50%, -50%);
   }
 
-  /* ORBAT Canvas Implementation */.orbat-canvas-viewport {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #020202;
-  overflow: hidden;
-  z-index: 5000;
-}
+  /* ORBAT Canvas Implementation */
+  .orbat-canvas-viewport {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #020202;
+    overflow: hidden;
+    z-index: 5000;
+  }
 
-.orbat-canvas-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: 
-    radial-gradient(circle at center, rgb(179 153 93 / 3%) 0%, transparent 70%),
-    linear-gradient(to right, rgb(255 255 255 / 2%) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 2%) 1px, transparent 1px);
-  background-size: 100% 100%, 40px 40px, 40px 40px;
-}
+  .orbat-canvas-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: 
+      radial-gradient(circle at center, rgb(179 153 93 / 5%) 0%, transparent 70%),
+      linear-gradient(to right, rgb(255 255 255 / 3%) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 3%) 1px, transparent 1px);
+    background-size: 100% 100%, 50px 50px, 50px 50px;
+  }
 
 .orbat-canvas-content {
   transform-origin: center center;

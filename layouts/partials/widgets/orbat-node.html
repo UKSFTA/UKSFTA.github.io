@@ -11,44 +11,59 @@
     {{ end }}
 {{ end }}
 
-<div class="orbat-node-card h-full flex flex-col bg-[#1a1a1a] border border-white/10 rounded-md overflow-hidden relative group/card">
-    <!-- Node Header (Like Obsidian) -->
-    <div class="px-4 py-2 bg-white/[0.03] border-b border-white/5 flex justify-between items-center shrink-0">
-        <div class="flex items-center space-x-2">
+<div class="orbat-node-card h-full flex flex-col bracket-box bg-black/80 backdrop-blur-xl !p-0 overflow-hidden relative group/card border-white/5">
+    <!-- Node Header: Institutional Terminal Style -->
+    <div class="px-4 py-2.5 bg-white/[0.03] border-b border-white/10 flex justify-between items-center shrink-0">
+        <div class="flex items-center space-x-3 min-w-0">
             {{ if $node.icon }}
             {{ $icon := resources.Get $node.icon }}
             {{ if $icon }}
-            <img src="{{ $icon.RelPermalink }}" class="w-4 h-4 object-contain opacity-60" data-icon-path="{{ $node.icon }}">
+            <img src="{{ $icon.RelPermalink }}" class="w-4 h-4 object-contain opacity-60 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all" data-icon-path="{{ $node.icon }}">
             {{ end }}
             {{ end }}
-            <span class="text-[9px] font-black text-white/40 uppercase tracking-widest font-mono truncate">{{ $node.callsign | default "NODE" }}</span>
+            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest truncate">{{ $node.callsign | default "NODE_ID" }}</span>
         </div>
         
         <!-- Admin Structural Controls -->
-        <div class="admin-controls flex space-x-1 opacity-0 group-hover/card:opacity-100 transition-opacity hidden">
-            <div class="node-drag-handle p-1 hover:text-[var(--primary)] cursor-move">✥</div>
-            <button onclick="removeOrbatNode(this)" class="p-1 hover:text-red-500">×</button>
+        <div class="admin-controls flex items-center space-x-2 opacity-0 group-hover/card:opacity-100 transition-opacity hidden">
+            <div class="node-drag-handle text-gray-600 hover:text-[var(--primary)] cursor-move transition-colors text-xs">✥</div>
+            <button onclick="removeOrbatNode(this)" class="text-gray-600 hover:text-red-500 transition-colors text-xs">×</button>
         </div>
     </div>
 
-    <!-- Node Body -->
-    <div class="p-4 flex-grow overflow-y-auto custom-scrollbar space-y-4 pointer-events-auto">
-        <h5 class="text-sm font-bold text-white uppercase tracking-tight m-0 editable-field" data-key="name">{{ $node.name }}</h5>
+    <!-- Node Body: Dossier Node Style -->
+    <div class="p-5 flex-grow overflow-y-auto custom-scrollbar pointer-events-auto relative">
+        <div class="space-y-4">
+            <div class="border-l-2 border-[var(--primary)] pl-4">
+                <h5 class="text-sm font-black text-white uppercase tracking-tighter m-0 editable-field" data-key="name">{{ $node.name }}</h5>
+                {{ with $node.role }}
+                <p class="text-[7px] text-gray-500 font-mono uppercase mt-1">{{ . }}</p>
+                {{ end }}
+            </div>
 
-        <!-- Personnel List (Dynamic) -->
-        {{ if $unitPersonnel }}
-        <div class="space-y-1.5 pt-2 border-t border-white/5">
-            {{ range $unitPersonnel }}
-            <div class="flex justify-between items-center text-[8px] font-mono {{ if .is_leadership }}text-[var(--primary)]{{ end }}">
-                <span class="opacity-50 uppercase">{{ .rank }}</span>
-                <span class="font-bold">{{ .name }}</span>
+            <!-- Personnel List -->
+            {{ if $unitPersonnel }}
+            <div class="space-y-2 pt-4 border-t border-white/5">
+                {{ range $unitPersonnel }}
+                <div class="flex justify-between items-center text-[8px] font-mono {{ if .is_leadership }}text-[var(--primary)] font-black{{ else }}text-gray-400{{ end }}">
+                    <div class="flex items-center space-x-2">
+                        <span class="opacity-40 uppercase">{{ .rank }}</span>
+                        {{ if .leadership_type }}
+                        <span class="text-[6px] bg-[var(--primary)] text-black px-1 font-black">{{ .leadership_type }}</span>
+                        {{ end }}
+                    </div>
+                    <span class="truncate ml-4">{{ .name }}</span>
+                </div>
+                {{ end }}
             </div>
             {{ end }}
         </div>
-        {{ end }}
     </div>
 
-    <!-- Obsidian-style Edge Connection Points (Visible in Edit Mode) -->
+    <!-- Institutional Scan Line Overlay -->
+    <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--primary)]/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
+
+    <!-- Obsidian-style Edge Connection Points -->
     <div class="connection-points absolute inset-0 pointer-events-none hidden">
         <div class="c-point top" onmousedown="startDrawingLink(event, 'top')"></div>
         <div class="c-point right" onmousedown="startDrawingLink(event, 'right')"></div>
