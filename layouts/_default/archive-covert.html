@@ -8,130 +8,158 @@
 
 {{ $units := .Site.Data.units }}
 
-<!-- 1. SIS EXECUTIVE INTERFACE: Restricted Entry -->
-<section class="min-h-dvh flex flex-col bg-black relative overflow-hidden snap-start lg:justify-center">
-    <!-- Immersive Background Layers -->
-    <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2400" 
-             class="w-full h-full object-cover opacity-30 grayscale brightness-[0.3]" alt="">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black"></div>
-        <div class="absolute inset-0 bg-grid-white opacity-10"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(179,153,93,0.15),transparent_70%)]"></div>
+<!-- 1. SIS EXECUTIVE PORTAL: Interface Entry -->
+<section class="min-h-dvh flex flex-col bg-[#020202] relative overflow-hidden snap-start">
+    <!-- OS Layer: Interface Grid -->
+    <div class="absolute inset-0 z-0 os-interface-grid opacity-20"></div>
+    <div class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_0%,rgba(179,153,93,0.05),transparent_50%)]"></div>
+
+    <!-- Tier 1: OS Status Bar -->
+    <div class="relative z-20 w-full h-8 bg-black/80 border-b border-white/5 flex items-center px-6 justify-between">
+        <div class="flex items-center space-x-6">
+            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest font-black">OS: RSIS_KERN_6.1</span>
+            <div class="flex items-center space-x-2">
+                <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-[8px] font-mono text-green-500 uppercase font-black">Uplink: NOMINAL</span>
+            </div>
+        </div>
+        <div class="flex items-center space-x-8">
+            <span class="text-[8px] font-mono text-gray-600 uppercase">Registry: UK-JSFC-SIS</span>
+            <span class="text-[8px] font-mono text-[var(--primary)] font-black">ENC: AES_256_RSA</span>
+        </div>
     </div>
 
-    <!-- Animated Scanlines -->
-    <div class="absolute inset-0 pointer-events-none opacity-20 hud-image"></div>
+    <!-- Main OS Interface -->
+    <div class="flex-1 flex flex-col relative z-10">
+        <!-- Header Space Accounted -->
+        <div class="h-[132px] w-full"></div>
 
-    <div class="container-uksf relative z-10 w-full py-24">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
-            <!-- Left: Agency Identity -->
-            <div class="lg:col-span-8 space-y-12">
-                <div class="space-y-8">
-                    <div class="flex items-center space-x-8">
-                        {{ $rsis_logo := resources.Get "icons/RSIS.png" }}
-                        {{ if $rsis_logo }}
-                        <div class="relative">
-                            <div class="absolute -inset-4 bg-[var(--primary)]/10 blur-xl rounded-full opacity-50"></div>
-                            <img src="{{ $rsis_logo.RelPermalink }}" class="h-24 w-auto badge-icon gold relative" alt="RSIS">
-                        </div>
-                        {{ end }}
-                        <div class="flex flex-col space-y-3">
-                            <div class="flex items-center space-x-4 animate-pulse">
-                                <span class="w-2.5 h-2.5 bg-red-600 rounded-full"></span>
-                                <span class="text-[11px] font-mono text-red-500 font-black uppercase tracking-[0.5em]">Secure Uplink: ESTABLISHED // UKSFTA_SIGINT</span>
-                            </div>
-                            <span class="sub-header text-[var(--primary)] m-0 block typewriter-text w-fit">Joint Command Intelligence Node // Royal Secret Intelligence Service</span>
-                        </div>
-                    </div>
-                    
-                    <h1 class="text-6xl md:text-8xl lg:text-9xl tracking-tighter text-white leading-none font-black uppercase">
-                        ORBAT <br><span class="text-gray-600">Access.</span>
-                    </h1>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="dossier-node !mb-0 border-l-2 border-[var(--primary)]/40 bg-white/[0.02] p-8">
-                        <p class="text-xl font-light text-gray-400 leading-relaxed italic">
-                            "Strategic superiority through technical intelligence and deniable action. Maintaining the Taskforce sovereign edge."
-                        </p>
-                    </div>
-                    <div class="flex flex-col justify-center space-y-6">
-                        <div class="flex items-center space-x-6 text-[10px] font-mono text-gray-500">
-                            <span class="uppercase tracking-widest">Authority: UKSFTA-SIS</span>
-                            <div class="w-px h-4 bg-white/10"></div>
-                            <span class="uppercase tracking-widest text-[var(--primary)]">Clearance: STRATSEC</span>
-                        </div>
-                        <div class="h-px w-full bg-gradient-to-r from-[var(--primary)]/40 to-transparent"></div>
-                        <p class="text-[10px] font-mono text-gray-600 uppercase tracking-widest leading-loose">Authorized personnel only. Registry access logged and monitored under Operational Protocol 99-A.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Dynamic Data Signature -->
-            <div class="lg:col-span-4 hidden lg:block">
-                <div class="bracket-box bg-black/60 backdrop-blur-3xl border-white/5 !p-10 space-y-10 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4">
-                        <span class="text-[8px] font-mono text-[var(--primary)]/40">DV_VETTING_v2.6</span>
-                    </div>
-                    
+        <div class="container-uksf flex-1 flex flex-col justify-center py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                
+                <!-- Left: Directorate Meta & Branding -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-12">
                     <div class="space-y-8">
-                        <!-- Personnel Biometrics -->
-                        <div class="space-y-4">
-                            <span class="text-[9px] font-mono text-gray-600 uppercase tracking-widest font-black block border-b border-white/5 pb-2">Biometric Verification (DV)</span>
-                            <div class="flex items-end space-x-1 h-16">
-                                {{ range (seq 20) }}
-                                <div class="w-1 bg-[var(--primary)]/40 animate-pulse" style="height: {{ (add 30 (mul (add . 13) 7)) | mod 100 }}%;"></div>
-                                {{ end }}
+                        <div class="flex items-center space-x-10 animate-slide-in-left">
+                            {{ $rsis_logo := resources.Get "icons/RSIS.png" }}
+                            {{ if $rsis_logo }}
+                            <div class="relative group">
+                                <div class="absolute -inset-4 bg-[var(--primary)]/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <img src="{{ $rsis_logo.RelPermalink }}" class="h-32 w-auto badge-icon gold relative" alt="RSIS">
+                            </div>
+                            {{ end }}
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-4">
+                                    <span class="status-tag text-red-500 border-red-500/20 bg-red-500/5">Level 6 Authorization</span>
+                                    <span class="status-tag text-[var(--primary)] border-[var(--primary)]/20 bg-[var(--primary)]/5">Authenticated</span>
+                                </div>
+                                <h1 class="text-6xl md:text-8xl lg:text-9xl tracking-tighter text-white leading-none font-black uppercase m-0">
+                                    Directorate <br><span class="text-gray-600">Portal.</span>
+                                </h1>
                             </div>
                         </div>
 
-                        <!-- Data Nodes -->
-                        <div class="space-y-4 pt-4 border-t border-white/5">
-                            <div class="flex justify-between items-center">
-                                <span class="text-[8px] font-mono text-gray-600 uppercase">Uplink Bridge</span>
-                                <span class="text-[10px] font-mono text-white">SIGINT_HUB_JSFC</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-[8px] font-mono text-gray-600 uppercase">Vetting Status</span>
-                                <span class="text-[10px] font-mono text-uksf-gold font-bold">DV_CLEARED</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-[8px] font-mono text-gray-600 uppercase">Targeting ID</span>
-                                <span class="text-[10px] font-mono text-gray-400 uppercase">{{ upper (substr (sha256 now) 0 12) }}</span>
-                            </div>
+                        <div class="max-w-2xl border-l-2 border-[var(--primary)]/40 bg-white/[0.02] p-8 backdrop-blur-sm">
+                            <p class="text-[11px] font-mono text-gray-500 uppercase tracking-widest leading-loose mb-4">// EXECUTIVE_DIRECTIVE</p>
+                            <p class="text-xl font-light text-gray-300 leading-relaxed italic m-0">
+                                "Welcome back, Director. Terminal node synchronized. The Joint Special Forces Command Directorate oversees all clandestine operations, strategic SIGINT, and deniable assets."
+                            </p>
                         </div>
                     </div>
 
-                    <div class="pt-6">
-                        <div class="flex items-center space-x-4 bg-[var(--primary)]/5 border border-[var(--primary)]/20 p-4">
-                            <div class="relative flex h-2 w-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--primary)]"></span>
-                            </div>
-                            <span class="text-[9px] font-mono text-white font-black uppercase tracking-widest">BRIDGE_LINK: ACTIVE</span>
+                    <!-- Global Operations Telemetry -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div class="telemetry-node">
+                            <span class="text-[7px] font-mono text-gray-600 uppercase block mb-2">London HQ</span>
+                            <span class="text-xs font-mono text-white font-black clock-london tracking-widest">00:00:00</span>
+                        </div>
+                        <div class="telemetry-node">
+                            <span class="text-[7px] font-mono text-gray-600 uppercase block mb-2">Simulation AO</span>
+                            <span class="text-xs font-mono text-white font-black clock-utc tracking-widest">00:00:00</span>
+                        </div>
+                        <div class="telemetry-node">
+                            <span class="text-[7px] font-mono text-gray-600 uppercase block mb-2">Network Nodes</span>
+                            <span class="text-xs font-mono text-[var(--primary)] font-black">4 ACTIVE</span>
+                        </div>
+                        <div class="telemetry-node">
+                            <span class="text-[7px] font-mono text-gray-600 uppercase block mb-2">Intel Integrity</span>
+                            <span class="text-xs font-mono text-green-500 font-black">99.9%</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Right: Asset Access Grid -->
+                <div class="lg:col-span-5 flex flex-col space-y-6">
+                    <div class="bracket-box bg-black/60 backdrop-blur-3xl border-white/5 !p-8 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
+                            <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black">Asset Index (ORBAT)</span>
+                            <span class="text-[8px] font-mono text-gray-700">NODE_01</span>
+                        </div>
+
+                        <div class="space-y-3 flex-1 overflow-y-auto no-scrollbar pr-2">
+                            {{ range $id := slice "int-corps" "srr" "signals" "e-squadron" }}
+                            {{ with (index $units $id) }}
+                            <a href="/{{ $id }}/" class="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 hover:border-[var(--primary)]/40 hover:bg-white/[0.04] transition-all group no-underline">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-black border border-white/5 group-hover:border-[var(--primary)]/40 transition-colors">
+                                        {{ $icon := resources.Get .icon }}
+                                        {{ if $icon }}
+                                            <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="w-6 h-6 object-contain badge-icon gold">
+                                        {{ end }}
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{{ .id }}</span>
+                                        <span class="text-sm font-bold text-gray-400 group-hover:text-white transition-colors uppercase">{{ .name }}</span>
+                                    </div>
+                                </div>
+                                <span class="text-gray-700 group-hover:text-[var(--primary)] transition-colors">→</span>
+                            </a>
+                            {{ end }}
+                            {{ end }}
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/5">
+                            <div class="flex items-center justify-between px-2">
+                                <span class="text-[8px] font-mono text-gray-600 uppercase">Security Check:</span>
+                                <span class="text-[8px] font-mono text-green-500 font-black">DV_VETTING_PASSED</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-
         </div>
     </div>
 
-    <!-- HUD Decorative Elements -->
-    <div class="absolute top-48 left-12 hidden xl:block">
-        <div class="flex flex-col space-y-2 opacity-20">
-            <span class="text-[8px] font-mono text-white uppercase tracking-widest rotate-90 origin-left translate-y-24">GRID: JSFC-01</span>
-            <span class="text-[8px] font-mono text-white uppercase tracking-widest rotate-90 origin-left translate-y-48">ZONE: COVERT_SIS</span>
-        </div>
-    </div>
-
-    <!-- Scrolling CTA -->
-    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4">
-        <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.6em] animate-bounce">Access Asset ORBAT</span>
-        <div class="w-px h-16 bg-gradient-to-b from-[var(--primary)] to-transparent"></div>
+    <!-- Scrolling HUD Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4 opacity-40">
+        <span class="text-[8px] font-mono text-white uppercase tracking-[0.5em] animate-pulse">Scroll to Access Intelligence Corps Dossiers</span>
+        <div class="w-px h-12 bg-gradient-to-b from-[var(--primary)] to-transparent"></div>
     </div>
 </section>
+
+<script>
+    function updatePortalClocks() {
+        const now = new Date();
+        
+        // London Time
+        const london = new Intl.DateTimeFormat('en-GB', {
+            hour: '2-digit', minute: '2-digit', second: '2-digit',
+            timeZone: 'Europe/London'
+        }).format(now);
+        
+        // UTC Time
+        const utc = new Intl.DateTimeFormat('en-GB', {
+            hour: '2-digit', minute: '2-digit', second: '2-digit',
+            timeZone: 'UTC'
+        }).format(now);
+
+        document.querySelectorAll('.clock-london').forEach(el => el.innerText = london);
+        document.querySelectorAll('.clock-utc').forEach(el => el.innerText = utc);
+    }
+    setInterval(updatePortalClocks, 1000);
+    updatePortalClocks();
+</script>
 
 <!-- 2. INTEL CORPS (DIRECTORATE S) -->
 <section class="min-h-dvh flex flex-col bg-black border-y border-white/5 snap-start relative py-12 lg:py-0 lg:justify-center overflow-hidden">
@@ -190,44 +218,49 @@
 </section>
 
 <!-- 3. OPERATIONAL DETACHMENTS (AOR) -->
-<section id="intel-map-section" class="min-h-dvh flex flex-col bg-black snap-start relative py-12 lg:py-0 lg:justify-center">
-    <div class="container-uksf flex flex-col pt-4 pb-4">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+<section id="intel-map-section" class="min-h-dvh flex flex-col bg-[#020202] snap-start relative py-12 lg:py-0 lg:justify-center border-t border-white/5">
+    <div class="absolute inset-0 z-0 os-interface-grid opacity-10"></div>
+    
+    <div class="container-uksf flex flex-col pt-4 pb-4 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
             
-            <!-- Left: Operational Units & Live Dashboards -->
-            <div class="lg:col-span-4 flex flex-col space-y-6">
-                <div class="space-y-3 mb-2 shrink-0">
+            <!-- Left: Strategic Overview & Live Comms -->
+            <div class="lg:col-span-4 flex flex-col space-y-8">
+                <div class="space-y-4 shrink-0">
                     <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-bold text-[var(--primary)] uppercase tracking-[0.4em]">Asset Inventory</span>
-                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse-fast"></span>
+                        <span class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black">Strategic Detachments</span>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse-fast"></span>
+                            <span class="text-[8px] font-mono text-green-500 font-black">LIVE</span>
+                        </div>
                     </div>
-                    <h2 class="text-3xl lg:text-4xl leading-none tracking-tighter text-white uppercase">Operational <br>Detachments</h2>
+                    <h2 class="text-4xl lg:text-5xl leading-none tracking-tighter text-white uppercase font-black">Asset <br>Registry</h2>
+                    <div class="h-px w-full bg-gradient-to-r from-[var(--primary)]/20 to-transparent"></div>
                 </div>
 
-                <!-- LIVE DASHBOARDS -->
-                <div class="space-y-4 mb-2 shrink-0">
+                <div class="space-y-4 shrink-0">
                      {{ partial "widgets/unitcommander.html" (dict) }}
                      {{ partial "widgets/discord.html" (dict) }}
                 </div>
 
-                <div class="space-y-2 flex-grow">
+                <div class="space-y-3 flex-grow overflow-y-auto no-scrollbar">
+                    <p class="text-[9px] font-mono text-gray-600 uppercase tracking-widest mb-4">// SELECT_ASSET_NODE</p>
                     {{ range $id := slice "int-corps" "srr" "signals" "e-squadron" }}
                     {{ with (index $units $id) }}
-                    <a href="/{{ $id }}/" class="block p-3 bg-white/[0.02] border border-white/5 hover:border-[var(--primary)]/40 group transition-all duration-500 no-underline relative">
-                        <div class="absolute top-0 left-0 w-1 h-full bg-white/5 group-hover:bg-[var(--primary)] transition-colors duration-500"></div>
-                        
-                        <div class="flex items-center space-x-3">
+                    <a href="/{{ $id }}/" class="group flex items-center justify-between p-4 bg-black/40 border border-white/5 hover:border-[var(--primary)]/40 hover:bg-white/[0.02] transition-all no-underline">
+                        <div class="flex items-center space-x-4">
                             <div class="w-8 h-8 flex items-center justify-center">
                                  {{ $icon := resources.Get .icon }}
                                  {{ if $icon }}
-                                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="w-full h-full object-contain badge-icon gold">
+                                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="w-full h-full object-contain badge-icon gold opacity-60 group-hover:opacity-100 transition-opacity">
                                  {{ end }}
                             </div>
                             <div class="flex flex-col">
-                                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{{ .id }}</span>
-                                    <span class="text-sm font-bold text-gray-400 group-hover:text-white transition-colors uppercase tracking-widest leading-none">{{ .name }}</span>
+                                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{{ .id }}</span>
+                                <span class="text-sm font-bold text-gray-400 group-hover:text-white transition-colors uppercase leading-none">{{ .name }}</span>
                             </div>
                         </div>
+                        <span class="text-gray-800 group-hover:text-[var(--primary)] group-hover:translate-x-1 transition-all">→</span>
                     </a>
                     {{ end }}
                     {{ end }}
