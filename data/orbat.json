@@ -1,49 +1,87 @@
 {
   "title": "Taskforce Alpha Order of Battle",
-  "version": "ORBAT-2026-01",
+  "version": "ORBAT-2026-01-REV2",
   "status": "OFFICIAL_RESTRICTED",
   "command": {
     "name": "Taskforce Headquarters (TFHQ)",
+    "callsign": "0-",
+    "commander": "Maj. Ross Buh",
+    "sub_commander": "WO2 N. Hodge",
     "location": "Northwood HQ",
-    "commander": "J2 Directorate",
     "integrity": "99.9%"
   },
-  "sections": [
+  "branches": [
     {
-      "name": "Direct Action Element (Tier 1)",
+      "name": "Direct Support & Training",
       "units": [
         {
-          "id": "sas",
-          "name": "22 SAS",
-          "detachments": [
-            { "name": "A Squadron (Air)", "readiness": "R1", "strength": "16/16", "tasking": "CT/HR" },
-            { "name": "B Squadron (Mobility)", "readiness": "R2", "strength": "12/16", "tasking": "Deep Recon" }
-          ]
+          "name": "Intelligence Cell",
+          "commander": "Cmdr. J. Shaw",
+          "staff": ["2Lt. C. Agnew"]
         },
         {
-          "id": "sbs",
-          "name": "SBS",
-          "detachments": [
-            { "name": "M Squadron", "readiness": "R1", "strength": "14/16", "tasking": "Maritime Strike" }
-          ]
+          "name": "SFSG Training Plt",
+          "callsign": "Bulldog 10",
+          "personnel": ["Tpr Mirai", "Tpr Toni", "Pte Nyuu.exe", "Pte J. Smith", "Pte G. Mockett", "Rct C. Quack", "Rct R. Holding", "Rct Odin", "Rct cassius2", "Rct notkongou"]
+        },
+        {
+          "name": "Medical Det",
+          "callsign": "Bulldog 15",
+          "commander": "LCpl L. Hjelm",
+          "personnel": ["Tpr Coburn", "Tpr Parkie", "Tpr Sophie", "Tpr Omega"]
         }
       ]
     },
     {
-      "name": "Support & Integration (Tier 2)",
+      "name": "Specialist Elements",
       "units": [
         {
-          "id": "asob",
-          "name": "ASOB (Rangers)",
+          "name": "JSFAW",
+          "callsign": "Guardian 2-0",
+          "commander": "Flt Lt. M. Müller",
           "detachments": [
-            { "name": "1 RANGERS", "readiness": "R1", "strength": "24/24", "tasking": "Partner Integration" }
+            { "name": "Fixed Wing (21)", "personnel": ["FgOff Hans"] },
+            { "name": "Rotary (22)", "personnel": ["FgOff Hans"] }
           ]
         },
         {
-          "id": "sfsg",
-          "name": "SFSG",
-          "detachments": [
-            { "name": "1 Para (Support)", "readiness": "R1", "strength": "32/32", "tasking": "Ground Support" }
+          "name": "1 Troop RAC",
+          "callsign": "Panzer 14",
+          "status": "Operational Readiness"
+        }
+      ]
+    },
+    {
+      "name": "UKSF (Tier 1)",
+      "units": [
+        {
+          "name": "SAS Troop",
+          "callsign": "Sabre 3-0",
+          "command": ["Cpl Arbo", "LCpl Shane"],
+          "teams": [
+            { "name": "Team Alpha (3-1)", "personnel": ["Tpr Coburn", "Tpr S. Lewis", "Tpr Sophie", "Tpr Aidan", "Tpr Splinter", "Tpr Omega", "Cpl Arbo", "LCpl Shane"] },
+            { "name": "Team Bravo (3-2)", "personnel": [] },
+            { "name": "Team Charlie (3-3)", "personnel": [] }
+          ]
+        },
+        {
+          "name": "SBS Troop",
+          "callsign": "Trident 4-0",
+          "command": ["Cpl Wolf"],
+          "teams": [
+            { "name": "Team Alpha (4-1)", "personnel": ["Tpr Brett", "Tpr Roach", "Tpr Amy", "Cpl Wolf", "LCpl L. Hjelm"] },
+            { "name": "Team Bravo (4-2)", "personnel": [] },
+            { "name": "Team Charlie (4-3)", "personnel": [] }
+          ]
+        },
+        {
+          "name": "SRR Troop",
+          "callsign": "Raven 5-0",
+          "command": ["Sgt M. Barker [MC.]"],
+          "teams": [
+            { "name": "Team Alpha (5-1)", "personnel": ["Tpr Parkie", "Tpr Brooks", "Tpr J. Smout", "Tpr Derry", "Sgt M. Barker [MC.]"] },
+            { "name": "Team Bravo (5-2)", "personnel": [] },
+            { "name": "Team Charlie (5-3)", "personnel": [] }
           ]
         }
       ]
