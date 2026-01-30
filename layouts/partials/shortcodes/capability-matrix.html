@@ -16,12 +16,13 @@
                                         <!-- 1. HEADER SECTION -->
                                         <div class="h-24 flex justify-between items-start border-b border-white/5 pb-4 mb-6">
                                             <div class="logo-plate w-14 h-14 p-2 rounded-full shadow-lg group-hover:border-white transition-all duration-500">
-                                                {{ $icon := resources.Get .icon }}
-                                                {{ if $icon }}
-                                                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="max-w-[80%] max-h-[80%] object-contain transition-all duration-500">
-                                                {{ else }}
-                                                    <span class="font-bold text-xl text-zinc-800">{{ upper $id }}</span>
-                                                {{ end }}
+                                                                    {{ $icon := resources.Get .icon }}
+                                                                    {{ if $icon }}
+                                                                        <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="max-w-[80%] max-h-[80%] object-contain transition-all duration-500">
+                                                                    {{ else }}
+                                                                        <span class="font-bold text-xl text-white">{{ upper $id }}</span>
+                                                                    {{ end }}
+                                                
                                             </div>
                             
                                 <div class="flex flex-col items-end text-right">
