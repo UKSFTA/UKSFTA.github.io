@@ -211,11 +211,20 @@ window.addEventListener('mousemove', (e) => {
 
 window.addEventListener('mouseup', () => {
     if (isDraggingNode && dragNode) {
-        let x = parseFloat(dragNode.getAttribute('data-x')); let y = parseFloat(dragNode.getAttribute('data-y'));
-        x = Math.round(x / SNAP_SIZE) * SNAP_SIZE; y = Math.round(y / SNAP_SIZE) * SNAP_SIZE;
-        dragNode.setAttribute('data-x', x); dragNode.setAttribute('data-y', y);
-        dragNode.style.left = `${OFFSET + x}px`; dragNode.style.top = `${OFFSET + y}px`;
+        // HARD SNAP TO GRID
+        let x = parseFloat(dragNode.getAttribute('data-x'));
+        let y = parseFloat(dragNode.getAttribute('data-y'));
+        
+        const snapX = Math.round(x / SNAP_SIZE) * SNAP_SIZE;
+        const snapY = Math.round(y / SNAP_SIZE) * SNAP_SIZE;
+        
+        dragNode.setAttribute('data-x', snapX);
+        dragNode.setAttribute('data-y', snapY);
+        dragNode.style.left = `${OFFSET + snapX}px`;
+        dragNode.style.top = `${OFFSET + snapY}px`;
+        
         updateLinks();
+        showToast(`NODE_LOCKED: [${snapX}, ${snapY}]`);
     }
     isPanning = false; isDraggingNode = false; dragNode = null;
 });
@@ -305,26 +314,44 @@ window.toggleEditMode = function() {
 };
 
 window.centerView = function() {
-    const tfhq = document.getElementById('node-tfhq');
+    // 1. Reset Scale for consistent math
+    scale = 0.8;
+    
+    // 2. Get viewport center
+    const vW = canvas.clientWidth;
+    const vH = canvas.clientHeight;
+    
+    // 3. Target TFHQ coordinates (or first node)
+    const tfhq = document.getElementById('node-tfhq') || document.querySelector('.orbat-node-wrapper');
     if (tfhq) {
-        const x = parseFloat(tfhq.getAttribute('data-x'));
-        const y = parseFloat(tfhq.getAttribute('data-y'));
-        translateX = canvas.clientWidth / 2 - x - OFFSET;
-        translateY = canvas.clientHeight / 2 - y - OFFSET;
-        scale = 0.8;
+        const nX = parseFloat(tfhq.getAttribute('data-x'));
+        const nY = parseFloat(tfhq.getAttribute('data-y'));
+        
+        // 4. Calculate translation to center the node
+        // Translation = ViewportCenter - (NodePos * Scale)
+        translateX = (vW / 2) - ((OFFSET + nX) * scale);
+        translateY = (vH / 2) - ((OFFSET + nY) * scale);
+        
         updateTransform();
         showToast('VIEW_CENTERED');
     }
 };
 
 window.addOrbatNodeAt = function(x = 0, y = 0) {
+    // Hard Snap coordinates before creation
+    const snapX = Math.round(x / SNAP_SIZE) * SNAP_SIZE;
+    const snapY = Math.round(y / SNAP_SIZE) * SNAP_SIZE;
+    
     const newId = `unit_${Math.random().toString(36).substr(2, 9)}`;
     const newNode = document.createElement('div');
     newNode.className = 'orbat-node-wrapper absolute shadow-2xl';
     newNode.id = `node-${newId}`;
-    newNode.setAttribute('data-id', newId); newNode.setAttribute('data-x', x); newNode.setAttribute('data-y', y);
+    newNode.setAttribute('data-id', newId); 
+    newNode.setAttribute('data-x', snapX); 
+    newNode.setAttribute('data-y', snapY);
     newNode.setAttribute('data-w', 220); newNode.setAttribute('data-h', 180);
-    newNode.style.left = `${OFFSET + x}px`; newNode.style.top = `${OFFSET + y}px`;
+    newNode.style.left = `${OFFSET + snapX}px`; 
+    newNode.style.top = `${OFFSET + snapY}px`;
     newNode.style.width = '220px'; newNode.style.height = '180px';
     newNode.innerHTML = `
         <div class="orbat-node-card h-full flex flex-col bracket-box bg-black/80 backdrop-blur-xl !p-0 overflow-hidden relative group/card border-white/5 pointer-events-auto">
