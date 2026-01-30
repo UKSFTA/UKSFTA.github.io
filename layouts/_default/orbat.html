@@ -22,57 +22,36 @@
         </div>
     </div>
 
-    <!-- HQ ADMIN INTERFACE -->
-    <div id="hq-admin-bar" class="canvas-overlay bottom-left hidden">
-        <div class="bracket-box bg-black/80 backdrop-blur-2xl border-[var(--primary)]/40 !p-8 space-y-8 shadow-[0_0_50px_rgba(179,153,93,0.1)] min-w-[300px]">
-            <div class="flex items-center justify-between border-b border-white/10 pb-6">
-                <div class="flex items-center space-x-4">
-                    <span class="w-2.5 h-2.5 bg-red-600 rounded-full animate-pulse"></span>
-                    <span class="text-xs font-black text-white tracking-[0.2em] uppercase">HQ_DIRECTORATE_ACCESS</span>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 gap-4">
-                <button onclick="toggleEditMode()" id="edit-mode-btn" class="btn-elite !py-4 !px-6 !text-xs w-full">
-                    ENABLE_STRUCTURAL_EDIT
-                </button>
-                <div class="grid grid-cols-2 gap-4">
-                    <button onclick="addOrbatNode()" class="btn-terminal !py-3 !text-[10px] !text-green-500 !border-green-500/20">
-                        ADD_NEW_NODE
-                    </button>
-                    <button onclick="exportOrbatJSON()" class="btn-terminal !py-3 !text-[10px] !text-[var(--primary)] !border-[var(--primary)]/40">
-                        EXPORT_DATA
-                    </button>
-                </div>
-            </div>
-            
-            <p class="text-[8px] font-mono text-gray-600 uppercase italic leading-relaxed border-t border-white/5 pt-4">
-                Institutional structural oversight enabled. Use with extreme caution.
-            </p>
-        </div>
-    </div>
-
-    <!-- Icon Selection Modal -->
-    <div id="icon-modal" class="fixed inset-0 z-[7000] flex items-center justify-center bg-black/90 backdrop-blur-3xl hidden">
-        <div class="bracket-box bg-black border-[var(--primary)]/40 !p-10 max-w-4xl w-full mx-auto space-y-8 relative overflow-hidden">
-            <div class="flex items-center justify-between border-b border-white/10 pb-6">
-                <div class="flex items-center space-x-4">
-                    <span class="w-2.5 h-2.5 bg-[var(--primary)] rounded-full animate-pulse"></span>
-                    <span class="text-xs font-black text-white tracking-[0.2em] uppercase">SELECT_UNIT_EMBLEM</span>
-                </div>
-                <button onclick="closeIconModal()" class="text-gray-500 hover:text-white transition-colors text-sm uppercase font-mono tracking-widest">[ ESC_CLOSE ]</button>
+    <!-- Obsidian-style HQ Toolbar -->
+    <div id="hq-admin-bar" class="canvas-overlay bottom-center hidden">
+        <div class="canvas-toolbar">
+            <div class="flex items-center px-3 border-r border-white/10 mr-2">
+                <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse mr-3"></span>
+                <span class="text-[9px] font-black text-white uppercase tracking-tighter">HQ_COMMAND</span>
             </div>
 
-            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 max-h-[60vh] overflow-y-auto custom-scrollbar pr-4" id="icon-grid">
-                <!-- Populated by JS -->
-            </div>
+            <button onclick="toggleEditMode()" id="edit-mode-btn" class="toolbar-btn" title="Toggle Edit Mode (E)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            </button>
 
-            <p class="text-[8px] font-mono text-gray-600 uppercase italic border-t border-white/5 pt-6">Select an asset marker to apply to the current node.</p>
+            <div class="toolbar-separator"></div>
+
+            <button onclick="addOrbatNode()" class="toolbar-btn" title="Add New Unit (N)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+            </button>
+
+            <button onclick="centerView()" class="toolbar-btn" title="Center View (C)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+
+            <button onclick="exportOrbatJSON()" class="toolbar-btn" title="Export Data (S)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </button>
         </div>
     </div>
 
     <!-- Notification Overlay (Toasts) -->
-    <div id="toast-container" class="fixed top-8 left-1/2 -translate-x-1/2 z-[6000] flex flex-col items-center space-y-3 pointer-events-none"></div>
+    <div id="toast-container" class="fixed top-8 right-8 z-[6000] flex flex-col items-end space-y-3 pointer-events-none"></div>
 
     <!-- 2. Interactive Canvas -->
     <div id="orbat-canvas" class="orbat-canvas-container cursor-grab active:cursor-grabbing">

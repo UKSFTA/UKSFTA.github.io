@@ -1,4 +1,4 @@
-// Institutional ORBAT - Canvas Controller v4.3 (Modal Edition)
+// Institutional ORBAT - Canvas Controller v5.1 (Workflow Polished)
 
 const canvas = document.getElementById('orbat-canvas');
 const content = document.getElementById('canvas-content');
@@ -9,7 +9,7 @@ const toastContainer = document.getElementById('toast-container');
 const iconModal = document.getElementById('icon-modal');
 const iconGrid = document.getElementById('icon-grid');
 
-const SNAP_SIZE = 20; 
+const SNAP_SIZE = 40; 
 const OFFSET = 5000; 
 
 let scale = 1;
@@ -19,87 +19,96 @@ let isPanning = false;
 let isDraggingNode = false;
 let isDrawingLink = false;
 let dragNode = null;
+let selectedNode = null;
 let linkSourceId = null;
 let linkSourceSide = null;
 let activeNodeForIcon = null;
 let startMouseX, startMouseY;
 let startNodeX, startNodeY;
 
-// 1. UI: Notification System
+// --- 1. UI: NOTIFICATIONS & CONTEXT ---
+
 window.showToast = function(message, type = 'info') {
     const toast = document.createElement('div');
-    toast.className = `p-4 bg-black/90 backdrop-blur-xl border-l-2 ${type === 'danger' ? 'border-red-600' : 'border-[var(--primary)]'} shadow-2xl animate-slide-in-top flex items-center space-x-4 min-w-[250px] pointer-events-auto`;
+    // Moved to top-right to avoid covering bottom toolbar
+    toast.className = `p-4 bg-black/95 backdrop-blur-xl border-l-2 ${type === 'danger' ? 'border-red-600' : 'border-[var(--primary)]'} shadow-2xl animate-slide-in-right flex items-center space-x-4 min-w-[280px] pointer-events-auto transition-all duration-500`;
+    
     toast.innerHTML = `
         <span class="w-1.5 h-1.5 rounded-full ${type === 'danger' ? 'bg-red-600' : 'bg-[var(--primary)]'} animate-pulse"></span>
-        <span class="text-[10px] font-mono text-white uppercase tracking-widest">${message}</span>
+        <div class="flex flex-col">
+            <span class="text-[10px] font-black text-white uppercase tracking-widest">${message}</span>
+            <span class="text-[7px] font-mono text-gray-500 uppercase tracking-tighter">System Notification // ${new Date().toLocaleTimeString()}</span>
+        </div>
     `;
+    
     toastContainer.appendChild(toast);
     setTimeout(() => {
-        toast.style.opacity = '0'; toast.style.transform = 'translateY(-20px)';
-        toast.style.transition = 'all 0.5s ease';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(50px)';
         setTimeout(() => toast.remove(), 500);
-    }, 3000);
+    }, 4000);
 };
 
-// 2. Icon Selection System
-const UNIT_ICONS = ["icons/MOD.png", "icons/TFA.png", "icons/SAS.png", "icons/SBS.png", "icons/SRR.png", "icons/SFSG.png", "icons/JSFAW.png", "icons/MEDIC.png", "icons/Intelligence-Corps.png", "icons/RSIS.png", "icons/SIGNALS.png", "icons/RANGERS.png"];
-
-window.openIconModal = function(btn) {
-    activeNodeForIcon = btn.closest('.orbat-node-wrapper');
-    iconGrid.innerHTML = ''; // Clear existing
-    
-    UNIT_ICONS.forEach(path => {
-        const item = document.createElement('div');
-        item.className = 'group/icon flex flex-col items-center space-y-2 p-4 bg-white/[0.02] border border-white/5 hover:border-[var(--primary)]/40 cursor-pointer transition-all';
-        item.onclick = () => selectIcon(path);
-        
-        const fileName = path.split('/').pop();
-        item.innerHTML = `
-            <img src="/${path}" class="w-12 h-12 object-contain opacity-60 group-hover/icon:opacity-100 transition-opacity">
-            <span class="text-[7px] font-mono text-gray-600 group-hover/icon:text-white uppercase">${fileName}</span>
-        `;
-        iconGrid.appendChild(item);
-    });
-    
-    iconModal.classList.remove('hidden');
-};
-
-function selectIcon(path) {
-    if (activeNodeForIcon) {
-        let img = activeNodeForIcon.querySelector('img');
-        if (!img) {
-            // Create image if it doesn't exist
-            const body = activeNodeForIcon.querySelector('.p-5 .space-y-6');
-            const wrapper = document.createElement('div');
-            wrapper.className = 'flex justify-center mb-2';
-            img = document.createElement('img');
-            img.className = 'w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700';
-            wrapper.appendChild(img);
-            body.prepend(wrapper);
-        }
-        img.src = '/' + path;
-        img.setAttribute('data-icon-path', path);
-        showToast(`ICON_APPLIED: ${path.split('/').pop()}`);
+function updateSelection(node) {
+    document.querySelectorAll('.orbat-node-wrapper').forEach(n => n.classList.remove('selected'));
+    selectedNode = node;
+    if (node) {
+        node.classList.add('selected');
+        showContextToolbar(node);
+    } else {
+        hideContextToolbar();
     }
-    closeIconModal();
 }
 
-window.closeIconModal = function() {
-    iconModal.classList.add('hidden');
-    activeNodeForIcon = null;
-};
+function showContextToolbar(node) {
+    if (!document.getElementById('hq-admin-bar').classList.contains('edit-active')) return;
+    
+    let toolbar = document.getElementById('node-context-menu');
+    if (!toolbar) {
+        toolbar = document.createElement('div');
+        toolbar.id = 'node-context-menu';
+        toolbar.className = 'node-context-menu pointer-events-auto';
+        document.body.appendChild(toolbar);
+    }
 
-// 3. Coordinate Math
+    toolbar.innerHTML = `
+        <button onclick="window.openIconModalDirect()" class="toolbar-btn" title="Change Icon">❖</button>
+        <div class="toolbar-separator"></div>
+        <button onclick="window.removeSelectedNode()" class="toolbar-btn text-red-500" title="Delete Unit">×</button>
+    `;
+
+    const rect = node.getBoundingClientRect();
+    toolbar.style.left = `${rect.left + rect.width / 2}px`;
+    toolbar.style.top = `${rect.top - 60}px`;
+    toolbar.classList.remove('hidden');
+}
+
+function hideContextToolbar() {
+    const toolbar = document.getElementById('node-context-menu');
+    if (toolbar) toolbar.classList.add('hidden');
+}
+
+// --- 2. CANVAS MATH (Fixed Projection) ---
+
 function getCanvasCoords(clientX, clientY) {
     const rect = canvas.getBoundingClientRect();
-    return { x: (clientX - rect.left - translateX) / scale, y: (clientY - rect.top - translateY) / scale };
+    // Logic: (ScreenPos - CanvasTopLeft - Translation) / Scale
+    return {
+        x: (clientX - rect.left - translateX) / scale,
+        y: (clientY - rect.top - translateY) / scale
+    };
 }
 
 function getPointOnSide(nodeId, side) {
     const el = document.getElementById(`node-${nodeId}`);
     if (!el) return { x: 0, y: 0 };
-    const x = parseFloat(el.getAttribute('data-x')); const y = parseFloat(el.getAttribute('data-y'));
-    const w = parseFloat(el.getAttribute('data-w')); const h = parseFloat(el.getAttribute('data-h'));
+
+    const x = parseFloat(el.getAttribute('data-x'));
+    const y = parseFloat(el.getAttribute('data-y'));
+    const w = parseFloat(el.getAttribute('data-w'));
+    const h = parseFloat(el.getAttribute('data-h'));
+
+    // Returns absolute coordinates in the 10000x10000 space
     switch (side) {
         case 'top':    return { x: OFFSET + x + w/2, y: OFFSET + y };
         case 'bottom': return { x: OFFSET + x + w/2, y: OFFSET + y + h };
@@ -112,19 +121,30 @@ function getPointOnSide(nodeId, side) {
 function getBezierPath(p1, p2, s1, s2) {
     const dist = Math.hypot(p2.x - p1.x, p2.y - p1.y);
     const cpDist = Math.min(dist / 2, 150);
-    const cp1 = { x: p1.x, y: p1.y }; const cp2 = { x: p2.x, y: p2.y };
-    if (s1 === 'top') cp1.y -= cpDist; else if (s1 === 'bottom') cp1.y += cpDist;
-    else if (s1 === 'left') cp1.x -= cpDist; else if (s1 === 'right') cp1.x += cpDist;
-    if (s2 === 'top') cp2.y -= cpDist; else if (s2 === 'bottom') cp2.y += cpDist;
-    else if (s2 === 'left') cp2.x -= cpDist; else if (s2 === 'right') cp2.x += cpDist;
+
+    const cp1 = { x: p1.x, y: p1.y };
+    const cp2 = { x: p2.x, y: p2.y };
+
+    if (s1 === 'top') cp1.y -= cpDist;
+    else if (s1 === 'bottom') cp1.y += cpDist;
+    else if (s1 === 'left') cp1.x -= cpDist;
+    else if (s1 === 'right') cp1.x += cpDist;
+
+    if (s2 === 'top') cp2.y -= cpDist;
+    else if (s2 === 'bottom') cp2.y += cpDist;
+    else if (s2 === 'left') cp2.x -= cpDist;
+    else if (s2 === 'right') cp2.x += cpDist;
+    
     return `M ${p1.x} ${p1.y} C ${cp1.x} ${cp1.y}, ${cp2.x} ${cp2.y}, ${p2.x} ${p2.y}`;
 }
 
-// 4. Core Transformation
+// --- 3. RENDERING & INTERACTION ---
+
 function updateTransform() {
     content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
     zoomDisplay.innerText = `Zoom: ${Math.round(scale * 100)}%`;
     updateLinks();
+    if (selectedNode) showContextToolbar(selectedNode);
 }
 
 function updateLinks() {
@@ -135,23 +155,35 @@ function updateLinks() {
     });
 }
 
-// 5. Input Listeners
 canvas.addEventListener('mousedown', (e) => {
+    const nodeWrapper = e.target.closest('.orbat-node-wrapper');
+    const dragHandle = e.target.closest('.node-drag-handle') || e.target.closest('.orbat-node-card > div:first-child');
+
     if (isDrawingLink) {
-        const target = e.target.closest('.orbat-node-wrapper');
-        if (target) createNewLink(linkSourceId, linkSourceSide, target.getAttribute('data-id'), 'top');
+        if (nodeWrapper) {
+            const targetId = nodeWrapper.getAttribute('data-id');
+            if (targetId !== linkSourceId) createNewLink(linkSourceId, linkSourceSide, targetId, 'top');
+        }
         stopDrawingLink(); return;
     }
-    const dragHandle = e.target.closest('.node-drag-handle') || e.target.closest('.orbat-node-card > div:first-child');
-    if (dragHandle) {
-        isDraggingNode = true; dragNode = dragHandle.closest('.orbat-node-wrapper');
-        const coords = getCanvasCoords(e.clientX, e.clientY);
-        startMouseX = coords.x; startMouseY = coords.y;
-        startNodeX = parseFloat(dragNode.getAttribute('data-x')); startNodeY = parseFloat(dragNode.getAttribute('data-y'));
-        e.stopPropagation(); return;
+
+    if (nodeWrapper) {
+        updateSelection(nodeWrapper);
+        if (dragHandle || document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
+            isDraggingNode = true;
+            dragNode = nodeWrapper;
+            const coords = getCanvasCoords(e.clientX, e.clientY);
+            startMouseX = coords.x; startMouseY = coords.y;
+            startNodeX = parseFloat(dragNode.getAttribute('data-x')); startNodeY = parseFloat(dragNode.getAttribute('data-y'));
+            e.stopPropagation(); return;
+        }
+    } else {
+        updateSelection(null);
     }
+
     if (e.button === 0) {
-        isPanning = true; startMouseX = e.clientX - translateX; startMouseY = e.clientY - translateY;
+        isPanning = true;
+        startMouseX = e.clientX; startMouseY = e.clientY;
     }
 });
 
@@ -159,25 +191,28 @@ window.addEventListener('mousemove', (e) => {
     if (isDrawingLink) {
         const m = getCanvasCoords(e.clientX, e.clientY);
         const p1 = getPointOnSide(linkSourceId, linkSourceSide);
-        tempLink.setAttribute('d', getBezierPath(p1, m, linkSourceSide, 'auto')); return;
+        // Correct mouse pos for SVG layer (which is at OFFSET center)
+        const svgMouse = { x: m.x + OFFSET, y: m.y + OFFSET };
+        tempLink.setAttribute('d', getBezierPath(p1, svgMouse, linkSourceSide, 'auto')); return;
     }
     if (isDraggingNode && dragNode) {
         const m = getCanvasCoords(e.clientX, e.clientY);
         const newX = startNodeX + (m.x - startMouseX); const newY = startNodeY + (m.y - startMouseY);
         dragNode.style.left = `${OFFSET + newX}px`; dragNode.style.top = `${OFFSET + newY}px`;
         dragNode.setAttribute('data-x', newX); dragNode.setAttribute('data-y', newY);
-        updateLinks(); return;
+        updateLinks(); if (selectedNode) showContextToolbar(selectedNode); return;
     }
     if (isPanning) {
-        translateX = e.clientX - startMouseX; translateY = e.clientY - startMouseY;
+        translateX += e.clientX - startMouseX; translateY += e.clientY - startMouseY;
+        startMouseX = e.clientX; startMouseY = e.clientY;
         updateTransform();
     }
 });
 
 window.addEventListener('mouseup', () => {
     if (isDraggingNode && dragNode) {
-        const x = Math.round(parseFloat(dragNode.getAttribute('data-x')) / SNAP_SIZE) * SNAP_SIZE;
-        const y = Math.round(parseFloat(dragNode.getAttribute('data-y')) / SNAP_SIZE) * SNAP_SIZE;
+        let x = parseFloat(dragNode.getAttribute('data-x')); let y = parseFloat(dragNode.getAttribute('data-y'));
+        x = Math.round(x / SNAP_SIZE) * SNAP_SIZE; y = Math.round(y / SNAP_SIZE) * SNAP_SIZE;
         dragNode.setAttribute('data-x', x); dragNode.setAttribute('data-y', y);
         dragNode.style.left = `${OFFSET + x}px`; dragNode.style.top = `${OFFSET + y}px`;
         updateLinks();
@@ -196,11 +231,52 @@ canvas.addEventListener('wheel', (e) => {
     updateTransform();
 }, { passive: false });
 
-// 6. Admin structural
+canvas.addEventListener('dblclick', (e) => {
+    if (!document.getElementById('hq-admin-bar').classList.contains('edit-active')) return;
+    if (e.target === canvas || e.target.id === 'orbat-nodes-layer') {
+        const coords = getCanvasCoords(e.clientX, e.clientY);
+        window.addOrbatNodeAt(coords.x, coords.y);
+    }
+});
+
+// --- 4. ADMIN & CORE FUNCTIONS ---
+
+const UNIT_ICONS = ["icons/MOD.png", "icons/TFA.png", "icons/SAS.png", "icons/SBS.png", "icons/SRR.png", "icons/SFSG.png", "icons/JSFAW.png", "icons/MEDIC.png", "icons/Intelligence-Corps.png", "icons/RSIS.png", "icons/SIGNALS.png", "icons/RANGERS.png"];
+
+window.openIconModalDirect = function() {
+    if (!selectedNode) return;
+    activeNodeForIcon = selectedNode;
+    iconGrid.innerHTML = '';
+    UNIT_ICONS.forEach(path => {
+        const item = document.createElement('div');
+        item.className = 'group/icon flex flex-col items-center space-y-2 p-4 bg-white/[0.02] border border-white/5 hover:border-[var(--primary)]/40 cursor-pointer transition-all';
+        item.onclick = () => selectIcon(path);
+        item.innerHTML = `<img src="/${path}" class="w-12 h-12 object-contain opacity-60 group-hover/icon:opacity-100 transition-opacity"><span class="text-[7px] font-mono text-gray-600 group-hover/icon:text-white uppercase">${path.split('/').pop()}</span>`;
+        iconGrid.appendChild(item);
+    });
+    iconModal.classList.remove('hidden');
+};
+
+function selectIcon(path) {
+    if (activeNodeForIcon) {
+        const img = activeNodeForIcon.querySelector('img');
+        if (img) { img.src = '/' + path; img.setAttribute('data-icon-path', path); }
+        showToast(`ICON_APPLIED: ${path.split('/').pop()}`);
+    }
+    closeIconModal();
+}
+
+window.closeIconModal = function() { iconModal.classList.add('hidden'); activeNodeForIcon = null; };
+
 window.startDrawingLink = function(e, side) {
     e.stopPropagation(); isDrawingLink = true;
-    linkSourceId = e.target.closest('.orbat-node-wrapper').getAttribute('data-id');
-    linkSourceSide = side; tempLink.classList.remove('hidden');
+    const node = e.target.closest('.orbat-node-wrapper');
+    linkSourceId = node.getAttribute('data-id');
+    linkSourceSide = side;
+    
+    const p1 = getPointOnSide(linkSourceId, side);
+    tempLink.setAttribute('d', `M ${p1.x} ${p1.y} L ${p1.x} ${p1.y}`);
+    tempLink.classList.remove('hidden');
 };
 
 function stopDrawingLink() { isDrawingLink = false; linkSourceId = null; tempLink.classList.add('hidden'); }
@@ -220,35 +296,43 @@ function createNewLink(source, sSide, target, tSide) {
 window.toggleEditMode = function() {
     const isActive = document.getElementById('hq-admin-bar').classList.toggle('edit-active');
     const btn = document.getElementById('edit-mode-btn');
-    btn.innerText = isActive ? 'EXIT_EDIT_MODE' : 'ENABLE_STRUCTURAL_EDIT';
-    btn.classList.toggle('!bg-red-600/20', isActive); btn.classList.toggle('!text-red-500', isActive);
+    btn.classList.toggle('active', isActive);
     document.querySelectorAll('.admin-controls, .connection-points').forEach(el => el.classList.toggle('hidden', !isActive));
     document.querySelectorAll('.editable-field').forEach(el => el.setAttribute('contenteditable', isActive ? 'true' : 'false'));
+    if (!isActive) hideContextToolbar();
+    else if (selectedNode) showContextToolbar(selectedNode);
     showToast(isActive ? 'STRUCTURAL_EDIT_ENABLED' : 'STRUCTURAL_EDIT_DISABLED');
 };
 
-window.addOrbatNode = function() {
+window.centerView = function() {
+    const tfhq = document.getElementById('node-tfhq');
+    if (tfhq) {
+        const x = parseFloat(tfhq.getAttribute('data-x'));
+        const y = parseFloat(tfhq.getAttribute('data-y'));
+        translateX = canvas.clientWidth / 2 - x - OFFSET;
+        translateY = canvas.clientHeight / 2 - y - OFFSET;
+        scale = 0.8;
+        updateTransform();
+        showToast('VIEW_CENTERED');
+    }
+};
+
+window.addOrbatNodeAt = function(x = 0, y = 0) {
     const newId = `unit_${Math.random().toString(36).substr(2, 9)}`;
     const newNode = document.createElement('div');
     newNode.className = 'orbat-node-wrapper absolute shadow-2xl';
     newNode.id = `node-${newId}`;
-    newNode.setAttribute('data-id', newId); newNode.setAttribute('data-x', -translateX/scale); newNode.setAttribute('data-y', -translateY/scale);
+    newNode.setAttribute('data-id', newId); newNode.setAttribute('data-x', x); newNode.setAttribute('data-y', y);
     newNode.setAttribute('data-w', 220); newNode.setAttribute('data-h', 180);
-    newNode.style.left = `${OFFSET - translateX/scale}px`; newNode.style.top = `${OFFSET - translateY/scale}px`;
+    newNode.style.left = `${OFFSET + x}px`; newNode.style.top = `${OFFSET + y}px`;
     newNode.style.width = '220px'; newNode.style.height = '180px';
     newNode.innerHTML = `
-        <div class="orbat-node-card h-full flex flex-col bracket-box bg-black/80 backdrop-blur-xl !p-0 overflow-hidden relative group/card border-white/5">
-            <div class="px-4 py-2.5 bg-white/[0.03] border-b border-white/10 flex justify-between items-center shrink-0">
-                <div class="flex items-center space-x-3 min-w-0">
-                    <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest truncate">NEW_NODE</span>
-                </div>
-                <div class="admin-controls flex items-center space-x-2">
-                    <div class="node-drag-handle text-gray-600 hover:text-[var(--primary)] cursor-move transition-colors text-sm">✥</div>
-                    <button onclick="window.openIconModal(this)" class="text-gray-600 hover:text-blue-500 transition-colors text-sm">❖</button>
-                    <button onclick="window.removeOrbatNode(this)" class="text-gray-600 hover:text-red-500 transition-colors text-sm">×</button>
-                </div>
+        <div class="orbat-node-card h-full flex flex-col bracket-box bg-black/80 backdrop-blur-xl !p-0 overflow-hidden relative group/card border-white/5 pointer-events-auto">
+            <div class="px-4 py-2 bg-white/[0.03] border-b border-white/10 flex justify-between items-center shrink-0">
+                <div class="flex items-center space-x-3 min-w-0"><span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest truncate">NEW_NODE</span></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></div>
             </div>
-            <div class="p-5 flex-grow overflow-y-auto custom-scrollbar pointer-events-auto relative">
+            <div class="p-5 flex-grow overflow-y-auto custom-scrollbar relative">
                 <div class="border-l-2 border-[var(--primary)] pl-4">
                     <h5 class="text-sm font-black text-white uppercase tracking-tighter m-0 editable-field" data-key="name" contenteditable="true">NEW_UNIT</h5>
                     <p class="text-[8px] text-[var(--primary)] font-mono uppercase mt-1 italic editable-field" data-key="role" contenteditable="true">Operational Support</p>
@@ -263,21 +347,29 @@ window.addOrbatNode = function() {
         </div>
     `;
     document.getElementById('orbat-nodes-layer').appendChild(newNode);
+    updateSelection(newNode);
     showToast('NEW_NODE_CREATED');
 };
 
-window.removeOrbatNode = function(btn) {
-    if (confirm('Decommission unit?')) {
-        const node = btn.closest('.orbat-node-wrapper');
-        const id = node.getAttribute('data-id');
+window.addOrbatNode = () => {
+    const coords = getCanvasCoords(canvas.clientWidth / 2, canvas.clientHeight / 2);
+    window.addOrbatNodeAt(coords.x, coords.y);
+};
+
+window.removeSelectedNode = function() {
+    if (selectedNode && confirm('Decommission unit?')) {
+        const id = selectedNode.getAttribute('data-id');
         document.querySelectorAll(`.orbat-link[data-source="${id}"], .orbat-link[data-target="${id}"]`).forEach(l => l.remove());
-        node.remove();
+        selectedNode.remove();
+        updateSelection(null);
         showToast('UNIT_DECOMMISSIONED', 'danger');
     }
 };
 
 window.exportOrbatJSON = function() {
-    const nodes = Array.from(document.querySelectorAll('.orbat-node-wrapper')).map(el => ({
+    const nodeEls = document.querySelectorAll('.orbat-node-wrapper');
+    const edgeEls = document.querySelectorAll('.orbat-link');
+    const nodes = Array.from(nodeEls).map(el => ({
         id: el.getAttribute('data-id'),
         name: el.querySelector('[data-key="name"]').innerText.trim(),
         role: el.querySelector('[data-key="role"]')?.innerText.trim() || "Operational Support",
@@ -286,7 +378,7 @@ window.exportOrbatJSON = function() {
         x: Math.round(parseFloat(el.getAttribute('data-x'))), y: Math.round(parseFloat(el.getAttribute('data-y'))),
         width: Math.round(parseFloat(el.getAttribute('data-w'))), height: Math.round(parseFloat(el.getAttribute('data-h')))
     }));
-    const edges = Array.from(document.querySelectorAll('.orbat-link')).map(el => ({
+    const edges = Array.from(edgeEls).map(el => ({
         id: el.id.replace('edge-', ''), fromNode: el.getAttribute('data-source'), toNode: el.getAttribute('data-target'),
         fromSide: el.getAttribute('data-from-side'), toSide: el.getAttribute('data-to-side')
     }));
@@ -296,5 +388,18 @@ window.exportOrbatJSON = function() {
     showToast('ORBAT_DATA_EXPORTED');
 };
 
+// Keyboard Shortcuts
+window.addEventListener('keydown', (e) => {
+    if (e.target.classList.contains('editable-field')) return;
+    if (e.key === 'Delete' || e.key === 'Backspace') window.removeSelectedNode();
+    if (e.key === 'e' || e.key === 'E') window.toggleEditMode();
+    if (e.key === 'n' || e.key === 'N') window.addOrbatNode();
+    if (e.key === 's' || e.key === 'S' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); window.exportOrbatJSON(); }
+});
+
+// Initialization
 if (localStorage.getItem('uksf_hq_auth') === 'true') document.getElementById('hq-admin-bar').classList.remove('hidden');
-setTimeout(updateTransform, 100);
+setTimeout(() => {
+    window.centerView();
+    updateTransform();
+}, 200);

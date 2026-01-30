@@ -11,23 +11,19 @@
     {{ end }}
 {{ end }}
 
-<div class="orbat-node-card h-full flex flex-col bracket-box bg-black/80 backdrop-blur-xl !p-0 overflow-hidden relative group/card border-white/5">
+<div class="orbat-node-card h-full flex flex-col bracket-box bg-black/80 backdrop-blur-xl !p-0 overflow-hidden relative group/card border-white/5 pointer-events-auto">
     <!-- Node Header: Institutional Terminal Style -->
-    <div class="px-4 py-2.5 bg-white/[0.03] border-b border-white/10 flex justify-between items-center shrink-0">
+    <div class="px-4 py-2 bg-white/[0.03] border-b border-white/10 flex justify-between items-center shrink-0">
         <div class="flex items-center space-x-3 min-w-0">
             <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest truncate">{{ $node.callsign | default "NODE_ID" }}</span>
         </div>
         
-        <!-- Admin Structural Controls -->
-        <div class="admin-controls flex items-center space-x-3 opacity-0 group-hover/card:opacity-100 transition-opacity hidden">
-            <div class="node-drag-handle text-gray-600 hover:text-[var(--primary)] cursor-move transition-colors text-sm" title="REPOSITION">✥</div>
-            <button onclick="window.openIconModal(this)" class="text-gray-600 hover:text-blue-500 transition-colors text-sm" title="SELECT_ICON">❖</button>
-            <button onclick="window.removeOrbatNode(this)" class="text-gray-600 hover:text-red-500 transition-colors text-sm" title="DECOMMISSION">×</button>
-        </div>
+        <!-- Selection Indicator -->
+        <div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></div>
     </div>
 
     <!-- Node Body: Dossier Node Style -->
-    <div class="p-5 flex-grow overflow-y-auto custom-scrollbar pointer-events-auto relative">
+    <div class="p-5 flex-grow overflow-y-auto custom-scrollbar relative">
         <div class="space-y-6">
             {{ if $node.icon }}
             <div class="flex justify-center mb-2">

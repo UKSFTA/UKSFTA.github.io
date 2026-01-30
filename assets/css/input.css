@@ -664,11 +664,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #050505;
     background-image: 
       radial-gradient(circle at center, rgb(179 153 93 / 5%) 0%, transparent 70%),
-      linear-gradient(to right, rgb(255 255 255 / 3%) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(255 255 255 / 3%) 1px, transparent 1px);
-    background-size: 100% 100%, 50px 50px, 50px 50px;
+      linear-gradient(to right, rgb(255 255 255 / 5%) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 5%) 1px, transparent 1px),
+      linear-gradient(to right, rgb(255 255 255 / 2%) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 2%) 1px, transparent 1px);
+    background-size: 100% 100%, 200px 200px, 200px 200px, 40px 40px, 40px 40px;
   }
 
 .orbat-canvas-content {
@@ -702,9 +705,87 @@
     left: 2rem;
   }
 
+  .canvas-overlay.bottom-center {
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .canvas-overlay.bottom-right {
     bottom: 2rem;
     right: 2rem;
+  }
+
+  /* Obsidian-style Floating Toolbar */
+  .canvas-toolbar {
+    background: rgb(10 10 10 / 90%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 8px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 50%);
+    pointer-events: auto;
+  }
+
+  .toolbar-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: #9ca3af;
+    transition: all 0.2s;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background: rgb(255 255 255 / 5%);
+      color: white;
+    }
+
+    &.active {
+      color: var(--primary);
+      background: rgb(179 153 93 / 10%);
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .toolbar-separator {
+    width: 1px;
+    height: 20px;
+    background: rgb(255 255 255 / 10%);
+    margin: 0 0.25rem;
+  }
+
+  /* Node Selection & Context Menu */
+  .orbat-node-wrapper.selected .orbat-node-card {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    box-shadow: 0 0 40px var(--primary-glow);
+  }
+
+  .node-context-menu {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(15 15 15 / 95%);
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 6px;
+    padding: 4px;
+    display: flex;
+    gap: 4px;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
+    z-index: 5200;
   }
 
 .btn-canvas-ctrl {
