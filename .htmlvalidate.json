@@ -15,6 +15,7 @@
     "wcag/h37": "off",
     "wcag/h32": "off",
     "no-implicit-button-type": "off",
-    "parser-error": "off"
+    "parser-error": "off",
+    "no-dup-class": "off"
   }
 }

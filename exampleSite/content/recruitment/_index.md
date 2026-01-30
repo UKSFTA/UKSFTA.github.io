@@ -31,7 +31,7 @@ Upon successful completion of the probationary period, members may apply for sel
 
 - **22nd SAS**: Direct Action and Counter-Terrorism specialization.
 - **SBS**: Maritime Operations and Amphibious Warfare.
-- **British Army Rangers**: Partner Force Integration and Asymmetric Warfare.
+- **ASOB**: Partner Force Integration and Asymmetric Warfare.
 - **SRR**: Covert Surveillance and SIGINT specialists.
 - **Royal Army Medical Corps**: Advanced field surgery and CASEVAC simulation.
 

@@ -51,6 +51,13 @@
       "motto": "Always A Little Further",
       "description": "Providing specialist infantry support to Tier 1 UKSF units.",
       "stats": { "tier": "2", "domain": "Support", "focus": "Direct Action" }
+    },
+    "asob": {
+      "name": "ASOB",
+      "full_name": "Army Special Operations Brigade",
+      "motto": "By All Means",
+      "description": "Specialized in partner force integration and asymmetric warfare.",
+      "stats": { "tier": "2", "domain": "Land", "focus": "Special Ops" }
     }
   }
 }

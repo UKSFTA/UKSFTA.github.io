@@ -2,7 +2,7 @@
 title: "Operation Grey Zone: Partner Force Capacity Building"
 description: "Long-term regional persistence and training operations within the West African domain."
 date: 2026-01-28
-unit: "rangers"
+unit: "asob"
 ---
 
 {{< mandate id="AAR-RNG-AFR" >}}

@@ -1,12 +1,11 @@
 ---
-title: "British Army Rangers"
-description: "Specialized in partner force integration and asymmetric warfare. Tier 2 Special Operations."
+title: "ASOB"
+description: "The British Army's specialized brigade for unconventional warfare and partner force integration."
 date: 2026-01-28
-unit: "rangers"
-layout: "dossier"
+unit: "asob"
 ---
 
-The Ranger Regiment is a specialized unit of the British Army, part of the Army Special Operations Brigade. Within UKSF Taskforce Alpha, the Rangers provide a persistent, lighter-footprint capability designed to operate in high-threat environments globally.
+The Army Special Operations Brigade (ASOB) is a specialized formation of the British Army. Within UKSF Taskforce Alpha, ASOB provide a persistent, lighter-footprint capability designed to operate in high-threat environments globally, focusing on partner force integration and asymmetric warfare.
 
 ## Core Operational Domains
 

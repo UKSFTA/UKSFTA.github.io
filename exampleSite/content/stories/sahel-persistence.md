@@ -2,7 +2,7 @@
 title: "Sahel Persistence: Asymmetric Mentorship"
 description: "Ranger Regiment Concept of Operations (CONOPS) for partner-force integration and capacity building in contested domains."
 date: 2026-01-28
-unit: "rangers"
+unit: "asob"
 ---
 
 {{< mandate id="AAR-RNG-SAH-2023" >}}

@@ -1,7 +1,7 @@
 <div class="flex flex-col h-full">
     <div class="flex flex-col md:grid md:grid-cols-3 lg:flex lg:flex-row gap-px bg-white/10 border border-white/5 flex-1 min-h-0">
         {{ $units := .Site.Data.units }}
-        {{ $order := slice "sas" "sbs" "rangers" "sfsg" "jsfaw" "med-det" }}
+        {{ $order := slice "sas" "sbs" "asob" "sfsg" "jsfaw" "med-det" }}
         
         {{ range $id := $order }}
         {{ with (index $units $id) }}

@@ -19,11 +19,11 @@
     "icon": "icons/SBS.png",
     "entry": "Internal Transfer Required"
   },
-  "rangers": {
-    "id": "RANGERS",
-    "name": "The Ranger Regiment",
-    "specialization": "Special Operations / Capacity Building",
-    "role": "Tier 2 Special Operations",
+  "asob": {
+    "id": "ASOB",
+    "name": "ASOB",
+    "specialization": "Special Operations / Partner Force Integration",
+    "role": "Army Special Operations",
     "motto": "By All Means",
     "color": "#536878",
     "icon": "icons/RANGERS.png",
