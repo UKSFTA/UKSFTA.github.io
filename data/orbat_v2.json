@@ -1,7 +1,7 @@
 {
   "name": "TFHQ",
   "callsign": "0-",
-  "icon": "icons/MOD.png",
+  "icon": "icons/TFA.png",
   "children": [
     {
       "name": "Intelligence Cell",
@@ -39,7 +39,7 @@
     {
       "name": "UKSF HQ",
       "callsign": "JSFC",
-      "icon": "icons/UKSF-MAP.png",
+      "icon": "icons/MOD.png",
       "children": [
         {
           "name": "SAS Troop HQ",
