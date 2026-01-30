@@ -663,11 +663,9 @@
     height: 100%;
     background-color: #000;
     background-image: 
-      linear-gradient(to right, rgb(255 255 255 / 8%) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(255 255 255 / 8%) 1px, transparent 1px),
       linear-gradient(to right, rgb(255 255 255 / 3%) 1px, transparent 1px),
       linear-gradient(to bottom, rgb(255 255 255 / 3%) 1px, transparent 1px);
-    background-size: 200px 200px, 200px 200px, 40px 40px, 40px 40px;
+    background-size: 40px 40px;
     position: relative;
   }
 

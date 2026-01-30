@@ -71,24 +71,31 @@ function getBezierPath(p1, p2, s1, s2) {
 // --- 2. CAMERA COMMANDS ---
 
 window.centerView = function() {
-    const rect = canvas.getBoundingClientRect();
     scale = 0.8;
     
+    // 1. Viewport Dimensions (more reliable than rect in full screen)
+    const vW = window.innerWidth;
+    const vH = window.innerHeight;
+    
+    // 2. Target: TFHQ or first node
     const target = document.getElementById('node-tfhq') || document.querySelector('.orbat-node-wrapper');
+    
     if (target) {
         const nX = parseFloat(target.getAttribute('data-x'));
         const nY = parseFloat(target.getAttribute('data-y'));
-        const nW = parseFloat(target.getAttribute('data-w')) || 220;
-        const nH = parseFloat(target.getAttribute('data-h')) || 180;
-
-        // Translation = (ViewportCenter) - (Scaled NodeCenter)
-        translateX = (rect.width / 2) - ((OFFSET + nX + nW/2) * scale);
-        translateY = (rect.height / 2) - ((OFFSET + nY + nH/2) * scale);
+        
+        // 3. Calculation: Midpoint - Scaled Position
+        // Centering the node (approx 220x180 size)
+        translateX = (vW / 2) - ((OFFSET + nX + 110) * scale);
+        translateY = (vH / 2) - ((OFFSET + nY + 90) * scale);
+        
+        updateTransform();
     } else {
-        translateX = (rect.width / 2) - (OFFSET * scale);
-        translateY = (rect.height / 2) - (OFFSET * scale);
+        // Fallback
+        translateX = (vW / 2) - (OFFSET * scale);
+        translateY = (vH / 2) - (OFFSET * scale);
+        updateTransform();
     }
-    updateTransform();
 };
 
 window.adjustZoom = (amount) => {
