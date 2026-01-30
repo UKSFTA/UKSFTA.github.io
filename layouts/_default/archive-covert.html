@@ -213,7 +213,7 @@
                 </div>
 
                 <div class="space-y-2 flex-grow">
-                    {{ range $id := slice "srr" "signals" "e-squadron" }}
+                    {{ range $id := slice "int-corps" "srr" "signals" "e-squadron" }}
                     {{ with (index $units $id) }}
                     <a href="/{{ $id }}/" class="block p-3 bg-white/[0.02] border border-white/5 hover:border-[var(--primary)]/40 group transition-all duration-500 no-underline relative">
                         <div class="absolute top-0 left-0 w-1 h-full bg-white/5 group-hover:bg-[var(--primary)] transition-colors duration-500"></div>
@@ -222,7 +222,7 @@
                             <div class="logo-plate w-8 h-8 p-1 rounded-full shadow-sm group-hover:border-white transition-all duration-500">
                                  {{ $icon := resources.Get .icon }}
                                  {{ if $icon }}
-                                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="max-w-[80%] max-h-[80%] object-contain">
+                                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="w-full h-full object-contain">
                                  {{ end }}
                             </div>
                             <div class="flex flex-col">
