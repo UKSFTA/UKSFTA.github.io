@@ -1,0 +1,52 @@
+{
+  "title": "Taskforce Alpha Order of Battle",
+  "version": "ORBAT-2026-01",
+  "status": "OFFICIAL_RESTRICTED",
+  "command": {
+    "name": "Taskforce Headquarters (TFHQ)",
+    "location": "Northwood HQ",
+    "commander": "J2 Directorate",
+    "integrity": "99.9%"
+  },
+  "sections": [
+    {
+      "name": "Direct Action Element (Tier 1)",
+      "units": [
+        {
+          "id": "sas",
+          "name": "22 SAS",
+          "detachments": [
+            { "name": "A Squadron (Air)", "readiness": "R1", "strength": "16/16", "tasking": "CT/HR" },
+            { "name": "B Squadron (Mobility)", "readiness": "R2", "strength": "12/16", "tasking": "Deep Recon" }
+          ]
+        },
+        {
+          "id": "sbs",
+          "name": "SBS",
+          "detachments": [
+            { "name": "M Squadron", "readiness": "R1", "strength": "14/16", "tasking": "Maritime Strike" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Support & Integration (Tier 2)",
+      "units": [
+        {
+          "id": "asob",
+          "name": "ASOB (Rangers)",
+          "detachments": [
+            { "name": "1 RANGERS", "readiness": "R1", "strength": "24/24", "tasking": "Partner Integration" }
+          ]
+        },
+        {
+          "id": "sfsg",
+          "name": "SFSG",
+          "detachments": [
+            { "name": "1 Para (Support)", "readiness": "R1", "strength": "32/32", "tasking": "Ground Support" }
+          ]
+        }
+      ]
+    }
+  ]
+}

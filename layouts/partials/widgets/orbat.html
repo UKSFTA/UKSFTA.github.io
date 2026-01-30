@@ -1,0 +1,70 @@
+{{ $orbat := .Site.Data.orbat }}
+<div class="orbat-widget space-y-12">
+    <!-- Command Header -->
+    <div class="border border-white/10 bg-white/[0.02] p-8">
+        <div class="flex flex-col md:flex-row justify-between gap-8">
+            <div class="space-y-4">
+                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-[0.4em] font-black">// COMMAND_NODE</span>
+                <h3 class="text-3xl font-black text-white m-0 uppercase">{{ $orbat.command.name }}</h3>
+                <p class="text-sm text-gray-500 font-mono uppercase tracking-wider">{{ $orbat.command.location }} // {{ $orbat.command.commander }}</p>
+            </div>
+            <div class="flex items-center space-x-12">
+                <div class="flex flex-col text-right">
+                    <span class="text-[7px] font-mono text-gray-700 uppercase tracking-widest">Integrity</span>
+                    <span class="text-xl font-black text-green-500 font-mono uppercase">{{ $orbat.command.integrity }}</span>
+                </div>
+                <div class="flex flex-col text-right">
+                    <span class="text-[7px] font-mono text-gray-700 uppercase tracking-widest">Status</span>
+                    <span class="text-xl font-black text-[var(--primary)] font-mono uppercase">{{ $orbat.status }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ORBAT Grid -->
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        {{ range $orbat.sections }}
+        <div class="space-y-6">
+            <div class="flex items-center space-x-4">
+                <div class="h-px flex-1 bg-white/5"></div>
+                <span class="text-[10px] font-black text-gray-600 uppercase tracking-[0.5em]">{{ .name }}</span>
+            </div>
+
+            <div class="space-y-4">
+                {{ range .units }}
+                <div class="bracket-box !p-0 bg-black/40 border-white/5 overflow-hidden">
+                    <div class="bg-white/[0.03] px-6 py-3 border-b border-white/5 flex justify-between items-center">
+                        <span class="text-[11px] font-bold text-white uppercase tracking-widest">{{ .name }}</span>
+                        <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">UNIT_ID: {{ .id }}</span>
+                    </div>
+                    <div class="p-0">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b border-white/5 bg-white/[0.01]">
+                                    <th class="px-6 py-3 text-[8px] font-mono text-gray-600 uppercase tracking-widest">Detachment</th>
+                                    <th class="px-4 py-3 text-[8px] font-mono text-gray-600 uppercase tracking-widest">Readiness</th>
+                                    <th class="px-4 py-3 text-[8px] font-mono text-gray-600 uppercase tracking-widest text-center">Strength</th>
+                                    <th class="px-6 py-3 text-[8px] font-mono text-gray-600 uppercase tracking-widest text-right">Tasking</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/5">
+                                {{ range .detachments }}
+                                <tr class="hover:bg-white/[0.02] transition-colors">
+                                    <td class="px-6 py-4 text-[10px] font-bold text-gray-300 uppercase tracking-wider">{{ .name }}</td>
+                                    <td class="px-4 py-4">
+                                        <span class="text-[9px] font-mono font-black {{ if eq .readiness "R1" }}text-green-500{{ else }}text-uksf-gold{{ end }} border border-current px-2 py-0.5">{{ .readiness }}</span>
+                                    </td>
+                                    <td class="px-4 py-4 text-[10px] font-mono text-gray-500 text-center">{{ .strength }}</td>
+                                    <td class="px-6 py-4 text-[9px] font-mono text-gray-400 text-right uppercase tracking-tighter">{{ .tasking }}</td>
+                                </tr>
+                                {{ end }}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
