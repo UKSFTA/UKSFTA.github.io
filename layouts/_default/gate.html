@@ -63,15 +63,33 @@ function addLog(text, type = 'default') {
     logs.scrollTop = logs.scrollHeight;
 }
 
-input.addEventListener('keypress', function(e) {
+input.addEventListener('keypress', async function(e) {
     if (e.key === 'Enter') {
         const code = this.value.toUpperCase();
         this.value = '';
         
         addLog(`PROCESSING: ${code}...`, 'white');
+
+        // Secure Hashing Logic for HQ Access
+        const msgUint8 = new TextEncoder().encode(code);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         
+        // HQ_HASH: 8a054bcd07afcf1c2aad9fb9547ec94e83735f0cc38cafbe0bd11def265608f8
+        const HQ_AUTH_KEY = "8a054bcd07afcf1c2aad9fb9547ec94e83735f0cc38cafbe0bd11def265608f8";
+
         setTimeout(() => {
-            if (code === 'TFA-ALPHA-01' || code === 'SIGINT-RECON') {
+            if (hashHex === HQ_AUTH_KEY) {
+                addLog('HQ_AUTHORIZATION_LEVEL_1_GRANTED', 'success');
+                addLog('INITIALIZING_DIRECTORATE_OVERRIDE...', 'success');
+                localStorage.setItem('uksf_auth', 'authorized');
+                localStorage.setItem('uksf_hq_auth', 'true');
+                
+                setTimeout(() => {
+                    window.location.href = '/archive/covert';
+                }, 1500);
+            } else if (code === 'TFA-ALPHA-01' || code === 'SIGINT-RECON') {
                 addLog('CREDENTIALS_ACCEPTED', 'success');
                 addLog('AUTHORIZING_DEEP_RECON_ACCESS...', 'success');
                 localStorage.setItem('uksf_auth', 'authorized');
