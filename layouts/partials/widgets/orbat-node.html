@@ -1,6 +1,7 @@
 {{ $node := .node }}
 {{ $units := .units }}
-{{ $personnel := .Site.Data.personnel | default slice }}
+{{ $site := .Site }}
+{{ $personnel := $site.Data.personnel | default slice }}
 
 <!-- Filter personnel for this node -->
 {{ $unitPersonnel := slice }}
@@ -11,7 +12,7 @@
 {{ end }}
 
 <div class="orbat-node-container flex flex-col items-center">
-    <div class="tf-nc bracket-box !p-4 group relative min-w-[220px]">
+    <div class="tf-nc bracket-box !p-4 group relative min-w-[220px] pointer-events-auto">
         {{ if $node.icon }}
         <div class="flex justify-center mb-3">
             {{ $icon := resources.Get $node.icon }}
@@ -59,7 +60,7 @@
     <ul class="flex justify-center mt-4">
         {{ range $node.children }}
         <li class="px-4">
-            {{ partial "widgets/orbat-node.html" (dict "node" . "units" $units "Site" $.Site) }}
+            {{ partial "widgets/orbat-node.html" (dict "node" . "units" $units "Site" $site) }}
         </li>
         {{ end }}
     </ul>
