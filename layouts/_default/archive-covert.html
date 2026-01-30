@@ -31,7 +31,7 @@
                 <!-- Title Block -->
                 <div class="flex items-end">
                     <h1 class="text-6xl md:text-8xl lg:text-9xl tracking-tighter text-white leading-[0.85] m-0 font-black uppercase">
-                        Shadow <br><span class="text-gray-600">Domain.</span>
+                        Military <br><span class="text-gray-600">Intelligence.</span>
                     </h1>
                 </div>
 
@@ -257,8 +257,8 @@
                     <div class="flex-grow overflow-y-auto custom-scrollbar space-y-2 pr-2">
                         {{ range $id := slice "int-corps" "srr" "signals" "e-squadron" }}
                         {{ with (index $units $id) }}
-                        <a href="/{{ $id }}/" class="group flex items-center justify-between p-3 bg-black/40 border border-white/5 hover:border-[var(--primary)]/40 hover:bg-white/[0.02] transition-all no-underline">
-                            <div class="flex items-center space-x-4">
+                        <a href="/{{ $id }}/" class="group flex items-center justify-between p-3 bg-black/40 border border-white/5 hover:border-[var(--primary)]/40 hover:bg-white/[0.02] transition-all no-underline min-w-0">
+                            <div class="flex items-center space-x-4 min-w-0">
                                 <div class="w-8 h-8 flex items-center justify-center shrink-0">
                                      {{ $icon := resources.Get .icon }}
                                      {{ if $icon }}
@@ -266,11 +266,11 @@
                                      {{ end }}
                                 </div>
                                 <div class="flex flex-col min-w-0">
-                                    <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest truncate">{{ .id }}</span>
-                                    <span class="text-xs font-bold text-gray-400 group-hover:text-white transition-colors uppercase leading-tight truncate">{{ .name }}</span>
+                                    <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest truncate block">{{ .id }}</span>
+                                    <span class="text-xs font-bold text-gray-400 group-hover:text-white transition-colors uppercase leading-tight truncate block">{{ .name }}</span>
                                 </div>
                             </div>
-                            <span class="text-gray-800 group-hover:text-[var(--primary)] group-hover:translate-x-1 transition-all">→</span>
+                            <span class="text-gray-800 group-hover:text-[var(--primary)] group-hover:translate-x-1 transition-all shrink-0 ml-2">→</span>
                         </a>
                         {{ end }}
                         {{ end }}

@@ -6,7 +6,7 @@ unit: "e-squadron"
 layout: "dossier"
 ---
 
-E Squadron represents the most sensitive capability within Taskforce Alpha. Working directly under the SIS Directorate, we conduct missions that "do not exist," operating in the shadows to secure strategic objectives.
+E Squadron represents the most sensitive capability within Taskforce Alpha. Working directly under the SIS Directorate, we conduct missions that "do not exist," operating covertly to secure strategic objectives.
 
 ## Clandestine Protocols
 

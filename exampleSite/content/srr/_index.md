@@ -6,7 +6,7 @@ unit: "srr"
 layout: "dossier"
 ---
 
-The Special Reconnaissance Regiment (SRR) within Taskforce Alpha operates in the shadow domain, gathering critical intelligence in high-risk environments where conventional reconnaissance is impractical.
+The Special Reconnaissance Regiment (SRR) within Taskforce Alpha operates within the Military Intelligence domain, gathering critical intelligence in high-risk environments where conventional reconnaissance is impractical.
 
 ## Core Operational Domains
 
