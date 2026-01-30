@@ -1,87 +1,98 @@
 {
   "title": "Taskforce Alpha Order of Battle",
-  "version": "ORBAT-2026-01-REV2",
+  "version": "ORBAT-2026-01-REV3",
   "status": "OFFICIAL_RESTRICTED",
   "command": {
     "name": "Taskforce Headquarters (TFHQ)",
     "callsign": "0-",
-    "commander": "Maj. Ross Buh",
-    "sub_commander": "WO2 N. Hodge",
+    "role": "Joint Special Forces Command",
     "location": "Northwood HQ",
     "integrity": "99.9%"
   },
   "branches": [
     {
-      "name": "Direct Support & Training",
+      "name": "Command & Support Directorate",
       "units": [
         {
           "name": "Intelligence Cell",
-          "commander": "Cmdr. J. Shaw",
-          "staff": ["2Lt. C. Agnew"]
+          "role": "G2 Operational Intelligence",
+          "detachments": [
+            { "name": "Strategic Analysis", "role": "Dossier & Narrative Development" },
+            { "name": "Battlespace Control", "role": "Tactical Zeus Coordination" }
+          ]
         },
         {
           "name": "SFSG Training Plt",
           "callsign": "Bulldog 10",
-          "personnel": ["Tpr Mirai", "Tpr Toni", "Pte Nyuu.exe", "Pte J. Smith", "Pte G. Mockett", "Rct C. Quack", "Rct R. Holding", "Rct Odin", "Rct cassius2", "Rct notkongou"]
+          "role": "Force Generation & Training",
+          "detachments": [
+            { "name": "Basic Skills Wing", "role": "Phase 1 Assessment" },
+            { "name": "Advanced Skills Wing", "role": "Specialization Training" }
+          ]
         },
         {
           "name": "Medical Det",
           "callsign": "Bulldog 15",
-          "commander": "LCpl L. Hjelm",
-          "personnel": ["Tpr Coburn", "Tpr Parkie", "Tpr Sophie", "Tpr Omega"]
+          "role": "Role 2 Medical Support",
+          "detachments": [
+            { "name": "CASEVAC Team", "role": "Tactical Medical Extraction" }
+          ]
         }
       ]
     },
     {
-      "name": "Specialist Elements",
+      "name": "Joint Specialist Assets",
       "units": [
         {
           "name": "JSFAW",
           "callsign": "Guardian 2-0",
-          "commander": "Flt Lt. M. Müller",
+          "role": "Aviation Support Wing",
           "detachments": [
-            { "name": "Fixed Wing (21)", "personnel": ["FgOff Hans"] },
-            { "name": "Rotary (22)", "personnel": ["FgOff Hans"] }
+            { "name": "Fixed Wing (21)", "role": "Strategic Transport & CAS" },
+            { "name": "Rotary Wing (22)", "role": "Tactical Insertion & Attack" }
           ]
         },
         {
           "name": "1 Troop RAC",
           "callsign": "Panzer 14",
-          "status": "Operational Readiness"
+          "role": "Armoured Cavalry Support",
+          "detachments": [
+            { "name": "Recce Section", "role": "Mobile Reconnaissance" }
+          ]
         }
       ]
     },
     {
-      "name": "UKSF (Tier 1)",
+      "name": "UKSF (Tier 1 Element)",
       "units": [
         {
           "name": "SAS Troop",
           "callsign": "Sabre 3-0",
-          "command": ["Cpl Arbo", "LCpl Shane"],
+          "role": "Counter-Terrorism & Direct Action",
           "teams": [
-            { "name": "Team Alpha (3-1)", "personnel": ["Tpr Coburn", "Tpr S. Lewis", "Tpr Sophie", "Tpr Aidan", "Tpr Splinter", "Tpr Omega", "Cpl Arbo", "LCpl Shane"] },
-            { "name": "Team Bravo (3-2)", "personnel": [] },
-            { "name": "Team Charlie (3-3)", "personnel": [] }
+            { "name": "Team Alpha (3-1)", "role": "Assault Section" },
+            { "name": "Team Bravo (3-2)", "role": "Assault Section" },
+            { "name": "Team Charlie (3-3)", "role": "Assault Section" }
           ]
         },
         {
           "name": "SBS Troop",
           "callsign": "Trident 4-0",
-          "command": ["Cpl Wolf"],
+          "role": "Maritime Special Operations",
           "teams": [
-            { "name": "Team Alpha (4-1)", "personnel": ["Tpr Brett", "Tpr Roach", "Tpr Amy", "Cpl Wolf", "LCpl L. Hjelm"] },
-            { "name": "Team Bravo (4-2)", "personnel": [] },
-            { "name": "Team Charlie (4-3)", "personnel": [] }
+            { "name": "Team Alpha (4-1)", "role": "Amphibious Assault" },
+            { "name": "Team Bravo (4-2)", "role": "Amphibious Assault" },
+            { "name": "Team Charlie (4-3)", "role": "Amphibious Assault" }
           ]
         },
         {
           "name": "SRR Troop",
           "callsign": "Raven 5-0",
-          "command": ["Sgt M. Barker [MC.]"],
+          "role": "Covert Surveillance & ISTAR",
           "teams": [
-            { "name": "Team Alpha (5-1)", "personnel": ["Tpr Parkie", "Tpr Brooks", "Tpr J. Smout", "Tpr Derry", "Sgt M. Barker [MC.]"] },
-            { "name": "Team Bravo (5-2)", "personnel": [] },
-            { "name": "Team Charlie (5-3)", "personnel": [] }
+            { "name": "Team Alpha (5-1)", "role": "Technical Intelligence" },
+            { "name": "Team Bravo (5-2)", "role": "Covert Surveillance" },
+            { "name": "Team Charlie (5-3)", "role": "Covert Surveillance" }
           ]
         }
       ]

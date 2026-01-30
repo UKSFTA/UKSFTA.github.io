@@ -1,23 +1,17 @@
 {{ $orbat := .Site.Data.orbat }}
-<div class="orbat-proper space-y-16">
+<div class="orbat-institutional space-y-16">
     <!-- Command Element -->
     <div class="bracket-box bg-white/[0.02] border-[var(--primary)]/20 !p-8 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-40"></div>
         <div class="flex flex-col lg:flex-row justify-between items-center gap-8">
             <div class="text-center lg:text-left space-y-2">
-                <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.5em] font-black">Command Authority</span>
+                <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-[0.5em] font-black">Institutional Command</span>
                 <h3 class="text-4xl font-black text-white m-0 tracking-tighter uppercase">{{ $orbat.command.name }}</h3>
                 <p class="text-xs font-mono text-gray-500 uppercase tracking-widest">{{ $orbat.command.location }} // SIG_ID: {{ $orbat.command.callsign }}</p>
             </div>
-            <div class="flex space-x-12">
-                <div class="flex flex-col items-center lg:items-end">
-                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Commander</span>
-                    <span class="text-lg font-bold text-white uppercase">{{ $orbat.command.commander }}</span>
-                </div>
-                <div class="flex flex-col items-center lg:items-end">
-                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Sub-Commander</span>
-                    <span class="text-lg font-bold text-white uppercase">{{ $orbat.command.sub_commander }}</span>
-                </div>
+            <div class="flex flex-col items-center lg:items-end space-y-2 border-l border-white/10 pl-8 hidden lg:flex">
+                <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">Command Role</span>
+                <span class="text-lg font-bold text-white uppercase tracking-tighter">{{ $orbat.command.role }}</span>
             </div>
         </div>
     </div>
@@ -31,74 +25,54 @@
                 <div class="h-px w-full bg-white/10"></div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {{ range .units }}
                 <div class="flex flex-col h-full bg-white/[0.01] border border-white/5 group hover:border-[var(--primary)]/30 transition-all duration-500">
                     <!-- Unit Header -->
                     <div class="p-5 border-b border-white/5 bg-white/[0.02]">
                         <div class="flex justify-between items-start mb-3">
-                            <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">{{ .callsign | default "NO_CALLSIGN" }}</span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.4)]"></span>
+                            <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">{{ .callsign | default "UNIT_LEVEL" }}</span>
+                            <span class="text-[7px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">Operational</span>
                         </div>
                         <h5 class="text-lg font-bold text-white uppercase tracking-tight m-0">{{ .name }}</h5>
-                        {{ with .commander }}<p class="text-[10px] text-[var(--primary)] uppercase font-black mt-1">Cmd: {{ . }}</p>{{ end }}
-                        {{ range .command }}<p class="text-[10px] text-[var(--primary)] uppercase font-black mt-1">Cmd: {{ . }}</p>{{ end }}
+                        <p class="text-[9px] text-gray-500 font-mono uppercase mt-1">{{ .role }}</p>
                     </div>
 
-                    <!-- Unit Body -->
+                    <!-- Unit Sub-Structure -->
                     <div class="p-5 flex-grow font-mono text-[10px] space-y-4">
-                        {{ with .personnel }}
-                        <div class="space-y-1.5">
-                            <span class="text-[8px] text-gray-600 uppercase tracking-widest block mb-2">// Personnel</span>
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-gray-400">
-                                {{ range . }}
-                                <div class="truncate">• {{ . }}</div>
-                                {{ end }}
+                        {{ with .detachments }}
+                        <div class="space-y-2.5">
+                            <span class="text-[8px] text-gray-600 uppercase tracking-widest block border-b border-white/5 pb-1">// Sub-Units</span>
+                            {{ range . }}
+                            <div class="flex justify-between items-start group/node">
+                                <div class="flex flex-col">
+                                    <span class="text-gray-300 font-bold uppercase">{{ .name }}</span>
+                                    <span class="text-[8px] text-gray-600 uppercase">{{ .role }}</span>
+                                </div>
+                                <span class="w-1 h-1 rounded-full bg-white/20 mt-1.5"></span>
                             </div>
+                            {{ end }}
                         </div>
                         {{ end }}
 
                         {{ with .teams }}
-                        <div class="space-y-4">
-                            {{ range . }}
-                            <div class="space-y-1.5">
-                                <div class="flex justify-between items-center border-b border-white/5 pb-1">
-                                    <span class="text-[8px] text-[var(--primary)] uppercase font-black">{{ .name }}</span>
-                                    <span class="text-[7px] text-gray-700">ACTIVE</span>
+                        <div class="space-y-2.5">
+                            <span class="text-[8px] text-gray-600 uppercase tracking-widest block border-b border-white/5 pb-1">// Tactical Teams</span>
+                            <div class="grid grid-cols-1 gap-2">
+                                {{ range . }}
+                                <div class="flex justify-between items-center p-2 bg-white/[0.02] border border-white/5">
+                                    <div class="flex flex-col">
+                                        <span class="text-[9px] text-white font-bold uppercase">{{ .name }}</span>
+                                        <span class="text-[7px] text-gray-600 uppercase">{{ .role }}</span>
+                                    </div>
+                                    <div class="flex space-x-1">
+                                        <div class="w-1 h-1 bg-[var(--primary)]/40 rounded-full"></div>
+                                        <div class="w-1 h-1 bg-[var(--primary)]/40 rounded-full"></div>
+                                        <div class="w-1 h-1 bg-[var(--primary)]/40 rounded-full"></div>
+                                    </div>
                                 </div>
-                                <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-gray-500">
-                                    {{ range .personnel }}
-                                    <div class="truncate">• {{ . }}</div>
-                                    {{ end }}
-                                    {{ if not .personnel }}
-                                    <div class="italic opacity-30 text-[8px]">UNMANNED</div>
-                                    {{ end }}
-                                </div>
+                                {{ end }}
                             </div>
-                            {{ end }}
-                        </div>
-                        {{ end }}
-
-                        {{ with .detachments }}
-                        <div class="space-y-4">
-                            {{ range . }}
-                            <div class="space-y-1.5">
-                                <div class="flex justify-between items-center border-b border-white/5 pb-1">
-                                    <span class="text-[8px] text-[var(--primary)] uppercase font-black">{{ .name }}</span>
-                                </div>
-                                <div class="text-gray-500">
-                                    {{ range .personnel }}
-                                    <div class="truncate">• {{ . }}</div>
-                                    {{ end }}
-                                </div>
-                            </div>
-                            {{ end }}
-                        </div>
-                        {{ end }}
-
-                        {{ with .status }}
-                        <div class="pt-4 mt-auto">
-                            <span class="inline-block border border-[var(--primary)]/40 text-[var(--primary)] px-2 py-0.5 text-[8px] font-black uppercase">{{ . }}</span>
                         </div>
                         {{ end }}
                     </div>
