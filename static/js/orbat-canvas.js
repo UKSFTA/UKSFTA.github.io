@@ -274,6 +274,7 @@ window.exportOrbatJSON = function() {
     const nodes = Array.from(nodeEls).map(el => ({
         id: el.getAttribute('data-id'),
         name: el.querySelector('[data-key="name"]').innerText.trim(),
+        role: el.querySelector('[data-key="role"]')?.innerText.trim() || "Operational Support",
         callsign: el.querySelector('.orbat-node-card span.font-mono')?.innerText.trim() || "",
         icon: el.querySelector('img')?.getAttribute('data-icon-path') || null,
         x: Math.round(parseFloat(el.getAttribute('data-x'))),

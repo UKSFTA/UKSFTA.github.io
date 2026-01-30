@@ -15,12 +15,6 @@
     <!-- Node Header: Institutional Terminal Style -->
     <div class="px-4 py-2.5 bg-white/[0.03] border-b border-white/10 flex justify-between items-center shrink-0">
         <div class="flex items-center space-x-3 min-w-0">
-            {{ if $node.icon }}
-            {{ $icon := resources.Get $node.icon }}
-            {{ if $icon }}
-            <img src="{{ $icon.RelPermalink }}" class="w-4 h-4 object-contain opacity-60 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all" data-icon-path="{{ $node.icon }}">
-            {{ end }}
-            {{ end }}
             <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest truncate">{{ $node.callsign | default "NODE_ID" }}</span>
         </div>
         
@@ -33,12 +27,19 @@
 
     <!-- Node Body: Dossier Node Style -->
     <div class="p-5 flex-grow overflow-y-auto custom-scrollbar pointer-events-auto relative">
-        <div class="space-y-4">
+        <div class="space-y-6">
+            {{ if $node.icon }}
+            <div class="flex justify-center mb-2">
+                {{ $icon := resources.Get $node.icon }}
+                {{ if $icon }}
+                <img src="{{ $icon.RelPermalink }}" class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" data-icon-path="{{ $node.icon }}">
+                {{ end }}
+            </div>
+            {{ end }}
+
             <div class="border-l-2 border-[var(--primary)] pl-4">
                 <h5 class="text-sm font-black text-white uppercase tracking-tighter m-0 editable-field" data-key="name">{{ $node.name }}</h5>
-                {{ with $node.role }}
-                <p class="text-[7px] text-gray-500 font-mono uppercase mt-1">{{ . }}</p>
-                {{ end }}
+                <p class="text-[8px] text-[var(--primary)] font-mono uppercase mt-1 italic editable-field" data-key="role">{{ $node.role | default "Operational Support" }}</p>
             </div>
 
             <!-- Personnel List -->
