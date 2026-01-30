@@ -625,6 +625,11 @@
     right: 2rem;
   }
 
+  .canvas-overlay.bottom-left {
+    bottom: 2rem;
+    left: 2rem;
+  }
+
   .canvas-overlay.bottom-right {
     bottom: 2rem;
     right: 2rem;

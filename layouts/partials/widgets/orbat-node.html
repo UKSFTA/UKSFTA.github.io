@@ -13,19 +13,25 @@
 
 <div class="orbat-node-container flex flex-col items-center">
     <div class="tf-nc bracket-box !p-4 group relative min-w-[220px] pointer-events-auto">
+        <!-- Admin Structural Controls -->
+        <div class="admin-controls absolute -top-2 -right-2 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity hidden">
+            <button onclick="addOrbatChild(this)" class="w-5 h-5 bg-green-600 text-white rounded flex items-center justify-center text-xs shadow-xl">+</button>
+            <button onclick="removeOrbatNode(this)" class="w-5 h-5 bg-red-600 text-white rounded flex items-center justify-center text-xs shadow-xl">×</button>
+        </div>
+
         {{ if $node.icon }}
         <div class="flex justify-center mb-3">
             {{ $icon := resources.Get $node.icon }}
             {{ if $icon }}
-            <img src="{{ $icon.RelPermalink }}" class="w-8 h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" alt="">
+            <img src="{{ $icon.RelPermalink }}" class="w-8 h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" alt="" data-icon-path="{{ $node.icon }}">
             {{ end }}
         </div>
         {{ end }}
         
         <div class="space-y-1 text-center">
-            <h5 class="text-[11px] font-bold text-white uppercase tracking-tight m-0">{{ $node.name }}</h5>
+            <h5 class="text-[11px] font-bold text-white uppercase tracking-tight m-0 editable-field" data-key="name">{{ $node.name }}</h5>
             {{ with $node.callsign }}
-            <p class="text-[8px] text-gray-500 font-mono uppercase italic m-0">{{ . }}</p>
+            <p class="text-[8px] text-gray-500 font-mono uppercase italic m-0 editable-field" data-key="callsign">{{ . }}</p>
             {{ end }}
         </div>
 
