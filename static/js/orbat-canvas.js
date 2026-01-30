@@ -161,7 +161,11 @@ window.addEventListener('mousemove', (e) => {
     if (isDraggingNode && dragNode) {
         const m = getCanvasCoords(e.clientX, e.clientY);
         const dx = m.x - startMouseX; const dy = m.y - startMouseY;
-        const newX = startNodeX + dx; const newY = startNodeY + dy;
+        
+        // Active Snapping logic
+        let newX = Math.round((startNodeX + dx) / SNAP_SIZE) * SNAP_SIZE;
+        let newY = Math.round((startNodeY + dy) / SNAP_SIZE) * SNAP_SIZE;
+
         dragNode.style.left = `${OFFSET + newX}px`; dragNode.style.top = `${OFFSET + newY}px`;
         dragNode.setAttribute('data-x', newX); dragNode.setAttribute('data-y', newY);
         updateLinks(); if (selectedNode) showContextToolbar(selectedNode); return;

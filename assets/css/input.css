@@ -669,11 +669,16 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
+
+    /* High-Contrast Blueprint Grid */
+    background-color: #000;
     background-image: 
-      linear-gradient(rgb(255 255 255 / 8%) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(255 255 255 / 8%) 1px, transparent 1px),
-      linear-gradient(rgb(255 255 255 / 3%) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(255 255 255 / 3%) 1px, transparent 1px);
+      /* Major divisions (200px) - Gold tint */
+      linear-gradient(rgb(179 153 93 / 10%) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgb(179 153 93 / 10%) 1.5px, transparent 1.5px),
+      /* Minor divisions (40px) - Subtle white */
+      linear-gradient(rgb(255 255 255 / 4%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 4%) 1px, transparent 1px);
     background-size: 200px 200px, 200px 200px, 40px 40px, 40px 40px;
   }
 
