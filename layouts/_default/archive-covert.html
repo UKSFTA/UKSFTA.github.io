@@ -33,9 +33,7 @@
                         {{ if $rsis_logo }}
                         <div class="relative">
                             <div class="absolute -inset-4 bg-[var(--primary)]/10 blur-xl rounded-full opacity-50"></div>
-                            <div class="logo-plate p-4 rounded-full w-24 h-24 relative shadow-2xl">
-                                <img src="{{ $rsis_logo.RelPermalink }}" class="h-16 w-auto" alt="RSIS">
-                            </div>
+                            <img src="{{ $rsis_logo.RelPermalink }}" class="h-24 w-auto badge-icon gold relative" alt="RSIS">
                         </div>
                         {{ end }}
                         <div class="flex flex-col space-y-3">
@@ -219,10 +217,10 @@
                         <div class="absolute top-0 left-0 w-1 h-full bg-white/5 group-hover:bg-[var(--primary)] transition-colors duration-500"></div>
                         
                         <div class="flex items-center space-x-3">
-                            <div class="logo-plate w-8 h-8 p-1 rounded-full shadow-sm group-hover:border-white transition-all duration-500">
+                            <div class="w-8 h-8 flex items-center justify-center">
                                  {{ $icon := resources.Get .icon }}
                                  {{ if $icon }}
-                                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="w-full h-full object-contain">
+                                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="w-full h-full object-contain badge-icon gold">
                                  {{ end }}
                             </div>
                             <div class="flex flex-col">
