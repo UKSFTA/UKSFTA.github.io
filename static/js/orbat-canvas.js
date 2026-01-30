@@ -1,4 +1,4 @@
-// Institutional ORBAT - Canvas Controller v4.0 (Obsidian Style)
+// Institutional ORBAT - Canvas Controller v4.1 (Workflow Pro)
 
 const canvas = document.getElementById('orbat-canvas');
 const content = document.getElementById('canvas-content');
@@ -7,7 +7,7 @@ const svgLayer = document.getElementById('orbat-connectors');
 const tempLink = document.getElementById('temp-link');
 
 const SNAP_SIZE = 20; 
-const OFFSET = 5000; // Large center offset for the 10000x10000 canvas
+const OFFSET = 5000; 
 
 let scale = 1;
 let translateX = 0;
@@ -18,9 +18,18 @@ let isDrawingLink = false;
 let dragNode = null;
 let linkSourceId = null;
 let linkSourceSide = null;
-let lastMouseX, lastMouseY;
+let startMouseX, startMouseY;
+let startNodeX, startY;
 
-// 1. Point Calculation (Edge-anchored)
+// 1. Utility: Coordinate Conversion
+function getCanvasCoords(clientX, clientY) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+        x: (clientX - rect.left - translateX) / scale,
+        y: (clientY - rect.top - translateY) / scale
+    };
+}
+
 function getPointOnSide(nodeId, side) {
     const el = document.getElementById(`node-${nodeId}`);
     if (!el) return { x: 0, y: 0 };
@@ -30,7 +39,6 @@ function getPointOnSide(nodeId, side) {
     const w = parseFloat(el.getAttribute('data-w'));
     const h = parseFloat(el.getAttribute('data-h'));
 
-    // Returns coordinates relative to the 5000px center
     switch (side) {
         case 'top':    return { x: OFFSET + x + w/2, y: OFFSET + y };
         case 'bottom': return { x: OFFSET + x + w/2, y: OFFSET + y + h };
@@ -41,24 +49,23 @@ function getPointOnSide(nodeId, side) {
 }
 
 function getBezierPath(p1, p2, s1, s2) {
-    // Control point distance based on distance between nodes
     const dist = Math.hypot(p2.x - p1.x, p2.y - p1.y);
-    const cpDist = Math.min(dist / 2, 100);
+    const cpDist = Math.min(dist / 2, 150);
 
     const cp1 = { x: p1.x, y: p1.y };
     const cp2 = { x: p2.x, y: p2.y };
 
-    // Adjust control points based on side orientation
     if (s1 === 'top') cp1.y -= cpDist;
-    if (s1 === 'bottom') cp1.y += cpDist;
-    if (s1 === 'left') cp1.x -= cpDist;
-    if (s1 === 'right') cp1.x += cpDist;
+    else if (s1 === 'bottom') cp1.y += cpDist;
+    else if (s1 === 'left') cp1.x -= cpDist;
+    else if (s1 === 'right') cp1.x += cpDist;
 
     if (s2 === 'top') cp2.y -= cpDist;
-    if (s2 === 'bottom') cp2.y += cpDist;
-    if (s2 === 'left') cp2.x -= cpDist;
-    if (s2 === 'right') cp2.x += cpDist;
-
+    else if (s2 === 'bottom') cp2.y += cpDist;
+    else if (s2 === 'left') cp2.x -= cpDist;
+    else if (s2 === 'right') cp2.x += cpDist;
+    // For 'auto' (mouse pointer) we just point straight at it
+    
     return `M ${p1.x} ${p1.y} C ${cp1.x} ${cp1.y}, ${cp2.x} ${cp2.y}, ${p2.x} ${p2.y}`;
 }
 
@@ -84,91 +91,82 @@ function updateLinks() {
     });
 }
 
-// 3. Interaction Logic
+// 3. Event Listeners
 canvas.addEventListener('mousedown', (e) => {
-    // A. Node Drag Handler
-    const handle = e.target.closest('.node-drag-handle') || e.target.closest('.orbat-node-card > div:first-child');
-    if (handle && !isDrawingLink) {
+    // A. Link Drawing Finalization
+    if (isDrawingLink) {
+        const targetNode = e.target.closest('.orbat-node-wrapper');
+        if (targetNode) {
+            const targetId = targetNode.getAttribute('data-id');
+            if (targetId !== linkSourceId) {
+                // Determine target side (closest to source)
+                createNewLink(linkSourceId, linkSourceSide, targetId, 'top');
+            }
+        }
+        stopDrawingLink();
+        return;
+    }
+
+    // B. Node Dragging
+    const dragHandle = e.target.closest('.node-drag-handle') || e.target.closest('.orbat-node-card > div:first-child');
+    if (dragHandle) {
         isDraggingNode = true;
-        dragNode = handle.closest('.orbat-node-wrapper');
-        lastMouseX = e.clientX;
-        lastMouseY = e.clientY;
+        dragNode = dragHandle.closest('.orbat-node-wrapper');
+        const coords = getCanvasCoords(e.clientX, e.clientY);
+        startMouseX = coords.x;
+        startMouseY = coords.y;
+        startNodeX = parseFloat(dragNode.getAttribute('data-x'));
+        startNodeY = parseFloat(dragNode.getAttribute('data-y'));
         e.stopPropagation();
         return;
     }
 
-    // B. Panning Handler
+    // C. Panning
     if (e.button === 0) {
         isPanning = true;
-        lastMouseX = e.clientX;
-        lastMouseY = e.clientY;
+        startMouseX = e.clientX - translateX;
+        startMouseY = e.clientY - translateY;
     }
 });
 
 window.addEventListener('mousemove', (e) => {
-    // 1. Temp Link
+    // 1. Link Preview
     if (isDrawingLink) {
-        const rect = canvas.getBoundingClientRect();
-        const mX = (e.clientX - rect.left - translateX) / scale;
-        const mY = (e.clientY - rect.top - translateY) / scale;
-        
+        const m = getCanvasCoords(e.clientX, e.clientY);
         const p1 = getPointOnSide(linkSourceId, linkSourceSide);
-        tempLink.setAttribute('d', getBezierPath(p1, { x: mX, y: mY }, linkSourceSide, 'auto'));
-        
-        // Auto-detect closest side of hovered node
-        const targetNode = e.target.closest('.orbat-node-wrapper');
-        if (targetNode) {
-            targetNode.style.boxShadow = '0 0 0 2px var(--primary)';
-        } else {
-            document.querySelectorAll('.orbat-node-wrapper').forEach(n => n.style.boxShadow = '');
-        }
+        tempLink.setAttribute('d', getBezierPath(p1, m, linkSourceSide, 'auto'));
         return;
     }
 
-    // 2. Node Dragging
+    // 2. Node Move
     if (isDraggingNode && dragNode) {
-        const dx = (e.clientX - lastMouseX) / scale;
-        const dy = (e.clientY - lastMouseY) / scale;
+        const m = getCanvasCoords(e.clientX, e.clientY);
+        const dx = m.x - startMouseX;
+        const dy = m.y - startMouseY;
         
-        let curX = parseFloat(dragNode.getAttribute('data-x'));
-        let curY = parseFloat(dragNode.getAttribute('data-y'));
-        
-        let newX = curX + dx;
-        let newY = curY + dy;
+        const newX = startNodeX + dx;
+        const newY = startNodeY + dy;
 
         dragNode.style.left = `${OFFSET + newX}px`;
         dragNode.style.top = `${OFFSET + newY}px`;
         dragNode.setAttribute('data-x', newX);
         dragNode.setAttribute('data-y', newY);
         
-        lastMouseX = e.clientX;
-        lastMouseY = e.clientY;
         updateLinks();
         return;
     }
 
     // 3. Panning
     if (isPanning) {
-        translateX += e.clientX - lastMouseX;
-        translateY += e.clientY - lastMouseY;
-        lastMouseX = e.clientX;
-        lastMouseY = e.clientY;
+        translateX = e.clientX - startMouseX;
+        translateY = e.clientY - startMouseY;
         updateTransform();
     }
 });
 
-window.addEventListener('mouseup', (e) => {
-    if (isDrawingLink) {
-        const targetNode = e.target.closest('.orbat-node-wrapper');
-        if (targetNode) {
-            const targetId = targetNode.getAttribute('data-id');
-            // Determine best target side based on relative position
-            createNewLink(linkSourceId, linkSourceSide, targetId, 'top'); 
-        }
-        stopDrawingLink();
-    }
-
+window.addEventListener('mouseup', () => {
     if (isDraggingNode && dragNode) {
+        // Snap to grid
         let x = parseFloat(dragNode.getAttribute('data-x'));
         let y = parseFloat(dragNode.getAttribute('data-y'));
         x = Math.round(x / SNAP_SIZE) * SNAP_SIZE;
@@ -180,18 +178,32 @@ window.addEventListener('mouseup', (e) => {
         dragNode.style.top = `${OFFSET + y}px`;
         updateLinks();
     }
-
     isPanning = false;
     isDraggingNode = false;
     dragNode = null;
-    document.querySelectorAll('.orbat-node-wrapper').forEach(n => n.style.boxShadow = '');
 });
 
 canvas.addEventListener('wheel', (e) => {
     e.preventDefault();
-    const factor = e.deltaY > 0 ? 0.9 : 1.1;
+    const zoomSpeed = 0.001;
+    const factor = Math.exp(-e.deltaY * zoomSpeed);
+    
+    // Zoom relative to mouse position
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    // Current point under mouse
+    const x0 = (mouseX - translateX) / scale;
+    const y0 = (mouseY - translateY) / scale;
+
     scale *= factor;
     scale = Math.min(Math.max(0.1, scale), 3);
+
+    // New translation to keep x0, y0 under mouse
+    translateX = mouseX - x0 * scale;
+    translateY = mouseY - y0 * scale;
+
     updateTransform();
 }, { passive: false });
 

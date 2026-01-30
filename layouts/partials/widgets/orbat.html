@@ -2,12 +2,12 @@
 {{ $units := .Site.Data.units }}
 
 <div class="orbat-canvas-area relative w-[10000px] h-[10000px]">
-    <!-- Visual Grid Backdrop (Subtle dots like Obsidian) -->
+    <!-- Visual Grid Backdrop -->
     <div class="absolute inset-0 pointer-events-none opacity-[0.05]" 
          style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
 
     <!-- SVG Connector Layer -->
-    <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-none">
+    <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-none z-0">
         <defs>
             <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
                 <polygon points="0 0, 10 3.5, 0 7" fill="rgba(179, 153, 93, 0.8)" />
@@ -26,7 +26,7 @@
     </svg>
 
     <!-- Node Layer -->
-    <div id="orbat-nodes-layer" class="absolute inset-0">
+    <div id="orbat-nodes-layer" class="absolute inset-0 z-10">
         {{ range $orbat.nodes }}
         <div class="orbat-node-wrapper absolute shadow-2xl" 
              id="node-{{ .id }}" 
