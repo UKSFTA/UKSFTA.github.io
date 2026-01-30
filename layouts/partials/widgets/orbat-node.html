@@ -19,9 +19,10 @@
         </div>
         
         <!-- Admin Structural Controls -->
-        <div class="admin-controls flex items-center space-x-2 opacity-0 group-hover/card:opacity-100 transition-opacity hidden">
-            <div class="node-drag-handle text-gray-600 hover:text-[var(--primary)] cursor-move transition-colors text-xs">✥</div>
-            <button onclick="removeOrbatNode(this)" class="text-gray-600 hover:text-red-500 transition-colors text-xs">×</button>
+        <div class="admin-controls flex items-center space-x-3 opacity-0 group-hover/card:opacity-100 transition-opacity hidden">
+            <div class="node-drag-handle text-gray-600 hover:text-[var(--primary)] cursor-move transition-colors text-sm" title="REPOSITION">✥</div>
+            <button onclick="window.cycleUnitIcon(this)" class="text-gray-600 hover:text-blue-500 transition-colors text-sm" title="CHANGE_ICON">❖</button>
+            <button onclick="window.removeOrbatNode(this)" class="text-gray-600 hover:text-red-500 transition-colors text-sm" title="DECOMMISSION">×</button>
         </div>
     </div>
 
