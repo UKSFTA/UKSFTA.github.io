@@ -1,4 +1,4 @@
-// Institutional ORBAT - Canvas Controller v5.1 (Workflow Polished)
+// Institutional ORBAT - Canvas Controller v6.0 (Workflow Elite)
 
 const canvas = document.getElementById('orbat-canvas');
 const content = document.getElementById('canvas-content');
@@ -26,89 +26,132 @@ let activeNodeForIcon = null;
 let startMouseX, startMouseY;
 let startNodeX, startNodeY;
 
-// --- 1. UI: NOTIFICATIONS & CONTEXT ---
+// --- 1. HISTORY & CLIPBOARD MANAGERS ---
+
+let history = [];
+let historyIndex = -1;
+let clipboard = null;
+
+function saveState(actionLabel = "CHANGE") {
+    const state = serializeCurrentState();
+    // Only save if different from last state
+    if (historyIndex >= 0 && JSON.stringify(state) === JSON.stringify(history[historyIndex])) return;
+
+    history = history.slice(0, historyIndex + 1);
+    history.push(state);
+    historyIndex++;
+    if (history.length > 50) history.shift(), historyIndex--;
+}
+
+function undo() {
+    if (historyIndex > 0) {
+        historyIndex--;
+        loadState(history[historyIndex]);
+        showToast('ACTION_REVERSED');
+    }
+}
+
+function redo() {
+    if (historyIndex < history.length - 1) {
+        historyIndex++;
+        loadState(history[historyIndex]);
+        showToast('ACTION_RESTORED');
+    }
+}
+
+function serializeCurrentState() {
+    const nodes = Array.from(document.querySelectorAll('.orbat-node-wrapper')).map(el => ({
+        id: el.getAttribute('data-id'),
+        name: el.querySelector('[data-key="name"]').innerText.trim(),
+        role: el.querySelector('[data-key="role"]')?.innerText.trim() || "Operational Support",
+        callsign: el.querySelector('.orbat-node-card span.font-mono')?.innerText.trim() || "",
+        icon: el.querySelector('img')?.getAttribute('data-icon-path') || null,
+        x: parseFloat(el.getAttribute('data-x')),
+        y: parseFloat(el.getAttribute('data-y')),
+        w: parseFloat(el.getAttribute('data-w')),
+        h: parseFloat(el.getAttribute('data-h'))
+    }));
+    const edges = Array.from(document.querySelectorAll('.orbat-link')).map(el => ({
+        id: el.id.replace('edge-', ''),
+        fromNode: el.getAttribute('data-source'), toNode: el.getAttribute('data-target'),
+        fromSide: el.getAttribute('data-from-side'), toSide: el.getAttribute('data-to-side')
+    }));
+    return { nodes, edges };
+}
+
+function loadState(state) {
+    // 1. Clear current
+    document.getElementById('orbat-nodes-layer').innerHTML = '';
+    document.querySelectorAll('.orbat-link').forEach(l => l.remove());
+
+    // 2. Re-create nodes
+    state.nodes.forEach(n => renderNode(n));
+    
+    // 3. Re-create links
+    state.edges.forEach(e => createNewLink(e.fromNode, e.fromSide, e.toNode, e.toSide, e.id));
+    
+    updateLinks();
+    updateSelection(null);
+}
+
+function renderNode(n) {
+    const newNode = document.createElement('div');
+    newNode.className = 'orbat-node-wrapper absolute shadow-2xl';
+    if (selectedNode && selectedNode.getAttribute('data-id') === n.id) newNode.classList.add('selected');
+    newNode.id = `node-${n.id}`;
+    newNode.setAttribute('data-id', n.id); newNode.setAttribute('data-x', n.x); newNode.setAttribute('data-y', n.y);
+    newNode.setAttribute('data-w', n.w); newNode.setAttribute('data-h', n.h);
+    newNode.style.left = `${OFFSET + n.x}px`; newNode.style.top = `${OFFSET + n.y}px`;
+    newNode.style.width = `${n.w}px`; newNode.style.height = `${n.h}px`;
+    
+    const editMode = document.getElementById('hq-admin-bar').classList.contains('edit-active');
+    
+    newNode.innerHTML = `
+        <div class="orbat-node-card h-full flex flex-col bracket-box bg-black/80 backdrop-blur-xl !p-0 overflow-hidden relative group/card border-white/5 pointer-events-auto">
+            <div class="px-4 py-2 bg-white/[0.03] border-b border-white/10 flex justify-between items-center shrink-0">
+                <div class="flex items-center space-x-3 min-w-0"><span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest truncate">${n.callsign || "NODE"}</span></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></div>
+            </div>
+            <div class="p-5 flex-grow overflow-y-auto custom-scrollbar relative">
+                <div class="space-y-6">
+                    ${n.icon ? `<div class="flex justify-center mb-2"><img src="/${n.icon}" class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" data-icon-path="${n.icon}"></div>` : ''}
+                    <div class="border-l-2 border-[var(--primary)] pl-4">
+                        <h5 class="text-sm font-black text-white uppercase tracking-tighter m-0 editable-field" data-key="name" contenteditable="${editMode}">${n.name}</h5>
+                        <p class="text-[8px] text-[var(--primary)] font-mono uppercase mt-1 italic editable-field" data-key="role" contenteditable="${editMode}">${n.role}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="connection-points absolute inset-0 pointer-events-none ${editMode ? '' : 'hidden'}">
+                <div class="c-point top" onmousedown="window.startDrawingLink(event, 'top')"></div>
+                <div class="c-point right" onmousedown="window.startDrawingLink(event, 'right')"></div>
+                <div class="c-point bottom" onmousedown="window.startDrawingLink(event, 'bottom')"></div>
+                <div class="c-point left" onmousedown="window.startDrawingLink(event, 'left')"></div>
+            </div>
+        </div>
+    `;
+    document.getElementById('orbat-nodes-layer').appendChild(newNode);
+}
+
+// --- 2. CORE CANVAS LOGIC ---
 
 window.showToast = function(message, type = 'info') {
     const toast = document.createElement('div');
-    // Moved to top-right to avoid covering bottom toolbar
     toast.className = `p-4 bg-black/95 backdrop-blur-xl border-l-2 ${type === 'danger' ? 'border-red-600' : 'border-[var(--primary)]'} shadow-2xl animate-slide-in-right flex items-center space-x-4 min-w-[280px] pointer-events-auto transition-all duration-500`;
-    
-    toast.innerHTML = `
-        <span class="w-1.5 h-1.5 rounded-full ${type === 'danger' ? 'bg-red-600' : 'bg-[var(--primary)]'} animate-pulse"></span>
-        <div class="flex flex-col">
-            <span class="text-[10px] font-black text-white uppercase tracking-widest">${message}</span>
-            <span class="text-[7px] font-mono text-gray-500 uppercase tracking-tighter">System Notification // ${new Date().toLocaleTimeString()}</span>
-        </div>
-    `;
-    
+    toast.innerHTML = `<span class="w-1.5 h-1.5 rounded-full ${type === 'danger' ? 'bg-red-600' : 'bg-[var(--primary)]'} animate-pulse"></span><div class="flex flex-col"><span class="text-[10px] font-black text-white uppercase tracking-widest">${message}</span><span class="text-[7px] font-mono text-gray-500 uppercase tracking-tighter">System Node // ${new Date().toLocaleTimeString()}</span></div>`;
     toastContainer.appendChild(toast);
-    setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateX(50px)';
-        setTimeout(() => toast.remove(), 500);
-    }, 4000);
+    setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(50px)'; setTimeout(() => toast.remove(), 500); }, 4000);
 };
-
-function updateSelection(node) {
-    document.querySelectorAll('.orbat-node-wrapper').forEach(n => n.classList.remove('selected'));
-    selectedNode = node;
-    if (node) {
-        node.classList.add('selected');
-        showContextToolbar(node);
-    } else {
-        hideContextToolbar();
-    }
-}
-
-function showContextToolbar(node) {
-    if (!document.getElementById('hq-admin-bar').classList.contains('edit-active')) return;
-    
-    let toolbar = document.getElementById('node-context-menu');
-    if (!toolbar) {
-        toolbar = document.createElement('div');
-        toolbar.id = 'node-context-menu';
-        toolbar.className = 'node-context-menu pointer-events-auto';
-        document.body.appendChild(toolbar);
-    }
-
-    toolbar.innerHTML = `
-        <button onclick="window.openIconModalDirect()" class="toolbar-btn" title="Change Icon">❖</button>
-        <div class="toolbar-separator"></div>
-        <button onclick="window.removeSelectedNode()" class="toolbar-btn text-red-500" title="Delete Unit">×</button>
-    `;
-
-    const rect = node.getBoundingClientRect();
-    toolbar.style.left = `${rect.left + rect.width / 2}px`;
-    toolbar.style.top = `${rect.top - 60}px`;
-    toolbar.classList.remove('hidden');
-}
-
-function hideContextToolbar() {
-    const toolbar = document.getElementById('node-context-menu');
-    if (toolbar) toolbar.classList.add('hidden');
-}
-
-// --- 2. CANVAS MATH (Fixed Projection) ---
 
 function getCanvasCoords(clientX, clientY) {
     const rect = canvas.getBoundingClientRect();
-    // Logic: (ScreenPos - CanvasTopLeft - Translation) / Scale
-    return {
-        x: (clientX - rect.left - translateX) / scale,
-        y: (clientY - rect.top - translateY) / scale
-    };
+    return { x: (clientX - rect.left - translateX) / scale, y: (clientY - rect.top - translateY) / scale };
 }
 
 function getPointOnSide(nodeId, side) {
     const el = document.getElementById(`node-${nodeId}`);
     if (!el) return { x: 0, y: 0 };
-
-    const x = parseFloat(el.getAttribute('data-x'));
-    const y = parseFloat(el.getAttribute('data-y'));
-    const w = parseFloat(el.getAttribute('data-w'));
-    const h = parseFloat(el.getAttribute('data-h'));
-
-    // Returns absolute coordinates in the 10000x10000 space
+    const x = parseFloat(el.getAttribute('data-x')); const y = parseFloat(el.getAttribute('data-y'));
+    const w = parseFloat(el.getAttribute('data-w')); const h = parseFloat(el.getAttribute('data-h'));
     switch (side) {
         case 'top':    return { x: OFFSET + x + w/2, y: OFFSET + y };
         case 'bottom': return { x: OFFSET + x + w/2, y: OFFSET + y + h };
@@ -121,24 +164,13 @@ function getPointOnSide(nodeId, side) {
 function getBezierPath(p1, p2, s1, s2) {
     const dist = Math.hypot(p2.x - p1.x, p2.y - p1.y);
     const cpDist = Math.min(dist / 2, 150);
-
-    const cp1 = { x: p1.x, y: p1.y };
-    const cp2 = { x: p2.x, y: p2.y };
-
-    if (s1 === 'top') cp1.y -= cpDist;
-    else if (s1 === 'bottom') cp1.y += cpDist;
-    else if (s1 === 'left') cp1.x -= cpDist;
-    else if (s1 === 'right') cp1.x += cpDist;
-
-    if (s2 === 'top') cp2.y -= cpDist;
-    else if (s2 === 'bottom') cp2.y += cpDist;
-    else if (s2 === 'left') cp2.x -= cpDist;
-    else if (s2 === 'right') cp2.x += cpDist;
-    
+    const cp1 = { ...p1 }; const cp2 = { ...p2 };
+    if (s1 === 'top') cp1.y -= cpDist; else if (s1 === 'bottom') cp1.y += cpDist;
+    else if (s1 === 'left') cp1.x -= cpDist; else if (s1 === 'right') cp1.x += cpDist;
+    if (s2 === 'top') cp2.y -= cpDist; else if (s2 === 'bottom') cp2.y += cpDist;
+    else if (s2 === 'left') cp2.x -= cpDist; else if (s2 === 'right') cp2.x += cpDist;
     return `M ${p1.x} ${p1.y} C ${cp1.x} ${cp1.y}, ${cp2.x} ${cp2.y}, ${p2.x} ${p2.y}`;
 }
-
-// --- 3. RENDERING & INTERACTION ---
 
 function updateTransform() {
     content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
@@ -155,23 +187,21 @@ function updateLinks() {
     });
 }
 
-canvas.addEventListener('mousedown', (e) => {
-    const nodeWrapper = e.target.closest('.orbat-node-wrapper');
-    const dragHandle = e.target.closest('.node-drag-handle') || e.target.closest('.orbat-node-card > div:first-child');
+// --- 3. INPUT HANDLERS ---
 
+canvas.addEventListener('mousedown', (e) => {
+    if (e.target.classList.contains('editable-field')) return;
+    
+    const nodeWrapper = e.target.closest('.orbat-node-wrapper');
     if (isDrawingLink) {
-        if (nodeWrapper) {
-            const targetId = nodeWrapper.getAttribute('data-id');
-            if (targetId !== linkSourceId) createNewLink(linkSourceId, linkSourceSide, targetId, 'top');
-        }
+        if (nodeWrapper) createNewLink(linkSourceId, linkSourceSide, nodeWrapper.getAttribute('data-id'), 'top');
         stopDrawingLink(); return;
     }
 
     if (nodeWrapper) {
         updateSelection(nodeWrapper);
-        if (dragHandle || document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
-            isDraggingNode = true;
-            dragNode = nodeWrapper;
+        if (document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
+            isDraggingNode = true; dragNode = nodeWrapper;
             const coords = getCanvasCoords(e.clientX, e.clientY);
             startMouseX = coords.x; startMouseY = coords.y;
             startNodeX = parseFloat(dragNode.getAttribute('data-x')); startNodeY = parseFloat(dragNode.getAttribute('data-y'));
@@ -182,8 +212,7 @@ canvas.addEventListener('mousedown', (e) => {
     }
 
     if (e.button === 0) {
-        isPanning = true;
-        startMouseX = e.clientX; startMouseY = e.clientY;
+        isPanning = true; startMouseX = e.clientX - translateX; startMouseY = e.clientY - translateY;
     }
 });
 
@@ -191,40 +220,30 @@ window.addEventListener('mousemove', (e) => {
     if (isDrawingLink) {
         const m = getCanvasCoords(e.clientX, e.clientY);
         const p1 = getPointOnSide(linkSourceId, linkSourceSide);
-        // Correct mouse pos for SVG layer (which is at OFFSET center)
-        const svgMouse = { x: m.x + OFFSET, y: m.y + OFFSET };
-        tempLink.setAttribute('d', getBezierPath(p1, svgMouse, linkSourceSide, 'auto')); return;
+        tempLink.setAttribute('d', getBezierPath(p1, { x: m.x + OFFSET, y: m.y + OFFSET }, linkSourceSide, 'auto')); return;
     }
     if (isDraggingNode && dragNode) {
         const m = getCanvasCoords(e.clientX, e.clientY);
-        const newX = startNodeX + (m.x - startMouseX); const newY = startNodeY + (m.y - startMouseY);
+        const dx = m.x - startMouseX; const dy = m.y - startMouseY;
+        const newX = startNodeX + dx; const newY = startNodeY + dy;
         dragNode.style.left = `${OFFSET + newX}px`; dragNode.style.top = `${OFFSET + newY}px`;
         dragNode.setAttribute('data-x', newX); dragNode.setAttribute('data-y', newY);
         updateLinks(); if (selectedNode) showContextToolbar(selectedNode); return;
     }
     if (isPanning) {
-        translateX += e.clientX - startMouseX; translateY += e.clientY - startMouseY;
-        startMouseX = e.clientX; startMouseY = e.clientY;
+        translateX = e.clientX - startMouseX; translateY = e.clientY - startMouseY;
         updateTransform();
     }
 });
 
 window.addEventListener('mouseup', () => {
     if (isDraggingNode && dragNode) {
-        // HARD SNAP TO GRID
-        let x = parseFloat(dragNode.getAttribute('data-x'));
-        let y = parseFloat(dragNode.getAttribute('data-y'));
-        
-        const snapX = Math.round(x / SNAP_SIZE) * SNAP_SIZE;
-        const snapY = Math.round(y / SNAP_SIZE) * SNAP_SIZE;
-        
-        dragNode.setAttribute('data-x', snapX);
-        dragNode.setAttribute('data-y', snapY);
-        dragNode.style.left = `${OFFSET + snapX}px`;
-        dragNode.style.top = `${OFFSET + snapY}px`;
-        
+        const x = Math.round(parseFloat(dragNode.getAttribute('data-x')) / SNAP_SIZE) * SNAP_SIZE;
+        const y = Math.round(parseFloat(dragNode.getAttribute('data-y')) / SNAP_SIZE) * SNAP_SIZE;
+        dragNode.setAttribute('data-x', x); dragNode.setAttribute('data-y', y);
+        dragNode.style.left = `${OFFSET + x}px`; dragNode.style.top = `${OFFSET + y}px`;
         updateLinks();
-        showToast(`NODE_LOCKED: [${snapX}, ${snapY}]`);
+        saveState(); // Record move
     }
     isPanning = false; isDraggingNode = false; dragNode = null;
 });
@@ -240,193 +259,162 @@ canvas.addEventListener('wheel', (e) => {
     updateTransform();
 }, { passive: false });
 
-canvas.addEventListener('dblclick', (e) => {
-    if (!document.getElementById('hq-admin-bar').classList.contains('edit-active')) return;
-    if (e.target === canvas || e.target.id === 'orbat-nodes-layer') {
-        const coords = getCanvasCoords(e.clientX, e.clientY);
-        window.addOrbatNodeAt(coords.x, coords.y);
-    }
-});
-
-// --- 4. ADMIN & CORE FUNCTIONS ---
-
-const UNIT_ICONS = ["icons/MOD.png", "icons/TFA.png", "icons/SAS.png", "icons/SBS.png", "icons/SRR.png", "icons/SFSG.png", "icons/JSFAW.png", "icons/MEDIC.png", "icons/Intelligence-Corps.png", "icons/RSIS.png", "icons/SIGNALS.png", "icons/RANGERS.png"];
+// --- 4. ADMIN FEATURES ---
 
 window.openIconModalDirect = function() {
     if (!selectedNode) return;
     activeNodeForIcon = selectedNode;
     iconGrid.innerHTML = '';
-    UNIT_ICONS.forEach(path => {
+    ["icons/MOD.png", "icons/TFA.png", "icons/SAS.png", "icons/SBS.png", "icons/SRR.png", "icons/SFSG.png", "icons/JSFAW.png", "icons/MEDIC.png", "icons/Intelligence-Corps.png", "icons/RSIS.png", "icons/SIGNALS.png", "icons/RANGERS.png"].forEach(path => {
         const item = document.createElement('div');
         item.className = 'group/icon flex flex-col items-center space-y-2 p-4 bg-white/[0.02] border border-white/5 hover:border-[var(--primary)]/40 cursor-pointer transition-all';
-        item.onclick = () => selectIcon(path);
+        item.onclick = () => {
+            const img = activeNodeForIcon.querySelector('img');
+            if (img) { img.src = '/' + path; img.setAttribute('data-icon-path', path); }
+            showToast(`ICON_APPLIED: ${path.split('/').pop()}`);
+            saveState();
+            closeIconModal();
+        };
         item.innerHTML = `<img src="/${path}" class="w-12 h-12 object-contain opacity-60 group-hover/icon:opacity-100 transition-opacity"><span class="text-[7px] font-mono text-gray-600 group-hover/icon:text-white uppercase">${path.split('/').pop()}</span>`;
         iconGrid.appendChild(item);
     });
     iconModal.classList.remove('hidden');
 };
 
-function selectIcon(path) {
-    if (activeNodeForIcon) {
-        const img = activeNodeForIcon.querySelector('img');
-        if (img) { img.src = '/' + path; img.setAttribute('data-icon-path', path); }
-        showToast(`ICON_APPLIED: ${path.split('/').pop()}`);
-    }
-    closeIconModal();
-}
-
-window.closeIconModal = function() { iconModal.classList.add('hidden'); activeNodeForIcon = null; };
+window.closeIconModal = () => { iconModal.classList.add('hidden'); activeNodeForIcon = null; };
 
 window.startDrawingLink = function(e, side) {
     e.stopPropagation(); isDrawingLink = true;
-    const node = e.target.closest('.orbat-node-wrapper');
-    linkSourceId = node.getAttribute('data-id');
-    linkSourceSide = side;
-    
-    const p1 = getPointOnSide(linkSourceId, side);
-    tempLink.setAttribute('d', `M ${p1.x} ${p1.y} L ${p1.x} ${p1.y}`);
-    tempLink.classList.remove('hidden');
+    linkSourceId = e.target.closest('.orbat-node-wrapper').getAttribute('data-id');
+    linkSourceSide = side; tempLink.classList.remove('hidden');
 };
 
 function stopDrawingLink() { isDrawingLink = false; linkSourceId = null; tempLink.classList.add('hidden'); }
 
-function createNewLink(source, sSide, target, tSide) {
+function createNewLink(source, sSide, target, tSide, id = null) {
     if (source === target) return;
-    const id = `e_${Math.random().toString(36).substr(2, 9)}`;
+    const eid = id || `e_${Math.random().toString(36).substr(2, 9)}`;
     const newLink = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    newLink.setAttribute('class', 'orbat-link'); newLink.setAttribute('id', `edge-${id}`);
+    newLink.setAttribute('class', 'orbat-link'); newLink.setAttribute('id', `edge-${eid}`);
     newLink.setAttribute('data-source', source); newLink.setAttribute('data-target', target);
     newLink.setAttribute('data-from-side', sSide); newLink.setAttribute('data-to-side', tSide);
     newLink.setAttribute('fill', 'none'); newLink.setAttribute('stroke', 'rgba(179, 153, 93, 0.4)');
     newLink.setAttribute('stroke-width', '2'); newLink.setAttribute('marker-end', 'url(#arrowhead)');
-    svgLayer.appendChild(newLink); updateLinks();
+    svgLayer.appendChild(newLink);
+    if (!id) { updateLinks(); saveState(); }
 }
 
 window.toggleEditMode = function() {
-    const isActive = document.getElementById('hq-admin-bar').classList.toggle('edit-active');
-    const btn = document.getElementById('edit-mode-btn');
-    btn.classList.toggle('active', isActive);
-    document.querySelectorAll('.admin-controls, .connection-points').forEach(el => el.classList.toggle('hidden', !isActive));
+    const bar = document.getElementById('hq-admin-bar');
+    const isActive = bar.classList.toggle('edit-active');
+    document.getElementById('edit-mode-btn').classList.toggle('active', isActive);
+    document.querySelectorAll('.connection-points').forEach(el => el.classList.toggle('hidden', !isActive));
     document.querySelectorAll('.editable-field').forEach(el => el.setAttribute('contenteditable', isActive ? 'true' : 'false'));
     if (!isActive) hideContextToolbar();
-    else if (selectedNode) showContextToolbar(selectedNode);
     showToast(isActive ? 'STRUCTURAL_EDIT_ENABLED' : 'STRUCTURAL_EDIT_DISABLED');
 };
 
 window.centerView = function() {
-    // 1. Reset Scale for consistent math
     scale = 0.8;
-    
-    // 2. Get viewport center
-    const vW = canvas.clientWidth;
-    const vH = canvas.clientHeight;
-    
-    // 3. Target TFHQ coordinates (or first node)
-    const tfhq = document.getElementById('node-tfhq') || document.querySelector('.orbat-node-wrapper');
-    if (tfhq) {
-        const nX = parseFloat(tfhq.getAttribute('data-x'));
-        const nY = parseFloat(tfhq.getAttribute('data-y'));
-        
-        // 4. Calculate translation to center the node
-        // Translation = ViewportCenter - (NodePos * Scale)
-        translateX = (vW / 2) - ((OFFSET + nX) * scale);
-        translateY = (vH / 2) - ((OFFSET + nY) * scale);
-        
+    const target = document.getElementById('node-tfhq') || document.querySelector('.orbat-node-wrapper');
+    if (target) {
+        translateX = (canvas.clientWidth / 2) - ((OFFSET + parseFloat(target.getAttribute('data-x'))) * scale);
+        translateY = (canvas.clientHeight / 2) - ((OFFSET + parseFloat(target.getAttribute('data-y'))) * scale);
         updateTransform();
-        showToast('VIEW_CENTERED');
     }
 };
 
 window.addOrbatNodeAt = function(x = 0, y = 0) {
-    // Hard Snap coordinates before creation
-    const snapX = Math.round(x / SNAP_SIZE) * SNAP_SIZE;
-    const snapY = Math.round(y / SNAP_SIZE) * SNAP_SIZE;
-    
-    const newId = `unit_${Math.random().toString(36).substr(2, 9)}`;
-    const newNode = document.createElement('div');
-    newNode.className = 'orbat-node-wrapper absolute shadow-2xl';
-    newNode.id = `node-${newId}`;
-    newNode.setAttribute('data-id', newId); 
-    newNode.setAttribute('data-x', snapX); 
-    newNode.setAttribute('data-y', snapY);
-    newNode.setAttribute('data-w', 220); newNode.setAttribute('data-h', 180);
-    newNode.style.left = `${OFFSET + snapX}px`; 
-    newNode.style.top = `${OFFSET + snapY}px`;
-    newNode.style.width = '220px'; newNode.style.height = '180px';
-    newNode.innerHTML = `
-        <div class="orbat-node-card h-full flex flex-col bracket-box bg-black/80 backdrop-blur-xl !p-0 overflow-hidden relative group/card border-white/5 pointer-events-auto">
-            <div class="px-4 py-2 bg-white/[0.03] border-b border-white/10 flex justify-between items-center shrink-0">
-                <div class="flex items-center space-x-3 min-w-0"><span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest truncate">NEW_NODE</span></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></div>
-            </div>
-            <div class="p-5 flex-grow overflow-y-auto custom-scrollbar relative">
-                <div class="border-l-2 border-[var(--primary)] pl-4">
-                    <h5 class="text-sm font-black text-white uppercase tracking-tighter m-0 editable-field" data-key="name" contenteditable="true">NEW_UNIT</h5>
-                    <p class="text-[8px] text-[var(--primary)] font-mono uppercase mt-1 italic editable-field" data-key="role" contenteditable="true">Operational Support</p>
-                </div>
-            </div>
-            <div class="connection-points absolute inset-0 pointer-events-none">
-                <div class="c-point top" onmousedown="window.startDrawingLink(event, 'top')"></div>
-                <div class="c-point right" onmousedown="window.startDrawingLink(event, 'right')"></div>
-                <div class="c-point bottom" onmousedown="window.startDrawingLink(event, 'bottom')"></div>
-                <div class="c-point left" onmousedown="window.startDrawingLink(event, 'left')"></div>
-            </div>
-        </div>
-    `;
-    document.getElementById('orbat-nodes-layer').appendChild(newNode);
-    updateSelection(newNode);
-    showToast('NEW_NODE_CREATED');
+    const id = `unit_${Math.random().toString(36).substr(2, 9)}`;
+    renderNode({ id, name: "NEW_UNIT", role: "Operational Support", callsign: "SIG_ID", icon: "icons/MOD.png", x, y, w: 220, h: 180 });
+    updateSelection(document.getElementById(`node-${id}`));
+    saveState();
 };
 
 window.addOrbatNode = () => {
-    const coords = getCanvasCoords(canvas.clientWidth / 2, canvas.clientHeight / 2);
-    window.addOrbatNodeAt(coords.x, coords.y);
+    const c = getCanvasCoords(canvas.clientWidth / 2, canvas.clientHeight / 2);
+    window.addOrbatNodeAt(Math.round(c.x / SNAP_SIZE) * SNAP_SIZE, Math.round(c.y / SNAP_SIZE) * SNAP_SIZE);
 };
 
 window.removeSelectedNode = function() {
     if (selectedNode && confirm('Decommission unit?')) {
         const id = selectedNode.getAttribute('data-id');
         document.querySelectorAll(`.orbat-link[data-source="${id}"], .orbat-link[data-target="${id}"]`).forEach(l => l.remove());
-        selectedNode.remove();
-        updateSelection(null);
+        selectedNode.remove(); updateSelection(null); saveState();
         showToast('UNIT_DECOMMISSIONED', 'danger');
     }
 };
 
-window.exportOrbatJSON = function() {
-    const nodeEls = document.querySelectorAll('.orbat-node-wrapper');
-    const edgeEls = document.querySelectorAll('.orbat-link');
-    const nodes = Array.from(nodeEls).map(el => ({
-        id: el.getAttribute('data-id'),
-        name: el.querySelector('[data-key="name"]').innerText.trim(),
-        role: el.querySelector('[data-key="role"]')?.innerText.trim() || "Operational Support",
-        callsign: el.querySelector('.orbat-node-card span.font-mono')?.innerText.trim() || "",
-        icon: el.querySelector('img')?.getAttribute('data-icon-path') || null,
-        x: Math.round(parseFloat(el.getAttribute('data-x'))), y: Math.round(parseFloat(el.getAttribute('data-y'))),
-        width: Math.round(parseFloat(el.getAttribute('data-w'))), height: Math.round(parseFloat(el.getAttribute('data-h')))
-    }));
-    const edges = Array.from(edgeEls).map(el => ({
-        id: el.id.replace('edge-', ''), fromNode: el.getAttribute('data-source'), toNode: el.getAttribute('data-target'),
-        fromSide: el.getAttribute('data-from-side'), toSide: el.getAttribute('data-to-side')
-    }));
+window.exportOrbatJSON = () => {
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([JSON.stringify({ nodes, edges }, null, 2)], { type: 'application/json' }));
-    a.download = 'orbat_v2.json'; a.click();
-    showToast('ORBAT_DATA_EXPORTED');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(serializeCurrentState(), null, 2)], { type: 'application/json' }));
+    a.download = 'orbat_v2.json'; a.click(); showToast('ORBAT_DATA_EXPORTED');
 };
 
-// Keyboard Shortcuts
+// --- 5. CLIPBOARD & SHORTCUTS ---
+
 window.addEventListener('keydown', (e) => {
     if (e.target.classList.contains('editable-field')) return;
+    
+    // Undo / Redo
+    if ((e.ctrlKey || e.metaKey) && e.key === 'z') { e.preventDefault(); undo(); }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'y') { e.preventDefault(); redo(); }
+
+    // Clipboard
+    if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+        if (selectedNode) {
+            const state = serializeCurrentState();
+            clipboard = state.nodes.find(n => n.id === selectedNode.getAttribute('data-id'));
+            showToast('UNIT_COPIED_TO_CLIPBOARD');
+        }
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+        if (clipboard) {
+            const c = getCanvasCoords(canvas.clientWidth / 2, canvas.clientHeight / 2);
+            const newNode = { ...clipboard, id: `unit_${Math.random().toString(36).substr(2, 9)}`, x: Math.round(c.x/SNAP_SIZE)*SNAP_SIZE, y: Math.round(c.y/SNAP_SIZE)*SNAP_SIZE };
+            renderNode(newNode); saveState(); showToast('UNIT_PASTED');
+        }
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'x') {
+        if (selectedNode) {
+            const state = serializeCurrentState();
+            clipboard = state.nodes.find(n => n.id === selectedNode.getAttribute('data-id'));
+            window.removeSelectedNode();
+            showToast('UNIT_CUT_TO_CLIPBOARD');
+        }
+    }
+
+    // Tools
     if (e.key === 'Delete' || e.key === 'Backspace') window.removeSelectedNode();
     if (e.key === 'e' || e.key === 'E') window.toggleEditMode();
     if (e.key === 'n' || e.key === 'N') window.addOrbatNode();
-    if (e.key === 's' || e.key === 'S' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); window.exportOrbatJSON(); }
+    if (e.key === 'c' || e.key === 'C') window.centerView();
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); window.exportOrbatJSON(); }
 });
 
-// Initialization
+// Update state on text edit
+document.addEventListener('input', (e) => {
+    if (e.target.classList.contains('editable-field')) saveState();
+});
+
+// Selection Logic
+function updateSelection(node) {
+    document.querySelectorAll('.orbat-node-wrapper').forEach(n => n.classList.remove('selected'));
+    selectedNode = node;
+    if (node) { node.classList.add('selected'); showContextToolbar(node); }
+    else hideContextToolbar();
+}
+
+function showContextToolbar(node) {
+    if (!document.getElementById('hq-admin-bar').classList.contains('edit-active')) return;
+    let t = document.getElementById('node-context-menu');
+    if (!t) { t = document.createElement('div'); t.id = 'node-context-menu'; t.className = 'node-context-menu pointer-events-auto'; document.body.appendChild(t); }
+    t.innerHTML = `<button onclick="window.openIconModalDirect()" class="toolbar-btn" title="Change Icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></button><div class="toolbar-separator"></div><button onclick="window.removeSelectedNode()" class="toolbar-btn text-red-500" title="Delete Unit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`;
+    const r = node.getBoundingClientRect(); t.style.left = `${r.left + r.width / 2}px`; t.style.top = `${r.top - 60}px`; t.classList.remove('hidden');
+}
+
+function hideContextToolbar() { const t = document.getElementById('node-context-menu'); if (t) t.classList.add('hidden'); }
+
+// Init
 if (localStorage.getItem('uksf_hq_auth') === 'true') document.getElementById('hq-admin-bar').classList.remove('hidden');
-setTimeout(() => {
-    window.centerView();
-    updateTransform();
-}, 200);
+setTimeout(() => { window.centerView(); saveState(); }, 200);
