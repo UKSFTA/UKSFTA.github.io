@@ -879,9 +879,14 @@
     box-shadow: 0 0 40px var(--primary-glow);
   }
 
-  .orbat-node-wrapper.link-target-hover .orbat-node-card {
-    border-color: var(--primary);
-    box-shadow: 0 0 20px var(--primary-glow);
+  .orbat-link-group.selected .orbat-link-visual {
+    stroke: var(--primary);
+    stroke-width: 4px;
+    filter: drop-shadow(0 0 10px var(--primary-glow));
+  }
+
+  .orbat-link-visual {
+    transition: stroke 0.2s ease, stroke-width 0.2s ease;
   }
 
 .node-context-menu {

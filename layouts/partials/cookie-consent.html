@@ -1,0 +1,176 @@
+<div id="cookie-consent-banner" class="fixed inset-x-0 bottom-0 z-[100] p-4 lg:p-8 transform translate-y-full transition-transform duration-700 ease-out hidden">
+    <div class="container-uksf max-w-4xl">
+        <div class="bracket-box bg-black/95 backdrop-blur-2xl border-white/10 p-6 lg:p-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-1 h-full bg-[var(--primary)] shadow-[0_0_15px_var(--primary)]"></div>
+            
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.3em]">Privacy_Protocol</span>
+                        <div class="h-px w-12 bg-white/10"></div>
+                    </div>
+                    <h3 class="text-2xl font-black text-white tracking-tighter uppercase">Cookie Authorization Required</h3>
+                    <p class="text-xs text-gray-500 font-mono leading-relaxed max-w-2xl uppercase">
+                        We use data fragments (cookies) to ensure tactical synchronization, live intelligence feeds from Battlemetrics, and to analyze operational efficiency. All non-essential protocols are disabled by default.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 shrink-0">
+                    <button id="cookie-settings-btn" class="px-6 py-3 border border-white/10 hover:border-white/30 text-[10px] font-black text-white uppercase tracking-widest transition-all">
+                        Configure
+                    </button>
+                    <button id="cookie-accept-all" class="px-6 py-3 bg-[var(--primary)] text-black text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_20px_rgba(179,153,93,0.3)]">
+                        Accept All
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Settings Modal -->
+<div id="cookie-modal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+    <div class="bracket-box bg-[#0a0a0a] border-white/10 w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col relative shadow-2xl">
+        <div class="p-6 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
+            <span class="text-[11px] font-black text-white uppercase tracking-[0.4em]">Granular_Consent_Matrix</span>
+            <button id="close-cookie-modal" class="text-gray-500 hover:text-white transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar">
+            {{ range .Site.Data.cookies.categories }}
+            <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <div class="space-y-1">
+                        <span class="text-xs font-black text-white uppercase tracking-widest">{{ .name }}</span>
+                        <p class="text-[10px] text-gray-500 font-mono uppercase">{{ .description }}</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="{{ .id }}" class="cookie-toggle sr-only peer" {{ if .required }}disabled checked{{ end }}>
+                        <div class="w-11 h-6 bg-white/5 border border-white/10 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-gray-700 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary)]/20 peer-checked:after:bg-[var(--primary)] peer-checked:border-[var(--primary)]/40"></div>
+                    </label>
+                </div>
+                <div class="bg-black/40 border border-white/5 p-3">
+                    <table class="w-full text-[9px] font-mono text-gray-500 uppercase tracking-tighter">
+                        <thead>
+                            <tr class="text-gray-700">
+                                <th class="text-left pb-2">ID</th>
+                                <th class="text-left pb-2">Provider</th>
+                                <th class="text-left pb-2">Expiry</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ range .cookies }}
+                            <tr>
+                                <td class="py-1 text-gray-400">{{ .name }}</td>
+                                <td class="py-1">{{ .provider }}</td>
+                                <td class="py-1">{{ .expiry }}</td>
+                            </tr>
+                            {{ end }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+        
+        <div class="p-6 border-t border-white/5 bg-white/[0.02] flex justify-end gap-4">
+            <button id="cookie-reject-all" class="px-6 py-2 text-[10px] font-black text-red-500 uppercase tracking-widest hover:text-white transition-colors">
+                Reject All
+            </button>
+            <button id="save-cookie-settings" class="px-6 py-2 bg-white/5 border border-white/10 text-[10px] font-black text-white uppercase tracking-widest hover:bg-[var(--primary)] hover:text-black transition-all">
+                Save Preferences
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const banner = document.getElementById('cookie-consent-banner');
+        const modal = document.getElementById('cookie-modal');
+        const toggles = document.querySelectorAll('.cookie-toggle');
+        const CONSENT_KEY = 'uksfta_consent';
+
+        // Google Consent Mode v2 Init
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        function updateGoogleConsent(preferences) {
+            gtag('consent', 'update', {
+                'ad_storage': preferences.marketing ? 'granted' : 'denied',
+                'ad_user_data': preferences.marketing ? 'granted' : 'denied',
+                'ad_personalization': preferences.marketing ? 'granted' : 'denied',
+                'analytics_storage': preferences.analytics ? 'granted' : 'denied',
+                'functional_storage': preferences.functional ? 'granted' : 'denied'
+            });
+            
+            // Dispatch custom event for other scripts (like Battlemetrics)
+            window.dispatchEvent(new CustomEvent('cookieConsentUpdated', { detail: preferences }));
+        }
+
+        function setConsent(preferences) {
+            localStorage.setItem(CONSENT_KEY, JSON.stringify(preferences));
+            updateGoogleConsent(preferences);
+            banner.classList.add('translate-y-full');
+            setTimeout(() => banner.classList.add('hidden'), 700);
+            modal.classList.add('hidden');
+        }
+
+        function getConsent() {
+            const stored = localStorage.getItem(CONSENT_KEY);
+            return stored ? JSON.parse(stored) : null;
+        }
+
+        // Initialize
+        const currentConsent = getConsent();
+        if (!currentConsent) {
+            banner.classList.remove('hidden');
+            setTimeout(() => banner.classList.remove('translate-y-full'), 100);
+            
+            // Default Denied for GCM v2
+            gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied',
+                'functional_storage': 'denied',
+                'wait_for_update': 500
+            });
+        } else {
+            updateGoogleConsent(currentConsent);
+        }
+
+        document.getElementById('cookie-accept-all').onclick = () => {
+            const prefs = { essential: true, analytics: true, marketing: true, functional: true };
+            setConsent(prefs);
+        };
+
+        document.getElementById('cookie-reject-all').onclick = () => {
+            const prefs = { essential: true, analytics: false, marketing: false, functional: false };
+            setConsent(prefs);
+        };
+
+        document.getElementById('cookie-settings-btn').onclick = () => modal.classList.remove('hidden');
+        document.getElementById('close-cookie-modal').onclick = () => modal.classList.add('hidden');
+        
+        document.getElementById('save-cookie-settings').onclick = () => {
+            const prefs = { essential: true };
+            toggles.forEach(t => {
+                prefs[t.value] = t.checked;
+            });
+            setConsent(prefs);
+        };
+
+        // Battlemetrics & Integrations Hook
+        window.addEventListener('cookieConsentUpdated', (e) => {
+            if (e.detail.functional) {
+                console.log("[PRIVACY_NODE] Functional cookies enabled. Initializing intelligence feeds.");
+                if (typeof updateServerStatus === 'function') updateServerStatus();
+                if (typeof updateDiscordStatus === 'function') updateDiscordStatus();
+                if (typeof fetchEvents === 'function') fetchEvents();
+            }
+        });
+    })();
+</script>

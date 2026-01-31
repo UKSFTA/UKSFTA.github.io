@@ -16,27 +16,12 @@
   </svg>
 
   <!-- Layer 2: SVG Connector Layer -->
-  <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-none z-0">
+  <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-auto z-[5]">
     <defs>
       <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
         <polygon points="0 0, 10 3.5, 0 7" fill="rgba(179, 153, 93, 0.8)" />
       </marker>
     </defs>
-    {{ range $orbat.edges }}
-      <path
-        class="orbat-link"
-        id="edge-{{ .id }}"
-        data-source="{{ .fromNode }}"
-        data-target="{{ .toNode }}"
-        data-from-side="{{ .fromSide }}"
-        data-to-side="{{ .toSide }}"
-        d=""
-        fill="none"
-        stroke="rgba(179, 153, 93, 0.4)"
-        stroke-width="2"
-        marker-end="url(#arrowhead)"
-      />
-    {{ end }}
     <path
       id="temp-link"
       d=""
@@ -44,11 +29,11 @@
       stroke="var(--primary)"
       stroke-width="2"
       stroke-dasharray="5,5"
-      class="hidden"
+      class="hidden pointer-events-none"
     />
   </svg>
   <!-- Node Layer -->
-  <div id="orbat-nodes-layer" class="absolute inset-0 z-10">
+  <div id="orbat-nodes-layer" class="absolute inset-0 z-10 pointer-events-none">
     {{ range $orbat.nodes }}
       <div
         class="orbat-node-wrapper absolute shadow-2xl"

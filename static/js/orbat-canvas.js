@@ -142,19 +142,26 @@ function getCanvasCoords(clientX, clientY) {
 canvas.addEventListener('mousedown', (e) => {
     if (e.target.classList.contains('editable-field')) return;
 
+    const underMouse = document.elementFromPoint(e.clientX, e.clientY);
+    const nodeWrapper = underMouse?.closest('.orbat-node-wrapper');
+    const linkGroup = underMouse?.closest('.orbat-link-group');
+    const isClickingUI = underMouse?.closest('#node-context-menu') || underMouse?.closest('.connection-points') || underMouse?.closest('.resize-handle');
+
+    if (isClickingUI && !underMouse?.classList.contains('resize-handle')) return;
+
     // A. RESIZE
-    if (e.target.classList.contains('resize-handle')) {
-        const nodeWrapper = e.target.closest('.orbat-node-wrapper');
-        if (nodeWrapper && document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
+    if (underMouse?.classList.contains('resize-handle')) {
+        const resizeTarget = underMouse.closest('.orbat-node-wrapper');
+        if (resizeTarget && document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
             isResizingNode = true;
-            resizeNode = nodeWrapper;
+            resizeNode = resizeTarget;
             
             // Identify direction
-            if (e.target.classList.contains('top')) resizeDirection = 'top';
-            else if (e.target.classList.contains('bottom')) resizeDirection = 'bottom';
-            else if (e.target.classList.contains('left')) resizeDirection = 'left';
-            else if (e.target.classList.contains('right')) resizeDirection = 'right';
-            else if (e.target.classList.contains('bottom-right')) resizeDirection = 'bottom-right';
+            if (underMouse.classList.contains('top')) resizeDirection = 'top';
+            else if (underMouse.classList.contains('bottom')) resizeDirection = 'bottom';
+            else if (underMouse.classList.contains('left')) resizeDirection = 'left';
+            else if (underMouse.classList.contains('right')) resizeDirection = 'right';
+            else if (underMouse.classList.contains('bottom-right')) resizeDirection = 'bottom-right';
 
             const coords = getCanvasCoords(e.clientX, e.clientY);
             startMouseX = coords.x;
@@ -169,17 +176,15 @@ canvas.addEventListener('mousedown', (e) => {
         }
     }
 
-    const nodeWrapper = e.target.closest('.orbat-node-wrapper');
-    const linkGroup = e.target.closest('.orbat-link-group');
-    const isClickingUI = e.target.closest('#node-context-menu');
-
     // B. LINK DRAWING / SELECTION
     if (isDrawingLink) {
+        const underMouse = document.elementFromPoint(e.clientX, e.clientY);
+        const nodeWrapper = underMouse?.closest('.orbat-node-wrapper');
+        
         if (nodeWrapper) {
             const targetId = nodeWrapper.getAttribute('data-id');
             const coords = getCanvasCoords(e.clientX, e.clientY);
             
-            // Calculate nearest side on target node
             const nX = parseFloat(nodeWrapper.getAttribute('data-x'));
             const nY = parseFloat(nodeWrapper.getAttribute('data-y'));
             const nW = parseFloat(nodeWrapper.getAttribute('data-w'));
@@ -380,19 +385,20 @@ window.addEventListener('mousemove', (e) => {
         let tSide = 'auto';
 
         // Check for node under cursor for snapping preview
-        const nodeWrapper = e.target.closest('.orbat-node-wrapper');
+        // Use document.elementFromPoint to find node under the cursor if target is the SVG
+        const underMouse = document.elementFromPoint(e.clientX, e.clientY);
+        const nodeWrapper = underMouse?.closest('.orbat-node-wrapper');
+        
         document.querySelectorAll('.orbat-node-wrapper').forEach(n => n.classList.remove('link-target-hover'));
         
         if (nodeWrapper && nodeWrapper.getAttribute('data-id') !== linkSourceId) {
             nodeWrapper.classList.add('link-target-hover');
             
-            // Get node bounds in canvas space
             const nX = parseFloat(nodeWrapper.getAttribute('data-x'));
             const nY = parseFloat(nodeWrapper.getAttribute('data-y'));
             const nW = parseFloat(nodeWrapper.getAttribute('data-w'));
             const nH = parseFloat(nodeWrapper.getAttribute('data-h'));
             
-            // Targets are in absolute SVG space (with OFFSET)
             const targets = [
                 { side: 'top',    x: OFFSET + nX + nW/2, y: OFFSET + nY },
                 { side: 'bottom', x: OFFSET + nX + nW/2, y: OFFSET + nY + nH },

@@ -263,8 +263,17 @@
       </div>
     </footer>
         <script>
+    const consent = localStorage.getItem('uksfta_consent');
+
     // BATTLEMETRICS_INTEGRATION //
     async function updateServerStatus() {
+        // Check for functional cookie consent
+        const consent = localStorage.getItem('uksfta_consent');
+        if (!consent || !JSON.parse(consent).functional) {
+            console.log("[PRIVACY_NODE] Battlemetrics sync paused: Consent required.");
+            return;
+        }
+
         const SERVER_ID = "35392879";
         const statusText = document.getElementById('status-text');
         const statusIndicator = document.getElementById('status-indicator');
@@ -301,6 +310,10 @@
 
     // DISCORD_NETWORK_INTEGRATION //
     async function updateDiscordStatus() {
+        // Check for functional cookie consent
+        const consentStr = localStorage.getItem('uksfta_consent');
+        if (!consentStr || !JSON.parse(consentStr).functional) return;
+
         const SERVER_ID = "{{ site.Params.discord.server_id }}";
         const onlineCounts = document.querySelectorAll('.discord-online-count');
         const signalStrengths = document.querySelectorAll('.signal-strength');
@@ -366,13 +379,17 @@
 
     // Initialize Discord Intel
     {{ if site.Params.discord.enabled }}
-    updateDiscordStatus();
-    setInterval(updateDiscordStatus, 60000);
+    if (consent && JSON.parse(consent).functional) {
+        updateDiscordStatus();
+        setInterval(updateDiscordStatus, 60000);
+    }
     {{ end }}
 
     // Initialize Status
-    updateServerStatus();
-    setInterval(updateServerStatus, 60000); // Update every 60s
+    if (consent && JSON.parse(consent).functional) {
+        updateServerStatus();
+        setInterval(updateServerStatus, 60000); // Update every 60s
+    }
 
     // [INTEL_OVERRIDE] //
     // Gate Signature: /registry/gate
@@ -386,6 +403,10 @@
 
     if (ucConfig.enabled && ucConfig.community_id && ucConfig.bot_token) {
         async function fetchEvents() {
+            // Check for functional cookie consent
+            const consentStr = localStorage.getItem('uksfta_consent');
+            if (!consentStr || !JSON.parse(consentStr).functional) return;
+
             const feeds = document.querySelectorAll('.live-ops-feed-container');
             if (feeds.length === 0) return;
 
@@ -493,9 +514,11 @@
                 feeds.forEach(feed => feed.innerHTML = errorHtml);
             }
         }
-        fetchEvents();
-        // Poll every 5 minutes to stay "live" without hitting rate limits
-        setInterval(fetchEvents, 300000);
+        if (consent && JSON.parse(consent).functional) {
+            fetchEvents();
+            // Poll every 5 minutes to stay "live" without hitting rate limits
+            setInterval(fetchEvents, 300000);
+        }
     }
 
     // Hidden Trigger for curious personnel
@@ -524,6 +547,7 @@
     updateClock();
         </script>
     <script src="{{ `js/main.js` | relURL }}" defer></script>
+    {{ partial "cookie-consent.html" . }}
     <!-- JSFC RECON: If you are looking for the primary node key, verify the system meta headers. Use Base64 protocols. -->
   </body>
 </html>
