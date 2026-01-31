@@ -212,10 +212,6 @@ canvas.addEventListener('mousedown', (e) => {
             
             selectionBox = document.createElement('div');
             selectionBox.className = 'absolute z-[6000] pointer-events-none';
-            selectionBox.style.border = '2px solid var(--primary)';
-            selectionBox.style.backgroundColor = 'rgba(179, 153, 93, 0.1)'; // Hardcoded approximation or var with opacity
-            // Better to use the variable if possible, but rgba is safer for opacity overlay.
-            // Let's try to use the var with a fallback or just simple styles.
             selectionBox.style.border = '1px solid #b3995d';
             selectionBox.style.backgroundColor = 'rgba(179, 153, 93, 0.2)';
             
@@ -229,6 +225,7 @@ canvas.addEventListener('mousedown', (e) => {
         } 
         // Normal Drag = Pan
         else if (e.button === 0 || e.button === 1) {
+            if (e.button === 1) e.preventDefault(); // Prevent browser autoscroll
             clearSelection();
             isPanning = true; 
             startMouseX = e.clientX; 
