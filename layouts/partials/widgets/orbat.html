@@ -1,21 +1,8 @@
 {{ $orbat := .Site.Data.orbat_v2 }}
 {{ $units := .Site.Data.units }}
 <div class="orbat-canvas-area relative w-[10000px] h-[10000px]">
-  <!-- Layer 1: Drafting Grid (SVG implementation) -->
-  <svg class="canvas-grid absolute inset-0 w-full h-full pointer-events-none z-0" style="background-color: transparent;">
-    <defs>
-      <!-- Minor Grid: 40px -->
-      <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" vector-effect="non-scaling-stroke"/>
-      </pattern>
-      <!-- Major Grid: 200px (contains 5x5 small grids) -->
-      <pattern id="grid" width="200" height="200" patternUnits="userSpaceOnUse">
-        <rect width="200" height="200" fill="url(#smallGrid)"/>
-        <path d="M 200 0 L 0 0 0 200" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#grid)" />
-  </svg>
+  <!-- Layer 1: Drafting Grid (CSS-optimized tiling) -->
+  <div class="canvas-grid absolute inset-0 w-full h-full pointer-events-none z-0"></div>
 
   <!-- Layer 2: SVG Connector Layer -->
   <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-none z-0">
