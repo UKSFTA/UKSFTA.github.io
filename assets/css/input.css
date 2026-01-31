@@ -879,6 +879,11 @@
     box-shadow: 0 0 40px var(--primary-glow);
   }
 
+  .orbat-node-wrapper.link-target-hover .orbat-node-card {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px var(--primary-glow);
+  }
+
 .node-context-menu {
     position: absolute;
     transform: translateX(-50%);

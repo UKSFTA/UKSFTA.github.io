@@ -51,10 +51,17 @@ function updateTransform() {
 }
 
 function updateLinks() {
-    document.querySelectorAll('.orbat-link').forEach(link => {
-        const p1 = getPointOnSide(link.getAttribute('data-source'), link.getAttribute('data-from-side'));
-        const p2 = getPointOnSide(link.getAttribute('data-target'), link.getAttribute('data-to-side'));
-        link.setAttribute('d', getBezierPath(p1, p2, link.getAttribute('data-from-side'), link.getAttribute('data-to-side')));
+    document.querySelectorAll('.orbat-link-group').forEach(group => {
+        const sourceId = group.getAttribute('data-source');
+        const targetId = group.getAttribute('data-target');
+        const sSide = group.getAttribute('data-from-side');
+        const tSide = group.getAttribute('data-to-side');
+        
+        const p1 = getPointOnSide(sourceId, sSide);
+        const p2 = getPointOnSide(targetId, tSide);
+        
+        const path = getBezierPath(p1, p2, sSide, tSide);
+        group.querySelectorAll('path').forEach(p => p.setAttribute('d', path));
     });
 }
 
@@ -357,8 +364,42 @@ window.addEventListener('mousemove', (e) => {
     if (isDrawingLink) {
         const coords = getCanvasCoords(e.clientX, e.clientY);
         const p1 = getPointOnSide(linkSourceId, linkSourceSide);
-        const svgMouse = { x: coords.x, y: coords.y }; // Fixed: removed redundant OFFSET
-        tempLink.setAttribute('d', getBezierPath(p1, svgMouse, linkSourceSide, 'auto')); return;
+        
+        let p2 = { x: coords.x + OFFSET, y: coords.y + OFFSET };
+        let tSide = 'auto';
+
+        // Check for node under cursor for snapping preview
+        const nodeWrapper = e.target.closest('.orbat-node-wrapper');
+        document.querySelectorAll('.orbat-node-wrapper').forEach(n => n.classList.remove('link-target-hover'));
+        
+        if (nodeWrapper && nodeWrapper.getAttribute('data-id') !== linkSourceId) {
+            nodeWrapper.classList.add('link-target-hover');
+            
+            // Calculate nearest side for preview
+            const nX = parseFloat(nodeWrapper.getAttribute('data-x'));
+            const nY = parseFloat(nodeWrapper.getAttribute('data-y'));
+            const nW = parseFloat(nodeWrapper.getAttribute('data-w'));
+            const nH = parseFloat(nodeWrapper.getAttribute('data-h'));
+            
+            const sides = [
+                { side: 'top', x: OFFSET + nX + nW/2, y: OFFSET + nY },
+                { side: 'bottom', x: OFFSET + nX + nW/2, y: OFFSET + nY + nH },
+                { side: 'left', x: OFFSET + nX, y: OFFSET + nY + nH/2 },
+                { side: 'right', x: OFFSET + nX + nW, y: OFFSET + nY + nH/2 }
+            ];
+            
+            let nearest = sides[0];
+            let minDist = Infinity;
+            sides.forEach(s => {
+                const dist = Math.hypot(p2.x - s.x, p2.y - s.y);
+                if (dist < minDist) { minDist = dist; nearest = s; }
+            });
+            p2 = { x: nearest.x, y: nearest.y };
+            tSide = nearest.side;
+        }
+
+        tempLink.setAttribute('d', getBezierPath(p1, p2, linkSourceSide, tSide)); 
+        return;
     }
     
     // 4. DRAGGING NODES (MULTI)
@@ -583,15 +624,18 @@ function serializeCurrentState() {
             w: parseFloat(el.getAttribute('data-w')), h: parseFloat(el.getAttribute('data-h'))
         };
     });
-    const edges = Array.from(document.querySelectorAll('.orbat-link')).map(el => ({
-        id: el.id.replace('edge-', ''), fromNode: el.getAttribute('data-source'), toNode: el.getAttribute('data-target'),
-        fromSide: el.getAttribute('data-from-side'), toSide: el.getAttribute('data-to-side')
+    const edges = Array.from(document.querySelectorAll('.orbat-link-group')).map(el => ({
+        id: el.id.replace('edge-', ''), 
+        fromNode: el.getAttribute('data-source'), 
+        toNode: el.getAttribute('data-target'),
+        fromSide: el.getAttribute('data-from-side'), 
+        toSide: el.getAttribute('data-to-side')
     }));
     return { nodes, edges };
 }
 function loadState(state) {
     document.getElementById('orbat-nodes-layer').innerHTML = '';
-    document.querySelectorAll('.orbat-link').forEach(l => l.remove());
+    document.querySelectorAll('.orbat-link-group').forEach(l => l.remove());
     state.nodes.forEach(n => renderNode(n));
     state.edges.forEach(e => createNewLink(e.fromNode, e.fromSide, e.toNode, e.toSide, e.id));
     updateLinks(); clearSelection();
@@ -867,19 +911,65 @@ window.startDrawingLink = function(e, side) {
     linkSourceSide = side; tempLink.classList.remove('hidden');
 };
 
-function stopDrawingLink() { isDrawingLink = false; linkSourceId = null; tempLink.classList.add('hidden'); }
+function stopDrawingLink() { 
+    isDrawingLink = false; 
+    linkSourceId = null; 
+    tempLink.classList.add('hidden'); 
+    // Clear any temporary highlight
+    document.querySelectorAll('.orbat-node-wrapper').forEach(n => n.classList.remove('link-target-hover'));
+}
 
 function createNewLink(source, sSide, target, tSide, id = null) {
     if (source === target) return;
     const eid = id || `e_${Math.random().toString(36).substr(2, 9)}`;
-    const newLink = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    newLink.setAttribute('class', 'orbat-link'); newLink.setAttribute('id', `edge-${eid}`);
-    newLink.setAttribute('data-source', source); newLink.setAttribute('data-target', target);
-    newLink.setAttribute('data-from-side', sSide); newLink.setAttribute('data-to-side', tSide);
-    newLink.setAttribute('fill', 'none'); newLink.setAttribute('stroke', 'rgba(179, 153, 93, 0.4)');
-    newLink.setAttribute('stroke-width', '2'); newLink.setAttribute('marker-end', 'url(#arrowhead)');
-    svgLayer.appendChild(newLink);
-    if (!id) { updateLinks(); saveState(); }
+    
+    // Create a group to hold both the visual path and the hit area
+    const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    group.setAttribute('class', 'orbat-link-group');
+    group.setAttribute('id', `edge-${eid}`);
+    group.setAttribute('data-source', source);
+    group.setAttribute('data-target', target);
+    group.setAttribute('data-from-side', sSide);
+    group.setAttribute('data-to-side', tSide);
+
+    // 1. Hit Area (Invisible but wide)
+    const hitArea = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    hitArea.setAttribute('class', 'orbat-link-hit-area');
+    hitArea.setAttribute('fill', 'none');
+    hitArea.setAttribute('stroke', 'transparent');
+    hitArea.setAttribute('stroke-width', '20'); // Huge hit area
+    hitArea.setAttribute('pointer-events', 'stroke');
+    hitArea.style.cursor = 'pointer';
+
+    // 2. Visual Path
+    const visualPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    visualPath.setAttribute('class', 'orbat-link-visual');
+    visualPath.setAttribute('fill', 'none');
+    visualPath.setAttribute('stroke', 'rgba(179, 153, 93, 0.4)');
+    visualPath.setAttribute('stroke-width', '2');
+    visualPath.setAttribute('marker-end', 'url(#arrowhead)');
+    visualPath.setAttribute('pointer-events', 'none'); // Let hits go through to hitArea
+
+    group.appendChild(hitArea);
+    group.appendChild(visualPath);
+    
+    // Handle selection on the group/hitArea
+    group.addEventListener('mousedown', (e) => {
+        if (!document.getElementById('hq-admin-bar').classList.contains('edit-active')) return;
+        e.stopPropagation();
+        clearSelection();
+        selectedLink = group;
+        group.classList.add('selected');
+        showContextToolbar();
+    });
+
+    svgLayer.appendChild(group);
+    if (!id) { 
+        updateLinks(); 
+        const sName = document.getElementById(`node-${source}`).querySelector('[data-key="name"]').innerText.trim();
+        const tName = document.getElementById(`node-${target}`).querySelector('[data-key="name"]').innerText.trim();
+        saveState(`${sName} linked to ${tName}`); 
+    }
 }
 
 // Save the current state to the browser's persistent storage
