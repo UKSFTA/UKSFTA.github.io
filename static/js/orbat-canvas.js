@@ -32,6 +32,7 @@ let selectedLink = null; // New: Selected edge
 let linkSourceId = null;
 let linkSourceSide = null;
 let activeNodeForIcon = null;
+let clipboard = []; // Stores copied node data
 
 // Coordinates
 let startMouseX, startMouseY;
@@ -772,12 +773,78 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'n' || e.key === 'N') window.addOrbatNode();
     if (e.key === 'c' || e.key === 'C') window.centerView();
 
+    // Clipboard Actions
+    if ((e.ctrlKey || e.metaKey) && e.key === 'c') window.copyNodes();
+    if ((e.ctrlKey || e.metaKey) && e.key === 'x') window.cutNodes();
+    if ((e.ctrlKey || e.metaKey) && e.key === 'v') window.pasteNodes();
+
     // SAVE LOGIC:
     if ((e.ctrlKey || e.metaKey) && e.key === 's') { 
         e.preventDefault(); 
         if (e.shiftKey) window.exportOrbatJSON(); else window.saveToLocalStorage();
     }
 });
+
+window.copyNodes = function() {
+    if (selectedNodes.size === 0) return;
+    clipboard = Array.from(selectedNodes).map(node => {
+        const id = node.getAttribute('data-id');
+        return {
+            name: node.querySelector('[data-key="name"]').innerText.trim(),
+            role: node.querySelector('[data-key="role"]')?.innerText.trim() || "Operational Support",
+            callsign: node.querySelector('.orbat-node-card span.font-mono')?.innerText.trim() || "",
+            icon: node.querySelector('img')?.getAttribute('data-icon-path') || null,
+            personnelHtml: node.querySelector('.personnel-list')?.outerHTML || null,
+            w: parseFloat(node.getAttribute('data-w')),
+            h: parseFloat(node.getAttribute('data-h')),
+            x: parseFloat(node.getAttribute('data-x')),
+            y: parseFloat(node.getAttribute('data-y'))
+        };
+    });
+    showToast(`${clipboard.length} UNIT(S) COPIED`);
+};
+
+window.cutNodes = function() {
+    if (selectedNodes.size === 0) return;
+    window.copyNodes();
+    selectedNodes.forEach(node => {
+        const id = node.getAttribute('data-id');
+        document.querySelectorAll(`.orbat-link[data-source="${id}"], .orbat-link[data-target="${id}"]`).forEach(l => l.remove());
+        node.remove();
+    });
+    clearSelection();
+    saveState();
+    showToast(`${clipboard.length} UNIT(S) CUT`, 'danger');
+};
+
+window.pasteNodes = function() {
+    if (clipboard.length === 0) return;
+    if (!document.getElementById('hq-admin-bar').classList.contains('edit-active')) return;
+
+    clearSelection();
+    clipboard.forEach(data => {
+        const newId = `unit_${Math.random().toString(36).substr(2, 9)}`;
+        // Offset by SNAP_SIZE to avoid perfect overlap
+        const newNodeData = {
+            ...data,
+            id: newId,
+            x: data.x + SNAP_SIZE,
+            y: data.y + SNAP_SIZE
+        };
+        renderNode(newNodeData);
+        const newNode = document.getElementById(`node-${newId}`);
+        selectedNodes.add(newNode);
+        newNode.classList.add('selected');
+        
+        // Update clipboard positions for consecutive pastes
+        data.x += SNAP_SIZE;
+        data.y += SNAP_SIZE;
+    });
+    
+    updateSelectionUI();
+    saveState();
+    showToast(`${clipboard.length} UNIT(S) PASTED`);
+};
 
 document.addEventListener('input', (e) => { 
     if (e.target.classList.contains('editable-field')) {
