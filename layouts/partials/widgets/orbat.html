@@ -1,6 +1,20 @@
 {{ $orbat := .Site.Data.orbat_v2 }}
 {{ $units := .Site.Data.units }}
 <div class="orbat-canvas-area relative w-[10000px] h-[10000px]">
+  <!-- Layer 1: Drafting Grid (SVG locked to content) -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none z-0">
+    <defs>
+      <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1" stroke-opacity="0.1" vector-effect="non-scaling-stroke"/>
+      </pattern>
+      <pattern id="grid" width="200" height="200" patternUnits="userSpaceOnUse">
+        <rect width="200" height="200" fill="url(#smallGrid)"/>
+        <path d="M 200 0 L 0 0 0 200" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.25" vector-effect="non-scaling-stroke"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid)" />
+  </svg>
+
   <!-- Layer 2: SVG Connector Layer -->
   <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-none z-0">
     <defs>

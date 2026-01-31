@@ -2,7 +2,6 @@
 
 const canvas = document.getElementById('orbat-canvas');
 const content = document.getElementById('canvas-content');
-const grid = document.getElementById('canvas-grid');
 const zoomDisplay = document.getElementById('zoom-level');
 const svgLayer = document.getElementById('orbat-connectors');
 const tempLink = document.getElementById('temp-link');
@@ -43,13 +42,6 @@ let initialNodePositions = new Map(); // Map<nodeId, {x, y}> for multi-drag
 
 function updateTransform() {
     content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-    
-    // Sync Grid Background
-    if (grid) {
-        grid.style.backgroundSize = `${200 * scale}px ${200 * scale}px, ${200 * scale}px ${200 * scale}px, ${40 * scale}px ${40 * scale}px, ${40 * scale}px ${40 * scale}px`;
-        grid.style.backgroundPosition = `${translateX + (OFFSET * scale)}px ${translateY + (OFFSET * scale)}px`;
-    }
-
     zoomDisplay.innerText = `Zoom: ${Math.round(scale * 100)}%`;
     updateLinks();
     if (selectedNodes.size > 0) showContextToolbar(); else hideContextToolbar();
@@ -461,8 +453,8 @@ function renderNode(n) {
                 <div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></div>
             </div>
             <div class="p-5 flex-grow overflow-y-auto custom-scrollbar relative">
-                <div class="space-y-6">
-                    ${n.icon ? `<div class="flex justify-center mb-2"><img src="/${n.icon}" draggable="false" class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" data-icon-path="${n.icon}"></div>` : ''}
+                <div class="space-y-4">
+                    ${n.icon ? `<div class="flex justify-center"><img src="/${n.icon}" draggable="false" class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" data-icon-path="${n.icon}"></div>` : ''}
                     <div class="border-l-2 border-[var(--primary)] pl-4">
                         <h5 class="text-sm font-black text-white uppercase tracking-tighter m-0 editable-field" data-key="name" contenteditable="${editMode}">${n.name}</h5>
                         <p class="text-[8px] text-[var(--primary)] font-mono uppercase mt-1 italic editable-field" data-key="role" contenteditable="${editMode}">${n.role}</p>
@@ -614,11 +606,11 @@ window.handleIconUpload = function(input) {
 function applyIcon(src) {
     // Apply to ALL selected nodes
     selectedNodes.forEach(node => {
-        const container = node.querySelector('.space-y-6');
-        let imgDiv = container.querySelector('.flex.justify-center.mb-2');
+        const container = node.querySelector('.space-y-4');
+        let imgDiv = container.querySelector('.flex.justify-center');
         if (!imgDiv) {
             imgDiv = document.createElement('div');
-            imgDiv.className = 'flex justify-center mb-2';
+            imgDiv.className = 'flex justify-center';
             imgDiv.innerHTML = `<img draggable="false" class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700">`;
             container.insertBefore(imgDiv, container.firstChild);
         }
