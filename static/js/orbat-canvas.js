@@ -449,7 +449,7 @@ function serializeCurrentState() {
             id: el.getAttribute('data-id'), 
             name: el.querySelector('[data-key="name"]').innerText.trim(),
             role: el.querySelector('[data-key="role"]')?.innerText.trim() || "Operational Support",
-            callsign: el.querySelector('.orbat-node-card span.font-mono')?.innerText.trim() || "",
+            callsign: el.querySelector('[data-key="callsign"]')?.innerText.trim() || "",
             icon: el.querySelector('img')?.getAttribute('data-icon-path') || null,
             personnelHtml: personnelEl ? personnelEl.outerHTML : null,
             x: parseFloat(el.getAttribute('data-x')), y: parseFloat(el.getAttribute('data-y')),
@@ -500,7 +500,7 @@ function renderNode(n) {
     newNode.innerHTML = `
         <div class="orbat-node-card h-full flex flex-col bracket-box bg-black/80 backdrop-blur-xl !p-0 overflow-hidden relative group/card border-white/5 pointer-events-auto">
             <div class="px-4 py-2 bg-white/[0.03] border-b border-white/10 flex justify-between items-center shrink-0">
-                <div class="flex items-center space-x-3 min-w-0"><span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest truncate">${n.callsign || "NODE"}</span></div>
+                <div class="flex items-center space-x-3 min-w-0"><span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest truncate editable-field" data-key="callsign" contenteditable="${editMode}">${n.callsign || "NODE"}</span></div>
                 <div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></div>
             </div>
             <div class="p-4 flex-grow overflow-y-auto custom-scrollbar relative">
@@ -520,13 +520,13 @@ function renderNode(n) {
                 <div class="c-point left" onmousedown="window.startDrawingLink(event, 'left')"><div class="c-dot"></div></div>
                 
                 <!-- EDGE RESIZE HANDLES -->
-                <div class="resize-handle top absolute top-0 left-0 w-full h-1 cursor-ns-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-0 hover:opacity-100"></div>
-                <div class="resize-handle right absolute top-0 right-0 w-1 h-full cursor-ew-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-0 hover:opacity-100"></div>
-                <div class="resize-handle bottom absolute bottom-0 left-0 w-full h-1 cursor-ns-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-0 hover:opacity-100"></div>
-                <div class="resize-handle left absolute top-0 left-0 w-1 h-full cursor-ew-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-0 hover:opacity-100"></div>
+                <div class="resize-handle top"></div>
+                <div class="resize-handle right"></div>
+                <div class="resize-handle bottom"></div>
+                <div class="resize-handle left"></div>
                 
-                <!-- CORNER RESIZE (Optional but helpful) -->
-                <div class="resize-handle bottom-right absolute bottom-0 right-0 w-3 h-3 cursor-se-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-0 hover:opacity-100"></div>
+                <!-- CORNER RESIZE -->
+                <div class="resize-handle bottom-right"></div>
             </div>
         </div>
     `;
@@ -621,13 +621,23 @@ function hideContextToolbar() { const t = document.getElementById('node-context-
 
 // --- 6. ADMIN UTILS ---
 
+let stateBeforeEdit = null;
 window.toggleEditMode = function() {
-    const isActive = document.getElementById('hq-admin-bar').classList.toggle('edit-active');
+    const adminBar = document.getElementById('hq-admin-bar');
+    const isActive = adminBar.classList.toggle('edit-active');
     const btn = document.getElementById('edit-mode-btn');
     btn.classList.toggle('active', isActive);
+    
+    if (isActive) {
+        stateBeforeEdit = serializeCurrentState();
+    } else if (stateBeforeEdit) {
+        loadState(stateBeforeEdit);
+        stateBeforeEdit = null;
+    }
+
     document.querySelectorAll('.connection-points').forEach(el => el.classList.toggle('hidden', !isActive));
     document.querySelectorAll('.editable-field').forEach(el => el.setAttribute('contenteditable', isActive ? 'true' : 'false'));
-    if (!isActive) hideContextToolbar(); else if (selectedNodes.size > 0) showContextToolbar();
+    if (!isActive) hideContextToolbar(); else if (selectedNodes.size > 0 || selectedLink) showContextToolbar();
     showToast(isActive ? 'STRUCTURAL_EDIT_ENABLED' : 'STRUCTURAL_EDIT_DISABLED');
 };
 
@@ -742,6 +752,7 @@ function createNewLink(source, sSide, target, tSide, id = null) {
 window.saveToLocalStorage = function() {
     const state = serializeCurrentState();
     localStorage.setItem('orbat_canvas_data', JSON.stringify(state));
+    stateBeforeEdit = null;
     showToast('DATABASE_SYNC_COMPLETE');
 };
 
