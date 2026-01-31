@@ -1,4 +1,4 @@
-// Institutional ORBAT - Canvas Controller v6.3 (Resize & Asset Fixes)
+// Institutional ORBAT - Canvas Controller v6.4 (Multi-Select & Box Select)
 
 const canvas = document.getElementById('orbat-canvas');
 const content = document.getElementById('canvas-content');
@@ -15,19 +15,28 @@ const OFFSET = 5000;
 let scale = 0.8;
 let translateX = 0;
 let translateY = 0;
+
+// States
 let isPanning = false;
 let isDraggingNode = false;
-let isResizingNode = false; // New state
+let isResizingNode = false;
 let isDrawingLink = false;
+let isSelecting = false; // Box selection state
+
+// Active Objects
 let dragNode = null;
-let resizeNode = null; // New state
-let selectedNode = null;
+let resizeNode = null;
+let selectedNodes = new Set(); // Multi-select Set
 let linkSourceId = null;
 let linkSourceSide = null;
 let activeNodeForIcon = null;
+
+// Coordinates
 let startMouseX, startMouseY;
-let startNodeX, startNodeY;
-let startWidth, startHeight; // New dimensions
+let startNodeX, startNodeY; // For primary drag node
+let startWidth, startHeight;
+let selectionBox = null; // Visual element for box selection
+let initialNodePositions = new Map(); // Map<nodeId, {x, y}> for multi-drag
 
 // --- 1. CORE RENDERING ---
 
@@ -35,7 +44,7 @@ function updateTransform() {
     content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
     zoomDisplay.innerText = `Zoom: ${Math.round(scale * 100)}%`;
     updateLinks();
-    if (selectedNode) showContextToolbar(selectedNode);
+    if (selectedNodes.size > 0) showContextToolbar(); else hideContextToolbar();
 }
 
 function updateLinks() {
@@ -123,7 +132,7 @@ function getCanvasCoords(clientX, clientY) {
 canvas.addEventListener('mousedown', (e) => {
     if (e.target.classList.contains('editable-field')) return;
 
-    // RESIZE START logic
+    // A. RESIZE
     if (e.target.classList.contains('resize-handle')) {
         const nodeWrapper = e.target.closest('.orbat-node-wrapper');
         if (nodeWrapper && document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
@@ -134,7 +143,7 @@ canvas.addEventListener('mousedown', (e) => {
             startMouseY = coords.y;
             startWidth = parseFloat(resizeNode.getAttribute('data-w'));
             startHeight = parseFloat(resizeNode.getAttribute('data-h'));
-            e.stopPropagation(); // Prevent drag or pan
+            e.stopPropagation(); 
             return;
         }
     }
@@ -142,44 +151,112 @@ canvas.addEventListener('mousedown', (e) => {
     const nodeWrapper = e.target.closest('.orbat-node-wrapper');
     const isClickingUI = e.target.closest('#node-context-menu');
 
+    // B. LINK DRAWING
     if (isDrawingLink) {
         if (nodeWrapper) createNewLink(linkSourceId, linkSourceSide, nodeWrapper.getAttribute('data-id'), 'top');
         stopDrawingLink(); 
         return;
     }
 
+    // C. NODE SELECTION / DRAG START
     if (nodeWrapper) {
-        updateSelection(nodeWrapper);
+        if (e.ctrlKey || e.metaKey) {
+            // Toggle selection
+            if (selectedNodes.has(nodeWrapper)) {
+                selectedNodes.delete(nodeWrapper);
+                nodeWrapper.classList.remove('selected');
+            } else {
+                selectedNodes.add(nodeWrapper);
+                nodeWrapper.classList.add('selected');
+            }
+            updateSelectionUI();
+        } else {
+            // Single select (exclusive) unless clicking on an already selected node (to allow drag)
+            if (!selectedNodes.has(nodeWrapper)) {
+                clearSelection();
+                selectedNodes.add(nodeWrapper);
+                nodeWrapper.classList.add('selected');
+                updateSelectionUI();
+            }
+        }
+
+        // Setup Dragging
         if (document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
-            isDraggingNode = true; 
-            dragNode = nodeWrapper;
+            isDraggingNode = true;
+            dragNode = nodeWrapper; // Primary drag target
             const coords = getCanvasCoords(e.clientX, e.clientY);
             startMouseX = coords.x; startMouseY = coords.y;
-            startNodeX = parseFloat(dragNode.getAttribute('data-x')); 
-            startNodeY = parseFloat(dragNode.getAttribute('data-y'));
+            
+            // Record start positions for ALL selected nodes
+            initialNodePositions.clear();
+            selectedNodes.forEach(node => {
+                initialNodePositions.set(node, {
+                    x: parseFloat(node.getAttribute('data-x')),
+                    y: parseFloat(node.getAttribute('data-y'))
+                });
+            });
             e.stopPropagation(); 
             return;
         }
-    } else if (!isClickingUI) {
-        updateSelection(null);
-    }
-
-    if (e.button === 0 || e.button === 1) {
-        isPanning = true; 
-        startMouseX = e.clientX; 
-        startMouseY = e.clientY;
+    } 
+    
+    // D. CANVAS INTERACTIONS (Empty Space)
+    else if (!isClickingUI) {
+        // Shift + Drag = Box Selection
+        if (e.shiftKey) {
+            isSelecting = true;
+            const rect = canvas.getBoundingClientRect();
+            // Store raw client coords for the div placement (overlay)
+            startMouseX = e.clientX - rect.left;
+            startMouseY = e.clientY - rect.top;
+            
+            selectionBox = document.createElement('div');
+            selectionBox.className = 'absolute border-2 border-[var(--primary)] bg-[var(--primary)]/10 z-[6000] pointer-events-none';
+            selectionBox.style.left = `${startMouseX}px`;
+            selectionBox.style.top = `${startMouseY}px`;
+            selectionBox.style.width = '0px';
+            selectionBox.style.height = '0px';
+            canvas.appendChild(selectionBox);
+            
+            if (!e.ctrlKey && !e.metaKey) clearSelection();
+        } 
+        // Normal Drag = Pan
+        else if (e.button === 0 || e.button === 1) {
+            clearSelection();
+            isPanning = true; 
+            startMouseX = e.clientX; 
+            startMouseY = e.clientY;
+        }
     }
 });
 
 window.addEventListener('mousemove', (e) => {
-    // RESIZE DRAG logic
+    // 1. BOX SELECT
+    if (isSelecting && selectionBox) {
+        const rect = canvas.getBoundingClientRect();
+        const currentX = e.clientX - rect.left;
+        const currentY = e.clientY - rect.top;
+        
+        const width = Math.abs(currentX - startMouseX);
+        const height = Math.abs(currentY - startMouseY);
+        const left = Math.min(currentX, startMouseX);
+        const top = Math.min(currentY, startMouseY);
+        
+        selectionBox.style.width = `${width}px`;
+        selectionBox.style.height = `${height}px`;
+        selectionBox.style.left = `${left}px`;
+        selectionBox.style.top = `${top}px`;
+        return;
+    }
+
+    // 2. RESIZE
     if (isResizingNode && resizeNode) {
         const m = getCanvasCoords(e.clientX, e.clientY);
         const dx = m.x - startMouseX;
         const dy = m.y - startMouseY;
         
-        let newW = Math.max(160, Math.round((startWidth + dx) / SNAP_SIZE) * SNAP_SIZE); // Min width 160
-        let newH = Math.max(120, Math.round((startHeight + dy) / SNAP_SIZE) * SNAP_SIZE); // Min height 120
+        let newW = Math.max(160, Math.round((startWidth + dx) / SNAP_SIZE) * SNAP_SIZE); 
+        let newH = Math.max(120, Math.round((startHeight + dy) / SNAP_SIZE) * SNAP_SIZE); 
 
         resizeNode.style.width = `${newW}px`;
         resizeNode.style.height = `${newH}px`;
@@ -187,10 +264,11 @@ window.addEventListener('mousemove', (e) => {
         resizeNode.setAttribute('data-h', newH);
         
         updateLinks();
-        if (selectedNode) showContextToolbar(selectedNode);
+        if (selectedNodes.size > 0) showContextToolbar();
         return;
     }
 
+    // 3. LINK DRAWING
     if (isDrawingLink) {
         const m = getCanvasCoords(e.clientX, e.clientY);
         const p1 = getPointOnSide(linkSourceId, linkSourceSide);
@@ -198,18 +276,36 @@ window.addEventListener('mousemove', (e) => {
         tempLink.setAttribute('d', getBezierPath(p1, svgMouse, linkSourceSide, 'auto')); return;
     }
     
-    if (isDraggingNode && dragNode) {
+    // 4. DRAGGING NODES (MULTI)
+    if (isDraggingNode && selectedNodes.size > 0) {
         const m = getCanvasCoords(e.clientX, e.clientY);
-        const dx = m.x - startMouseX; const dy = m.y - startMouseY;
+        const dx = m.x - startMouseX; 
+        const dy = m.y - startMouseY;
         
-        let newX = Math.round((startNodeX + dx) / SNAP_SIZE) * SNAP_SIZE;
-        let newY = Math.round((startNodeY + dy) / SNAP_SIZE) * SNAP_SIZE;
+        selectedNodes.forEach(node => {
+            const startPos = initialNodePositions.get(node);
+            if (startPos) {
+                // Calculate un-snapped new pos
+                const rawX = startPos.x + dx;
+                const rawY = startPos.y + dy;
+                
+                // Snap to grid
+                let newX = Math.round(rawX / SNAP_SIZE) * SNAP_SIZE;
+                let newY = Math.round(rawY / SNAP_SIZE) * SNAP_SIZE;
 
-        dragNode.style.left = `${OFFSET + newX}px`; dragNode.style.top = `${OFFSET + newY}px`;
-        dragNode.setAttribute('data-x', newX); dragNode.setAttribute('data-y', newY);
-        updateLinks(); if (selectedNode) showContextToolbar(selectedNode); return;
+                node.style.left = `${OFFSET + newX}px`; 
+                node.style.top = `${OFFSET + newY}px`;
+                node.setAttribute('data-x', newX); 
+                node.setAttribute('data-y', newY);
+            }
+        });
+
+        updateLinks(); 
+        if (selectedNodes.size > 0) showContextToolbar(); 
+        return;
     }
     
+    // 5. PANNING
     if (isPanning) {
         translateX += e.clientX - startMouseX; translateY += e.clientY - startMouseY;
         startMouseX = e.clientX; startMouseY = e.clientY;
@@ -218,19 +314,49 @@ window.addEventListener('mousemove', (e) => {
 });
 
 window.addEventListener('mouseup', () => {
-    if (isDraggingNode && dragNode) {
-        // Snap finalize
-        const x = Math.round(parseFloat(dragNode.getAttribute('data-x')) / SNAP_SIZE) * SNAP_SIZE;
-        const y = Math.round(parseFloat(dragNode.getAttribute('data-y')) / SNAP_SIZE) * SNAP_SIZE;
-        dragNode.setAttribute('data-x', x); dragNode.setAttribute('data-y', y);
-        dragNode.style.left = `${OFFSET + x}px`; dragNode.style.top = `${OFFSET + y}px`;
-        updateLinks(); saveState();
+    // End Box Selection
+    if (isSelecting && selectionBox) {
+        // Perform intersection check
+        const sbRect = selectionBox.getBoundingClientRect();
+        
+        // Remove visual
+        selectionBox.remove();
+        selectionBox = null;
+        isSelecting = false;
+
+        // Check each node for overlap
+        document.querySelectorAll('.orbat-node-wrapper').forEach(node => {
+            const nodeRect = node.getBoundingClientRect();
+            if (!(sbRect.right < nodeRect.left || 
+                  sbRect.left > nodeRect.right || 
+                  sbRect.bottom < nodeRect.top || 
+                  sbRect.top > nodeRect.bottom)) {
+                selectedNodes.add(node);
+                node.classList.add('selected');
+            }
+        });
+        updateSelectionUI();
     }
-    if (isResizingNode && resizeNode) {
-        // Just save state, snapping happens during drag
+
+    if (isDraggingNode) {
+        // Final Snap & Save
+        selectedNodes.forEach(node => {
+            const x = Math.round(parseFloat(node.getAttribute('data-x')) / SNAP_SIZE) * SNAP_SIZE;
+            const y = Math.round(parseFloat(node.getAttribute('data-y')) / SNAP_SIZE) * SNAP_SIZE;
+            node.setAttribute('data-x', x); node.setAttribute('data-y', y);
+            node.style.left = `${OFFSET + x}px`; node.style.top = `${OFFSET + y}px`;
+        });
+        updateLinks(); 
         saveState();
     }
-    isPanning = false; isDraggingNode = false; isResizingNode = false; dragNode = null; resizeNode = null;
+    
+    if (isResizingNode) saveState();
+
+    isPanning = false; 
+    isDraggingNode = false; 
+    isResizingNode = false; 
+    dragNode = null; 
+    resizeNode = null;
 });
 
 canvas.addEventListener('wheel', (e) => {
@@ -277,7 +403,7 @@ function loadState(state) {
     document.querySelectorAll('.orbat-link').forEach(l => l.remove());
     state.nodes.forEach(n => renderNode(n));
     state.edges.forEach(e => createNewLink(e.fromNode, e.fromSide, e.toNode, e.toSide, e.id));
-    updateLinks(); updateSelection(null);
+    updateLinks(); clearSelection();
 }
 function renderNode(n) {
     const newNode = document.createElement('div');
@@ -296,7 +422,7 @@ function renderNode(n) {
             </div>
             <div class="p-5 flex-grow overflow-y-auto custom-scrollbar relative">
                 <div class="space-y-6">
-                    ${n.icon ? `<div class="flex justify-center mb-2"><img src="/${n.icon}" class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" data-icon-path="${n.icon}"></div>` : ''}
+                    ${n.icon ? `<div class="flex justify-center mb-2"><img src="/${n.icon}" draggable="false" class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" data-icon-path="${n.icon}"></div>` : ''}
                     <div class="border-l-2 border-[var(--primary)] pl-4">
                         <h5 class="text-sm font-black text-white uppercase tracking-tighter m-0 editable-field" data-key="name" contenteditable="${editMode}">${n.name}</h5>
                         <p class="text-[8px] text-[var(--primary)] font-mono uppercase mt-1 italic editable-field" data-key="role" contenteditable="${editMode}">${n.role}</p>
@@ -326,24 +452,43 @@ window.showToast = function(message, type = 'info') {
     setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(50px)'; setTimeout(() => toast.remove(), 500); }, 4000);
 };
 
-function updateSelection(node) {
-    document.querySelectorAll('.orbat-node-wrapper').forEach(n => n.classList.remove('selected'));
-    selectedNode = node; 
-    
-    if (node) { 
-        node.classList.add('selected'); 
-        showContextToolbar(node); 
-    } else { 
-        hideContextToolbar(); 
+// MULTI-SELECTION LOGIC
+function clearSelection() {
+    selectedNodes.forEach(n => n.classList.remove('selected'));
+    selectedNodes.clear();
+    hideContextToolbar();
+}
+
+function updateSelectionUI() {
+    if (selectedNodes.size > 0) {
+        showContextToolbar();
+    } else {
+        hideContextToolbar();
     }
 }
 
-function showContextToolbar(node) {
+// Context toolbar position based on "primary" selected node (the last one added)
+function showContextToolbar() {
     if (!document.getElementById('hq-admin-bar').classList.contains('edit-active')) return;
+    
+    // Get the most recently selected node to anchor the toolbar
+    const primaryNode = Array.from(selectedNodes).pop();
+    if (!primaryNode) return;
+
     let t = document.getElementById('node-context-menu');
     if (!t) { t = document.createElement('div'); t.id = 'node-context-menu'; t.className = 'node-context-menu pointer-events-auto'; document.body.appendChild(t); }
-    t.innerHTML = `<button onclick="window.openIconModalDirect()" class="toolbar-btn" title="Change Icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></button><div class="toolbar-separator"></div><button onclick="window.removeSelectedNode()" class="toolbar-btn text-red-500" title="Delete Unit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`;
-    const r = node.getBoundingClientRect(); t.style.left = `${r.left + r.width / 2}px`; t.style.top = `${r.top - 60}px`; t.classList.remove('hidden');
+    
+    // Update toolbar text to reflect multiple items
+    const count = selectedNodes.size;
+    const deleteTitle = count > 1 ? `Delete ${count} Units` : `Delete Unit`;
+    const iconTitle = count > 1 ? `Set Icon for ${count} Units` : `Change Icon`;
+
+    t.innerHTML = `<button onclick="window.openIconModalDirect()" class="toolbar-btn" title="${iconTitle}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></button><div class="toolbar-separator"></div><button onclick="window.removeSelectedNode()" class="toolbar-btn text-red-500" title="${deleteTitle}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`;
+    
+    const r = primaryNode.getBoundingClientRect(); 
+    t.style.left = `${r.left + r.width / 2}px`; 
+    t.style.top = `${r.top - 60}px`; 
+    t.classList.remove('hidden');
 }
 
 function hideContextToolbar() { const t = document.getElementById('node-context-menu'); if (t) t.classList.add('hidden'); }
@@ -356,14 +501,19 @@ window.toggleEditMode = function() {
     btn.classList.toggle('active', isActive);
     document.querySelectorAll('.connection-points').forEach(el => el.classList.toggle('hidden', !isActive));
     document.querySelectorAll('.editable-field').forEach(el => el.setAttribute('contenteditable', isActive ? 'true' : 'false'));
-    if (!isActive) hideContextToolbar(); else if (selectedNode) showContextToolbar(selectedNode);
+    if (!isActive) hideContextToolbar(); else if (selectedNodes.size > 0) showContextToolbar();
     showToast(isActive ? 'STRUCTURAL_EDIT_ENABLED' : 'STRUCTURAL_EDIT_DISABLED');
 };
 
 window.addOrbatNodeAt = function(x, y) {
     const id = `unit_${Math.random().toString(36).substr(2, 9)}`;
-    renderNode({ id, name: "NEW_UNIT", role: "Operational Support", callsign: "SIG_ID", icon: "icons/MOD.png", x, y, w: 200, h: 200 }); // Default size snapped
-    updateSelection(document.getElementById(`node-${id}`)); saveState();
+    renderNode({ id, name: "NEW_UNIT", role: "Operational Support", callsign: "SIG_ID", icon: "icons/MOD.png", x, y, w: 200, h: 200 }); 
+    const n = document.getElementById(`node-${id}`);
+    clearSelection();
+    selectedNodes.add(n);
+    n.classList.add('selected');
+    updateSelectionUI();
+    saveState();
 };
 
 window.addOrbatNode = () => {
@@ -372,10 +522,15 @@ window.addOrbatNode = () => {
 };
 
 window.removeSelectedNode = function() {
-    if (selectedNode && confirm('Decommission unit?')) {
-        const id = selectedNode.getAttribute('data-id');
-        document.querySelectorAll(`.orbat-link[data-source="${id}"], .orbat-link[data-target="${id}"]`).forEach(l => l.remove());
-        selectedNode.remove(); updateSelection(null); saveState(); showToast('UNIT_DECOMMISSIONED', 'danger');
+    if (selectedNodes.size > 0 && confirm(`Decommission ${selectedNodes.size} unit(s)?`)) {
+        selectedNodes.forEach(node => {
+            const id = node.getAttribute('data-id');
+            document.querySelectorAll(`.orbat-link[data-source="${id}"], .orbat-link[data-target="${id}"]`).forEach(l => l.remove());
+            node.remove();
+        });
+        clearSelection();
+        saveState(); 
+        showToast('UNITS_DECOMMISSIONED', 'danger');
     }
 };
 
@@ -386,18 +541,17 @@ window.exportOrbatJSON = () => {
 };
 
 window.openIconModalDirect = function() {
-    if (!selectedNode) return;
-    activeNodeForIcon = selectedNode; iconGrid.innerHTML = '';
+    if (selectedNodes.size === 0) return;
+    activeNodeForIcon = Array.from(selectedNodes).pop(); // Default to last selected for preview logic, but apply to all?
+    // Note: Applying to all selected nodes would be a nice feature
     
-    // Updated asset list
+    iconGrid.innerHTML = '';
     const assets = ["icons/MOD.png", "icons/TFA.png", "icons/SAS.png", "icons/SBS.png", "icons/SRR.png", "icons/SFSG.png", "icons/JSFAW.png", "icons/MEDIC.png", "icons/Intelligence-Corps.png", "icons/RSIS.png", "icons/SIGNALS.png", "icons/RANGERS.png", "icons/UKSF-MAP.png", "icons/intelligence-map.png"];
     
     assets.forEach(path => {
         const item = document.createElement('div');
         item.className = 'group/icon flex flex-col items-center space-y-2 p-4 bg-white/[0.02] border border-white/5 hover:border-[var(--primary)]/40 cursor-pointer transition-all';
-        item.onclick = () => {
-            applyIcon(path);
-        };
+        item.onclick = () => { applyIcon(path); };
         item.innerHTML = `<img src="/${path}" class="w-12 h-12 object-contain opacity-60 group-hover/icon:opacity-100 transition-opacity"><span class="text-[7px] font-mono text-gray-600 group-hover/icon:text-white uppercase">${path.split('/').pop()}</span>`;
         iconGrid.appendChild(item);
     });
@@ -410,34 +564,30 @@ window.handleIconUpload = function(input) {
     const file = input.files[0];
     if (file) {
         const reader = new FileReader();
-        reader.onload = function(e) {
-            applyIcon(e.target.result); // Use Data URL
-        };
+        reader.onload = function(e) { applyIcon(e.target.result); };
         reader.readAsDataURL(file);
     }
 };
 
 function applyIcon(src) {
-    if (activeNodeForIcon) {
-        const container = activeNodeForIcon.querySelector('.space-y-6');
+    // Apply to ALL selected nodes
+    selectedNodes.forEach(node => {
+        const container = node.querySelector('.space-y-6');
         let imgDiv = container.querySelector('.flex.justify-center.mb-2');
-        
-        // Ensure container exists
         if (!imgDiv) {
             imgDiv = document.createElement('div');
             imgDiv.className = 'flex justify-center mb-2';
-            imgDiv.innerHTML = `<img class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700">`;
+            imgDiv.innerHTML = `<img draggable="false" class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700">`;
             container.insertBefore(imgDiv, container.firstChild);
         }
-        
         const img = imgDiv.querySelector('img');
         img.src = src.startsWith('data:') ? src : `/${src}`;
-        img.setAttribute('data-icon-path', src); // Store path or data URL
-        
-        showToast('ICON_APPLIED'); 
-        saveState(); 
-        closeIconModal();
-    }
+        img.setAttribute('data-icon-path', src);
+    });
+    
+    showToast('ICON_APPLIED'); 
+    saveState(); 
+    closeIconModal();
 }
 
 window.startDrawingLink = function(e, side) {
@@ -497,15 +647,9 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'c' || e.key === 'C') window.centerView();
 
     // SAVE LOGIC:
-    // Ctrl+S now performs a Local Commit (Save to Browser)
-    // Ctrl+Shift+S performs the JSON Export
     if ((e.ctrlKey || e.metaKey) && e.key === 's') { 
         e.preventDefault(); 
-        if (e.shiftKey) {
-            window.exportOrbatJSON(); 
-        } else {
-            window.saveToLocalStorage();
-        }
+        if (e.shiftKey) window.exportOrbatJSON(); else window.saveToLocalStorage();
     }
 });
 
@@ -517,12 +661,6 @@ if (localStorage.getItem('uksf_hq_auth') === 'true') {
 }
 
 window.addEventListener('load', () => {
-    // 1. Restore data from browser cache first
     window.loadFromLocalStorage();
-
-    // 2. Short delay to ensure DOM is ready for camera centering
-    setTimeout(() => { 
-        window.centerView(); 
-        saveState(); 
-    }, 100); 
+    setTimeout(() => { window.centerView(); saveState(); }, 100); 
 });
