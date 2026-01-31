@@ -352,10 +352,10 @@
                     el.innerText = netId;
                 });
 
-                console.log(`[JSFC_NODE] Comms Link: ${data.presence_count} Personnel Online. Latency: ${Math.round(latency)}ms`);
+                console.log(`[JSFC_INTEL] Discord sync successful: ${data.presence_count} personnel active on node ${netId}.`);
             }
         } catch (error) {
-            console.error("DISCORD_INTEL: Link failure:", error);
+            console.error("[JSFC_INTEL] Discord sync failure:", error);
             onlineCounts.forEach(el => {
                 el.innerText = "??";
                 el.classList.add('text-red-900');
@@ -478,13 +478,17 @@
                         `;
 
                         feeds.forEach(feed => feed.innerHTML = html);
+                        console.log(`[UC_INTEL] Unit Commander sync successful: Pulled data for '${opTitle}'.`);
                     } else {
                         const emptyHtml = '<div class="text-[8px] font-mono text-gray-700 uppercase tracking-widest p-6 border border-dashed border-white/5">No active deployments detected.</div>';
                         feeds.forEach(feed => feed.innerHTML = emptyHtml);
+                        console.log("[UC_INTEL] Unit Commander sync complete: No active deployments found.");
                     }
+                } else {
+                    console.log("[UC_INTEL] Unit Commander sync complete: No campaign data to pull.");
                 }
             } catch (err) {
-                console.error("UKSFTA_INTEL: Link failure:", err);
+                console.error("[UC_INTEL] Unit Commander link failure:", err);
                 const errorHtml = '<div class="text-[8px] font-mono text-red-900 uppercase tracking-widest p-6 border border-dashed border-red-900/20">Link failure: UC_NODE_OFFLINE</div>';
                 feeds.forEach(feed => feed.innerHTML = errorHtml);
             }
