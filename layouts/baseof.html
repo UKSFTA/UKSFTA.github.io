@@ -463,8 +463,11 @@
             if (points.length < 2) return;
 
             // Calculate time range
-            const startTime = new Date(points[0].t).getTime();
-            const endTime = new Date(points[points.length - 1].t).getTime();
+            const range = window.currentBattlemetricsRange || 'today';
+            const nowTime = Date.now();
+            const lookback = range === 'month' ? 30 * 24 * 3600000 : (range === 'week' ? 7 * 24 * 3600000 : 24 * 3600000);
+            const startTime = nowTime - lookback;
+            const endTime = nowTime;
             const timeRange = endTime - startTime;
 
             const getX = (t) => {
@@ -473,11 +476,38 @@
             };
             const getY = (v) => height - (v / safeMax * height);
             
-            // Continuous path generation using time-based X
-            let pathData = `M ${getX(points[0].t)} ${getY(points[0].v)}`;
-            points.forEach((p, i) => { if (i > 0) pathData += ` L ${getX(p.t)} ${getY(p.v)}`; });
+            // Generate path with gap detection
+            let pathData = "";
+            let areaPath = `M 0 ${height}`; // Start area at baseline
 
-            const areaPath = `${pathData} L ${width} ${height} L 0 ${height} Z`;
+            const maxGap = 65 * 60000; // 65 minutes threshold for gap detection
+
+            points.forEach((p, i) => {
+                const curX = getX(p.t);
+                const curY = getY(p.v);
+                
+                if (i === 0) {
+                    pathData = `M ${curX} ${curY}`;
+                    areaPath += ` L ${curX} ${height} L ${curX} ${curY}`;
+                } else {
+                    const prevP = points[i-1];
+                    const timeDiff = new Date(p.t).getTime() - new Date(prevP.t).getTime();
+                    
+                    if (timeDiff > maxGap) {
+                        // Gap detected: Drop to zero and jump to next segment
+                        const dropX = getX(new Date(new Date(prevP.t).getTime() + 30*60000).toISOString());
+                        const riseX = getX(new Date(new Date(p.t).getTime() - 30*60000).toISOString());
+                        
+                        pathData += ` L ${dropX} ${height} M ${riseX} ${height} L ${curX} ${curY}`;
+                        areaPath += ` L ${dropX} ${height} L ${riseX} ${height} L ${curX} ${curY}`;
+                    } else {
+                        pathData += ` L ${curX} ${curY}`;
+                        areaPath += ` L ${curX} ${curY}`;
+                    }
+                }
+            });
+
+            areaPath += ` L ${width} ${height} Z`;
 
             container.innerHTML = `
                 <div id="graph-tooltip" class="absolute top-2 right-2 bg-black/90 border border-white/10 px-3 py-2 pointer-events-none opacity-0 transition-opacity z-20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">

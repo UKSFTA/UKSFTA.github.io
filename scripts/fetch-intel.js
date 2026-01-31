@@ -140,14 +140,18 @@ function compress(data) {
         a.attributes.max === b.attributes.max && 
         a.attributes.min === b.attributes.min;
 
-    const result = [data[0]];
-    for (let i = 1; i < data.length - 1; i++) {
-        // Only keep if it's NOT redundant (different from previous OR different from next)
-        if (!isS(data[i], data[i - 1]) || !isS(data[i], data[i + 1])) {
+    const isZero = (a) => a && a.attributes.value === 0 && a.attributes.max === 0 && a.attributes.min === 0;
+
+    const result = [];
+    for (let i = 0; i < data.length; i++) {
+        // Skip if it's a zero point
+        if (isZero(data[i])) continue;
+
+        // For non-zero points, we still want to remove redundant intermediate points to keep it lean
+        if (i === 0 || i === data.length - 1 || !isS(data[i], data[i - 1]) || !isS(data[i], data[i + 1])) {
             result.push(data[i]);
         }
     }
-    if (data.length > 1) result.push(data[data.length - 1]);
     return result;
 }
 
