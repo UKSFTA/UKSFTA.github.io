@@ -429,8 +429,8 @@ function snapNodeHeight(node) {
     const actualH = rect.height / scale; // Adjust for current zoom scale
     
     // Snap to nearest 40px increment (minimum 200 - one big square)
-    // We use round instead of ceil to allow slight overflows (like 1-2px from borders) to stay in the square
-    const snappedH = Math.max(200, Math.round(actualH / SNAP_SIZE) * SNAP_SIZE);
+    // Using floor to be more aggressive about staying small
+    const snappedH = Math.max(200, Math.floor(actualH / SNAP_SIZE) * SNAP_SIZE);
     
     node.style.height = `${snappedH}px`;
     node.setAttribute('data-h', snappedH);
@@ -452,12 +452,12 @@ function renderNode(n) {
                 <div class="flex items-center space-x-3 min-w-0"><span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest truncate">${n.callsign || "NODE"}</span></div>
                 <div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></div>
             </div>
-            <div class="p-5 flex-grow overflow-y-auto custom-scrollbar relative">
-                <div class="space-y-4">
-                    ${n.icon ? `<div class="flex justify-center"><img src="/${n.icon}" draggable="false" class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" data-icon-path="${n.icon}"></div>` : ''}
-                    <div class="border-l-2 border-[var(--primary)] pl-4">
+            <div class="p-4 flex-grow overflow-y-auto custom-scrollbar relative">
+                <div class="space-y-3">
+                    ${n.icon ? `<div class="flex justify-center"><img src="/${n.icon}" draggable="false" class="w-14 h-14 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" data-icon-path="${n.icon}"></div>` : ''}
+                    <div class="border-l-2 border-[var(--primary)] pl-3">
                         <h5 class="text-sm font-black text-white uppercase tracking-tighter m-0 editable-field" data-key="name" contenteditable="${editMode}">${n.name}</h5>
-                        <p class="text-[8px] text-[var(--primary)] font-mono uppercase mt-1 italic editable-field" data-key="role" contenteditable="${editMode}">${n.role}</p>
+                        <p class="text-[8px] text-[var(--primary)] font-mono uppercase mt-0.5 italic editable-field" data-key="role" contenteditable="${editMode}">${n.role}</p>
                     </div>
                     ${n.personnelHtml || ''}
                 </div>
@@ -606,12 +606,12 @@ window.handleIconUpload = function(input) {
 function applyIcon(src) {
     // Apply to ALL selected nodes
     selectedNodes.forEach(node => {
-        const container = node.querySelector('.space-y-4');
+        const container = node.querySelector('.space-y-3');
         let imgDiv = container.querySelector('.flex.justify-center');
         if (!imgDiv) {
             imgDiv = document.createElement('div');
             imgDiv.className = 'flex justify-center';
-            imgDiv.innerHTML = `<img draggable="false" class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700">`;
+            imgDiv.innerHTML = `<img draggable="false" class="w-14 h-14 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700">`;
             container.insertBefore(imgDiv, container.firstChild);
         }
         const img = imgDiv.querySelector('img');
