@@ -1,92 +1,114 @@
 {{ define "main" }}
-{{ partial "hero.html" . }}
-
-<div class="container-uksf py-24">
+  {{ partial "hero.html" . }}
+  <div class="container-uksf py-24">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
-        
-        <!-- SIDEBAR: Technical Registry -->
-        <aside class="lg:col-span-4 space-y-8">
-            <div class="bracket-box bg-black/40 backdrop-blur-xl border-white/5 sticky top-48 !p-8">
-                <div class="space-y-10">
-                    
-                    <!-- Institutional Header -->
-                    <div class="flex items-center justify-between border-b border-white/5 pb-6">
-                        <span class="text-[7px] font-mono text-gray-600 uppercase tracking-[0.4em] font-black">Unit Record</span>
-                    </div>
-
-                    <div class="text-center pb-6 border-b border-white/5">
-                        {{ $id := .Params.unit | default .Section }}
-                        {{ $unit := index .Site.Data.units $id }}
-                        {{ $icon := resources.Get $unit.icon }}
-                        {{ if $icon }}
-                        <img src="{{ $icon.RelPermalink }}" class="h-24 w-auto mx-auto mb-6 icon-tactical">
-                        {{ end }}
-                        <h2 class="text-2xl m-0 tracking-tighter">{{ .Title }}</h2>
-                    </div>
-
-                    <div class="space-y-6">
-                        <div class="flex flex-col">
-                            <label class="mb-1 text-[8px]">Current Status</label>
-                            <div class="flex items-center space-x-3 bg-white/5 px-3 py-2 border border-white/10">
-                                <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                                <span class="text-[10px] font-black text-white uppercase tracking-widest">Active Community</span>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="flex flex-col">
-                                <label class="mb-0.5 text-[8px]">Tier</label>
-                                <span class="text-xs font-bold text-white uppercase">{{ if or (eq $id "sas") (eq $id "sbs") (eq $id "srr") }}Tier 1{{ else }}Tier 2{{ end }}</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col border-t border-white/5 pt-6">
-                            <label class="mb-1 text-[8px]">Command Authority</label>
-                            <span class="text-[10px] font-bold text-gray-400 leading-snug uppercase tracking-wider">Taskforce HQ</span>
-                        </div>
-                    </div>
-
-                    <div class="pt-6">
-                        {{ if or (eq $id "sas") (eq $id "sbs") (eq $id "asob") (eq $id "srr") }}
-                        <a href="#selection" class="btn-elite w-full text-center py-3 bg-[var(--primary)] text-white text-[10px]">Selection Protocol</a>
-                        {{ else }}
-                        <a href="#intake" class="btn-elite w-full text-center py-3 bg-[var(--primary)] text-white text-[10px]">Intake Protocol</a>
-                        {{ end }}
-                    </div>
-                </div>
+      <!-- SIDEBAR: Technical Registry -->
+      <aside class="lg:col-span-4 space-y-8">
+        <div class="bracket-box bg-black/40 backdrop-blur-xl border-white/5 sticky top-48 !p-8">
+          <div class="space-y-10">
+            <!-- Institutional Header -->
+            <div class="flex items-center justify-between border-b border-white/5 pb-6">
+              <span class="text-[7px] font-mono text-gray-600 uppercase tracking-[0.4em] font-black"
+                >Unit Record</span
+              >
             </div>
-        </aside>
-
-        <!-- MAIN CONTENT: Operational Intelligence -->
-        <main class="lg:col-span-8 space-y-20">
-            
-            <section class="space-y-8">
-                <div class="flex items-center space-x-6">
-                    <div class="w-12 h-px bg-[var(--primary)]"></div>
-                    <span class="sub-header m-0 uppercase">Operational Mandate</span>
+            <div class="text-center pb-6 border-b border-white/5">
+              {{ $id := .Params.unit | default .Section }}
+              {{ $unit := index .Site.Data.units $id }}
+              {{ $icon := resources.Get $unit.icon }}
+              {{ if $icon }}
+                <img
+                  src="{{ $icon.RelPermalink }}"
+                  class="h-24 w-auto mx-auto mb-6 icon-tactical"
+                />
+              {{ end }}
+              <h2 class="text-2xl m-0 tracking-tighter">{{ .Title }}</h2>
+            </div>
+            <div class="space-y-6">
+              <div class="flex flex-col">
+                <label class="mb-1 text-[8px]">Current Status</label>
+                <div
+                  class="flex items-center space-x-3 bg-white/5 px-3 py-2 border border-white/10"
+                >
+                  <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                  <span class="text-[10px] font-black text-white uppercase tracking-widest"
+                    >Active Community</span
+                  >
                 </div>
-                <div class="dossier-node !py-2">
-                    <div class="prose prose-invert prose-xl max-w-none font-light text-gray-300 leading-relaxed">
-                        {{ .Description }}
-                    </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col">
+                  <label class="mb-0.5 text-[8px]">Tier</label>
+                  <span class="text-xs font-bold text-white uppercase"
+                    >{{ if or (eq $id "sas") (eq $id "sbs") (eq $id "srr") }}
+                      Tier 1
+                    {{ else }}
+                      Tier 2
+                    {{ end }}</span
+                  >
                 </div>
-            </section>
-
-            <section class="prose prose-invert prose-lg max-w-none font-light text-gray-400 prose-headings:text-white prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-strong:text-white prose-strong:font-bold">
-                {{ .Content }}
-            </section>
-
-            <section class="pt-16 border-t border-white/5">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6 opacity-30 grayscale hover:opacity-100 transition-all duration-700">
-                    <div class="flex items-center space-x-6">
-                        <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em] font-bold">Registry: UKSFTA-{{ upper (substr (sha256 .Title) 0 12) }}</span>
-                    </div>
-                    <span class="text-[7px] font-mono text-gray-700 uppercase tracking-widest">Permanent Record</span>
-                </div>
-            </section>
-
-        </main>
-
+              </div>
+              <div class="flex flex-col border-t border-white/5 pt-6">
+                <label class="mb-1 text-[8px]">Command Authority</label>
+                <span
+                  class="text-[10px] font-bold text-gray-400 leading-snug uppercase tracking-wider"
+                  >Taskforce HQ</span
+                >
+              </div>
+            </div>
+            <div class="pt-6">
+              {{ if or (eq $id "sas") (eq $id "sbs") (eq $id "asob") (eq $id "srr") }}
+                <a
+                  href="#selection"
+                  class="btn-elite w-full text-center py-3 bg-[var(--primary)] text-white text-[10px]"
+                  >Selection Protocol</a
+                >
+              {{ else }}
+                <a
+                  href="#intake"
+                  class="btn-elite w-full text-center py-3 bg-[var(--primary)] text-white text-[10px]"
+                  >Intake Protocol</a
+                >
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </aside>
+      <!-- MAIN CONTENT: Operational Intelligence -->
+      <main class="lg:col-span-8 space-y-20">
+        <section class="space-y-8">
+          <div class="flex items-center space-x-6">
+            <div class="w-12 h-px bg-[var(--primary)]"></div>
+            <span class="sub-header m-0 uppercase">Operational Mandate</span>
+          </div>
+          <div class="dossier-node !py-2">
+            <div
+              class="prose prose-invert prose-xl max-w-none font-light text-gray-300 leading-relaxed"
+            >
+              {{ .Description }}
+            </div>
+          </div>
+        </section>
+        <section
+          class="prose prose-invert prose-lg max-w-none font-light text-gray-400 prose-headings:text-white prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-strong:text-white prose-strong:font-bold"
+        >
+          {{ .Content }}
+        </section>
+        <section class="pt-16 border-t border-white/5">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center gap-6 opacity-30 grayscale hover:opacity-100 transition-all duration-700"
+          >
+            <div class="flex items-center space-x-6">
+              <span class="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em] font-bold"
+                >Registry: UKSFTA-{{ upper (substr (sha256 .Title) 0 12) }}</span
+              >
+            </div>
+            <span class="text-[7px] font-mono text-gray-700 uppercase tracking-widest"
+              >Permanent Record</span
+            >
+          </div>
+        </section>
+      </main>
     </div>
-</div>
+  </div>
 {{ end }}

@@ -1,11 +1,13 @@
 <div class="govuk-phase-banner">
   <div class="container">
     <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-        {{ .Site.Params.phase | default "alpha" }}
-      </strong>
+      <strong class="govuk-tag govuk-phase-banner__content__tag"
+        >{{ .Site.Params.phase | default "alpha" }}</strong
+      >
       <span class="govuk-phase-banner__text">
-        This is a new service – your <a class="govuk-link" href="{{ .Site.Params.feedbackurl }}">feedback</a> will help us to improve it.
+        This is a new service – your
+        <a class="govuk-link" href="{{ .Site.Params.feedbackurl }}">feedback</a> will help us to
+        improve it.
       </span>
     </p>
   </div>

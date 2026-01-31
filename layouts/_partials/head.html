@@ -1,17 +1,33 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
-<meta name="description" content="{{ .Description | default site.Params.description | default "UKSF Taskforce Alpha - High-fidelity Arma 3 Special Operations simulation." }}">
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+  {{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}
+</title>
+<meta
+  name="description"
+  content="{{ .Description | default site.Params.description | default `UKSF Taskforce Alpha - High-fidelity Arma 3 Special Operations simulation.` }}"
+/>
 <!-- Open Graph / Social -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta property="og:description" content="{{ .Description | default site.Params.description | default "UKSF Taskforce Alpha - High-fidelity Arma 3 Special Operations simulation." }}">
-<meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:site_name" content="UKSF Taskforce Alpha">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Public+Sans:wght@400;700&display=swap" rel="stylesheet">
+<meta property="og:type" content="website" />
+<meta
+  property="og:title"
+  content="{{ if .IsHome }}
+    {{ site.Title }}
+  {{ else }}
+    {{ .Title }}
+  {{ end }}"
+/>
+<meta
+  property="og:description"
+  content="{{ .Description | default site.Params.description | default `UKSF Taskforce Alpha - High-fidelity Arma 3 Special Operations simulation.` }}"
+/>
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:site_name" content="UKSF Taskforce Alpha" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Public+Sans:wght@400;700&display=swap"
+  rel="stylesheet"
+/>
 {{ partial "head/css.html" . }}
 {{ partial "head/js.html" . }}

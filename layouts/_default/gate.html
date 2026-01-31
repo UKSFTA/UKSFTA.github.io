@@ -1,120 +1,145 @@
 {{ define "main" }}
-<section class="min-h-dvh flex items-center justify-center bg-black relative overflow-hidden snap-start py-12 lg:py-24">
+  <section
+    class="min-h-dvh flex items-center justify-center bg-black relative overflow-hidden snap-start py-12 lg:py-24"
+  >
     <!-- Visual background noise -->
     <div class="absolute inset-0 bg-grid-white opacity-5"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
-    
     <div class="container-uksf relative z-10 max-w-2xl w-full">
-        <div class="bracket-box bg-black/80 backdrop-blur-3xl border-white/10 p-8 lg:p-12 shadow-2xl relative overflow-hidden">
-            <!-- Glitch decorative elements -->
-            <div class="absolute top-0 left-0 w-full h-[1px] bg-[var(--primary)] opacity-20 animate-pulse"></div>
-            
-            <div class="mb-8 lg:mb-12 space-y-4">
-                <div class="flex items-center justify-between">
-                    <span class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black">Secure Terminal Node</span>
-                    <span class="text-[8px] font-mono text-gray-700 uppercase tracking-widest font-black hidden sm:block">OS: UKSFTA_KERN_01</span>
-                </div>
-                <h2 class="text-3xl lg:text-4xl font-bold tracking-tighter uppercase font-industrial text-white">Registry Authorization</h2>
-                <div class="h-px w-full bg-white/5"></div>
-            </div>
-
-            <div id="terminal-interface" class="font-mono text-sm space-y-6">
-                <div id="terminal-logs" class="h-48 overflow-y-auto space-y-2 text-gray-500 text-[11px] leading-relaxed scrollbar-hide">
-                    <p class="text-gray-600">// INITIALIZING SECURE_HANDSHAKE...</p>
-                    <p class="text-gray-600">// PROTOCOL: TLS_1.3 // RSA_4096</p>
-                    <p class="text-green-500/60">> REMOTE_HOST: JSFC-NODE-UK</p>
-                    <p class="text-gray-600">// SYSTEM_TIME: {{ now.Format "15:04:05" }} UTC</p>
-                    <p class="text-white">AWAITING_CREDENTIALS...</p>
-                </div>
-
-                <div class="relative mt-8 pt-8 border-t border-white/5">
-                    <div class="flex items-center space-x-4">
-                        <span class="text-[var(--primary)] font-black animate-pulse">></span>
-                        <input type="text" id="terminal-input" placeholder="ENTER_ACCESS_CODE" 
-                               class="bg-transparent border-none outline-none w-full text-white placeholder:text-gray-800 uppercase tracking-widest"
-                               autocomplete="off" autofocus>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-12 text-[8px] font-mono text-gray-700 uppercase tracking-widest leading-loose">
-                NOTICE: Unauthorized access to Taskforce Alpha network assets is strictly monitored under operational protocol 99-A.
-            </div>
+      <div
+        class="bracket-box bg-black/80 backdrop-blur-3xl border-white/10 p-8 lg:p-12 shadow-2xl relative overflow-hidden"
+      >
+        <!-- Glitch decorative elements -->
+        <div
+          class="absolute top-0 left-0 w-full h-[1px] bg-[var(--primary)] opacity-20 animate-pulse"
+        ></div>
+        <div class="mb-8 lg:mb-12 space-y-4">
+          <div class="flex items-center justify-between">
+            <span
+              class="text-[8px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black"
+              >Secure Terminal Node</span
+            >
+            <span
+              class="text-[8px] font-mono text-gray-700 uppercase tracking-widest font-black hidden sm:block"
+              >OS: UKSFTA_KERN_01</span
+            >
+          </div>
+          <h2
+            class="text-3xl lg:text-4xl font-bold tracking-tighter uppercase font-industrial text-white"
+          >
+            Registry Authorization
+          </h2>
+          <div class="h-px w-full bg-white/5"></div>
         </div>
+        <div id="terminal-interface" class="font-mono text-sm space-y-6">
+          <div
+            id="terminal-logs"
+            class="h-48 overflow-y-auto space-y-2 text-gray-500 text-[11px] leading-relaxed scrollbar-hide"
+          >
+            <p class="text-gray-600">// INITIALIZING SECURE_HANDSHAKE...</p>
+            <p class="text-gray-600">// PROTOCOL: TLS_1.3 // RSA_4096</p>
+            <p class="text-green-500/60">> REMOTE_HOST: JSFC-NODE-UK</p>
+            <p class="text-gray-600">// SYSTEM_TIME: {{ now.Format "15:04:05" }} UTC</p>
+            <p class="text-white">AWAITING_CREDENTIALS...</p>
+          </div>
+          <div class="relative mt-8 pt-8 border-t border-white/5">
+            <div class="flex items-center space-x-4">
+              <span class="text-[var(--primary)] font-black animate-pulse">></span>
+              <input
+                type="text"
+                id="terminal-input"
+                placeholder="ENTER_ACCESS_CODE"
+                class="bg-transparent border-none outline-none w-full text-white placeholder:text-gray-800 uppercase tracking-widest"
+                autocomplete="off"
+                autofocus
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-12 text-[8px] font-mono text-gray-700 uppercase tracking-widest leading-loose"
+        >
+          NOTICE: Unauthorized access to Taskforce Alpha network assets is strictly monitored under
+          operational protocol 99-A.
+        </div>
+      </div>
     </div>
-</section>
+  </section>
+  <style>
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+  <script>
+    const input = document.getElementById('terminal-input');
+    const logs = document.getElementById('terminal-logs');
 
-<style>
-.scrollbar-hide::-webkit-scrollbar { display: none; }
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-</style>
+    function addLog(text, type = 'default') {
+      const p = document.createElement('p');
+      p.innerText = `// ${text}`;
+      if (type === 'error') p.className = 'text-red-500';
+      if (type === 'success') p.className = 'text-green-500';
+      if (type === 'white') p.className = 'text-white';
+      logs.appendChild(p);
+      logs.scrollTop = logs.scrollHeight;
+    }
 
-<script>
-const input = document.getElementById('terminal-input');
-const logs = document.getElementById('terminal-logs');
-
-function addLog(text, type = 'default') {
-    const p = document.createElement('p');
-    p.innerText = `// ${text}`;
-    if (type === 'error') p.className = 'text-red-500';
-    if (type === 'success') p.className = 'text-green-500';
-    if (type === 'white') p.className = 'text-white';
-    logs.appendChild(p);
-    logs.scrollTop = logs.scrollHeight;
-}
-
-input.addEventListener('keypress', async function(e) {
-    if (e.key === 'Enter') {
+    input.addEventListener('keypress', async function (e) {
+      if (e.key === 'Enter') {
         const code = this.value.toUpperCase();
         this.value = '';
-        
+
         addLog(`PROCESSING: ${code}...`, 'white');
 
         // Secure Hashing Logic for HQ Access
         const msgUint8 = new TextEncoder().encode(code);
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        
+        const hashHex = hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+
         // HQ_HASH: 8a054bcd07afcf1c2aad9fb9547ec94e83735f0cc38cafbe0bd11def265608f8
-        const HQ_AUTH_KEY = "8a054bcd07afcf1c2aad9fb9547ec94e83735f0cc38cafbe0bd11def265608f8";
-        
+        const HQ_AUTH_KEY = '8a054bcd07afcf1c2aad9fb9547ec94e83735f0cc38cafbe0bd11def265608f8';
+
         // CTF Keywords for Standard Covert Access
         const CTF_KEYWORDS = [
-            'TFA-ALPHA-01', 
-            'SIGINT-RECON', 
-            'GHOST-OPERATOR', 
-            'NORTHWOOD', 
-            'ZERO-TRUST', 
-            'RECON-5-0',
-            'SABRE-3-0'
+          'TFA-ALPHA-01',
+          'SIGINT-RECON',
+          'GHOST-OPERATOR',
+          'NORTHWOOD',
+          'ZERO-TRUST',
+          'RECON-5-0',
+          'SABRE-3-0',
         ];
 
         setTimeout(() => {
-            if (hashHex === HQ_AUTH_KEY) {
-                addLog('HQ_AUTHORIZATION_LEVEL_1_GRANTED', 'success');
-                addLog('INITIALIZING_DIRECTORATE_OVERRIDE...', 'success');
-                localStorage.setItem('uksf_auth', 'authorized');
-                localStorage.setItem('uksf_hq_auth', 'true');
-                
-                setTimeout(() => {
-                    window.location.href = '/archive/covert';
-                }, 1500);
-            } else if (CTF_KEYWORDS.includes(code)) {
-                addLog('CREDENTIALS_ACCEPTED', 'success');
-                addLog('AUTHORIZING_DEEP_RECON_ACCESS...', 'success');
-                localStorage.setItem('uksf_auth', 'authorized');
-                localStorage.setItem('uksf_hq_auth', 'false'); // Ensure no admin perms
-                
-                setTimeout(() => {
-                    window.location.href = '/archive/covert';
-                }, 1500);
-            } else {
-                addLog('INVALID_CODE_REJECTED', 'error');
-                addLog('SECURITY_FLAG_RAISED', 'error');
-            }
+          if (hashHex === HQ_AUTH_KEY) {
+            addLog('HQ_AUTHORIZATION_LEVEL_1_GRANTED', 'success');
+            addLog('INITIALIZING_DIRECTORATE_OVERRIDE...', 'success');
+            localStorage.setItem('uksf_auth', 'authorized');
+            localStorage.setItem('uksf_hq_auth', 'true');
+
+            setTimeout(() => {
+              window.location.href = '/archive/covert';
+            }, 1500);
+          } else if (CTF_KEYWORDS.includes(code)) {
+            addLog('CREDENTIALS_ACCEPTED', 'success');
+            addLog('AUTHORIZING_DEEP_RECON_ACCESS...', 'success');
+            localStorage.setItem('uksf_auth', 'authorized');
+            localStorage.setItem('uksf_hq_auth', 'false'); // Ensure no admin perms
+
+            setTimeout(() => {
+              window.location.href = '/archive/covert';
+            }, 1500);
+          } else {
+            addLog('INVALID_CODE_REJECTED', 'error');
+            addLog('SECURITY_FLAG_RAISED', 'error');
+          }
         }, 800);
-    }
-});
-</script>
+      }
+    });
+  </script>
 {{ end }}

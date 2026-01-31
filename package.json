@@ -1,8 +1,8 @@
 {
-  "name": "uksf-mod-theme",
+  "name": "uksfta-theme",
   "version": "1.0.0",
   "type": "module",
-  "description": "United Kingdom Special Forces (UKSF) Digital Presence - Hugo Theme",
+  "description": "UKSF Taskforce Alpha (UKSFTA) Digital Presence - Hugo Theme",
   "main": "index.js",
   "scripts": {
     "start": "hugo server -s exampleSite --themesDir ../.. --disableFastRender -D",
@@ -10,19 +10,20 @@
     "build": "npm run build:css && hugo -s exampleSite --themesDir ../.. --minify",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./static/css/main.css --minify",
     "watch:css": "tailwindcss -i ./assets/css/input.css -o ./static/css/main.css --watch",
-    "lint": "npm run lint:js && npm run lint:css && npm run lint:md",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:md && npm run lint:html",
     "lint:js": "eslint .",
     "lint:css": "stylelint \"assets/**/*.css\"",
     "lint:md": "markdownlint \"**/*.md\" --ignore node_modules --ignore exampleSite/public",
     "lint:html": "html-validate \"layouts/**/*.html\"",
+    "format": "npx prettier --write \"layouts/**/*.html\"",
     "test": "node scripts/test.js"
   },
   "keywords": [
     "hugo",
     "theme",
     "mod",
-    "uksf",
-    "military"
+    "uksfta",
+    "milsim"
   ],
   "author": "",
   "license": "ISC",
@@ -39,6 +40,7 @@
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "prettier": "^3.8.1",
+    "prettier-plugin-go-template": "^0.0.15",
     "sass": "^1.97.3",
     "stylelint": "^17.0.0",
     "stylelint-config-standard": "^40.0.0",

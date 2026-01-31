@@ -21,7 +21,7 @@
   "stats": [
     { "label": "Operational", "value": "WED_1900" },
     { "label": "Platform", "value": "ARMA_3" },
-    { "label": "Ethos", "value": "SEMI_REAL" }
+    { "label": "Ethos", "value": "MILSIM" }
   ],
   "units": {
     "sas": {

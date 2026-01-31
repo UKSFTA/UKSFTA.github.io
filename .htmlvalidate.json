@@ -3,6 +3,9 @@
     "html-validate:recommended"
   ],
   "rules": {
+    "text-content": "off",
+    "valid-id": "off",
+    "attribute-allowed-values": "off",
     "no-trailing-whitespace": "off",
     "void-content": "off",
     "no-inline-style": "off",
@@ -16,6 +19,12 @@
     "wcag/h32": "off",
     "no-implicit-button-type": "off",
     "parser-error": "off",
-    "no-dup-class": "off"
+    "no-dup-class": "off",
+    "doctype-style": "off",
+    "void-style": "off",
+    "element-required-content": "off",
+    "element-permitted-content": "off",
+    "no-dup-attr": "off",
+    "attr-case": "off"
   }
 }

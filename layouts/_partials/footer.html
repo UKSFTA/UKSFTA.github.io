@@ -6,38 +6,58 @@
         <h4>Detachments</h4>
         <ul>
           {{ range $id, $unit := $labels.units }}
-          <li><a href="/{{ $id }}/">{{ $unit.full_name }}</a></li>
+            <li>
+              <a href="/{{ $id }}/">{{ $unit.full_name }}</a>
+            </li>
           {{ end }}
         </ul>
       </div>
       <div>
         <h4>Recruitment</h4>
         <ul>
-          <li><a href="/recruitment/">Join the Unit</a></li>
-          <li><a href="/med-det/">Royal Army Medical Corps</a></li>
-          <li><a href="/tfhq/">HQ Appointment</a></li>
+          <li>
+            <a href="/recruitment/">Join the Unit</a>
+          </li>
+          <li>
+            <a href="/med-det/">Royal Army Medical Corps</a>
+          </li>
+          <li>
+            <a href="/tfhq/">HQ Appointment</a>
+          </li>
         </ul>
       </div>
       <div>
         <h4>Community</h4>
         <ul>
-          <li><a href="https://discord.gg/2jNqa3zPRH">Unit Discord</a></li>
-          <li><a href="#">Unit Protocols</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li>
+            <a href="https://discord.gg/2jNqa3zPRH">Unit Discord</a>
+          </li>
+          <li>
+            <a href="#">Unit Protocols</a>
+          </li>
+          <li>
+            <a href="#">Privacy Policy</a>
+          </li>
         </ul>
       </div>
       <div>
         <h4>Feedback</h4>
         <ul>
-          <li><a href="#">Contact HQ</a></li>
-          <li><a href="#">Submit Feedback</a></li>
+          <li>
+            <a href="#">Contact HQ</a>
+          </li>
+          <li>
+            <a href="#">Submit Feedback</a>
+          </li>
         </ul>
       </div>
     </div>
-    
     <div class="legal-bar">
       <p class="govuk-body-xs">© 2026 Taskforce Alpha // Milsim Community</p>
-      <p class="govuk-body-xs">Built by <a href="{{ .Site.Params.builtbyurl }}" class="govuk-link">{{ .Site.Params.builtby }}</a></p>
+      <p class="govuk-body-xs">
+        Built by
+        <a href="{{ .Site.Params.builtbyurl }}" class="govuk-link">{{ .Site.Params.builtby }}</a>
+      </p>
     </div>
   </div>
 </footer>

@@ -1,118 +1,148 @@
 {{ define "main" }}
-{{ partial "hero.html" . }}
-
-<div class="container-uksf py-24">
-    
+  {{ partial "hero.html" . }}
+  <div class="container-uksf py-24">
     <!-- 1. Sticky Tactical Switchboard Rule -->
-    <div class="sticky top-[140px] z-[100] bg-black/90 backdrop-blur-3xl border border-white/10 p-2 mb-20 shadow-2xl">
-        <div class="flex flex-wrap items-center justify-between gap-6 px-6 py-4">
-            <div class="flex items-center space-x-10">
-                <div class="flex flex-col">
-                    <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-black">Archive Access</span>
-                    <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-widest font-bold">OPERATIONAL REGISTRY</span>
-                </div>
-                <div class="h-8 w-px bg-white/10 hidden md:block"></div>
-                <div class="flex flex-wrap items-center gap-3" id="registry-filters">
-                    <button data-filter="all" class="filter-btn active">Total Dossiers</button>
-                    <button data-filter="sas" class="filter-btn">SAS Domain</button>
-                    <button data-filter="sbs" class="filter-btn">SBS Domain</button>
-                    <button data-filter="asob" class="filter-btn">ASOB Domain</button>
-                    <button data-filter="sfsg" class="filter-btn">SFSG Domain</button>
-                </div>
-            </div>
-            
-            <div class="hidden lg:flex items-center space-x-8">
-                <div class="flex items-center space-x-4 bg-green-500/5 border border-green-500/20 px-4 py-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    <span class="text-[9px] font-black text-green-500 tracking-widest uppercase">System Synced</span>
-                </div>
-                <div class="flex flex-col items-end">
-                    <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">Reports Detected</span>
-                    <span class="text-xs font-mono text-white font-black" id="report-count">{{ len .Pages }}</span>
-                </div>
-            </div>
+    <div
+      class="sticky top-[140px] z-[100] bg-black/90 backdrop-blur-3xl border border-white/10 p-2 mb-20 shadow-2xl"
+    >
+      <div class="flex flex-wrap items-center justify-between gap-6 px-6 py-4">
+        <div class="flex items-center space-x-10">
+          <div class="flex flex-col">
+            <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest font-black"
+              >Archive Access</span
+            >
+            <span
+              class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-widest font-bold"
+              >OPERATIONAL REGISTRY</span
+            >
+          </div>
+          <div class="h-8 w-px bg-white/10 hidden md:block"></div>
+          <div class="flex flex-wrap items-center gap-3" id="registry-filters">
+            <button data-filter="all" class="filter-btn active">Total Dossiers</button>
+            <button data-filter="sas" class="filter-btn">SAS Domain</button>
+            <button data-filter="sbs" class="filter-btn">SBS Domain</button>
+            <button data-filter="asob" class="filter-btn">ASOB Domain</button>
+            <button data-filter="sfsg" class="filter-btn">SFSG Domain</button>
+          </div>
         </div>
+        <div class="hidden lg:flex items-center space-x-8">
+          <div
+            class="flex items-center space-x-4 bg-green-500/5 border border-green-500/20 px-4 py-2"
+          >
+            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span class="text-[9px] font-black text-green-500 tracking-widest uppercase"
+              >System Synced</span
+            >
+          </div>
+          <div class="flex flex-col items-end">
+            <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest"
+              >Reports Detected</span
+            >
+            <span class="text-xs font-mono text-white font-black" id="report-count"
+              >{{ len .Pages }}</span
+            >
+          </div>
+        </div>
+      </div>
     </div>
-
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
-        
-        <!-- MAIN CONTENT: Registry Grid -->
-        <main class="lg:col-span-12 space-y-12">
-            <div class="flex items-center justify-between border-b border-white/5 pb-12 mb-8">
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-6">
-                        <div class="w-12 h-px bg-[var(--primary)]"></div>
-                        <span class="sub-header m-0 uppercase">Operational After-Action Reports</span>
-                    </div>
-                    <h2 class="text-6xl font-black tracking-tighter uppercase">Document Registry</h2>
+      <!-- MAIN CONTENT: Registry Grid -->
+      <main class="lg:col-span-12 space-y-12">
+        <div class="flex items-center justify-between border-b border-white/5 pb-12 mb-8">
+          <div class="space-y-4">
+            <div class="flex items-center space-x-6">
+              <div class="w-12 h-px bg-[var(--primary)]"></div>
+              <span class="sub-header m-0 uppercase">Operational After-Action Reports</span>
+            </div>
+            <h2 class="text-6xl font-black tracking-tighter uppercase">Document Registry</h2>
+          </div>
+        </div>
+        <!-- Registry Header Content (Mandate) -->
+        <div class="mb-20">{{ .Content }}</div>
+        <!-- THE GRID -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5"
+          id="stories-grid"
+        >
+          {{ range .Pages }}
+            {{ $unit := .Params.unit | default "joint" }}
+            <a
+              href="{{ .RelPermalink }}"
+              data-unit="{{ lower $unit }}"
+              class="story-card group bg-black p-10 no-underline transition-all duration-500 hover:bg-[#080808] border-r border-b border-white/5"
+            >
+              <div class="flex flex-col h-full space-y-8">
+                <div class="flex justify-between items-start">
+                  <div class="flex flex-col">
+                    <span
+                      class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-widest font-black"
+                      >ID: {{ upper (substr (sha256 .Title) 0 8) }}</span
+                    >
+                    <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest mt-1"
+                      >{{ upper $unit }} // Registry</span
+                    >
+                  </div>
+                  <span
+                    class="text-[8px] font-black text-white/20 uppercase tracking-[0.2em] border border-white/10 px-2 py-0.5"
+                    >Restricted</span
+                  >
                 </div>
-            </div>
-
-            <!-- Registry Header Content (Mandate) -->
-            <div class="mb-20">
-                {{ .Content }}
-            </div>
-
-            <!-- THE GRID -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5" id="stories-grid">
-                {{ range .Pages }}
-                {{ $unit := .Params.unit | default "joint" }}
-                <a href="{{ .RelPermalink }}" data-unit="{{ lower $unit }}" class="story-card group bg-black p-10 no-underline transition-all duration-500 hover:bg-[#080808] border-r border-b border-white/5">
-                    <div class="flex flex-col h-full space-y-8">
-                        <div class="flex justify-between items-start">
-                            <div class="flex flex-col">
-                                <span class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-widest font-black">ID: {{ upper (substr (sha256 .Title) 0 8) }}</span>
-                                <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest mt-1">{{ upper $unit }} // Registry</span>
-                            </div>
-                            <span class="text-[8px] font-black text-white/20 uppercase tracking-[0.2em] border border-white/10 px-2 py-0.5">Restricted</span>
-                        </div>
-                        
-                        <div class="flex-grow">
-                            <h3 class="text-3xl m-0 group-hover:text-white transition-colors uppercase font-black tracking-tighter leading-tight">{{ .Title }}</h3>
-                            <p class="text-sm text-gray-500 font-light leading-relaxed mt-4 line-clamp-3">"{{ .Description | default .Summary }}"</p>
-                        </div>
-
-                        <div class="pt-6 border-t border-white/5 flex items-center justify-between opacity-40 group-hover:opacity-100 transition-all">
-                            <span class="text-[9px] font-black uppercase tracking-widest text-white">Access Archive</span>
-                            <span class="text-white transform translate-x-[-10px] group-hover:translate-x-0 transition-transform">→</span>
-                        </div>
-                    </div>
-                </a>
-                {{ end }}
-            </div>
-        </main>
-
+                <div class="flex-grow">
+                  <h3
+                    class="text-3xl m-0 group-hover:text-white transition-colors uppercase font-black tracking-tighter leading-tight"
+                  >
+                    {{ .Title }}
+                  </h3>
+                  <p class="text-sm text-gray-500 font-light leading-relaxed mt-4 line-clamp-3">
+                    "{{ .Description | default .Summary }}"
+                  </p>
+                </div>
+                <div
+                  class="pt-6 border-t border-white/5 flex items-center justify-between opacity-40 group-hover:opacity-100 transition-all"
+                >
+                  <span class="text-[9px] font-black uppercase tracking-widest text-white"
+                    >Access Archive</span
+                  >
+                  <span
+                    class="text-white transform translate-x-[-10px] group-hover:translate-x-0 transition-transform"
+                    >→</span
+                  >
+                </div>
+              </div>
+            </a>
+          {{ end }}
+        </div>
+      </main>
     </div>
-</div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filters = document.querySelectorAll('.filter-btn');
+      const stories = document.querySelectorAll('.story-card');
+      const countDisplay = document.getElementById('report-count');
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const filters = document.querySelectorAll('.filter-btn');
-    const stories = document.querySelectorAll('.story-card');
-    const countDisplay = document.getElementById('report-count');
-
-    filters.forEach(btn => {
+      filters.forEach((btn) => {
         btn.addEventListener('click', () => {
-            const filter = btn.getAttribute('data-filter');
-            
-            // Update Active State
-            filters.forEach(f => f.classList.remove('active'));
-            btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
 
-            let visibleCount = 0;
+          // Update Active State
+          filters.forEach((f) => f.classList.remove('active'));
+          btn.classList.add('active');
 
-            stories.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-unit') === filter) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+          let visibleCount = 0;
 
-            countDisplay.innerText = visibleCount;
+          stories.forEach((card) => {
+            if (filter === 'all' || card.getAttribute('data-unit') === filter) {
+              card.style.display = 'block';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          countDisplay.innerText = visibleCount;
         });
+      });
     });
-});
-</script>
+  </script>
 {{ end }}

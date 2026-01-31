@@ -4,27 +4,59 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-20">
       <div class="space-y-8">
         <h4 class="text-white text-xl tracking-[0.3em]">Command</h4>
-        <ul class="space-y-4 list-none p-0 text-gray-500 font-tactical text-xs uppercase tracking-widest">
+        <ul
+          class="space-y-4 list-none p-0 text-gray-500 font-tactical text-xs uppercase tracking-widest"
+        >
           {{ range $id, $unit := .Site.Data.labels.units }}
-          <li><a href="/{{ $id }}/" class="hover:text-white transition-colors no-underline text-inherit">{{ $unit.name }} // {{ $unit.full_name }}</a></li>
+            <li>
+              <a
+                href="/{{ $id }}/"
+                class="hover:text-white transition-colors no-underline text-inherit"
+                >{{ $unit.name }} // {{ $unit.full_name }}</a
+              >
+            </li>
           {{ end }}
         </ul>
       </div>
       <div class="space-y-8">
         <h4 class="text-white text-xl tracking-[0.3em]">Operational</h4>
-        <ul class="space-y-4 list-none p-0 text-gray-500 font-tactical text-xs uppercase tracking-widest">
-          <li><a href="/stories/" class="hover:text-white transition-colors no-underline text-inherit">Field Reports</a></li>
-          <li><a href="/recruitment/" class="hover:text-white transition-colors no-underline text-inherit">Selection Process</a></li>
-          <li><a href="#" class="hover:text-white transition-colors no-underline text-inherit">Intelligence</a></li>
+        <ul
+          class="space-y-4 list-none p-0 text-gray-500 font-tactical text-xs uppercase tracking-widest"
+        >
+          <li>
+            <a href="/stories/" class="hover:text-white transition-colors no-underline text-inherit"
+              >Field Reports</a
+            >
+          </li>
+          <li>
+            <a
+              href="/recruitment/"
+              class="hover:text-white transition-colors no-underline text-inherit"
+              >Selection Process</a
+            >
+          </li>
+          <li>
+            <a href="#" class="hover:text-white transition-colors no-underline text-inherit"
+              >Intelligence</a
+            >
+          </li>
         </ul>
       </div>
       <div class="col-span-1 md:col-span-2 flex flex-col items-end justify-between">
         <div class="text-right space-y-4">
-          <h2 class="text-6xl font-industrial opacity-20 leading-none">THE EDGE OF<br>READINESS</h2>
+          <h2 class="text-6xl font-industrial opacity-20 leading-none">
+            THE EDGE OF
+            <br />
+            READINESS
+          </h2>
         </div>
         <div class="pt-20 text-right">
-          <p class="text-[10px] font-tactical text-gray-600 uppercase tracking-[0.4em]">{{ .Site.Data.labels.footer.copyright }}</p>
-          <p class="text-[10px] font-tactical text-uksf-gold uppercase tracking-[0.4em] mt-2">{{ .Site.Data.labels.footer.permission }}</p>
+          <p class="text-[10px] font-tactical text-gray-600 uppercase tracking-[0.4em]">
+            {{ .Site.Data.labels.footer.copyright }}
+          </p>
+          <p class="text-[10px] font-tactical text-uksf-gold uppercase tracking-[0.4em] mt-2">
+            {{ .Site.Data.labels.footer.permission }}
+          </p>
         </div>
       </div>
     </div>

@@ -1,8 +1,7 @@
 {
   "nodes": [
-    { "id": "tfhq", "type": "unit", "x": 840, "y": -280, "width": 250, "height": 200, "name": "TFHQ", "callsign": "0-", "icon": "icons/TFA.png" },
-    { "id": "uksf_hq", "type": "unit", "x": 1360, "y": 320, "width": 250, "height": 200, "name": "UKSF", "callsign": "JSFC", "icon": "icons/MOD.png" },
-    { "id": "rac_hq", "type": "unit", "x": 1880, "y": 320, "width": 200, "height": 200, "name": "1 Troop RAC", "callsign": "Panzer 14", "icon": "icons/RSIS.png" },
+    { "id": "tfhq", "type": "unit", "x": 880, "y": -280, "width": 200, "height": 200, "name": "TFHQ", "callsign": "0-", "icon": "icons/TFA.png" },
+    { "id": "uksf_hq", "type": "unit", "x": 1360, "y": 320, "width": 200, "height": 200, "name": "UKSF", "callsign": "JSFC", "icon": "icons/MOD.png" },
     { "id": "med_hq", "type": "unit", "x": 880, "y": 320, "width": 200, "height": 200, "name": "Med Det HQ", "callsign": "Bulldog 15", "icon": "icons/MEDIC.png" },
     { "id": "jsfaw_hq", "type": "unit", "x": 520, "y": 320, "width": 200, "height": 200, "name": "JSFAW HQ", "callsign": "Guardian 2-0", "icon": "icons/JSFAW.png" },
     { "id": "sfsg_hq", "type": "unit", "x": 160, "y": 320, "width": 200, "height": 200, "name": "SFSG Training Plt HQ", "callsign": "Bulldog 10", "icon": "icons/SFSG.png" },
@@ -30,7 +29,6 @@
     { "id": "e4", "fromNode": "tfhq", "fromSide": "bottom", "toNode": "jsfaw_hq", "toSide": "top" },
     { "id": "e7", "fromNode": "tfhq", "fromSide": "bottom", "toNode": "med_hq", "toSide": "top" },
     { "id": "e9", "fromNode": "tfhq", "fromSide": "bottom", "toNode": "uksf_hq", "toSide": "top" },
-    { "id": "e22", "fromNode": "tfhq", "fromSide": "bottom", "toNode": "rac_hq", "toSide": "top" },
     { "id": "e3", "fromNode": "sfsg_hq", "fromSide": "bottom", "toNode": "sfsg_plt", "toSide": "top" },
     { "id": "e5", "fromNode": "jsfaw_hq", "fromSide": "bottom", "toNode": "jsfaw_fw", "toSide": "top" },
     { "id": "6ec9ff48b477456d", "fromNode": "jsfaw_hq", "fromSide": "bottom", "toNode": "jsfaw_rot", "toSide": "top" },

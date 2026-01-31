@@ -1,24 +1,42 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 my-20">
-    {{ range $id, $unit := .Site.Data.labels.units }}
-    <div class="bg-black p-10 space-y-10 group transition-all duration-700 hover:bg-[#050505] relative overflow-hidden">
-        <div class="absolute inset-0 bg-[var(--primary)] opacity-0 group-hover:opacity-[0.03] transition-opacity"></div>
-        
-        <div class="relative z-10 flex flex-col justify-between h-full">
-            <div class="flex justify-between items-start">
-                <div class="w-10 h-10 border border-white/10 flex items-center justify-center font-black group-hover:border-[var(--primary)] transition-colors">{{ $unit.name }}</div>
-                <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest">TIER_{{ $unit.stats.tier }}</span>
-            </div>
-
-            <div class="space-y-4 pt-12">
-                <h4 class="text-3xl m-0 leading-none group-hover:text-white transition-colors">{{ $unit.full_name }}</h4>
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">{{ $unit.stats.domain }} // {{ $unit.stats.focus }}</p>
-            </div>
-
-            <div class="pt-8 mt-auto border-t border-white/5 flex items-center justify-between">
-                <span class="text-[8px] font-bold text-gray-600 uppercase tracking-widest">Dossier_Link</span>
-                <span class="text-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-            </div>
+<div
+  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 my-20"
+>
+  {{ range $id, $unit := .Site.Data.labels.units }}
+    <div
+      class="bg-black p-10 space-y-10 group transition-all duration-700 hover:bg-[#050505] relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[var(--primary)] opacity-0 group-hover:opacity-[0.03] transition-opacity"
+      ></div>
+      <div class="relative z-10 flex flex-col justify-between h-full">
+        <div class="flex justify-between items-start">
+          <div
+            class="w-10 h-10 border border-white/10 flex items-center justify-center font-black group-hover:border-[var(--primary)] transition-colors"
+          >
+            {{ $unit.name }}
+          </div>
+          <span class="text-[7px] font-mono text-gray-600 uppercase tracking-widest"
+            >TIER_{{ $unit.stats.tier }}</span
+          >
         </div>
+        <div class="space-y-4 pt-12">
+          <h4 class="text-3xl m-0 leading-none group-hover:text-white transition-colors">
+            {{ $unit.full_name }}
+          </h4>
+          <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">
+            {{ $unit.stats.domain }} //
+            {{ $unit.stats.focus }}
+          </p>
+        </div>
+        <div class="pt-8 mt-auto border-t border-white/5 flex items-center justify-between">
+          <span class="text-[8px] font-bold text-gray-600 uppercase tracking-widest"
+            >Dossier_Link</span
+          >
+          <span class="text-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity"
+            >→</span
+          >
+        </div>
+      </div>
     </div>
-    {{ end }}
+  {{ end }}
 </div>

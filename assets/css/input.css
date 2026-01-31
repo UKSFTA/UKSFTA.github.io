@@ -781,20 +781,28 @@
     box-shadow: 0 0 40px var(--primary-glow);
   }
 
-  .node-context-menu {
+.node-context-menu {
     position: absolute;
-    top: -50px;
-    left: 50%;
     transform: translateX(-50%);
     background: rgb(15 15 15 / 95%);
+    backdrop-filter: blur(8px); /* Matches your "Institutional" look */
     border: 1px solid rgb(255 255 255 / 10%);
     border-radius: 6px;
     padding: 4px;
     display: flex;
     gap: 4px;
-    box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
+    box-shadow: 0 10px 25px rgb(0 0 0 / 60%);
     z-index: 5200;
-  }
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: auto;
+}
+
+.node-context-menu.hidden {
+    display: none !important;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(10px);
+}
 
 .btn-canvas-ctrl {
   width: 40px;

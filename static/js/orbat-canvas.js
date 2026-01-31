@@ -127,27 +127,45 @@ function getCanvasCoords(clientX, clientY) {
 }
 
 canvas.addEventListener('mousedown', (e) => {
+    // 1. Exit if editing text
     if (e.target.classList.contains('editable-field')) return;
+
     const nodeWrapper = e.target.closest('.orbat-node-wrapper');
-    
+    const isClickingUI = e.target.closest('#node-context-menu');
+
+    // 2. Handle Link Drawing
     if (isDrawingLink) {
         if (nodeWrapper) createNewLink(linkSourceId, linkSourceSide, nodeWrapper.getAttribute('data-id'), 'top');
-        stopDrawingLink(); return;
+        stopDrawingLink(); 
+        return;
     }
 
+    // 3. Selection & UI Management
     if (nodeWrapper) {
+        // We hit a unit: Select it
         updateSelection(nodeWrapper);
+        
+        // Handle Dragging (only in Edit Mode)
         if (document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
-            isDraggingNode = true; dragNode = nodeWrapper;
+            isDraggingNode = true; 
+            dragNode = nodeWrapper;
             const coords = getCanvasCoords(e.clientX, e.clientY);
             startMouseX = coords.x; startMouseY = coords.y;
-            startNodeX = parseFloat(dragNode.getAttribute('data-x')); startNodeY = parseFloat(dragNode.getAttribute('data-y'));
-            e.stopPropagation(); return;
+            startNodeX = parseFloat(dragNode.getAttribute('data-x')); 
+            startNodeY = parseFloat(dragNode.getAttribute('data-y'));
+            e.stopPropagation(); 
+            return;
         }
-    } else { updateSelection(null); }
+    } else if (!isClickingUI) {
+        // We hit the empty canvas (and NOT the delete/icon menu): Deselect everything
+        updateSelection(null);
+    }
 
-    if (e.button === 0) {
-        isPanning = true; startMouseX = e.clientX; startMouseY = e.clientY;
+    // 4. Panning Logic (Left click on background or middle mouse)
+    if (e.button === 0 || e.button === 1) {
+        isPanning = true; 
+        startMouseX = e.clientX; 
+        startMouseY = e.clientY;
     }
 });
 
@@ -281,7 +299,14 @@ window.showToast = function(message, type = 'info') {
 
 function updateSelection(node) {
     document.querySelectorAll('.orbat-node-wrapper').forEach(n => n.classList.remove('selected'));
-    selectedNode = node; if (node) { node.classList.add('selected'); showContextToolbar(node); } else hideContextToolbar();
+    selectedNode = node; 
+    
+    if (node) { 
+        node.classList.add('selected'); 
+        showContextToolbar(node); 
+    } else { 
+        hideContextToolbar(); // Explicitly hide when selection is cleared
+    }
 }
 
 function showContextToolbar(node) {
@@ -371,20 +396,68 @@ function createNewLink(source, sSide, target, tSide, id = null) {
     if (!id) { updateLinks(); saveState(); }
 }
 
+// Save the current state to the browser's persistent storage
+window.saveToLocalStorage = function() {
+    const state = serializeCurrentState();
+    localStorage.setItem('orbat_canvas_data', JSON.stringify(state));
+    showToast('DATABASE_SYNC_COMPLETE');
+};
+
+// Auto-load logic on boot
+window.loadFromLocalStorage = function() {
+    const savedData = localStorage.getItem('orbat_canvas_data');
+    if (savedData) {
+        try {
+            const state = JSON.parse(savedData);
+            loadState(state);
+            showToast('LOCAL_DATA_RESTORED');
+        } catch (e) {
+            console.error("Failed to parse saved ORBAT data", e);
+        }
+    }
+};
+
 // Shortcuts
 window.addEventListener('keydown', (e) => {
     if (e.target.classList.contains('editable-field')) return;
+    
+    // Undo/Redo
     if ((e.ctrlKey || e.metaKey) && e.key === 'z') { e.preventDefault(); undo(); }
     if ((e.ctrlKey || e.metaKey) && e.key === 'y') { e.preventDefault(); redo(); }
+    
+    // Basic Actions
     if (e.key === 'Delete' || e.key === 'Backspace') window.removeSelectedNode();
     if (e.key === 'e' || e.key === 'E') window.toggleEditMode();
     if (e.key === 'n' || e.key === 'N') window.addOrbatNode();
     if (e.key === 'c' || e.key === 'C') window.centerView();
-    if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); window.exportOrbatJSON(); }
+
+    // SAVE LOGIC:
+    // Ctrl+S now performs a Local Commit (Save to Browser)
+    // Ctrl+Shift+S performs the JSON Export
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') { 
+        e.preventDefault(); 
+        if (e.shiftKey) {
+            window.exportOrbatJSON(); 
+        } else {
+            window.saveToLocalStorage();
+        }
+    }
 });
 
 document.addEventListener('input', (e) => { if (e.target.classList.contains('editable-field')) saveState(); });
 
 // Bootstrap
-if (localStorage.getItem('uksf_hq_auth') === 'true') document.getElementById('hq-admin-bar').classList.remove('hidden');
-window.addEventListener('load', () => { setTimeout(() => { window.centerView(); saveState(); }, 100); });
+if (localStorage.getItem('uksf_hq_auth') === 'true') {
+    document.getElementById('hq-admin-bar').classList.remove('hidden');
+}
+
+window.addEventListener('load', () => {
+    // 1. Restore data from browser cache first
+    window.loadFromLocalStorage();
+
+    // 2. Short delay to ensure DOM is ready for camera centering
+    setTimeout(() => { 
+        window.centerView(); 
+        saveState(); 
+    }, 100); 
+});
