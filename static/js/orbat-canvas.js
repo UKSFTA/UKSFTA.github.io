@@ -28,7 +28,7 @@ let dragNode = null;
 let resizeNode = null;
 let resizeDirection = null; // New: 'top', 'bottom', 'left', 'right', 'bottom-right'
 let selectedNodes = new Set(); // Multi-select Set
-let selectedLink = null; // New: Selected edge
+let selectedLinks = new Set(); // New: Multi-select Set for links
 let linkSourceId = null;
 let linkSourceSide = null;
 let activeNodeForIcon = null;
@@ -47,7 +47,7 @@ function updateTransform() {
     content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
     zoomDisplay.innerText = `Zoom: ${Math.round(scale * 100)}%`;
     updateLinks();
-    if (selectedNodes.size > 0 || selectedLink) showContextToolbar(); else hideContextToolbar();
+    if (selectedNodes.size > 0 || selectedLinks.size > 0) showContextToolbar(); else hideContextToolbar();
 }
 
 function updateLinks() {
@@ -170,7 +170,7 @@ canvas.addEventListener('mousedown', (e) => {
     }
 
     const nodeWrapper = e.target.closest('.orbat-node-wrapper');
-    const linkPath = e.target.closest('.orbat-link');
+    const linkGroup = e.target.closest('.orbat-link-group');
     const isClickingUI = e.target.closest('#node-context-menu');
 
     // B. LINK DRAWING / SELECTION
@@ -208,10 +208,22 @@ canvas.addEventListener('mousedown', (e) => {
         return;
     }
 
-    if (linkPath) {
-        clearSelection();
-        selectedLink = linkPath;
-        linkPath.classList.add('selected');
+    if (linkGroup) {
+        if (e.ctrlKey || e.metaKey || e.shiftKey) {
+            if (selectedLinks.has(linkGroup)) {
+                selectedLinks.delete(linkGroup);
+                linkGroup.classList.remove('selected');
+            } else {
+                selectedLinks.add(linkGroup);
+                linkGroup.classList.add('selected');
+            }
+        } else {
+            if (!selectedLinks.has(linkGroup)) {
+                clearSelection();
+                selectedLinks.add(linkGroup);
+                linkGroup.classList.add('selected');
+            }
+        }
         showContextToolbar();
         e.stopPropagation();
         return;
@@ -219,7 +231,6 @@ canvas.addEventListener('mousedown', (e) => {
 
     // C. NODE SELECTION / DRAG START
     if (nodeWrapper) {
-        if (selectedLink) { selectedLink.classList.remove('selected'); selectedLink = null; }
         if (e.ctrlKey || e.metaKey || e.shiftKey) {
             // Toggle selection
             if (selectedNodes.has(nodeWrapper)) {
@@ -375,24 +386,25 @@ window.addEventListener('mousemove', (e) => {
         if (nodeWrapper && nodeWrapper.getAttribute('data-id') !== linkSourceId) {
             nodeWrapper.classList.add('link-target-hover');
             
-            // Calculate nearest side for preview
+            // Get node bounds in canvas space
             const nX = parseFloat(nodeWrapper.getAttribute('data-x'));
             const nY = parseFloat(nodeWrapper.getAttribute('data-y'));
             const nW = parseFloat(nodeWrapper.getAttribute('data-w'));
             const nH = parseFloat(nodeWrapper.getAttribute('data-h'));
             
-            const sides = [
-                { side: 'top', x: OFFSET + nX + nW/2, y: OFFSET + nY },
+            // Targets are in absolute SVG space (with OFFSET)
+            const targets = [
+                { side: 'top',    x: OFFSET + nX + nW/2, y: OFFSET + nY },
                 { side: 'bottom', x: OFFSET + nX + nW/2, y: OFFSET + nY + nH },
-                { side: 'left', x: OFFSET + nX, y: OFFSET + nY + nH/2 },
-                { side: 'right', x: OFFSET + nX + nW, y: OFFSET + nY + nH/2 }
+                { side: 'left',   x: OFFSET + nX,        y: OFFSET + nY + nH/2 },
+                { side: 'right',  x: OFFSET + nX + nW,   y: OFFSET + nY + nH/2 }
             ];
             
-            let nearest = sides[0];
+            let nearest = targets[0];
             let minDist = Infinity;
-            sides.forEach(s => {
-                const dist = Math.hypot(p2.x - s.x, p2.y - s.y);
-                if (dist < minDist) { minDist = dist; nearest = s; }
+            targets.forEach(t => {
+                const dist = Math.hypot(p2.x - t.x, p2.y - t.y);
+                if (dist < minDist) { minDist = dist; nearest = t; }
             });
             p2 = { x: nearest.x, y: nearest.y };
             tSide = nearest.side;
@@ -459,6 +471,22 @@ window.addEventListener('mouseup', () => {
                   sbRect.top > nodeRect.bottom)) {
                 selectedNodes.add(node);
                 node.classList.add('selected');
+            }
+        });
+
+        // Check each link for overlap (using midpoint approximation)
+        document.querySelectorAll('.orbat-link-group').forEach(group => {
+            const visual = group.querySelector('.orbat-link-visual');
+            if (visual) {
+                const pathLen = visual.getTotalLength();
+                const mid = visual.getPointAtLength(pathLen / 2);
+                const midX = mid.x * scale + translateX + canvas.getBoundingClientRect().left;
+                const midY = mid.y * scale + translateY + canvas.getBoundingClientRect().top;
+                
+                if (midX >= sbRect.left && midX <= sbRect.right && midY >= sbRect.top && midY <= sbRect.bottom) {
+                    selectedLinks.add(group);
+                    group.classList.add('selected');
+                }
             }
         });
         updateSelectionUI();
@@ -719,10 +747,8 @@ window.showToast = function(message, type = 'info') {
 function clearSelection() {
     selectedNodes.forEach(n => n.classList.remove('selected'));
     selectedNodes.clear();
-    if (selectedLink) {
-        selectedLink.classList.remove('selected');
-        selectedLink = null;
-    }
+    selectedLinks.forEach(l => l.classList.remove('selected'));
+    selectedLinks.clear();
     hideContextToolbar();
 }
 
@@ -743,8 +769,8 @@ function showContextToolbar() {
 
     if (selectedNodes.size > 0) {
         targetEl = Array.from(selectedNodes).pop();
-    } else if (selectedLink) {
-        targetEl = selectedLink;
+    } else if (selectedLinks.size > 0) {
+        targetEl = Array.from(selectedLinks).pop();
         isLink = true;
     }
 
@@ -754,15 +780,19 @@ function showContextToolbar() {
     if (!t) { t = document.createElement('div'); t.id = 'node-context-menu'; t.className = 'node-context-menu pointer-events-auto'; document.body.appendChild(t); }
     
     if (isLink) {
-        t.innerHTML = `<button onclick="window.removeSelectedLink()" class="toolbar-btn text-red-500" title="Delete Link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`;
+        const count = selectedLinks.size;
+        const deleteTitle = count > 1 ? `Sever ${count} Connections` : `Sever Connection`;
+        t.innerHTML = `<button onclick="window.removeSelectedLink()" class="toolbar-btn text-red-500" title="${deleteTitle}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`;
         
-        // Find midpoint of path for toolbar position
-        const pathLen = targetEl.getTotalLength();
-        const midPoint = targetEl.getPointAtLength(pathLen / 2);
-        const rect = canvas.getBoundingClientRect();
-        
-        t.style.left = `${midPoint.x * scale + translateX + rect.left}px`;
-        t.style.top = `${midPoint.y * scale + translateY + rect.top - 40}px`;
+        // Find midpoint of path for toolbar position (of the last selected link)
+        const visual = targetEl.querySelector('.orbat-link-visual');
+        if (visual) {
+            const pathLen = visual.getTotalLength();
+            const midPoint = visual.getPointAtLength(pathLen / 2);
+            const rect = canvas.getBoundingClientRect();
+            t.style.left = `${midPoint.x * scale + translateX + rect.left}px`;
+            t.style.top = `${midPoint.y * scale + translateY + rect.top - 40}px`;
+        }
     } else {
         const count = selectedNodes.size;
         const deleteTitle = count > 1 ? `Delete ${count} Units` : `Delete Unit`;
@@ -779,12 +809,13 @@ function showContextToolbar() {
 }
 
 window.removeSelectedLink = function() {
-    if (selectedLink && confirm('Sever connection?')) {
-        selectedLink.remove();
-        selectedLink = null;
+    if (selectedLinks.size > 0 && confirm(`Sever ${selectedLinks.size} connection(s)?`)) {
+        selectedLinks.forEach(link => {
+            link.remove();
+        });
         clearSelection();
-        saveState();
-        showToast('CONNECTION_SEVERED', 'danger');
+        saveState("Sever Connections");
+        showToast('CONNECTIONS_SEVERED', 'danger');
     }
 };
 
