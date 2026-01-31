@@ -133,16 +133,22 @@ async function fetchUC() {
 }
 
 function compress(data) {
-    if (!data || !Array.isArray(data)) return [];
+    if (!data || !Array.isArray(data) || data.length === 0) return [];
+    
     const isS = (a, b) => a && b && 
         a.attributes.value === b.attributes.value && 
         a.attributes.max === b.attributes.max && 
         a.attributes.min === b.attributes.min;
-    return data.filter((dp, i) => {
-        if (i === 0 || i === data.length - 1) return true;
-        // Keep if it's a transition point: different from previous OR different from next
-        return !isS(dp, data[i - 1]) || !isS(dp, data[i + 1]);
-    });
+
+    const result = [data[0]];
+    for (let i = 1; i < data.length - 1; i++) {
+        // Only keep if it's NOT redundant (different from previous OR different from next)
+        if (!isS(data[i], data[i - 1]) || !isS(data[i], data[i + 1])) {
+            result.push(data[i]);
+        }
+    }
+    if (data.length > 1) result.push(data[data.length - 1]);
+    return result;
 }
 
 async function main() {
