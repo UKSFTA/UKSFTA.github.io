@@ -168,7 +168,35 @@ canvas.addEventListener('mousedown', (e) => {
 
     // B. LINK DRAWING / SELECTION
     if (isDrawingLink) {
-        if (nodeWrapper) createNewLink(linkSourceId, linkSourceSide, nodeWrapper.getAttribute('data-id'), 'top');
+        if (nodeWrapper) {
+            const targetId = nodeWrapper.getAttribute('data-id');
+            const coords = getCanvasCoords(e.clientX, e.clientY);
+            
+            // Calculate nearest side on target node
+            const nX = parseFloat(nodeWrapper.getAttribute('data-x'));
+            const nY = parseFloat(nodeWrapper.getAttribute('data-y'));
+            const nW = parseFloat(nodeWrapper.getAttribute('data-w'));
+            const nH = parseFloat(nodeWrapper.getAttribute('data-h'));
+            
+            const sides = [
+                { side: 'top', x: nX + nW/2, y: nY },
+                { side: 'bottom', x: nX + nW/2, y: nY + nH },
+                { side: 'left', x: nX, y: nY + nH/2 },
+                { side: 'right', x: nX + nW, y: nY + nH/2 }
+            ];
+            
+            let nearestSide = 'top';
+            let minDist = Infinity;
+            sides.forEach(s => {
+                const dist = Math.hypot(coords.x - s.x, coords.y - s.y);
+                if (dist < minDist) {
+                    minDist = dist;
+                    nearestSide = s.side;
+                }
+            });
+
+            createNewLink(linkSourceId, linkSourceSide, targetId, nearestSide);
+        }
         stopDrawingLink(); 
         return;
     }
@@ -329,7 +357,7 @@ window.addEventListener('mousemove', (e) => {
     if (isDrawingLink) {
         const coords = getCanvasCoords(e.clientX, e.clientY);
         const p1 = getPointOnSide(linkSourceId, linkSourceSide);
-        const svgMouse = { x: coords.x + OFFSET, y: coords.y + OFFSET };
+        const svgMouse = { x: coords.x, y: coords.y }; // Fixed: removed redundant OFFSET
         tempLink.setAttribute('d', getBezierPath(p1, svgMouse, linkSourceSide, 'auto')); return;
     }
     
@@ -396,18 +424,23 @@ window.addEventListener('mouseup', () => {
     }
 
     if (isDraggingNode) {
-        // Final Snap & Save
+        let movedNames = [];
         selectedNodes.forEach(node => {
             const x = Math.round(parseFloat(node.getAttribute('data-x')) / SNAP_SIZE) * SNAP_SIZE;
             const y = Math.round(parseFloat(node.getAttribute('data-y')) / SNAP_SIZE) * SNAP_SIZE;
             node.setAttribute('data-x', x); node.setAttribute('data-y', y);
             node.style.left = `${OFFSET + x}px`; node.style.top = `${OFFSET + y}px`;
+            movedNames.push(node.querySelector('[data-key="name"]').innerText.trim());
         });
         updateLinks(); 
-        saveState();
+        const desc = movedNames.length > 1 ? `Move ${movedNames.length} Units` : `${movedNames[0]} Moved`;
+        saveState(desc);
     }
     
-    if (isResizingNode) saveState();
+    if (isResizingNode && resizeNode) {
+        const name = resizeNode.querySelector('[data-key="name"]').innerText.trim();
+        saveState(`${name} Resized`);
+    }
 
     isPanning = false; 
     isDraggingNode = false; 
@@ -432,15 +465,109 @@ canvas.addEventListener('dblclick', (e) => {
 });
 
 // --- 4. HISTORY & CLIPBOARD ---
-let history = []; let historyIndex = -1;
-function saveState() {
+let history = []; 
+let historyIndex = -1;
+let commits = []; // New: Stores manual save points
+let lastActionDescription = "User Action"; // Tracks last action for commit name
+
+function saveState(description = "User Action") {
     const state = serializeCurrentState();
     if (historyIndex >= 0 && JSON.stringify(state) === JSON.stringify(history[historyIndex])) return;
-    history = history.slice(0, historyIndex + 1); history.push(state); historyIndex++;
-    if (history.length > 50) history.shift(), historyIndex--;
+    
+    lastActionDescription = description;
+    history = history.slice(0, historyIndex + 1); 
+    history.push(state); 
+    historyIndex++;
+    
+    if (history.length > 50) {
+        history.shift();
+        historyIndex--;
+    }
+    // Note: We no longer update the drawer here
 }
-function undo() { if (historyIndex > 0) { historyIndex--; loadState(history[historyIndex]); showToast('ACTION_REVERSED'); } }
-function redo() { if (historyIndex < history.length - 1) { historyIndex++; loadState(history[historyIndex]); showToast('ACTION_RESTORED'); } }
+
+function undo() { 
+    if (historyIndex > 0) { 
+        historyIndex--; 
+        loadState(history[historyIndex]); 
+        showToast('ACTION_REVERSED'); 
+    } 
+}
+
+function redo() { 
+    if (historyIndex < history.length - 1) { 
+        historyIndex++; 
+        loadState(history[historyIndex]); 
+        showToast('ACTION_RESTORED'); 
+    } 
+}
+
+window.toggleHistoryDrawer = function() {
+    const drawer = document.getElementById('history-drawer');
+    drawer.classList.toggle('translate-x-full');
+    if (!drawer.classList.contains('translate-x-full')) {
+        updateHistoryDrawerUI();
+    }
+};
+
+window.jumpToHistory = function(index) {
+    if (index >= 0 && index < commits.length) {
+        loadState(commits[index].data);
+        showToast('TIMELINE_JUMP_COMPLETE');
+        updateHistoryDrawerUI();
+    }
+};
+
+window.removeHistoryItem = function(e, index) {
+    e.stopPropagation();
+    
+    const wasLatest = index === (commits.length - 1);
+    commits.splice(index, 1);
+    
+    // If we deleted the "current" latest state, rollback to the new latest (or baseline)
+    if (wasLatest) {
+        if (commits.length > 0) {
+            loadState(commits[commits.length - 1].data);
+            showToast('TIMELINE_ROLLBACK_COMPLETE');
+        } else {
+            // No commits left, ideally reload from local storage baseline
+            window.loadFromLocalStorage();
+            showToast('RESTORED_TO_BASELINE');
+        }
+    }
+    
+    updateHistoryDrawerUI();
+};
+
+function updateHistoryDrawerUI() {
+    const list = document.getElementById('history-list');
+    if (!list) return;
+    
+    list.innerHTML = '';
+    // Show commits in reverse chronological order
+    [...commits].reverse().forEach((entry, revIdx) => {
+        const actualIndex = commits.length - 1 - revIdx;
+        
+        const item = document.createElement('div');
+        item.className = `history-item`;
+        item.onclick = () => window.jumpToHistory(actualIndex);
+        
+        item.innerHTML = `
+            <div class="flex justify-between items-start">
+                <span class="text-[9px] font-black text-white uppercase tracking-tighter">${entry.description}</span>
+                <span class="text-[7px] font-mono text-gray-500">${entry.time}</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-[6px] font-mono text-gray-600 uppercase tracking-widest">Snapshot #${entry.id.toString().slice(-4)}</span>
+                <button onclick="window.removeHistoryItem(event, ${actualIndex})" class="text-gray-600 hover:text-red-500 transition-colors">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3 h-3"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                </button>
+            </div>
+        `;
+        list.appendChild(item);
+    });
+}
+
 function serializeCurrentState() {
     const nodes = Array.from(document.querySelectorAll('.orbat-node-wrapper')).map(el => {
         // Capture personnel block if it exists
@@ -643,13 +770,14 @@ window.toggleEditMode = function() {
 
 window.addOrbatNodeAt = function(x, y) {
     const id = `unit_${Math.random().toString(36).substr(2, 9)}`;
-    renderNode({ id, name: "NEW_UNIT", role: "Operational Support", callsign: "SIG_ID", icon: "icons/MOD.png", x, y, w: 200, h: 200 }); 
+    const name = "NEW_UNIT";
+    renderNode({ id, name, role: "Operational Support", callsign: "SIG_ID", icon: "icons/MOD.png", x, y, w: 200, h: 200 }); 
     const n = document.getElementById(`node-${id}`);
     clearSelection();
     selectedNodes.add(n);
     n.classList.add('selected');
     updateSelectionUI();
-    saveState();
+    saveState(`${name} Commissioned`);
 };
 
 window.addOrbatNode = () => {
@@ -659,13 +787,16 @@ window.addOrbatNode = () => {
 
 window.removeSelectedNode = function() {
     if (selectedNodes.size > 0 && confirm(`Decommission ${selectedNodes.size} unit(s)?`)) {
+        let removedNames = [];
         selectedNodes.forEach(node => {
             const id = node.getAttribute('data-id');
+            removedNames.push(node.querySelector('[data-key="name"]').innerText.trim());
             document.querySelectorAll(`.orbat-link[data-source="${id}"], .orbat-link[data-target="${id}"]`).forEach(l => l.remove());
             node.remove();
         });
         clearSelection();
-        saveState(); 
+        const desc = removedNames.length > 1 ? `Decommission ${removedNames.length} Units` : `${removedNames[0]} Decommissioned`;
+        saveState(desc); 
         showToast('UNITS_DECOMMISSIONED', 'danger');
     }
 };
@@ -706,6 +837,7 @@ window.handleIconUpload = function(input) {
 };
 
 function applyIcon(src) {
+    let affectedNames = [];
     // Apply to ALL selected nodes
     selectedNodes.forEach(node => {
         const container = node.querySelector('.space-y-3');
@@ -720,10 +852,12 @@ function applyIcon(src) {
         img.src = src.startsWith('data:') ? src : `/${src}`;
         img.setAttribute('data-icon-path', src);
         snapNodeHeight(node);
+        affectedNames.push(node.querySelector('[data-key="name"]').innerText.trim());
     });
     
     showToast('ICON_APPLIED'); 
-    saveState(); 
+    const desc = affectedNames.length > 1 ? `Update ${affectedNames.length} Icons` : `${affectedNames[0]} Icon Changed`;
+    saveState(desc); 
     closeIconModal();
 }
 
@@ -752,8 +886,21 @@ function createNewLink(source, sSide, target, tSide, id = null) {
 window.saveToLocalStorage = function() {
     const state = serializeCurrentState();
     localStorage.setItem('orbat_canvas_data', JSON.stringify(state));
+    
+    // Create a descriptive commit entry
+    const entry = {
+        id: Date.now(),
+        time: new Date().toLocaleTimeString(),
+        description: lastActionDescription || "Manual Save",
+        data: state
+    };
+    commits.push(entry);
+    if (commits.length > 20) commits.shift();
+    
+    lastActionDescription = "Manual Save"; // Reset
     stateBeforeEdit = null;
     showToast('DATABASE_SYNC_COMPLETE');
+    updateHistoryDrawerUI();
 };
 
 // Auto-load logic on boot

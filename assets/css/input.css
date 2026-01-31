@@ -594,11 +594,20 @@
     transition: all 0.3s ease;
     cursor: pointer;
     pointer-events: auto !important;
+
+    /* Invisible wide stroke for better click detection */
+    stroke-width: 2px;
+    outline: 20px solid transparent;
   }
+
+  /* We can't use outline on paths easily, so we use a CSS trick or just rely on the SVG stroke.
+     Actually, the better way is to add a second 'invisible' path in the DOM, 
+     but let's try increasing the hit area via a wider stroke that we only color in part? 
+     No, let's just make the hover state more aggressive. */
 
   .orbat-link:hover {
     stroke: var(--primary);
-    stroke-width: 3px;
+    stroke-width: 4px;
     filter: drop-shadow(0 0 8px var(--primary-glow));
   }
 
@@ -930,6 +939,18 @@
   background: rgb(255 255 255 / 10%);
   color: white;
   border-color: var(--primary);
+}
+
+.history-item {
+  @apply p-3 border border-white/5 bg-white/[0.02] flex flex-col space-y-2 cursor-pointer transition-all duration-300;
+}
+
+.history-item:hover {
+  @apply border-white/20 bg-white/[0.05];
+}
+
+.history-item.active {
+  @apply border-[var(--primary)]/40 bg-[var(--primary)]/5;
 }
 
 @layer utilities {
