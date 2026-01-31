@@ -2,7 +2,6 @@
 
 const canvas = document.getElementById('orbat-canvas');
 const content = document.getElementById('canvas-content');
-const grid = document.getElementById('canvas-grid');
 const zoomDisplay = document.getElementById('zoom-level');
 const svgLayer = document.getElementById('orbat-connectors');
 const tempLink = document.getElementById('temp-link');
@@ -31,15 +30,6 @@ let startNodeX, startNodeY;
 
 function updateTransform() {
     content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-    
-    // Update Grid Pattern (Keeps lines 1px sharp)
-    if (grid) {
-        const major = 200 * scale;
-        const minor = 40 * scale;
-        grid.style.backgroundSize = `${major}px ${major}px, ${major}px ${major}px, ${minor}px ${minor}px, ${minor}px ${minor}px`;
-        grid.style.backgroundPosition = `${translateX}px ${translateY}px`;
-    }
-
     zoomDisplay.innerText = `Zoom: ${Math.round(scale * 100)}%`;
     updateLinks();
     if (selectedNode) showContextToolbar(selectedNode);
