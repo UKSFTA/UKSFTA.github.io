@@ -26,7 +26,9 @@ let isSelecting = false; // Box selection state
 // Active Objects
 let dragNode = null;
 let resizeNode = null;
+let resizeDirection = null; // New: 'top', 'bottom', 'left', 'right', 'bottom-right'
 let selectedNodes = new Set(); // Multi-select Set
+let selectedLink = null; // New: Selected edge
 let linkSourceId = null;
 let linkSourceSide = null;
 let activeNodeForIcon = null;
@@ -44,7 +46,7 @@ function updateTransform() {
     content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
     zoomDisplay.innerText = `Zoom: ${Math.round(scale * 100)}%`;
     updateLinks();
-    if (selectedNodes.size > 0) showContextToolbar(); else hideContextToolbar();
+    if (selectedNodes.size > 0 || selectedLink) showContextToolbar(); else hideContextToolbar();
 }
 
 function updateLinks() {
@@ -138,28 +140,50 @@ canvas.addEventListener('mousedown', (e) => {
         if (nodeWrapper && document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
             isResizingNode = true;
             resizeNode = nodeWrapper;
+            
+            // Identify direction
+            if (e.target.classList.contains('top')) resizeDirection = 'top';
+            else if (e.target.classList.contains('bottom')) resizeDirection = 'bottom';
+            else if (e.target.classList.contains('left')) resizeDirection = 'left';
+            else if (e.target.classList.contains('right')) resizeDirection = 'right';
+            else if (e.target.classList.contains('bottom-right')) resizeDirection = 'bottom-right';
+
             const coords = getCanvasCoords(e.clientX, e.clientY);
             startMouseX = coords.x;
             startMouseY = coords.y;
             startWidth = parseFloat(resizeNode.getAttribute('data-w'));
             startHeight = parseFloat(resizeNode.getAttribute('data-h'));
+            startNodeX = parseFloat(resizeNode.getAttribute('data-x'));
+            startNodeY = parseFloat(resizeNode.getAttribute('data-y'));
+            
             e.stopPropagation(); 
             return;
         }
     }
 
     const nodeWrapper = e.target.closest('.orbat-node-wrapper');
+    const linkPath = e.target.closest('.orbat-link');
     const isClickingUI = e.target.closest('#node-context-menu');
 
-    // B. LINK DRAWING
+    // B. LINK DRAWING / SELECTION
     if (isDrawingLink) {
         if (nodeWrapper) createNewLink(linkSourceId, linkSourceSide, nodeWrapper.getAttribute('data-id'), 'top');
         stopDrawingLink(); 
         return;
     }
 
+    if (linkPath) {
+        clearSelection();
+        selectedLink = linkPath;
+        linkPath.classList.add('selected');
+        showContextToolbar();
+        e.stopPropagation();
+        return;
+    }
+
     // C. NODE SELECTION / DRAG START
     if (nodeWrapper) {
+        if (selectedLink) { selectedLink.classList.remove('selected'); selectedLink = null; }
         if (e.ctrlKey || e.metaKey || e.shiftKey) {
             // Toggle selection
             if (selectedNodes.has(nodeWrapper)) {
@@ -259,13 +283,41 @@ window.addEventListener('mousemove', (e) => {
         const dx = m.x - startMouseX;
         const dy = m.y - startMouseY;
         
-        let newW = Math.max(160, Math.round((startWidth + dx) / SNAP_SIZE) * SNAP_SIZE); 
-        let newH = Math.max(120, Math.round((startHeight + dy) / SNAP_SIZE) * SNAP_SIZE); 
+        let newW = startWidth;
+        let newH = startHeight;
+        let newX = startNodeX;
+        let newY = startNodeY;
+
+        if (resizeDirection === 'right' || resizeDirection === 'bottom-right') {
+            newW = Math.max(160, Math.round((startWidth + dx) / SNAP_SIZE) * SNAP_SIZE);
+        }
+        if (resizeDirection === 'bottom' || resizeDirection === 'bottom-right') {
+            newH = Math.max(160, Math.round((startHeight + dy) / SNAP_SIZE) * SNAP_SIZE);
+        }
+        if (resizeDirection === 'left') {
+            const potentialW = Math.max(160, Math.round((startWidth - dx) / SNAP_SIZE) * SNAP_SIZE);
+            if (potentialW !== startWidth) {
+                newX = startNodeX + (startWidth - potentialW);
+                newW = potentialW;
+            }
+        }
+        if (resizeDirection === 'top') {
+            const potentialH = Math.max(160, Math.round((startHeight - dy) / SNAP_SIZE) * SNAP_SIZE);
+            if (potentialH !== startHeight) {
+                newY = startNodeY + (startHeight - potentialH);
+                newH = potentialH;
+            }
+        }
 
         resizeNode.style.width = `${newW}px`;
         resizeNode.style.height = `${newH}px`;
+        resizeNode.style.left = `${OFFSET + newX}px`;
+        resizeNode.style.top = `${OFFSET + newY}px`;
+        
         resizeNode.setAttribute('data-w', newW);
         resizeNode.setAttribute('data-h', newH);
+        resizeNode.setAttribute('data-x', newX);
+        resizeNode.setAttribute('data-y', newY);
         
         updateLinks();
         if (selectedNodes.size > 0) showContextToolbar();
@@ -274,9 +326,9 @@ window.addEventListener('mousemove', (e) => {
 
     // 3. LINK DRAWING
     if (isDrawingLink) {
-        const m = getCanvasCoords(e.clientX, e.clientY);
+        const coords = getCanvasCoords(e.clientX, e.clientY);
         const p1 = getPointOnSide(linkSourceId, linkSourceSide);
-        const svgMouse = { x: m.x + OFFSET, y: m.y + OFFSET };
+        const svgMouse = { x: coords.x + OFFSET, y: coords.y + OFFSET };
         tempLink.setAttribute('d', getBezierPath(p1, svgMouse, linkSourceSide, 'auto')); return;
     }
     
@@ -361,6 +413,7 @@ window.addEventListener('mouseup', () => {
     isResizingNode = false; 
     dragNode = null; 
     resizeNode = null;
+    resizeDirection = null;
 });
 
 canvas.addEventListener('wheel', (e) => {
@@ -460,12 +513,19 @@ function renderNode(n) {
                 </div>
             </div>
             <div class="connection-points absolute inset-0 pointer-events-none ${editMode ? '' : 'hidden'}">
-                <div class="c-point top" onmousedown="window.startDrawingLink(event, 'top')"></div>
-                <div class="c-point right" onmousedown="window.startDrawingLink(event, 'right')"></div>
-                <div class="c-point bottom" onmousedown="window.startDrawingLink(event, 'bottom')"></div>
-                <div class="c-point left" onmousedown="window.startDrawingLink(event, 'left')"></div>
-                <!-- RESIZE HANDLE -->
-                <div class="resize-handle absolute bottom-0 right-0 w-4 h-4 cursor-se-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-50 hover:opacity-100" style="border-bottom: 2px solid white; border-right: 2px solid white;"></div>
+                <div class="c-point top" onmousedown="window.startDrawingLink(event, 'top')"><div class="c-dot"></div></div>
+                <div class="c-point right" onmousedown="window.startDrawingLink(event, 'right')"><div class="c-dot"></div></div>
+                <div class="c-point bottom" onmousedown="window.startDrawingLink(event, 'bottom')"><div class="c-dot"></div></div>
+                <div class="c-point left" onmousedown="window.startDrawingLink(event, 'left')"><div class="c-dot"></div></div>
+                
+                <!-- EDGE RESIZE HANDLES -->
+                <div class="resize-handle top absolute top-0 left-0 w-full h-1 cursor-ns-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-0 hover:opacity-100"></div>
+                <div class="resize-handle right absolute top-0 right-0 w-1 h-full cursor-ew-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-0 hover:opacity-100"></div>
+                <div class="resize-handle bottom absolute bottom-0 left-0 w-full h-1 cursor-ns-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-0 hover:opacity-100"></div>
+                <div class="resize-handle left absolute top-0 left-0 w-1 h-full cursor-ew-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-0 hover:opacity-100"></div>
+                
+                <!-- CORNER RESIZE (Optional but helpful) -->
+                <div class="resize-handle bottom-right absolute bottom-0 right-0 w-3 h-3 cursor-se-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-0 hover:opacity-100"></div>
             </div>
         </div>
     `;
@@ -487,6 +547,10 @@ window.showToast = function(message, type = 'info') {
 function clearSelection() {
     selectedNodes.forEach(n => n.classList.remove('selected'));
     selectedNodes.clear();
+    if (selectedLink) {
+        selectedLink.classList.remove('selected');
+        selectedLink = null;
+    }
     hideContextToolbar();
 }
 
@@ -502,25 +566,55 @@ function updateSelectionUI() {
 function showContextToolbar() {
     if (!document.getElementById('hq-admin-bar').classList.contains('edit-active')) return;
     
-    // Get the most recently selected node to anchor the toolbar
-    const primaryNode = Array.from(selectedNodes).pop();
-    if (!primaryNode) return;
+    let targetEl = null;
+    let isLink = false;
+
+    if (selectedNodes.size > 0) {
+        targetEl = Array.from(selectedNodes).pop();
+    } else if (selectedLink) {
+        targetEl = selectedLink;
+        isLink = true;
+    }
+
+    if (!targetEl) return;
 
     let t = document.getElementById('node-context-menu');
     if (!t) { t = document.createElement('div'); t.id = 'node-context-menu'; t.className = 'node-context-menu pointer-events-auto'; document.body.appendChild(t); }
     
-    // Update toolbar text to reflect multiple items
-    const count = selectedNodes.size;
-    const deleteTitle = count > 1 ? `Delete ${count} Units` : `Delete Unit`;
-    const iconTitle = count > 1 ? `Set Icon for ${count} Units` : `Change Icon`;
+    if (isLink) {
+        t.innerHTML = `<button onclick="window.removeSelectedLink()" class="toolbar-btn text-red-500" title="Delete Link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`;
+        
+        // Find midpoint of path for toolbar position
+        const pathLen = targetEl.getTotalLength();
+        const midPoint = targetEl.getPointAtLength(pathLen / 2);
+        const rect = canvas.getBoundingClientRect();
+        
+        t.style.left = `${midPoint.x * scale + translateX + rect.left}px`;
+        t.style.top = `${midPoint.y * scale + translateY + rect.top - 40}px`;
+    } else {
+        const count = selectedNodes.size;
+        const deleteTitle = count > 1 ? `Delete ${count} Units` : `Delete Unit`;
+        const iconTitle = count > 1 ? `Set Icon for ${count} Units` : `Change Icon`;
 
-    t.innerHTML = `<button onclick="window.openIconModalDirect()" class="toolbar-btn" title="${iconTitle}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></button><div class="toolbar-separator"></div><button onclick="window.removeSelectedNode()" class="toolbar-btn text-red-500" title="${deleteTitle}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`;
+        t.innerHTML = `<button onclick="window.openIconModalDirect()" class="toolbar-btn" title="${iconTitle}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></button><div class="toolbar-separator"></div><button onclick="window.removeSelectedNode()" class="toolbar-btn text-red-500" title="${deleteTitle}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`;
+        
+        const r = targetEl.getBoundingClientRect(); 
+        t.style.left = `${r.left + r.width / 2}px`; 
+        t.style.top = `${r.top - 60}px`; 
+    }
     
-    const r = primaryNode.getBoundingClientRect(); 
-    t.style.left = `${r.left + r.width / 2}px`; 
-    t.style.top = `${r.top - 60}px`; 
     t.classList.remove('hidden');
 }
+
+window.removeSelectedLink = function() {
+    if (selectedLink && confirm('Sever connection?')) {
+        selectedLink.remove();
+        selectedLink = null;
+        clearSelection();
+        saveState();
+        showToast('CONNECTION_SEVERED', 'danger');
+    }
+};
 
 function hideContextToolbar() { const t = document.getElementById('node-context-menu'); if (t) t.classList.add('hidden'); }
 
