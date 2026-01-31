@@ -134,11 +134,14 @@ async function fetchUC() {
 
 function compress(data) {
     if (!data || !Array.isArray(data)) return [];
-    const isZ = (dp) => dp && dp.attributes.value === 0 && dp.attributes.max === 0 && dp.attributes.min === 0;
+    const isS = (a, b) => a && b && 
+        a.attributes.value === b.attributes.value && 
+        a.attributes.max === b.attributes.max && 
+        a.attributes.min === b.attributes.min;
     return data.filter((dp, i) => {
-        if (!isZ(dp)) return true;
-        // Keep if it's the first or last point, or if it's a transition point (not surrounded by zeros)
-        return i === 0 || i === data.length - 1 || !isZ(data[i - 1]) || !isZ(data[i + 1]);
+        if (i === 0 || i === data.length - 1) return true;
+        // Keep if it's a transition point: different from previous OR different from next
+        return !isS(dp, data[i - 1]) || !isS(dp, data[i + 1]);
     });
 }
 
