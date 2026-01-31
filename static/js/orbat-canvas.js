@@ -391,14 +391,20 @@ function saveState() {
 function undo() { if (historyIndex > 0) { historyIndex--; loadState(history[historyIndex]); showToast('ACTION_REVERSED'); } }
 function redo() { if (historyIndex < history.length - 1) { historyIndex++; loadState(history[historyIndex]); showToast('ACTION_RESTORED'); } }
 function serializeCurrentState() {
-    const nodes = Array.from(document.querySelectorAll('.orbat-node-wrapper')).map(el => ({
-        id: el.getAttribute('data-id'), name: el.querySelector('[data-key="name"]').innerText.trim(),
-        role: el.querySelector('[data-key="role"]')?.innerText.trim() || "Operational Support",
-        callsign: el.querySelector('.orbat-node-card span.font-mono')?.innerText.trim() || "",
-        icon: el.querySelector('img')?.getAttribute('data-icon-path') || null,
-        x: parseFloat(el.getAttribute('data-x')), y: parseFloat(el.getAttribute('data-y')),
-        w: parseFloat(el.getAttribute('data-w')), h: parseFloat(el.getAttribute('data-h'))
-    }));
+    const nodes = Array.from(document.querySelectorAll('.orbat-node-wrapper')).map(el => {
+        // Capture personnel block if it exists
+        const personnelEl = el.querySelector('.personnel-list');
+        return {
+            id: el.getAttribute('data-id'), 
+            name: el.querySelector('[data-key="name"]').innerText.trim(),
+            role: el.querySelector('[data-key="role"]')?.innerText.trim() || "Operational Support",
+            callsign: el.querySelector('.orbat-node-card span.font-mono')?.innerText.trim() || "",
+            icon: el.querySelector('img')?.getAttribute('data-icon-path') || null,
+            personnelHtml: personnelEl ? personnelEl.outerHTML : null,
+            x: parseFloat(el.getAttribute('data-x')), y: parseFloat(el.getAttribute('data-y')),
+            w: parseFloat(el.getAttribute('data-w')), h: parseFloat(el.getAttribute('data-h'))
+        };
+    });
     const edges = Array.from(document.querySelectorAll('.orbat-link')).map(el => ({
         id: el.id.replace('edge-', ''), fromNode: el.getAttribute('data-source'), toNode: el.getAttribute('data-target'),
         fromSide: el.getAttribute('data-from-side'), toSide: el.getAttribute('data-to-side')
@@ -412,6 +418,24 @@ function loadState(state) {
     state.edges.forEach(e => createNewLink(e.fromNode, e.fromSide, e.toNode, e.toSide, e.id));
     updateLinks(); clearSelection();
 }
+
+function snapNodeHeight(node) {
+    const card = node.querySelector('.orbat-node-card');
+    if (!card) return;
+    
+    // Measure natural height by temporarily allowing growth
+    node.style.height = 'auto';
+    const rect = node.getBoundingClientRect();
+    const actualH = rect.height / scale; // Adjust for current zoom scale
+    
+    // Snap to next 40px increment (minimum 160)
+    const snappedH = Math.max(160, Math.ceil(actualH / SNAP_SIZE) * SNAP_SIZE);
+    
+    node.style.height = `${snappedH}px`;
+    node.setAttribute('data-h', snappedH);
+    updateLinks();
+}
+
 function renderNode(n) {
     const newNode = document.createElement('div');
     newNode.className = 'orbat-node-wrapper absolute shadow-2xl';
@@ -434,6 +458,7 @@ function renderNode(n) {
                         <h5 class="text-sm font-black text-white uppercase tracking-tighter m-0 editable-field" data-key="name" contenteditable="${editMode}">${n.name}</h5>
                         <p class="text-[8px] text-[var(--primary)] font-mono uppercase mt-1 italic editable-field" data-key="role" contenteditable="${editMode}">${n.role}</p>
                     </div>
+                    ${n.personnelHtml || ''}
                 </div>
             </div>
             <div class="connection-points absolute inset-0 pointer-events-none ${editMode ? '' : 'hidden'}">
@@ -447,6 +472,7 @@ function renderNode(n) {
         </div>
     `;
     document.getElementById('orbat-nodes-layer').appendChild(newNode);
+    setTimeout(() => snapNodeHeight(newNode), 0);
 }
 
 // --- 5. UI: TOASTS & TOOLBARS ---
@@ -590,6 +616,7 @@ function applyIcon(src) {
         const img = imgDiv.querySelector('img');
         img.src = src.startsWith('data:') ? src : `/${src}`;
         img.setAttribute('data-icon-path', src);
+        snapNodeHeight(node);
     });
     
     showToast('ICON_APPLIED'); 
@@ -660,7 +687,13 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-document.addEventListener('input', (e) => { if (e.target.classList.contains('editable-field')) saveState(); });
+document.addEventListener('input', (e) => { 
+    if (e.target.classList.contains('editable-field')) {
+        const node = e.target.closest('.orbat-node-wrapper');
+        if (node) snapNodeHeight(node);
+        saveState(); 
+    }
+});
 
 // Bootstrap
 if (localStorage.getItem('uksf_hq_auth') === 'true') {
