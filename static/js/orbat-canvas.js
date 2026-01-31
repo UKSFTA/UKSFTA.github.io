@@ -428,8 +428,9 @@ function snapNodeHeight(node) {
     const rect = node.getBoundingClientRect();
     const actualH = rect.height / scale; // Adjust for current zoom scale
     
-    // Snap to next 40px increment (minimum 160)
-    const snappedH = Math.max(160, Math.ceil(actualH / SNAP_SIZE) * SNAP_SIZE);
+    // Snap to nearest 40px increment (minimum 200 - one big square)
+    // We use round instead of ceil to allow slight overflows (like 1-2px from borders) to stay in the square
+    const snappedH = Math.max(200, Math.round(actualH / SNAP_SIZE) * SNAP_SIZE);
     
     node.style.height = `${snappedH}px`;
     node.setAttribute('data-h', snappedH);
