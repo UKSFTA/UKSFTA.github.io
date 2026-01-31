@@ -363,7 +363,7 @@
             const map = document.getElementById('modal-op-map');
 
             title.innerText = op.campaignName;
-            date.innerText = `COMMENCED: ${new Date(op.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'LONG', year: 'numeric' }).toUpperCase()}`;
+            date.innerText = `COMMENCED: ${new Date(op.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}`;
             brief.innerText = op.brief || "NO_DATA_RECOVERED";
             map.innerText = `LOCATION: ${op.map || 'CLASSIFIED'}`;
             
@@ -446,22 +446,6 @@
             const height = 60;
             const safeMax = Math.max(maxVal, 10);
 
-            // If no data, generate a zero-baseline mock dataset
-            let points = [];
-            if (!data || data.length === 0) {
-                const now = Date.now();
-                for (let i = 0; i < 20; i++) {
-                    points.push({ v: 0, t: new Date(now - (i * 3600000)).toISOString() });
-                }
-            } else {
-                points = data.map(d => ({ 
-                    v: d.attributes.value === 255 ? 0 : d.attributes.value, 
-                    t: d.attributes.timestamp 
-                })).filter(p => p.v < 500).reverse();
-            }
-            
-            if (points.length < 2) return;
-
             // Calculate time range
             const range = window.currentBattlemetricsRange || 'today';
             const nowTime = Date.now();
@@ -475,29 +459,38 @@
                 return ((new Date(t).getTime() - startTime) / timeRange) * width;
             };
             const getY = (v) => height - (v / safeMax * height);
-            
-            // Generate path with gap detection
-            let pathData = "";
-            let areaPath = `M 0 ${height}`; // Start area at baseline
 
-            const maxGap = 65 * 60000; // 65 minutes threshold for gap detection
+            // Process data points
+            let points = [];
+            if (data && data.length > 0) {
+                points = data.map(d => ({ 
+                    v: d.attributes.value === 255 ? 0 : d.attributes.value, 
+                    t: d.attributes.timestamp 
+                })).filter(p => p.v < 500 && new Date(p.t).getTime() >= startTime).reverse();
+            }
+            
+            // Generate path with baseline anchoring
+            let pathData = `M 0 ${height}`; 
+            let areaPath = `M 0 ${height}`;
+
+            const maxGap = 65 * 60000; // 65 minutes threshold
 
             points.forEach((p, i) => {
                 const curX = getX(p.t);
                 const curY = getY(p.v);
                 
                 if (i === 0) {
-                    pathData = `M ${curX} ${curY}`;
+                    // First point: anchor from baseline
+                    pathData += ` L ${curX} ${height} L ${curX} ${curY}`;
                     areaPath += ` L ${curX} ${height} L ${curX} ${curY}`;
                 } else {
                     const prevP = points[i-1];
                     const timeDiff = new Date(p.t).getTime() - new Date(prevP.t).getTime();
                     
                     if (timeDiff > maxGap) {
-                        // Gap detected: Drop to zero and jump to next segment
-                        const dropX = getX(new Date(new Date(prevP.t).getTime() + 30*60000).toISOString());
-                        const riseX = getX(new Date(new Date(p.t).getTime() - 30*60000).toISOString());
-                        
+                        // Gap: drop to baseline, jump, and rise back up
+                        const dropX = Math.min(width, getX(new Date(new Date(prevP.t).getTime() + 30*60000)));
+                        const riseX = Math.max(0, getX(new Date(new Date(p.t).getTime() - 30*60000)));
                         pathData += ` L ${dropX} ${height} M ${riseX} ${height} L ${curX} ${curY}`;
                         areaPath += ` L ${dropX} ${height} L ${riseX} ${height} L ${curX} ${curY}`;
                     } else {
@@ -507,6 +500,8 @@
                 }
             });
 
+            // Final anchor to baseline at endTime
+            pathData += ` L ${width} ${height}`;
             areaPath += ` L ${width} ${height} Z`;
 
             container.innerHTML = `
