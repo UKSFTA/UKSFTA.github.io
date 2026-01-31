@@ -160,7 +160,7 @@ canvas.addEventListener('mousedown', (e) => {
 
     // C. NODE SELECTION / DRAG START
     if (nodeWrapper) {
-        if (e.ctrlKey || e.metaKey) {
+        if (e.ctrlKey || e.metaKey || e.shiftKey) {
             // Toggle selection
             if (selectedNodes.has(nodeWrapper)) {
                 selectedNodes.delete(nodeWrapper);
@@ -211,7 +211,14 @@ canvas.addEventListener('mousedown', (e) => {
             startMouseY = e.clientY - rect.top;
             
             selectionBox = document.createElement('div');
-            selectionBox.className = 'absolute border-2 border-[var(--primary)] bg-[var(--primary)]/10 z-[6000] pointer-events-none';
+            selectionBox.className = 'absolute z-[6000] pointer-events-none';
+            selectionBox.style.border = '2px solid var(--primary)';
+            selectionBox.style.backgroundColor = 'rgba(179, 153, 93, 0.1)'; // Hardcoded approximation or var with opacity
+            // Better to use the variable if possible, but rgba is safer for opacity overlay.
+            // Let's try to use the var with a fallback or just simple styles.
+            selectionBox.style.border = '1px solid #b3995d';
+            selectionBox.style.backgroundColor = 'rgba(179, 153, 93, 0.2)';
+            
             selectionBox.style.left = `${startMouseX}px`;
             selectionBox.style.top = `${startMouseY}px`;
             selectionBox.style.width = '0px';

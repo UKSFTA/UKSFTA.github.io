@@ -4,6 +4,7 @@ module.exports = {
     './layouts/**/*.html',
     './content/**/*.md',
     './data/labels.json',
+    './static/js/**/*.js',
   ],
   theme: {
     extend: {
