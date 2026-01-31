@@ -1,4 +1,4 @@
-// Institutional ORBAT - Canvas Controller v6.2 (Camera Fix)
+// Institutional ORBAT - Canvas Controller v6.3 (Resize & Asset Fixes)
 
 const canvas = document.getElementById('orbat-canvas');
 const content = document.getElementById('canvas-content');
@@ -17,14 +17,17 @@ let translateX = 0;
 let translateY = 0;
 let isPanning = false;
 let isDraggingNode = false;
+let isResizingNode = false; // New state
 let isDrawingLink = false;
 let dragNode = null;
+let resizeNode = null; // New state
 let selectedNode = null;
 let linkSourceId = null;
 let linkSourceSide = null;
 let activeNodeForIcon = null;
 let startMouseX, startMouseY;
 let startNodeX, startNodeY;
+let startWidth, startHeight; // New dimensions
 
 // --- 1. CORE RENDERING ---
 
@@ -72,26 +75,17 @@ function getBezierPath(p1, p2, s1, s2) {
 
 window.centerView = function() {
     scale = 0.8;
-    
-    // 1. Viewport Dimensions (more reliable than rect in full screen)
     const vW = window.innerWidth;
     const vH = window.innerHeight;
-    
-    // 2. Target: TFHQ or first node
     const target = document.getElementById('node-tfhq') || document.querySelector('.orbat-node-wrapper');
     
     if (target) {
         const nX = parseFloat(target.getAttribute('data-x'));
         const nY = parseFloat(target.getAttribute('data-y'));
-        
-        // 3. Calculation: Midpoint - Scaled Position
-        // Centering the node (approx 220x180 size)
         translateX = (vW / 2) - ((OFFSET + nX + 110) * scale);
         translateY = (vH / 2) - ((OFFSET + nY + 90) * scale);
-        
         updateTransform();
     } else {
-        // Fallback
         translateX = (vW / 2) - (OFFSET * scale);
         translateY = (vH / 2) - (OFFSET * scale);
         updateTransform();
@@ -127,25 +121,35 @@ function getCanvasCoords(clientX, clientY) {
 }
 
 canvas.addEventListener('mousedown', (e) => {
-    // 1. Exit if editing text
     if (e.target.classList.contains('editable-field')) return;
+
+    // RESIZE START logic
+    if (e.target.classList.contains('resize-handle')) {
+        const nodeWrapper = e.target.closest('.orbat-node-wrapper');
+        if (nodeWrapper && document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
+            isResizingNode = true;
+            resizeNode = nodeWrapper;
+            const coords = getCanvasCoords(e.clientX, e.clientY);
+            startMouseX = coords.x;
+            startMouseY = coords.y;
+            startWidth = parseFloat(resizeNode.getAttribute('data-w'));
+            startHeight = parseFloat(resizeNode.getAttribute('data-h'));
+            e.stopPropagation(); // Prevent drag or pan
+            return;
+        }
+    }
 
     const nodeWrapper = e.target.closest('.orbat-node-wrapper');
     const isClickingUI = e.target.closest('#node-context-menu');
 
-    // 2. Handle Link Drawing
     if (isDrawingLink) {
         if (nodeWrapper) createNewLink(linkSourceId, linkSourceSide, nodeWrapper.getAttribute('data-id'), 'top');
         stopDrawingLink(); 
         return;
     }
 
-    // 3. Selection & UI Management
     if (nodeWrapper) {
-        // We hit a unit: Select it
         updateSelection(nodeWrapper);
-        
-        // Handle Dragging (only in Edit Mode)
         if (document.getElementById('hq-admin-bar').classList.contains('edit-active')) {
             isDraggingNode = true; 
             dragNode = nodeWrapper;
@@ -157,11 +161,9 @@ canvas.addEventListener('mousedown', (e) => {
             return;
         }
     } else if (!isClickingUI) {
-        // We hit the empty canvas (and NOT the delete/icon menu): Deselect everything
         updateSelection(null);
     }
 
-    // 4. Panning Logic (Left click on background or middle mouse)
     if (e.button === 0 || e.button === 1) {
         isPanning = true; 
         startMouseX = e.clientX; 
@@ -170,17 +172,36 @@ canvas.addEventListener('mousedown', (e) => {
 });
 
 window.addEventListener('mousemove', (e) => {
+    // RESIZE DRAG logic
+    if (isResizingNode && resizeNode) {
+        const m = getCanvasCoords(e.clientX, e.clientY);
+        const dx = m.x - startMouseX;
+        const dy = m.y - startMouseY;
+        
+        let newW = Math.max(160, Math.round((startWidth + dx) / SNAP_SIZE) * SNAP_SIZE); // Min width 160
+        let newH = Math.max(120, Math.round((startHeight + dy) / SNAP_SIZE) * SNAP_SIZE); // Min height 120
+
+        resizeNode.style.width = `${newW}px`;
+        resizeNode.style.height = `${newH}px`;
+        resizeNode.setAttribute('data-w', newW);
+        resizeNode.setAttribute('data-h', newH);
+        
+        updateLinks();
+        if (selectedNode) showContextToolbar(selectedNode);
+        return;
+    }
+
     if (isDrawingLink) {
         const m = getCanvasCoords(e.clientX, e.clientY);
         const p1 = getPointOnSide(linkSourceId, linkSourceSide);
         const svgMouse = { x: m.x + OFFSET, y: m.y + OFFSET };
         tempLink.setAttribute('d', getBezierPath(p1, svgMouse, linkSourceSide, 'auto')); return;
     }
+    
     if (isDraggingNode && dragNode) {
         const m = getCanvasCoords(e.clientX, e.clientY);
         const dx = m.x - startMouseX; const dy = m.y - startMouseY;
         
-        // Active Snapping logic
         let newX = Math.round((startNodeX + dx) / SNAP_SIZE) * SNAP_SIZE;
         let newY = Math.round((startNodeY + dy) / SNAP_SIZE) * SNAP_SIZE;
 
@@ -188,6 +209,7 @@ window.addEventListener('mousemove', (e) => {
         dragNode.setAttribute('data-x', newX); dragNode.setAttribute('data-y', newY);
         updateLinks(); if (selectedNode) showContextToolbar(selectedNode); return;
     }
+    
     if (isPanning) {
         translateX += e.clientX - startMouseX; translateY += e.clientY - startMouseY;
         startMouseX = e.clientX; startMouseY = e.clientY;
@@ -197,13 +219,18 @@ window.addEventListener('mousemove', (e) => {
 
 window.addEventListener('mouseup', () => {
     if (isDraggingNode && dragNode) {
+        // Snap finalize
         const x = Math.round(parseFloat(dragNode.getAttribute('data-x')) / SNAP_SIZE) * SNAP_SIZE;
         const y = Math.round(parseFloat(dragNode.getAttribute('data-y')) / SNAP_SIZE) * SNAP_SIZE;
         dragNode.setAttribute('data-x', x); dragNode.setAttribute('data-y', y);
         dragNode.style.left = `${OFFSET + x}px`; dragNode.style.top = `${OFFSET + y}px`;
         updateLinks(); saveState();
     }
-    isPanning = false; isDraggingNode = false; dragNode = null;
+    if (isResizingNode && resizeNode) {
+        // Just save state, snapping happens during drag
+        saveState();
+    }
+    isPanning = false; isDraggingNode = false; isResizingNode = false; dragNode = null; resizeNode = null;
 });
 
 canvas.addEventListener('wheel', (e) => {
@@ -220,8 +247,8 @@ canvas.addEventListener('dblclick', (e) => {
     }
 });
 
-// --- 4. HISTORY & CLIPBOARD (Redacted for brevity, keeping existing logic) ---
-let history = []; let historyIndex = -1; let clipboard = null;
+// --- 4. HISTORY & CLIPBOARD ---
+let history = []; let historyIndex = -1;
 function saveState() {
     const state = serializeCurrentState();
     if (historyIndex >= 0 && JSON.stringify(state) === JSON.stringify(history[historyIndex])) return;
@@ -281,6 +308,8 @@ function renderNode(n) {
                 <div class="c-point right" onmousedown="window.startDrawingLink(event, 'right')"></div>
                 <div class="c-point bottom" onmousedown="window.startDrawingLink(event, 'bottom')"></div>
                 <div class="c-point left" onmousedown="window.startDrawingLink(event, 'left')"></div>
+                <!-- RESIZE HANDLE -->
+                <div class="resize-handle absolute bottom-0 right-0 w-4 h-4 cursor-se-resize pointer-events-auto z-50 hover:bg-[var(--primary)] transition-colors opacity-50 hover:opacity-100" style="border-bottom: 2px solid white; border-right: 2px solid white;"></div>
             </div>
         </div>
     `;
@@ -305,7 +334,7 @@ function updateSelection(node) {
         node.classList.add('selected'); 
         showContextToolbar(node); 
     } else { 
-        hideContextToolbar(); // Explicitly hide when selection is cleared
+        hideContextToolbar(); 
     }
 }
 
@@ -333,7 +362,7 @@ window.toggleEditMode = function() {
 
 window.addOrbatNodeAt = function(x, y) {
     const id = `unit_${Math.random().toString(36).substr(2, 9)}`;
-    renderNode({ id, name: "NEW_UNIT", role: "Operational Support", callsign: "SIG_ID", icon: "icons/MOD.png", x, y, w: 220, h: 180 });
+    renderNode({ id, name: "NEW_UNIT", role: "Operational Support", callsign: "SIG_ID", icon: "icons/MOD.png", x, y, w: 200, h: 200 }); // Default size snapped
     updateSelection(document.getElementById(`node-${id}`)); saveState();
 };
 
@@ -359,13 +388,15 @@ window.exportOrbatJSON = () => {
 window.openIconModalDirect = function() {
     if (!selectedNode) return;
     activeNodeForIcon = selectedNode; iconGrid.innerHTML = '';
-    ["icons/MOD.png", "icons/TFA.png", "icons/SAS.png", "icons/SBS.png", "icons/SRR.png", "icons/SFSG.png", "icons/JSFAW.png", "icons/MEDIC.png", "icons/Intelligence-Corps.png", "icons/RSIS.png", "icons/SIGNALS.png", "icons/RANGERS.png"].forEach(path => {
+    
+    // Updated asset list
+    const assets = ["icons/MOD.png", "icons/TFA.png", "icons/SAS.png", "icons/SBS.png", "icons/SRR.png", "icons/SFSG.png", "icons/JSFAW.png", "icons/MEDIC.png", "icons/Intelligence-Corps.png", "icons/RSIS.png", "icons/SIGNALS.png", "icons/RANGERS.png", "icons/UKSF-MAP.png", "icons/intelligence-map.png"];
+    
+    assets.forEach(path => {
         const item = document.createElement('div');
         item.className = 'group/icon flex flex-col items-center space-y-2 p-4 bg-white/[0.02] border border-white/5 hover:border-[var(--primary)]/40 cursor-pointer transition-all';
         item.onclick = () => {
-            const img = activeNodeForIcon.querySelector('img');
-            if (img) { img.src = '/' + path; img.setAttribute('data-icon-path', path); }
-            showToast(`ICON_APPLIED: ${path.split('/').pop()}`); saveState(); closeIconModal();
+            applyIcon(path);
         };
         item.innerHTML = `<img src="/${path}" class="w-12 h-12 object-contain opacity-60 group-hover/icon:opacity-100 transition-opacity"><span class="text-[7px] font-mono text-gray-600 group-hover/icon:text-white uppercase">${path.split('/').pop()}</span>`;
         iconGrid.appendChild(item);
@@ -374,6 +405,40 @@ window.openIconModalDirect = function() {
 };
 
 window.closeIconModal = () => { iconModal.classList.add('hidden'); activeNodeForIcon = null; };
+
+window.handleIconUpload = function(input) {
+    const file = input.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            applyIcon(e.target.result); // Use Data URL
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+function applyIcon(src) {
+    if (activeNodeForIcon) {
+        const container = activeNodeForIcon.querySelector('.space-y-6');
+        let imgDiv = container.querySelector('.flex.justify-center.mb-2');
+        
+        // Ensure container exists
+        if (!imgDiv) {
+            imgDiv = document.createElement('div');
+            imgDiv.className = 'flex justify-center mb-2';
+            imgDiv.innerHTML = `<img class="w-16 h-16 object-contain opacity-90 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700">`;
+            container.insertBefore(imgDiv, container.firstChild);
+        }
+        
+        const img = imgDiv.querySelector('img');
+        img.src = src.startsWith('data:') ? src : `/${src}`;
+        img.setAttribute('data-icon-path', src); // Store path or data URL
+        
+        showToast('ICON_APPLIED'); 
+        saveState(); 
+        closeIconModal();
+    }
+}
 
 window.startDrawingLink = function(e, side) {
     e.stopPropagation(); isDrawingLink = true;
