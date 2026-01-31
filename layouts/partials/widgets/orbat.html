@@ -1,9 +1,6 @@
 {{ $orbat := .Site.Data.orbat_v2 }}
 {{ $units := .Site.Data.units }}
 <div class="orbat-canvas-area relative w-[10000px] h-[10000px]">
-  <!-- Layer 1: Drafting Grid (CSS-optimized tiling) -->
-  <div class="canvas-grid absolute inset-0 w-full h-full pointer-events-none z-0"></div>
-
   <!-- Layer 2: SVG Connector Layer -->
   <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-none z-0">
     <defs>

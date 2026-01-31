@@ -120,6 +120,7 @@
     ></div>
     <!-- 2. Interactive Canvas -->
     <div id="orbat-canvas" class="orbat-canvas-container cursor-grab active:cursor-grabbing">
+      <div id="canvas-grid" class="canvas-grid absolute inset-0 pointer-events-none z-0"></div>
       <div id="canvas-content" class="orbat-canvas-content">
         {{ partial "widgets/orbat.html" . }}
       </div>

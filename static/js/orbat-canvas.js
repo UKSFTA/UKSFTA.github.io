@@ -2,6 +2,7 @@
 
 const canvas = document.getElementById('orbat-canvas');
 const content = document.getElementById('canvas-content');
+const grid = document.getElementById('canvas-grid');
 const zoomDisplay = document.getElementById('zoom-level');
 const svgLayer = document.getElementById('orbat-connectors');
 const tempLink = document.getElementById('temp-link');
@@ -42,6 +43,13 @@ let initialNodePositions = new Map(); // Map<nodeId, {x, y}> for multi-drag
 
 function updateTransform() {
     content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    
+    // Sync Grid Background
+    if (grid) {
+        grid.style.backgroundSize = `${200 * scale}px ${200 * scale}px, ${200 * scale}px ${200 * scale}px, ${40 * scale}px ${40 * scale}px, ${40 * scale}px ${40 * scale}px`;
+        grid.style.backgroundPosition = `${translateX + (OFFSET * scale)}px ${translateY + (OFFSET * scale)}px`;
+    }
+
     zoomDisplay.innerText = `Zoom: ${Math.round(scale * 100)}%`;
     updateLinks();
     if (selectedNodes.size > 0) showContextToolbar(); else hideContextToolbar();
