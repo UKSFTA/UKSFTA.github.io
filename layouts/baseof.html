@@ -64,8 +64,8 @@
       </div>
     </div>
     <!-- Tier 2: Institutional Navigation -->
-    <header class="nav-header top-[32px]">
-      <div class="container-uksf flex justify-between items-center h-full">
+    <header class="nav-header fixed top-[32px] left-0 w-full z-[2000] border-b border-white/5 transition-all duration-500 bg-black/90 backdrop-blur-xl h-[100px] flex items-center">
+      <div class="container-uksf flex justify-between items-center h-full w-full">
         <div class="flex items-center space-x-12">
           <a href="/" class="no-underline group flex items-center space-x-10">
             <div class="relative p-1">
@@ -134,9 +134,9 @@
     >
       <div class="container-uksf relative z-10 w-full">
         <div
-          class="grid grid-cols-1 md:grid-cols-12 gap-16 items-start border-b border-white/5 pb-16"
+          class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-b border-white/5 pb-16"
         >
-          <div class="md:col-span-5 space-y-8">
+          <div class="md:col-span-3 space-y-8">
             <div class="flex items-center space-x-6">
               {{ $tfa_logo := resources.Get "icons/TFA.png" }}
               {{ if $tfa_logo }}
@@ -147,21 +147,18 @@
                 />
               {{ end }}
               <div class="flex flex-col">
-                <h2 class="text-3xl m-0 tracking-tighter font-black uppercase">
-                  UKSF Taskforce Alpha
-                  <br />
-                  Joint Operations
+                <h2 class="text-3xl m-0 tracking-tighter font-black uppercase leading-none">
+                  UKSFTA
                 </h2>
                 <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mt-2"
-                  >Milsim Community // Heritage Simulated</span
+                  >Milsim Community</span
                 >
               </div>
             </div>
             <p
-              class="max-w-md text-gray-500 text-[11px] font-normal leading-relaxed uppercase tracking-wider"
+              class="max-w-md text-gray-500 text-[10px] font-normal leading-relaxed uppercase tracking-wider"
             >
-              UKSFTA is an Arma 3 Milsim group. We are not affiliated with, endorsed by, or part of
-              the UK Ministry of Defence or HM Armed Forces.
+              Institutional Milsim simulation. Not affiliated with the MOD or HM Armed Forces.
             </p>
           </div>
           <div class="md:col-span-2 space-y-6">
@@ -223,33 +220,51 @@
               </li>
             </ul>
           </div>
+          <div class="md:col-span-2 space-y-6">
+            <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]"
+              >Legal & Privacy</span
+            >
+            <ul
+              class="space-y-3 list-none p-0 text-[10px] uppercase tracking-widest font-bold text-gray-600"
+            >
+              <li>
+                <a href="/privacy-policy/" class="hover:text-white transition-colors no-underline"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="/terms-of-service/" class="hover:text-white transition-colors no-underline"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a href="/cookie-policy/" class="hover:text-white transition-colors no-underline"
+                  >Cookie Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="document.getElementById('cookie-modal').classList.remove('hidden'); return false;" class="hover:text-white transition-colors no-underline"
+                  >Cookie Settings</a
+                >
+              </li>
+            </ul>
+          </div>
           <div class="md:col-span-3 space-y-6 text-right">
             <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]"
-              >Node Status</span
+              >System Sovereignty</span
             >
-            <div class="flex flex-col items-end space-y-4">
-              <div
-                class="flex items-center space-x-3 bg-white/5 border border-white/10 px-4 py-2"
-                id="server-status-container"
-              >
-                <span class="w-2 h-2 bg-gray-500 rounded-full" id="status-indicator"></span>
-                <span
-                  class="text-[9px] font-black text-gray-500 tracking-widest uppercase"
-                  id="status-text"
-                  >INITIALIZING...</span
-                >
-              </div>
-              <div class="flex flex-col items-end">
-                <span class="text-[8px] font-mono text-gray-800 uppercase" id="player-count"
-                  >SYNCING_DATA...</span
-                >
-                <span class="text-[8px] font-mono text-gray-800 uppercase mt-1"
-                  >Primary Op: Wed 19:00 GMT</span
-                >
-                <span
-                  class="text-[9px] font-mono text-white font-black uppercase tracking-[0.4em] mt-4"
-                  >Hub Registry: SIS-DIRECTORATE</span
-                >
+            <div class="flex flex-col items-end space-y-2">
+              <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest">
+                Hub Registry: SIS-DIRECTORATE
+              </span>
+              <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest mt-1">
+                Security Protocol: RSA-4096-ECC
+              </span>
+              <div class="pt-4">
+                <div class="flex items-center space-x-3 bg-white/[0.02] border border-white/5 px-4 py-2 opacity-40">
+                  <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                  <span class="text-[8px] font-mono text-white uppercase tracking-[0.2em]">Node_Stable</span>
+                </div>
               </div>
             </div>
           </div>
@@ -262,292 +277,447 @@
         </div>
       </div>
     </footer>
-        <script>
-    const consent = localStorage.getItem('uksfta_consent');
+    <script>
+    (function() {
+        console.log("[JSFC_SYSTEM] Tactical Interface Boot Sequence Initiated...");
+        
+        window.globalIntel = null;
+        window.globalTelemetry = null;
+        window.currentBattlemetricsRange = 'today';
 
-    // BATTLEMETRICS_INTEGRATION //
-    async function updateServerStatus() {
-        // Check for functional cookie consent
-        const consent = localStorage.getItem('uksfta_consent');
-        if (!consent || !JSON.parse(consent).functional) {
-            console.log("[PRIVACY_NODE] Battlemetrics sync paused: Consent required.");
-            return;
-        }
-
-        const SERVER_ID = "35392879";
-        const statusText = document.getElementById('status-text');
-        const statusIndicator = document.getElementById('status-indicator');
-        const playerCount = document.getElementById('player-count');
-        const container = document.getElementById('server-status-container');
-
-        try {
-            const response = await fetch(`https://api.battlemetrics.com/servers/${SERVER_ID}`);
-            const data = await response.json();
-            const attributes = data.data.attributes;
-
-            const isOnline = attributes.status === 'online';
-            const players = attributes.players;
-            const maxPlayers = attributes.maxPlayers;
-
-            if (isOnline) {
-                statusText.innerText = 'SERVER_LIVE';
-                statusText.className = 'text-[9px] font-black text-green-500 tracking-widest uppercase';
-                statusIndicator.className = 'w-2 h-2 bg-green-500 rounded-full animate-pulse';
-                container.className = 'flex items-center space-x-3 bg-green-500/5 border border-green-500/20 px-4 py-2';
-                playerCount.innerText = `OPERATORS_IN_AO: ${players}/${maxPlayers}`;
-            } else {
-                statusText.innerText = 'NODE_OFFLINE';
-                statusText.className = 'text-[9px] font-black text-red-500 tracking-widest uppercase';
-                statusIndicator.className = 'w-2 h-2 bg-red-500 rounded-full';
-                container.className = 'flex items-center space-x-3 bg-red-500/5 border border-red-500/20 px-4 py-2';
-                playerCount.innerText = 'STATION_DARK';
+        async function fetchIntegratedIntel() {
+            console.log("[JSFC_INTEL] Initiating heartbeat synchronization...");
+            const consentData = localStorage.getItem('uksfta_consent');
+            if (!consentData || !JSON.parse(consentData).functional) {
+                console.warn("[JSFC_INTEL] Uplink Inhibited: Cookie authorization required.");
+                return;
             }
-        } catch (error) {
-            statusText.innerText = 'SYNC_ERROR';
-            playerCount.innerText = 'CONNECTION_FAILED';
-        }
-    }
-
-    // DISCORD_NETWORK_INTEGRATION //
-    async function updateDiscordStatus() {
-        // Check for functional cookie consent
-        const consentStr = localStorage.getItem('uksfta_consent');
-        if (!consentStr || !JSON.parse(consentStr).functional) return;
-
-        const SERVER_ID = "{{ site.Params.discord.server_id }}";
-        const onlineCounts = document.querySelectorAll('.discord-online-count');
-        const signalStrengths = document.querySelectorAll('.signal-strength');
-        const linkIds = document.querySelectorAll('.link-id');
-
-        if (onlineCounts.length === 0 || !SERVER_ID) return;
-
-        const startTime = performance.now();
-
-        try {
-            // Fetching from Discord's public widget API
-            const response = await fetch(`https://discord.com/api/guilds/${SERVER_ID}/widget.json`);
-            const data = await response.json();
-            const endTime = performance.now();
-            const latency = endTime - startTime;
-
-            // Calculate realistic signal strength based on latency (fake jitter added)
-            // Base 100, subtract 1 for every 10ms over 50ms, +/- 2% jitter
-            let integrity = Math.max(20, Math.min(100, 100 - Math.floor((latency - 50) / 10)));
-            integrity += Math.floor(Math.random() * 5) - 2;
-            if (integrity > 100) integrity = 100;
-
-            if (data && data.presence_count !== undefined) {
-                // padStart(2, '0') keeps the terminal aesthetic
-                const countStr = data.presence_count.toString().padStart(2, '0');
-
-                // Update Counts
-                onlineCounts.forEach(el => {
-                    el.innerText = countStr;
-                    el.classList.remove('text-red-900');
-                });
-
-                // Update Signal Strength
-                signalStrengths.forEach(el => {
-                    el.innerText = `SIGNAL STRENGTH: ${integrity}%`;
-                    // Visual color cue based on signal
-                    if (integrity < 50) el.style.color = '#ef4444'; // red
-                    else if (integrity < 80) el.style.color = '#eab308'; // yellow
-                    else el.style.color = 'white';
-                });
-
-                // Update Dynamic Link ID (Net ID)
-                // Format: DSC-[Last4ServerID]-[HexTimestamp]
-                const timeHex = Math.floor(Date.now() / 1000).toString(16).toUpperCase().substr(-4);
-                const serverSuffix = SERVER_ID.substr(SERVER_ID.length - 4);
-                const netId = `NET_ID: DSC-${serverSuffix}-${timeHex}`;
-
-                linkIds.forEach(el => {
-                    el.innerText = netId;
-                });
-
-                console.log(`[JSFC_INTEL] Discord sync successful: ${data.presence_count} personnel active on node ${netId}.`);
-            }
-        } catch (error) {
-            console.error("[JSFC_INTEL] Discord sync failure:", error);
-            onlineCounts.forEach(el => {
-                el.innerText = "??";
-                el.classList.add('text-red-900');
-            });
-            signalStrengths.forEach(el => el.innerText = "SIGNAL: LOST");
-        }
-    }
-
-    // Initialize Discord Intel
-    {{ if site.Params.discord.enabled }}
-    if (consent && JSON.parse(consent).functional) {
-        updateDiscordStatus();
-        setInterval(updateDiscordStatus, 60000);
-    }
-    {{ end }}
-
-    // Initialize Status
-    if (consent && JSON.parse(consent).functional) {
-        updateServerStatus();
-        setInterval(updateServerStatus, 60000); // Update every 60s
-    }
-
-    // [INTEL_OVERRIDE] //
-    // Gate Signature: /registry/gate
-    // Protocol: SECURE_AUTH
-    console.log("%c[UKSFTA_INTEL] SYSTEM_INTERFACE_DETECTED", "color: #b3995d; font-family: monospace; font-size: 14px; font-weight: bold;");
-    console.log("%cDECRYPTION_HINT: The authorized access path is encoded in the system headers.", "color: #666; font-family: monospace;");
-    console.log("%cAUTH_ID: GHOST-OPERATOR", "color: #666; font-family: monospace;");
-
-    // UNIT_COMMANDER_INTEGRATION
-    const ucConfig = {{ site.Params.unitcommander | jsonify | safeJS }};
-
-    if (ucConfig.enabled && ucConfig.community_id && ucConfig.bot_token) {
-        async function fetchEvents() {
-            // Check for functional cookie consent
-            const consentStr = localStorage.getItem('uksfta_consent');
-            if (!consentStr || !JSON.parse(consentStr).functional) return;
-
-            const feeds = document.querySelectorAll('.live-ops-feed-container');
-            if (feeds.length === 0) return;
-
-            const startTime = performance.now();
 
             try {
-                const response = await fetch(`https://api.unitcommander.co.uk/community/${ucConfig.community_id}/campaigns?t=${Date.now()}`, {
-                    headers: { 'Authorization': `Bot ${ucConfig.bot_token}` }
-                });
+                // Shard 1: Live Heartbeat
+                const response = await fetch('/intel.json?t=' + Date.now());
+                if (!response.ok) throw new Error(`HTTP_${response.status}`);
                 const data = await response.json();
+                window.globalIntel = data;
+                
+                updateBattlemetricsUI(); 
+                if (data.unitcommander) {
+                    updateUnitCommanderUI(data.unitcommander);
+                    updateOperationLogsUI(data.unitcommander);
+                }
+            } catch (e) {
+                console.error("[JSFC_INTEL] Heartbeat failure:", e);
+            }
+        }
 
-                const endTime = performance.now();
-                const latency = endTime - startTime;
+        async function fetchTelemetry() {
+            try {
+                console.log("[JSFC_INTEL] Pulling telemetry shard...");
+                const response = await fetch('/telemetry.json?t=' + Date.now());
+                const data = await response.json();
+                window.globalTelemetry = data;
+                updateBattlemetricsUI();
+            } catch (e) {
+                console.error("[JSFC_INTEL] Telemetry shard failure:", e);
+            }
+        }
 
-                // Calculate Uplink Quality
-                let uplink = Math.max(40, Math.min(100, 100 - Math.floor((latency - 100) / 20)));
-                uplink += Math.floor(Math.random() * 3); // Jitter
-                if (uplink > 100) uplink = 100;
+        function updateOperationLogsUI(uc) {
+            const container = document.querySelector('.operation-logs-container');
+            if (!container || !uc.campaigns) return;
 
-                if (data && Array.isArray(data) && data.length > 0) {
-                    // Filter for ACTIVE and Sort by the most recent update (Event activity)
-                    const latestOp = data
-                        .filter(op => op.status === "ACTIVE")
-                        .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))[0]; // Take only the top index
+            // Get last 2 campaigns for the HUD
+            const logs = [...uc.campaigns]
+                .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                .slice(0, 2);
 
-                    if (latestOp) {
-                        const opTitle = latestOp.campaignName || "MISSION_UNNAMED";
-                        const opDateRaw = latestOp.updated_at || latestOp.created_at;
-                        const startDate = new Date(latestOp.created_at);
-                        const today = new Date();
-                        const diffTime = Math.abs(today - startDate);
-                        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                        const rawLocation = latestOp.map || "CLASSIFIED";
-                        const cleanLocation = rawLocation.split('(')[0].trim().toUpperCase();
+            container.innerHTML = logs.map(op => {
+                const date = new Date(op.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' });
+                const briefSnippet = op.brief ? op.brief.substring(0, 80).replace(/\n/g, ' ') + '...' : 'NO_BRIEFING_DATA_AVAILABLE';
+                const slug = op.campaignName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                return `
+                    <a href="/campaigns/${slug}" class="block p-3 bg-white/[0.02] border border-white/5 group hover:border-[var(--primary)]/40 transition-all duration-500 relative overflow-hidden no-underline">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-white/5 group-hover:bg-[var(--primary)] transition-colors duration-500"></div>
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest font-bold">OP_ID: ${op.id} // ${date}</span>
+                            <span class="text-[8px] font-black ${op.status === 'ACTIVE' ? 'text-[var(--primary)]' : 'text-gray-500'} uppercase tracking-[0.2em] border border-white/10 px-2 py-0.5">${op.status}</span>
+                        </div>
+                        <span class="text-xs font-bold text-gray-400 group-hover:text-white transition-colors uppercase tracking-widest block leading-tight mb-1">${op.campaignName}</span>
+                        <p class="text-[7px] text-gray-500 uppercase tracking-wide line-clamp-2 m-0 leading-relaxed opacity-60 group-hover:opacity-100 transition-opacity">${briefSnippet}</p>
+                    </a>
+                `;
+            }).join('');
+        }
 
-                        let dateStr = "TBD";
-                        if (opDateRaw) {
-                            const d = new Date(opDateRaw);
-                            if (!isNaN(d)) {
-                                dateStr = d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
-                            }
-                        }
+        window.openOperationModal = (opId) => {
+            const uc = window.globalIntel ? window.globalIntel.unitcommander : null;
+            if (!uc || !uc.campaigns) return;
+            const op = uc.campaigns.find(c => c.id == opId);
+            if (!op) return;
 
-                        const html = `
-                            <div class="p-6 bg-white/[0.02] border border-white/5 relative group overflow-hidden">
-                                <div class="absolute top-0 left-0 w-1 h-full bg-[var(--primary)] shadow-[0_0_15px_var(--primary)]"></div>
+            const modal = document.getElementById('operation-modal');
+            const img = document.getElementById('modal-op-image');
+            const title = document.getElementById('modal-op-title');
+            const date = document.getElementById('modal-op-date');
+            const brief = document.getElementById('modal-op-brief');
+            const map = document.getElementById('modal-op-map');
 
-                                <div class="flex justify-between items-start mb-4">
-                                    <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest">
-                                        SIGNAL_ID: TF-${latestOp.id} // ${dateStr}
-                                    </span>
-                                    <div class="flex items-center gap-2 bg-white/[0.03] px-2 py-1 rounded-sm border border-white/5">
-                                        <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest border-r border-white/10 pr-2 mr-2">Q:${uplink}%</span>
-                                        <span class="relative flex h-1.5 w-1.5">
-                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-75"></span>
-                                            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--primary)]"></span>
-                                        </span>
-                                        <span class="text-[8px] font-black text-[var(--primary)] uppercase tracking-widest">ACTIVE</span>
-                                    </div>
-                                </div>
+            title.innerText = op.campaignName;
+            date.innerText = `COMMENCED: ${new Date(op.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'LONG', year: 'numeric' }).toUpperCase()}`;
+            brief.innerText = op.brief || "NO_DATA_RECOVERED";
+            map.innerText = `LOCATION: ${op.map || 'CLASSIFIED'}`;
+            
+            if (op.image && op.image.path) {
+                img.src = op.image.path;
+                img.classList.remove('hidden');
+            } else {
+                img.classList.add('hidden');
+            }
 
-                                <span class="text-2xl font-black text-white uppercase tracking-tighter block leading-tight mb-4">
-                                    ${opTitle}
-                                </span>
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
 
-                                <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-4 mb-3">
-                                    <div class="flex flex-col">
-                                        <span class="text-[7px] text-gray-600 font-mono uppercase">Deployment_Time</span>
-                                        <span class="text-xs text-white font-bold font-mono">${diffDays}D</span>
-                                    </div>
-                                    <div class="flex flex-col border-l border-white/10 pl-4">
-                                        <span class="text-[7px] text-gray-600 font-mono uppercase">Combat_Status</span>
-                                        <span class="text-xs text-[var(--primary)] font-bold font-mono italic">ENGAGED</span>
-                                    </div>
-                                </div>
+        window.closeOperationModal = () => {
+            document.getElementById('operation-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        };
 
-                                <div class="flex flex-col border-t border-white/5 pt-3">
-                                    <span class="text-[7px] text-gray-600 font-mono uppercase mb-1">Area_of_Operation</span>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-sm text-white font-bold font-mono tracking-tight">${cleanLocation}</span>
-                                    </div>
-                                </div>
+        // Modal Global Handlers
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeOperationModal();
+        });
 
-                                <div class="mt-5">
-                                    <div class="w-full h-[1px] bg-white/5 relative overflow-hidden">
-                                        <div class="absolute top-0 left-0 h-full bg-[var(--primary)] opacity-60" style="width: 100%"></div>
+        function updateBattlemetricsUI() {
+            const statusText = document.getElementById('status-text');
+            const statusIndicator = document.getElementById('status-indicator');
+            const playerCount = document.getElementById('player-count');
+            const graphContainer = document.getElementById('battlemetrics-graph');
+            const overlay = document.getElementById('bm-overlay');
+
+            if (!statusText) return;
+            if (overlay) overlay.classList.add('hidden');
+
+            const source = window.globalIntel ? window.globalIntel.arma : null;
+            const maxCapacity = source ? (source.maxPlayers || 40) : 40;
+            
+            if (source && source.status === 'online') {
+                statusText.innerText = 'SERVER_LIVE';
+                statusText.className = 'text-[8px] font-black text-green-500 tracking-widest uppercase';
+                if (statusIndicator) statusIndicator.className = `w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse-fast shadow-[0_0_8px_rgba(34,197,94,0.6)]`;
+                playerCount.innerText = `${source.players}/${maxCapacity} OPERATORS`;
+            } else {
+                statusText.innerText = 'SIGNAL_LOST';
+                statusText.className = 'text-[8px] font-black text-red-500 tracking-widest uppercase';
+                if (statusIndicator) statusIndicator.className = 'w-1.5 h-1.5 bg-red-500 rounded-full';
+                playerCount.innerText = 'STATION_DARK';
+            }
+
+            // Load telemetry shard if missing and graph is visible
+            if (!window.globalTelemetry && graphContainer) {
+                fetchTelemetry();
+                return;
+            }
+
+            const range = window.currentBattlemetricsRange || 'today';
+            let dataPoints = [];
+
+            if (window.globalTelemetry && window.globalTelemetry[range]) {
+                dataPoints = [...window.globalTelemetry[range]];
+            }
+
+            // Stitch live data if on 'today' view
+            if (range === 'today' && source) {
+                dataPoints.unshift({
+                    attributes: {
+                        value: source.players,
+                        timestamp: new Date().toISOString()
+                    }
+                });
+            }
+
+            renderBattlemetricsGraph(dataPoints, graphContainer, maxCapacity);
+        }
+
+        function renderBattlemetricsGraph(data, container, maxVal = 40) {
+            if (!container) return;
+            
+            const width = container.clientWidth;
+            const height = 60;
+            const safeMax = Math.max(maxVal, 10);
+
+            // If no data, generate a zero-baseline mock dataset
+            let points = [];
+            if (!data || data.length === 0) {
+                const now = Date.now();
+                for (let i = 0; i < 20; i++) {
+                    points.push({ v: 0, t: new Date(now - (i * 3600000)).toISOString() });
+                }
+            } else {
+                points = data.map(d => ({ 
+                    v: d.attributes.value === 255 ? 0 : d.attributes.value, 
+                    t: d.attributes.timestamp 
+                })).filter(p => p.v < 500).reverse();
+            }
+            
+            if (points.length < 2) return;
+
+            // Calculate time range
+            const startTime = new Date(points[0].t).getTime();
+            const endTime = new Date(points[points.length - 1].t).getTime();
+            const timeRange = endTime - startTime;
+
+            const getX = (t) => {
+                if (timeRange === 0) return 0;
+                return ((new Date(t).getTime() - startTime) / timeRange) * width;
+            };
+            const getY = (v) => height - (v / safeMax * height);
+            
+            // Continuous path generation using time-based X
+            let pathData = `M ${getX(points[0].t)} ${getY(points[0].v)}`;
+            points.forEach((p, i) => { if (i > 0) pathData += ` L ${getX(p.t)} ${getY(p.v)}`; });
+
+            const areaPath = `${pathData} L ${width} ${height} L 0 ${height} Z`;
+
+            container.innerHTML = `
+                <div id="graph-tooltip" class="absolute top-2 right-2 bg-black/90 border border-white/10 px-3 py-2 pointer-events-none opacity-0 transition-opacity z-20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                    <span class="text-[10px] font-mono text-[var(--primary)] uppercase block font-black" id="tooltip-val">-- OPERATORS</span>
+                    <span class="text-[8px] font-mono text-gray-500 uppercase block font-bold" id="tooltip-time">--:--:--</span>
+                </div>
+                <svg width="100%" height="${height}" class="overflow-visible" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="graphGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.4" />
+                            <stop offset="100%" stop-color="var(--primary)" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                    <path d="${areaPath}" fill="url(#graphGradient)" stroke="none" />
+                    <path d="${pathData}" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    ${points.map((p, i) => `
+                        <rect x="${getX(p.t) - 5}" y="0" width="10" height="${height}" fill="white" fill-opacity="0" class="cursor-crosshair" 
+                            onmouseover="showGraphTooltip(${p.v}, '${p.t}')" 
+                            onmouseout="hideGraphTooltip()" />
+                    `).join('')}
+                </svg>
+            `;
+        }
+
+        window.showGraphTooltip = (val, time) => {
+            const t = document.getElementById('graph-tooltip');
+            const vEl = document.getElementById('tooltip-val');
+            const tEl = document.getElementById('tooltip-time');
+            if (!t) return;
+            t.style.opacity = '1';
+            vEl.innerText = `${val} OPERATORS`;
+            const date = new Date(time);
+            tEl.innerText = isNaN(date) ? "SIGNAL_ERROR" : date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+        };
+
+        window.hideGraphTooltip = () => {
+            const t = document.getElementById('graph-tooltip');
+            if (t) t.style.opacity = '0';
+        };
+
+        function updateUnitCommanderUI(uc) {
+            const feeds = document.querySelectorAll('.live-ops-feed-container');
+            if (feeds.length === 0 || !uc || !uc.campaigns) return;
+            
+            console.log("[JSFC_INTEL] Synchronizing Unit Commander feed...");
+            let bestOp = null;
+            let absoluteLatestTime = 0;
+            const allCandidates = [...uc.campaigns];
+            
+            allCandidates.forEach(op => {
+                const events = (uc.campaignEvents && uc.campaignEvents[op.id]) || [];
+                let opTime = new Date(op.updated_at || op.created_at || 0).getTime();
+                if (events.length > 0) {
+                    const eventTimes = events.map(e => new Date(e.startDate || e.startTime || e.event_date || e.dateTime || e.updated_at || e.created_at).getTime());
+                    opTime = Math.max(opTime, ...eventTimes);
+                }
+                if (opTime > absoluteLatestTime) { absoluteLatestTime = opTime; bestOp = { ...op, isStandalone: false }; }
+            });
+
+            if (uc.standalone) {
+                uc.standalone.forEach(ev => {
+                    const evTime = new Date(ev.startDate || ev.startTime || ev.event_date || ev.dateTime || ev.updated_at || ev.created_at).getTime();
+                    if (evTime > absoluteLatestTime) { absoluteLatestTime = evTime; bestOp = { ...ev, isStandalone: true, campaignName: ev.title || ev.eventName, status: "ACTIVE" }; }
+                });
+            }
+
+            if (bestOp) renderUnitCommanderHTML(bestOp, absoluteLatestTime);
+        }
+
+        function renderUnitCommanderHTML(latestOp, latestTimestamp) {
+            const feeds = document.querySelectorAll('.live-ops-feed-container');
+            const createdDate = new Date(latestOp.created_at);
+            const today = new Date();
+            const durationStr = Math.floor(Math.abs(today - createdDate) / (1000 * 60 * 60 * 24)) + "D";
+            const opTitle = latestOp.campaignName || latestOp.title || "MISSION_UNNAMED";
+            const cleanLocation = (latestOp.map || latestOp.location || "CLASSIFIED").split('(')[0].trim().toUpperCase();
+            const dateStr = new Date(latestOp.updated_at || latestOp.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+            const html = `
+                <div class="p-6 bg-white/[0.02] border border-white/5 relative group overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-[var(--primary)] shadow-[0_0_15px_var(--primary)]"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest">SIGNAL_ID: ${latestOp.isStandalone ? 'EV' : 'TF'}-${latestOp.id} // ${dateStr}</span>
+                        <div class="flex items-center gap-2 bg-white/[0.03] px-2 py-1 rounded-sm border border-white/5">
+                            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest border-r border-white/10 pr-2 mr-2">D:${durationStr}</span>
+                            <span class="relative flex h-1.5 w-1.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-75"></span><span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--primary)]"></span></span>
+                            <span class="text-[8px] font-black text-[var(--primary)] uppercase tracking-widest">ACTIVE</span>
+                        </div>
+                    </div>
+                    <span class="text-2xl font-black text-white uppercase tracking-tighter block leading-tight mb-4">${opTitle}</span>
+                    <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-4 mb-3">
+                        <div class="flex flex-col"><span class="text-[7px] text-gray-600 font-mono uppercase">Tactical_Duration</span><span class="text-xs text-white font-bold font-mono">${durationStr}</span></div>
+                        <div class="flex flex-col border-l border-white/10 pl-4"><span class="text-[7px] text-gray-600 font-mono uppercase">Combat_Status</span><span class="text-xs text-[var(--primary)] font-bold font-mono italic">ENGAGED</span></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-3">
+                        <div class="flex flex-col"><span class="text-[7px] text-gray-600 font-mono uppercase mb-1">Area_of_Operation</span><span class="text-[10px] text-white font-bold font-mono tracking-tight truncate">${cleanLocation}</span></div>
+                        <div class="flex flex-col border-l border-white/10 pl-4"><span class="text-[7px] text-gray-600 font-mono uppercase mb-1">Comms_Established</span><span class="text-[10px] text-gray-400 font-bold font-mono tracking-tight truncate">${createdDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' }).toUpperCase()}</span></div>
+                    </div>
+                </div>
+            `;
+            feeds.forEach(f => f.innerHTML = html);
+        }
+
+        async function updateDiscordStatus() {
+            const SERVER_ID = "{{ site.Params.discord.server_id }}";
+            const onlineCounts = document.querySelectorAll('.discord-online-count');
+            const signalStrengths = document.querySelectorAll('.signal-strength');
+            const linkIds = document.querySelectorAll('.link-id');
+            if (onlineCounts.length === 0 || !SERVER_ID) return;
+
+            const startTime = performance.now();
+            try {
+                const response = await fetch(`https://discord.com/api/guilds/${SERVER_ID}/widget.json`);
+                const data = await response.json();
+                const latency = performance.now() - startTime;
+
+                let integrity = Math.max(20, Math.min(100, 100 - Math.floor((latency - 50) / 10)));
+                integrity += Math.floor(Math.random() * 5) - 2;
+                if (integrity > 100) integrity = 100;
+
+                if (data && data.presence_count !== undefined) {
+                    const countStr = data.presence_count.toString().padStart(2, '0');
+                    onlineCounts.forEach(el => { el.innerText = countStr; el.classList.remove('text-red-900'); });
+
+                    signalStrengths.forEach(el => {
+                        el.innerText = `SIGNAL STRENGTH: ${integrity}%`;
+                        el.style.color = integrity < 50 ? '#ef4444' : (integrity < 80 ? '#eab308' : 'white');
+                    });
+
+                    const timeHex = Math.floor(Date.now() / 1000).toString(16).toUpperCase().substr(-4);
+                    const netId = `NET_ID: DSC-${SERVER_ID.substr(-4)}-${timeHex}`;
+                    linkIds.forEach(el => { el.innerText = netId; });
+
+                    console.log(`[JSFC_INTEL] Discord sync successful: ${data.presence_count} personnel active.`);
+                }
+            } catch (error) {
+                console.error("[JSFC_INTEL] Discord sync failure:", error);
+                onlineCounts.forEach(el => { el.innerText = "??"; el.classList.add('text-red-900'); });
+                signalStrengths.forEach(el => el.innerText = "SIGNAL: LOST");
+            }
+        }
+
+        window.setBattlemetricsRange = (range) => {
+            const btns = document.querySelectorAll('.bm-range-btn');
+            btns.forEach(b => { b.classList.toggle('active', b.getAttribute('data-range') === range); });
+            window.currentBattlemetricsRange = range;
+            if (window.globalIntel) {
+                updateBattlemetricsUI(window.globalIntel.battlemetrics || {});
+            } else {
+                fetchIntegratedIntel();
+            }
+        };
+
+        window.fetchIntegratedIntel = fetchIntegratedIntel;
+        window.fetchTelemetry = fetchTelemetry;
+        window.updateBattlemetricsUI = updateBattlemetricsUI;
+        window.renderBattlemetricsGraph = renderBattlemetricsGraph;
+        window.updateUnitCommanderUI = updateUnitCommanderUI;
+        window.updateOperationLogsUI = updateOperationLogsUI;
+
+        // Safe Initialization
+        try {
+            const consentData = localStorage.getItem('uksfta_consent');
+            if (consentData) {
+                const parsed = JSON.parse(consentData);
+                if (parsed.functional) {
+                    fetchIntegratedIntel();
+                    setInterval(fetchIntegratedIntel, 300000);
+                    updateDiscordStatus();
+                    setInterval(updateDiscordStatus, 60000);
+                }
+            }
+        } catch (e) {
+            console.warn("[JSFC_SYSTEM] Initialization handshake inhibited.");
+        }
+
+        window.fetchIntegratedIntel = fetchIntegratedIntel;
+        window.updateDiscordStatus = updateDiscordStatus;
+
+        function updateClock() {
+            const clock = document.getElementById('clock');
+            if (!clock) return;
+            const now = new Date();
+            clock.innerText = `${String(now.getUTCHours()).padStart(2, '0')}:${String(now.getUTCMinutes()).padStart(2, '0')}:${String(now.getUTCSeconds()).padStart(2, '0')}`;
+        }
+        setInterval(updateClock, 1000); updateClock();
+
+        console.log("%c[UKSFTA_INTEL] SYSTEM_INTERFACE_DETECTED", "color: #b3995d; font-family: monospace; font-size: 14px; font-weight: bold;");
+    })();
+    </script>
+    <script src="{{ `js/main.js` | relURL }}" defer></script>
+    {{ partial "cookie-consent.html" . }}
+
+    <!-- TACTICAL BRIEFING MODAL -->
+    <div id="operation-modal" class="fixed inset-0 z-[5000] hidden">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeOperationModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl p-6 lg:p-12">
+            <div class="bracket-box bg-white/[0.01] border-white/10 p-0 overflow-hidden max-h-[85dvh] flex flex-col relative">
+                <!-- Close Button -->
+                <button onclick="closeOperationModal()" class="absolute top-6 right-6 z-20 bg-black/50 border border-white/10 w-10 h-10 flex items-center justify-center text-white hover:border-[var(--primary)] transition-all uppercase font-mono text-[10px]">ESC</button>
+                
+                <div class="overflow-y-auto custom-scrollbar p-8 lg:p-12">
+                    <div class="flex flex-col space-y-8">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <span class="w-2 h-2 bg-[var(--primary)] rounded-full animate-pulse"></span>
+                                <span class="text-[10px] font-mono text-gray-500 tracking-[0.4em] uppercase">Tactical_Briefing_Acquired</span>
+                            </div>
+                            <h2 id="modal-op-title" class="text-4xl lg:text-6xl font-black uppercase tracking-tighter m-0 leading-none">MISSION_NAME</h2>
+                            <div class="flex flex-wrap gap-6 pt-4 border-t border-white/5">
+                                <span id="modal-op-date" class="text-[9px] font-mono text-[var(--primary)] uppercase tracking-widest">COMMENCED: -- --- ----</span>
+                                <span id="modal-op-map" class="text-[9px] font-mono text-gray-500 uppercase tracking-widest">LOCATION: --------</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                            <div class="lg:col-span-7 space-y-6">
+                                <div class="space-y-2">
+                                    <span class="text-[8px] font-mono text-gray-600 uppercase tracking-widest block">// SITUATION_REPORT</span>
+                                    <div id="modal-op-brief" class="text-sm lg:text-base text-gray-400 leading-relaxed uppercase tracking-wide font-light whitespace-pre-wrap">
+                                        Loading tactical data fragments...
                                     </div>
                                 </div>
                             </div>
-                        `;
-
-                        feeds.forEach(feed => feed.innerHTML = html);
-                        console.log(`[UC_INTEL] Unit Commander sync successful: Pulled data for '${opTitle}'.`);
-                    } else {
-                        const emptyHtml = '<div class="text-[8px] font-mono text-gray-700 uppercase tracking-widest p-6 border border-dashed border-white/5">No active deployments detected.</div>';
-                        feeds.forEach(feed => feed.innerHTML = emptyHtml);
-                        console.log("[UC_INTEL] Unit Commander sync complete: No active deployments found.");
-                    }
-                } else {
-                    console.log("[UC_INTEL] Unit Commander sync complete: No campaign data to pull.");
-                }
-            } catch (err) {
-                console.error("[UC_INTEL] Unit Commander link failure:", err);
-                const errorHtml = '<div class="text-[8px] font-mono text-red-900 uppercase tracking-widest p-6 border border-dashed border-red-900/20">Link failure: UC_NODE_OFFLINE</div>';
-                feeds.forEach(feed => feed.innerHTML = errorHtml);
-            }
-        }
-        if (consent && JSON.parse(consent).functional) {
-            fetchEvents();
-            // Poll every 5 minutes to stay "live" without hitting rate limits
-            setInterval(fetchEvents, 300000);
-        }
-    }
-
-    // Hidden Trigger for curious personnel
-    let clicks = 0;
-    document.getElementById('ghost-node').addEventListener('click', () => {
-        clicks++;
-        if (clicks === 5) {
-            console.log("%c[OVERRIDE_SEQUENCE_INITIATED]", "color: #ef4444; font-weight: bold;");
-            console.log("%cPATH_DECRYPTED: /registry/gate", "color: #22c55e;");
-        }
-    });
-
-    // Check Authorization State
-    if (localStorage.getItem('uksf_auth') === 'authorized') {
-        document.body.classList.add('operator-authenticated');
-    }
-
-    function updateClock() {
-      const now = new Date();
-      const h = String(now.getUTCHours()).padStart(2, '0');
-      const m = String(now.getUTCMinutes()).padStart(2, '0');
-      const s = String(now.getUTCSeconds()).padStart(2, '0');
-      document.getElementById('clock').innerText = `${h}:${m}:${s}`;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-        </script>
-    <script src="{{ `js/main.js` | relURL }}" defer></script>
-    {{ partial "cookie-consent.html" . }}
+                            <div class="lg:col-span-5">
+                                <div class="bracket-box !p-0 border-white/5 bg-black relative aspect-video lg:aspect-square overflow-hidden group">
+                                    <img id="modal-op-image" src="" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2s]" alt="Operation Imagery" />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/[0.02] border-t border-white/5 p-6 flex justify-between items-center flex-none">
+                    <span class="text-[8px] font-mono text-gray-700 uppercase tracking-widest font-black">Authorized_Access_Only // SIS-Archives</span>
+                    <button onclick="closeOperationModal()" class="text-[10px] font-black text-white hover:text-[var(--primary)] uppercase tracking-[0.3em] transition-colors">Terminate_Link // →</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- JSFC RECON: If you are looking for the primary node key, verify the system meta headers. Use Base64 protocols. -->
   </body>
 </html>
