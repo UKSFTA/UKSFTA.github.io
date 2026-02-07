@@ -25,7 +25,7 @@ jobs:
 
       - name: Install bercon-cli
         run: |
-          wget https://github.com/PAn-S/bercon-cli/releases/latest/download/bercon-cli-linux-amd64 -O bercon-cli
+          wget https://github.com/WoozyMasta/bercon-cli/releases/latest/download/bercon-cli-linux-amd64 -O bercon-cli
           chmod +x bercon-cli
           sudo mv bercon-cli /usr/bin/bercon-cli
 
