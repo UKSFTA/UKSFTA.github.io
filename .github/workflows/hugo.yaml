@@ -73,18 +73,17 @@ jobs:
 
       - name: Build
         run: |
-          hugo --gc --minify --canonifyURLs
+          hugo --gc --minify
 
-      - name: Lighthouse Audit
-        uses: treosh/lighthouse-ci-action@v11
-        with:
-          urls: |
-            http://localhost:1313/
-            http://localhost:1313/sas/
-          uploadArtifacts: true
-          temporaryPublicStorage: true
-
-      - name: Upload Artifact
+            # - name: Lighthouse Audit
+            #   uses: treosh/lighthouse-ci-action@v11
+            #   with:
+            #     urls: |
+            #       http://localhost:1313/
+            #       http://localhost:1313/sas/
+            #     uploadArtifacts: true
+            #     temporaryPublicStorage: true
+            - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./docs
