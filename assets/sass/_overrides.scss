@@ -1,0 +1,32 @@
+:root {
+  --govuk-brand-colour: #532a45; // MOD Purple
+  --uksf-sas-green: #153e35;
+  --uksf-sbs-blue: #13284c;
+  --govuk-canvas-background: #f3f2f1; // Muted grey for dashboard feel
+}
+
+.section-sas {
+  --govuk-brand-colour: var(--uksf-sas-green);
+}
+
+.section-sbs {
+  --govuk-brand-colour: var(--uksf-sbs-blue);
+}
+
+body {
+  font-family: "Effra", "GDS Transport", Arial, sans-serif;
+}
+
+.technical-data {
+  font-family: Arial, sans-serif;
+  font-size: 11pt;
+}
+
+// Ensure the header respects the brand colour
+.govuk-header {
+  border-bottom: 10px solid var(--govuk-brand-colour);
+}
+
+.govuk-header__container {
+  border-bottom: none;
+}

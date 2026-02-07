@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: matt/UKSFTA-Site # Placeholder, should match actual repo
+  branch: main
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "roster"
+    label: "Unit Roster"
+    files:
+      - file: "data/roster.json"
+        label: "Roster Data"
+        name: "roster_data"
+        fields:
+          - { label: "Unit Name", name: "unit", widget: "string" }
+          - label: "Personnel"
+            name: "personnel"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Rank", name: "rank", widget: "string" }
+              - { label: "Callsign", name: "callsign", widget: "string" }
+              - { label: "Discord ID", name: "discord_id", widget: "string" }
+
+  - name: "intel"
+    label: "Intelligence Briefs"
+    folder: "content/rsis/intel"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Lead", name: "lead", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }

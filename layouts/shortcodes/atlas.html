@@ -1,0 +1,15 @@
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <div class="uksf-atlas-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 2px solid var(--uksf-intel-green); box-shadow: 0 0 15px rgba(0, 206, 125, 0.2);">
+            <iframe 
+                src="https://atlas.plan-ops.fr/map/arma3/{{ .Get "map" | default "altis" }}" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                allowfullscreen 
+                loading="lazy">
+            </iframe>
+        </div>
+        <p class="govuk-body-s govuk-!-margin-top-2" style="color: #999; font-family: monospace;">
+            SOURCE: PLAN-OPS ATLAS // REF: {{ .Get "map" | upper }} // ENCRYPTION: ACTIVE
+        </p>
+    </div>
+</div>

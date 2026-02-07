@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /rsis/secret/
+Disallow: /admin/
+
+# [RSIS TIER 2 GATEWAY - SIGNAL ANALYSIS REQUIRED]
+# THE FLAG IS NOT IN THE HTML THIS TIME. 
+# INSPECT THE FREQUENCY.
+# SIGNAL: QmFzZTY0IGlzIG9ubHkgdGhlIGJlZ2lubmluZy4gVGhlIGtleSBpcyAnQ09MTE9RVUVORE8n

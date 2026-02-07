@@ -1,0 +1,105 @@
+# UKSF Joint Special Forces Portal - Master Configuration
+# Ref: https://gohugo.io/configuration/all/
+
+baseURL: "/" # Set to "/" for development; update to production URL upon deployment.
+title: "Joint Special Forces Portal"
+languageCode: "en-gb"
+theme: "govukhugo"
+publishDir: "docs"
+
+# High-level configuration
+canonifyURLs: true
+enableEmoji: true
+enableGitInfo: false # Temporarily disabled until first commit
+enableRobotsTXT: true
+disableKinds: ["taxonomy", "term"] # Streamlined for doctrinal documentation
+
+# Build configuration
+minify:
+  disableXML: false
+  minifyOutput: true
+
+# Sitemap configuration
+sitemap:
+  changefreq: "weekly"
+  filename: "sitemap.xml"
+  priority: 0.5
+
+# Permalinks (Professional, predictable structures)
+permalinks:
+  sas: "/sas/:title/"
+  sbs: "/sbs/:title/"
+  srr: "/srr/:title/"
+  rsis: "/rsis/:section/:title/" # Support for hierarchical intelligence reports
+
+# Content configuration
+contentDir: "content"
+dataDir: "data"
+layoutDir: "layouts"
+staticDir: "static"
+archetypeDir: "archetypes"
+
+# Markup configuration (Essential for govukhugo and Obsidian Wikilinks)
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # Required for raw HTML in Design System components
+    parser:
+      attribute:
+        block: true
+        title: true
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    style: "monokai" # Technical SIGINT aesthetic
+  tableOfContents:
+    endLevel: 3
+    ordered: false
+    startLevel: 2
+
+# Privacy settings (Strict "Zero Trust" compliance)
+privacy:
+  disqus:
+    disable: true
+  googleAnalytics:
+    disable: true
+  instagram:
+    disable: true
+  x:
+    disable: true
+  vimeo:
+    disable: true
+  youtube:
+    disable: true
+
+# Imaging (Optimised for unit patches and intelligence imagery)
+imaging:
+  anchor: "smart"
+  quality: 90
+  resampleFilter: "Lanczos"
+
+# Unit Parameters (UKSF Doctrinal Data)
+params:
+  govuk: false
+  logotext: "UKSF"
+  product: "Joint Special Forces Portal"
+  phase: "beta"
+  feedbackurl: "https://your.site/feedback/"
+  
+  # Thematic data from 18 Sig / UKSF Directorate
+  motto: "Colloquendo Imperamus"
+  directorate: "United Kingdom Special Forces"
+  
+  # Integration Placeholders
+  search_enabled: true
+  analytics_enabled: false
+
+# Security verification
+security:
+  funcs:
+    getenv:
+      - ^HUGO_
+      - ^MODUK_
+  httpCache:
+    maxAge: "3600s"

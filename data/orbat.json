@@ -1,0 +1,124 @@
+{
+  "id": "root",
+  "name": "Director Special Forces",
+  "sidc": "SFGPU------",
+  "description": "DSF | Major General",
+  "children": [
+    {
+      "id": "22-sas",
+      "name": "22 SAS",
+      "sidc": "SFGPU------",
+      "description": "Stirling Lines",
+      "children": [
+        {
+          "id": "a-sqn",
+          "name": "A Squadron",
+          "sidc": "SFGPU------",
+          "description": "Counter-Terrorism",
+          "children": [
+            {
+              "id": "red-tp",
+              "name": "Red Troop",
+              "sidc": "SFGPU------",
+              "description": "Air Troop"
+            },
+            {
+              "id": "blue-tp",
+              "name": "Blue Troop",
+              "sidc": "SFGPU------",
+              "description": "Boat Troop"
+            },
+            {
+              "id": "green-tp",
+              "name": "Green Troop",
+              "sidc": "SFGPU------",
+              "description": "Mobility Troop"
+            },
+            {
+              "id": "black-tp",
+              "name": "Black Troop",
+              "sidc": "SFGPU------",
+              "description": "Mountain Troop"
+            }
+          ]
+        },
+        {
+          "id": "b-sqn",
+          "name": "B Squadron",
+          "sidc": "SFGPU------",
+          "description": "Sabre Squadron",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "sbs",
+      "name": "SBS",
+      "sidc": "SFGPU------",
+      "description": "Poole",
+      "children": [
+        {
+          "id": "c-sqn",
+          "name": "C Squadron",
+          "sidc": "SFGPU------",
+          "description": "Maritime CT",
+          "children": []
+        },
+        {
+          "id": "m-sqn",
+          "name": "M Squadron",
+          "sidc": "SFGPU------",
+          "description": "Maritime Ops",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "sr-regt",
+      "name": "SRR",
+      "sidc": "SFGPU------",
+      "description": "Special Reconnaissance",
+      "children": []
+    },
+    {
+      "id": "18-sigs",
+      "name": "18 Signals",
+      "sidc": "SFGPU------",
+      "description": "UKSF Communicators",
+      "children": [
+        {
+          "id": "264-sqn",
+          "name": "264 (SAS) Sqn",
+          "sidc": "SFGPU------",
+          "description": "Attached 22 SAS"
+        },
+        {
+          "id": "sbs-sig-sqn",
+          "name": "SBS Sig Sqn",
+          "sidc": "SFGPU------",
+          "description": "Attached SBS"
+        },
+        {
+          "id": "63-sqn",
+          "name": "63 (UKSF) Sqn",
+          "sidc": "SFGPU------",
+          "description": "General Comms"
+        }
+      ]
+    },
+    {
+      "id": "sfsg",
+      "name": "SFSG",
+      "sidc": "SFGPU------",
+      "description": "Special Forces Support",
+      "children": [
+        {
+          "id": "f-coy",
+          "name": "F Company",
+          "sidc": "SFGPU------",
+          "description": "Direct Action"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "22 SAS",
+    "fullname": "Special Air Service",
+    "color": "var(--uksf-sas-green)",
+    "url": "/sas",
+    "description": "The Special Air Service is the UK's elite special forces unit.",
+    "weight": 10,
+    "sidc": "SFGPU------"
+  },
+  {
+    "name": "SBS",
+    "fullname": "Special Boat Service",
+    "color": "var(--uksf-sbs-blue)",
+    "url": "/sbs",
+    "description": "The Special Boat Service is the UK's elite maritime special forces unit.",
+    "weight": 20,
+    "sidc": "SFGPU------"
+  },
+  {
+    "name": "ASOB",
+    "fullname": "Army Special Operations",
+    "color": "#505a5f",
+    "url": "/asob",
+    "description": "Ranger Regiment and associated special operations capabilities.",
+    "weight": 30,
+    "sidc": "SFGPU------"
+  },
+  {
+    "name": "SFSG",
+    "fullname": "Special Forces Support Group",
+    "color": "#505a5f",
+    "url": "/sfsg",
+    "description": "Providing specialized support to UKSF operations.",
+    "weight": 40,
+    "sidc": "SFGPU------"
+  },
+  {
+    "name": "SRR",
+    "fullname": "Special Reconnaissance Regt",
+    "color": "#333",
+    "url": "/srr",
+    "description": "Specialized reconnaissance and surveillance.",
+    "weight": 50,
+    "restricted": true,
+    "sidc": "SFGPU------"
+  },
+  {
+    "name": "18 Signals",
+    "fullname": "18 (UKSF) Signal Regiment",
+    "color": "#333",
+    "url": "/rsis",
+    "description": "Providing secure communications and SIGINT for UKSF.",
+    "weight": 60,
+    "restricted": true,
+    "sidc": "SFGPU------"
+  }
+]

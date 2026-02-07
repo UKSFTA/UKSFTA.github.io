@@ -1,0 +1,25 @@
+# Hugo
+public/
+resources/
+_vendor/
+.hugo_build.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Secrets
+.env
+.env.*
+
+# OS
+.DS_Store
+Thmubs.db
+node_modules/
+docs/
+data/external.json
+assets/js/arbor.js

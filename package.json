@@ -1,0 +1,32 @@
+{
+  "name": "uksfta-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "fetch-data": "node scripts/fetch-external-data.js",
+    "dev": "hugo server --disableFastRender",
+    "build": "npm run fetch-data && hugo --gc --minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.14",
+    "axios": "^1.13.4"
+  },
+  "dependencies": {
+    "@moduk/frontend": "^2.0.31",
+    "@supabase/supabase-js": "^2.95.3",
+    "dotenv": "^17.2.3",
+    "gamedig": "^5.3.2",
+    "milsymbol": "^3.0.3"
+  }
+}

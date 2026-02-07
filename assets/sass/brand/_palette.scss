@@ -1,0 +1,14 @@
+// MOD Brand Palette (Based on MOD.UK Design System)
+$moduk-brand-colour: #532a45; // Primary Brand Purple
+$moduk-dark-blue: #13284c;    // Royal Navy / SBS
+$moduk-dark-green: #153e35;   // Army / SAS
+$moduk-muted-grey: #7b98ac;   // Secondary UI
+$moduk-bright-orange: #ff8200; // Warning/Alert
+$moduk-bright-green: #00ce7d;  // Success/Confirmed
+
+// Functional Mapping
+$brand-primary: $moduk-brand-colour;
+$brand-sbs: $moduk-dark-blue;
+$brand-sas: $moduk-dark-green;
+$status-warning: $moduk-bright-orange;
+$status-success: $moduk-bright-green;

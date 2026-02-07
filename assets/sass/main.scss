@@ -1,0 +1,8 @@
+@import "brand/palette";
+@import "overrides";
+
+// Additional MOD-grade overrides can be added here
+body {
+  // Ensure we respect the govuk configuration in config.yaml
+  // but apply MOD-specific identifiers where necessary.
+}

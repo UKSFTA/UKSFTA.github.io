@@ -1,0 +1,16 @@
+{
+  "current_players": 1,
+  "max_players": 40,
+  "server_name": "UKSF Taskforce Alpha Ops Server V2",
+  "map": "dagger_island_summer",
+  "status": "ACTIVE",
+  "players": [
+    {
+      "name": "SSgt. M. Barker",
+      "raw": {
+        "score": 0,
+        "time": 2498.42333984375
+      }
+    }
+  ]
+}
