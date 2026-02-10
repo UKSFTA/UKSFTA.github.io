@@ -170,6 +170,20 @@ async function fetchBattlemetricsStats() {
   };
 }
 
+/**
+ * Fetches Discord roster data from Supabase
+ */
+async function fetchDiscordRoster() {
+  try {
+    const { data, error } = await ucApi.supabase.from('personnel').select('*');
+    if (error) throw error;
+    return data || [];
+  } catch (error) {
+    console.warn('[ROSTER] Could not fetch Discord roster from Supabase:', error.message);
+    return [];
+  }
+}
+
 async function main() {
   try {
     // Fetch from Unit Commander
@@ -180,6 +194,10 @@ async function main() {
     const profiles = await fetchUnitCommanderData('profiles');
     const units = await fetchUnitCommanderData('units');
     const events = await fetchUnitCommanderData('events');
+
+    // Fetch from Discord/Supabase
+    console.log('Fetching Discord roster from Supabase...');
+    const discordRoster = await fetchDiscordRoster();
 
     const steamData = await fetchSteamStats(profiles);
     const battlemetricsData = await fetchBattlemetricsStats();
@@ -196,6 +214,7 @@ async function main() {
         {
           steam: steamData,
           battlemetrics: battlemetricsData,
+          discord_roster: discordRoster,
           unitcommander: {
             ranks,
             awards,
@@ -215,6 +234,26 @@ async function main() {
       path.join(dataDir, 'server_stats.json'),
       JSON.stringify(steamData, null, 2),
     );
+
+    // HYDRATE LEGACY ROSTER.JSON
+    const rosterPath = path.join(dataDir, 'roster.json');
+    if (fs.existsSync(rosterPath)) {
+      console.log('Hydrating legacy roster.json...');
+      const legacyRoster = JSON.parse(fs.readFileSync(rosterPath, 'utf8'));
+      
+      legacyRoster.personnel = discordRoster.map(p => ({
+        id: p.discord_id,
+        username: p.username,
+        displayName: p.display_name,
+        rank: p.rank,
+        rankPriority: p.rank_priority,
+        callsign: p.callsign,
+        joinedAt: p.joined_at
+      }));
+      
+      legacyRoster.lastUpdated = new Date().toISOString();
+      fs.writeFileSync(rosterPath, JSON.stringify(legacyRoster, null, 2));
+    }
 
     console.log('Successfully fetched all external data.');
   } catch (error) {
