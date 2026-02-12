@@ -1,0 +1,5 @@
+{{ $seed := printf "%s%s" .File.Path .RawContent }}
+{{ $id := hash.FNV32a $seed }}
+<span class="document-id font-mono text-xs font-bold uppercase tracking-tighter" title="Institutional Integrity Hash">
+    #{{ printf "%x" $id }}
+</span>

@@ -1,264 +1,261 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const axios = require('axios');
+const https = require('node:https');
 const { GameDig: Gamedig } = require('gamedig');
-const steamApi = require('./lib/steam_api');
-const rcon = require('./lib/rcon');
 const ucApi = require('./lib/uc_api');
 require('dotenv').config();
 
-// UKSF External Data Fetcher (Node.js version)
-// This script runs during the CI/CD build process.
-
-const _STEAM_API_KEY = process.env.STEAM_API_KEY;
-const _STEAM_SERVER_IP = process.env.STEAM_SERVER_IP || '127.0.0.1';
-const _STEAM_QUERY_PORT = parseInt(process.env.STEAM_QUERY_PORT, 10) || 9046;
-const _BATTLEMETRICS_SERVER_ID =
-  process.env.BATTLEMETRICS_SERVER_ID || '123456';
-
-const UC_COMMUNITY_ID = process.env.UNIT_COMMANDER_COMMUNITY_ID;
-const UC_BOT_TOKEN = process.env.UNIT_COMMANDER_BOT_TOKEN;
-const UC_BASE_URL = `https://api.unitcommander.co.uk/community/${UC_COMMUNITY_ID}`;
-
 /**
- * Fetches data from Unit Commander API
+ * UKSFTA External Data Fetcher v3.0
+ * Redesigned for uksf-mod-theme with Sharding and Dynamic Content Generation
  */
-async function fetchUnitCommanderData(endpoint) {
-  if (!UC_COMMUNITY_ID || !UC_BOT_TOKEN) {
-    console.warn(`Unit Commander credentials missing. Skipping ${endpoint}.`);
-    return [];
-  }
 
-  try {
-    const response = await axios.get(`${UC_BASE_URL}/${endpoint}`, {
+const config = {
+  bmKey: (process.env.BATTLEMETRICS_API_KEY || '').trim(),
+  bmId: process.env.BATTLEMETRICS_SERVER_ID || '35392879',
+  ucId: process.env.UNIT_COMMANDER_COMMUNITY_ID || '722',
+  ucToken: (process.env.UNIT_COMMANDER_BOT_TOKEN || '').trim(),
+  serverIp: process.env.STEAM_SERVER_IP || '127.0.0.1',
+  serverPort: parseInt(process.env.STEAM_QUERY_PORT || '2303'),
+};
+
+async function request(url, headers = {}) {
+  return new Promise((resolve, reject) => {
+    const options = {
       headers: {
-        Authorization: `Bot ${UC_BOT_TOKEN}`,
+        'User-Agent': 'UKSFTA-Fetch',
         Accept: 'application/json',
+        ...headers,
       },
-    });
-    return response.data;
-  } catch (error) {
-    console.error(
-      `Error fetching from Unit Commander (${endpoint}):`,
-      error.message,
-    );
-    return [];
-  }
-}
-
-function cleanName(name) {
-  if (!name) return '';
-  return name.toLowerCase()
-    .replace(/^\[.*?\]\s+/, '')
-    .replace(
-      /^(gen|maj gen|brig|col|lt col|maj|capt|lt|2lt|wo1|wo2|ssgt|csgt|sgt|cpl|lcpl|tpr|sig|rct|pte|am|as1|as2|po|cpo|cmdr|sqn ldr|flt lt|fg off|plt off|wg cdr)\.?\s+/i,
-      '',
-    )
-    .replace(/\s+\[.*?\]$/, '')
-    .trim();
-}
-
-/**
- * Fetches live player counts and server status via Gamedig and Steam API enrichment
- */
-async function fetchSteamStats(ucProfiles = []) {
-  try {
-    console.log(`Querying game server at ${_STEAM_SERVER_IP}:${_STEAM_QUERY_PORT}...`);
-    const state = await Gamedig.query({
-      type: 'arma3', // Default to arma3, adjust if needed
-      host: _STEAM_SERVER_IP,
-      port: _STEAM_QUERY_PORT,
-    });
-
-    // Fetch private links from Supabase for ID resolution
-    const supabaseLinks = await ucApi.getSteamLinks();
-    const reverseLinks = await ucApi.getLinks(); // discord_id -> uc_id
-
-    // Try to get RCON data for better identification
-    const rconPlayers = await rcon.getPlayers();
-    if (rconPlayers.length > 0) {
-      console.log(`[RCON] Fetched ${rconPlayers.length} active sessions: ${rconPlayers.map(p => p.name).join(', ')}`);
-    }
-
-    const steamIds = state.players
-      .map((p) => {
-        // Use Gamedig ID or fall back to RCON match
-        let sid = p.raw?.steamid;
-        if (!sid || !/^\d{17}$/.test(sid)) {
-          const rMatch = rconPlayers.find(rp => cleanName(rp.name) === cleanName(p.name));
-          if (rMatch && rMatch.steamId) {
-            sid = rMatch.steamId;
-          } else {
-            // Supabase Soft Link (Match Name -> UC Profile -> SteamID)
-            const ucMatch = ucProfiles.find(up => cleanName(up.alias) === cleanName(p.name));
-            if (ucMatch) {
-              const discordId = Object.keys(reverseLinks).find(did => reverseLinks[did].toString() === ucMatch.id.toString());
-              if (discordId && supabaseLinks[discordId]) {
-                sid = supabaseLinks[discordId];
-                console.log(`[RESOLVER] Soft-linked "${p.name}" via Supabase.`);
-              }
+    };
+    https
+      .get(url, options, (res) => {
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            try {
+              resolve(JSON.parse(data));
+            } catch {
+              reject(new Error('JSON Error'));
             }
-          }
-        }
-        return sid;
+          } else reject(new Error(`HTTP ${res.statusCode} at ${url}`));
+        });
       })
-      .filter((id) => id && /^\d{17}$/.test(id));
+      .on('error', reject);
+  });
+}
 
-    let enrichedPlayers = state.players;
+async function fetchUC() {
+  if (!config.ucToken || !config.ucId) {
+    console.warn('[UC_FETCH] Credentials missing. Skipping Unit Commander.');
+    return null;
+  }
+  const h = { Authorization: `Bot ${config.ucToken}` };
+  const base = `https://api.unitcommander.co.uk/community/${config.ucId}`;
+  try {
+    console.log(`[UC_FETCH] Querying community ${config.ucId}...`);
+    const [campaigns, standalone, profiles, units, ranks, awards] =
+      await Promise.all([
+        request(`${base}/campaigns`, h),
+        request(`${base}/events`, h),
+        request(`${base}/profiles`, h),
+        request(`${base}/units`, h),
+        request(`${base}/ranks`, h),
+        request(`${base}/awards`, h),
+      ]);
 
-    if (steamIds.length > 0) {
-      console.log(`Enriching ${steamIds.length} players via Steam API...`);
-      const summaries = await steamApi.getPlayerSummaries(steamIds);
-      
-      enrichedPlayers = state.players.map((player) => {
-        const pClean = cleanName(player.name);
-        let sid = player.raw?.steamid;
-        
-        if (!sid || !/^\d{17}$/.test(sid)) {
-          const rMatch = rconPlayers.find(rp => cleanName(rp.name) === pClean);
-          sid = rMatch?.steamId;
-
-          if (!sid) {
-            const ucMatch = ucProfiles.find(up => cleanName(up.alias) === pClean);
-            if (ucMatch) {
-              const discordId = Object.keys(reverseLinks).find(did => reverseLinks[did].toString() === ucMatch.id.toString());
-              sid = discordId ? supabaseLinks[discordId] : null;
-            }
-          }
+    // Fetch nested events for each campaign
+    const fullCampaigns = await Promise.all(
+      campaigns.map(async (cp) => {
+        try {
+          const events = await request(`${base}/campaigns/${cp.id}/events`, h);
+          return { ...cp, events };
+        } catch {
+          return { ...cp, events: [] };
         }
-        
-        const summary = summaries.find((s) => s.steamid === sid);
-        return {
-          name: player.name,
-          steamid: sid || null,
-          avatar: summary?.avatarfull || null,
-          profile_url: summary?.profileurl || null,
-          time: player.raw?.time || 0,
-        };
-      });
-    }
+      }),
+    );
 
     return {
-      current_players: state.players.length,
-      max_players: state.maxplayers,
-      server_name: state.name,
-      map: state.map,
-      status: 'ACTIVE',
-      players: enrichedPlayers,
+      campaigns: fullCampaigns,
+      standalone,
+      profiles,
+      units,
+      ranks,
+      awards,
     };
   } catch (e) {
-    console.warn('[SteamStats] Gamedig query failed, falling back to basic info:', e.message);
-    return {
-      current_players: 0,
-      max_players: 100,
-      server_name: 'UKSF Official | Milsim',
-      map: 'Chernarus',
-      status: 'OFFLINE',
-      players: [],
-    };
+    console.error('[UC_FETCH] Failed:', e.message);
+    return null;
   }
 }
 
-/**
- * Fetches historical activity via Battlemetrics API
- */
-async function fetchBattlemetricsStats() {
-  return {
-    rank: 420,
-    uptime: '99.9%',
-    activity_30d: [10, 15, 8, 12, 25, 30, 22],
-  };
-}
+async function fetchBM(range) {
+  if (!config.bmKey) return [];
+  const d = new Date();
+  if (range === 'month') d.setMonth(d.getMonth() - 1);
+  else if (range === 'week') d.setDate(d.getDate() - 7);
+  else d.setHours(d.getHours() - 24);
 
-/**
- * Fetches Discord roster data from Supabase
- */
-async function fetchDiscordRoster() {
+  const url = `https://api.battlemetrics.com/servers/${config.bmId}/player-count-history?start=${d.toISOString()}&stop=${new Date().toISOString()}`;
   try {
-    const { data, error } = await ucApi.supabase.from('personnel').select('*');
-    if (error) throw error;
-    return data || [];
-  } catch (error) {
-    console.warn('[ROSTER] Could not fetch Discord roster from Supabase:', error.message);
+    const res = await request(url, { Authorization: `Bearer ${config.bmKey}` });
+    return res.data || [];
+  } catch {
     return [];
   }
+}
+
+function compress(data) {
+  if (!data || !Array.isArray(data) || data.length === 0) return [];
+  const isS = (a, b) =>
+    a &&
+    b &&
+    a.attributes.value === b.attributes.value &&
+    a.attributes.max === b.attributes.max &&
+    a.attributes.min === b.attributes.min;
+  const result = [];
+  for (let i = 0; i < data.length; i++) {
+    if (
+      i === 0 ||
+      i === data.length - 1 ||
+      !isS(data[i], data[i - 1]) ||
+      !isS(data[i], data[i + 1])
+    ) {
+      result.push(data[i]);
+    }
+  }
+  return result;
 }
 
 async function main() {
+  console.log('[JSFC_FETCH] Initiating data sharding sequence...');
+  const staticDir = path.join(__dirname, '..', 'static');
+  const contentDir = path.join(__dirname, '..', 'content', 'campaigns');
+  if (!fs.existsSync(staticDir)) fs.mkdirSync(staticDir, { recursive: true });
+
+  const state = {
+    timestamp: Date.now(),
+    arma: null,
+    unitcommander: null,
+    status: 'STABLE',
+  };
+
   try {
-    // Fetch from Unit Commander
-    console.log('Fetching Unit Commander data...');
-    const ranks = await fetchUnitCommanderData('ranks');
-    const awards = await fetchUnitCommanderData('awards');
-    const campaigns = await fetchUnitCommanderData('campaigns');
-    const profiles = await fetchUnitCommanderData('profiles');
-    const units = await fetchUnitCommanderData('units');
-    const events = await fetchUnitCommanderData('events');
-
-    // Fetch from Discord/Supabase
-    console.log('Fetching Discord roster from Supabase...');
-    const discordRoster = await fetchDiscordRoster();
-
-    const steamData = await fetchSteamStats(profiles);
-    const battlemetricsData = await fetchBattlemetricsStats();
-
-    const dataDir = path.join(__dirname, '..', 'data');
-    if (!fs.existsSync(dataDir)) {
-      fs.mkdirSync(dataDir);
+    // 1. Arma 3 Server Query
+    try {
+      console.log(
+        `[ARMA_QUERY] Scanning ${config.serverIp}:${config.serverPort}...`,
+      );
+      const gamedigRes = await Gamedig.query({
+        type: 'arma3',
+        host: config.serverIp,
+        port: config.serverPort,
+      });
+      state.arma = {
+        name: gamedigRes.name,
+        map: gamedigRes.map,
+        players: gamedigRes.players.length,
+        maxPlayers: gamedigRes.maxplayers,
+        status: 'online',
+        manifest: gamedigRes.players.map((p) => ({
+          name: p.name,
+          ping: p.ping,
+        })),
+      };
+    } catch (e) {
+      console.warn('[ARMA_QUERY] Server unreachable.');
     }
 
-    // Output for general external consumption
-    fs.writeFileSync(
-      path.join(dataDir, 'external.json'),
-      JSON.stringify(
-        {
-          steam: steamData,
-          battlemetrics: battlemetricsData,
-          discord_roster: discordRoster,
-          unitcommander: {
-            ranks,
-            awards,
-            campaigns,
-            profiles,
-            units,
-            events,
-          },
-        },
-        null,
-        2,
-      ),
-    );
+    // 2. Unit Commander & Dynamic Content
+    const uc = await fetchUC();
+    if (uc) {
+      fs.writeFileSync(
+        path.join(staticDir, 'archives.json'),
+        JSON.stringify(uc, null, 2),
+      );
 
-    // Specific output for Steam Server Intelligence
-    fs.writeFileSync(
-      path.join(dataDir, 'server_stats.json'),
-      JSON.stringify(steamData, null, 2),
-    );
+      if (!fs.existsSync(contentDir))
+        fs.mkdirSync(contentDir, { recursive: true });
 
-    // HYDRATE LEGACY ROSTER.JSON
-    const rosterPath = path.join(dataDir, 'roster.json');
-    if (fs.existsSync(rosterPath)) {
-      console.log('Hydrating legacy roster.json...');
-      const legacyRoster = JSON.parse(fs.readFileSync(rosterPath, 'utf8'));
-      
-      legacyRoster.personnel = discordRoster.map(p => ({
-        id: p.discord_id,
-        username: p.username,
-        displayName: p.display_name,
-        rank: p.rank,
-        rankPriority: p.rank_priority,
-        callsign: p.callsign,
-        joinedAt: p.joined_at
-      }));
-      
-      legacyRoster.lastUpdated = new Date().toISOString();
-      fs.writeFileSync(rosterPath, JSON.stringify(legacyRoster, null, 2));
+      uc.campaigns.forEach((op) => {
+        const slug = op.campaignName
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
+        const campaignDir = path.join(contentDir, slug);
+        if (!fs.existsSync(campaignDir))
+          fs.mkdirSync(campaignDir, { recursive: true });
+
+        const filePath = path.join(campaignDir, `_index.md`);
+        const latestEvent = op.events?.length
+          ? [...op.events].sort(
+              (a, b) => new Date(b.date) - new Date(a.date),
+            )[0]
+          : null;
+        const activeLimit = new Date();
+        activeLimit.setDate(activeLimit.getDate() - 30);
+
+        let status = 'ARCHIVED';
+        if (
+          op.status === 'ACTIVE' ||
+          (latestEvent && new Date(latestEvent.date) > activeLimit)
+        )
+          status = 'ACTIVE';
+
+        const mdContent = `---
+title: "${op.campaignName}"
+date: "${op.created_at}"
+layout: "campaign"
+op_id: "TF-${op.id}"
+map: "${op.map || 'CLASSIFIED'}"
+status: "${status}"
+image: "${op.image ? op.image.path : ''}"
+---
+
+${op.brief || 'No tactical briefing recovered for this operation.'}
+`;
+        fs.writeFileSync(filePath, mdContent);
+      });
+
+      state.unitcommander = {
+        campaigns: uc.campaigns
+          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+          .slice(0, 3),
+        standalone: uc.standalone.slice(0, 5),
+      };
     }
 
-    console.log('Successfully fetched all external data.');
-  } catch (error) {
-    console.error('Error in main fetch script:', error.message);
-    process.exit(1);
+    // 3. Battlemetrics Telemetry
+    const telemetry = {
+      timestamp: Date.now(),
+      today: compress(await fetchBM('today')),
+      week: compress(await fetchBM('week')),
+    };
+    fs.writeFileSync(
+      path.join(staticDir, 'telemetry.json'),
+      JSON.stringify(telemetry, null, 2),
+    );
+
+    // 4. Main HUD State
+    fs.writeFileSync(
+      path.join(staticDir, 'intel.json'),
+      JSON.stringify(state, null, 2),
+    );
+
+    // 5. Compatibility / Legacy
+    const legacyDataDir = path.join(__dirname, '..', 'data');
+    if (fs.existsSync(legacyDataDir)) {
+      fs.writeFileSync(
+        path.join(legacyDataDir, 'external.json'),
+        JSON.stringify({ ...state, ...uc }, null, 2),
+      );
+    }
+
+    console.log('✓ All data shards synchronized successfully.');
+  } catch (e) {
+    console.error('X Sharding failed:', e);
   }
 }
 

@@ -1,0 +1,16 @@
+<div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="{{ .Get "maxlength" | default 200 }}">
+  <div class="govuk-form-group">
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--m" for="{{ .Get "id" | default "character-count" }}">
+        {{ .Get "label" | default "Operational Report Summary" }}
+      </label>
+    </h1>
+    <div id="{{ .Get "id" | default "character-count" }}-hint" class="govuk-hint">
+      {{ .Get "hint" | default "Do not include sensitive SIGINT data in this public-facing field." }}
+    </div>
+    <textarea class="govuk-textarea govuk-js-character-count" id="{{ .Get "id" | default "character-count" }}" name="{{ .Get "id" | default "character-count" }}" rows="{{ .Get "rows" | default 5 }}" aria-describedby="{{ .Get "id" | default "character-count" }}-info {{ .Get "id" | default "character-count" }}-hint"></textarea>
+  </div>
+  <div id="{{ .Get "id" | default "character-count" }}-info" class="govuk-hint govuk-character-count__message">
+    You can enter up to {{ .Get "maxlength" | default 200 }} characters
+  </div>
+</div>

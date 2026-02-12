@@ -2,3 +2,7 @@ themes/
 docs/
 assets/js/arbor.js
 data/external.json
+layouts/
+resources/
+node_modules/
+public/

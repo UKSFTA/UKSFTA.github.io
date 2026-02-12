@@ -1,4 +1,15 @@
-// MOD Brand Palette (Based on MOD.UK Design System)
+// UKSF Tactical Brand Palette (SIGINT / Command Aesthetics)
+$uksf-black: #050505;
+$uksf-charcoal: #121212;
+$uksf-dark-grey: #1a1a1a;
+$uksf-border-grey: #333333;
+
+$uksf-blue-primary: #0047AB;
+$uksf-blue-glow: #0066FF;
+$uksf-intel-green: #00FF9D;
+$uksf-army-red: #B00000;
+
+// MOD Brand Palette (Legacy/Reference)
 $moduk-brand-colour: #532a45; // Primary Brand Purple
 $moduk-dark-blue: #13284c;    // Royal Navy / SBS
 $moduk-dark-green: #153e35;   // Army / SAS
@@ -7,8 +18,8 @@ $moduk-bright-orange: #ff8200; // Warning/Alert
 $moduk-bright-green: #00ce7d;  // Success/Confirmed
 
 // Functional Mapping
-$brand-primary: $moduk-brand-colour;
+$brand-primary: $uksf-blue-primary;
 $brand-sbs: $moduk-dark-blue;
 $brand-sas: $moduk-dark-green;
 $status-warning: $moduk-bright-orange;
-$status-success: $moduk-bright-green;
+$status-success: $uksf-intel-green;

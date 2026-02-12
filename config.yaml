@@ -1,105 +1,102 @@
-# UKSF Joint Special Forces Portal - Master Configuration
-# Ref: https://gohugo.io/configuration/all/
+# UKSF Taskforce Alpha | Joint Force Command Portal
+# Master Implementation Authority (G6 Signal Regt)
 
-baseURL: "/" # Set to "/" for development; update to production URL upon deployment.
-title: "Joint Special Forces Portal"
+baseURL: "/"
+title: "UKSF Taskforce Alpha | Joint Force Command"
 languageCode: "en-gb"
-theme: "govukhugo"
-publishDir: "docs"
+# Integrated theme directly into root layouts/assets
+# theme: ["uksf-mod-theme"]
 
 # High-level configuration
 canonifyURLs: true
 enableEmoji: true
-enableGitInfo: false # Temporarily disabled until first commit
+enableGitInfo: false
 enableRobotsTXT: true
-disableKinds: ["taxonomy", "term"] # Streamlined for doctrinal documentation
+disableKinds: ["taxonomy", "term"]
 
-# Build configuration
-minify:
-  disableXML: false
-  minifyOutput: true
+module:
+  hugoVersion:
+    extended: true
+    min: "0.120.0"
 
-# Sitemap configuration
-sitemap:
-  changefreq: "weekly"
-  filename: "sitemap.xml"
-  priority: 0.5
-
-# Permalinks (Professional, predictable structures)
-permalinks:
-  sas: "/sas/:title/"
-  sbs: "/sbs/:title/"
-  srr: "/srr/:title/"
-  rsis: "/rsis/:section/:title/" # Support for hierarchical intelligence reports
-
-# Content configuration
-contentDir: "content"
-dataDir: "data"
-layoutDir: "layouts"
-staticDir: "static"
-archetypeDir: "archetypes"
-
-# Markup configuration (Essential for govukhugo and Obsidian Wikilinks)
 markup:
   goldmark:
     renderer:
-      unsafe: true # Required for raw HTML in Design System components
+      unsafe: true
     parser:
-      attribute:
-        block: true
-        title: true
+      attribute: true
   highlight:
-    codeFences: true
-    guessSyntax: true
-    lineNos: true
-    style: "monokai" # Technical SIGINT aesthetic
-  tableOfContents:
-    endLevel: 3
-    ordered: false
-    startLevel: 2
+    style: "monokai"
 
-# Privacy settings (Strict "Zero Trust" compliance)
-privacy:
-  disqus:
-    disable: true
-  googleAnalytics:
-    disable: true
-  instagram:
-    disable: true
-  x:
-    disable: true
-  vimeo:
-    disable: true
-  youtube:
-    disable: true
-
-# Imaging (Optimised for unit patches and intelligence imagery)
-imaging:
-  anchor: "smart"
-  quality: 90
-  resampleFilter: "Lanczos"
-
-# Unit Parameters (UKSF Doctrinal Data)
+# ==========================================
+# GLOBAL TACTICAL PARAMETERS
+# ==========================================
 params:
-  govuk: false
+  # G1 - PERSONNEL & ADMINISTRATION
+  builtby: "Taskforce Command"
+  builtbyurl: "https://discord.gg/2jNqa3zPRH"
+  recruitment_status: "OPEN_SELECTION"
+  govuk: true 
+  phase: "alpha"
+  
+  # G2 - INTELLIGENCE & SECURITY
+  classification: "OFFICIAL_SENSITIVE"
+  security_clearance: "STRATEGIC_LEVEL_ALPHA"
+  
+  # G3 - OPERATIONS & READINESS
+  op_readiness: "OP_READY"
+  
+  # TECHNICAL INTERFACE SETTINGS
+  industrial_gothic_enabled: true
+  feedbackurl: "#"
+
+  # Legacy/Compatibility Parameters
   logotext: "UKSF"
   product: "Joint Special Forces Portal"
-  phase: "beta"
-  feedbackurl: "https://your.site/feedback/"
-  
-  # Thematic data from 18 Sig / UKSF Directorate
   motto: "Colloquendo Imperamus"
   directorate: "United Kingdom Special Forces"
-  
-  # Integration Placeholders
-  search_enabled: true
-  analytics_enabled: false
 
-# Security verification
-security:
-  funcs:
-    getenv:
-      - ^HUGO_
-      - ^MODUK_
-  httpCache:
-    maxAge: "3600s"
+  unitcommander:
+    enabled: true
+    community_ref: "722"
+
+  intelligence:
+    # G2 ASSET MAPPING
+    map_path: "icons/UKSF-MAP.png"
+    intel_map_path: "icons/intelligence-map.png"
+    registry_node: "UK JSFC 01"
+    g2_uplink_node: "PRIMARY_ALPHA"
+    signal_net: "RSIS_GLOBAL"
+    sys_status: "STABLE"
+    node_ref: "JSFC-01"
+
+  discord:
+    enabled: true
+    server_id: "1321236261553573928"
+
+# ==========================================
+# MENUS
+# ==========================================
+menu:
+  main:
+    - name: "SAS"
+      url: "/sas/"
+      weight: 10
+    - name: "SBS"
+      url: "/sbs/"
+      weight: 20
+    - name: "ASOB"
+      url: "/asob/"
+      weight: 25
+    - name: "SFSG"
+      url: "/sfsg/"
+      weight: 40
+    - name: "JSFAW"
+      url: "/jsfaw/"
+      weight: 50
+    - name: "RAMC"
+      url: "/ramc/"
+      weight: 55
+    - name: "Registry"
+      url: "/rsis/"
+      weight: 70

@@ -1,32 +1,44 @@
 {
   "name": "uksfta-site",
   "version": "1.0.0",
-  "description": "",
+  "description": "UKSF Taskforce Alpha Portal",
   "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "type": "commonjs",
   "scripts": {
-    "lint": "biome lint .",
-    "format": "biome format --write .",
     "fetch-data": "node scripts/fetch-external-data.js",
-    "dev": "hugo server --disableFastRender",
-    "build": "npm run fetch-data && hugo --gc --minify",
+    "start": "hugo server --disableFastRender -D",
+    "dev": "concurrently -n \"HUGO,INTEL,RCON,REGISTRY\" -c \"blue,yellow,red,green\" \"npm run start\" \"npm run watch:intel\" \"npm run service:rcon\" \"npm run service:registry\"",
+    "build": "npm run fetch-data && node scripts/generate-stats.js && hugo --minify",
+    "watch:intel": "node -e \"setInterval(() => { try { require('./scripts/fetch-external-data.js') } catch(e){} }, 60000);\"",
+    "service:rcon": "node themes/uksf-mod-theme/services/rcon-bridge.js",
+    "service:registry": "node themes/uksf-mod-theme/services/registry-service.js",
+    "lint": "biome check .",
+    "format": "biome format --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
     "@biomejs/biome": "^2.3.14",
-    "axios": "^1.13.4"
+    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/postcss": "^4.1.18",
+    "autoprefixer": "^10.4.24",
+    "concurrently": "^9.2.1",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.18"
   },
   "dependencies": {
+    "@defencedigital/css-framework": "^2.80.3",
     "@moduk/frontend": "^2.0.31",
+    "@playwright/test": "^1.58.2",
     "@supabase/supabase-js": "^2.95.3",
+    "@tailwindcss/typography": "^0.5.19",
+    "axios": "^1.13.5",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
-    "gamedig": "^5.3.2",
-    "milsymbol": "^3.0.3"
+    "express": "^4.21.2",
+    "gamedig": "^5.2.0",
+    "govuk-frontend": "^5.14.0",
+    "milsymbol": "^3.0.3",
+    "multer": "^2.0.2"
   }
 }

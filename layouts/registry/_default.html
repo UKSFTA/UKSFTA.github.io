@@ -1,0 +1,733 @@
+{{ define "main" }}
+<div class="flex flex-col h-screen overflow-hidden bg-tactical-black text-neutral-400 font-inter pt-[112px]">
+    <!-- STATUS BAR (Top) -->
+    <header class="h-12 border-b border-white/5 bg-white/[0.01] flex items-center justify-between px-8 text-[10px] uppercase tracking-widest shrink-0 select-none font-mono">
+        <div class="flex items-center gap-8">
+            <div class="flex items-center gap-4">
+                <span class="w-2 h-2 bg-uksf-gold rounded-full animate-pulse shadow-[0_0_8px_rgba(179,153,93,0.4)]"></span>
+                <span class="text-white font-black tracking-[0.2em]">RSIS_VAULT // v6.2_STABLE</span>
+            </div>
+            <div class="h-4 w-px bg-white/10"></div>
+            <span class="text-neutral-600 font-black ">SECURE_NODE: <span class="text-neutral-400" id="node-id-display">UK_JSFC_ALPHA_01</span></span>
+        </div>
+        <div class="flex items-center gap-8">
+            <div class="flex items-center gap-6 text-neutral-500 font-black">
+                <span id="sync-status" class="text-green-900 flex items-center gap-2">
+                    <span class="w-1 h-1 bg-green-900 rounded-full"></span>
+                    SYNC_READY
+                </span>
+                <span id="autosave-status" class="text-neutral-800 flex items-center gap-2">
+                    <span class="w-1 h-1 bg-neutral-800 rounded-full"></span>
+                    AUTOSAVE_IDLE
+                </span>
+            </div>
+            <div class="h-4 w-px bg-white/10"></div>
+            <span class="text-white font-black tracking-widest" id="zulu-time">00:00:00Z</span>
+        </div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden">
+        <!-- SIDEBAR: RECON_EXPLORER -->
+        <aside class="w-80 border-r border-white/5 flex flex-col shrink-0 bg-black/40 backdrop-blur-xl">
+            <!-- Sidebar Header -->
+            <div class="p-8 border-b border-white/5 space-y-6">
+                <div class="flex justify-between items-center">
+                    <span class="text-[10px] font-black uppercase text-uksf-gold tracking-[0.4em] font-mono ">Operational_Grid</span>
+                    <div class="flex gap-3">
+                        <button onclick="window.openIngestionHub()" class="p-2 hover:bg-uksf-gold/10 border border-white/5 hover:border-uksf-gold/30 text-uksf-gold transition-all" title="Field Uplink (Uploads)">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                        </button>
+                        <button onclick="window.toggleHistoryDrawer()" class="p-2 hover:bg-white/5 border border-white/5 text-neutral-600 hover:text-white transition-all" title="Recent Activity">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <input type="text" placeholder="FILTER_RECORDS..." class="w-full bg-white/5 border border-white/10 p-3 text-[9px] uppercase tracking-[0.3em] text-white font-mono focus:outline-none focus:border-uksf-gold/30 focus:bg-white/[0.08] transition-all">
+                </div>
+            </div>
+            
+            <!-- File Tree -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-2">
+                {{ with .Site.GetPage "section" "campaigns" }}
+                {{ range (sort .Sections "Date" "desc") }}
+                {{ $campaign := . }}
+                <div class="campaign-node mb-4">
+                    <div onclick="toggleDrawer(this); updateCampaignContext('{{ $campaign.Title }}', '{{ $campaign.Params.image }}', '{{ .Content | plainify | htmlUnescape }}')" 
+                         class="px-4 py-3 flex items-center justify-between hover:bg-white/5 cursor-pointer text-neutral-500 hover:text-white group transition-all border border-transparent hover:border-white/5 rounded-sm" 
+                         data-type="campaign" 
+                         data-id="{{ $campaign.File.ContentBaseName }}">
+                        <div class="flex items-center gap-4">
+                            <svg class="w-4 h-4 text-neutral-700 group-hover:text-uksf-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                            <span class="font-black text-[11px] truncate uppercase tracking-tighter font-industrial">{{ $campaign.Title }}</span>
+                        </div>
+                        <svg class="w-3 h-3 text-neutral-800 transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+                    </div>
+
+                    <div class="drawer-content hidden ml-6 mt-2 space-y-1 border-l border-white/10 pl-4">
+                        {{ range (sort $campaign.Sections "Date" "desc") }}
+                        {{ $event := . }}
+                        <div class="event-node">
+                            <div onclick="toggleDrawer(this); selectEvent('{{ $campaign.File.ContentBaseName }}', '{{ $event.File.ContentBaseName }}', '{{ $event.File.Dir }}')" 
+                                 class="px-4 py-2 flex items-center justify-between hover:bg-white/5 cursor-pointer text-neutral-600 hover:text-neutral-300 group/event transition-all rounded-sm" 
+                                 data-type="event">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-1 h-1 rounded-full bg-neutral-800 group-hover/event:bg-white transition-colors"></div>
+                                    <span class="text-[10px] font-black uppercase tracking-tight">{{ $event.Title }}</span>
+                                </div>
+                                <svg class="w-2.5 h-2.5 text-neutral-800 transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+                            </div>
+                            
+                            <div class="drawer-content hidden ml-4 space-y-px border-l border-white/5 pl-4 py-2">
+                                {{ range (sort $event.RegularPages "Date" "desc") }}
+                                <div onclick="loadFile('{{ .File.Path }}', '{{ .Title }}', this)" class="file-item px-4 py-3 hover:bg-white/5 cursor-pointer flex flex-col gap-1 transition-all rounded-sm border-l-2 border-transparent" data-path="{{ .File.Path }}">
+                                    <span class="text-[10px] font-black uppercase tracking-tight text-neutral-500 truncate group-hover:text-white">{{ .Title }}</span>
+                                    <span class="text-[7px] font-mono text-neutral-700 uppercase font-black">{{ .Date.Format "021504Z JAN 06" }}</span>
+                                </div>
+                                {{ end }}
+                                <button onclick="prepareNewFragment('{{ $event.File.Dir }}')" class="w-full text-left px-4 py-3 text-[8px] font-mono text-neutral-700 hover:text-uksf-gold  uppercase transition-colors tracking-widest">+ NEW_FRAGMENT</button>
+                            </div>
+                        </div>
+                        {{ end }}
+                        <button onclick="prepareNewEvent('{{ $campaign.File.Dir }}')" class="w-full text-left px-4 py-3 text-[8px] font-mono text-uksf-gold/30 hover:text-uksf-gold  uppercase transition-colors tracking-widest">+ DEPLOY_EVENT_NODE</button>
+                    </div>
+                </div>
+                {{ end }}
+                {{ end }}
+            </div>
+        </aside>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="flex-1 flex flex-col bg-[#0d0e12]">
+            <!-- Breadcrumbs / Tab -->
+            <div class="h-12 flex items-center bg-black/40 border-b border-white/5 px-6 overflow-x-auto scrollbar-hide">
+                <div class="h-full px-8 flex items-center gap-4 bg-[#0d0e12] border-x border-white/5 text-[10px] text-white cursor-default border-t-2 border-t-uksf-gold uppercase tracking-[0.2em] font-black">
+                    <svg class="w-4 h-4 text-uksf-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span id="active-file-title" class="font-industrial text-sm tracking-widest">AWAITING_SELECTION</span>
+                </div>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="h-14 border-b border-white/5 flex items-center justify-between px-8 bg-black/20">
+                <div class="flex items-center gap-6">
+                    <div id="template-selector-container" class="hidden flex items-center gap-6">
+                        <select id="doc-type-selector" class="bg-white/5 border border-white/10 rounded-sm text-[9px] uppercase tracking-[0.3em] font-black text-neutral-600 focus:text-white px-4 py-2 outline-none cursor-pointer hover:border-white/20 transition-all font-mono">
+                            <option value="">-- INJECT_TEMPLATE --</option>
+                            <option value="conop">CONOP_SPEC</option>
+                            <option value="sitrep">SITREP_FRAG</option>
+                            <option value="aar">AAR_RETRO</option>
+                            <option value="intel">INTSUM_BRIEF</option>
+                        </select>
+                        <div class="h-6 w-px bg-white/10"></div>
+                        <input type="file" id="file-upload-input" class="hidden" onchange="handleFileUpload(this)">
+                        <button onclick="document.getElementById('file-upload-input').click()" class="p-2.5 hover:bg-white/5 border border-white/5 text-neutral-600 hover:text-white transition-all" title="Upload Attachment">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6 font-mono">
+                    <span id="char-count" class="text-[8px] font-black text-neutral-800 uppercase tracking-widest">0000 CHARS</span>
+                    <button id="sync-btn" onclick="saveFragment()" class="hidden bg-white hover:bg-uksf-gold text-moduk-secondarylack hover:text-white font-black px-8 py-2.5 uppercase text-[10px] tracking-[0.3em] transition-all shadow-[0_0_20px_rgba(179,153,93,0.2)] border border-transparent">Sync_to_Node // →</button>
+                </div>
+            </div>
+
+            <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden relative">
+                <!-- Editor Pane -->
+                <div class="relative border-r border-white/5 flex flex-col h-full overflow-hidden bg-black/20">
+                    <textarea id="vault-editor" class="flex-1 bg-transparent p-12 lg:p-16 outline-none resize-none font-mono text-sm text-neutral-500 leading-loose selection:bg-uksf-gold selection:text-moduk-secondarylack custom-scrollbar" spellcheck="false" placeholder="// INITIALIZE TACTICAL DATA ENTRY..."></textarea>
+                </div>
+                
+                <!-- Info Pane (Preview & Campaign Context) -->
+                <div class="flex flex-col bg-black/40 overflow-y-auto shrink-0 h-full custom-scrollbar">
+                    <!-- Campaign Context -->
+                    <div id="campaign-context" class="border-b border-white/5 p-16 space-y-10 hidden shrink-0 bg-white/[0.01]">
+                        <div class="flex flex-col items-center text-center space-y-8">
+                            <div class="w-72 h-72 border border-white/10 bg-neutral-950 overflow-hidden relative group shadow-2xl">
+                                <img id="context-img" src="" class="w-full h-full object-cover grayscale opacity-20 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000">
+                                <div class="absolute inset-0 bg-gradient-to-t from-tactical-black via-transparent to-transparent"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <span class="text-[10px] font-black text-uksf-gold uppercase tracking-[0.5em] block font-mono ">// THEATER_CONTEXT</span>
+                                <h3 id="context-title" class="text-4xl font-black text-white uppercase tracking-tighter font-industrial m-0">OP_NAME</h3>
+                            </div>
+                        </div>
+                        <p id="context-moduk-secondaryrief" class="text-sm text-neutral-500 leading-relaxed font-mono  text-center max-w-xl mx-auto">Awaiting tactical briefing synchronization...</p>
+                    </div>
+
+                    <!-- Live Preview -->
+                    <div id="vault-preview" class="p-16 prose prose-invert prose-xl max-w-none 
+                                                prose-headings:uppercase prose-headings:font-black prose-headings:tracking-tighter prose-headings:text-white prose-headings:font-industrial
+                                                prose-headings:border-b prose-headings:border-white/5 prose-headings:pb-6 prose-headings:mb-10
+                                                prose-p:text-neutral-400 prose-p:font-light prose-p:leading-relaxed prose-p:mb-10
+                                                prose-strong:text-white prose-strong:font-black
+                                                prose-hr:border-white/5">
+                        <div class="flex flex-col items-center justify-center py-32 opacity-10 grayscale">
+                            {{ $logo := resources.Get "icons/TFA.png" }}
+                            <img src="{{ $logo.RelPermalink }}" class="h-48">
+                            <span class="text-[10px] font-mono tracking-[0.6em] uppercase font-black">Awaiting_Data_Input</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+             <div class="h-10 border-t border-white/5 flex items-center justify-between px-8 text-[8px] text-neutral-700 bg-black/60 select-none font-mono uppercase tracking-[0.4em] font-black">
+                <div class="flex gap-12">
+                    <span id="cursor-pos">Ln 1, Col 1</span>
+                    <span id="file-status" class="text-neutral-800">Vault_Idle</span>
+                </div>
+                <div>RSIS_Markdown_Engine_v6.2</div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Modals -->
+<div id="vault-tutorial" class="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-xl hidden flex items-center justify-center p-8">
+    <div class="max-w-3xl w-full bg-tactical-black border border-white/10 p-16 space-y-12 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-uksf-gold"></div>
+        <div class="space-y-4 text-center">
+            <span class="text-[10px] font-black text-uksf-gold uppercase tracking-[0.5em] font-mono ">Node_Orientation_Protocol</span>
+            <h2 class="text-5xl font-black text-white uppercase tracking-tighter font-industrial m-0">RSIS Vault Protocols</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 py-6">
+            <div class="space-y-4">
+                <h4 class="text-sm font-black text-white uppercase tracking-widest border-l-2 border-uksf-gold pl-4 font-mono">1. Workspace</h4>
+                <p class="text-[11px] text-neutral-500 leading-loose uppercase tracking-widest font-light">Select an event to enable tactical templates and attachments. The parent campaign context will remain visible.</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-sm font-black text-white uppercase tracking-widest border-l-2 border-white/10 pl-4 font-mono">2. Intelligence</h4>
+                <p class="text-[11px] text-neutral-500 leading-loose uppercase tracking-widest font-light">Templates are only available when an event node is active to prevent unmapped data generation.</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-sm font-black text-white uppercase tracking-widest border-l-2 border-white/10 pl-4 font-mono">3. Media_Assets</h4>
+                <p class="text-[11px] text-neutral-500 leading-loose uppercase tracking-widest font-light">Use the uplink tool to attach theater imagery or SIGINT captures directly to the active node.</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-sm font-black text-white uppercase tracking-widest border-l-2 border-white/10 pl-4 font-mono">4. Archival</h4>
+                <p class="text-[11px] text-neutral-500 leading-loose uppercase tracking-widest font-light">Auto-save triggers every 5 minutes. Direct 'Sync to Node' is required for permanent record archival.</p>
+            </div>
+        </div>
+        <button onclick="dismissTutorial()" class="w-full bg-white hover:bg-uksf-gold text-moduk-secondarylack hover:text-white font-black py-6 uppercase text-xs tracking-[0.4em] transition-all duration-300">Acknowledge Protocols</button>
+    </div>
+</div>
+
+<div id="overwrite-modal" class="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-8">
+    <div class="max-w-md w-full bg-tactical-black border border-uksf-red/20 p-12 space-y-10 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-uksf-red animate-pulse"></div>
+        <div class="space-y-4 text-center">
+            <span class="text-[10px] font-black text-uksf-red uppercase tracking-[0.5em] font-mono ">Security_Warning</span>
+            <h3 class="text-3xl font-black text-white uppercase tracking-tighter font-industrial m-0">Overwrite Data?</h3>
+            <p class="text-[11px] text-neutral-500 uppercase leading-loose font-mono tracking-widest font-black ">Purge current fragment and inject tactical template? Manual changes will be lost permanently.</p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <button onclick="confirmOverwrite()" class="w-full bg-uksf-red text-white font-black py-4 uppercase text-[10px] tracking-[0.3em] hover:bg-red-500 transition-all shadow-xl shadow-red-900/20">Confirm_Overwrite // →</button>
+            <button onclick="cancelOverwrite()" class="w-full bg-white/5 text-neutral-600 font-black py-4 uppercase text-[10px] tracking-[0.3em] hover:bg-white/10 hover:text-white transition-all">Abort_Operation</button>
+        </div>
+    </div>
+</div>
+
+<div id="activity-drawer" class="fixed top-0 right-0 h-full w-96 z-[8000] bg-tactical-black/95 backdrop-blur-2xl border-l border-white/10 translate-x-full transition-transform duration-500 flex flex-col shadow-2xl">
+    <div class="p-8 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
+        <div class="flex flex-col gap-1">
+            <span class="text-[10px] font-black text-white uppercase tracking-[0.3em] font-industrial">Digital_Audit</span>
+            <span class="text-[8px] font-mono text-neutral-600 uppercase tracking-widest font-black ">RECENT_ACTIVITY</span>
+        </div>
+        <button onclick="window.toggleHistoryDrawer()" class="text-neutral-600 hover:text-white transition-colors text-xl">✕</button>
+    </div>
+    <div id="activity-list" class="flex-1 overflow-y-auto custom-scrollbar p-8 space-y-3 font-mono text-[9px]">
+        <div class="p-4 bg-white/[0.01] border border-white/5 text-neutral-800 text-center  uppercase tracking-widest">No activity logged.</div>
+    </div>
+</div>
+
+<!-- INGESTION HUB MODAL -->
+<div id="ingestion-hub" class="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-2xl hidden flex items-center justify-center p-8">
+    <div class="max-w-6xl w-full h-[85vh] flex flex-col bg-tactical-black border border-white/10 shadow-2xl overflow-hidden rounded-sm relative">
+        <div class="absolute top-0 left-0 w-full h-1 bg-uksf-gold/20"></div>
+        <!-- Hub Header -->
+        <div class="p-8 border-b border-white/10 flex justify-between items-center bg-white/[0.01]">
+            <div class="flex items-center gap-6">
+                <div class="p-3 bg-uksf-gold/5 border border-uksf-gold/10 text-uksf-gold">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-black text-white uppercase tracking-tighter font-industrial m-0">Field Ingestion Hub</h2>
+                    <p class="text-[9px] font-mono text-neutral-600 uppercase tracking-[0.4em] font-black  mt-1">Awaiting Tactical Data Uplink // SIGINT_SYNC_v4.2</p>
+                </div>
+            </div>
+            <button onclick="window.closeIngestionHub()" class="text-neutral-600 hover:text-white transition-colors text-xl">✕</button>
+        </div>
+
+        <div class="flex-1 flex overflow-hidden">
+            <!-- 1. Queue Sidebar -->
+            <div class="w-80 border-r border-white/10 flex flex-col shrink-0 bg-black/20">
+                <div class="p-6 border-b border-white/5 flex items-center justify-between">
+                    <span class="text-[9px] font-black text-neutral-700 uppercase tracking-widest font-mono">Upload_Queue</span>
+                    <span class="w-1.5 h-1.5 bg-neutral-800 rounded-full"></span>
+                </div>
+                <div id="ingestion-queue" class="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-2">
+                    <div class="p-12 text-center space-y-6 opacity-10 grayscale"><svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg><span class="text-[9px] font-mono block tracking-[0.4em] uppercase">Queue_Empty</span></div>
+                </div>
+                <div class="p-6 border-t border-white/5 bg-white/[0.01]">
+                    <input type="file" id="bulk-upload-input" class="hidden" multiple onchange="window.handleBulkUpload(this)">
+                    <button onclick="document.getElementById('bulk-upload-input').click()" class="w-full bg-white hover:bg-uksf-gold text-moduk-secondarylack hover:text-white font-black py-4 uppercase text-[10px] tracking-[0.3em] transition-all duration-300">↑ BATCH_UPLINK</button>
+                </div>
+            </div>
+
+            <!-- 2. Preview & Classification -->
+            <div class="flex-1 flex flex-col bg-[#0d0e12]">
+                <div id="ingestion-editor" class="flex-1 flex overflow-hidden hidden">
+                    <!-- Preview Pane -->
+                    <div class="flex-1 border-r border-white/5 bg-black/40 flex items-center justify-center p-12 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-grid-white opacity-[0.01] pointer-events-none"></div>
+                        <div id="ingestion-preview-content" class="max-w-full max-h-full flex items-center justify-center overflow-auto custom-scrollbar">
+                            <!-- Image or MD preview here -->
+                        </div>
+                    </div>
+
+                    <!-- Classification Form -->
+                    <div class="w-96 p-10 space-y-10 overflow-y-auto custom-scrollbar bg-tactical-black/40">
+                        <div class="space-y-3">
+                            <span class="text-[10px] font-black text-uksf-gold uppercase tracking-[0.5em] block font-mono ">// CLASSIFICATION</span>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tighter font-industrial m-0">Tactical Context</h3>
+                        </div>
+
+                        <div class="space-y-8 font-mono">
+                            <div class="space-y-3">
+                                <label class="text-[8px] text-neutral-700 uppercase tracking-widest font-black border-l border-white/10 pl-3 block">Record_Type</label>
+                                <select id="ingest-type" class="w-full bg-white/5 border border-white/10 p-3 text-[10px] text-white outline-none focus:border-uksf-gold/50 transition-all">
+                                    <option value="DOC">GENERIC_DOCUMENT</option>
+                                    <option value="CONOP">CONOP_SPECIFICATION</option>
+                                    <option value="SITREP">SITUATION_REPORT</option>
+                                    <option value="AAR">AFTER_ACTION_REVIEW</option>
+                                    <option value="INTEL">INTELLIGENCE_FILE</option>
+                                    <option value="PHOTO">TARGET_IMAGERY</option>
+                                    <option value="MAP">AO_CHART</option>
+                                </select>
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="text-[8px] text-neutral-700 uppercase tracking-widest font-black border-l border-white/10 pl-3 block">Parent_Campaign</label>
+                                <select id="ingest-campaign" class="w-full bg-white/5 border border-white/10 p-3 text-[10px] text-white outline-none focus:border-uksf-gold/50 transition-all" onchange="window.updateIngestEvents(this.value)">
+                                    <option value="">-- SELECT_CAMPAIGN --</option>
+                                    {{ with .Site.GetPage "section" "campaigns" }}
+                                    {{ range (sort .Sections "Date" "desc") }}
+                                    <option value="{{ .File.ContentBaseName }}">{{ .Title }}</option>
+                                    {{ end }}
+                                    {{ end }}
+                                </select>
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="text-[8px] text-neutral-700 uppercase tracking-widest font-black border-l border-white/10 pl-3 block">Event_Node</label>
+                                <select id="ingest-event" class="w-full bg-white/5 border border-white/10 p-3 text-[10px] text-white outline-none focus:border-uksf-gold/50 transition-all">
+                                    <option value="">-- SELECT_EVENT --</option>
+                                </select>
+                            </div>
+
+                            <div class="space-y-3 pt-4">
+                                <label class="text-[8px] text-neutral-700 uppercase tracking-widest font-black border-l border-white/10 pl-3 block">Display_Title (Optional)</label>
+                                <input type="text" id="ingest-title" class="w-full bg-white/5 border border-white/10 p-3 text-[10px] text-white outline-none focus:border-uksf-gold/50 transition-all uppercase tracking-widest" placeholder="AUTO_FROM_FILENAME">
+                            </div>
+                        </div>
+
+                        <div class="pt-10 border-t border-white/5">
+                            <button onclick="window.finalizeIngestion()" class="w-full bg-uksf-gold text-moduk-secondarylack font-black py-5 uppercase text-[10px] tracking-[0.3em] hover:bg-white transition-all duration-300 shadow-2xl">Commit_to_Registry // →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty State -->
+                <div id="ingestion-empty" class="flex-1 flex flex-col items-center justify-center space-y-8 opacity-10 grayscale">
+                    {{ $logo := resources.Get "icons/TFA.png" }}
+                    <img src="{{ $logo.RelPermalink }}" class="h-48">
+                    <span class="text-[10px] font-mono tracking-[0.6em] uppercase font-black">Awaiting_Queue_Processing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    let currentFilePath = null;
+    let currentEventDir = null;
+    let isSaving = false;
+    let isModified = false;
+    let lastSavedContent = "";
+
+    function updateZuluTime() {
+        const now = new Date();
+        document.getElementById('zulu-time').innerText = now.toISOString().split('T')[1].split('.')[0] + 'Z';
+    }
+    setInterval(updateZuluTime, 1000);
+    updateZuluTime();
+
+    if (!localStorage.getItem('uksfta_vault_tutorial_seen')) {
+        document.getElementById('vault-tutorial').classList.remove('hidden');
+    }
+
+    window.dismissTutorial = () => {
+        localStorage.setItem('uksfta_vault_tutorial_seen', 'true');
+        document.getElementById('vault-tutorial').classList.add('hidden');
+        showToast('ORIENTATION_COMPLETE');
+    };
+
+    window.toggleHistoryDrawer = () => {
+        document.getElementById('activity-drawer').classList.toggle('translate-x-full');
+    };
+
+    function logActivity(msg, type = 'info') {
+        const list = document.getElementById('activity-list');
+        if (list.querySelector('.')) list.innerHTML = '';
+        const item = document.createElement('div');
+        item.className = 'p-4 bg-white/[0.01] border border-white/5 rounded-sm flex flex-col gap-2 font-mono';
+        item.innerHTML = `<div class="flex justify-between items-center"><span class="${type === 'success' ? 'text-green-900' : 'text-neutral-600'} font-black uppercase tracking-widest">${msg}</span><span class="text-[7px] text-neutral-800 font-black">${new Date().toLocaleTimeString()}</span></div>`;
+        list.prepend(item);
+    }
+
+    function toggleDrawer(el) {
+        const drawer = el.nextElementSibling;
+        const arrow = el.querySelector('.arrow-icon');
+        if (drawer && drawer.classList.contains('drawer-content')) {
+            drawer.classList.toggle('hidden');
+            const isOpen = !drawer.classList.contains('hidden');
+            if (arrow) arrow.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
+            
+            if (el.getAttribute('data-type') === 'campaign') {
+                updateCampaignContext(el.getAttribute('data-id'), el.getAttribute('data-img'), el.getAttribute('data-brief'));
+            }
+        }
+    }
+
+    function updateCampaignContext(title, img, brief) {
+        const context = document.getElementById('campaign-context');
+        context.classList.remove('hidden');
+        document.getElementById('context-title').innerText = title.toUpperCase();
+        document.getElementById('context-img').src = img;
+        document.getElementById('context-moduk-secondaryrief').innerText = brief;
+    }
+
+    function selectEvent(campaignId, eventId, dir) {
+        currentEventDir = dir;
+        document.getElementById('template-selector-container').classList.remove('hidden');
+        document.getElementById('sync-btn').classList.remove('hidden');
+        logActivity(`Target: ${eventId}`);
+    }
+
+    const editor = document.getElementById('vault-editor');
+    const preview = document.getElementById('vault-preview');
+    const charCountEl = document.getElementById('char-count');
+
+    editor.addEventListener('input', () => {
+        const content = editor.value;
+        preview.innerHTML = marked.parse(content);
+        charCountEl.innerText = `${content.length.toString().padStart(4, '0')} CHARS`;
+        document.getElementById('file-status').innerText = 'DATA_MODIFIED*';
+        document.getElementById('file-status').className = 'text-uksf-red animate-pulse';
+        isModified = true;
+        
+        if (currentFilePath) {
+            localStorage.setItem(`draft_${currentFilePath}`, content);
+        }
+    });
+
+    async function loadFile(path, title, el) {
+        if (isSaving) return;
+        try {
+            document.getElementById('file-status').innerText = 'FETCHING_RECORD...';
+            document.getElementById('file-status').className = 'text-neutral-700';
+            
+            const draft = localStorage.getItem(`draft_${path}`);
+            const res = await fetch(`/api/file?path=${encodeURIComponent(path)}`);
+            
+            if (res.ok) {
+                const data = await res.json();
+                
+                if (draft && draft !== data.content) {
+                    if (confirm("LOCAL DRAFT DETECTED. RESTORE UNSAVED CHANGES?")) {
+                        editor.value = draft;
+                        isModified = true;
+                    } else {
+                        editor.value = data.content;
+                        isModified = false;
+                    }
+                } else {
+                    editor.value = data.content;
+                    isModified = false;
+                }
+
+                lastSavedContent = data.content;
+                currentFilePath = path;
+                document.getElementById('active-file-title').innerText = title.toUpperCase();
+                preview.innerHTML = marked.parse(editor.value);
+                document.querySelectorAll('.file-item').forEach(f => f.classList.remove('bg-white/10', 'border-uksf-gold', 'text-white'));
+                el.classList.add('bg-white/10', 'border-uksf-gold', 'text-white');
+                document.getElementById('file-status').innerText = isModified ? 'DRAFT_LOADED' : 'RECORD_SYNCED';
+                document.getElementById('file-status').className = isModified ? 'text-uksf-gold' : 'text-green-900';
+                logActivity(`Loaded: ${title}`);
+                document.getElementById('template-selector-container').classList.remove('hidden');
+                document.getElementById('sync-btn').classList.remove('hidden');
+            }
+        } catch (e) { showToast('LOAD_FAILURE', 'danger'); }
+    }
+
+    async function saveFragment(isAuto = false) {
+        if (!currentFilePath || isSaving || (isAuto && !isModified)) return;
+        isSaving = !isAuto;
+        if (!isAuto) document.getElementById('sync-btn').innerText = "UPLOADING...";
+
+        try {
+            const res = await fetch('/api/file', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ path: currentFilePath, content: editor.value })
+            });
+            if (res.ok) {
+                lastSavedContent = editor.value;
+                isModified = false;
+                localStorage.removeItem(`draft_${currentFilePath}`);
+                
+                if (!isAuto) {
+                    document.getElementById('sync-btn').innerText = "SYNC_SUCCESS";
+                    setTimeout(() => document.getElementById('sync-btn').innerText = "Sync_to_Node // →", 2000);
+                    showToast('NODE_SYNC_COMPLETE');
+                }
+                document.getElementById('file-status').innerText = 'RECORD_SYNCED';
+                document.getElementById('file-status').className = 'text-green-900';
+                logActivity(isAuto ? 'Autosaved Content' : 'Synced to Record', 'success');
+            }
+        } catch (e) { if (!isAuto) showToast('SYNC_FAILURE', 'danger'); } finally { isSaving = false; }
+    }
+
+    async function handleFileUpload(input) {
+        if (!currentEventDir) return showToast('SELECT_EVENT_FIRST', 'danger');
+        const file = input.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        showToast('UPLOADING_ATTACHMENT...');
+        try {
+            const res = await fetch(`/api/upload?dir=${encodeURIComponent(currentEventDir)}`, {
+                method: 'POST',
+                body: formData
+            });
+            if (res.ok) {
+                const data = await res.json();
+                editor.value += `\n\n![Attachment](${data.path})`;
+                editor.dispatchEvent(new Event('input'));
+                showToast('ATTACHMENT_LINKED');
+                logActivity(`Uploaded: ${file.name}`, 'success');
+            }
+        } catch(e) { showToast('UPLOAD_ERROR', 'danger'); }
+    }
+
+    const templates = {
+        conop: `# CONCEPT OF OPERATIONS (CONOP)\n\n**Classification:** SECRET STRAP 1\n**DTG:** ${new Date().toISOString()}\n\n## 1. SITUATION\n### a. Enemy Forces\n[DETAILED_ASSESSMENT]\n### b. Friendly Forces\n[DISPOSITION]\n\n## 2. MISSION\n[MISSION_STATEMENT]\n\n## 3. EXECUTION\n### a. Concept of Operation\n[SCHEME_OF_MANEUVER]`,
+        sitrep: `# SITUATION REPORT (SITREP)\n\n**DTG:** ${new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')}Z\n**Classification:** OFFICIAL SENSITIVE\n\n## 1. SUMMARY\n[BRIEF_EXECUTIVE_SUMMARY]\n\n## 2. OPERATIONAL STATUS\n[SUCCESSES_AND_FAILURES]`,
+        aar: `# AFTER ACTION REVIEW (AAR)\n\n**Operation:** [OP_NAME]\n**Classification:** SECRET\n\n## 1. OBJECTIVES\n[WAS_THE_OBJECTIVE_MET?]\n\n## 2. KEY OBSERVATIONS\n[WHAT_WENT_WELL / WHAT_CAN_BE_IMPROVED]`,
+        intel: `# INTELLIGENCE SUMMARY (INTSUM)\n\n**Source:** G2_DIRECTORATE\n**Classification:** TOP SECRET\n\n## 1. KEY FINDINGS\n[SIGINT_AND_HUMINT_REPORTS]\n\n## 2. THREAT ASSESSMENT\n[ADVERSARY_INTENTIONS]`
+    };
+
+    document.getElementById('doc-type-selector').addEventListener('change', (e) => {
+        const type = e.target.value;
+        if (templates[type]) {
+            const currentContent = editor.value.trim();
+            const isDefault = currentContent === "" || currentContent === "[PROCEED_WITH_DATA_ENTRY]";
+            const isUnmodified = Object.values(templates).some(t => t.trim() === currentContent);
+            if (isDefault || isUnmodified) { applyTemplate(type); } 
+            else { window.pendingTemplate = type; document.getElementById('overwrite-modal').classList.remove('hidden'); }
+        }
+        e.target.value = "";
+    });
+
+    function applyTemplate(type) {
+        editor.value = templates[type];
+        editor.dispatchEvent(new Event('input'));
+        showToast(`TEMPLATE_INJECTED: ${type.toUpperCase()}`);
+        document.getElementById('overwrite-modal').classList.add('hidden');
+    }
+
+    window.confirmOverwrite = () => { if (window.pendingTemplate) { applyTemplate(window.pendingTemplate); window.pendingTemplate = null; } };
+    window.cancelOverwrite = () => { document.getElementById('overwrite-modal').classList.add('hidden'); window.pendingTemplate = null; };
+
+    window.prepareNewFragment = (dir) => {
+        const type = prompt("ENTER DOCUMENT TYPE (CONOP, SITREP, AAR, INTEL):", "SITREP").toUpperCase();
+        if (!type) return;
+        
+        const dateStr = new Date().toISOString().split('T')[0].replace(/-/g, '');
+        const filename = `${type}-${dateStr}`;
+        const title = prompt("ENTER DOCUMENT TITLE:", filename);
+        if (!title) return;
+
+        const slug = title.toLowerCase().replace(/[^a-z0-9]/g, '-');
+        currentFilePath = dir + slug + ".md";
+        
+        const templateType = type.toLowerCase();
+        editor.value = templates[templateType] || `[PROCEED_WITH_DATA_ENTRY]`;
+        
+        document.getElementById('active-file-title').innerText = title.toUpperCase() + " (NEW)";
+        editor.dispatchEvent(new Event('input'));
+        isModified = false;
+        
+        document.getElementById('template-selector-container').classList.remove('hidden');
+        document.getElementById('sync-btn').classList.remove('hidden');
+        showToast('FRAGMENT_INITIALIZED');
+    };
+
+    function checkForLocalDrafts() {
+        document.querySelectorAll('.file-item').forEach(item => {
+            const path = item.getAttribute('data-path');
+            const draft = localStorage.getItem(`draft_${path}`);
+            if (draft) {
+                const badge = document.createElement('span');
+                badge.className = 'ml-auto text-[6px] bg-uksf-gold text-moduk-secondarylack font-black px-1 rounded-sm';
+                badge.innerText = 'DRAFT';
+                item.querySelector('.flex').appendChild(badge);
+            }
+        });
+    }
+
+    setTimeout(checkForLocalDrafts, 1000);
+
+    window.prepareNewEvent = (dir) => {
+        const title = prompt("ENTER EVENT NODE TITLE:");
+        if (!title) return;
+        const slug = title.toLowerCase().replace(/[^a-z0-9]/g, '-');
+        const fullPath = dir + slug + "/_index.md";
+        const content = `---\ntitle: "${title}"\ndate: "${new Date().toISOString()}"\nlayout: \"section\"\n---\n\n# ${title.toUpperCase()}\n\nTheater deployment context goes here...`;
+        saveNewNode(fullPath, content, true);
+    };
+
+    async function saveNewNode(path, content, isFolder) {
+        try {
+            const res = await fetch('/api/file', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ path, content, isFolder }) });
+            if (res.ok) { showToast('NODE_DEPLOYED'); setTimeout(() => location.reload(), 1000); }
+        } catch(e) { showToast('DEPLOY_FAILURE', 'danger'); }
+    }
+
+    let ingestionQueue = [];
+    let currentIngestFile = null;
+
+    window.openIngestionHub = async () => {
+        document.getElementById('ingestion-hub').classList.remove('hidden');
+        await refreshIngestionQueue();
+    };
+
+    window.closeIngestionHub = () => {
+        document.getElementById('ingestion-hub').classList.add('hidden');
+    };
+
+    async function refreshIngestionQueue() {
+        const res = await fetch('/api/ingestion/list');
+        if (res.ok) {
+            ingestionQueue = await res.json();
+            renderIngestionQueue();
+        }
+    }
+
+    function renderIngestionQueue() {
+        const container = document.getElementById('ingestion-queue');
+        if (ingestionQueue.length === 0) {
+            container.innerHTML = '<div class="p-12 text-center space-y-6 opacity-10 grayscale"><svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg><span class="text-[9px] font-mono block tracking-[0.4em] uppercase">Queue_Empty</span></div>';
+            document.getElementById('ingestion-editor').classList.add('hidden');
+            document.getElementById('ingestion-empty').classList.remove('hidden');
+            return;
+        }
+
+        container.innerHTML = ingestionQueue.map(file => `
+            <div onclick="selectIngestFile('${file.filename}')" class="px-4 py-3 bg-white/5 border border-white/5 hover:border-uksf-gold/30 cursor-pointer rounded-sm group transition-all">
+                <div class="flex flex-col gap-2">
+                    <span class="text-[10px] text-neutral-300 font-black truncate uppercase tracking-tight font-mono">${file.originalName}</span>
+                    <span class="text-[7px] text-neutral-700 font-black font-mono uppercase ">${(file.size / 1024).toFixed(1)} KB // ${new Date(file.uploadedAt).toLocaleTimeString()}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    window.selectIngestFile = async (filename) => {
+        currentIngestFile = ingestionQueue.find(f => f.filename === filename);
+        if (!currentIngestFile) return;
+
+        document.getElementById('ingestion-empty').classList.add('hidden');
+        document.getElementById('ingestion-editor').classList.remove('hidden');
+        
+        const preview = document.getElementById('ingestion-preview-content');
+        const ext = filename.split('.').pop().toLowerCase();
+        
+        document.getElementById('ingest-title').value = currentIngestFile.originalName.replace(`.${ext}`, '');
+
+        if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext)) {
+            preview.innerHTML = `<img src="/ingestion/${filename}" class="max-w-full max-h-full object-contain shadow-2xl border border-white/10 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">`;
+        } else {
+            preview.innerHTML = `<div class="text-[10px] font-mono text-neutral-700 uppercase tracking-[0.4em] border border-white/5 p-12 bg-black/40 font-black ">PREVIEW_NOT_AVAILABLE_FOR_${ext.toUpperCase()}</div>`;
+        }
+
+        document.querySelectorAll('#ingestion-queue > div').forEach(el => {
+            el.classList.toggle('border-uksf-gold/50', el.innerText.includes(currentIngestFile.originalName));
+        });
+    };
+
+    window.handleBulkUpload = async (input) => {
+        const files = input.files;
+        if (files.length === 0) return;
+
+        const formData = new FormData();
+        for (const file of files) formData.append('files', file);
+
+        showToast('UPLOADING_BATCH...');
+        try {
+            const res = await fetch('/api/upload', { method: 'POST', body: formData });
+            if (res.ok) {
+                showToast('UPLINK_SUCCESS');
+                await refreshIngestionQueue();
+            }
+        } catch(e) { showToast('UPLINK_ERROR', 'danger'); }
+    };
+
+    window.updateIngestEvents = async (campaignId) => {
+        const eventSelect = document.getElementById('ingest-event');
+        eventSelect.innerHTML = '<option value="">-- LOADING_EVENTS --</option>';
+        
+        try {
+            const res = await fetch(`/api/community/722/campaigns/${campaignId}/events`);
+            if (res.ok) {
+                const events = await res.json();
+                eventSelect.innerHTML = '<option value="">-- SELECT_EVENT --</option>' + 
+                    events.map(ev => `<option value="${ev.id}">${ev.title}</option>`).join('');
+            }
+        } catch(e) { eventSelect.innerHTML = '<option value="">-- ERROR_LOADING --</option>'; }
+    };
+
+    window.finalizeIngestion = async () => {
+        if (!currentIngestFile) return;
+        
+        const data = {
+            filename: currentIngestFile.filename,
+            type: document.getElementById('ingest-type').value,
+            campaignId: document.getElementById('ingest-campaign').value,
+            eventId: document.getElementById('ingest-event').value,
+            customTitle: document.getElementById('ingest-title').value
+        };
+
+        if (!data.campaignId || !data.eventId) return showToast('SPECIFY_CONTEXT_FIRST', 'danger');
+
+        showToast('COMMITTING_RECORD...');
+        try {
+            const res = await fetch('/api/ingestion/finalize', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+            if (res.ok) {
+                showToast('RECORD_ARCHIVED');
+                logActivity(`Archived: ${data.customTitle || data.filename}`, 'success');
+                await refreshIngestionQueue();
+            }
+        } catch(e) { showToast('COMMIT_FAILURE', 'danger'); }
+    };
+
+    setInterval(() => { if (currentFilePath && isModified) saveFragment(true); }, 300000);
+</script>
+{{ end }}

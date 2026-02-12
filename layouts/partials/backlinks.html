@@ -1,0 +1,24 @@
+{{ $re := $.RelPermalink }}
+{{ $mentions := slice }}
+{{ range where site.RegularPages "RelPermalink" "ne" $re }}
+    {{ if (findRE $re .RawContent) }}
+        {{ $mentions = $mentions | append . }}
+    {{ end }}
+{{ end }}
+
+{{ if $mentions }}
+<div class="linked-mentions mt-24 pt-12 border-t border-[#bfc1c3] dark:border-[#323e48]">
+    <h4 class="text-[10px] font-bold text-[#532a45] dark:text-[#bfc1c3] uppercase tracking-widest mb-8 font-body">// Linked Mentions</h4>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {{ range $mentions }}
+        <a href="{{ .RelPermalink }}" class="group block p-6 border border-[#bfc1c3] dark:border-[#323e48] hover:border-[#532a45] transition-all no-underline bg-[#f3f2f1] dark:bg-white/5">
+            <div class="space-y-2">
+                <span class="text-[8px] text-[#6f777b] uppercase font-bold tracking-widest font-mono">{{ .Section }}</span>
+                <h5 class="text-sm font-bold text-[#0b0c0c] dark:text-white uppercase m-0 group-hover:text-[#532a45]">{{ .Title }}</h5>
+                <p class="text-[10px] text-[#6f777b] line-clamp-2 m-0">{{ .Summary }}</p>
+            </div>
+        </a>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

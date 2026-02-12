@@ -1,0 +1,21 @@
+Watching for changes in /ext/Development/UKSFTA-Site/archetypes, /ext/Development/UKSFTA-Site/assets/{css,icons,js,sass}, /ext/Development/UKSFTA-Site/content/{asob,campaigns,ingestion,jac,orbat,...}, /ext/Development/UKSFTA-Site/data, /ext/Development/UKSFTA-Site/i18n, /ext/Development/UKSFTA-Site/layouts/{_default,campaigns,partials,registry,shortcodes}, /ext/Development/UKSFTA-Site/package.json, /ext/Development/UKSFTA-Site/static/{admin,assets,css,data,js}
+Watching for config changes in /ext/Development/UKSFTA-Site/config.yaml
+Start building sites … 
+hugo v0.155.2+extended+withdeploy linux/amd64 BuildDate=unknown
+
+
+                  │ EN 
+──────────────────┼────
+ Pages            │ 70 
+ Paginator pages  │  0 
+ Non-page files   │  0 
+ Static files     │ 19 
+ Processed images │  0 
+ Aliases          │  0 
+ Cleaned          │  0 
+
+Built in 1354 ms
+Environment: "development"
+Serving pages from disk
+Web Server is available at //localhost:1314/ (bind address 127.0.0.1) 
+Press Ctrl+C to stop

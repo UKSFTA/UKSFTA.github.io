@@ -1,0 +1,88 @@
+{{ define "main" }}
+<div class="min-h-screen bg-tactical-black text-neutral-400 font-inter pt-32 pb-24 relative overflow-hidden">
+    <!-- Redacted Stamp Background -->
+    <div class="absolute top-24 right-24 w-80 h-80 border-8 border-uksf-red/5 rounded-full flex items-center justify-center -rotate-[15deg] pointer-events-none select-none">
+        <span class="text-uksf-red/5 text-5xl font-black uppercase text-center leading-none font-industrial">Classified<br/>Tactical_Record</span>
+    </div>
+
+    <div class="max-w-5xl mx-auto space-y-16 relative z-10">
+        
+        <!-- Document Header: Tactical Folder Style -->
+        <header class="bg-white/[0.01] border border-white/5 p-12 lg:p-16 relative">
+            <!-- Classification Badge -->
+            <div class="absolute -top-3 left-16">
+                <span class="bg-uksf-red text-white text-[9px] font-black px-5 py-1 uppercase tracking-[0.5em] shadow-2xl">
+                    {{ .Params.classification | default "OFFICIAL_SENSITIVE" }}
+                </span>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/5 pb-10 gap-8">
+                <div class="space-y-4">
+                    <span class="text-[9px] text-uksf-gold font-black tracking-[0.5em] uppercase font-mono ">// Joint Force Command // Intelligence Directorate</span>
+                    <h1 class="text-5xl md:text-moduk-secondaryxl font-black text-white uppercase tracking-tighter font-industrial m-0 leading-none">{{ .Title }}</h1>
+                </div>
+                <div class="text-right font-mono">
+                    <p class="text-[9px] text-neutral-600 uppercase tracking-widest font-black">Doc_Ref: TFA-{{ upper (substr (sha256 .Title) 0 8) }}</p>
+                    <p class="text-[9px] text-neutral-600 mt-2 uppercase tracking-widest font-black">DTG: {{ .Date.Format "021504Z JAN 06" }}</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 font-mono">
+                <div class="space-y-6">
+                    <div class="flex gap-6 border-b border-white/5 pb-3">
+                        <span class="text-[8px] text-neutral-700 uppercase font-black w-20">Origin:</span>
+                        <span class="text-[10px] text-neutral-300 uppercase font-bold tracking-widest">TFA_G2_SECTION_6</span>
+                    </div>
+                    <div class="flex gap-6 border-b border-white/5 pb-3">
+                        <span class="text-[8px] text-neutral-700 uppercase font-black w-20">Target:</span>
+                        <span class="text-[10px] text-neutral-300 uppercase font-bold tracking-widest">OPERATIONAL_COMMAND</span>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex gap-6 border-b border-white/5 pb-3">
+                        <span class="text-[8px] text-neutral-700 uppercase font-black w-20">Subject:</span>
+                        <span class="text-[10px] text-uksf-gold uppercase font-bold tracking-widest">{{ .Title }}</span>
+                    </div>
+                    <div class="flex gap-6 border-b border-white/5 pb-3 text-right justify-end">
+                        <span class="font-['Libre_Barcode_39'] text-5xl text-white opacity-10 leading-none">*{{ upper (substr (sha256 .Content) 0 10) }}*</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Document Content: "Typewriter" Print -->
+        <article class="prose prose-invert prose-xl max-w-none 
+                        prose-headings:uppercase prose-headings:font-black prose-headings:tracking-tighter prose-headings:text-white prose-headings:font-industrial
+                        prose-headings:border-b prose-headings:border-white/5 prose-headings:pb-6 prose-headings:mb-10 prose-headings:mt-16
+                        prose-p:text-neutral-400 prose-p:font-light prose-p:leading-relaxed prose-p:mb-10 prose-p:text-xl
+                        prose-strong:text-white prose-strong:font-black
+                        prose-ul:border-l prose-ul:border-white/5 prose-ul:ml-4 prose-ul:pl-10
+                        prose-li:text-neutral-500 prose-li:mb-4
+                        bg-white/[0.005] p-12 lg:p-20 border-x border-white/5 shadow-inner">
+            {{ .Content }}
+        </article>
+
+        <!-- Document Footer: Verification -->
+        <footer class="flex flex-col md:flex-row justify-between items-center gap-12 pt-16 border-t border-white/10 opacity-20 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-1000">
+            <div class="flex items-center gap-8">
+                <div class="w-16 h-16 border border-white/10 flex items-center justify-center bg-white/5">
+                    {{ $logo := resources.Get "icons/TFA.png" }}
+                    <img src="{{ $logo.RelPermalink }}" class="w-10 opacity-40">
+                </div>
+                <div class="font-mono">
+                    <span class="block text-[9px] uppercase tracking-[0.3em] font-black text-white">Institutional Authentication</span>
+                    <span class="block text-[8px] mt-1 text-neutral-500">HASH_PATH: {{ sha256 .File.Path }}</span>
+                </div>
+            </div>
+            <div class="flex flex-col items-end gap-6">
+                <span class="font-['Libre_Barcode_39'] text-4xl text-white opacity-30 leading-none">*{{ upper (substr (sha256 .Title) 0 8) }}*</span>
+                <a href="{{ .Parent.RelPermalink }}" class="group flex items-center gap-6 no-underline">
+                    <span class="text-[9px] uppercase font-black tracking-[0.4em] text-neutral-500 group-hover:text-uksf-gold transition-colors">Return to Operational_Registry</span>
+                    <div class="w-8 h-px bg-white/10 group-hover:w-16 group-hover:bg-uksf-gold transition-all"></div>
+                </a>
+            </div>
+        </footer>
+
+    </div>
+</div>
+{{ end }}

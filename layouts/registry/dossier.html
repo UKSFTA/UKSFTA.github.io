@@ -1,0 +1,82 @@
+{{ define "main" }}
+<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300">
+    {{ partial "blocks/hero.html" . }}
+</section>
+
+<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300 !justify-start !pt-20">
+    <div class="moduk-width-container relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-24">
+            <!-- SIDEBAR: Institutional Data -->
+            <aside class="lg:col-span-4">
+                <div class="card-mod space-y-12 sticky top-48 bg-[#f3f2f1]/30 dark:bg-white/5 backdrop-blur-sm border-b-8 border-b-mod-purple">
+                    <div class="text-center pb-10 border-b border-mod-grey-3 dark:border-mod-grey-1">
+                        {{ $id := .Params.unit | default .Section }}
+                        {{ $unit := index .Site.Data.units $id }}
+                        {{ $icon := resources.Get $unit.icon }}
+                        {{ if $icon }}
+                            <img src="{{ $icon.RelPermalink }}" alt="{{ .Title }}" class="h-24 w-auto mx-auto mb-10  no-invert opacity-80 group-hover:scale-105 transition-transform duration-500">
+                        {{ end }}
+                        <h2 class="text-4xl font-black uppercase font-industrial tracking-tighter m-0">{{ .Title }}</h2>
+                    </div>
+                    
+                    <div class="space-y-10 font-body">
+                        <div class="flex flex-col gap-3">
+                            <span class="text-[10px] font-black text-mod-grey-2 uppercase tracking-[0.3em] font-mono">// Readiness_Status</span>
+                            <div class="flex items-center gap-4 bg-white/50 dark:bg-[#1d2329] px-6 py-4 border border-mod-grey-3 dark:border-mod-grey-1 shadow-inner">
+                                <span class="w-3 h-3 bg-mod-green rounded-full animate-pulse shadow-[0_0_10px_rgba(0,112,60,0.4)]"></span>
+                                <span class="text-xs font-black uppercase tracking-[0.2em] text-mod-black dark:text-white">Active_Tasking</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-10 font-mono">
+                            <div class="flex flex-col gap-2">
+                                <span class="text-[9px] font-bold text-mod-grey-2 uppercase tracking-widest">Force Tier</span>
+                                <span class="text-sm font-black uppercase text-mod-purple dark:text-white">{{ if or (eq $id "sas") (eq $id "sbs") (eq $id "srr") }}Tier 1{{ else }}Tier 2{{ end }}</span>
+                            </div>
+                            <div class="flex flex-col gap-2 text-right">
+                                <span class="text-[9px] font-bold text-mod-grey-2 uppercase tracking-widest">Authority</span>
+                                <span class="text-sm font-black uppercase text-mod-black dark:text-white">JSFC_HQ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-10 border-t border-mod-grey-3 dark:border-mod-grey-1">
+                        <a href="/recruitment/" class="btn-mod btn-mod-primary w-full text-center text-xs tracking-[0.3em] no-underline shadow-xl"> 
+                            Enlist Now 
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <div class="lg:col-span-8 space-y-20">
+                <div class="space-y-10">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-1 bg-mod-purple"></div>
+                        <span class="text-[11px] font-black text-mod-purple dark:text-[#bfc1c3] uppercase tracking-[0.4em] font-mono">Unit_Directive</span>
+                    </div>
+                    <div class="border-l-8 border-mod-purple pl-16 py-8 bg-[#f3f2f1] dark:bg-white/5 shadow-inner">
+                        <p class="text-3xl font-light leading-relaxed text-mod-grey-1 dark:text-mod-grey-3 m-0 italic">
+                            {{ .Description }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="intelligence-body prose prose-2xl max-w-none dark:prose-invert 
+                            prose-headings:font-industrial prose-headings:uppercase prose-headings:tracking-tighter prose-headings:font-black
+                            prose-p:font-body prose-p:font-light prose-p:leading-relaxed">
+                    {{ .Content }}
+                </div>
+
+                <!-- Institutional Footer -->
+                <div class="pt-20 border-t-4 border-mod-grey-3 dark:border-mod-grey-1 opacity-60">
+                    <div class="flex justify-between items-center font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-mod-grey-2">
+                        <span class="text-mod-purple">Registry: UKSFTA-{{ upper (substr (sha256 .Title) 0 12) }}</span>
+                        <span>Permanent Tactical Record</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

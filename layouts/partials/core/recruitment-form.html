@@ -1,0 +1,42 @@
+<div class="card-mod group relative transition-colors duration-300">
+    <div class="space-y-10">
+        <div class="flex flex-col items-center text-center gap-6">
+            <div class="space-y-4">
+                <div class="flex items-center justify-center gap-4">
+                    <span class="text-[9px] font-body font-bold text-[#532a45] dark:text-[#bfc1c3] uppercase tracking-widest">Directive // RSIS_ENLIST_v4.2</span>
+                </div>
+                <h3 class="text-4xl lg:text-5xl leading-none font-bold uppercase text-[#0b0c0c] dark:text-white m-0 font-industrial">
+                    {{ replace (.title | default "Initiate Registration") "_" " " }}
+                </h3>
+                <div class="max-w-xl mx-auto">
+                    <p class="text-moduk-secondaryase font-body text-[#323e48] dark:text-[#bfc1c3] leading-relaxed m-0 font-bold">
+                        {{ .description | default "Taskforce Alpha is open to all applicants seeking a high-standard milsim experience. Initiation of an entry packet is required to join our community." }}
+                    </p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-6 text-[8px] font-mono uppercase tracking-widest text-moduk-secondary font-bold">
+                <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-[#00703c] rounded-full"></span>
+                    <span>Status: <span class="text-[#0b0c0c] dark:text-[#bfc1c3]">RECRUITING</span></span>
+                </div>
+                <div class="w-px h-3 bg-[#bfc1c3] dark:bg-[#323e48]"></div>
+                <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-[#532a45] rounded-full"></span>
+                    <span>Selection: <span class="text-[#0b0c0c] dark:text-[#bfc1c3]">OPEN</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-[#bfc1c3] dark:border-[#323e48] flex justify-center">
+            {{ $unit := .unit | default "general" }}
+            <a href="https://discord.gg/2jNqa3zPRH" class="btn-mod btn-mod-primary w-full py-6 no-underline text-sm tracking-widest shadow-sm">
+                Open Registration Terminal // Uplink Discord
+            </a>
+        </div>
+        
+        <div class="flex justify-center">
+            <span class="text-[8px] font-mono text-moduk-secondary uppercase tracking-widest font-bold">Manual identity verification required upon arrival</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{{ define "main" }}
+<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300">
+    <div class="moduk-width-container py-24 space-y-16">
+        <!-- HEADER -->
+        <header class="border-b-4 border-[#532a45] pb-10 gap-8">
+            <div class="space-y-8">
+                <div class="flex items-center gap-6">
+                    {{ $logo := resources.Get "icons/MOD.png" }}
+                    <img src="{{ $logo.RelPermalink }}" alt="Ministry of Defence" class="h-16 w-auto  dark:opacity-80">
+                    <div class="h-10 w-px bg-[#bfc1c3] dark:bg-[#323e48]"></div>
+                    <span class="text-[9px] font-body font-bold text-[#532a45] dark:text-[#bfc1c3] uppercase tracking-widest">Joint Force Command // Taxonomy Node</span>
+                </div>
+                
+                <div class="space-y-2">
+                    <h1 class="text-moduk-secondaryxl lg:text-8xl font-industrial font-black uppercase text-[#0b0c0c] dark:text-white m-0 leading-none">{{ .Title }}</h1>
+                    <p class="text-moduk-secondary text-[10px] font-body font-bold uppercase tracking-widest">Cross-Theater Asset Classification Registry</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- TERMS GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {{ range .Pages }}
+            <a href="{{ .RelPermalink }}" class="group card-mod no-underline flex flex-col justify-between h-64 border-t-4 border-t-[#bfc1c3] dark:border-t-[#323e48] hover:border-t-[#532a45] dark:hover:border-t-[#532a45]">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-start">
+                        <span class="text-[9px] font-mono text-moduk-secondary font-bold uppercase tracking-widest">// Category Ref</span>
+                        <span class="text-[8px] font-bold text-moduk-secondary border border-[#bfc1c3] dark:border-[#323e48] px-3 py-1.5 uppercase ">Active</span>
+                    </div>
+                    
+                    <h3 class="text-3xl font-industrial font-bold uppercase text-[#0b0c0c] dark:text-white m-0 group-hover:text-[#532a45] transition-colors leading-none">{{ .Title }}</h3>
+                </div>
+                
+                <div class="pt-6 border-t border-[#bfc1c3] dark:border-[#323e48] flex items-center justify-between opacity-40 group-hover:opacity-100 transition-all">
+                    <span class="text-[8px] font-bold uppercase tracking-widest text-[#0b0c0c] dark:text-white">Access Filtered Records</span>
+                    <svg class="w-4 h-4 text-[#0b0c0c] dark:text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

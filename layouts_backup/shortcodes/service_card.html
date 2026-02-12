@@ -1,0 +1,22 @@
+<div class="govuk-grid-column-one-third">
+    <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper" style="background-color: {{ .Get "color" | default "var(--govuk-brand-colour)" }}; color: white;">
+            <h2 class="govuk-summary-card__title">
+                {{ if .Get "image" }}
+                <img src="{{ .Get "image" }}" alt="{{ .Get "name" }} emblem" style="height: 30px; vertical-align: middle; margin-right: 10px;">
+                {{ end }}
+                {{ .Get "name" }}
+            </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+            <p class="govuk-body">{{ .Get "fullname" }}</p>
+            <ul class="govuk-list">
+                <li>
+                    <a href="{{ .Get "url" }}" class="govuk-link">
+                        {{ if .Get "restricted" }}Access Restricted{{ else }}Access Terminal{{ end }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

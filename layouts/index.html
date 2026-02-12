@@ -1,0 +1,138 @@
+{{ define "main" }}
+<!-- 1. PRIMARY INSTITUTIONAL HERO -->
+<section class="relative bg-white dark:bg-[#0b0c0c] border-b-4 border-mod-purple">
+    <div class="moduk-width-container relative z-10">
+        <div class="max-w-4xl space-y-4">
+            <span class="text-mod-purple dark:text-[#bfc1c3] font-body font-bold text-xs uppercase tracking-[0.4em] block">United Kingdom Special Forces</span>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-industrial font-black uppercase leading-none tracking-tighter m-0">
+                Always A Little <br><span class="text-mod-purple dark:text-white">Further.</span>
+            </h1>
+            
+            <p class="text-lg lg:text-xl font-body font-light leading-relaxed max-w-2xl text-[#323e48] dark:text-white/80 italic m-0">
+                Taskforce Alpha coordinates elite special operations assets to maintain strategic readiness across all simulation theaters.
+            </p>
+            
+            <div class="flex flex-wrap gap-4 pt-4">
+                <a href="/recruitment/" class="btn-mod btn-mod-primary shadow-lg hover:-translate-y-0.5 transition-all">
+                    Start Selection
+                </a>
+                <a href="/sas/" class="btn-mod btn-mod-secondary hover:-translate-y-0.5 transition-all dark:border-white dark:text-white">
+                    Explore Capability
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. MISSION DIRECTIVE -->
+<section class="bg-mod-grey-4 dark:bg-[#1d2329] border-y border-mod-grey-3 dark:border-mod-grey-1">
+    <div class="moduk-width-container">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5">
+                <h2 class="text-4xl lg:text-5xl font-industrial font-black uppercase m-0 leading-[0.9]">
+                    Strategic <br><span class="text-mod-purple">Integration.</span>
+                </h2>
+            </div>
+            <div class="lg:col-span-7 border-l-4 border-mod-purple pl-10">
+                <p class="text-lg lg:text-xl font-body font-light leading-relaxed text-mod-grey-1 dark:text-mod-grey-3 m-0">
+                    We adhere to official Ministry of Defence standards for tactical realism and simulation. Our training protocols ensure that all personnel operate with high-fidelity technical aptitude and institutional integrity.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. UNIT DIRECTORY -->
+<section class="bg-white dark:bg-[#0b0c0c]">
+    <div class="moduk-width-container">
+        <div class="mb-8 border-b-2 border-mod-purple pb-4 flex justify-between items-end">
+            <h2 class="text-3xl lg:text-4xl font-industrial font-black uppercase m-0 leading-none">Taskforce Units</h2>
+            <span class="text-[9px] font-mono text-mod-grey-2 font-black uppercase tracking-widest hidden md:block">Strategic_ORBAT_Registry</span>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {{ $units := .Site.Data.units }}
+            {{ $order := slice "sas" "sbs" "asob" "sfsg" "jsfaw" "med-det" }}
+            {{ range $id := $order }}
+            {{ with (index $units $id) }}
+            <a href="/{{ $id }}/" class="group relative flex flex-row items-center bg-[#f3f2f1] dark:bg-[#1d2329] border border-mod-grey-3 dark:border-mod-grey-1 p-4 no-underline transition-all hover:shadow-lg hover:border-mod-purple border-l-4 border-l-mod-purple h-24">
+                <div class="w-16 shrink-0 flex justify-center border-r border-mod-grey-3 dark:border-mod-grey-1 mr-4 pr-4">
+                    {{ $icon := resources.Get .icon }}
+                    {{ if $icon }}
+                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="h-8 w-auto grayscale group-hover:grayscale-0 transition-all duration-500 no-invert">
+                    {{ end }}
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h3 class="text-base font-industrial font-black uppercase m-0 group-hover:text-mod-purple transition-colors leading-none truncate">
+                        {{ .display_id | default .id }}
+                    </h3>
+                    <p class="text-[9px] font-body text-mod-grey-1 dark:text-mod-grey-3 font-bold uppercase tracking-widest mt-1 opacity-60 truncate">
+                        {{ .name }}
+                    </p>
+                </div>
+            </a>
+            {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<!-- 4. AOR WORKSTATION -->
+<section class="bg-[#0b0c0c] border-y border-mod-grey-1">
+    <div class="moduk-width-container">
+        <div class="mb-6 flex flex-col lg:flex-row justify-between items-end gap-6 border-b border-white/10 pb-4">
+            <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>
+                    <span class="text-white/60 font-mono font-bold text-[9px] uppercase tracking-[0.4em] block">// Strategic Monitoring</span>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-industrial font-black text-white uppercase m-0 leading-none">AOR Control</h2>
+            </div>
+            <div class="text-right">
+                <span class="bg-mod-green text-white px-3 py-1 text-[9px] font-black uppercase tracking-[0.2em] shadow-lg">STATION_ACTIVE</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-px bg-white/10 border border-white/10 overflow-hidden shadow-2xl h-[350px] items-stretch">
+            <div class="lg:col-span-4 bg-[#0b0c0c] p-6 flex flex-col justify-center">
+                {{ partial "widgets/comms-hub.html" (dict "class" "!border-0 !bg-transparent !p-0") }}
+            </div>
+            <div class="lg:col-span-8 bg-[#0b0c0c] relative flex items-center justify-center overflow-hidden h-full group">
+                <div class="absolute inset-0 z-20 opacity-10 pointer-events-none" style="background-image: linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px); background-size: 30px 30px;"></div>
+                
+                {{ $uksf_map := resources.Get "icons/UKSF-MAP.png" }}
+                {{ if $uksf_map }}
+                    <img src="{{ $uksf_map.RelPermalink }}" class="relative z-10 w-full h-full object-contain grayscale dark:opacity-60 transition-transform duration-[10s] group-hover:scale-105 no-invert" alt="UKSF Map" />
+                {{ end }}
+                
+                <div class="absolute bottom-4 right-4 z-30 bg-mod-black border border-white/10 p-3 shadow-xl">
+                    <span class="text-[8px] font-mono text-mod-purple uppercase tracking-[0.4em] font-black block leading-none mb-1">// Node_JSFC</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. FINAL GATEWAY -->
+<section class="bg-white dark:bg-mod-black text-center relative overflow-hidden">
+    <div class="moduk-width-container max-w-3xl space-y-6 relative z-10">
+        <div class="space-y-2">
+            <span class="text-mod-purple font-mono font-bold text-xs uppercase tracking-[0.6em] block">Personnel Acquisition</span>
+            <h2 class="text-4xl lg:text-5xl font-industrial font-black uppercase m-0 leading-none tracking-tighter">Strategic Enlistment</h2>
+        </div>
+        
+        <p class="text-base lg:text-lg font-body text-mod-grey-1 dark:text-mod-grey-3 leading-relaxed max-w-xl mx-auto font-light italic m-0 opacity-80">
+            Candidates are evaluated based on integrity, maturity, and technical aptitude. Taskforce Alpha maintains a rigorous selection standard.
+        </p>
+        
+        <div class="pt-4">
+            <a href="/recruitment/" class="bg-mod-green text-white font-body font-bold px-10 py-4 uppercase text-lg tracking-[0.4em] no-underline hover:bg-[#005a31] transition-all inline-block shadow-lg hover:-translate-y-1">
+                Apply for Selection
+            </a>
+        </div>
+    </div>
+</section>
+
+{{ partial "core/footer.html" . }}
+{{ end }}

@@ -1,0 +1,4910 @@
+{
+  "campaigns": [
+    {
+      "id": 430,
+      "campaignName": "Operation Restore",
+      "map": "Afghanistan",
+      "brief": "The United States has decided to re-enter Afghanistan in an attempt to re instate a legitimate NATO backed government as such the rest of NATO will be joining this counter insurgency effort.\n\nTask Force Alpha is being sent to Helmand province to try and liberate the area, we will begin with the outlying rural areas and slowly move into the urban enemy strongholds over the course of this campaign. The objective is to seek, destroy and engage the Taliban and Taliban backed forces while minimising civilian casualties and destruction to civilian property.\n\nThere is a significant IED, VBIED and PBIED risk as such all soldiers sailors and airmen of TFA will be taught the use of mine detecting equipment and the engineers will specify in defusal efforts.\n\nPlease keep an eye on your individual CoCs for new SOPs that relate to you.\n\nCmdr. J. Shaw (RN)\nNaval Intelligence",
+      "image": {
+        "id": 24762,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/OP_Restore.png1744839634777.png",
+        "created_at": "2025-04-16 21:40:34",
+        "updated_at": "2025-04-16 21:40:34"
+      },
+      "created_at": "2025-02-18 19:40:16",
+      "updated_at": "2025-04-16 21:40:34",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 1976,
+          "name": "Operation Restore Part 2",
+          "dateTime": "2025-02-19 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-02-19",
+          "locked": false,
+          "discordChannel": "1341466255101788232",
+          "discordPingable": "1327421406245290116",
+          "discordMessage": "1341494682709917818",
+          "discordPingSent": true
+        }
+      ]
+    },
+    {
+      "id": 457,
+      "campaignName": "Operation Black Sheep",
+      "map": "Ruha",
+      "brief": "Militia forces backed up by Russia have seized the border with Estonia and Latvia near the area of Ruha. They have shot down multiple drones and a cargo plane owned by NATO Forces. Due to the AA threat and the unknown situation HQ have ordered UKSF Taskforce Alpha do go deep into the territory to scout out the current situation.",
+      "image": {
+        "id": 24763,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Op_Black_sheep.jpeg1744839650906.jpeg",
+        "created_at": "2025-04-16 21:40:50",
+        "updated_at": "2025-04-16 21:40:50"
+      },
+      "created_at": "2025-04-08 12:49:50",
+      "updated_at": "2025-04-16 21:40:50",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2156,
+          "name": "OP Black sheep 3",
+          "dateTime": "2025-04-11 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-04-11",
+          "locked": true,
+          "discordChannel": null,
+          "discordPingable": null,
+          "discordMessage": null,
+          "discordPingSent": false
+        },
+        {
+          "id": 2171,
+          "name": "Op Black Sheep 4",
+          "dateTime": "2025-04-18 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-04-18",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1360767012699373790",
+          "discordPingSent": false
+        },
+        {
+          "id": 2198,
+          "name": "Op Black Sheep 5",
+          "dateTime": "2025-04-25 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-04-25",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1363900450067447985",
+          "discordPingSent": false
+        },
+        {
+          "id": 2217,
+          "name": "Op Black Sheep 6",
+          "dateTime": "2025-05-02 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-05-02",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1366103810811891763",
+          "discordPingSent": false
+        },
+        {
+          "id": 2242,
+          "name": "Op Black Sheep 7",
+          "dateTime": "2025-05-09 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-05-09",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1368935953334538313",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 460,
+      "campaignName": "Operation Breezer",
+      "map": "G.O.S - Fjord",
+      "brief": "An uprising has been happening in the Murmansk area '' Russia '' the last couple of months. They want to declare a own state outside Russia. Meanwhile presumably armed men from the Russian Army stationed in this area have been supporting this new regime. While Russia is busy in Ukraine fighting their 3 day '' special operation '' armed men have set up roadblocks and destroying the important road '' E105/P-21 '' down South towards the rest of Russia.\nThe important military harbors in the area have been seized by this new regime as well as other military installations.\n\nAt the same time the British Government has received a request from NATO HQ to reinforce the area together with other NATO Allies.\nOur mission is to reinforce the area, protect the local population, secure Norwegian NATO ground and it's natural resources.\n\nThe Norwegian border area has a high rich of minerals, oil and gold in the ground. High mountain terrains, small roads and a couple of ports and a low population are in our area of operations.\n\nWelcome to the Norwegian Fjords.",
+      "image": {
+        "id": 24764,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Operation_Brezzer.png1744839662383.png",
+        "created_at": "2025-04-16 21:41:02",
+        "updated_at": "2025-04-16 21:41:02"
+      },
+      "created_at": "2025-04-13 00:02:50",
+      "updated_at": "2026-01-31 17:41:34",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2172,
+          "name": "Op Breezer 1",
+          "dateTime": "2025-04-16 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-04-16",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1360767322444529716",
+          "discordPingSent": false
+        },
+        {
+          "id": 2197,
+          "name": "Op Breezer 2",
+          "dateTime": "2025-04-23 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-04-23",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1363900192864206919",
+          "discordPingSent": false
+        },
+        {
+          "id": 2216,
+          "name": "Op Breezer 3",
+          "dateTime": "2025-04-30 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-04-30",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1366103586756497571",
+          "discordPingSent": false
+        },
+        {
+          "id": 2241,
+          "name": "Op Breezer 4",
+          "dateTime": "2025-05-07 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-05-07",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1368935722983227465",
+          "discordPingSent": false
+        },
+        {
+          "id": 2267,
+          "name": "OP Breezer 5",
+          "dateTime": "2025-05-14 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-05-14",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1371820443610382336",
+          "discordPingSent": false
+        },
+        {
+          "id": 2296,
+          "name": "OP Breezer 6",
+          "dateTime": "2025-05-21 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-05-21",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1374268380638609460",
+          "discordPingSent": false
+        },
+        {
+          "id": 2309,
+          "name": "OP Breezer 7",
+          "dateTime": "2025-05-28 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-05-28",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1376657485422661723",
+          "discordPingSent": false
+        },
+        {
+          "id": 2338,
+          "name": "OP Breezer 8",
+          "dateTime": "2025-06-04 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-06-04",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1379657702074224781",
+          "discordPingSent": false
+        },
+        {
+          "id": 2364,
+          "name": "OP Breezer 9",
+          "dateTime": "2025-06-11 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-06-11",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1381740183937880084",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 484,
+      "campaignName": "Operation Sahel",
+      "map": "G.O.S N'Djenahoud",
+      "brief": "The Sahel region:\n\nThe Sahel has a hot semi-arid climate and stretches across the southernmost latitudes of North Africa between the Atlantic Ocean and the Red Sea. Traditionally, most of the people in the Sahel have been semi-nomads, farming and raising livestock in a system of transhumance.\nFrench is spoken widely in the Sahel, as many of its nations are former French colonies, with two adopting French as an official language and many more using it colloquially.\nThe Sahel includes parts of Senegal, Mauritania, Burkina Faso, Mali, Niger, Nigeria, Chad, Sudan and Eritrea, where French is employed to varying degrees.\n\nIn the wake of the Libyan Crisis beginning in 2011, terrorist organizations operating in the Sahel, including Boko Haram, Islamic State and al-Qaeda in the Islamic Maghreb (AQIM), have greatly exacerbated the violence, extremism and instability of the region. As of 2024, a wave of new military juntas in Africa, favoring Russian mercenaries over Western forces and UN peacekeepers, has intensified violence.\n\nThe British Government has received a request from NATO HQ to reinforce the area together with other NATO Allies.\n\nOur mission will be to bring stability to some parts of the region, provide aid to civilians, gather intel and fight terrorist groups together with other NATO Allies stationed in the region.\n",
+      "image": {
+        "id": 25511,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Schermafbeelding_2025-05-08_150916.png1747137994354.png",
+        "created_at": "2025-05-13 12:06:34",
+        "updated_at": "2025-05-13 12:06:34"
+      },
+      "created_at": "2025-05-13 12:06:34",
+      "updated_at": "2025-05-13 12:06:34",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2297,
+          "name": "OP Sahel 1",
+          "dateTime": "2025-05-23 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-05-23",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1374268523823497338",
+          "discordPingSent": false
+        },
+        {
+          "id": 2310,
+          "name": "OP Sahel 2",
+          "dateTime": "2025-05-30 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-05-30",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1376657669560991764",
+          "discordPingSent": false
+        },
+        {
+          "id": 2339,
+          "name": "OP Sahel 3",
+          "dateTime": "2025-06-06 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-06-06",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1379657823180296276",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 508,
+      "campaignName": "Operation Sparrow",
+      "map": "Isla Pera",
+      "brief": "Isla Pera, a lush, tropical archipelago in the Caribbean Sea. With Bocachica as its main city is founded and conquered by the United Kingdom in 1672. From 1680, the other islands were colonized by the United Kingdom, but pirates remained active in the region throughout the 17th and 18th centuries. Later in 1736, French claims were granted and the archipelago was split up. \nIn 1960, Isla Pera became an official independent British and French colony, gaining limited autonomy in 1967. Till this day some parts of the internal islands are under control of both the British and French governments.\n\nWith an abundance of oil, sugar cane plantations and minerals the Islands are exporting a lot. Fruit growing was important until the 1970s, but has since been restricted to internal consumption. Fishing continues to play an important role. After 1999 tourisme is playing a big part of the economy.\n\nCurrently, pirates and drug traffickers are active around the islands and hurricanes in the region are more severe due to climate change. Different factions on the Islands wants to have a change and are anti-British/French and they want to claim their Islands back.\n\nOur  mission is to reinforce the area in the Caribbean Sea, protect the local population from attacks on and around the Islands, secure it's natural resources and work together with our American and French Allies. Furthermore support IDAP and the local government in their struggles.\n",
+      "image": {
+        "id": 26279,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Schermafbeelding_2025-06-16_093638.png1750060034770.png",
+        "created_at": "2025-06-16 07:47:14",
+        "updated_at": "2025-06-16 07:47:14"
+      },
+      "created_at": "2025-06-16 07:37:14",
+      "updated_at": "2025-06-16 07:47:14",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2400,
+          "name": "OP Sparrow 1",
+          "dateTime": "2025-06-18 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-06-18",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1384074866772279430",
+          "discordPingSent": false
+        },
+        {
+          "id": 2423,
+          "name": "OP Sparrow 2",
+          "dateTime": "2025-06-25 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-06-25",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1386923434709221487",
+          "discordPingSent": false
+        },
+        {
+          "id": 2434,
+          "name": "OP Sparrow 3",
+          "dateTime": "2025-07-02 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-07-02",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1388969841108586526",
+          "discordPingSent": false
+        },
+        {
+          "id": 2457,
+          "name": "OP Sparrow 4",
+          "dateTime": "2025-07-09 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-07-09",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1391763799815487549",
+          "discordPingSent": false
+        },
+        {
+          "id": 2483,
+          "name": "OP Sparrow 5",
+          "dateTime": "2025-07-16 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-07-16",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1394324958485680239",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 522,
+      "campaignName": "Pre Deployment Ops",
+      "map": "Dagger Island Training Complex",
+      "brief": "Pre Deployment Training Ops for the next campaign or Unit training",
+      "image": {
+        "id": 28036,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/uksf-tfa-patch2-1.png1753735320783.png",
+        "created_at": "2025-07-28 20:42:00",
+        "updated_at": "2025-07-28 20:42:00"
+      },
+      "created_at": "2025-07-28 20:41:26",
+      "updated_at": "2025-11-04 19:23:05",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2529,
+          "name": "Reorbat final training Op",
+          "dateTime": "2025-07-30 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-07-30",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1399492398005878944",
+          "discordPingSent": true
+        },
+        {
+          "id": 3155,
+          "name": "Pre-Deployment Training",
+          "dateTime": "2025-11-05 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-11-05",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1435348420754935900",
+          "discordPingSent": true
+        },
+        {
+          "id": 3244,
+          "name": "Pre Deployment Training + Mini Op",
+          "dateTime": "2025-12-10 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-12-10",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1446712938475028562",
+          "discordPingSent": true
+        },
+        {
+          "id": 3289,
+          "name": "Welcome Back + Pre-Deployment Training",
+          "dateTime": "2026-01-07 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-07",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1457139465633005722",
+          "discordPingSent": true
+        },
+        {
+          "id": 3473,
+          "name": "Unit Restructure",
+          "dateTime": "2026-02-11 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-02-11",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1470526921791242250",
+          "discordPingSent": true
+        }
+      ]
+    },
+    {
+      "id": 551,
+      "campaignName": "Operation Reaction",
+      "map": "Farabad ( Persian Gulf )",
+      "brief": "Focussed around the capital city of Al-Jatar, A nation on the Persian Gulf. This semi-mountainous region rich in natural resources is home to many mines and oil fields. However these resources have left instability and conflict in the region for decades. Thunder run through the wide open valleys around the Jazira oil fields, traverse a rocky mountain pass, or move deep into the dense alleyways and streets of Farabad, a huge city at the center of the province.\n\nA military coup made the region even more unstable. Different factions are in fight with eachother to gain control. The British Government has received a request from NATO HQ to evacuate any British embassy personnel and civilians out of the area, to gain intel and to work with our NATO partners and the previous regime.",
+      "image": {
+        "id": 28399,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/EjtzWdt3.jpg1755002735864.jpg",
+        "created_at": "2025-08-12 12:45:35",
+        "updated_at": "2025-08-12 12:45:35"
+      },
+      "created_at": "2025-08-12 12:45:35",
+      "updated_at": "2025-08-12 12:45:35",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2645,
+          "name": "OP Reaction 1",
+          "dateTime": "2025-08-13 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-08-13",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1404808287907610677",
+          "discordPingSent": false
+        },
+        {
+          "id": 2847,
+          "name": "OP Reaction 2",
+          "dateTime": "2025-08-20 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-08-20",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1407070695783141456",
+          "discordPingSent": false
+        },
+        {
+          "id": 2874,
+          "name": "OP Reaction 3",
+          "dateTime": "2025-08-27 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-08-27",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1409581245599584366",
+          "discordPingSent": false
+        },
+        {
+          "id": 2901,
+          "name": "OP Reaction 4",
+          "dateTime": "2025-09-03 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-09-03",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1412125605838983241",
+          "discordPingSent": false
+        },
+        {
+          "id": 2954,
+          "name": "Op Reaction 5",
+          "dateTime": "2025-09-17 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-09-17",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1417590622042460180",
+          "discordPingSent": true
+        },
+        {
+          "id": 2983,
+          "name": "OP Reaction 6",
+          "dateTime": "2025-09-24 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-09-24",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1419759266708852811",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 618,
+      "campaignName": "Operation Dune Vengance",
+      "map": "Al-Katbah District, Western Sahatra (Former Iran)",
+      "brief": "\nCAMPAIGN BRIEF;\n\n1. SITUATION:\nIn the power vacuum left by Iran's collapse, the province of Western Sahatra is now a failed state. A ruthless paramilitary faction, the Black Rose, has seized control of the region's oil wealth and now threatens to destabilize the entire Middle East.\n\n2. THE ENEMY:\nThe Black Rose is a well-funded and disciplined force, but their strategic command rests with a secretive \"Council of 13.\" This council is our primary target. As long as they remain, the Black Rose will continue to be a threat.\n\n3. THE OBJECTIVE:\nThis campaign has one ultimate goal: the complete dismantlement of the Black Rose leadership. Over a series of sequential operations, UKSF Task Force Alpha will hunt down and eliminate every member of the Council of 13.\n\n4. THE WORLD:\nThe AO is not empty. Other factions, from nationalist militias to opportunistic warlords, also operate in the region. How we interact with them—whether we fight them, avoid them, or use them—will be critical to our success.\n\nWelcome to Sahatra.",
+      "image": {
+        "id": 30540,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/download.jpeg1760451669872.jpeg",
+        "created_at": "2025-10-14 14:21:09",
+        "updated_at": "2025-10-14 14:21:09"
+      },
+      "created_at": "2025-10-14 14:18:35",
+      "updated_at": "2025-10-26 15:59:14",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 3058,
+          "name": "Op Ironclad",
+          "dateTime": "2025-10-15 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-10-15",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321236261553573928",
+          "discordMessage": "1427662714913816626",
+          "discordPingSent": true
+        },
+        {
+          "id": 3095,
+          "name": "Op Nightglass",
+          "dateTime": "2025-10-22 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-10-22",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1430092273000910910",
+          "discordPingSent": true
+        },
+        {
+          "id": 3122,
+          "name": "Op Venoms Nest",
+          "dateTime": "2025-10-29 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-10-29",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1432030744355672065",
+          "discordPingSent": true
+        },
+        {
+          "id": 3132,
+          "name": "Op Venoms Nest | Part 2",
+          "dateTime": "2025-10-30 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-10-30",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1433223802464243765",
+          "discordPingSent": true
+        }
+      ]
+    },
+    {
+      "id": 637,
+      "campaignName": "Operation Jungle Cobra",
+      "map": "Northern Colombia",
+      "brief": "SITUATION:\nFollowing the successful disruption of their command in Sahatra, the remnants of the Black Rose have fled to the remote, dense jungles of Colombia. Intelligence confirms they are now establishing chemical weapon production facilities, utilising local Cartel networks and resources. This represents a critical escalation: the Black Rose is transitioning from a regional threat to a global proliferator of WMDs.\n\nTHE ENEMY:\nThe last three remaining members of the Council of 13 are believed to be overseeing these production\noperations. They are highly dangerous, desperate, and will be protected by well-armed local Cartel forces and PMC elements.\n\nTHE OBJECTIVE:\nThis campaign's ultimate goal is the complete and permanent neutralisation of the Black Rose's chemical weapon production capability. This will involve hunting down and eliminating the remaining Council members, destroying all production facilities, and interdicting their supply lines.\n\nTHE TERRAIN:\nExpect extreme environmental challenges: dense jungle, high humidity, difficult terrain, and a complex human terrain dominated by powerful Cartel networks and insurgent groups.\n\nTHE STAKES:\nFailure is not an option. The proliferation of chemical weapons by the Black Rose would have catastrophic global consequences.",
+      "image": {
+        "id": 31629,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/download.jpeg1762721389767.jpeg",
+        "created_at": "2025-11-09 20:49:49",
+        "updated_at": "2025-11-09 20:49:49"
+      },
+      "created_at": "2025-11-09 20:49:49",
+      "updated_at": "2025-11-09 20:57:58",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 3167,
+          "name": "Op Piranha Strike",
+          "dateTime": "2025-11-12 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-11-12",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1437452184533991567",
+          "discordPingSent": true
+        },
+        {
+          "id": 3197,
+          "name": "Op Jungle Cobra 2",
+          "dateTime": "2025-11-19 21:00:00",
+          "time": "21:00:00",
+          "date": "2025-11-19",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1440326102747971604",
+          "discordPingSent": true
+        },
+        {
+          "id": 3217,
+          "name": "Op Unseen Cargo",
+          "dateTime": "2025-11-26 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-11-26",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1442626283946250342",
+          "discordPingSent": true
+        },
+        {
+          "id": 3234,
+          "name": "Op Unseen Cargo | Part 2",
+          "dateTime": "2025-12-03 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-12-03",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1445457594020790474",
+          "discordPingSent": true
+        }
+      ]
+    },
+    {
+      "id": 675,
+      "campaignName": "Operation Iron Retribution",
+      "map": "Lythium",
+      "brief": "Situation:\nFollowing the \"Day of Ashes\" mass-casualty terrorist attack on UK soil, intelligence has identified the perpetrator as Al-Khaima Front (AKF), a transnational terrorist organization. AKF operates a sophisticated and compartmentalized network spanning the UK and a foreign sanctuary known as \"Lythium.\"\n\nThe network's cross-border finance, logistics, and international coordination are controlled by a single high-value individual codenamed 'THE FERRYMAN'.\n\nMission:\nUKSF has been tasked with conducting phased counter-terrorism operations to locate, disrupt, and dismantle the AKF leadership and infrastructure, neutralizing their capability to conduct further attacks against the UK and it's allies.",
+      "image": {
+        "id": 33434,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/images.steamusercontent.jpg1768170071430.jpg",
+        "created_at": "2026-01-11 22:21:11",
+        "updated_at": "2026-01-11 22:21:11"
+      },
+      "created_at": "2026-01-11 22:21:11",
+      "updated_at": "2026-01-11 22:21:11",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 3331,
+          "name": "Op Iron Retribution 2",
+          "dateTime": "2026-01-14 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-14",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1460036293118525584",
+          "discordPingSent": false
+        },
+        {
+          "id": 3363,
+          "name": "Op Iron Retribution 3",
+          "dateTime": "2026-01-21 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-21",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1462759999867588747",
+          "discordPingSent": true
+        },
+        {
+          "id": 3391,
+          "name": "Op Iron Retribution 4",
+          "dateTime": "2026-01-28 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-28",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1465296559267909766",
+          "discordPingSent": true
+        },
+        {
+          "id": 3421,
+          "name": "Op Iron Retribution 5",
+          "dateTime": "2026-02-04 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-02-04",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1467142027677270167",
+          "discordPingSent": true
+        }
+      ]
+    },
+    {
+      "id": 677,
+      "campaignName": "Operation Retrieving Gold ",
+      "map": "Green Sea",
+      "brief": "Situation:\nThe year is 2018, 30 years after Day 0.\nWe are the first expeditionary forces to set foot outside of the UK. We've been tasked with reconnaissance of the surrounding terrain of Chernarus, setting up a fixed FOB and possible retrieval of technology.\n\nWe are in unknown territory, we have little information about the area that surrounds us and we are effectively the first new faces in this terrain. We are under-equipped until the rest of our convoy reaches our location.\n\nMission:\nUKSF has been tasked with reconnaissance of Chernarus, finding a suitable location to settle a permanent FOB and possibly retrieving old technology that is otherwise in working order, or can be restored to working order.",
+      "image": {
+        "id": 33755,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/image.png1769635425047.png",
+        "created_at": "2026-01-28 21:23:45",
+        "updated_at": "2026-01-28 21:23:45"
+      },
+      "created_at": "2026-01-14 23:53:53",
+      "updated_at": "2026-01-28 21:23:45",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 3348,
+          "name": "Op Thumb Sucking",
+          "dateTime": "2026-01-16 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-16",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1461147334292410481",
+          "discordPingSent": true
+        },
+        {
+          "id": 3403,
+          "name": "Op Nightcrawler",
+          "dateTime": "2026-01-30 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-30",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1466182377544880169",
+          "discordPingSent": true
+        }
+      ]
+    }
+  ],
+  "standalone": [
+    {
+      "id": 2775,
+      "name": "SF Training Operation for new ORBAT",
+      "description": "Training night in your new teams under the new ORBAT",
+      "image": null,
+      "map": "Bovington",
+      "dateTime": "2025-07-23 18:00:00",
+      "date": "2025-07-23",
+      "time": "19:00:00",
+      "locked": false,
+      "locked_at": null,
+      "status": "ACTIVE",
+      "discordChannel": "1321236262065274987",
+      "discordPingable": "1321642508161122304",
+      "discordMessage": "1396896524704813259",
+      "discordPingSent": false,
+      "frequency": null,
+      "recurringUntil": null,
+      "processedForRecurrence": false
+    },
+    {
+      "id": 2857,
+      "name": "Op Hunter",
+      "description": "**Classified** **TOP SECRET**",
+      "image": null,
+      "map": "Classified ",
+      "dateTime": "2025-08-06 17:00:00",
+      "date": "2025-08-06",
+      "time": "19:00:00",
+      "locked": true,
+      "locked_at": "2025-09-08 15:49:27",
+      "status": "ARCHIVED",
+      "discordChannel": "1321236262065274987",
+      "discordPingable": "1321642508161122304",
+      "discordMessage": "1402399543202418819",
+      "discordPingSent": false,
+      "frequency": null,
+      "recurringUntil": null,
+      "processedForRecurrence": false
+    },
+    {
+      "id": 3003,
+      "name": "Op Snatcher ",
+      "description": "Classified ",
+      "image": null,
+      "map": "Classified ",
+      "dateTime": "2025-09-10 18:00:00",
+      "date": "2025-09-10",
+      "time": "19:00:00",
+      "locked": true,
+      "locked_at": "2025-09-11 12:44:01",
+      "status": "ACTIVE",
+      "discordChannel": "1321236262065274987",
+      "discordPingable": "1321642508161122304",
+      "discordMessage": "1414638960558215208",
+      "discordPingSent": false,
+      "frequency": null,
+      "recurringUntil": null,
+      "processedForRecurrence": false
+    },
+    {
+      "id": 3346,
+      "name": "Mini Operation",
+      "description": "Following the conclusion of the scheduled CQB training, a mini-operation will be conducted. -\n\nAttendance for the mini-operation is entirely voluntary. All participants are encouraged to join for what is anticipated to be a valuable and enjoyable exercise.",
+      "image": {
+        "id": 32125,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/sas.jpg1764264729670.jpg",
+        "created_at": "2025-11-27 17:32:09",
+        "updated_at": "2025-11-27 17:32:09"
+      },
+      "map": "Northern Colombia",
+      "dateTime": "2025-11-27 20:00:00",
+      "date": "2025-11-27",
+      "time": "20:00:00",
+      "locked": false,
+      "locked_at": null,
+      "status": "ACTIVE",
+      "discordChannel": "1321236262065274987",
+      "discordPingable": "1321642508161122304",
+      "discordMessage": "1443655655717208084",
+      "discordPingSent": false,
+      "frequency": null,
+      "recurringUntil": null,
+      "processedForRecurrence": false
+    },
+    {
+      "id": 3422,
+      "name": "Operation Satan's Slay",
+      "description": "Objective: Rescue Santa Claus from an unknown threat and Secure Christmas by ensuring the timely delivery of all presents.\n\nSituation: Intelligence confirms that Santa Claus has been compromised and is currently detained/missing. The North Pole operation is in chaos, and the global gift-delivery schedule is at severe risk. Failure is not an option—billions of units of goodwill are at stake.\n\nImmediate Task: Locate, extract, and ensure the safe return of Santa Claus to his command center. Simultaneously, you must secure the gift inventory and prepare the sleigh for immediate launch on schedule.\n\nRequired Assets: Speed, stealth, unwavering festive spirit, and absolute adherence to the Nice List.",
+      "image": {
+        "id": 32604,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/OIP-3986261552.jpg1765908460608.jpg",
+        "created_at": "2025-12-16 18:07:40",
+        "updated_at": "2025-12-16 18:07:40"
+      },
+      "map": "Napf Island - Winter",
+      "dateTime": "2025-12-17 19:00:00",
+      "date": "2025-12-17",
+      "time": "19:00:00",
+      "locked": false,
+      "locked_at": null,
+      "status": "ACTIVE",
+      "discordChannel": "1321236262065274987",
+      "discordPingable": "1321642508161122304",
+      "discordMessage": "1450549962407542914",
+      "discordPingSent": false,
+      "frequency": null,
+      "recurringUntil": null,
+      "processedForRecurrence": false
+    }
+  ],
+  "profiles": [
+    {
+      "id": 11259,
+      "communityId": 722,
+      "alias": "Ross Buh",
+      "created_at": "2025-02-18 16:39:50",
+      "updated_at": "2025-02-18 17:29:11",
+      "status": "LOA",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 9781,
+      "avatar": {
+        "id": 23449,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Arma_3_19_02_2025_21_13_58.png1740000799069.png",
+        "created_at": "2025-02-19 21:33:19",
+        "updated_at": "2025-02-19 21:33:19"
+      },
+      "rank": {
+        "id": 3977,
+        "name": "Major",
+        "abbreviation": "Maj.",
+        "description": "A Major is either OC of a Company or 2IC of a unit",
+        "groupId": 988,
+        "displayOrder": 2,
+        "created_at": "2025-02-18 16:47:13",
+        "updated_at": "2025-04-09 08:04:30",
+        "imageId": 24427,
+        "image": {
+          "id": 24427,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-ARMY-maj_patch_co.png1744185870693.png",
+          "created_at": "2025-04-09 08:04:30",
+          "updated_at": "2025-04-09 08:04:30"
+        }
+      },
+      "position": {
+        "id": 4003,
+        "name": "Officer Commanding",
+        "description": "Commanding Officer of Taskforce Alpha",
+        "groupId": 1040,
+        "displayOrder": 0,
+        "created_at": "2025-02-20 20:12:17",
+        "updated_at": "2025-07-21 16:23:49"
+      },
+      "unit": {
+        "id": 3580,
+        "name": "TFHQ",
+        "callsign": "0-",
+        "leaderId": 11259,
+        "groupId": 1218,
+        "image": {
+          "id": 24520,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/UKSF-TFA_Unit_Emblem.png1744315262677.png",
+          "created_at": "2025-04-10 20:01:02",
+          "updated_at": "2025-04-10 20:01:02"
+        },
+        "displayOrder": 0,
+        "created_at": "2025-02-18 17:10:28",
+        "updated_at": "2025-04-10 20:01:02"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11261,
+      "communityId": 722,
+      "alias": "N. Hodge",
+      "created_at": "2025-02-18 17:54:16",
+      "updated_at": "2025-02-18 18:15:45",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 9783,
+      "avatar": {
+        "id": 24767,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/me.jpg1744840296250.jpg",
+        "created_at": "2025-04-16 21:51:36",
+        "updated_at": "2025-04-16 21:51:36"
+      },
+      "rank": {
+        "id": 4105,
+        "name": "Warrant Officer Class 2",
+        "abbreviation": "WO2",
+        "description": "Royal Navy Warrant Officer Class 2",
+        "groupId": 989,
+        "displayOrder": 4,
+        "created_at": "2025-04-10 18:13:14",
+        "updated_at": "2025-04-10 18:13:14",
+        "imageId": 24491,
+        "image": {
+          "id": 24491,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-WO2_patch_co.png1744308794924.png",
+          "created_at": "2025-04-10 18:13:14",
+          "updated_at": "2025-04-10 18:13:14"
+        }
+      },
+      "position": {
+        "id": 4010,
+        "name": "SSM",
+        "description": "33",
+        "groupId": 1040,
+        "displayOrder": 2,
+        "created_at": "2025-02-23 12:14:52",
+        "updated_at": "2025-07-21 16:25:38"
+      },
+      "unit": {
+        "id": 3580,
+        "name": "TFHQ",
+        "callsign": "0-",
+        "leaderId": 11259,
+        "groupId": 1218,
+        "image": {
+          "id": 24520,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/UKSF-TFA_Unit_Emblem.png1744315262677.png",
+          "created_at": "2025-04-10 20:01:02",
+          "updated_at": "2025-04-10 20:01:02"
+        },
+        "displayOrder": 0,
+        "created_at": "2025-02-18 17:10:28",
+        "updated_at": "2025-04-10 20:01:02"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11264,
+      "communityId": 722,
+      "alias": "M. Barker - [AWOL] ",
+      "created_at": "2025-02-18 18:04:31",
+      "updated_at": "2025-09-17 17:06:18",
+      "status": "DISCHARGED",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 9138,
+      "avatar": {
+        "id": 23451,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/10000157032.png1740001695268.png",
+        "created_at": "2025-02-19 21:48:15",
+        "updated_at": "2025-02-19 21:48:15"
+      },
+      "rank": {
+        "id": 3987,
+        "name": "Sergeant",
+        "abbreviation": "Sgt",
+        "description": "Sgt",
+        "groupId": 990,
+        "displayOrder": 7,
+        "created_at": "2025-02-18 17:04:03",
+        "updated_at": "2025-04-10 20:53:02",
+        "imageId": 23447,
+        "image": {
+          "id": 23447,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/2._Rank_Patch_-_SGT.png1739991088670.png",
+          "created_at": "2025-02-19 18:51:28",
+          "updated_at": "2025-02-19 18:51:28"
+        }
+      },
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11266,
+      "communityId": 722,
+      "alias": "Grip",
+      "created_at": "2025-02-18 18:32:50",
+      "updated_at": "2025-04-10 17:44:14",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 9785,
+      "avatar": {
+        "id": 24483,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/grip.png1744307196015.png",
+        "created_at": "2025-04-10 17:46:36",
+        "updated_at": "2025-04-10 17:46:36"
+      },
+      "rank": null,
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11280,
+      "communityId": 722,
+      "alias": "Mirai",
+      "created_at": "2025-02-19 21:57:17",
+      "updated_at": "2025-02-19 21:57:17",
+      "status": "DISCHARGED",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 9795,
+      "avatar": {
+        "id": 23454,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/IMG_1600.jpg1740003040507.jpg",
+        "created_at": "2025-02-19 22:10:40",
+        "updated_at": "2025-02-19 22:10:40"
+      },
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": {
+        "id": 4407,
+        "name": "SF Explosives Expert",
+        "description": "SF Explosives Expert",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:17:39",
+        "updated_at": "2025-07-08 22:17:39"
+      },
+      "unit": {
+        "id": 3946,
+        "name": "SAS Team Alpha",
+        "callsign": "Sabre 3-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 22,
+        "created_at": "2025-07-08 21:52:01",
+        "updated_at": "2025-07-08 21:52:01"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11281,
+      "communityId": 722,
+      "alias": "J. Shaw",
+      "created_at": "2025-02-19 21:57:28",
+      "updated_at": "2025-02-19 21:57:28",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 2716,
+      "avatar": null,
+      "rank": {
+        "id": 3993,
+        "name": "Commander",
+        "abbreviation": "Cmdr.",
+        "description": "commander",
+        "groupId": 988,
+        "displayOrder": 0,
+        "created_at": "2025-02-19 22:10:38",
+        "updated_at": "2025-04-10 17:54:17",
+        "imageId": 24485,
+        "image": {
+          "id": 24485,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-CDR_patch_co.png1744307657261.png",
+          "created_at": "2025-04-10 17:54:17",
+          "updated_at": "2025-04-10 17:54:17"
+        }
+      },
+      "position": {
+        "id": 4011,
+        "name": "Operations Officer",
+        "description": "gg",
+        "groupId": 1040,
+        "displayOrder": 3,
+        "created_at": "2025-02-23 12:15:30",
+        "updated_at": "2025-02-23 12:15:30"
+      },
+      "unit": {
+        "id": 3604,
+        "name": "Intelligence Cell",
+        "callsign": "--",
+        "leaderId": 11281,
+        "groupId": 1218,
+        "image": {
+          "id": 27257,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/raf,360x360,075,t,fafafa_ca443f4786.u1.jpg1752014402433.jpg",
+          "created_at": "2025-07-08 22:40:02",
+          "updated_at": "2025-07-08 22:40:02"
+        },
+        "displayOrder": 6,
+        "created_at": "2025-02-23 12:02:04",
+        "updated_at": "2025-07-08 22:40:02"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11282,
+      "communityId": 722,
+      "alias": "C.Quack",
+      "created_at": "2025-02-19 21:57:33",
+      "updated_at": "2025-02-19 21:57:33",
+      "status": "DISCHARGED",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 9796,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": {
+        "id": 3958,
+        "name": "SFSG Training Plt",
+        "callsign": "Bulldog 10",
+        "leaderId": null,
+        "groupId": 1378,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:24:19",
+        "updated_at": "2025-07-08 22:24:19"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11839,
+      "communityId": 722,
+      "alias": "Coburn",
+      "created_at": "2025-03-27 19:58:24",
+      "updated_at": "2025-03-27 20:14:21",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10252,
+      "avatar": null,
+      "rank": {
+        "id": 3989,
+        "name": "Lance Corporal",
+        "abbreviation": "LCpl",
+        "description": "Lcpl",
+        "groupId": 991,
+        "displayOrder": 3,
+        "created_at": "2025-02-18 17:04:55",
+        "updated_at": "2025-04-10 20:54:08",
+        "imageId": 23446,
+        "image": {
+          "id": 23446,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/2._Rank_Patch_-_LCPL.png1739991043064.png",
+          "created_at": "2025-02-19 18:50:43",
+          "updated_at": "2025-02-19 18:50:43"
+        }
+      },
+      "position": {
+        "id": 4406,
+        "name": "SF Gunner",
+        "description": "SF Gunner",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:17:15",
+        "updated_at": "2025-07-08 22:17:15"
+      },
+      "unit": {
+        "id": 3946,
+        "name": "SAS Team Alpha",
+        "callsign": "Sabre 3-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 22,
+        "created_at": "2025-07-08 21:52:01",
+        "updated_at": "2025-07-08 21:52:01"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11841,
+      "communityId": 722,
+      "alias": "M. Müller",
+      "created_at": "2025-03-27 20:07:04",
+      "updated_at": "2025-03-27 20:07:04",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10255,
+      "avatar": null,
+      "rank": {
+        "id": 4096,
+        "name": "Flight Lieutenant",
+        "abbreviation": "Flt Lt.",
+        "description": "RAF Flight Lt",
+        "groupId": 988,
+        "displayOrder": 0,
+        "created_at": "2025-04-08 12:17:45",
+        "updated_at": "2025-04-10 17:25:55",
+        "imageId": 24474,
+        "image": {
+          "id": 24474,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-FlLt_patch_co.png1744305955625.png",
+          "created_at": "2025-04-10 17:25:55",
+          "updated_at": "2025-04-10 17:25:55"
+        }
+      },
+      "position": {
+        "id": 4056,
+        "name": "JSFAW Commander",
+        "description": "Officer in Charge of JSFAW",
+        "groupId": 1056,
+        "displayOrder": 0,
+        "created_at": "2025-04-08 12:07:49",
+        "updated_at": "2025-04-08 12:07:49"
+      },
+      "unit": {
+        "id": 3591,
+        "name": "JSFAW HQ",
+        "callsign": "Guardian 2-0",
+        "leaderId": 11282,
+        "groupId": 1220,
+        "image": {
+          "id": 24523,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Photoroom-20250109_105457.png1744319093056.png",
+          "created_at": "2025-04-10 21:04:53",
+          "updated_at": "2025-04-10 21:04:53"
+        },
+        "displayOrder": 20,
+        "created_at": "2025-02-18 17:19:31",
+        "updated_at": "2025-04-10 21:08:21"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11977,
+      "communityId": 722,
+      "alias": "S.Lewis",
+      "created_at": "2025-04-08 11:48:41",
+      "updated_at": "2025-04-08 11:48:41",
+      "status": "RESERVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10369,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": {
+        "id": 4406,
+        "name": "SF Gunner",
+        "description": "SF Gunner",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:17:15",
+        "updated_at": "2025-07-08 22:17:15"
+      },
+      "unit": {
+        "id": 3946,
+        "name": "SAS Team Alpha",
+        "callsign": "Sabre 3-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 22,
+        "created_at": "2025-07-08 21:52:01",
+        "updated_at": "2025-07-08 21:52:01"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11979,
+      "communityId": 722,
+      "alias": "Crane",
+      "created_at": "2025-04-08 13:46:54",
+      "updated_at": "2025-04-08 13:46:54",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10371,
+      "avatar": null,
+      "rank": {
+        "id": 3990,
+        "name": "Private",
+        "abbreviation": "Pte",
+        "description": "Army Private",
+        "groupId": 992,
+        "displayOrder": 3,
+        "created_at": "2025-02-18 17:05:49",
+        "updated_at": "2025-04-10 20:55:12",
+        "imageId": 24479,
+        "image": {
+          "id": 24479,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306247458.png",
+          "created_at": "2025-04-10 17:30:47",
+          "updated_at": "2025-04-10 17:30:47"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 11982,
+      "communityId": 722,
+      "alias": "Wolf",
+      "created_at": "2025-04-08 20:36:38",
+      "updated_at": "2025-04-08 20:39:18",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10254,
+      "avatar": null,
+      "rank": {
+        "id": 3987,
+        "name": "Sergeant",
+        "abbreviation": "Sgt",
+        "description": "Sgt",
+        "groupId": 990,
+        "displayOrder": 7,
+        "created_at": "2025-02-18 17:04:03",
+        "updated_at": "2025-04-10 20:53:02",
+        "imageId": 23447,
+        "image": {
+          "id": 23447,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/2._Rank_Patch_-_SGT.png1739991088670.png",
+          "created_at": "2025-02-19 18:51:28",
+          "updated_at": "2025-02-19 18:51:28"
+        }
+      },
+      "position": {
+        "id": 4395,
+        "name": "Alpha Team Leader",
+        "description": "Alpha Team Leader",
+        "groupId": 1058,
+        "displayOrder": 6,
+        "created_at": "2025-07-08 22:04:53",
+        "updated_at": "2025-07-08 22:12:17"
+      },
+      "unit": {
+        "id": 3949,
+        "name": "SBS Team Alpha",
+        "callsign": "Trident 4-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 26,
+        "created_at": "2025-07-08 21:54:48",
+        "updated_at": "2025-07-08 21:54:48"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 12143,
+      "communityId": 722,
+      "alias": "L. Hjelm [GC.]",
+      "created_at": "2025-04-18 13:44:39",
+      "updated_at": "2026-01-27 20:19:44",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10507,
+      "avatar": null,
+      "rank": {
+        "id": 3987,
+        "name": "Sergeant",
+        "abbreviation": "Sgt",
+        "description": "Sgt",
+        "groupId": 990,
+        "displayOrder": 7,
+        "created_at": "2025-02-18 17:04:03",
+        "updated_at": "2025-04-10 20:53:02",
+        "imageId": 23447,
+        "image": {
+          "id": 23447,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/2._Rank_Patch_-_SGT.png1739991088670.png",
+          "created_at": "2025-02-19 18:51:28",
+          "updated_at": "2025-02-19 18:51:28"
+        }
+      },
+      "position": {
+        "id": 3993,
+        "name": "CMT Class 2 Medic",
+        "description": "An intermediate-level field medic responsible for providing effective battlefield triage, stabilization, and casualty evacuation under fire. Operators holding this qualification are trusted to operate independently within a fireteam or section and deliver essential combat medical care.\n\nCore Responsibilities:\n- Provide immediate life-saving interventions.\n- Stabilize and monitor casualties for CASEVAC/MEDEVAC.\n- Maintain medical supply discipline and manage team-level medical assets.\n\nRequires CMT Class 2 qualification.",
+        "groupId": 1153,
+        "displayOrder": 17,
+        "created_at": "2025-02-20 19:52:57",
+        "updated_at": "2025-07-08 22:30:04"
+      },
+      "unit": {
+        "id": 3952,
+        "name": "SRR Team Alpha",
+        "callsign": "Raven 5-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 210,
+        "created_at": "2025-07-08 21:56:49",
+        "updated_at": "2025-07-08 21:56:49"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 12221,
+      "communityId": 722,
+      "alias": "Parkie",
+      "created_at": "2025-04-23 17:14:48",
+      "updated_at": "2025-04-23 17:14:48",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10573,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": {
+        "id": 4404,
+        "name": "SF Medic",
+        "description": "The most senior field medic role, you are trained to lead medical efforts in high-intensity operations. This qualification signifies full competence in all aspects of battlefield medicine. You are trusted to manage medical assets at the platoon level or higher, make critical care decisions, and serve as advisors to command on casualty management and evacuation planning and to provide training for recruits doing Basic Training.\n\nCore responsibilities:\n- Serve as Section Medical Lead.\n- Advise command on medical planning and operational health readiness.\n- Provide basic medical training to recruits.\n- Perform advanced medical interventions, including surgical stabilization.\n- Liaise with command regarding casualty estimates, MEDEVAC timing, and asset readiness.\n\nRequires CMT Class 1 qualification and Having Passed SF Selection",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:16:36",
+        "updated_at": "2025-07-08 22:31:13"
+      },
+      "unit": {
+        "id": 3952,
+        "name": "SRR Team Alpha",
+        "callsign": "Raven 5-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 210,
+        "created_at": "2025-07-08 21:56:49",
+        "updated_at": "2025-07-08 21:56:49"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 12294,
+      "communityId": 722,
+      "alias": "Arbo",
+      "created_at": "2025-04-27 20:13:29",
+      "updated_at": "2025-04-27 23:06:05",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10628,
+      "avatar": null,
+      "rank": {
+        "id": 3987,
+        "name": "Sergeant",
+        "abbreviation": "Sgt",
+        "description": "Sgt",
+        "groupId": 990,
+        "displayOrder": 7,
+        "created_at": "2025-02-18 17:04:03",
+        "updated_at": "2025-04-10 20:53:02",
+        "imageId": 23447,
+        "image": {
+          "id": 23447,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/2._Rank_Patch_-_SGT.png1739991088670.png",
+          "created_at": "2025-02-19 18:51:28",
+          "updated_at": "2025-02-19 18:51:28"
+        }
+      },
+      "position": {
+        "id": 4395,
+        "name": "Alpha Team Leader",
+        "description": "Alpha Team Leader",
+        "groupId": 1058,
+        "displayOrder": 6,
+        "created_at": "2025-07-08 22:04:53",
+        "updated_at": "2025-07-08 22:12:17"
+      },
+      "unit": {
+        "id": 3946,
+        "name": "SAS Team Alpha",
+        "callsign": "Sabre 3-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 22,
+        "created_at": "2025-07-08 21:52:01",
+        "updated_at": "2025-07-08 21:52:01"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 12297,
+      "communityId": 722,
+      "alias": "Shane",
+      "created_at": "2025-04-27 22:44:08",
+      "updated_at": "2025-08-19 17:37:00",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10631,
+      "avatar": null,
+      "rank": {
+        "id": 4113,
+        "name": "Corporal",
+        "abbreviation": "Cpl",
+        "description": "RAF Corporal",
+        "groupId": 991,
+        "displayOrder": 2,
+        "created_at": "2025-04-10 18:33:12",
+        "updated_at": "2025-04-10 20:53:52",
+        "imageId": 24499,
+        "image": {
+          "id": 24499,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-CPL_patch_co.png1744309992102.png",
+          "created_at": "2025-04-10 18:33:12",
+          "updated_at": "2025-04-10 18:33:12"
+        }
+      },
+      "position": {
+        "id": 4902,
+        "name": "JTAC",
+        "description": "A crucial role coordinating air strikes (Close Air Support) for ground troops, acting as the eyes in the sky or on the ground to guide pilots, mark targets with smoke/flares, and ensure friendly forces' safety, preventing friendly fire, using specialized aircraft or ground posts to direct jets, helicopters, and drones in real-time.",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-12-21 22:35:20",
+        "updated_at": "2025-12-21 22:35:20"
+      },
+      "unit": {
+        "id": 3946,
+        "name": "SAS Team Alpha",
+        "callsign": "Sabre 3-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 22,
+        "created_at": "2025-07-08 21:52:01",
+        "updated_at": "2025-07-08 21:52:01"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 12339,
+      "communityId": 722,
+      "alias": "FOZZ",
+      "created_at": "2025-04-30 17:56:37",
+      "updated_at": "2025-09-17 21:00:07",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10670,
+      "avatar": null,
+      "rank": {
+        "id": 3988,
+        "name": "Corporal",
+        "abbreviation": "Cpl",
+        "description": "Cpl",
+        "groupId": 991,
+        "displayOrder": 1,
+        "created_at": "2025-02-18 17:04:31",
+        "updated_at": "2025-04-10 20:53:33",
+        "imageId": 23445,
+        "image": {
+          "id": 23445,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/1._Rank_Patch_-_CPL.png1739987323818.png",
+          "created_at": "2025-02-19 17:48:43",
+          "updated_at": "2025-02-19 17:48:43"
+        }
+      },
+      "position": {
+        "id": 4055,
+        "name": "Rotary Pilot (Attack)",
+        "description": "Qualified to Fly Apache, Armed Rotary Craft",
+        "groupId": 1056,
+        "displayOrder": 0,
+        "created_at": "2025-04-08 12:07:17",
+        "updated_at": "2025-04-08 12:07:17"
+      },
+      "unit": {
+        "id": 3940,
+        "name": "JSFAW",
+        "callsign": "22",
+        "leaderId": null,
+        "groupId": 1220,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-07 16:51:45",
+        "updated_at": "2025-07-07 16:51:45"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 12340,
+      "communityId": 722,
+      "alias": "Brooks",
+      "created_at": "2025-04-30 18:01:54",
+      "updated_at": "2025-04-30 18:01:54",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10671,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": {
+        "id": 4429,
+        "name": "SF Recce/Sniper",
+        "description": "SRR Qualifed",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-07-21 16:37:19",
+        "updated_at": "2025-07-21 16:37:19"
+      },
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 12533,
+      "communityId": 722,
+      "alias": "Hans",
+      "created_at": "2025-05-13 12:56:09",
+      "updated_at": "2025-07-22 19:57:48",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10835,
+      "avatar": {
+        "id": 25512,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/lettre-h-du-feu-de-lumière-br-lante-de-flamme-83919218-1949736079.jpg1747141934427.jpg",
+        "created_at": "2025-05-13 13:12:14",
+        "updated_at": "2025-05-13 13:12:14"
+      },
+      "rank": {
+        "id": 4097,
+        "name": "Flying Officer",
+        "abbreviation": "FgOff",
+        "description": "Flying Officer RAF",
+        "groupId": 988,
+        "displayOrder": 0,
+        "created_at": "2025-04-08 12:18:31",
+        "updated_at": "2025-04-10 18:06:04",
+        "imageId": 24475,
+        "image": {
+          "id": 24475,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-FlOff_patch_co.png1744305979136.png",
+          "created_at": "2025-04-10 17:26:19",
+          "updated_at": "2025-04-10 17:26:19"
+        }
+      },
+      "position": {
+        "id": 4055,
+        "name": "Rotary Pilot (Attack)",
+        "description": "Qualified to Fly Apache, Armed Rotary Craft",
+        "groupId": 1056,
+        "displayOrder": 0,
+        "created_at": "2025-04-08 12:07:17",
+        "updated_at": "2025-04-08 12:07:17"
+      },
+      "unit": {
+        "id": 3593,
+        "name": "JSFAW Rotary",
+        "callsign": "22",
+        "leaderId": null,
+        "groupId": 1220,
+        "image": null,
+        "displayOrder": 22,
+        "created_at": "2025-02-18 17:20:01",
+        "updated_at": "2025-04-08 12:24:50"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 12807,
+      "communityId": 722,
+      "alias": "Nyuu.exe",
+      "created_at": "2025-06-04 12:35:35",
+      "updated_at": "2025-06-04 12:35:35",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10970,
+      "avatar": null,
+      "rank": {
+        "id": 3990,
+        "name": "Private",
+        "abbreviation": "Pte",
+        "description": "Army Private",
+        "groupId": 992,
+        "displayOrder": 3,
+        "created_at": "2025-02-18 17:05:49",
+        "updated_at": "2025-04-10 20:55:12",
+        "imageId": 24479,
+        "image": {
+          "id": 24479,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306247458.png",
+          "created_at": "2025-04-10 17:30:47",
+          "updated_at": "2025-04-10 17:30:47"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13053,
+      "communityId": 722,
+      "alias": "M. Barker [MC.] ",
+      "created_at": "2025-06-25 11:27:20",
+      "updated_at": "2025-09-17 17:06:55",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 9779,
+      "avatar": {
+        "id": 29772,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Winston-Metal.png1758128937874.png",
+        "created_at": "2025-09-17 17:08:57",
+        "updated_at": "2025-09-17 17:08:57"
+      },
+      "rank": {
+        "id": 4098,
+        "name": "Staff Sergeant ",
+        "abbreviation": "SSgt",
+        "description": "SSGT",
+        "groupId": 990,
+        "displayOrder": 3,
+        "created_at": "2025-04-08 12:43:15",
+        "updated_at": "2025-04-10 20:52:39",
+        "imageId": 24421,
+        "image": {
+          "id": 24421,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_SSGT.png1744185597066.png",
+          "created_at": "2025-04-09 07:59:57",
+          "updated_at": "2025-04-09 07:59:57"
+        }
+      },
+      "position": {
+        "id": 4062,
+        "name": "SRR Tp Ldr",
+        "description": "SRR Troop Leader",
+        "groupId": 1058,
+        "displayOrder": 4,
+        "created_at": "2025-04-10 20:14:01",
+        "updated_at": "2025-07-08 22:03:07"
+      },
+      "unit": {
+        "id": 3741,
+        "name": "SRR Troop HQ",
+        "callsign": "Raven 5-0",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": {
+          "id": 24432,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Special_Reconnaissance_Regiment_badge.svg.png1744186499264.png",
+          "created_at": "2025-04-09 08:14:59",
+          "updated_at": "2025-04-09 08:14:59"
+        },
+        "displayOrder": 29,
+        "created_at": "2025-04-09 08:14:59",
+        "updated_at": "2025-07-08 21:59:07"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13147,
+      "communityId": 722,
+      "alias": "Hans [3rd ID]",
+      "created_at": "2025-07-02 05:45:30",
+      "updated_at": "2025-07-02 05:45:30",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11312,
+      "avatar": null,
+      "rank": null,
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13391,
+      "communityId": 722,
+      "alias": "J. Smout",
+      "created_at": "2025-07-21 17:45:34",
+      "updated_at": "2025-07-21 17:45:34",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11476,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": {
+        "id": 4429,
+        "name": "SF Recce/Sniper",
+        "description": "SRR Qualifed",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-07-21 16:37:19",
+        "updated_at": "2025-07-21 16:37:19"
+      },
+      "unit": {
+        "id": 3952,
+        "name": "SRR Team Alpha",
+        "callsign": "Raven 5-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 210,
+        "created_at": "2025-07-08 21:56:49",
+        "updated_at": "2025-07-08 21:56:49"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13412,
+      "communityId": 722,
+      "alias": "A. Scott",
+      "created_at": "2025-07-23 20:30:08",
+      "updated_at": "2025-07-23 20:30:08",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 2359,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13423,
+      "communityId": 722,
+      "alias": "R. Holding",
+      "created_at": "2025-07-24 21:24:25",
+      "updated_at": "2025-07-24 21:28:16",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 3486,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": {
+        "id": 3958,
+        "name": "SFSG Training Plt",
+        "callsign": "Bulldog 10",
+        "leaderId": null,
+        "groupId": 1378,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:24:19",
+        "updated_at": "2025-07-08 22:24:19"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13424,
+      "communityId": 722,
+      "alias": "C. Agnew",
+      "created_at": "2025-07-24 21:26:11",
+      "updated_at": "2025-07-24 21:26:11",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11499,
+      "avatar": null,
+      "rank": {
+        "id": 3982,
+        "name": "Second Lieutenant",
+        "abbreviation": "2Lt.",
+        "description": "2 Lt.",
+        "groupId": 988,
+        "displayOrder": 6,
+        "created_at": "2025-02-18 16:57:44",
+        "updated_at": "2025-04-10 20:51:54",
+        "imageId": 24424,
+        "image": {
+          "id": 24424,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-ARMY-2lt_patch_co.png1744185672618.png",
+          "created_at": "2025-04-09 08:01:12",
+          "updated_at": "2025-04-09 08:01:12"
+        }
+      },
+      "position": {
+        "id": 3988,
+        "name": "Intelligence Officer",
+        "description": "N/A",
+        "groupId": 1040,
+        "displayOrder": 4,
+        "created_at": "2025-02-20 19:43:44",
+        "updated_at": "2025-02-23 12:12:41"
+      },
+      "unit": {
+        "id": 3604,
+        "name": "Intelligence Cell",
+        "callsign": "--",
+        "leaderId": 11281,
+        "groupId": 1218,
+        "image": {
+          "id": 27257,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/raf,360x360,075,t,fafafa_ca443f4786.u1.jpg1752014402433.jpg",
+          "created_at": "2025-07-08 22:40:02",
+          "updated_at": "2025-07-08 22:40:02"
+        },
+        "displayOrder": 6,
+        "created_at": "2025-02-23 12:02:04",
+        "updated_at": "2025-07-08 22:40:02"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13433,
+      "communityId": 722,
+      "alias": "Astro",
+      "created_at": "2025-07-25 16:40:44",
+      "updated_at": "2025-07-25 16:40:44",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11506,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13631,
+      "communityId": 722,
+      "alias": "Kaybee",
+      "created_at": "2025-08-10 20:09:36",
+      "updated_at": "2025-08-10 20:10:45",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 9642,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13693,
+      "communityId": 722,
+      "alias": "Sophie",
+      "created_at": "2025-08-18 21:15:06",
+      "updated_at": "2025-08-18 21:15:06",
+      "status": "RESERVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11711,
+      "avatar": {
+        "id": 33527,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/download.jpg1768511734392.jpg",
+        "created_at": "2026-01-15 21:15:34",
+        "updated_at": "2026-01-15 21:15:34"
+      },
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": {
+        "id": 3993,
+        "name": "CMT Class 2 Medic",
+        "description": "An intermediate-level field medic responsible for providing effective battlefield triage, stabilization, and casualty evacuation under fire. Operators holding this qualification are trusted to operate independently within a fireteam or section and deliver essential combat medical care.\n\nCore Responsibilities:\n- Provide immediate life-saving interventions.\n- Stabilize and monitor casualties for CASEVAC/MEDEVAC.\n- Maintain medical supply discipline and manage team-level medical assets.\n\nRequires CMT Class 2 qualification.",
+        "groupId": 1153,
+        "displayOrder": 17,
+        "created_at": "2025-02-20 19:52:57",
+        "updated_at": "2025-07-08 22:30:04"
+      },
+      "unit": {
+        "id": 3956,
+        "name": "Medical Det",
+        "callsign": "Bulldog 15",
+        "leaderId": null,
+        "groupId": 1377,
+        "image": null,
+        "displayOrder": 31,
+        "created_at": "2025-07-08 22:22:46",
+        "updated_at": "2025-07-08 22:22:46"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13695,
+      "communityId": 722,
+      "alias": "Aidan",
+      "created_at": "2025-08-18 21:24:35",
+      "updated_at": "2025-08-18 21:27:39",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11713,
+      "avatar": null,
+      "rank": {
+        "id": 3988,
+        "name": "Corporal",
+        "abbreviation": "Cpl",
+        "description": "Cpl",
+        "groupId": 991,
+        "displayOrder": 1,
+        "created_at": "2025-02-18 17:04:31",
+        "updated_at": "2025-04-10 20:53:33",
+        "imageId": 23445,
+        "image": {
+          "id": 23445,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/1._Rank_Patch_-_CPL.png1739987323818.png",
+          "created_at": "2025-02-19 17:48:43",
+          "updated_at": "2025-02-19 17:48:43"
+        }
+      },
+      "position": {
+        "id": 4396,
+        "name": "Alpha Team 2IC",
+        "description": "Alpha Team 2IC",
+        "groupId": 1058,
+        "displayOrder": 9,
+        "created_at": "2025-07-08 22:05:11",
+        "updated_at": "2025-07-08 22:13:21"
+      },
+      "unit": {
+        "id": 3946,
+        "name": "SAS Team Alpha",
+        "callsign": "Sabre 3-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 22,
+        "created_at": "2025-07-08 21:52:01",
+        "updated_at": "2025-07-08 21:52:01"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13696,
+      "communityId": 722,
+      "alias": "Derry",
+      "created_at": "2025-08-18 22:54:51",
+      "updated_at": "2025-08-19 13:07:31",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11712,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": {
+        "id": 4429,
+        "name": "SF Recce/Sniper",
+        "description": "SRR Qualifed",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-07-21 16:37:19",
+        "updated_at": "2025-07-21 16:37:19"
+      },
+      "unit": {
+        "id": 3952,
+        "name": "SRR Team Alpha",
+        "callsign": "Raven 5-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 210,
+        "created_at": "2025-07-08 21:56:49",
+        "updated_at": "2025-07-08 21:56:49"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13705,
+      "communityId": 722,
+      "alias": "Splinter ",
+      "created_at": "2025-08-19 21:12:06",
+      "updated_at": "2025-08-19 21:12:45",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 5857,
+      "avatar": null,
+      "rank": {
+        "id": 3989,
+        "name": "Lance Corporal",
+        "abbreviation": "LCpl",
+        "description": "Lcpl",
+        "groupId": 991,
+        "displayOrder": 3,
+        "created_at": "2025-02-18 17:04:55",
+        "updated_at": "2025-04-10 20:54:08",
+        "imageId": 23446,
+        "image": {
+          "id": 23446,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/2._Rank_Patch_-_LCPL.png1739991043064.png",
+          "created_at": "2025-02-19 18:50:43",
+          "updated_at": "2025-02-19 18:50:43"
+        }
+      },
+      "position": {
+        "id": 4405,
+        "name": "SF Breacher",
+        "description": "SF Breacher",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:16:51",
+        "updated_at": "2025-07-08 22:16:51"
+      },
+      "unit": {
+        "id": 3946,
+        "name": "SAS Team Alpha",
+        "callsign": "Sabre 3-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 22,
+        "created_at": "2025-07-08 21:52:01",
+        "updated_at": "2025-07-08 21:52:01"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13709,
+      "communityId": 722,
+      "alias": "Omega",
+      "created_at": "2025-08-20 05:18:39",
+      "updated_at": "2025-08-20 05:18:39",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11724,
+      "avatar": {
+        "id": 30916,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Cretin.jpg1761723678900.jpg",
+        "created_at": "2025-10-29 07:41:18",
+        "updated_at": "2025-10-29 07:41:18"
+      },
+      "rank": {
+        "id": 3988,
+        "name": "Corporal",
+        "abbreviation": "Cpl",
+        "description": "Cpl",
+        "groupId": 991,
+        "displayOrder": 1,
+        "created_at": "2025-02-18 17:04:31",
+        "updated_at": "2025-04-10 20:53:33",
+        "imageId": 23445,
+        "image": {
+          "id": 23445,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/1._Rank_Patch_-_CPL.png1739987323818.png",
+          "created_at": "2025-02-19 17:48:43",
+          "updated_at": "2025-02-19 17:48:43"
+        }
+      },
+      "position": {
+        "id": 4407,
+        "name": "SF Explosives Expert",
+        "description": "SF Explosives Expert",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:17:39",
+        "updated_at": "2025-07-08 22:17:39"
+      },
+      "unit": {
+        "id": 3946,
+        "name": "SAS Team Alpha",
+        "callsign": "Sabre 3-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 22,
+        "created_at": "2025-07-08 21:52:01",
+        "updated_at": "2025-07-08 21:52:01"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13712,
+      "communityId": 722,
+      "alias": "Chris",
+      "created_at": "2025-08-20 16:27:37",
+      "updated_at": "2025-08-20 16:27:37",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11498,
+      "avatar": null,
+      "rank": null,
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13714,
+      "communityId": 722,
+      "alias": "Wraith",
+      "created_at": "2025-08-20 21:24:29",
+      "updated_at": "2025-08-20 21:25:14",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11726,
+      "avatar": null,
+      "rank": {
+        "id": 3989,
+        "name": "Lance Corporal",
+        "abbreviation": "LCpl",
+        "description": "Lcpl",
+        "groupId": 991,
+        "displayOrder": 3,
+        "created_at": "2025-02-18 17:04:55",
+        "updated_at": "2025-04-10 20:54:08",
+        "imageId": 23446,
+        "image": {
+          "id": 23446,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/2._Rank_Patch_-_LCPL.png1739991043064.png",
+          "created_at": "2025-02-19 18:50:43",
+          "updated_at": "2025-02-19 18:50:43"
+        }
+      },
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13727,
+      "communityId": 722,
+      "alias": "Brett",
+      "created_at": "2025-08-21 15:57:59",
+      "updated_at": "2025-08-21 19:25:51",
+      "status": "RESERVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11734,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": {
+        "id": 3949,
+        "name": "SBS Team Alpha",
+        "callsign": "Trident 4-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 26,
+        "created_at": "2025-07-08 21:54:48",
+        "updated_at": "2025-07-08 21:54:48"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13734,
+      "communityId": 722,
+      "alias": "Toni",
+      "created_at": "2025-08-22 10:40:12",
+      "updated_at": "2025-08-22 10:48:19",
+      "status": "DISCHARGED",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11739,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": {
+        "id": 4429,
+        "name": "SF Recce/Sniper",
+        "description": "SRR Qualifed",
+        "groupId": 1058,
+        "displayOrder": 0,
+        "created_at": "2025-07-21 16:37:19",
+        "updated_at": "2025-07-21 16:37:19"
+      },
+      "unit": {
+        "id": 3958,
+        "name": "SFSG Training Plt",
+        "callsign": "Bulldog 10",
+        "leaderId": null,
+        "groupId": 1378,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:24:19",
+        "updated_at": "2025-07-08 22:24:19"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13789,
+      "communityId": 722,
+      "alias": "M. Müller",
+      "created_at": "2025-08-26 20:00:14",
+      "updated_at": "2025-08-26 20:00:14",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10253,
+      "avatar": null,
+      "rank": null,
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 13905,
+      "communityId": 722,
+      "alias": "M. Schaal",
+      "created_at": "2025-09-04 15:53:40",
+      "updated_at": "2025-09-04 15:55:31",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10669,
+      "avatar": null,
+      "rank": {
+        "id": 4109,
+        "name": "Flight Sergeant",
+        "abbreviation": "FS",
+        "description": "RAF Flight Sergeant",
+        "groupId": 990,
+        "displayOrder": 5,
+        "created_at": "2025-04-10 18:24:03",
+        "updated_at": "2025-04-10 18:24:03",
+        "imageId": 24495,
+        "image": {
+          "id": 24495,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-FSGT_patch_co.png1744309443718.png",
+          "created_at": "2025-04-10 18:24:03",
+          "updated_at": "2025-04-10 18:24:03"
+        }
+      },
+      "position": {
+        "id": 4055,
+        "name": "Rotary Pilot (Attack)",
+        "description": "Qualified to Fly Apache, Armed Rotary Craft",
+        "groupId": 1056,
+        "displayOrder": 0,
+        "created_at": "2025-04-08 12:07:17",
+        "updated_at": "2025-04-08 12:07:17"
+      },
+      "unit": {
+        "id": 3940,
+        "name": "JSFAW",
+        "callsign": "22",
+        "leaderId": null,
+        "groupId": 1220,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-07 16:51:45",
+        "updated_at": "2025-07-07 16:51:45"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 14057,
+      "communityId": 722,
+      "alias": "Chris H.",
+      "created_at": "2025-09-10 15:08:06",
+      "updated_at": "2025-09-11 12:42:16",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11972,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 14062,
+      "communityId": 722,
+      "alias": "BAKES982",
+      "created_at": "2025-09-11 13:07:28",
+      "updated_at": "2025-09-11 13:07:28",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11975,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 14125,
+      "communityId": 722,
+      "alias": "maxischaa@gmail.com",
+      "created_at": "2025-09-16 14:31:04",
+      "updated_at": "2025-09-16 14:31:04",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 11865,
+      "avatar": null,
+      "rank": null,
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 14146,
+      "communityId": 722,
+      "alias": "der_echte_deutsche",
+      "created_at": "2025-09-17 14:39:48",
+      "updated_at": "2025-09-17 14:39:48",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 12041,
+      "avatar": null,
+      "rank": null,
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 14152,
+      "communityId": 722,
+      "alias": "Coburn",
+      "created_at": "2025-09-17 20:18:41",
+      "updated_at": "2025-09-17 20:18:41",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10248,
+      "avatar": null,
+      "rank": null,
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 14865,
+      "communityId": 722,
+      "alias": "sensquaredgaming",
+      "created_at": "2025-11-04 19:43:49",
+      "updated_at": "2025-11-04 19:43:49",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 9790,
+      "avatar": null,
+      "rank": null,
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 14999,
+      "communityId": 722,
+      "alias": "Noble",
+      "created_at": "2025-11-12 18:00:08",
+      "updated_at": "2025-11-12 18:01:21",
+      "status": "DISCHARGED",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 12544,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 15038,
+      "communityId": 722,
+      "alias": "Amy",
+      "created_at": "2025-11-14 23:45:09",
+      "updated_at": "2025-11-14 23:45:09",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 12750,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": null,
+      "unit": {
+        "id": 3949,
+        "name": "SBS Team Alpha",
+        "callsign": "Trident 4-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 26,
+        "created_at": "2025-07-08 21:54:48",
+        "updated_at": "2025-07-08 21:54:48"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 15185,
+      "communityId": 722,
+      "alias": "jaruto7@wp.pl",
+      "created_at": "2025-11-25 21:07:20",
+      "updated_at": "2025-11-25 21:07:20",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 12851,
+      "avatar": null,
+      "rank": null,
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 15330,
+      "communityId": 722,
+      "alias": "Odin",
+      "created_at": "2025-12-09 15:24:32",
+      "updated_at": "2025-12-09 15:24:32",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 12954,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": null,
+      "unit": {
+        "id": 3958,
+        "name": "SFSG Training Plt",
+        "callsign": "Bulldog 10",
+        "leaderId": null,
+        "groupId": 1378,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:24:19",
+        "updated_at": "2025-07-08 22:24:19"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 15332,
+      "communityId": 722,
+      "alias": "J. Smith",
+      "created_at": "2025-12-09 17:27:49",
+      "updated_at": "2025-12-09 17:27:49",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 12956,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": null,
+      "unit": {
+        "id": 3949,
+        "name": "SBS Team Alpha",
+        "callsign": "Trident 4-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 26,
+        "created_at": "2025-07-08 21:54:48",
+        "updated_at": "2025-07-08 21:54:48"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 15333,
+      "communityId": 722,
+      "alias": "G.Mockett",
+      "created_at": "2025-12-09 17:28:00",
+      "updated_at": "2025-12-09 17:28:00",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 12957,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": null,
+      "unit": null,
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 15508,
+      "communityId": 722,
+      "alias": "notkongou",
+      "created_at": "2025-12-23 23:55:34",
+      "updated_at": "2025-12-23 23:55:34",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 4804,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": null,
+      "unit": {
+        "id": 3958,
+        "name": "SFSG Training Plt",
+        "callsign": "Bulldog 10",
+        "leaderId": null,
+        "groupId": 1378,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:24:19",
+        "updated_at": "2025-07-08 22:24:19"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 15670,
+      "communityId": 722,
+      "alias": "alforceone",
+      "created_at": "2026-01-03 16:27:20",
+      "updated_at": "2026-01-03 16:27:20",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 10416,
+      "avatar": null,
+      "rank": {
+        "id": 4111,
+        "name": "Sergeant Aircrew",
+        "abbreviation": "SACr",
+        "description": "An RAF Aircrew Sergeant",
+        "groupId": 990,
+        "displayOrder": 8,
+        "created_at": "2025-04-10 18:28:17",
+        "updated_at": "2025-04-10 18:28:17",
+        "imageId": 24497,
+        "image": {
+          "id": 24497,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-SACR_patch_co.png1744309697665.png",
+          "created_at": "2025-04-10 18:28:17",
+          "updated_at": "2025-04-10 18:28:17"
+        }
+      },
+      "position": null,
+      "unit": {
+        "id": 3940,
+        "name": "JSFAW",
+        "callsign": "22",
+        "leaderId": null,
+        "groupId": 1220,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-07 16:51:45",
+        "updated_at": "2025-07-07 16:51:45"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 15671,
+      "communityId": 722,
+      "alias": "jambojay.",
+      "created_at": "2026-01-03 17:48:36",
+      "updated_at": "2026-01-03 17:48:36",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 9507,
+      "avatar": null,
+      "rank": {
+        "id": 3992,
+        "name": "Trooper",
+        "abbreviation": "Tpr",
+        "description": "Private Soldier - **SAS, SBS & SRR Only**",
+        "groupId": 992,
+        "displayOrder": 1,
+        "created_at": "2025-02-19 17:16:40",
+        "updated_at": "2025-04-10 20:54:49",
+        "imageId": 23441,
+        "image": {
+          "id": 23441,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+          "created_at": "2025-02-19 17:42:09",
+          "updated_at": "2025-02-19 17:42:09"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": {
+        "id": 3949,
+        "name": "SBS Team Alpha",
+        "callsign": "Trident 4-1",
+        "leaderId": null,
+        "groupId": 1289,
+        "image": null,
+        "displayOrder": 26,
+        "created_at": "2025-07-08 21:54:48",
+        "updated_at": "2025-07-08 21:54:48"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 15960,
+      "communityId": 722,
+      "alias": "C. Fiadh",
+      "created_at": "2026-01-25 18:33:04",
+      "updated_at": "2026-01-28 12:14:46",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 670,
+      "avatar": null,
+      "rank": {
+        "id": 3990,
+        "name": "Private",
+        "abbreviation": "Pte",
+        "description": "Army Private",
+        "groupId": 992,
+        "displayOrder": 3,
+        "created_at": "2025-02-18 17:05:49",
+        "updated_at": "2025-04-10 20:55:12",
+        "imageId": 24479,
+        "image": {
+          "id": 24479,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306247458.png",
+          "created_at": "2025-04-10 17:30:47",
+          "updated_at": "2025-04-10 17:30:47"
+        }
+      },
+      "position": null,
+      "unit": {
+        "id": 3958,
+        "name": "SFSG Training Plt",
+        "callsign": "Bulldog 10",
+        "leaderId": null,
+        "groupId": 1378,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:24:19",
+        "updated_at": "2025-07-08 22:24:19"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 15991,
+      "communityId": 722,
+      "alias": "biddlesminch",
+      "created_at": "2026-01-27 19:33:27",
+      "updated_at": "2026-01-27 19:33:27",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 13438,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": null,
+      "unit": {
+        "id": 3958,
+        "name": "SFSG Training Plt",
+        "callsign": "Bulldog 10",
+        "leaderId": null,
+        "groupId": 1378,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:24:19",
+        "updated_at": "2025-07-08 22:24:19"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 16041,
+      "communityId": 722,
+      "alias": "K.Stevie",
+      "created_at": "2026-01-30 16:12:27",
+      "updated_at": "2026-01-30 16:12:27",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 13473,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": {
+        "id": 3958,
+        "name": "SFSG Training Plt",
+        "callsign": "Bulldog 10",
+        "leaderId": null,
+        "groupId": 1378,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:24:19",
+        "updated_at": "2025-07-08 22:24:19"
+      },
+      "roles": null,
+      "notes": null
+    },
+    {
+      "id": 16211,
+      "communityId": 722,
+      "alias": "Jones",
+      "created_at": "2026-02-08 10:53:33",
+      "updated_at": "2026-02-09 23:46:09",
+      "status": "ACTIVE",
+      "discharged": false,
+      "dischargedDate": null,
+      "playerId": 13572,
+      "avatar": null,
+      "rank": {
+        "id": 3991,
+        "name": "Recruit",
+        "abbreviation": "Rct",
+        "description": "Recruit",
+        "groupId": 992,
+        "displayOrder": 5,
+        "created_at": "2025-02-18 17:06:10",
+        "updated_at": "2025-04-10 20:55:26",
+        "imageId": 24480,
+        "image": {
+          "id": 24480,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+          "created_at": "2025-04-10 17:31:04",
+          "updated_at": "2025-04-10 17:31:04"
+        }
+      },
+      "position": {
+        "id": 3989,
+        "name": "Rifleman",
+        "description": "N/A",
+        "groupId": 1043,
+        "displayOrder": 14,
+        "created_at": "2025-02-20 19:43:59",
+        "updated_at": "2025-02-20 19:48:39"
+      },
+      "unit": {
+        "id": 3958,
+        "name": "SFSG Training Plt",
+        "callsign": "Bulldog 10",
+        "leaderId": null,
+        "groupId": 1378,
+        "image": null,
+        "displayOrder": 0,
+        "created_at": "2025-07-08 22:24:19",
+        "updated_at": "2025-07-08 22:24:19"
+      },
+      "roles": null,
+      "notes": null
+    }
+  ],
+  "units": [
+    {
+      "id": 3580,
+      "name": "TFHQ",
+      "callsign": "0-",
+      "leaderId": 11259,
+      "groupId": 1218,
+      "image": {
+        "id": 24520,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/UKSF-TFA_Unit_Emblem.png1744315262677.png",
+        "created_at": "2025-04-10 20:01:02",
+        "updated_at": "2025-04-10 20:01:02"
+      },
+      "displayOrder": 0,
+      "created_at": "2025-02-18 17:10:28",
+      "updated_at": "2025-04-10 20:01:02"
+    },
+    {
+      "id": 3581,
+      "name": "OC",
+      "callsign": "0A",
+      "leaderId": 11259,
+      "groupId": 1218,
+      "image": null,
+      "displayOrder": 1,
+      "created_at": "2025-02-18 17:11:57",
+      "updated_at": "2025-07-21 16:25:00"
+    },
+    {
+      "id": 3582,
+      "name": "2IC",
+      "callsign": "0B",
+      "leaderId": null,
+      "groupId": 1218,
+      "image": null,
+      "displayOrder": 2,
+      "created_at": "2025-02-18 17:12:17",
+      "updated_at": "2025-02-18 17:12:17"
+    },
+    {
+      "id": 3583,
+      "name": "SSM",
+      "callsign": "0C",
+      "leaderId": null,
+      "groupId": 1218,
+      "image": null,
+      "displayOrder": 3,
+      "created_at": "2025-02-18 17:13:01",
+      "updated_at": "2025-07-21 16:23:26"
+    },
+    {
+      "id": 3584,
+      "name": "Operations Officer",
+      "callsign": "0D",
+      "leaderId": 11281,
+      "groupId": 1218,
+      "image": null,
+      "displayOrder": 4,
+      "created_at": "2025-02-18 17:13:39",
+      "updated_at": "2025-02-23 12:24:09"
+    },
+    {
+      "id": 3585,
+      "name": "QM",
+      "callsign": "0E",
+      "leaderId": null,
+      "groupId": 1218,
+      "image": null,
+      "displayOrder": 5,
+      "created_at": "2025-02-18 17:13:57",
+      "updated_at": "2025-02-18 17:13:57"
+    },
+    {
+      "id": 3591,
+      "name": "JSFAW HQ",
+      "callsign": "Guardian 2-0",
+      "leaderId": 11282,
+      "groupId": 1220,
+      "image": {
+        "id": 24523,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Photoroom-20250109_105457.png1744319093056.png",
+        "created_at": "2025-04-10 21:04:53",
+        "updated_at": "2025-04-10 21:04:53"
+      },
+      "displayOrder": 20,
+      "created_at": "2025-02-18 17:19:31",
+      "updated_at": "2025-04-10 21:08:21"
+    },
+    {
+      "id": 3592,
+      "name": "JSFAW Fixed Wing",
+      "callsign": "21",
+      "leaderId": null,
+      "groupId": 1220,
+      "image": null,
+      "displayOrder": 21,
+      "created_at": "2025-02-18 17:19:45",
+      "updated_at": "2025-04-08 12:25:06"
+    },
+    {
+      "id": 3593,
+      "name": "JSFAW Rotary",
+      "callsign": "22",
+      "leaderId": null,
+      "groupId": 1220,
+      "image": null,
+      "displayOrder": 22,
+      "created_at": "2025-02-18 17:20:01",
+      "updated_at": "2025-04-08 12:24:50"
+    },
+    {
+      "id": 3600,
+      "name": "Taskforce Training Regiment",
+      "callsign": "--",
+      "leaderId": null,
+      "groupId": 1218,
+      "image": null,
+      "displayOrder": 9,
+      "created_at": "2025-02-21 13:20:19",
+      "updated_at": "2025-04-10 21:32:15"
+    },
+    {
+      "id": 3604,
+      "name": "Intelligence Cell",
+      "callsign": "--",
+      "leaderId": 11281,
+      "groupId": 1218,
+      "image": {
+        "id": 27257,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/raf,360x360,075,t,fafafa_ca443f4786.u1.jpg1752014402433.jpg",
+        "created_at": "2025-07-08 22:40:02",
+        "updated_at": "2025-07-08 22:40:02"
+      },
+      "displayOrder": 6,
+      "created_at": "2025-02-23 12:02:04",
+      "updated_at": "2025-07-08 22:40:02"
+    },
+    {
+      "id": 3734,
+      "name": "Press Team",
+      "callsign": "--",
+      "leaderId": null,
+      "groupId": 1218,
+      "image": null,
+      "displayOrder": 7,
+      "created_at": "2025-04-08 12:25:59",
+      "updated_at": "2025-04-08 12:25:59"
+    },
+    {
+      "id": 3735,
+      "name": "QM's Dept",
+      "callsign": "0E",
+      "leaderId": null,
+      "groupId": 1218,
+      "image": null,
+      "displayOrder": 8,
+      "created_at": "2025-04-08 12:45:44",
+      "updated_at": "2025-04-10 21:11:15"
+    },
+    {
+      "id": 3736,
+      "name": "QM",
+      "callsign": "0E",
+      "leaderId": 11259,
+      "groupId": 1288,
+      "image": null,
+      "displayOrder": 0,
+      "created_at": "2025-04-08 12:47:32",
+      "updated_at": "2025-04-10 21:11:51"
+    },
+    {
+      "id": 3737,
+      "name": "QM's Personel",
+      "callsign": "0F",
+      "leaderId": null,
+      "groupId": 1288,
+      "image": null,
+      "displayOrder": 0,
+      "created_at": "2025-04-08 12:47:57",
+      "updated_at": "2025-04-08 12:48:48"
+    },
+    {
+      "id": 3739,
+      "name": "SAS Troop HQ",
+      "callsign": "Sabre 3-0",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": {
+        "id": 24430,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/UK_SAS_(badge).svg.png1744186353389.png",
+        "created_at": "2025-04-09 08:12:33",
+        "updated_at": "2025-04-09 08:12:33"
+      },
+      "displayOrder": 21,
+      "created_at": "2025-04-09 08:12:33",
+      "updated_at": "2025-07-08 21:54:29"
+    },
+    {
+      "id": 3740,
+      "name": "SBS Troop HQ",
+      "callsign": "Trident 4-0",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": {
+        "id": 24431,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Insigne_Special_Boat_Service_(SBS).svg.png1744186437516.png",
+        "created_at": "2025-04-09 08:13:57",
+        "updated_at": "2025-04-09 08:13:57"
+      },
+      "displayOrder": 25,
+      "created_at": "2025-04-09 08:13:57",
+      "updated_at": "2025-07-08 21:55:38"
+    },
+    {
+      "id": 3741,
+      "name": "SRR Troop HQ",
+      "callsign": "Raven 5-0",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": {
+        "id": 24432,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Special_Reconnaissance_Regiment_badge.svg.png1744186499264.png",
+        "created_at": "2025-04-09 08:14:59",
+        "updated_at": "2025-04-09 08:14:59"
+      },
+      "displayOrder": 29,
+      "created_at": "2025-04-09 08:14:59",
+      "updated_at": "2025-07-08 21:59:07"
+    },
+    {
+      "id": 3742,
+      "name": "UKSF ",
+      "callsign": "--",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": {
+        "id": 24524,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/MinistryofDefence.svg.png1744319884163.png",
+        "created_at": "2025-04-10 21:18:04",
+        "updated_at": "2025-04-10 21:18:04"
+      },
+      "displayOrder": 20,
+      "created_at": "2025-04-10 21:18:04",
+      "updated_at": "2025-07-07 16:55:24"
+    },
+    {
+      "id": 3940,
+      "name": "JSFAW",
+      "callsign": "22",
+      "leaderId": null,
+      "groupId": 1220,
+      "image": null,
+      "displayOrder": 0,
+      "created_at": "2025-07-07 16:51:45",
+      "updated_at": "2025-07-07 16:51:45"
+    },
+    {
+      "id": 3946,
+      "name": "SAS Team Alpha",
+      "callsign": "Sabre 3-1",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": null,
+      "displayOrder": 22,
+      "created_at": "2025-07-08 21:52:01",
+      "updated_at": "2025-07-08 21:52:01"
+    },
+    {
+      "id": 3947,
+      "name": "SAS Team Bravo",
+      "callsign": "Sabre 3-2",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": null,
+      "displayOrder": 23,
+      "created_at": "2025-07-08 21:52:57",
+      "updated_at": "2025-07-08 21:52:57"
+    },
+    {
+      "id": 3948,
+      "name": "SAS Team Charlie",
+      "callsign": "Sabre 3-3",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": null,
+      "displayOrder": 24,
+      "created_at": "2025-07-08 21:53:26",
+      "updated_at": "2025-07-08 21:53:26"
+    },
+    {
+      "id": 3949,
+      "name": "SBS Team Alpha",
+      "callsign": "Trident 4-1",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": null,
+      "displayOrder": 26,
+      "created_at": "2025-07-08 21:54:48",
+      "updated_at": "2025-07-08 21:54:48"
+    },
+    {
+      "id": 3950,
+      "name": "SBS Team Bravo",
+      "callsign": "Trident 4-2",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": null,
+      "displayOrder": 27,
+      "created_at": "2025-07-08 21:55:06",
+      "updated_at": "2025-07-08 21:55:06"
+    },
+    {
+      "id": 3951,
+      "name": "SBS Team Charlie",
+      "callsign": "Trident 4-3",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": null,
+      "displayOrder": 28,
+      "created_at": "2025-07-08 21:55:26",
+      "updated_at": "2025-07-08 21:55:26"
+    },
+    {
+      "id": 3952,
+      "name": "SRR Team Alpha",
+      "callsign": "Raven 5-1",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": null,
+      "displayOrder": 210,
+      "created_at": "2025-07-08 21:56:49",
+      "updated_at": "2025-07-08 21:56:49"
+    },
+    {
+      "id": 3953,
+      "name": "SRR Team Bravo",
+      "callsign": "Raven 5-2",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": null,
+      "displayOrder": 211,
+      "created_at": "2025-07-08 21:57:05",
+      "updated_at": "2025-07-08 21:57:05"
+    },
+    {
+      "id": 3954,
+      "name": "SRR Team Charlie",
+      "callsign": "Raven 5-3",
+      "leaderId": null,
+      "groupId": 1289,
+      "image": null,
+      "displayOrder": 212,
+      "created_at": "2025-07-08 21:57:18",
+      "updated_at": "2025-07-08 21:57:18"
+    },
+    {
+      "id": 3955,
+      "name": "Med Det HQ",
+      "callsign": "Bulldog 15",
+      "leaderId": null,
+      "groupId": 1377,
+      "image": {
+        "id": 27254,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/meddet.png1744999940169.png1752013327506.png",
+        "created_at": "2025-07-08 22:22:07",
+        "updated_at": "2025-07-08 22:22:07"
+      },
+      "displayOrder": 30,
+      "created_at": "2025-07-08 22:22:07",
+      "updated_at": "2025-07-08 22:22:07"
+    },
+    {
+      "id": 3956,
+      "name": "Medical Det",
+      "callsign": "Bulldog 15",
+      "leaderId": null,
+      "groupId": 1377,
+      "image": null,
+      "displayOrder": 31,
+      "created_at": "2025-07-08 22:22:46",
+      "updated_at": "2025-07-08 22:22:46"
+    },
+    {
+      "id": 3957,
+      "name": "SFSG Training Plt HQ",
+      "callsign": "Bulldog 10",
+      "leaderId": null,
+      "groupId": 1378,
+      "image": {
+        "id": 27255,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Insigne_du_Special_Forces_Support_Group_(SFSG).svg.png1744316920677.png1752013431620.png",
+        "created_at": "2025-07-08 22:23:51",
+        "updated_at": "2025-07-08 22:23:51"
+      },
+      "displayOrder": 0,
+      "created_at": "2025-07-08 22:23:51",
+      "updated_at": "2025-07-08 22:23:51"
+    },
+    {
+      "id": 3958,
+      "name": "SFSG Training Plt",
+      "callsign": "Bulldog 10",
+      "leaderId": null,
+      "groupId": 1378,
+      "image": null,
+      "displayOrder": 0,
+      "created_at": "2025-07-08 22:24:19",
+      "updated_at": "2025-07-08 22:24:19"
+    },
+    {
+      "id": 3959,
+      "name": "1 Troop RAC",
+      "callsign": "Panzer 14",
+      "leaderId": null,
+      "groupId": 1379,
+      "image": {
+        "id": 27256,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/images.png1752014336768.png",
+        "created_at": "2025-07-08 22:38:56",
+        "updated_at": "2025-07-08 22:38:56"
+      },
+      "displayOrder": 0,
+      "created_at": "2025-07-08 22:37:28",
+      "updated_at": "2025-07-08 22:38:56"
+    }
+  ],
+  "ranks": [
+    {
+      "id": 3976,
+      "name": "Lieutenant Colonel",
+      "abbreviation": "Lt. Col",
+      "description": "Commanding Officer of UKSF Taskforce Alpha",
+      "groupId": 988,
+      "displayOrder": 0,
+      "created_at": "2025-02-18 16:46:23",
+      "updated_at": "2025-04-09 08:05:07",
+      "imageId": 24428,
+      "image": {
+        "id": 24428,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-ARMY-ltcol_patch_co.png1744185907305.png",
+        "created_at": "2025-04-09 08:05:07",
+        "updated_at": "2025-04-09 08:05:07"
+      }
+    },
+    {
+      "id": 3977,
+      "name": "Major",
+      "abbreviation": "Maj.",
+      "description": "A Major is either OC of a Company or 2IC of a unit",
+      "groupId": 988,
+      "displayOrder": 2,
+      "created_at": "2025-02-18 16:47:13",
+      "updated_at": "2025-04-09 08:04:30",
+      "imageId": 24427,
+      "image": {
+        "id": 24427,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-ARMY-maj_patch_co.png1744185870693.png",
+        "created_at": "2025-04-09 08:04:30",
+        "updated_at": "2025-04-09 08:04:30"
+      }
+    },
+    {
+      "id": 3978,
+      "name": "Lieutenant Commander",
+      "abbreviation": "Lt. Cmdr.",
+      "description": "LT Cmdr",
+      "groupId": 988,
+      "displayOrder": 1,
+      "created_at": "2025-02-18 16:50:37",
+      "updated_at": "2025-04-10 17:19:11",
+      "imageId": 24473,
+      "image": {
+        "id": 24473,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-LTCDR_patch_co.png1744305551871.png",
+        "created_at": "2025-04-10 17:19:11",
+        "updated_at": "2025-04-10 17:19:11"
+      }
+    },
+    {
+      "id": 3979,
+      "name": "Squadron Leader",
+      "abbreviation": "Sqn. Ldr",
+      "description": "Squadron Leader RAF",
+      "groupId": 988,
+      "displayOrder": 3,
+      "created_at": "2025-02-18 16:54:39",
+      "updated_at": "2025-04-10 17:26:43",
+      "imageId": 24476,
+      "image": {
+        "id": 24476,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-SQNLdr_patch_co.png1744306003985.png",
+        "created_at": "2025-04-10 17:26:43",
+        "updated_at": "2025-04-10 17:26:43"
+      }
+    },
+    {
+      "id": 3980,
+      "name": "Captain",
+      "abbreviation": "Capt.",
+      "description": "captain",
+      "groupId": 988,
+      "displayOrder": 4,
+      "created_at": "2025-02-18 16:55:00",
+      "updated_at": "2025-04-09 08:03:47",
+      "imageId": 24426,
+      "image": {
+        "id": 24426,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-ARMY-capt_patch_co.png1744185827133.png",
+        "created_at": "2025-04-09 08:03:47",
+        "updated_at": "2025-04-09 08:03:47"
+      }
+    },
+    {
+      "id": 3981,
+      "name": "Lieutenant",
+      "abbreviation": "Lt.",
+      "description": "lt.",
+      "groupId": 988,
+      "displayOrder": 5,
+      "created_at": "2025-02-18 16:57:12",
+      "updated_at": "2025-04-10 20:51:34",
+      "imageId": 24425,
+      "image": {
+        "id": 24425,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-ARMY-lt_patch_co.png1744185711146.png",
+        "created_at": "2025-04-09 08:01:51",
+        "updated_at": "2025-04-09 08:01:51"
+      }
+    },
+    {
+      "id": 3982,
+      "name": "Second Lieutenant",
+      "abbreviation": "2Lt.",
+      "description": "2 Lt.",
+      "groupId": 988,
+      "displayOrder": 6,
+      "created_at": "2025-02-18 16:57:44",
+      "updated_at": "2025-04-10 20:51:54",
+      "imageId": 24424,
+      "image": {
+        "id": 24424,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-ARMY-2lt_patch_co.png1744185672618.png",
+        "created_at": "2025-04-09 08:01:12",
+        "updated_at": "2025-04-09 08:01:12"
+      }
+    },
+    {
+      "id": 3983,
+      "name": "Warrant Officer Class 1",
+      "abbreviation": "WO1, RSM",
+      "description": "WO1 ARMY",
+      "groupId": 989,
+      "displayOrder": 1,
+      "created_at": "2025-02-18 16:58:56",
+      "updated_at": "2025-04-10 18:09:08",
+      "imageId": 24477,
+      "image": {
+        "id": 24477,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-ARMY-wo1_patch_co.png1744306101859.png",
+        "created_at": "2025-04-10 17:28:21",
+        "updated_at": "2025-04-10 17:28:21"
+      }
+    },
+    {
+      "id": 3984,
+      "name": "Warrant Officer Class 2",
+      "abbreviation": "WO2, CSM",
+      "description": "Company Sergeant Major",
+      "groupId": 989,
+      "displayOrder": 6,
+      "created_at": "2025-02-18 17:01:23",
+      "updated_at": "2025-04-10 18:11:00",
+      "imageId": 24422,
+      "image": {
+        "id": 24422,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-ARMY-wo2_patch_co.png1744185626501.png",
+        "created_at": "2025-04-09 08:00:26",
+        "updated_at": "2025-04-09 08:00:26"
+      }
+    },
+    {
+      "id": 3985,
+      "name": "Warrant Officer Class 2",
+      "abbreviation": "RQMS, WO2",
+      "description": "Regimental Quartermaster Sergeant",
+      "groupId": 989,
+      "displayOrder": 5,
+      "created_at": "2025-02-18 17:02:04",
+      "updated_at": "2025-04-10 18:10:32",
+      "imageId": 24478,
+      "image": {
+        "id": 24478,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-WO2_patch_co.png1744306193504.png",
+        "created_at": "2025-04-10 17:29:53",
+        "updated_at": "2025-04-10 17:29:53"
+      }
+    },
+    {
+      "id": 3986,
+      "name": "Colour Sergeant",
+      "abbreviation": "CSgt",
+      "description": "CSGT is a infantry name\nSSGT is a Other arms name",
+      "groupId": 990,
+      "displayOrder": 2,
+      "created_at": "2025-02-18 17:03:38",
+      "updated_at": "2025-04-10 20:52:20",
+      "imageId": 23448,
+      "image": {
+        "id": 23448,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/1._Rank_Patch_-_SSGT.png1739991117304.png",
+        "created_at": "2025-02-19 18:51:57",
+        "updated_at": "2025-02-19 18:51:57"
+      }
+    },
+    {
+      "id": 3987,
+      "name": "Sergeant",
+      "abbreviation": "Sgt",
+      "description": "Sgt",
+      "groupId": 990,
+      "displayOrder": 7,
+      "created_at": "2025-02-18 17:04:03",
+      "updated_at": "2025-04-10 20:53:02",
+      "imageId": 23447,
+      "image": {
+        "id": 23447,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/2._Rank_Patch_-_SGT.png1739991088670.png",
+        "created_at": "2025-02-19 18:51:28",
+        "updated_at": "2025-02-19 18:51:28"
+      }
+    },
+    {
+      "id": 3988,
+      "name": "Corporal",
+      "abbreviation": "Cpl",
+      "description": "Cpl",
+      "groupId": 991,
+      "displayOrder": 1,
+      "created_at": "2025-02-18 17:04:31",
+      "updated_at": "2025-04-10 20:53:33",
+      "imageId": 23445,
+      "image": {
+        "id": 23445,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/1._Rank_Patch_-_CPL.png1739987323818.png",
+        "created_at": "2025-02-19 17:48:43",
+        "updated_at": "2025-02-19 17:48:43"
+      }
+    },
+    {
+      "id": 3989,
+      "name": "Lance Corporal",
+      "abbreviation": "LCpl",
+      "description": "Lcpl",
+      "groupId": 991,
+      "displayOrder": 3,
+      "created_at": "2025-02-18 17:04:55",
+      "updated_at": "2025-04-10 20:54:08",
+      "imageId": 23446,
+      "image": {
+        "id": 23446,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/2._Rank_Patch_-_LCPL.png1739991043064.png",
+        "created_at": "2025-02-19 18:50:43",
+        "updated_at": "2025-02-19 18:50:43"
+      }
+    },
+    {
+      "id": 3990,
+      "name": "Private",
+      "abbreviation": "Pte",
+      "description": "Army Private",
+      "groupId": 992,
+      "displayOrder": 3,
+      "created_at": "2025-02-18 17:05:49",
+      "updated_at": "2025-04-10 20:55:12",
+      "imageId": 24479,
+      "image": {
+        "id": 24479,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306247458.png",
+        "created_at": "2025-04-10 17:30:47",
+        "updated_at": "2025-04-10 17:30:47"
+      }
+    },
+    {
+      "id": 3991,
+      "name": "Recruit",
+      "abbreviation": "Rct",
+      "description": "Recruit",
+      "groupId": 992,
+      "displayOrder": 5,
+      "created_at": "2025-02-18 17:06:10",
+      "updated_at": "2025-04-10 20:55:26",
+      "imageId": 24480,
+      "image": {
+        "id": 24480,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744306264606.png",
+        "created_at": "2025-04-10 17:31:04",
+        "updated_at": "2025-04-10 17:31:04"
+      }
+    },
+    {
+      "id": 3992,
+      "name": "Trooper",
+      "abbreviation": "Tpr",
+      "description": "Private Soldier - **SAS, SBS & SRR Only**",
+      "groupId": 992,
+      "displayOrder": 1,
+      "created_at": "2025-02-19 17:16:40",
+      "updated_at": "2025-04-10 20:54:49",
+      "imageId": 23441,
+      "image": {
+        "id": 23441,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_Pte.png1739986929005.png",
+        "created_at": "2025-02-19 17:42:09",
+        "updated_at": "2025-02-19 17:42:09"
+      }
+    },
+    {
+      "id": 3993,
+      "name": "Commander",
+      "abbreviation": "Cmdr.",
+      "description": "commander",
+      "groupId": 988,
+      "displayOrder": 0,
+      "created_at": "2025-02-19 22:10:38",
+      "updated_at": "2025-04-10 17:54:17",
+      "imageId": 24485,
+      "image": {
+        "id": 24485,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-CDR_patch_co.png1744307657261.png",
+        "created_at": "2025-04-10 17:54:17",
+        "updated_at": "2025-04-10 17:54:17"
+      }
+    },
+    {
+      "id": 4096,
+      "name": "Flight Lieutenant",
+      "abbreviation": "Flt Lt.",
+      "description": "RAF Flight Lt",
+      "groupId": 988,
+      "displayOrder": 0,
+      "created_at": "2025-04-08 12:17:45",
+      "updated_at": "2025-04-10 17:25:55",
+      "imageId": 24474,
+      "image": {
+        "id": 24474,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-FlLt_patch_co.png1744305955625.png",
+        "created_at": "2025-04-10 17:25:55",
+        "updated_at": "2025-04-10 17:25:55"
+      }
+    },
+    {
+      "id": 4097,
+      "name": "Flying Officer",
+      "abbreviation": "FgOff",
+      "description": "Flying Officer RAF",
+      "groupId": 988,
+      "displayOrder": 0,
+      "created_at": "2025-04-08 12:18:31",
+      "updated_at": "2025-04-10 18:06:04",
+      "imageId": 24475,
+      "image": {
+        "id": 24475,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-FlOff_patch_co.png1744305979136.png",
+        "created_at": "2025-04-10 17:26:19",
+        "updated_at": "2025-04-10 17:26:19"
+      }
+    },
+    {
+      "id": 4098,
+      "name": "Staff Sergeant ",
+      "abbreviation": "SSgt",
+      "description": "SSGT",
+      "groupId": 990,
+      "displayOrder": 3,
+      "created_at": "2025-04-08 12:43:15",
+      "updated_at": "2025-04-10 20:52:39",
+      "imageId": 24421,
+      "image": {
+        "id": 24421,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Rank_Patch_-_SSGT.png1744185597066.png",
+        "created_at": "2025-04-09 07:59:57",
+        "updated_at": "2025-04-09 07:59:57"
+      }
+    },
+    {
+      "id": 4100,
+      "name": "Lieutenant",
+      "abbreviation": "Lt",
+      "description": "Royal Navy Lieutenant Rank",
+      "groupId": 988,
+      "displayOrder": 0,
+      "created_at": "2025-04-10 18:02:13",
+      "updated_at": "2025-04-10 18:02:13",
+      "imageId": 24486,
+      "image": {
+        "id": 24486,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-LT_patch_co.png1744308133816.png",
+        "created_at": "2025-04-10 18:02:13",
+        "updated_at": "2025-04-10 18:02:13"
+      }
+    },
+    {
+      "id": 4101,
+      "name": "Sub Lieutenant",
+      "abbreviation": "SLt",
+      "description": "Royal Navy equivalent rank to Second Lieutenant",
+      "groupId": 988,
+      "displayOrder": 0,
+      "created_at": "2025-04-10 18:03:45",
+      "updated_at": "2025-04-10 18:03:45",
+      "imageId": 24487,
+      "image": {
+        "id": 24487,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-SLT_patch_co.png1744308225081.png",
+        "created_at": "2025-04-10 18:03:45",
+        "updated_at": "2025-04-10 18:03:45"
+      }
+    },
+    {
+      "id": 4102,
+      "name": "Pilot Officer",
+      "abbreviation": "PltOff",
+      "description": "Lowest RAF Commissioned Officer",
+      "groupId": 988,
+      "displayOrder": 0,
+      "created_at": "2025-04-10 18:04:29",
+      "updated_at": "2025-04-10 18:04:29",
+      "imageId": 24488,
+      "image": {
+        "id": 24488,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-PltOff_patch_co.png1744308269399.png",
+        "created_at": "2025-04-10 18:04:29",
+        "updated_at": "2025-04-10 18:04:29"
+      }
+    },
+    {
+      "id": 4103,
+      "name": "Wing Commander",
+      "abbreviation": "Wg Cdr",
+      "description": "RAF High Command Rank",
+      "groupId": 988,
+      "displayOrder": 0,
+      "created_at": "2025-04-10 18:05:41",
+      "updated_at": "2025-04-10 18:05:41",
+      "imageId": 24489,
+      "image": {
+        "id": 24489,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-WCdr_patch_co.png1744308341046.png",
+        "created_at": "2025-04-10 18:05:41",
+        "updated_at": "2025-04-10 18:05:41"
+      }
+    },
+    {
+      "id": 4104,
+      "name": "Warrant Officer Class 1",
+      "abbreviation": "WO1",
+      "description": "Royal Navy Warrant Officer",
+      "groupId": 989,
+      "displayOrder": 0,
+      "created_at": "2025-04-10 18:12:29",
+      "updated_at": "2025-04-10 18:12:29",
+      "imageId": 24490,
+      "image": {
+        "id": 24490,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-WO1_patch_co.png1744308749854.png",
+        "created_at": "2025-04-10 18:12:29",
+        "updated_at": "2025-04-10 18:12:29"
+      }
+    },
+    {
+      "id": 4105,
+      "name": "Warrant Officer Class 2",
+      "abbreviation": "WO2",
+      "description": "Royal Navy Warrant Officer Class 2",
+      "groupId": 989,
+      "displayOrder": 4,
+      "created_at": "2025-04-10 18:13:14",
+      "updated_at": "2025-04-10 18:13:14",
+      "imageId": 24491,
+      "image": {
+        "id": 24491,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-WO2_patch_co.png1744308794924.png",
+        "created_at": "2025-04-10 18:13:14",
+        "updated_at": "2025-04-10 18:13:14"
+      }
+    },
+    {
+      "id": 4106,
+      "name": "Petty Officer",
+      "abbreviation": "PO",
+      "description": "Royal Navy Senior NCO",
+      "groupId": 990,
+      "displayOrder": 1,
+      "created_at": "2025-04-10 18:18:15",
+      "updated_at": "2025-04-10 18:18:15",
+      "imageId": 24492,
+      "image": {
+        "id": 24492,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-PO_patch_co.png1744309095289.png",
+        "created_at": "2025-04-10 18:18:15",
+        "updated_at": "2025-04-10 18:18:15"
+      }
+    },
+    {
+      "id": 4107,
+      "name": "Chief Petty Officer",
+      "abbreviation": "CPO",
+      "description": "The most Senior NCO in the Royal Navy",
+      "groupId": 990,
+      "displayOrder": 0,
+      "created_at": "2025-04-10 18:18:59",
+      "updated_at": "2025-04-10 18:18:59",
+      "imageId": 24493,
+      "image": {
+        "id": 24493,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-CPO_patch_co.png1744309139623.png",
+        "created_at": "2025-04-10 18:18:59",
+        "updated_at": "2025-04-10 18:18:59"
+      }
+    },
+    {
+      "id": 4108,
+      "name": "Sergeant",
+      "abbreviation": "Sgt",
+      "description": "RAF Sergeant",
+      "groupId": 990,
+      "displayOrder": 9,
+      "created_at": "2025-04-10 18:22:40",
+      "updated_at": "2025-04-10 20:53:15",
+      "imageId": 24494,
+      "image": {
+        "id": 24494,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-SGT_patch_co.png1744309360795.png",
+        "created_at": "2025-04-10 18:22:40",
+        "updated_at": "2025-04-10 18:22:40"
+      }
+    },
+    {
+      "id": 4109,
+      "name": "Flight Sergeant",
+      "abbreviation": "FS",
+      "description": "RAF Flight Sergeant",
+      "groupId": 990,
+      "displayOrder": 5,
+      "created_at": "2025-04-10 18:24:03",
+      "updated_at": "2025-04-10 18:24:03",
+      "imageId": 24495,
+      "image": {
+        "id": 24495,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-FSGT_patch_co.png1744309443718.png",
+        "created_at": "2025-04-10 18:24:03",
+        "updated_at": "2025-04-10 18:24:03"
+      }
+    },
+    {
+      "id": 4110,
+      "name": "Chief Technician",
+      "abbreviation": "Chf Tech",
+      "description": "RAF Chief Technician",
+      "groupId": 990,
+      "displayOrder": 6,
+      "created_at": "2025-04-10 18:24:56",
+      "updated_at": "2025-04-10 18:24:56",
+      "imageId": 24496,
+      "image": {
+        "id": 24496,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-CTECH_patch_co.png1744309496674.png",
+        "created_at": "2025-04-10 18:24:56",
+        "updated_at": "2025-04-10 18:24:56"
+      }
+    },
+    {
+      "id": 4111,
+      "name": "Sergeant Aircrew",
+      "abbreviation": "SACr",
+      "description": "An RAF Aircrew Sergeant",
+      "groupId": 990,
+      "displayOrder": 8,
+      "created_at": "2025-04-10 18:28:17",
+      "updated_at": "2025-04-10 18:28:17",
+      "imageId": 24497,
+      "image": {
+        "id": 24497,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-SACR_patch_co.png1744309697665.png",
+        "created_at": "2025-04-10 18:28:17",
+        "updated_at": "2025-04-10 18:28:17"
+      }
+    },
+    {
+      "id": 4112,
+      "name": "Flight Sergeant Aircrew",
+      "abbreviation": "FSACr",
+      "description": "RAF Flight Sergeant Aircrew",
+      "groupId": 990,
+      "displayOrder": 4,
+      "created_at": "2025-04-10 18:30:17",
+      "updated_at": "2025-04-10 18:30:17",
+      "imageId": 24498,
+      "image": {
+        "id": 24498,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-FSACR_patch_co.png1744309817021.png",
+        "created_at": "2025-04-10 18:30:17",
+        "updated_at": "2025-04-10 18:30:17"
+      }
+    },
+    {
+      "id": 4113,
+      "name": "Corporal",
+      "abbreviation": "Cpl",
+      "description": "RAF Corporal",
+      "groupId": 991,
+      "displayOrder": 2,
+      "created_at": "2025-04-10 18:33:12",
+      "updated_at": "2025-04-10 20:53:52",
+      "imageId": 24499,
+      "image": {
+        "id": 24499,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-CPL_patch_co.png1744309992102.png",
+        "created_at": "2025-04-10 18:33:12",
+        "updated_at": "2025-04-10 18:33:12"
+      }
+    },
+    {
+      "id": 4114,
+      "name": "Lance Corporal",
+      "abbreviation": "LCpl",
+      "description": "RAF Regiment Only!",
+      "groupId": 991,
+      "displayOrder": 4,
+      "created_at": "2025-04-10 18:34:06",
+      "updated_at": "2025-04-10 20:54:26",
+      "imageId": 24500,
+      "image": {
+        "id": 24500,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-LCPL_patch_co.png1744310046886.png",
+        "created_at": "2025-04-10 18:34:06",
+        "updated_at": "2025-04-10 18:34:06"
+      }
+    },
+    {
+      "id": 4115,
+      "name": "Air Specialist Class 1 Technician",
+      "abbreviation": "AS1(T)",
+      "description": "RAF Senior Technical JNCO",
+      "groupId": 991,
+      "displayOrder": 5,
+      "created_at": "2025-04-10 18:35:35",
+      "updated_at": "2025-04-10 18:35:35",
+      "imageId": 24501,
+      "image": {
+        "id": 24501,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-AS1T_patch_co.png1744310135706.png",
+        "created_at": "2025-04-10 18:35:35",
+        "updated_at": "2025-04-10 18:35:35"
+      }
+    },
+    {
+      "id": 4116,
+      "name": "Air Specialist Class 1",
+      "abbreviation": "AS1",
+      "description": "An RAF Senior JNCO",
+      "groupId": 991,
+      "displayOrder": 6,
+      "created_at": "2025-04-10 18:36:54",
+      "updated_at": "2025-04-10 18:36:54",
+      "imageId": 24502,
+      "image": {
+        "id": 24502,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-AS1_patch_co.png1744310214186.png",
+        "created_at": "2025-04-10 18:36:54",
+        "updated_at": "2025-04-10 18:36:54"
+      }
+    },
+    {
+      "id": 4117,
+      "name": "Air Specialist Class 2",
+      "abbreviation": "AS2",
+      "description": "An RAF Senior OR",
+      "groupId": 992,
+      "displayOrder": 2,
+      "created_at": "2025-04-10 18:39:16",
+      "updated_at": "2025-04-10 18:39:16",
+      "imageId": 24503,
+      "image": {
+        "id": 24503,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-AS2_patch_co.png1744310356090.png",
+        "created_at": "2025-04-10 18:39:16",
+        "updated_at": "2025-04-10 18:39:16"
+      }
+    },
+    {
+      "id": 4118,
+      "name": "Airman",
+      "abbreviation": "AM",
+      "description": "Lowest OR in the RAF",
+      "groupId": 992,
+      "displayOrder": 4,
+      "created_at": "2025-04-10 18:42:29",
+      "updated_at": "2025-04-10 18:42:29",
+      "imageId": 24504,
+      "image": {
+        "id": 24504,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/RankPatchPteA_co.png1744310549946.png",
+        "created_at": "2025-04-10 18:42:29",
+        "updated_at": "2025-04-10 18:42:29"
+      }
+    },
+    {
+      "id": 4120,
+      "name": "Able Rating",
+      "abbreviation": "AB",
+      "description": "Lowest Rank in the Royal Navy",
+      "groupId": 992,
+      "displayOrder": 0,
+      "created_at": "2025-04-10 18:46:01",
+      "updated_at": "2025-04-10 18:46:01",
+      "imageId": 24506,
+      "image": {
+        "id": 24506,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-AB_patch_co.png1744310761709.png",
+        "created_at": "2025-04-10 18:46:01",
+        "updated_at": "2025-04-10 18:46:01"
+      }
+    },
+    {
+      "id": 4121,
+      "name": "Warrant Officer of the Air Force",
+      "abbreviation": "WORAF",
+      "description": "Highest non-commissioned officer in the RAF",
+      "groupId": 989,
+      "displayOrder": 2,
+      "created_at": "2025-04-10 18:50:25",
+      "updated_at": "2025-04-10 18:50:25",
+      "imageId": 24507,
+      "image": {
+        "id": 24507,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-WOAF_patch_co.png1744311025891.png",
+        "created_at": "2025-04-10 18:50:25",
+        "updated_at": "2025-04-10 18:50:25"
+      }
+    },
+    {
+      "id": 4122,
+      "name": "Master Aircrew",
+      "abbreviation": "MACr",
+      "description": "Warrant Officer RAF",
+      "groupId": 989,
+      "displayOrder": 3,
+      "created_at": "2025-04-10 18:52:05",
+      "updated_at": "2025-04-10 18:52:05",
+      "imageId": 24508,
+      "image": {
+        "id": 24508,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-MACR_patch_co.png1744311125056.png",
+        "created_at": "2025-04-10 18:52:05",
+        "updated_at": "2025-04-10 18:52:05"
+      }
+    },
+    {
+      "id": 4123,
+      "name": "Warrant Officer",
+      "abbreviation": "WO",
+      "description": "RAF Warrant Officer",
+      "groupId": 989,
+      "displayOrder": 0,
+      "created_at": "2025-04-10 18:53:40",
+      "updated_at": "2025-04-10 18:53:40",
+      "imageId": 24509,
+      "image": {
+        "id": 24509,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-RAF-WO_patch_co.png1744311220438.png",
+        "created_at": "2025-04-10 18:53:40",
+        "updated_at": "2025-04-10 18:53:40"
+      }
+    },
+    {
+      "id": 4124,
+      "name": "Leading Hand",
+      "abbreviation": "LH",
+      "description": "A JNCO of the Royal Navy",
+      "groupId": 991,
+      "displayOrder": 0,
+      "created_at": "2025-04-10 18:57:03",
+      "updated_at": "2025-04-10 18:57:03",
+      "imageId": 24510,
+      "image": {
+        "id": 24510,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TFA-NAVY-LH_patch_co.png1744311423933.png",
+        "created_at": "2025-04-10 18:57:03",
+        "updated_at": "2025-04-10 18:57:03"
+      }
+    }
+  ],
+  "awards": [
+    {
+      "id": 3234,
+      "name": "Operation Restore",
+      "description": "For those who have participated within our operation restore missions",
+      "groupId": 633,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 17:38:55",
+      "updated_at": "2025-04-16 17:38:55",
+      "imageId": 24740,
+      "image": {
+        "id": 24740,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/OP_Restore.png1744825135816.png",
+        "created_at": "2025-04-16 17:38:55",
+        "updated_at": "2025-04-16 17:38:55"
+      },
+      "profileCount": 12
+    },
+    {
+      "id": 3235,
+      "name": "Military Cross ",
+      "description": " British military award granted for acts of exemplary gallantry during active operations against the enemy on land",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 20:52:37",
+      "updated_at": "2025-09-24 22:01:10",
+      "imageId": 30006,
+      "image": {
+        "id": 30006,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/militarycross_(2).png1758751270844.png",
+        "created_at": "2025-09-24 22:01:10",
+        "updated_at": "2025-09-24 22:01:10"
+      },
+      "profileCount": 2
+    },
+    {
+      "id": 3236,
+      "name": "George Cross ",
+      "description": "a British award, equal in precedence to the Victoria Cross, bestowed for non-operational gallantry or gallantry not in the presence of an enemy",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 20:53:03",
+      "updated_at": "2025-09-24 21:57:22",
+      "imageId": 30005,
+      "image": {
+        "id": 30005,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/George_cross-min.png1758751042134.png",
+        "created_at": "2025-09-24 21:57:22",
+        "updated_at": "2025-09-24 21:57:22"
+      },
+      "profileCount": 1
+    },
+    {
+      "id": 3237,
+      "name": "Victoria Cross ",
+      "description": "Britain's highest military award for gallantry, recognized for acts of extreme bravery in the presence of the enemy",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 20:54:35",
+      "updated_at": "2025-09-24 22:04:02",
+      "imageId": 30007,
+      "image": {
+        "id": 30007,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/VictoriaCross-min.png1758751442290.png",
+        "created_at": "2025-09-24 22:04:02",
+        "updated_at": "2025-09-24 22:04:02"
+      },
+      "profileCount": 1
+    },
+    {
+      "id": 3238,
+      "name": "Operation Black Sheep ",
+      "description": "Awarded for time served dueing operation balck sheep ",
+      "groupId": 633,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 20:56:15",
+      "updated_at": "2025-04-16 20:56:15",
+      "imageId": 24747,
+      "image": {
+        "id": 24747,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Op_Black_sheep.jpeg1744836975565.jpeg",
+        "created_at": "2025-04-16 20:56:15",
+        "updated_at": "2025-04-16 20:56:15"
+      },
+      "profileCount": 4
+    },
+    {
+      "id": 3239,
+      "name": "Distinguished flying cross",
+      "description": "a military decoration awarded for acts of valor, courage, or devotion to duty while flying in active operations against the enemy",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 20:57:58",
+      "updated_at": "2025-04-16 20:57:58",
+      "imageId": 24748,
+      "image": {
+        "id": 24748,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/United_Kingdom_Distinguished_Flying_Cross_ribbon.svg.png1744837078046.png",
+        "created_at": "2025-04-16 20:57:58",
+        "updated_at": "2025-04-16 20:57:58"
+      },
+      "profileCount": 1
+    },
+    {
+      "id": 3240,
+      "name": "Royal Red Cross ",
+      "description": "military decoration awarded in the United Kingdom and Commonwealth for exceptional services in military nursing",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 20:59:40",
+      "updated_at": "2025-04-16 20:59:40",
+      "imageId": 24749,
+      "image": {
+        "id": 24749,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Royal_Red_Cross_(UK)_ribbon.png1744837180728.png",
+        "created_at": "2025-04-16 20:59:40",
+        "updated_at": "2025-04-16 20:59:40"
+      },
+      "profileCount": 4
+    },
+    {
+      "id": 3241,
+      "name": "Operation Breezer ",
+      "description": "Awarded to personel who served on OP Breezer ",
+      "groupId": 633,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 21:01:26",
+      "updated_at": "2025-04-16 21:01:26",
+      "imageId": 24750,
+      "image": {
+        "id": 24750,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Operation_Brezzer.png1744837286472.png",
+        "created_at": "2025-04-16 21:01:26",
+        "updated_at": "2025-04-16 21:01:26"
+      },
+      "profileCount": 22
+    },
+    {
+      "id": 3242,
+      "name": "Royal Air Force Long service and good conduct Award ",
+      "description": "as title ",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 21:05:16",
+      "updated_at": "2025-04-16 21:05:16",
+      "imageId": 24751,
+      "image": {
+        "id": 24751,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Ribbon_-_Royal_Air_Force_Long_Service_and_Good_Conduct_Medal.png1744837516419.png",
+        "created_at": "2025-04-16 21:05:16",
+        "updated_at": "2025-04-16 21:05:16"
+      },
+      "profileCount": 1
+    },
+    {
+      "id": 3243,
+      "name": "Medal for Long Service and Good Conduct_(Military)",
+      "description": "as title ",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 21:05:50",
+      "updated_at": "2025-04-16 21:05:50",
+      "imageId": 24752,
+      "image": {
+        "id": 24752,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Ribbon_-_Medal_for_Long_Service_and_Good_Conduct_(Military).png1744837550019.png",
+        "created_at": "2025-04-16 21:05:50",
+        "updated_at": "2025-04-16 21:05:50"
+      },
+      "profileCount": 8
+    },
+    {
+      "id": 3244,
+      "name": "Accumulated Campaign Service Medal ",
+      "description": "Awarded to soldiers who have done over 720 days service in a combat zone ",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 21:06:39",
+      "updated_at": "2025-04-16 21:06:39",
+      "imageId": 24753,
+      "image": {
+        "id": 24753,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Accumulated_Campaign_Service_Medal_2011_BAR.svg.png1744837599121.png",
+        "created_at": "2025-04-16 21:06:39",
+        "updated_at": "2025-04-16 21:06:39"
+      },
+      "profileCount": 6
+    },
+    {
+      "id": 3245,
+      "name": "Accumulated Campaign Service Medal second award",
+      "description": "Issued to soldiers who have been awarded Accumulated Campaign Service Medal previously and have been awarded it a second time  ",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 21:07:45",
+      "updated_at": "2025-04-16 21:07:45",
+      "imageId": 24754,
+      "image": {
+        "id": 24754,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Accumulated_Campaign_Service_Medal_second_award_bar.png1744837665717.png",
+        "created_at": "2025-04-16 21:07:45",
+        "updated_at": "2025-04-16 21:07:45"
+      },
+      "profileCount": 1
+    },
+    {
+      "id": 3247,
+      "name": "Elizabeth Cross ",
+      "description": "Awarded for being Injured greatly in an Operation ",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 21:12:49",
+      "updated_at": "2025-04-16 21:12:49",
+      "imageId": 24756,
+      "image": {
+        "id": 24756,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Elizabeth_Cross__solo.jpg1744837969610.jpg",
+        "created_at": "2025-04-16 21:12:49",
+        "updated_at": "2025-04-16 21:12:49"
+      },
+      "profileCount": 1
+    },
+    {
+      "id": 3248,
+      "name": "Veteran Badge  ",
+      "description": "This confirms people in the Unit that have servered in the UK armed forces in real life ",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-04-16 21:14:10",
+      "updated_at": "2025-04-16 21:14:10",
+      "imageId": 24758,
+      "image": {
+        "id": 24758,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Veterans_Badge.jpg1744838050738.jpg",
+        "created_at": "2025-04-16 21:14:10",
+        "updated_at": "2025-04-16 21:14:10"
+      },
+      "profileCount": 5
+    },
+    {
+      "id": 3347,
+      "name": "Operation Sparrow ",
+      "description": "Awarded for those who participated in the operation ",
+      "groupId": 633,
+      "displayOrder": 0,
+      "created_at": "2025-06-18 21:12:25",
+      "updated_at": "2025-08-19 20:13:56",
+      "imageId": 26401,
+      "image": {
+        "id": 26401,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/OP_sparrow.png1750281145566.png",
+        "created_at": "2025-06-18 21:12:25",
+        "updated_at": "2025-06-18 21:12:25"
+      },
+      "profileCount": 13
+    },
+    {
+      "id": 3466,
+      "name": "TSS",
+      "description": "Awarded to those who merged over from TSS Pmc",
+      "groupId": 688,
+      "displayOrder": 0,
+      "created_at": "2025-08-19 17:16:01",
+      "updated_at": "2025-08-19 17:16:01",
+      "imageId": 28555,
+      "image": {
+        "id": 28555,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/TSS_Logo_White.png1755623761175.png",
+        "created_at": "2025-08-19 17:16:01",
+        "updated_at": "2025-08-19 17:16:01"
+      },
+      "profileCount": 11
+    },
+    {
+      "id": 3468,
+      "name": "Operation Reaction ",
+      "description": "Awarded to those who where deployed to OP Reaction for a certain time period ",
+      "groupId": 633,
+      "displayOrder": 0,
+      "created_at": "2025-08-19 20:11:23",
+      "updated_at": "2025-08-19 20:33:58",
+      "imageId": 28578,
+      "image": {
+        "id": 28578,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/OperationReaction.png1755635638928.png",
+        "created_at": "2025-08-19 20:33:58",
+        "updated_at": "2025-08-19 20:33:58"
+      },
+      "profileCount": 20
+    },
+    {
+      "id": 3578,
+      "name": "Operation Op Snatcher ",
+      "description": "Awarded to the brave men and women of the British special forces who depolyed on the specified operation ",
+      "groupId": 634,
+      "displayOrder": 0,
+      "created_at": "2025-09-17 17:06:42",
+      "updated_at": "2025-09-17 17:06:42",
+      "imageId": 29771,
+      "image": {
+        "id": 29771,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/OP_Snatcherr-min.png1758128802635.png",
+        "created_at": "2025-09-17 17:06:42",
+        "updated_at": "2025-09-17 17:06:42"
+      },
+      "profileCount": 21
+    },
+    {
+      "id": 3580,
+      "name": "OP Sahel ",
+      "description": "award of deployment to Op Sahel ",
+      "groupId": 633,
+      "displayOrder": 0,
+      "created_at": "2025-09-24 18:02:02",
+      "updated_at": "2025-09-24 18:02:02",
+      "imageId": 29995,
+      "image": {
+        "id": 29995,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/OPSahel.png1758736922138.png",
+        "created_at": "2025-09-24 18:02:02",
+        "updated_at": "2025-09-24 18:02:02"
+      },
+      "profileCount": 12
+    }
+  ]
+}

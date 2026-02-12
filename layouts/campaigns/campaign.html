@@ -1,0 +1,129 @@
+{{ define "main" }}
+<section class="bg-[#0b0c0c] text-white py-16 lg:py-24 relative overflow-hidden transition-colors duration-300">
+    <!-- Background Branding (Large Decorative Text) -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-white/[0.02] pointer-events-none uppercase tracking-tighter select-none font-industrial z-0">
+        {{ .Params.op_id | default "UKSF-TFA" }}
+    </div>
+
+    <div class="moduk-width-container relative z-10">
+        <!-- HEADER: Tactical Metadata -->
+        <header class="border-b-8 border-[#532a45] pb-16 mb-20">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-16">
+                <div class="space-y-10">
+                    <div class="flex items-center gap-6">
+                        <span class="bg-[#800000] text-white text-[10px] font-black px-4 py-1.5 uppercase tracking-[0.4em] shadow-lg">Official Sensitive</span>
+                        <span class="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em] font-black">Serial: {{ .Params.op_id | default "TF-XXX" }} // {{ .Date.Format "2006" }}</span>
+                    </div>
+                    <h1 class="text-7xl md:text-[10rem] font-black text-white uppercase tracking-tighter leading-[0.8] font-industrial m-0 shadow-sm">
+                        Operation<br/><span class="text-[#532a45] dark:text-[#bfc1c3]">{{ index (split .Title " ") 1 | default .Title }}</span>
+                    </h1>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-x-20 gap-y-10 bg-white/5 p-12 border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden min-w-[400px]">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-[#532a45]"></div>
+                    <div>
+                        <span class="block text-[9px] font-mono text-white/40 uppercase tracking-[0.2em] mb-2 font-black">// Theater_AO</span>
+                        <span class="text-sm text-white uppercase font-black tracking-widest">{{ .Params.map | default "Classified" }}</span>
+                    </div>
+                    <div>
+                        <span class="block text-[9px] font-mono text-white/40 uppercase tracking-[0.2em] mb-2 font-black">// Status</span>
+                        {{ $statusClass := "text-[#00703c]" }}
+                        {{ if eq .Params.status "ACTIVE" }}{{ $statusClass = "text-red-600 animate-pulse" }}{{ end }}
+                        <span class="text-sm {{ $statusClass }} uppercase font-black tracking-widest">{{ .Params.status }}</span>
+                    </div>
+                    <div>
+                        <span class="block text-[9px] font-mono text-white/40 uppercase tracking-[0.2em] mb-2 font-black">// Commencement</span>
+                        <span class="text-sm text-white uppercase font-black tracking-widest">{{ .Date.Format "02 JAN 2006" }}</span>
+                    </div>
+                    <div>
+                        <span class="block text-[9px] font-mono text-white/40 uppercase tracking-[0.2em] mb-2 font-black">// Authority</span>
+                        <span class="text-sm text-white uppercase font-black tracking-widest">JFC_TFA_HQ</span>
+                    </div>
+                    <div class="col-span-2 pt-8 border-t border-white/5 mt-4 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[8px] font-mono text-white/20 uppercase tracking-widest mb-1">Auth_Hash</span>
+                            <span class="text-[9px] font-mono text-white/40 truncate w-48 font-bold">{{ upper (substr (sha256 .Content) 0 24) }}</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-['Libre_Barcode_39'] text-5xl text-white opacity-20 leading-none">*{{ upper (substr (sha256 .Title) 0 8) }}*</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-24">
+            <!-- MAIN CONTENT: The Directive -->
+            <main class="lg:col-span-8 space-y-16">
+                <div class="flex items-center gap-8">
+                    <div class="w-20 h-1 bg-[#532a45]"></div>
+                    <span class="text-[11px] font-black text-[#532a45] dark:text-[#bfc1c3] uppercase tracking-[0.5em] font-mono">Operational_Directive</span>
+                </div>
+
+                <article class="prose prose-invert prose-2xl max-w-none 
+                                prose-headings:uppercase prose-headings:font-black prose-headings:tracking-tighter prose-headings:text-white prose-headings:font-industrial
+                                prose-p:text-white/60 prose-p:font-light prose-p:leading-relaxed
+                                prose-strong:text-white prose-strong:font-bold shadow-sm">
+                    {{ .Content }}
+                </article>
+
+                <!-- Signature Block -->
+                <div class="pt-32 opacity-30">
+                    <div class="w-80 border-b-2 border-white/20 mb-6"></div>
+                    <div class="flex flex-col gap-2">
+                        <span class="text-[10px] font-mono uppercase tracking-[0.4em] text-white/60 font-black">Director of Special Forces</span>
+                        <span class="text-[9px] font-mono uppercase tracking-widest text-white/40">Digital Authentication verified // RSIS_SIG_SECURE</span>
+                    </div>
+                </div>
+            </main>
+
+            <!-- SIDEBAR: The Filing System -->
+            <aside class="lg:col-span-4">
+                <div class="sticky top-48 space-y-12">
+                    <div class="bg-white/5 border border-white/10 p-12 shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-[#532a45]"></div>
+                        <h3 class="text-[11px] font-black text-white uppercase tracking-[0.4em] mb-12 flex items-center gap-6 font-mono">
+                            <span class="w-1.5 h-6 bg-[#532a45]"></span>
+                            Tactical_Registry
+                        </h3>
+
+                        <div class="space-y-6">
+                            {{ $files := .Pages }}
+                            {{ if not $files }}
+                                {{ $files = .Resources.ByType "page" }}
+                            {{ end }}
+                            
+                            {{ if $files }}
+                                {{ range $files }}
+                                <a href="{{ .RelPermalink }}" class="group block bg-white/5 border border-white/10 p-8 hover:bg-white/10 hover:border-[#532a45]/30 transition-all no-underline shadow-lg border-l-4 border-l-transparent hover:border-l-[#532a45]">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <span class="text-[9px] font-mono text-white/40 uppercase tracking-widest font-black group-hover:text-[#532a45] transition-colors">{{ .Date.Format "02.JAN.06" }}</span>
+                                        <span class="text-[8px] font-mono px-3 py-1 border border-white/10 text-white/40 uppercase font-black tracking-widest bg-black/20">{{ .Params.classification | default "RESTRICTED" }}</span>
+                                    </div>
+                                    <h4 class="text-xl font-black text-white group-hover:text-[#532a45] transition-colors uppercase tracking-tight truncate font-industrial leading-none">{{ .Title }}</h4>
+                                    <div class="mt-8 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all border-t border-white/5 pt-6 translate-y-2 group-hover:translate-y-0">
+                                        <span class="text-[9px] text-[#532a45] font-black uppercase tracking-[0.3em] font-mono">Open_Record</span>
+                                        <svg class="w-5 h-5 text-[#532a45] transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                                    </div>
+                                </a>
+                                {{ end }}
+                            {{ else }}
+                                <div class="py-24 text-center border-2 border-dashed border-white/10 opacity-20 bg-black/20">
+                                    <span class="text-[10px] font-mono text-white uppercase tracking-[0.4em] font-bold">No_Dossiers_Synced</span>
+                                </div>
+                            {{ end }}
+                        </div>
+                    </div>
+
+                    <!-- System Link -->
+                    <a href="/campaigns/" class="flex items-center justify-between p-10 bg-[#1d2329] border border-white/10 hover:border-[#532a45] transition-all group no-underline shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-[#532a45] opacity-40 group-hover:opacity-100 transition-opacity"></div>
+                        <span class="text-[10px] font-black text-white/40 group-hover:text-white uppercase tracking-[0.4em] font-mono transition-colors">Return to Index</span>
+                        <svg class="w-6 h-6 text-white/20 group-hover:text-[#532a45] transition-all transform group-hover:-translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 8.959 8.959 0 01-9 9m-9-9a9 9 0 019-9" /></svg>
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+{{ end }}

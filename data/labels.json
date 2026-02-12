@@ -1,0 +1,83 @@
+{
+  "site": {
+    "title": "UKSF Taskforce Alpha",
+    "motto": "Always A Little Further",
+    "classification": "OFFICIAL_SENSITIVE // UKSFTA_INTEL",
+    "status": "OPERATIONAL_READY",
+    "joint_command": "Taskforce HQ // UKSFTA"
+  },
+  "hero": {
+    "headline": "THE SOVEREIGN EDGE",
+    "description": "UKSF Taskforce Alpha provides high-fidelity special operations capability for the Arma 3 platform.",
+    "cta": "Apply for Selection",
+    "cta_url": "https://discord.gg/2jNqa3zPRH"
+  },
+  "capabilities": [
+    {
+      "title": "Direct Action (DA)",
+      "icon": "shield",
+      "desc": "Assault element specializing in CQB and counter-terrorism operations."
+    },
+    {
+      "title": "Intelligence / ISR",
+      "icon": "eye",
+      "desc": "Covert surveillance and technical signals intelligence operations."
+    },
+    {
+      "title": "Maritime Ops",
+      "icon": "anchor",
+      "desc": "Amphibious insertion, extraction, and maritime counter-terrorism."
+    },
+    {
+      "title": "Joint Aviation",
+      "icon": "plane",
+      "desc": "Dedicated rotary and fixed-wing support, CAS, and logistics."
+    }
+  ],
+  "stats": [
+    { "label": "Operational", "value": "WED_1900" },
+    { "label": "Platform", "value": "ARMA_3" },
+    { "label": "Ethos", "value": "MILSIM" }
+  ],
+  "units": {
+    "sas": {
+      "name": "SAS",
+      "full_name": "22 Special Air Service",
+      "motto": "Who Dares Wins",
+      "description": "Specialists in counter-terrorism, hostage rescue, and covert reconnaissance.",
+      "stats": { "tier": "1", "domain": "Land", "focus": "Global Response" }
+    },
+    "sbs": {
+      "name": "SBS",
+      "full_name": "Special Boat Service",
+      "motto": "By Strength and Guile",
+      "description": "The maritime special operations unit, specializing in amphibious reconnaissance.",
+      "stats": {
+        "tier": "1",
+        "domain": "Maritime",
+        "focus": "Special Operations"
+      }
+    },
+    "srr": {
+      "name": "SRR",
+      "full_name": "Special Recon Regiment",
+      "motto": "Reconnaissance",
+      "description": "Gathering strategic intelligence through technical and human surveillance.",
+      "stats": { "tier": "1", "domain": "Intelligence", "focus": "ISTAR" }
+    },
+    "sfsg": {
+      "name": "SFSG",
+      "full_name": "Special Forces Support Group",
+      "motto": "Always A Little Further",
+      "description": "Providing specialist infantry support to Tier 1 UKSF units.",
+      "stats": { "tier": "2", "domain": "Support", "focus": "Direct Action" }
+    },
+    "asob": {
+      "name": "ASOB",
+      "full_name": "Army Special Operations Brigade",
+      "motto": "By All Means",
+      "description": "Specialists in partner force integration and asymmetric warfare.",
+      "stats": { "tier": "2", "domain": "Land", "focus": "Special Operations" }
+    }
+  }
+}

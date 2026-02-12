@@ -1,0 +1,43 @@
+<div class="comms-hub-container flex flex-col h-full {{ with .class }}{{ . }}{{ end }} relative transition-colors duration-300">
+    <!-- 1. Live Operations Segment -->
+    <div class="p-6 border-b border-[#bfc1c3] dark:border-[#323e48] space-y-6">
+        <div class="flex items-center justify-between">
+            <span class="text-[8px] font-body font-bold text-[#0b0c0c] dark:text-white uppercase tracking-widest">// Live_Theater</span>
+            <div class="flex items-center gap-2 bg-[#00703c]/10 dark:bg-white/10 px-2 py-0.5 border border-[#00703c]/20">
+                <div id="status-indicator" class="w-1 h-1 bg-[#00703c] rounded-full animate-pulse shadow-sm"></div>
+                <span id="status-text" class="text-[7px] font-body font-bold text-[#00703c] dark:text-white tracking-widest uppercase">ACTIVE</span>
+            </div>
+        </div>
+
+        <div class="live-ops-feed-container">
+            {{ partial "widgets/unitcommander.html" (dict "class" "!p-0 !bg-transparent !border-0") }}
+        </div>
+
+        <!-- Battlemetrics Telemetry -->
+        <div class="space-y-3 pt-4 border-t border-[#bfc1c3] dark:border-[#323e48]">
+            <div class="flex justify-between items-center mb-1 font-mono">
+                <span class="text-[7px] font-bold text-[#0b0c0c] dark:text-white uppercase tracking-widest">// Telemetry</span>
+                <span id="player-count" class="text-[8px] text-[#0b0c0c] dark:text-white font-bold tracking-widest uppercase">SYNCING...</span>
+            </div>
+            <div id="battlemetrics-graph" class="h-20 bg-[#bfc1c3]/5 border border-[#bfc1c3] dark:border-[#323e48] relative overflow-hidden flex items-center justify-center text-[7px] text-[#0b0c0c] dark:text-white uppercase tracking-widest font-mono font-bold">
+                Uplink_Sync...
+            </div>
+            <div class="flex justify-between items-center px-1 font-mono">
+                <div class="flex gap-2">
+                    <button onclick="setBattlemetricsRange('today')" class="bm-range-btn active text-[6px] font-bold text-[#0b0c0c] dark:text-white uppercase tracking-widest border border-moduk-secondary dark:border-white px-1.5 py-0.5 hover:bg-[#bfc1c3]/20 transition-colors" data-range="today">24H</button>
+                    <button onclick="setBattlemetricsRange('week')" class="bm-range-btn text-[6px] font-bold text-[#0b0c0c] dark:text-white uppercase tracking-widest border border-[#bfc1c3] dark:border-[#323e48] px-1.5 py-0.5 hover:bg-[#bfc1c3]/20 transition-colors" data-range="week">7D</button>
+                </div>
+                <span class="text-[6px] text-[#0b0c0c] dark:text-white uppercase font-bold">BM_SRV_722</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Discord Link Segment -->
+    <div class="p-6 bg-[#bfc1c3]/5 flex-1 flex flex-col justify-center">
+        <div class="flex items-center gap-4 mb-4">
+            <span class="text-[8px] font-body font-bold text-[#0b0c0c] dark:text-white uppercase tracking-widest">Network_Status</span>
+            <div class="h-px bg-[#bfc1c3] dark:border-[#323e48] flex-1"></div>
+        </div>
+        {{ partial "widgets/discord.html" (dict "class" "!p-0 !bg-transparent !border-0") }}
+    </div>
+</div>

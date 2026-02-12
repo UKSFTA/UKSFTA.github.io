@@ -1,0 +1,188 @@
+@import "tailwindcss";
+@import "@moduk/frontend/dist/css/index.css";
+
+@source "../../layouts/**/*.html";
+@source "../../content/**/*.md";
+@source "../../static/js/**/*.js";
+@source "../../assets/js/**/*.js";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-mod-black: #0b0c0c;
+  --color-mod-grey-1: #323e48;
+  --color-mod-grey-2: #6f777b;
+  --color-mod-grey-3: #bfc1c3;
+  --color-mod-grey-4: #f3f2f1;
+  --color-mod-blue: #003078;
+  --color-mod-green: #00703c;
+  --color-mod-red: #d4351c;
+  --color-mod-purple: #532a45;
+  --color-uksf-gold: #b3995d;
+  
+  --font-industrial: "Industrial Gothic Pro", "Arial Black", sans-serif;
+  --font-body: "Roboto", "Arial", sans-serif;
+}
+
+@layer base {
+  :root {
+    --bg-page: #ffffff;
+    --text-main: #0b0c0c;
+    --text-secondary: #6f777b;
+    --border-main: #bfc1c3;
+    
+    --top-bar-height: 32px;
+    --nav-height: 100px;
+    --phase-banner-height: 50px;
+    --total-header-height: calc(var(--top-bar-height) + var(--nav-height) + var(--phase-banner-height));
+    
+    --brand-tint: var(--color-mod-purple);
+    --primary: var(--color-uksf-gold);
+  }
+
+  .dark {
+    --bg-page: #0b0c0c;
+    --text-main: #f3f2f1;
+    --text-secondary: #bfc1c3;
+    --border-main: #323e48;
+  }
+
+  [data-unit-skin="army"], .unit-sas, .unit-sfsg { --brand-tint: #153e35; }
+  [data-unit-skin="navy"], .unit-sbs { --brand-tint: #13284c; }
+  [data-unit-skin="raf"], .unit-jsfaw { --brand-tint: #005696; }
+  [data-unit-skin="intel"], .unit-srr, .unit-signals { --brand-tint: #323e48; }
+
+  /* CRITICAL: DO NOT INVERT IMAGES */
+  img, .no-invert {
+    filter: none !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--total-header-height);
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding-top: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    margin: 0;
+    height: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-industrial);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
+    line-height: 1.1;
+    font-weight: 900;
+    margin: 0;
+  }
+
+  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+  h2 { font-size: clamp(2rem, 4vw, 3rem); }
+
+  section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-main);
+    background-color: var(--bg-page);
+    box-sizing: border-box;
+    padding-top: var(--total-header-height);
+    padding-bottom: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .moduk-width-container {
+    width: 100%;
+    max-width: 1300px;
+    margin-inline: auto;
+    padding-inline: 30px;
+  }
+
+  .btn-mod {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .btn-mod-primary {
+    background-color: var(--brand-tint);
+    color: #ffffff !important;
+    &:hover { filter: brightness(1.1); }
+  }
+
+  .btn-mod-secondary {
+    background-color: transparent;
+    border: 2px solid var(--text-main);
+    color: var(--text-main);
+    &:hover { background-color: var(--text-main); color: var(--bg-page); }
+  }
+
+  .card-mod {
+    background-color: var(--bg-page);
+    border: 1px solid var(--border-main);
+    padding: 2.5rem;
+    transition: all 0.2s ease;
+    &:hover { 
+      border-color: var(--brand-tint); 
+      background-color: rgba(243, 242, 241, 0.5);
+    }
+  }
+
+  .dark .card-mod:hover {
+    background-color: rgba(29, 35, 41, 0.5);
+  }
+
+  .superior-rule {
+    background-color: var(--bg-page);
+    border-bottom: 1px solid var(--border-main);
+    height: 32px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3000;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    border-bottom: 4px solid transparent;
+    &:hover, &.active {
+      color: var(--text-main);
+      border-bottom-color: var(--brand-tint);
+    }
+  }
+}

@@ -1,7 +1,11 @@
 ---
-title: "INTEL BRIEF: Op AURELIAN"
+title: "Operation AURELIAN"
 description: "Intelligence summary regarding adversarial movements in the Green Zone."
 lead: "CLASSIFIED: For UKSF Personnel only. Signal Intelligence indicates a surge in technical signatures within Sector 4."
+layout: "campaigns/campaign"
+op_id: "TF-AURELIAN"
+map: "Malden"
+status: "ACTIVE"
 ---
 
 ## 1. Executive Summary

@@ -1,0 +1,18 @@
+<div class="uksf-orbat-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+  <h2 class="govuk-heading-m">Order of Battle (ORBAT) - Visualisation</h2>
+  <div id="orbat-viewport" style="width:100%; height:600px; border: 1px solid #7b98ac; background-color: #f3f2f1;">
+    <canvas id="orbat-canvas" width="1000" height="600"></canvas>
+  </div>
+  <p class="govuk-body-s govuk-!-margin-top-2">
+    <strong>Note:</strong> This graph is dynamically generated from the unit roster. Use your mouse to pan and zoom.
+  </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/milsymbol@2.0.0/dist/milsymbol.min.js"></script>
+
+{{ $arbor := resources.Get "js/arbor.js" | resources.Fingerprint }}
+<script src="{{ $arbor.RelPermalink }}" integrity="{{ $arbor.Data.Integrity }}"></script>
+
+{{ $engine := resources.Get "js/orbat-engine.js" | resources.Fingerprint }}
+<script src="{{ $engine.RelPermalink }}" integrity="{{ $engine.Data.Integrity }}"></script>

@@ -1,0 +1,8 @@
+{{- $link := .Destination -}}
+{{- $isExternal := or (hasPrefix $link "http") (hasPrefix $link "https") -}}
+<a href="{{ .Destination | safeURL }}"
+   {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}
+   title="{{ .Title | default .Text }}"
+   class="govuk-link">
+   {{- .Text | safeHTML -}}
+</a>

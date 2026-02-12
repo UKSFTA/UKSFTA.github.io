@@ -36,8 +36,15 @@ class UnitCommanderAPI {
     console.log(`[SUPABASE] Linking Discord:${discordId} to UC:${ucProfileId}`);
     const { error } = await supabase
       .from('personnel')
-      .upsert({ discord_id: discordId, uc_profile_id: ucProfileId, updated_at: new Date().toISOString() }, { onConflict: 'discord_id' });
-    
+      .upsert(
+        {
+          discord_id: discordId,
+          uc_profile_id: ucProfileId,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'discord_id' },
+      );
+
     if (error) console.error('[SUPABASE] saveLink Error:', error.message);
   }
 
@@ -45,32 +52,43 @@ class UnitCommanderAPI {
     console.log(`[SUPABASE] Linking Discord:${discordId} to Steam:${steamId}`);
     const { error } = await supabase
       .from('personnel')
-      .upsert({ discord_id: discordId, steam_id: steamId, updated_at: new Date().toISOString() }, { onConflict: 'discord_id' });
-    
+      .upsert(
+        {
+          discord_id: discordId,
+          steam_id: steamId,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'discord_id' },
+      );
+
     if (error) console.error('[SUPABASE] saveSteamLink Error:', error.message);
   }
 
   async getLinks() {
-    const { data, error } = await supabase.from('personnel').select('discord_id, uc_profile_id');
+    const { data, error } = await supabase
+      .from('personnel')
+      .select('discord_id, uc_profile_id');
     if (error) {
       console.error('[SUPABASE] getLinks Error:', error.message);
       return {};
     }
     const mapping = {};
-    data.forEach(row => {
+    data.forEach((row) => {
       if (row.uc_profile_id) mapping[row.discord_id] = row.uc_profile_id;
     });
     return mapping;
   }
 
   async getSteamLinks() {
-    const { data, error } = await supabase.from('personnel').select('discord_id, steam_id');
+    const { data, error } = await supabase
+      .from('personnel')
+      .select('discord_id, steam_id');
     if (error) {
       console.error('[SUPABASE] getSteamLinks Error:', error.message);
       return {};
     }
     const mapping = {};
-    data.forEach(row => {
+    data.forEach((row) => {
       if (row.steam_id) mapping[row.discord_id] = row.steam_id;
     });
     return mapping;
@@ -121,7 +139,7 @@ class UnitCommanderAPI {
 
   async getProfileByDiscordMember(member) {
     if (!member) return null;
-    
+
     const { data: link } = await supabase
       .from('personnel')
       .select('uc_profile_id')
@@ -130,18 +148,32 @@ class UnitCommanderAPI {
 
     if (link?.uc_profile_id) {
       const profile = await this.getProfile(link.uc_profile_id);
-      if (profile && (profile.status?.toUpperCase() === 'ACTIVE' || !profile.status)) return profile;
+      if (
+        profile &&
+        (profile.status?.toUpperCase() === 'ACTIVE' || !profile.status)
+      )
+        return profile;
     }
 
     const profiles = await this.getProfiles();
     const discordName = member.displayName.toLowerCase();
-    
-    return profiles.find(p => {
-        const alias = p.alias.toLowerCase();
-        if (alias === discordName) return true;
-        const cleanedAlias = alias.replace(/^(gen|maj gen|brig|col|lt col|maj|capt|lt|2lt|wo1|wo2|ssgt|csgt|sgt|cpl|lcpl|tpr|sig|rct|pte|am|as1|as2|po|cpo|cmdr|sqn ldr|flt lt|fg off|plt off|wg cdr)\.?\s+/i, '').replace(/\s+\[.*?\]$/, '').trim();
-        const cleanedDiscord = discordName.replace(/^\[.*?\]\s+/, '').trim();
-        return cleanedAlias === cleanedDiscord || alias.includes(cleanedDiscord) || discordName.includes(cleanedAlias);
+
+    return profiles.find((p) => {
+      const alias = p.alias.toLowerCase();
+      if (alias === discordName) return true;
+      const cleanedAlias = alias
+        .replace(
+          /^(gen|maj gen|brig|col|lt col|maj|capt|lt|2lt|wo1|wo2|ssgt|csgt|sgt|cpl|lcpl|tpr|sig|rct|pte|am|as1|as2|po|cpo|cmdr|sqn ldr|flt lt|fg off|plt off|wg cdr)\.?\s+/i,
+          '',
+        )
+        .replace(/\s+\[.*?\]$/, '')
+        .trim();
+      const cleanedDiscord = discordName.replace(/^\[.*?\]\s+/, '').trim();
+      return (
+        cleanedAlias === cleanedDiscord ||
+        alias.includes(cleanedDiscord) ||
+        discordName.includes(cleanedAlias)
+      );
     });
   }
 
@@ -157,7 +189,7 @@ class UnitCommanderAPI {
   async getEvents() {
     try {
       const response = await this.client.get('/events');
-      return response.data.filter(e => e.status === 'ACTIVE');
+      return response.data.filter((e) => e.status === 'ACTIVE');
     } catch (error) {
       return [];
     }
@@ -174,7 +206,9 @@ class UnitCommanderAPI {
 
   async getAttendanceForProfile(profileId) {
     try {
-      const response = await this.client.get(`/attendance/profile/${profileId}`);
+      const response = await this.client.get(
+        `/attendance/profile/${profileId}`,
+      );
       return response.data;
     } catch (error) {
       return [];

@@ -1,0 +1,41 @@
+{{ $orbat := .Site.Data.orbat_v2 }}
+{{ $units := .Site.Data.units }}
+<div class="orbat-canvas-area relative w-[10000px] h-[10000px]">
+  <!-- Layer 2: SVG Connector Layer -->
+  <svg id="orbat-connectors" class="absolute inset-0 w-full h-full pointer-events-none z-[5]">
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="rgba(179, 153, 93, 0.8)" />
+      </marker>
+    </defs>
+    <path
+      id="temp-link"
+      d=""
+      fill="none"
+      stroke="var(--primary)"
+      stroke-width="2"
+      stroke-dasharray="5,5"
+      class="hidden pointer-events-none"
+    />
+  </svg>
+  <!-- Node Layer -->
+  <div id="orbat-nodes-layer" class="absolute inset-0 z-10 pointer-events-none">
+    {{ range $orbat.nodes }}
+      <div
+        class="orbat-node-wrapper absolute shadow-2xl"
+        id="node-{{ .id }}"
+        style="left: calc(5000px + {{ .x }}px);
+                    top: calc(5000px + {{ .y }}px);
+                    width: {{ .width }}px;
+                    height: {{ .height }}px"
+        data-id="{{ .id }}"
+        data-x="{{ .x }}"
+        data-y="{{ .y }}"
+        data-w="{{ .width }}"
+        data-h="{{ .height }}"
+      >
+        {{ partial "widgets/orbat-node.html" (dict "node" . "units" $units "Site" $.Site) }}
+      </div>
+    {{ end }}
+  </div>
+</div>

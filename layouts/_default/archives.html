@@ -1,0 +1,118 @@
+{{ define "main" }}
+<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300 !justify-start">
+    <div class="moduk-width-container space-y-12">
+        <!-- HEADER -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-end border-b-8 border-mod-purple pb-10 gap-12 bg-[#f3f2f1] dark:bg-[#1d2329] p-10 shadow-xl relative overflow-hidden">
+            <div class="space-y-8 relative z-10">
+                <div class="flex items-center gap-8">
+                    {{ $logo := resources.Get "icons/MOD.png" }}
+                    {{ if $logo }}
+                    <img src="{{ $logo.RelPermalink }}" alt="Ministry of Defence" class="h-16 w-auto  no-invert opacity-80">
+                    {{ end }}
+                    <div class="h-12 w-px bg-mod-grey-3 dark:bg-mod-grey-1"></div>
+                    <span class="text-xs font-mono font-black text-mod-purple dark:text-[#bfc1c3] uppercase tracking-[0.4em]">Joint Force Command // Operational Archives</span>
+                </div>
+                
+                <div class="space-y-2">
+                    <h1 class="text-6xl lg:text-7xl font-industrial font-black uppercase text-mod-black dark:text-white m-0 leading-none tracking-tighter">Deployment Logs</h1>
+                    <p class="text-mod-grey-2 text-[11px] font-mono font-black uppercase tracking-[0.4em] italic opacity-80">Community Engagement & Historical Records Registry</p>
+                </div>
+            </div>
+
+            <div class="text-right hidden md:block font-mono space-y-3 relative z-10">
+                <div class="bg-mod-black dark:bg-mod-black/40 text-white px-6 py-3 shadow-lg">
+                    <span class="block text-[10px] font-bold uppercase tracking-[0.2em]">Total Records: <span id="archive-count" class="text-mod-purple dark:text-white">--</span></span>
+                </div>
+                <span class="block text-[9px] text-mod-grey-2 uppercase tracking-widest font-black italic">Registry Node: JSFC-ALPHA-01</span>
+            </div>
+        </header>
+
+        <!-- SEARCH / FILTER -->
+        <div class="bg-white dark:bg-[#1d2329] border border-mod-grey-3 dark:border-mod-grey-1 p-10 relative overflow-hidden shadow-2xl transition-colors duration-300">
+            <div class="flex items-center gap-10">
+                <span class="text-[11px] font-black text-mod-purple dark:text-mod-grey-3 uppercase tracking-[0.4em] font-mono leading-none">Search_Registry:</span>
+                <div class="flex-grow h-px bg-mod-grey-3 dark:bg-mod-grey-1"></div>
+                <span class="text-[10px] font-mono text-mod-grey-2 uppercase tracking-widest font-black animate-pulse italic">Initializing Data Handshake...</span>
+            </div>
+        </div>
+
+        <!-- ARCHIVE GRID -->
+        <div id="archives-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-mod-grey-3 dark:bg-mod-grey-1 border border-mod-grey-3 dark:border-mod-grey-1 shadow-2xl">
+            <!-- JS Injected Archives -->
+            <div class="py-40 text-center col-span-full bg-white dark:bg-mod-black">
+                <span class="text-[11px] font-mono text-mod-grey-2 animate-pulse tracking-[0.4em] uppercase font-black italic">Handshaking Institutional Database...</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    async function initArchives() {
+        try {
+            const res = await fetch('/archives.json?t=' + Date.now());
+            if (!res.ok) throw new Error(`HTTP_${res.status}`);
+            const data = await res.json();
+            
+            if (data && data.campaigns) {
+                const container = document.getElementById('archives-container');
+                const countEl = document.getElementById('archive-count');
+                
+                const campaigns = [...data.campaigns].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                if (countEl) countEl.innerText = campaigns.length;
+
+                container.innerHTML = campaigns.map(op => {
+                    const date = new Date(op.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+                    const slug = op.campaignName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                    return `
+                        <a href="/campaigns/${slug}" class="group bg-white dark:bg-mod-black p-12 space-y-10 hover:bg-mod-grey-4 dark:hover:bg-white/5 transition-all duration-500 no-underline block relative overflow-hidden shadow-sm border-b-4 border-transparent hover:border-mod-purple">
+                            <div class="flex justify-between items-start">
+                                <div class="flex flex-col gap-2">
+                                    <span class="text-[10px] font-mono text-mod-purple dark:text-mod-grey-3 uppercase tracking-[0.3em] font-black">TF-${op.id}</span>
+                                    <span class="text-[9px] font-mono text-mod-grey-2 uppercase tracking-widest font-bold opacity-60">${date}</span>
+                                </div>
+                                <span class="text-[9px] font-black ${op.status === 'ACTIVE' ? 'text-mod-green bg-mod-green/10 border-mod-green/20' : 'text-mod-grey-2 bg-mod-grey-4 dark:bg-white/5 border-mod-grey-3 dark:border-mod-grey-1'} uppercase tracking-[0.2em] border px-4 py-2 font-mono shadow-sm">${op.status}</span>
+                            </div>
+                            
+                            <h3 class="text-4xl font-black uppercase tracking-tighter text-mod-black dark:text-white group-hover:text-mod-purple transition-colors font-industrial leading-[0.9] m-0">${op.campaignName}</h3>
+                            
+                            <div class="grid grid-cols-2 gap-10 border-t border-mod-grey-3 dark:border-mod-grey-1 pt-10 font-mono">
+                                <div class="space-y-2">
+                                    <span class="text-[8px] text-mod-grey-2 uppercase font-black tracking-widest block opacity-60">// Theater</span>
+                                    <span class="text-[11px] text-mod-black dark:text-white font-black uppercase tracking-tight truncate block">${op.map || 'CLASSIFIED'}</span>
+                                </div>
+                                <div class="space-y-2 border-l border-mod-grey-3 dark:border-mod-grey-1 pl-10 text-right">
+                                    <span class="text-[8px] text-mod-grey-2 uppercase font-black tracking-widest block opacity-60">// Integrity</span>
+                                    <span class="text-[11px] text-mod-green font-black uppercase tracking-tight block">VERIFIED</span>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-10 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 transition-all duration-500 flex items-center justify-between border-t border-mod-grey-3 dark:border-mod-grey-1">
+                                <span class="text-[10px] font-black uppercase tracking-[0.3em] text-mod-purple dark:text-white">Analyze Briefing</span>
+                                <svg class="w-6 h-6 text-mod-purple dark:text-white transform group-hover:translate-x-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+                
+                window.archiveData = data;
+            }
+        } catch (err) {
+            console.error("[JSFC_ARCHIVE] Record retrieval failure:", err);
+            const container = document.getElementById('archives-container');
+            if (container) {
+                container.innerHTML = `
+                    <div class="py-40 text-center col-span-full bg-mod-red/5">
+                        <span class="text-[11px] font-mono text-mod-red tracking-[0.4em] uppercase font-black animate-pulse italic">Uplink Failure: ${err.message}</span>
+                    </div>
+                `;
+            }
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initArchives);
+    } else {
+        initArchives();
+    }
+</script>
+{{ end }}

@@ -2,6 +2,8 @@
 title: "AAR Template (UKSF-01)"
 description: "Standard After Action Report format for UKSF operations."
 lead: "All mission debriefs must be filed within 24 hours of exfiltration using the UKSF-01 format."
+layout: "registry/archives/list"
+type: "registry"
 ---
 
 ## SECTION 1: MISSION DATA

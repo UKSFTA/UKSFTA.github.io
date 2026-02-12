@@ -2,7 +2,8 @@
 title: "Regional Special Intelligence System (RSIS)"
 description: "Restricted UKSF Intel Portal"
 lead: "Access to the RSIS is restricted to authorised UKSF personnel and verified Signal Intelligence officers."
-type: "portal"
+layout: "registry/intelligence"
+type: "registry"
 restricted: true
 ---
 
