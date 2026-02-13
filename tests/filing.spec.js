@@ -4,6 +4,8 @@ test.describe('Filing Terminal', () => {
     test.beforeEach(async ({ page }) => {
         await page.addInitScript(() => {
             window.localStorage.setItem('uksf_auth', 'authorized');
+      localStorage.setItem('dev_access', 'granted');
+        window.localStorage.setItem('dev_access', 'granted');
             window.localStorage.setItem('uksf_hq_auth', 'true');
         });
     });

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ site.Language.LanguageCode | default "en-GB" }}" class="scroll-smooth">
+  {{ $isMaintenance := eq .Type "maintenance" }}
   <head>
     {{ partial "head/index.html" . }}
     <script>
@@ -14,10 +15,31 @@
             document.documentElement.classList.add('dark');
         }
     </script>
+    {{ if $isMaintenance }}
+    <style>
+        html, body { 
+            height: 100vh !important; 
+            width: 100vw !important; 
+            overflow: hidden !important; 
+            margin: 0 !important; 
+            padding: 0 !important;
+        }
+    </style>
+    {{ end }}
+    {{ if site.Params.maintenance_mode }}
+    <script>
+        // Maintenance Mode Hard Gate
+        if (window.location.pathname !== '/maintenance/' && localStorage.getItem('dev_access') !== 'granted') {
+            window.location.href = '/maintenance/';
+        }
+    </script>
+    {{ end }}
   </head>
   {{ $unit := .Params.unit | default .Section | default "sas" }}
   {{ $isRegistry := or (eq .Section "registry") (eq .Type "registry") (strings.HasPrefix .Layout "registry/") }}
-  {{ if and $isRegistry (ne .Layout "registry/gate") (ne .Layout "registry/restricted") }}
+  {{ $isMaintenance := eq .Type "maintenance" }}
+  
+  {{ if and $isRegistry (ne .Layout "gate") (ne .Layout "restricted") }}
     <script>
       if (localStorage.getItem('uksf_auth') !== 'authorized') {
         window.location.href = '/registry/gate/';
@@ -26,16 +48,18 @@
   {{ end }}
   <body class="unit-{{ .Params.unit | default .Section | default `global` }}">
     <!-- GLOBAL SYSTEM HUD (Fixed Components) -->
+    {{ if not $isMaintenance }}
     <div class="fixed top-0 left-0 w-full z-[3000]">
         {{ partial "core/header.html" . }}
         {{ partial "core/phase-banner.html" . }}
     </div>
+    {{ end }}
 
-    <div id="main-content" role="main" class="flex-grow">
+    <div id="main-content" role="main" class="flex-grow {{ if $isMaintenance }}h-full{{ end }}">
       {{ block "main" . }}{{ end }}
     </div>
 
-    {{ if not .IsHome }}
+    {{ if and (not .IsHome) (not $isMaintenance) }}
       {{ partial "core/footer.html" . }}
     {{ end }}
 
@@ -47,7 +71,6 @@
         });
     </script>
     
-    <script src="{{ `js/main.js` | relURL }}" defer></script>
     {{ partial "core/cookie-consent.html" . }}
   </body>
 </html>

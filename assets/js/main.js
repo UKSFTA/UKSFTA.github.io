@@ -4,11 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Theme Initialization & Management
   window.toggleTheme = () => {
     const html = document.documentElement;
-    const isDark = html.classList.toggle('dark');
-    localStorage.setItem('moduk_theme', isDark ? 'dark' : 'light');
+    const isDark = html.classList.contains('dark');
+    
+    if (isDark) {
+      html.classList.remove('dark');
+      html.classList.add('light');
+      localStorage.setItem('moduk_theme', 'light');
+    } else {
+      html.classList.remove('light');
+      html.classList.add('dark');
+      localStorage.setItem('moduk_theme', 'dark');
+    }
+    
     console.log(
-      '[MODUK_THEME] Setting toggled. Active:',
-      isDark ? 'DARK' : 'LIGHT',
+      '[MODUK_THEME] Setting toggled. New State:',
+      html.classList.contains('dark') ? 'DARK' : 'LIGHT',
     );
   };
 

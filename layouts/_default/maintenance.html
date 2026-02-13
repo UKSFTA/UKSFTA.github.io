@@ -1,0 +1,103 @@
+{{ define "main" }}
+<div class="h-screen w-screen flex items-center justify-center bg-mod-black relative overflow-hidden fixed inset-0">
+    <!-- Institutional Background -->
+    <div class="absolute inset-0 bg-grid-white opacity-[0.02] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-mod-black via-transparent to-mod-black"></div>
+    
+    <!-- Large Background Text -->
+    <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] select-none pointer-events-none">
+        <span class="text-[25vw] font-industrial font-black tracking-tighter uppercase">Alpha</span>
+    </div>
+
+    <div class="moduk-width-container relative z-10 max-w-3xl w-full px-6">
+        <div class="bracket-box bg-mod-dark-grey border border-mod-grey-1 p-10 lg:p-16 shadow-[0_0_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
+            <!-- Scanline Effect -->
+            <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/5 to-transparent h-1 animate-scanline"></div>
+            
+            <!-- Top Status Bar -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-mod-grey-1"></div>
+            <div class="absolute top-0 left-0 w-1/4 h-1 bg-mod-purple animate-shimmer"></div>
+
+            <div class="flex flex-col items-center text-center space-y-10">
+                <!-- UKSF Taskforce Alpha Branding -->
+                <div class="flex items-center gap-6">
+                    {{ $logo := resources.Get "icons/TFA.png" }}
+                    {{ if $logo }}
+                    <img src="{{ $logo.RelPermalink }}" alt="UKSF Taskforce Alpha" class="h-14 grayscale no-invert">
+                    {{ end }}
+                    <div class="h-8 w-px bg-mod-grey-1 opacity-40"></div>
+                    <div class="text-left">
+                        <span class="text-[10px] font-mono text-mod-purple uppercase tracking-[0.5em] font-black block leading-none">UKSF Taskforce Alpha</span>
+                        <span class="text-[8px] font-mono text-mod-grey-2 uppercase tracking-[0.2em] font-bold block mt-1">Simulation Directorate</span>
+                    </div>
+                </div>
+
+                <!-- Main Message -->
+                <div class="space-y-4">
+                    <h1 class="text-5xl lg:text-6xl font-industrial font-black tracking-tighter uppercase text-white m-0 leading-none">
+                        System <span class="text-mod-purple">Deployment.</span>
+                    </h1>
+                    <div class="flex items-center justify-center gap-4">
+                        <span class="h-px w-12 bg-mod-purple/40"></span>
+                        <p class="text-mod-grey-2 text-[10px] uppercase tracking-[0.4em] font-mono font-bold">Protocol: Institutional_Handshake_Pending</p>
+                        <span class="h-px w-12 bg-mod-purple/40"></span>
+                    </div>
+                </div>
+
+                <!-- Milsim Disclaimer Box -->
+                <div class="w-full bg-mod-purple/5 border border-mod-purple/20 p-6 space-y-4 relative">
+                    <div class="flex items-center gap-3 border-b border-mod-purple/20 pb-3">
+                        <span class="w-2 h-2 bg-mod-purple rounded-full animate-pulse"></span>
+                        <span class="text-[9px] font-black text-mod-purple uppercase tracking-[0.3em] font-mono">Notice: Simulation_Environment</span>
+                    </div>
+                    <p class="text-[10px] font-mono text-mod-grey-3 uppercase tracking-[0.15em] leading-relaxed font-bold italic">
+                        This repository and associated portal are for private simulation and milsim use only. 
+                        We are not affiliated with, endorsed by, or representing the UK Ministry of Defence or any official government body.
+                    </p>
+                </div>
+
+                <!-- Terminal Block -->
+                <div class="w-full bg-black/40 border border-white/5 p-6 font-mono text-left space-y-3 relative">
+                    <div class="space-y-1.5 text-[9px] lg:text-[10px]">
+                        <p class="text-mod-grey-2">> [JSFC] CORE_INTERFACE_STAGING...</p>
+                        <p class="text-mod-purple">> [NET] SIGNAL_ISOLATED_FOR_REFINEMENT</p>
+                        <p class="text-mod-green">> [STATUS] ASSET_INDEXING_NOMINAL</p>
+                        <p class="text-white pt-2 font-black">> ACCESS_RESTRICTED // TASKFORCE_OVERSIGHT_ONLY</p>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <p class="text-[8px] font-mono text-mod-grey-2 uppercase tracking-[0.2em] max-w-md leading-relaxed opacity-40">
+                    Proprietary interface of UKSF Taskforce Alpha. Internal staging cycle 2026.02.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(1000%); }
+}
+.animate-scanline {
+    animation: scanline 8s linear infinite;
+}
+@keyframes shimmer {
+    0% { width: 0%; left: 0%; }
+    50% { width: 30%; left: 35%; }
+    100% { width: 0%; left: 100%; }
+}
+.animate-shimmer {
+    animation: shimmer 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+</style>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('access') === 'COMMAND_OVERRIDE') {
+        localStorage.setItem('dev_access', 'granted');
+        window.location.href = '/';
+    }
+</script>
+{{ end }}

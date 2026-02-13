@@ -20,6 +20,8 @@ test.describe('System-Wide Integrity Audit', () => {
     // Bypass authentication gate globally
     await page.addInitScript(() => {
       window.localStorage.setItem('uksf_auth', 'authorized');
+      localStorage.setItem('dev_access', 'granted');
+        window.localStorage.setItem('dev_access', 'granted');
       window.localStorage.setItem('moduk_theme', 'dark'); // Force dark mode for tactical checks
     });
   });
@@ -32,12 +34,12 @@ test.describe('System-Wide Integrity Audit', () => {
       // 1. HEADER INTEGRITY
       const superiorRule = page.locator('.superior-rule');
       await expect(superiorRule).toBeVisible();
-      await expect(superiorRule).toContainText('Ministry of Defence');
-      await expect(superiorRule).toContainText('UK Government');
+      await expect(superiorRule).toContainText('UKSF Taskforce Alpha');
+      await expect(superiorRule).toContainText('Non-Official');
 
       const mainNav = page.locator('nav[aria-label="Main navigation"]');
       await expect(mainNav).toBeVisible();
-      await expect(mainNav.locator('img[alt="Ministry of Defence"]')).toBeVisible();
+      await expect(mainNav.locator('img[alt="UKSF Taskforce Alpha - Milsim Logo"]')).toBeVisible();
       await expect(mainNav).toContainText('UKSF Taskforce Alpha');
 
       // 2. PHASE BANNER INTEGRITY
@@ -84,15 +86,16 @@ test.describe('System-Wide Integrity Audit', () => {
   }
 
   test('Cross-Page CSS Consistency: Brand Tints', async ({ page }) => {
-    // Verify SAS uses Army Skin
+    // Verify SAS uses Army Skin (Green)
     await page.goto('/sas/');
     let tint = await page.locator('body').evaluate(el => getComputedStyle(el).getPropertyValue('--brand-tint').trim());
-    expect(tint.toLowerCase()).toBe('#153e35');
+    // In our new Tactical Dark default, we use #3dc070 for army skins in dark mode
+    expect(tint.toLowerCase()).toBe('#3dc070');
 
-    // Verify SBS uses Navy Skin
+    // Verify SBS uses Navy Skin (Blue)
     await page.goto('/sbs/');
     tint = await page.locator('body').evaluate(el => getComputedStyle(el).getPropertyValue('--brand-tint').trim());
-    expect(tint.toLowerCase()).toBe('#13284c');
+    expect(tint.toLowerCase()).toBe('#5d99ff');
   });
 
   test('Interactive Element: Theme Toggler', async ({ page }) => {
@@ -104,7 +107,7 @@ test.describe('System-Wide Integrity Audit', () => {
     // Toggle to Light
     await page.click('button:has-text("Toggle Interface")');
     await page.waitForTimeout(2000); // Allow for transition
-    await expect(page.locator('html')).not.toHaveClass(/dark/);
+    await expect(page.locator('html')).toHaveClass(/light/);
     
     // Verify background changed
     const lightBg = await page.locator('body').evaluate(el => getComputedStyle(el).backgroundColor);

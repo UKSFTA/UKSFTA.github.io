@@ -9,7 +9,7 @@
           {{ .Content }}
         </div>
         <!-- Hidden Unit Matrix (Covert Assets) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5 pt-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--bg-page)]/5 border border-white/5 pt-20">
           {{ range $id, $unit := .Site.Data.units }}
             {{ if $unit.hidden }}
               <a

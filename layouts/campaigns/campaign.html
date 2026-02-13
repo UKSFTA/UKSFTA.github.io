@@ -19,7 +19,7 @@
                     </h1>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-x-20 gap-y-10 bg-white/5 p-12 border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden min-w-[400px]">
+                <div class="grid grid-cols-2 gap-x-20 gap-y-10 bg-[var(--bg-page)]/5 p-12 border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden min-w-[400px]">
                     <div class="absolute top-0 left-0 w-1 h-full bg-[#532a45]"></div>
                     <div>
                         <span class="block text-[9px] font-mono text-white/40 uppercase tracking-[0.2em] mb-2 font-black">// Theater_AO</span>
@@ -80,7 +80,7 @@
             <!-- SIDEBAR: The Filing System -->
             <aside class="lg:col-span-4">
                 <div class="sticky top-48 space-y-12">
-                    <div class="bg-white/5 border border-white/10 p-12 shadow-2xl relative overflow-hidden">
+                    <div class="bg-[var(--bg-page)]/5 border border-white/10 p-12 shadow-2xl relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-1 h-full bg-[#532a45]"></div>
                         <h3 class="text-[11px] font-black text-white uppercase tracking-[0.4em] mb-12 flex items-center gap-6 font-mono">
                             <span class="w-1.5 h-6 bg-[#532a45]"></span>
@@ -95,7 +95,7 @@
                             
                             {{ if $files }}
                                 {{ range $files }}
-                                <a href="{{ .RelPermalink }}" class="group block bg-white/5 border border-white/10 p-8 hover:bg-white/10 hover:border-[#532a45]/30 transition-all no-underline shadow-lg border-l-4 border-l-transparent hover:border-l-[#532a45]">
+                                <a href="{{ .RelPermalink }}" class="group block bg-[var(--bg-page)]/5 border border-white/10 p-8 hover:bg-[var(--bg-page)]/10 hover:border-[#532a45]/30 transition-all no-underline shadow-lg border-l-4 border-l-transparent hover:border-l-[#532a45]">
                                     <div class="flex justify-between items-start mb-4">
                                         <span class="text-[9px] font-mono text-white/40 uppercase tracking-widest font-black group-hover:text-[#532a45] transition-colors">{{ .Date.Format "02.JAN.06" }}</span>
                                         <span class="text-[8px] font-mono px-3 py-1 border border-white/10 text-white/40 uppercase font-black tracking-widest bg-black/20">{{ .Params.classification | default "RESTRICTED" }}</span>

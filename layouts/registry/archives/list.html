@@ -42,7 +42,7 @@
           {{ if not (and (eq .Section "campaigns") (ne .Layout "campaign")) }}
           <a href="{{ .RelPermalink }}" 
              data-type="{{ .Section }}"
-             class="story-card group bg-white/[0.02] border border-white/5 p-8 hover:bg-white/[0.05] hover:border-[var(--primary)]/50 transition-all duration-500 no-underline flex flex-col justify-between h-[450px] relative overflow-hidden">
+             class="story-card group bg-[var(--bg-page)]/[0.02] border border-white/5 p-8 hover:bg-[var(--bg-page)]/[0.05] hover:border-[var(--primary)]/50 transition-all duration-500 no-underline flex flex-col justify-between h-[450px] relative overflow-hidden">
             
             <!-- Type Indicator -->
             <div class="absolute top-0 right-0 p-4">

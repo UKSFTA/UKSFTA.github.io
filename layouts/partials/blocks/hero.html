@@ -27,7 +27,7 @@
             </h1>
 
             <!-- Summary -->
-            <div class="max-w-3xl border-l-8 border-[#532a45] pl-16 py-8 bg-[#f3f2f1]/50 dark:bg-white/5 backdrop-blur-sm">
+            <div class="max-w-3xl border-l-8 border-[#532a45] pl-16 py-8 bg-[#f3f2f1]/50 dark:bg-[var(--bg-page)]/5 backdrop-blur-sm">
                 <p class="text-2xl md:text-3xl font-body text-[#323e48] dark:text-[#bfc1c3] leading-relaxed m-0 font-light italic">
                     {{ .Description | default .Summary }}
                 </p>
@@ -36,7 +36,7 @@
 
         <!-- Context Sidebar -->
         <div class="lg:col-span-4 hidden lg:block">
-            <div class="card-mod border-t-8 border-[#532a45] space-y-10 bg-white/50 backdrop-blur-md">
+            <div class="card-mod border-t-8 border-[#532a45] space-y-10 bg-[var(--bg-page)]/50 backdrop-blur-md">
                 <div class="space-y-10">
                     <div class="flex flex-col border-b border-[#bfc1c3] dark:border-[#323e48] pb-10">
                         <span class="text-[10px] font-mono text-moduk-secondary uppercase tracking-[0.3em] mb-4 font-bold">// Operational Status</span>

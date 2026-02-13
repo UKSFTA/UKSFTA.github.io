@@ -5,6 +5,8 @@ test.describe('Visual & Layout Integrity Audit', () => {
     // Bypass auth gate
     await page.addInitScript(() => {
       window.localStorage.setItem('uksf_auth', 'authorized');
+      localStorage.setItem('dev_access', 'granted');
+        window.localStorage.setItem('dev_access', 'granted');
     });
   });
 

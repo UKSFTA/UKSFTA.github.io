@@ -8,7 +8,7 @@
     <div class="max-w-5xl mx-auto space-y-16 relative z-10">
         
         <!-- Document Header: Tactical Folder Style -->
-        <header class="bg-white/[0.01] border border-white/5 p-12 lg:p-16 relative">
+        <header class="bg-[var(--bg-page)]/[0.01] border border-white/5 p-12 lg:p-16 relative">
             <!-- Classification Badge -->
             <div class="absolute -top-3 left-16">
                 <span class="bg-uksf-red text-white text-[9px] font-black px-5 py-1 uppercase tracking-[0.5em] shadow-2xl">
@@ -58,14 +58,14 @@
                         prose-strong:text-white prose-strong:font-black
                         prose-ul:border-l prose-ul:border-white/5 prose-ul:ml-4 prose-ul:pl-10
                         prose-li:text-neutral-500 prose-li:mb-4
-                        bg-white/[0.005] p-12 lg:p-20 border-x border-white/5 shadow-inner">
+                        bg-[var(--bg-page)]/[0.005] p-12 lg:p-20 border-x border-white/5 shadow-inner">
             {{ .Content }}
         </article>
 
         <!-- Document Footer: Verification -->
         <footer class="flex flex-col md:flex-row justify-between items-center gap-12 pt-16 border-t border-white/10 opacity-20 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-1000">
             <div class="flex items-center gap-8">
-                <div class="w-16 h-16 border border-white/10 flex items-center justify-center bg-white/5">
+                <div class="w-16 h-16 border border-white/10 flex items-center justify-center bg-[var(--bg-page)]/5">
                     {{ $logo := resources.Get "icons/TFA.png" }}
                     <img src="{{ $logo.RelPermalink }}" class="w-10 opacity-40">
                 </div>
@@ -78,7 +78,7 @@
                 <span class="font-['Libre_Barcode_39'] text-4xl text-white opacity-30 leading-none">*{{ upper (substr (sha256 .Title) 0 8) }}*</span>
                 <a href="{{ .Parent.RelPermalink }}" class="group flex items-center gap-6 no-underline">
                     <span class="text-[9px] uppercase font-black tracking-[0.4em] text-neutral-500 group-hover:text-uksf-gold transition-colors">Return to Operational_Registry</span>
-                    <div class="w-8 h-px bg-white/10 group-hover:w-16 group-hover:bg-uksf-gold transition-all"></div>
+                    <div class="w-8 h-px bg-[var(--bg-page)]/10 group-hover:w-16 group-hover:bg-uksf-gold transition-all"></div>
                 </a>
             </div>
         </footer>

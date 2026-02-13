@@ -12,6 +12,8 @@ test.describe('Component-Level Tactical Audit', () => {
     // Bypass auth for registry checks
     await page.addInitScript(() => {
       window.localStorage.setItem('uksf_auth', 'authorized');
+      localStorage.setItem('dev_access', 'granted');
+        window.localStorage.setItem('dev_access', 'granted');
       window.localStorage.setItem('moduk_theme', 'dark');
     });
   });

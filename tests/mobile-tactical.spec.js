@@ -17,8 +17,8 @@ test.describe('Mobile Tactical Interface', () => {
     const superiorRule = page.locator('.superior-rule');
     await expect(superiorRule).toBeVisible();
     
-    // Check if "Official Sensitive" hides on small screens (per our header.html class 'hidden sm:block')
-    const sensitiveTag = superiorRule.locator('span:has-text("Official Sensitive")');
+    // Check if "Private Milsim Site" hides on small screens (per our header.html class 'hidden sm:block')
+    const sensitiveTag = superiorRule.locator('span:has-text("Private Milsim Site")');
     await expect(sensitiveTag).not.toBeVisible();
   });
 

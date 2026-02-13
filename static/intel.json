@@ -1,13 +1,6 @@
 {
-  "timestamp": 1770942708471,
-  "arma": {
-    "name": "UKSF Taskforce Alpha Ops Server V2",
-    "map": "dagger_island_summer",
-    "players": 0,
-    "maxPlayers": 40,
-    "status": "online",
-    "manifest": []
-  },
+  "timestamp": 1771003602826,
+  "arma": null,
   "unitcommander": {
     "campaigns": [
       {

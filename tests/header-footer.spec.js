@@ -3,15 +3,18 @@ import { test, expect } from '@playwright/test';
 test.describe('Global Infrastructure: Header, Banner & Footer', () => {
   
   test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      window.localStorage.setItem('dev_access', 'granted');
+    });
     await page.goto('/');
   });
 
   test('Superior Rule (HMG Standard) should be perfectly rendered', async ({ page }) => {
     const superiorRule = page.locator('.superior-rule');
     await expect(superiorRule).toBeVisible();
-    await expect(superiorRule).toContainText('Ministry of Defence');
-    await expect(superiorRule).toContainText('Official Sensitive');
-    await expect(superiorRule).toContainText('UK Government');
+    await expect(superiorRule).toContainText('UKSF Taskforce Alpha');
+    await expect(superiorRule).toContainText('Private Milsim Site');
+    await expect(superiorRule).toContainText('Non-Official');
     
     // Check toggle button
     const toggleBtn = superiorRule.locator('button:has-text("Toggle Interface")');
@@ -24,7 +27,7 @@ test.describe('Global Infrastructure: Header, Banner & Footer', () => {
     await expect(nav).toBeVisible();
     
     // Check Logo
-    const logo = nav.locator('img[alt="Ministry of Defence"]');
+    const logo = nav.locator('img[alt="UKSF Taskforce Alpha - Milsim Logo"]');
     await expect(logo).toBeVisible();
     const logoSrc = await logo.getAttribute('src');
     expect(logoSrc).not.toBeNull();
@@ -58,7 +61,7 @@ test.describe('Global Infrastructure: Header, Banner & Footer', () => {
 
     // Verify Column 1: Institutional
     await expect(footer).toContainText('UKSFTA');
-    await expect(footer).toContainText('Joint Special Forces Command');
+    await expect(footer).toContainText('Milsim Community');
 
     // Verify Column 2: Operational Elements
     await expect(footer).toContainText('Operational Elements');

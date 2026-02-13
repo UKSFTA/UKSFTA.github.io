@@ -1,5 +1,5 @@
 <div
-  class="bracket-box bg-white/[0.02] border-[var(--primary)]/20 my-24 overflow-hidden !p-0 group"
+  class="bracket-box bg-[var(--bg-page)]/[0.02] border-[var(--primary)]/20 my-24 overflow-hidden !p-0 group"
 >
   <div class="p-12 md:p-16 space-y-12">
     <div class="flex flex-col md:flex-row justify-between items-start gap-10">
@@ -9,7 +9,7 @@
             class="text-[10px] font-mono text-[var(--primary)] uppercase tracking-[0.4em] font-black"
             >Entry Protocol</span
           >
-          <div class="h-px w-8 bg-white/10"></div>
+          <div class="h-px w-8 bg-[var(--bg-page)]/10"></div>
         </div>
         <h3 class="text-5xl leading-none tracking-tighter uppercase font-black">
           {{ replace (.Get "title" | default "Initiate Registration") "_" " " }}
@@ -39,7 +39,7 @@
       }}
       <a
         href="/register?unit={{ $unit }}"
-        class="btn-elite bg-white text-moduk-secondarylack w-full hover:bg-[var(--primary)] hover:text-white transition-all font-black py-6 text-center no-underline"
+        class="btn-elite bg-[var(--bg-page)] text-moduk-secondarylack w-full hover:bg-[var(--primary)] hover:text-white transition-all font-black py-6 text-center no-underline"
       >
         OPEN REGISTRATION TERMINAL // AUTH REQUIRED
       </a>

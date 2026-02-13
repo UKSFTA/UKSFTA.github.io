@@ -1,5 +1,5 @@
 <div class="flex flex-col h-full">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-px bg-white/10 border border-white/10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-px bg-[var(--bg-page)]/10 border border-white/10">
         {{ $units := .Site.Data.units }}
         {{ $order := slice "sas" "sbs" "asob" "sfsg" "jsfaw" "med-det" }}
         {{ range $id := $order }}
@@ -66,7 +66,7 @@
     <div class="mt-6 flex flex-col md:flex-row justify-between items-center px-4 opacity-40 grayscale hover:opacity-80 transition-all duration-700 font-mono">
         <div class="flex items-center gap-6">
             <span class="text-[8px] text-neutral-600 uppercase tracking-widest font-black">Projection: MERCATOR_SF_GRID_ALPHA</span>
-            <div class="w-1 h-1 bg-white/20 rounded-full"></div>
+            <div class="w-1 h-1 bg-[var(--bg-page)]/20 rounded-full"></div>
             <span class="text-[8px] text-neutral-600 uppercase tracking-widest font-black">Interface: JSFC_v2.6_STABLE</span>
         </div>
         <div class="flex items-center gap-4 mt-4 md:mt-0">

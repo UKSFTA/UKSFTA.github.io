@@ -36,7 +36,7 @@ test.describe('Media & Asset Integrity: Zero Broken Images', () => {
 
   test('MOD Logo verification', async ({ page }) => {
     await page.goto('/');
-    const logo = page.locator('nav img[alt="Ministry of Defence"]');
+    const logo = page.locator('nav img[alt="UKSF Taskforce Alpha"]');
     await expect(logo).toBeVisible();
     
     const naturalWidth = await logo.evaluate(img => img.naturalWidth);

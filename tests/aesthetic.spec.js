@@ -5,6 +5,8 @@ test.describe('Institutional Aesthetic & Layout Verification', () => {
     // 1. Bypass auth gate
     await page.addInitScript(() => {
       window.localStorage.setItem('uksf_auth', 'authorized');
+      localStorage.setItem('dev_access', 'granted');
+        window.localStorage.setItem('dev_access', 'granted');
     });
 
     await page.goto('/');
@@ -76,6 +78,8 @@ test.describe('Institutional Aesthetic & Layout Verification', () => {
     // 1. Bypass auth gate
     await page.addInitScript(() => {
       window.localStorage.setItem('uksf_auth', 'authorized');
+      localStorage.setItem('dev_access', 'granted');
+        window.localStorage.setItem('dev_access', 'granted');
     });
 
     await page.goto('/registry/archive-covert/');

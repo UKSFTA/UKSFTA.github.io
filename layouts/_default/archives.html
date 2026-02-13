@@ -1,5 +1,5 @@
 {{ define "main" }}
-<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300 !justify-start">
+<section class="bg-[var(--bg-page)] dark:bg-[#0b0c0c] transition-colors duration-300 !justify-start">
     <div class="moduk-width-container space-y-12">
         <!-- HEADER -->
         <header class="flex flex-col md:flex-row justify-between items-start md:items-end border-b-8 border-mod-purple pb-10 gap-12 bg-[#f3f2f1] dark:bg-[#1d2329] p-10 shadow-xl relative overflow-hidden">
@@ -7,7 +7,7 @@
                 <div class="flex items-center gap-8">
                     {{ $logo := resources.Get "icons/MOD.png" }}
                     {{ if $logo }}
-                    <img src="{{ $logo.RelPermalink }}" alt="Ministry of Defence" class="h-16 w-auto  no-invert opacity-80">
+                    <img src="{{ $logo.RelPermalink }}" alt="UKSF Taskforce Alpha - Milsim Logo" class="h-16 w-auto  no-invert opacity-80">
                     {{ end }}
                     <div class="h-12 w-px bg-mod-grey-3 dark:bg-mod-grey-1"></div>
                     <span class="text-xs font-mono font-black text-mod-purple dark:text-[#bfc1c3] uppercase tracking-[0.4em]">Joint Force Command // Operational Archives</span>
@@ -28,7 +28,7 @@
         </header>
 
         <!-- SEARCH / FILTER -->
-        <div class="bg-white dark:bg-[#1d2329] border border-mod-grey-3 dark:border-mod-grey-1 p-10 relative overflow-hidden shadow-2xl transition-colors duration-300">
+        <div class="bg-[var(--bg-page)] dark:bg-[#1d2329] border border-mod-grey-3 dark:border-mod-grey-1 p-10 relative overflow-hidden shadow-2xl transition-colors duration-300">
             <div class="flex items-center gap-10">
                 <span class="text-[11px] font-black text-mod-purple dark:text-mod-grey-3 uppercase tracking-[0.4em] font-mono leading-none">Search_Registry:</span>
                 <div class="flex-grow h-px bg-mod-grey-3 dark:bg-mod-grey-1"></div>
@@ -64,13 +64,13 @@
                     const date = new Date(op.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
                     const slug = op.campaignName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
                     return `
-                        <a href="/campaigns/${slug}" class="group bg-[var(--bg-page)] p-12 space-y-10 hover:bg-mod-grey-4 dark:hover:bg-white/5 transition-all duration-500 no-underline block relative overflow-hidden shadow-sm border-b-4 border-transparent hover:border-mod-purple">
+                        <a href="/campaigns/${slug}" class="group bg-[var(--bg-page)] p-12 space-y-10 hover:bg-mod-grey-4 dark:hover:bg-[var(--bg-page)]/5 transition-all duration-500 no-underline block relative overflow-hidden shadow-sm border-b-4 border-transparent hover:border-mod-purple">
                             <div class="flex justify-between items-start">
                                 <div class="flex flex-col gap-2">
                                     <span class="text-[10px] font-mono text-mod-purple dark:text-mod-grey-3 uppercase tracking-[0.3em] font-black">TF-${op.id}</span>
                                     <span class="text-[9px] font-mono text-mod-grey-2 uppercase tracking-widest font-bold opacity-60">${date}</span>
                                 </div>
-                                <span class="text-[9px] font-black ${op.status === 'ACTIVE' ? 'text-mod-green bg-mod-green/10 border-mod-green/20' : 'text-mod-grey-2 bg-mod-grey-4 dark:bg-white/5 border-mod-grey-3 dark:border-mod-grey-1'} uppercase tracking-[0.2em] border px-4 py-2 font-mono shadow-sm">${op.status}</span>
+                                <span class="text-[9px] font-black ${op.status === 'ACTIVE' ? 'text-mod-green bg-mod-green/10 border-mod-green/20' : 'text-mod-grey-2 bg-mod-grey-4 dark:bg-[var(--bg-page)]/5 border-mod-grey-3 dark:border-mod-grey-1'} uppercase tracking-[0.2em] border px-4 py-2 font-mono shadow-sm">${op.status}</span>
                             </div>
                             
                             <h3 class="text-4xl font-black uppercase tracking-tighter text-mod-black dark:text-white group-hover:text-mod-purple transition-colors font-industrial leading-[0.9] m-0">${op.campaignName}</h3>

@@ -6,6 +6,8 @@ test.describe('MOD.UK Accessibility Audit', () => {
     await page.addInitScript(() => {
         window.localStorage.setItem('moduk_theme', 'dark');
         window.localStorage.setItem('uksf_auth', 'authorized');
+      localStorage.setItem('dev_access', 'granted');
+        window.localStorage.setItem('dev_access', 'granted');
         document.documentElement.classList.add('dark');
     });
   });

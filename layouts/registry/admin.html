@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $stats := .Site.Data.system_stats }}
-<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300 !justify-start">
+<section class="bg-[var(--bg-page)] dark:bg-[#0b0c0c] transition-colors duration-300 !justify-start">
     <div class="moduk-width-container space-y-12">
         <!-- MOD HEADER STYLE -->
         <header class="border-b-8 border-mod-purple pb-10 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 bg-[#f3f2f1] dark:bg-[#1d2329] p-10 shadow-xl">
@@ -38,7 +38,7 @@
             <!-- LEFT COLUMN: STATUS & QUICK ACTIONS -->
             <aside class="lg:col-span-4 space-y-10">
                 <!-- System Vitals -->
-                <div class="card-mod border-l-8 border-l-mod-purple space-y-10 relative overflow-hidden bg-white/50 dark:bg-[#1d2329]/50 shadow-2xl">
+                <div class="card-mod border-l-8 border-l-mod-purple space-y-10 relative overflow-hidden bg-[var(--bg-page)]/50 dark:bg-[#1d2329]/50 shadow-2xl">
                     <h3 class="text-[11px] font-black text-mod-grey-2 uppercase tracking-[0.4em] border-b border-mod-grey-3 dark:border-mod-grey-1 pb-6 font-mono">// System_Vitals</h3>
                     
                     <div class="grid grid-cols-2 gap-10 font-mono">
@@ -173,7 +173,7 @@
         </div>
 
         <!-- AUDIT LOGS -->
-        <div class="card-mod !p-10 space-y-10 border-t-8 border-t-mod-black shadow-2xl bg-white dark:bg-[#1d2329]">
+        <div class="card-mod !p-10 space-y-10 border-t-8 border-t-mod-black shadow-2xl bg-[var(--bg-page)] dark:bg-[#1d2329]">
             <div class="flex justify-between items-center border-b border-mod-grey-3 dark:border-mod-grey-1 pb-6">
                 <h3 class="text-[11px] font-black text-mod-grey-2 uppercase tracking-[0.5em] font-mono">// Digital_Audit_Stream</h3>
                 <div class="flex items-center gap-4">

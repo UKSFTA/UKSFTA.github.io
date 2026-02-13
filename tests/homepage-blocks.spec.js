@@ -20,7 +20,7 @@ test.describe('Homepage Architecture: Block-by-Block Verification', () => {
   test('Section 2: Mission Directive Block', async ({ page }) => {
     const mission = page.locator('section').nth(1);
     await expect(mission.locator('h2')).toContainText('Strategic Integration');
-    await expect(mission).toContainText('Ministry of Defence standards');
+    await expect(mission).toContainText('UKSF Taskforce Alpha standards');
   });
 
   test('Section 3: Unit Directory Block', async ({ page }) => {
@@ -39,7 +39,7 @@ test.describe('Homepage Architecture: Block-by-Block Verification', () => {
     const aor = page.locator('section').nth(3);
     // Explicitly target the section h2, not nested widget h2s
     await expect(aor.locator('> .moduk-width-container h2').first()).toContainText('AOR Control');
-    await expect(aor.locator('.bg-mod-green')).toContainText('STATION_ACTIVE');
+    await expect(aor.locator('.bg-mod-green.shadow-lg')).toContainText('STATION_ACTIVE');
     
     // Map Check
     const map = aor.locator('.tactical-map-container');

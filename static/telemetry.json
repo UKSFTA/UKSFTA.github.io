@@ -1,10 +1,10 @@
 {
-  "timestamp": 1770942711587,
+  "timestamp": 1771003607432,
   "today": [
     {
       "type": "dataPoint",
       "attributes": {
-        "timestamp": "2026-02-13T00:00:00.000Z",
+        "timestamp": "2026-02-13T16:30:00.000Z",
         "max": 0,
         "value": 0,
         "min": 0
@@ -76,73 +76,10 @@
     {
       "type": "dataPoint",
       "attributes": {
-        "timestamp": "2026-02-12T16:00:00.000Z",
+        "timestamp": "2026-02-12T17:00:00.000Z",
         "max": 0,
         "value": 0,
         "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-12T15:30:00.000Z",
-        "max": 1,
-        "value": 1,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-12T15:00:00.000Z",
-        "max": 1,
-        "value": 0,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-12T14:30:00.000Z",
-        "max": 0,
-        "value": 0,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-12T01:30:00.000Z",
-        "max": 0,
-        "value": 0,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-12T01:00:00.000Z",
-        "max": 1,
-        "value": 0,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-12T00:30:00.000Z",
-        "max": 1,
-        "value": 1,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-12T00:00:00.000Z",
-        "max": 1,
-        "value": 1,
-        "min": 1
       }
     }
   ],
@@ -150,7 +87,7 @@
     {
       "type": "dataPoint",
       "attributes": {
-        "timestamp": "2026-02-12T23:00:00.000Z",
+        "timestamp": "2026-02-13T16:00:00.000Z",
         "max": 0,
         "value": 0,
         "min": 0
@@ -646,51 +583,6 @@
       "type": "dataPoint",
       "attributes": {
         "timestamp": "2026-02-06T17:00:00.000Z",
-        "max": 0,
-        "value": 0,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-06T16:00:00.000Z",
-        "max": 1,
-        "value": 1,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-06T15:00:00.000Z",
-        "max": 1,
-        "value": 1,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-06T14:00:00.000Z",
-        "max": 1,
-        "value": 0,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-06T13:00:00.000Z",
-        "max": 0,
-        "value": 0,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-06T00:00:00.000Z",
         "max": 0,
         "value": 0,
         "min": 0

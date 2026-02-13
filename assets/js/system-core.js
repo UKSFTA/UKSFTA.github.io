@@ -137,7 +137,7 @@
     if (statusText) {
         if (source && source.status === 'online') {
             statusText.innerText = 'STATION_ACTIVE';
-            statusText.className = 'text-[8px] font-black text-green-900 tracking-widest uppercase font-mono';
+            statusText.className = 'text-[8px] font-black text-mod-green tracking-widest uppercase font-mono';
             if (statusIndicator) statusIndicator.className = `w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]`;
             if (playerCount) playerCount.innerText = `${source.players}/${maxCapacity} DEPLOYED`;
         } else {

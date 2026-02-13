@@ -13,7 +13,7 @@ test.describe('RSIS Security Gating & Authentication', () => {
     
     // Should be redirected to /registry/gate/ per baseof.html logic
     await expect(page).toHaveURL(/\/registry\/gate\//);
-    await expect(page.locator('h1')).toContainText('Secure Gateway');
+    await expect(page.locator('h1')).toContainText('Authorization');
   });
 
   test('Unauthenticated users should be redirected to Gate from Console', async ({ page }) => {
@@ -31,6 +31,7 @@ test.describe('RSIS Security Gating & Authentication', () => {
     // Simulate manual auth injection (simulating the CTF result)
     await page.evaluate(() => {
       localStorage.setItem('uksf_auth', 'authorized');
+      localStorage.setItem('dev_access', 'granted');
     });
 
     // Now navigate to ORBAT manually (or via button if we had one)

@@ -1,6 +1,6 @@
 <div id="cookie-consent-banner" class="fixed inset-x-0 bottom-0 z-[100] p-4 lg:p-8 transform translate-y-full transition-transform duration-700 ease-out hidden">
     <div class="moduk-width-container max-w-4xl">
-        <div class="card-mod bg-white dark:bg-[#1d2329] border-[#bfc1c3] dark:border-[#323e48] p-8 lg:p-12 shadow-xl relative overflow-hidden transition-colors duration-300">
+        <div class="card-mod bg-[var(--bg-page)] dark:bg-[#1d2329] border-[#bfc1c3] dark:border-[#323e48] p-8 lg:p-12 shadow-xl relative overflow-hidden transition-colors duration-300">
             <div class="absolute top-0 left-0 w-full h-2 bg-[var(--brand-tint)]"></div>
             
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-12">
@@ -30,8 +30,8 @@
 
 <!-- Settings Modal -->
 <div id="cookie-modal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-[#0b0c0c]/80 backdrop-blur-sm hidden">
-    <div class="bg-white dark:bg-[#1d2329] border border-[#bfc1c3] dark:border-[#323e48] w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col relative shadow-xl rounded-sm transition-colors duration-300">
-        <div class="p-6 border-b border-[#bfc1c3] dark:border-[#323e48] flex justify-between items-center bg-[#f3f2f1] dark:bg-white/5">
+    <div class="bg-[var(--bg-page)] dark:bg-[#1d2329] border border-[#bfc1c3] dark:border-[#323e48] w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col relative shadow-xl rounded-sm transition-colors duration-300">
+        <div class="p-6 border-b border-[#bfc1c3] dark:border-[#323e48] flex justify-between items-center bg-[#f3f2f1] dark:bg-[var(--bg-page)]/5">
             <span class="text-[11px] font-bold text-[#0b0c0c] dark:text-white uppercase tracking-widest font-body">Consent Matrix</span>
             <button id="close-cookie-modal" class="text-moduk-secondary hover:text-[#0b0c0c] dark:hover:text-white transition-colors">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -48,7 +48,7 @@
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" value="{{ .id }}" class="cookie-toggle sr-only peer" {{ if .required }}disabled checked{{ end }}>
-                        <div class="w-11 h-6 bg-[#bfc1c3] dark:bg-white/10 border border-[#bfc1c3] dark:border-[#323e48] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--brand-tint)]"></div>
+                        <div class="w-11 h-6 bg-[#bfc1c3] dark:bg-[var(--bg-page)]/10 border border-[#bfc1c3] dark:border-[#323e48] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[var(--bg-page)] after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--brand-tint)]"></div>
                     </label>
                 </div>
                 <div class="bg-[#f3f2f1] dark:bg-black/40 border border-[#bfc1c3] dark:border-[#323e48] p-4 overflow-x-auto">
@@ -75,7 +75,7 @@
             {{ end }}
         </div>
         
-        <div class="p-6 border-t border-[#bfc1c3] dark:border-[#323e48] bg-[#f3f2f1] dark:bg-white/5 flex justify-end gap-4">
+        <div class="p-6 border-t border-[#bfc1c3] dark:border-[#323e48] bg-[#f3f2f1] dark:bg-[var(--bg-page)]/5 flex justify-end gap-4">
             <button id="cookie-reject-all" class="px-6 py-2 text-[10px] font-bold text-[#800000] uppercase tracking-widest hover:underline transition-all">
                 Reject All
             </button>

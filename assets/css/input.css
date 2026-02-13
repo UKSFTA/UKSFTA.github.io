@@ -4,10 +4,10 @@
 @theme {
   --variant-dark: &:where(.dark, .dark *);
   --color-mod-black: #0b0c0c;
-  --color-mod-grey-1: #323e48;
+  --color-mod-grey-1: var(--mod-grey-1-val);
   --color-mod-grey-2: var(--mod-grey-2-val);
-  --color-mod-grey-3: #bfc1c3;
-  --color-mod-grey-4: #f3f2f1;
+  --color-mod-grey-3: var(--mod-grey-3-val);
+  --color-mod-grey-4: var(--mod-grey-4-val);
   --color-mod-dark-grey: #1d2329;
   --color-mod-blue: #003078;
   --color-mod-green: var(--mod-green-val);
@@ -22,13 +22,16 @@
 @layer base {
   :root {
     /* DEFAULT TO TACTICAL DARK */
-    --mod-grey-2-val: #b1b4b6;
+    --mod-grey-1-val: #b1b4b6;
+    --mod-grey-2-val: #d2d3d5;
+    --mod-grey-3-val: #f3f2f1;
+    --mod-grey-4-val: #1d2329; /* Dark background for cards in dark mode */
     --mod-green-val: #00ff85;
     --mod-red-val: #ff6150;
     --mod-purple-val: #de8ec0;
     --bg-page: #0b0c0c;
     --text-main: #f3f2f1;
-    --text-secondary: #bfc1c3;
+    --text-secondary: #b1b4b6;
     --border-main: #323e48;
     --btn-text: #0b0c0c;
 
@@ -43,7 +46,10 @@
 
   /* OPTIONAL LIGHT MODE */
   .light {
+    --mod-grey-1-val: #323e48;
     --mod-grey-2-val: #505a5f;
+    --mod-grey-3-val: #bfc1c3;
+    --mod-grey-4-val: #f3f2f1;
     --mod-green-val: #00703c;
     --mod-red-val: #d4351c;
     --mod-purple-val: #532a45;
@@ -54,10 +60,15 @@
     --btn-text: #ffffff;
   }
 
-  [data-unit-skin="army"], .unit-sas, .unit-sfsg { --brand-tint: #153e35; }
-  [data-unit-skin="navy"], .unit-sbs { --brand-tint: #13284c; }
-  [data-unit-skin="raf"], .unit-jsfaw { --brand-tint: #005696; }
-  [data-unit-skin="intel"], .unit-srr, .unit-signals { --brand-tint: #323e48; }
+  .light [data-unit-skin="army"], .light .unit-sas, .light .unit-sfsg { --brand-tint: #153e35; }
+  .light [data-unit-skin="navy"], .light .unit-sbs { --brand-tint: #13284c; }
+  .light [data-unit-skin="raf"], .light .unit-jsfaw { --brand-tint: #005696; }
+  .light [data-unit-skin="intel"], .light .unit-srr, .light .unit-signals { --brand-tint: #323e48; }
+
+  .dark [data-unit-skin="army"], .dark .unit-sas, .dark .unit-sfsg { --brand-tint: #3dc070; }
+  .dark [data-unit-skin="navy"], .dark .unit-sbs { --brand-tint: #5d99ff; }
+  .dark [data-unit-skin="raf"], .dark .unit-jsfaw { --brand-tint: #5ec2ff; }
+  .dark [data-unit-skin="intel"], .dark .unit-srr, .dark .unit-signals { --brand-tint: #b1b4b6; }
 
   /* CRITICAL: DO NOT INVERT IMAGES */
   img, .no-invert {
@@ -161,7 +172,7 @@
     }
   }
 
-  .dark .card-mod:hover, .card-mod:hover {
+  .card-mod:hover {
     background-color: rgba(29, 35, 41, 0.5);
   }
 
@@ -187,5 +198,16 @@
       color: var(--text-main);
       border-bottom-color: var(--brand-tint);
     }
+  }
+
+  .connection-points {
+    pointer-events: none;
+  }
+  .connection-points > * {
+    pointer-events: auto;
+  }
+  .orbat-node-wrapper.selected .orbat-node-card {
+    border-color: var(--brand-tint);
+    box-shadow: 0 0 20px var(--brand-tint);
   }
 }

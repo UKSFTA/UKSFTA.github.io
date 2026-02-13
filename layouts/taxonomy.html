@@ -1,12 +1,12 @@
 {{ define "main" }}
-<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300">
+<section class="bg-[var(--bg-page)] dark:bg-[#0b0c0c] transition-colors duration-300">
     <div class="moduk-width-container py-24 space-y-16">
         <!-- HEADER -->
         <header class="border-b-4 border-[#532a45] pb-10 gap-8">
             <div class="space-y-8">
                 <div class="flex items-center gap-6">
                     {{ $logo := resources.Get "icons/MOD.png" }}
-                    <img src="{{ $logo.RelPermalink }}" alt="Ministry of Defence" class="h-16 w-auto  dark:opacity-80">
+                    <img src="{{ $logo.RelPermalink }}" alt="UKSF Taskforce Alpha - Milsim Logo" class="h-16 w-auto  dark:opacity-80">
                     <div class="h-10 w-px bg-[#bfc1c3] dark:bg-[#323e48]"></div>
                     <span class="text-[9px] font-body font-bold text-[#532a45] dark:text-[#bfc1c3] uppercase tracking-widest">Joint Force Command // Taxonomy Node</span>
                 </div>
