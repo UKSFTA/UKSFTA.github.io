@@ -1,0 +1,867 @@
+{
+  "campaigns": [
+    {
+      "id": 430,
+      "campaignName": "Operation Restore",
+      "map": "Afghanistan",
+      "brief": "The United States has decided to re-enter Afghanistan in an attempt to re instate a legitimate NATO backed government as such the rest of NATO will be joining this counter insurgency effort.\n\nTask Force Alpha is being sent to Helmand province to try and liberate the area, we will begin with the outlying rural areas and slowly move into the urban enemy strongholds over the course of this campaign. The objective is to seek, destroy and engage the Taliban and Taliban backed forces while minimising civilian casualties and destruction to civilian property.\n\nThere is a significant IED, VBIED and PBIED risk as such all soldiers sailors and airmen of TFA will be taught the use of mine detecting equipment and the engineers will specify in defusal efforts.\n\nPlease keep an eye on your individual CoCs for new SOPs that relate to you.\n\nCmdr. J. Shaw (RN)\nNaval Intelligence",
+      "image": {
+        "id": 24762,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/OP_Restore.png1744839634777.png",
+        "created_at": "2025-04-16 21:40:34",
+        "updated_at": "2025-04-16 21:40:34"
+      },
+      "created_at": "2025-02-18 19:40:16",
+      "updated_at": "2025-04-16 21:40:34",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 1976,
+          "name": "Operation Restore Part 2",
+          "dateTime": "2025-02-19 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-02-19",
+          "locked": false,
+          "discordChannel": "1341466255101788232",
+          "discordPingable": "1327421406245290116",
+          "discordMessage": "1341494682709917818",
+          "discordPingSent": true
+        }
+      ]
+    },
+    {
+      "id": 457,
+      "campaignName": "Operation Black Sheep",
+      "map": "Ruha",
+      "brief": "Militia forces backed up by Russia have seized the border with Estonia and Latvia near the area of Ruha. They have shot down multiple drones and a cargo plane owned by NATO Forces. Due to the AA threat and the unknown situation HQ have ordered UKSF Taskforce Alpha do go deep into the territory to scout out the current situation.",
+      "image": {
+        "id": 24763,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Op_Black_sheep.jpeg1744839650906.jpeg",
+        "created_at": "2025-04-16 21:40:50",
+        "updated_at": "2025-04-16 21:40:50"
+      },
+      "created_at": "2025-04-08 12:49:50",
+      "updated_at": "2025-04-16 21:40:50",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2156,
+          "name": "OP Black sheep 3",
+          "dateTime": "2025-04-11 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-04-11",
+          "locked": true,
+          "discordChannel": null,
+          "discordPingable": null,
+          "discordMessage": null,
+          "discordPingSent": false
+        },
+        {
+          "id": 2171,
+          "name": "Op Black Sheep 4",
+          "dateTime": "2025-04-18 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-04-18",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1360767012699373790",
+          "discordPingSent": false
+        },
+        {
+          "id": 2198,
+          "name": "Op Black Sheep 5",
+          "dateTime": "2025-04-25 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-04-25",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1363900450067447985",
+          "discordPingSent": false
+        },
+        {
+          "id": 2217,
+          "name": "Op Black Sheep 6",
+          "dateTime": "2025-05-02 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-05-02",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1366103810811891763",
+          "discordPingSent": false
+        },
+        {
+          "id": 2242,
+          "name": "Op Black Sheep 7",
+          "dateTime": "2025-05-09 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-05-09",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1368935953334538313",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 460,
+      "campaignName": "Operation Breezer",
+      "map": "G.O.S - Fjord",
+      "brief": "An uprising has been happening in the Murmansk area '' Russia '' the last couple of months. They want to declare a own state outside Russia. Meanwhile presumably armed men from the Russian Army stationed in this area have been supporting this new regime. While Russia is busy in Ukraine fighting their 3 day '' special operation '' armed men have set up roadblocks and destroying the important road '' E105/P-21 '' down South towards the rest of Russia.\nThe important military harbors in the area have been seized by this new regime as well as other military installations.\n\nAt the same time the British Government has received a request from NATO HQ to reinforce the area together with other NATO Allies.\nOur mission is to reinforce the area, protect the local population, secure Norwegian NATO ground and it's natural resources.\n\nThe Norwegian border area has a high rich of minerals, oil and gold in the ground. High mountain terrains, small roads and a couple of ports and a low population are in our area of operations.\n\nWelcome to the Norwegian Fjords.",
+      "image": {
+        "id": 24764,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Operation_Brezzer.png1744839662383.png",
+        "created_at": "2025-04-16 21:41:02",
+        "updated_at": "2025-04-16 21:41:02"
+      },
+      "created_at": "2025-04-13 00:02:50",
+      "updated_at": "2026-01-31 17:41:34",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2172,
+          "name": "Op Breezer 1",
+          "dateTime": "2025-04-16 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-04-16",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1360767322444529716",
+          "discordPingSent": false
+        },
+        {
+          "id": 2197,
+          "name": "Op Breezer 2",
+          "dateTime": "2025-04-23 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-04-23",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1363900192864206919",
+          "discordPingSent": false
+        },
+        {
+          "id": 2216,
+          "name": "Op Breezer 3",
+          "dateTime": "2025-04-30 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-04-30",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1366103586756497571",
+          "discordPingSent": false
+        },
+        {
+          "id": 2241,
+          "name": "Op Breezer 4",
+          "dateTime": "2025-05-07 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-05-07",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1368935722983227465",
+          "discordPingSent": false
+        },
+        {
+          "id": 2267,
+          "name": "OP Breezer 5",
+          "dateTime": "2025-05-14 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-05-14",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1371820443610382336",
+          "discordPingSent": false
+        },
+        {
+          "id": 2296,
+          "name": "OP Breezer 6",
+          "dateTime": "2025-05-21 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-05-21",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1374268380638609460",
+          "discordPingSent": false
+        },
+        {
+          "id": 2309,
+          "name": "OP Breezer 7",
+          "dateTime": "2025-05-28 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-05-28",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1376657485422661723",
+          "discordPingSent": false
+        },
+        {
+          "id": 2338,
+          "name": "OP Breezer 8",
+          "dateTime": "2025-06-04 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-06-04",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1379657702074224781",
+          "discordPingSent": false
+        },
+        {
+          "id": 2364,
+          "name": "OP Breezer 9",
+          "dateTime": "2025-06-11 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-06-11",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1381740183937880084",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 484,
+      "campaignName": "Operation Sahel",
+      "map": "G.O.S N'Djenahoud",
+      "brief": "The Sahel region:\n\nThe Sahel has a hot semi-arid climate and stretches across the southernmost latitudes of North Africa between the Atlantic Ocean and the Red Sea. Traditionally, most of the people in the Sahel have been semi-nomads, farming and raising livestock in a system of transhumance.\nFrench is spoken widely in the Sahel, as many of its nations are former French colonies, with two adopting French as an official language and many more using it colloquially.\nThe Sahel includes parts of Senegal, Mauritania, Burkina Faso, Mali, Niger, Nigeria, Chad, Sudan and Eritrea, where French is employed to varying degrees.\n\nIn the wake of the Libyan Crisis beginning in 2011, terrorist organizations operating in the Sahel, including Boko Haram, Islamic State and al-Qaeda in the Islamic Maghreb (AQIM), have greatly exacerbated the violence, extremism and instability of the region. As of 2024, a wave of new military juntas in Africa, favoring Russian mercenaries over Western forces and UN peacekeepers, has intensified violence.\n\nThe British Government has received a request from NATO HQ to reinforce the area together with other NATO Allies.\n\nOur mission will be to bring stability to some parts of the region, provide aid to civilians, gather intel and fight terrorist groups together with other NATO Allies stationed in the region.\n",
+      "image": {
+        "id": 25511,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Schermafbeelding_2025-05-08_150916.png1747137994354.png",
+        "created_at": "2025-05-13 12:06:34",
+        "updated_at": "2025-05-13 12:06:34"
+      },
+      "created_at": "2025-05-13 12:06:34",
+      "updated_at": "2025-05-13 12:06:34",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2297,
+          "name": "OP Sahel 1",
+          "dateTime": "2025-05-23 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-05-23",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1374268523823497338",
+          "discordPingSent": false
+        },
+        {
+          "id": 2310,
+          "name": "OP Sahel 2",
+          "dateTime": "2025-05-30 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-05-30",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1376657669560991764",
+          "discordPingSent": false
+        },
+        {
+          "id": 2339,
+          "name": "OP Sahel 3",
+          "dateTime": "2025-06-06 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-06-06",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1379657823180296276",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 508,
+      "campaignName": "Operation Sparrow",
+      "map": "Isla Pera",
+      "brief": "Isla Pera, a lush, tropical archipelago in the Caribbean Sea. With Bocachica as its main city is founded and conquered by the United Kingdom in 1672. From 1680, the other islands were colonized by the United Kingdom, but pirates remained active in the region throughout the 17th and 18th centuries. Later in 1736, French claims were granted and the archipelago was split up. \nIn 1960, Isla Pera became an official independent British and French colony, gaining limited autonomy in 1967. Till this day some parts of the internal islands are under control of both the British and French governments.\n\nWith an abundance of oil, sugar cane plantations and minerals the Islands are exporting a lot. Fruit growing was important until the 1970s, but has since been restricted to internal consumption. Fishing continues to play an important role. After 1999 tourisme is playing a big part of the economy.\n\nCurrently, pirates and drug traffickers are active around the islands and hurricanes in the region are more severe due to climate change. Different factions on the Islands wants to have a change and are anti-British/French and they want to claim their Islands back.\n\nOur  mission is to reinforce the area in the Caribbean Sea, protect the local population from attacks on and around the Islands, secure it's natural resources and work together with our American and French Allies. Furthermore support IDAP and the local government in their struggles.\n",
+      "image": {
+        "id": 26279,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/Schermafbeelding_2025-06-16_093638.png1750060034770.png",
+        "created_at": "2025-06-16 07:47:14",
+        "updated_at": "2025-06-16 07:47:14"
+      },
+      "created_at": "2025-06-16 07:37:14",
+      "updated_at": "2025-06-16 07:47:14",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2400,
+          "name": "OP Sparrow 1",
+          "dateTime": "2025-06-18 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-06-18",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1384074866772279430",
+          "discordPingSent": false
+        },
+        {
+          "id": 2423,
+          "name": "OP Sparrow 2",
+          "dateTime": "2025-06-25 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-06-25",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1386923434709221487",
+          "discordPingSent": false
+        },
+        {
+          "id": 2434,
+          "name": "OP Sparrow 3",
+          "dateTime": "2025-07-02 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-07-02",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1388969841108586526",
+          "discordPingSent": false
+        },
+        {
+          "id": 2457,
+          "name": "OP Sparrow 4",
+          "dateTime": "2025-07-09 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-07-09",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1391763799815487549",
+          "discordPingSent": false
+        },
+        {
+          "id": 2483,
+          "name": "OP Sparrow 5",
+          "dateTime": "2025-07-16 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-07-16",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1394324958485680239",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 522,
+      "campaignName": "Pre Deployment Ops",
+      "map": "Dagger Island Training Complex",
+      "brief": "Pre Deployment Training Ops for the next campaign or Unit training",
+      "image": {
+        "id": 28036,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/uksf-tfa-patch2-1.png1753735320783.png",
+        "created_at": "2025-07-28 20:42:00",
+        "updated_at": "2025-07-28 20:42:00"
+      },
+      "created_at": "2025-07-28 20:41:26",
+      "updated_at": "2025-11-04 19:23:05",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2529,
+          "name": "Reorbat final training Op",
+          "dateTime": "2025-07-30 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-07-30",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1399492398005878944",
+          "discordPingSent": true
+        },
+        {
+          "id": 3155,
+          "name": "Pre-Deployment Training",
+          "dateTime": "2025-11-05 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-11-05",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1435348420754935900",
+          "discordPingSent": true
+        },
+        {
+          "id": 3244,
+          "name": "Pre Deployment Training + Mini Op",
+          "dateTime": "2025-12-10 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-12-10",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1446712938475028562",
+          "discordPingSent": true
+        },
+        {
+          "id": 3289,
+          "name": "Welcome Back + Pre-Deployment Training",
+          "dateTime": "2026-01-07 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-07",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1457139465633005722",
+          "discordPingSent": true
+        }
+      ]
+    },
+    {
+      "id": 551,
+      "campaignName": "Operation Reaction",
+      "map": "Farabad ( Persian Gulf )",
+      "brief": "Focussed around the capital city of Al-Jatar, A nation on the Persian Gulf. This semi-mountainous region rich in natural resources is home to many mines and oil fields. However these resources have left instability and conflict in the region for decades. Thunder run through the wide open valleys around the Jazira oil fields, traverse a rocky mountain pass, or move deep into the dense alleyways and streets of Farabad, a huge city at the center of the province.\n\nA military coup made the region even more unstable. Different factions are in fight with eachother to gain control. The British Government has received a request from NATO HQ to evacuate any British embassy personnel and civilians out of the area, to gain intel and to work with our NATO partners and the previous regime.",
+      "image": {
+        "id": 28399,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/EjtzWdt3.jpg1755002735864.jpg",
+        "created_at": "2025-08-12 12:45:35",
+        "updated_at": "2025-08-12 12:45:35"
+      },
+      "created_at": "2025-08-12 12:45:35",
+      "updated_at": "2025-08-12 12:45:35",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 2645,
+          "name": "OP Reaction 1",
+          "dateTime": "2025-08-13 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-08-13",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1404808287907610677",
+          "discordPingSent": false
+        },
+        {
+          "id": 2847,
+          "name": "OP Reaction 2",
+          "dateTime": "2025-08-20 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-08-20",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1407070695783141456",
+          "discordPingSent": false
+        },
+        {
+          "id": 2874,
+          "name": "OP Reaction 3",
+          "dateTime": "2025-08-27 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-08-27",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1409581245599584366",
+          "discordPingSent": false
+        },
+        {
+          "id": 2901,
+          "name": "OP Reaction 4",
+          "dateTime": "2025-09-03 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-09-03",
+          "locked": true,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1412125605838983241",
+          "discordPingSent": false
+        },
+        {
+          "id": 2954,
+          "name": "Op Reaction 5",
+          "dateTime": "2025-09-17 18:00:00",
+          "time": "19:00:00",
+          "date": "2025-09-17",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1417590622042460180",
+          "discordPingSent": true
+        },
+        {
+          "id": 2983,
+          "name": "OP Reaction 6",
+          "dateTime": "2025-09-24 18:00:00",
+          "time": "20:00:00",
+          "date": "2025-09-24",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": null,
+          "discordMessage": "1419759266708852811",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 618,
+      "campaignName": "Operation Dune Vengance",
+      "map": "Al-Katbah District, Western Sahatra (Former Iran)",
+      "brief": "\nCAMPAIGN BRIEF;\n\n1. SITUATION:\nIn the power vacuum left by Iran's collapse, the province of Western Sahatra is now a failed state. A ruthless paramilitary faction, the Black Rose, has seized control of the region's oil wealth and now threatens to destabilize the entire Middle East.\n\n2. THE ENEMY:\nThe Black Rose is a well-funded and disciplined force, but their strategic command rests with a secretive \"Council of 13.\" This council is our primary target. As long as they remain, the Black Rose will continue to be a threat.\n\n3. THE OBJECTIVE:\nThis campaign has one ultimate goal: the complete dismantlement of the Black Rose leadership. Over a series of sequential operations, UKSF Task Force Alpha will hunt down and eliminate every member of the Council of 13.\n\n4. THE WORLD:\nThe AO is not empty. Other factions, from nationalist militias to opportunistic warlords, also operate in the region. How we interact with them—whether we fight them, avoid them, or use them—will be critical to our success.\n\nWelcome to Sahatra.",
+      "image": {
+        "id": 30540,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/download.jpeg1760451669872.jpeg",
+        "created_at": "2025-10-14 14:21:09",
+        "updated_at": "2025-10-14 14:21:09"
+      },
+      "created_at": "2025-10-14 14:18:35",
+      "updated_at": "2025-10-26 15:59:14",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 3058,
+          "name": "Op Ironclad",
+          "dateTime": "2025-10-15 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-10-15",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321236261553573928",
+          "discordMessage": "1427662714913816626",
+          "discordPingSent": true
+        },
+        {
+          "id": 3095,
+          "name": "Op Nightglass",
+          "dateTime": "2025-10-22 18:00:00",
+          "time": "18:00:00",
+          "date": "2025-10-22",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1430092273000910910",
+          "discordPingSent": true
+        },
+        {
+          "id": 3122,
+          "name": "Op Venoms Nest",
+          "dateTime": "2025-10-29 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-10-29",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1432030744355672065",
+          "discordPingSent": true
+        },
+        {
+          "id": 3132,
+          "name": "Op Venoms Nest | Part 2",
+          "dateTime": "2025-10-30 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-10-30",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1433223802464243765",
+          "discordPingSent": true
+        }
+      ]
+    },
+    {
+      "id": 637,
+      "campaignName": "Operation Jungle Cobra",
+      "map": "Northern Colombia",
+      "brief": "SITUATION:\nFollowing the successful disruption of their command in Sahatra, the remnants of the Black Rose have fled to the remote, dense jungles of Colombia. Intelligence confirms they are now establishing chemical weapon production facilities, utilising local Cartel networks and resources. This represents a critical escalation: the Black Rose is transitioning from a regional threat to a global proliferator of WMDs.\n\nTHE ENEMY:\nThe last three remaining members of the Council of 13 are believed to be overseeing these production\noperations. They are highly dangerous, desperate, and will be protected by well-armed local Cartel forces and PMC elements.\n\nTHE OBJECTIVE:\nThis campaign's ultimate goal is the complete and permanent neutralisation of the Black Rose's chemical weapon production capability. This will involve hunting down and eliminating the remaining Council members, destroying all production facilities, and interdicting their supply lines.\n\nTHE TERRAIN:\nExpect extreme environmental challenges: dense jungle, high humidity, difficult terrain, and a complex human terrain dominated by powerful Cartel networks and insurgent groups.\n\nTHE STAKES:\nFailure is not an option. The proliferation of chemical weapons by the Black Rose would have catastrophic global consequences.",
+      "image": {
+        "id": 31629,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/download.jpeg1762721389767.jpeg",
+        "created_at": "2025-11-09 20:49:49",
+        "updated_at": "2025-11-09 20:49:49"
+      },
+      "created_at": "2025-11-09 20:49:49",
+      "updated_at": "2025-11-09 20:57:58",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 3167,
+          "name": "Op Piranha Strike",
+          "dateTime": "2025-11-12 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-11-12",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1437452184533991567",
+          "discordPingSent": true
+        },
+        {
+          "id": 3197,
+          "name": "Op Jungle Cobra 2",
+          "dateTime": "2025-11-19 21:00:00",
+          "time": "21:00:00",
+          "date": "2025-11-19",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1440326102747971604",
+          "discordPingSent": true
+        },
+        {
+          "id": 3217,
+          "name": "Op Unseen Cargo",
+          "dateTime": "2025-11-26 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-11-26",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1442626283946250342",
+          "discordPingSent": true
+        },
+        {
+          "id": 3234,
+          "name": "Op Unseen Cargo | Part 2",
+          "dateTime": "2025-12-03 19:00:00",
+          "time": "19:00:00",
+          "date": "2025-12-03",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1445457594020790474",
+          "discordPingSent": true
+        }
+      ]
+    },
+    {
+      "id": 675,
+      "campaignName": "Operation Iron Retribution",
+      "map": "Lythium",
+      "brief": "Situation:\nFollowing the \"Day of Ashes\" mass-casualty terrorist attack on UK soil, intelligence has identified the perpetrator as Al-Khaima Front (AKF), a transnational terrorist organization. AKF operates a sophisticated and compartmentalized network spanning the UK and a foreign sanctuary known as \"Lythium.\"\n\nThe network's cross-border finance, logistics, and international coordination are controlled by a single high-value individual codenamed 'THE FERRYMAN'.\n\nMission:\nUKSF has been tasked with conducting phased counter-terrorism operations to locate, disrupt, and dismantle the AKF leadership and infrastructure, neutralizing their capability to conduct further attacks against the UK and it's allies.",
+      "image": {
+        "id": 33434,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/images.steamusercontent.jpg1768170071430.jpg",
+        "created_at": "2026-01-11 22:21:11",
+        "updated_at": "2026-01-11 22:21:11"
+      },
+      "created_at": "2026-01-11 22:21:11",
+      "updated_at": "2026-01-11 22:21:11",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 3331,
+          "name": "Op Iron Retribution 2",
+          "dateTime": "2026-01-14 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-14",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1460036293118525584",
+          "discordPingSent": false
+        },
+        {
+          "id": 3363,
+          "name": "Op Iron Retribution 3",
+          "dateTime": "2026-01-21 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-21",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1462759999867588747",
+          "discordPingSent": true
+        },
+        {
+          "id": 3391,
+          "name": "Op Iron Retribution 4",
+          "dateTime": "2026-01-28 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-28",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1465296559267909766",
+          "discordPingSent": true
+        },
+        {
+          "id": 3421,
+          "name": "Op Iron Retribution 5",
+          "dateTime": "2026-02-04 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-02-04",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1467142027677270167",
+          "discordPingSent": false
+        }
+      ]
+    },
+    {
+      "id": 677,
+      "campaignName": "Operation Retrieving Gold ",
+      "map": "Green Sea",
+      "brief": "Situation:\nThe year is 2018, 30 years after Day 0.\nWe are the first expeditionary forces to set foot outside of the UK. We've been tasked with reconnaissance of the surrounding terrain of Chernarus, setting up a fixed FOB and possible retrieval of technology.\n\nWe are in unknown territory, we have little information about the area that surrounds us and we are effectively the first new faces in this terrain. We are under-equipped until the rest of our convoy reaches our location.\n\nMission:\nUKSF has been tasked with reconnaissance of Chernarus, finding a suitable location to settle a permanent FOB and possibly retrieving old technology that is otherwise in working order, or can be restored to working order.",
+      "image": {
+        "id": 33755,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/image.png1769635425047.png",
+        "created_at": "2026-01-28 21:23:45",
+        "updated_at": "2026-01-28 21:23:45"
+      },
+      "created_at": "2026-01-14 23:53:53",
+      "updated_at": "2026-01-28 21:23:45",
+      "status": "ACTIVE",
+      "events": [
+        {
+          "id": 3348,
+          "name": "Op Thumb Sucking",
+          "dateTime": "2026-01-16 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-16",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1461147334292410481",
+          "discordPingSent": true
+        },
+        {
+          "id": 3403,
+          "name": "Op Nightcrawler",
+          "dateTime": "2026-01-30 19:00:00",
+          "time": "19:00:00",
+          "date": "2026-01-30",
+          "locked": false,
+          "discordChannel": "1321236262065274987",
+          "discordPingable": "1321642508161122304",
+          "discordMessage": "1466182377544880169",
+          "discordPingSent": true
+        }
+      ]
+    }
+  ],
+  "standalone": [
+    {
+      "id": 2775,
+      "name": "SF Training Operation for new ORBAT",
+      "description": "Training night in your new teams under the new ORBAT",
+      "image": null,
+      "map": "Bovington",
+      "dateTime": "2025-07-23 18:00:00",
+      "date": "2025-07-23",
+      "time": "19:00:00",
+      "locked": false,
+      "locked_at": null,
+      "status": "ACTIVE",
+      "discordChannel": "1321236262065274987",
+      "discordPingable": "1321642508161122304",
+      "discordMessage": "1396896524704813259",
+      "discordPingSent": false,
+      "frequency": null,
+      "recurringUntil": null,
+      "processedForRecurrence": false
+    },
+    {
+      "id": 2857,
+      "name": "Op Hunter",
+      "description": "**Classified** **TOP SECRET**",
+      "image": null,
+      "map": "Classified ",
+      "dateTime": "2025-08-06 17:00:00",
+      "date": "2025-08-06",
+      "time": "19:00:00",
+      "locked": true,
+      "locked_at": "2025-09-08 15:49:27",
+      "status": "ARCHIVED",
+      "discordChannel": "1321236262065274987",
+      "discordPingable": "1321642508161122304",
+      "discordMessage": "1402399543202418819",
+      "discordPingSent": false,
+      "frequency": null,
+      "recurringUntil": null,
+      "processedForRecurrence": false
+    },
+    {
+      "id": 3003,
+      "name": "Op Snatcher ",
+      "description": "Classified ",
+      "image": null,
+      "map": "Classified ",
+      "dateTime": "2025-09-10 18:00:00",
+      "date": "2025-09-10",
+      "time": "19:00:00",
+      "locked": true,
+      "locked_at": "2025-09-11 12:44:01",
+      "status": "ACTIVE",
+      "discordChannel": "1321236262065274987",
+      "discordPingable": "1321642508161122304",
+      "discordMessage": "1414638960558215208",
+      "discordPingSent": false,
+      "frequency": null,
+      "recurringUntil": null,
+      "processedForRecurrence": false
+    },
+    {
+      "id": 3346,
+      "name": "Mini Operation",
+      "description": "Following the conclusion of the scheduled CQB training, a mini-operation will be conducted. -\n\nAttendance for the mini-operation is entirely voluntary. All participants are encouraged to join for what is anticipated to be a valuable and enjoyable exercise.",
+      "image": {
+        "id": 32125,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/sas.jpg1764264729670.jpg",
+        "created_at": "2025-11-27 17:32:09",
+        "updated_at": "2025-11-27 17:32:09"
+      },
+      "map": "Northern Colombia",
+      "dateTime": "2025-11-27 20:00:00",
+      "date": "2025-11-27",
+      "time": "20:00:00",
+      "locked": false,
+      "locked_at": null,
+      "status": "ACTIVE",
+      "discordChannel": "1321236262065274987",
+      "discordPingable": "1321642508161122304",
+      "discordMessage": "1443655655717208084",
+      "discordPingSent": false,
+      "frequency": null,
+      "recurringUntil": null,
+      "processedForRecurrence": false
+    },
+    {
+      "id": 3422,
+      "name": "Operation Satan's Slay",
+      "description": "Objective: Rescue Santa Claus from an unknown threat and Secure Christmas by ensuring the timely delivery of all presents.\n\nSituation: Intelligence confirms that Santa Claus has been compromised and is currently detained/missing. The North Pole operation is in chaos, and the global gift-delivery schedule is at severe risk. Failure is not an option—billions of units of goodwill are at stake.\n\nImmediate Task: Locate, extract, and ensure the safe return of Santa Claus to his command center. Simultaneously, you must secure the gift inventory and prepare the sleigh for immediate launch on schedule.\n\nRequired Assets: Speed, stealth, unwavering festive spirit, and absolute adherence to the Nice List.",
+      "image": {
+        "id": 32604,
+        "path": "https://cdn.unitcommander.co.uk:9000/community/722/OIP-3986261552.jpg1765908460608.jpg",
+        "created_at": "2025-12-16 18:07:40",
+        "updated_at": "2025-12-16 18:07:40"
+      },
+      "map": "Napf Island - Winter",
+      "dateTime": "2025-12-17 19:00:00",
+      "date": "2025-12-17",
+      "time": "19:00:00",
+      "locked": false,
+      "locked_at": null,
+      "status": "ACTIVE",
+      "discordChannel": "1321236262065274987",
+      "discordPingable": "1321642508161122304",
+      "discordMessage": "1450549962407542914",
+      "discordPingSent": false,
+      "frequency": null,
+      "recurringUntil": null,
+      "processedForRecurrence": false
+    }
+  ]
+}

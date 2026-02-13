@@ -1,0 +1,38 @@
+{{ $type := "info" }}
+{{ $content := .Text }}
+
+{{ if strings.HasPrefix $content "[" }}
+    {{ $match := findRE `^\[!(.*?)\](.*)` $content 1 }}
+    {{ if $match }}
+        {{ $raw_header := index $match 0 }}
+        {{ $content = strings.TrimPrefix $raw_header $content }}
+        {{ $header_match := findRE `^\[!(.*?)\]` .Text 1 }}
+        {{ $header_content := strings.TrimPrefix "[!" (strings.TrimSuffix "]" (index $header_match 0)) }}
+        {{ $type = lower $header_content }}
+    {{ end }}
+{{ end }}
+
+{{ $border_color := "#532a45" }}
+{{ $bg_color := "rgba(83, 42, 69, 0.05)" }}
+
+{{ if eq $type "warning" }}
+    {{ $border_color = "#800000" }}
+    {{ $bg_color = "rgba(128, 0, 0, 0.05)" }}
+{{ else if eq $type "success" }}
+    {{ $border_color = "#00703c" }}
+    {{ $bg_color = "rgba(0, 112, 60, 0.05)" }}
+{{ else if eq $type "intel" }}
+    {{ $border_color = "#323e48" }}
+    {{ $bg_color = "rgba(50, 62, 72, 0.05)" }}
+{{ end }}
+
+<div class="moduk-callout border-l-4 p-6 my-8" style="border-color: {{ $border_color | safeCSS }}; background-color: {{ $bg_color | safeCSS }};">
+    <div class="flex items-center gap-4 mb-2">
+        <span class="text-[10px] font-bold uppercase tracking-widest font-mono" style="color: {{ $border_color | safeCSS }};">
+            // {{ $type | upper }}
+        </span>
+    </div>
+    <div class="prose prose-mod max-w-none dark:prose-invert text-sm leading-relaxed">
+        {{ $content | safeHTML }}
+    </div>
+</div>

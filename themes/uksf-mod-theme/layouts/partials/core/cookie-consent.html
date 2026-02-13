@@ -1,0 +1,172 @@
+<div id="cookie-consent-banner" class="fixed inset-x-0 bottom-0 z-[100] p-4 lg:p-8 transform translate-y-full transition-transform duration-700 ease-out hidden">
+    <div class="moduk-width-container max-w-4xl">
+        <div class="card-mod bg-white dark:bg-[#1d2329] border-[#bfc1c3] dark:border-[#323e48] p-8 lg:p-12 shadow-xl relative overflow-hidden transition-colors duration-300">
+            <div class="absolute top-0 left-0 w-full h-2 bg-[var(--brand-tint)]"></div>
+            
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-12">
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-[10px] font-bold text-[var(--brand-tint)] uppercase tracking-widest font-body">// Privacy_Protocol</span>
+                        <div class="h-px w-12 bg-[#bfc1c3] dark:bg-[#323e48]"></div>
+                    </div>
+                    <h3 class="text-3xl font-bold text-[#0b0c0c] dark:text-white uppercase font-industrial leading-none m-0">Cookie Authorization Required</h3>
+                    <p class="text-sm text-moduk-secondary font-body leading-relaxed max-w-2xl font-bold m-0">
+                        We use data fragments (cookies) to ensure tactical synchronization, live intelligence feeds, and to analyze operational efficiency. All non-essential protocols are disabled by default.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 shrink-0">
+                    <button id="cookie-settings-btn" class="btn-mod btn-mod-secondary px-8 py-4 text-[10px]">
+                        Configure
+                    </button>
+                    <button id="cookie-accept-all" class="btn-mod btn-mod-primary px-8 py-4 text-[10px]">
+                        Accept All
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Settings Modal -->
+<div id="cookie-modal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-[#0b0c0c]/80 backdrop-blur-sm hidden">
+    <div class="bg-white dark:bg-[#1d2329] border border-[#bfc1c3] dark:border-[#323e48] w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col relative shadow-xl rounded-sm transition-colors duration-300">
+        <div class="p-6 border-b border-[#bfc1c3] dark:border-[#323e48] flex justify-between items-center bg-[#f3f2f1] dark:bg-white/5">
+            <span class="text-[11px] font-bold text-[#0b0c0c] dark:text-white uppercase tracking-widest font-body">Consent Matrix</span>
+            <button id="close-cookie-modal" class="text-moduk-secondary hover:text-[#0b0c0c] dark:hover:text-white transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto p-8 space-y-10 custom-scrollbar">
+            {{ range .Site.Data.cookies.categories }}
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="space-y-1">
+                        <span class="text-sm font-bold text-[#0b0c0c] dark:text-white uppercase tracking-tight">{{ .name }}</span>
+                        <p class="text-[10px] text-moduk-secondary font-bold uppercase tracking-widest">{{ .description }}</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="{{ .id }}" class="cookie-toggle sr-only peer" {{ if .required }}disabled checked{{ end }}>
+                        <div class="w-11 h-6 bg-[#bfc1c3] dark:bg-white/10 border border-[#bfc1c3] dark:border-[#323e48] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--brand-tint)]"></div>
+                    </label>
+                </div>
+                <div class="bg-[#f3f2f1] dark:bg-black/40 border border-[#bfc1c3] dark:border-[#323e48] p-4 overflow-x-auto">
+                    <table class="w-full text-[9px] font-mono text-moduk-secondary uppercase tracking-widest font-bold">
+                        <thead>
+                            <tr class="border-b border-[#bfc1c3] dark:border-[#323e48]">
+                                <th class="text-left pb-2">ID</th>
+                                <th class="text-left pb-2">Provider</th>
+                                <th class="text-left pb-2">Expiry</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ range .cookies }}
+                            <tr>
+                                <td class="py-2 text-[#0b0c0c] dark:text-[#bfc1c3]">{{ .name }}</td>
+                                <td class="py-2">{{ .provider }}</td>
+                                <td class="py-2">{{ .expiry }}</td>
+                            </tr>
+                            {{ end }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+        
+        <div class="p-6 border-t border-[#bfc1c3] dark:border-[#323e48] bg-[#f3f2f1] dark:bg-white/5 flex justify-end gap-4">
+            <button id="cookie-reject-all" class="px-6 py-2 text-[10px] font-bold text-[#800000] uppercase tracking-widest hover:underline transition-all">
+                Reject All
+            </button>
+            <button id="save-cookie-settings" class="btn-mod btn-mod-primary px-6 py-2 text-[10px]">
+                Save Preferences
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+        const banner = document.getElementById('cookie-consent-banner');
+        const modal = document.getElementById('cookie-modal');
+        const toggles = document.querySelectorAll('.cookie-toggle');
+        const CONSENT_KEY = 'uksfta_consent';
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        function updateGoogleConsent(preferences) {
+            gtag('consent', 'update', {
+                'ad_storage': preferences.marketing ? 'granted' : 'denied',
+                'ad_user_data': preferences.marketing ? 'granted' : 'denied',
+                'ad_personalization': preferences.marketing ? 'granted' : 'denied',
+                'analytics_storage': preferences.analytics ? 'granted' : 'denied',
+                'functional_storage': preferences.functional ? 'granted' : 'denied'
+            });
+            window.dispatchEvent(new CustomEvent('cookieConsentUpdated', { detail: preferences }));
+        }
+
+        function setConsent(preferences) {
+            localStorage.setItem(CONSENT_KEY, JSON.stringify(preferences));
+            updateGoogleConsent(preferences);
+            banner.classList.add('translate-y-full');
+            setTimeout(() => banner.classList.add('hidden'), 700);
+            modal.classList.add('hidden');
+        }
+
+        function getConsent() {
+            const stored = localStorage.getItem(CONSENT_KEY);
+            return stored ? JSON.parse(stored) : null;
+        }
+
+        const currentConsent = getConsent();
+        const urlParams = new URLSearchParams(window.location.search);
+        const disableConsent = urlParams.has('disable_consent');
+
+        if (!currentConsent && !disableConsent) {
+            banner.classList.remove('hidden');
+            setTimeout(() => banner.classList.remove('translate-y-full'), 100);
+            gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied',
+                'functional_storage': 'denied',
+                'wait_for_update': 500
+            });
+        } else {
+            updateGoogleConsent(currentConsent);
+        }
+
+        document.getElementById('cookie-accept-all').onclick = () => {
+            const prefs = { essential: true, analytics: true, marketing: true, functional: true };
+            setConsent(prefs);
+        };
+
+        document.getElementById('cookie-reject-all').onclick = () => {
+            const prefs = { essential: true, analytics: false, marketing: false, functional: false };
+            setConsent(prefs);
+        };
+
+        document.getElementById('cookie-settings-btn').onclick = () => modal.classList.remove('hidden');
+        document.getElementById('close-cookie-modal').onclick = () => modal.classList.add('hidden');
+        
+        document.getElementById('save-cookie-settings').onclick = () => {
+            const prefs = { essential: true };
+            toggles.forEach(t => {
+                prefs[t.value] = t.checked;
+            });
+            setConsent(prefs);
+        };
+
+        window.addEventListener('cookieConsentUpdated', (e) => {
+            if (e.detail.functional) {
+                console.log("[PRIVACY_NODE] Functional cookies enabled.");
+                if (typeof updateServerStatus === 'function') updateServerStatus();
+                if (typeof updateDiscordStatus === 'function') updateDiscordStatus();
+                if (typeof fetchEvents === 'function') fetchEvents();
+            }
+        });
+    })();
+</script>

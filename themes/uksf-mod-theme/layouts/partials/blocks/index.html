@@ -1,0 +1,9 @@
+{{ range .Params.blocks }}
+    {{ $block_type := .type | default "text-section" }}
+    {{ $partial_path := printf "blocks/%s.html" $block_type }}
+    {{ if templates.Exists (printf "partials/%s" $partial_path) }}
+        {{ partial $partial_path (dict "block" . "page" $) }}
+    {{ else }}
+        <!-- Block type {{ $block_type }} not found at {{ $partial_path }} -->
+    {{ end }}
+{{ end }}

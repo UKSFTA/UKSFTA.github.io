@@ -1,0 +1,11 @@
+name = "TFA UKSF Milsim Theme"
+description = "A high-fidelity, tactical community hub for Taskforce Alpha (Arma 3 Milsim), inspired by UKSF standards."
+license = "MIT"
+homepage = "https://github.com/matt/uksf-mod-theme"
+tags = ["military", "milsim", "tactical", "recruitment", "dark", "tailwind", "arma3"]
+features = ["Dynamic Skinning", "Bento Layout", "Tactical HUD", "Data-Driven UI"]
+min_hugo_version = "0.120.0"
+
+[author]
+  name = "Taskforce Alpha Digital"
+  homepage = "https://discord.gg/2jNqa3zPRH"

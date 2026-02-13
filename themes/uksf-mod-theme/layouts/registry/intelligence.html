@@ -1,0 +1,103 @@
+{{ define "main" }}
+<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300 !justify-start">
+    <div class="moduk-width-container space-y-12">
+        <!-- CLASSIFIED HEADER -->
+        <header class="border-l-8 border-mod-purple pl-10 py-10 space-y-8 bg-[#f3f2f1] dark:bg-[#1d2329] shadow-xl relative overflow-hidden">
+            <div class="absolute right-0 top-0 h-full w-64 opacity-[0.03] pointer-events-none no-invert">
+                <img src="/assets/icons/intelligence-map.png" class="h-full w-full object-cover" alt="">
+            </div>
+            
+            <div class="flex items-center gap-10 relative z-10">
+                <img src="/assets/icons/Intelligence-Corps.png" alt="Intelligence Corps" class="h-20 grayscale opacity-80 no-invert">
+                <div class="h-16 w-px bg-mod-grey-3 dark:bg-mod-grey-1"></div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-black text-mod-purple dark:text-mod-grey-3 uppercase tracking-[0.5em] font-mono leading-none">Directorate of Special Forces Intelligence</span>
+                    <span class="text-[10px] text-mod-grey-2 uppercase tracking-widest font-mono mt-3 font-bold">Reference: G2_STRAT_INTEL // {{ now.Format "2006" }}</span>
+                </div>
+            </div>
+            
+            <div class="space-y-4 relative z-10">
+                <h1 class="text-6xl md:text-7xl font-black text-mod-black dark:text-white uppercase tracking-tighter font-industrial m-0 leading-none">Intelligence Hub</h1>
+                <div class="flex items-center gap-8">
+                    <span class="bg-mod-red text-white border border-mod-red/20 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.4em] shadow-lg">Official Sensitive</span>
+                    <span class="text-mod-grey-2 text-[11px] uppercase tracking-[0.3em] font-mono font-black italic">Restricted Access // Need to Know Basis Only</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- BRANCH SELECTION GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-mod-grey-3 dark:bg-mod-grey-1 border border-mod-grey-3 dark:border-mod-grey-1 shadow-2xl">
+            <!-- Branch: 22 SAS G2 -->
+            {{ range $id := slice "sas" "sbs" "srr" "jsfaw" }}
+            {{ $unit := index $.Site.Data.units $id }}
+            <a href="/registry/archive-covert/?unit={{ $id }}" class="group relative bg-white dark:bg-mod-black p-10 hover:bg-mod-grey-4 dark:hover:bg-white/5 transition-all overflow-hidden flex flex-col justify-between h-64">
+                <div class="space-y-6 relative z-10">
+                    <img src="{{ $unit.icon | relURL }}" class="h-12 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 no-invert" alt="{{ $unit.name }}">
+                    <div class="space-y-2">
+                        <h3 class="text-2xl font-black text-mod-black dark:text-white uppercase tracking-tight font-industrial group-hover:text-mod-purple transition-colors leading-none">{{ upper $id }}_G2</h3>
+                        <p class="text-[10px] text-mod-grey-2 uppercase tracking-widest leading-relaxed font-bold">{{ $unit.specialization }}</p>
+                    </div>
+                </div>
+                <div class="absolute -bottom-6 -right-6 text-9xl font-black text-mod-black/[0.03] dark:text-white/[0.03] group-hover:text-mod-purple/[0.05] transition-colors font-industrial select-none">{{ upper $id }}</div>
+            </a>
+            {{ end }}
+        </div>
+
+        <!-- SPECIALIST TOOLS & MODULES -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- COVERT OPS OVERVIEW -->
+            <div class="lg:col-span-8">
+                <div class="card-mod !p-12 flex flex-col md:flex-row gap-16 items-center relative overflow-hidden bg-[#f3f2f1] dark:bg-[#1d2329] border-b-8 border-b-mod-purple shadow-2xl">
+                    <div class="flex-1 space-y-10">
+                        <div class="space-y-6">
+                            <span class="text-[11px] font-black text-mod-purple dark:text-mod-grey-3 uppercase tracking-[0.5em] block font-mono">// PRIMARY_DIRECTIVE</span>
+                            <h2 class="text-5xl font-black text-mod-black dark:text-white uppercase tracking-tighter leading-[0.9] font-industrial m-0">Covert Operational Archive</h2>
+                            <p class="text-mod-grey-1 dark:text-mod-grey-3 text-lg leading-relaxed uppercase tracking-widest font-light italic opacity-80 max-w-xl">
+                                Access the centralized vault for clandestine operation SITREPs, intelligence fragments, and classified mission retrospectives across all active UKSF theaters.
+                            </p>
+                        </div>
+                        <a href="/registry/archives/" class="btn-mod btn-mod-primary shadow-xl hover:-translate-y-1 transition-all">
+                            Access Archives // →
+                        </a>
+                    </div>
+                    <div class="w-full md:w-80 aspect-square bg-mod-black border border-white/10 p-8 relative group overflow-hidden shrink-0 shadow-2xl">
+                         <img src="/assets/icons/intelligence-map.png" class="w-full h-full object-cover opacity-20 grayscale group-hover:scale-110 group-hover:opacity-40 transition-all duration-[10s] no-invert" alt="Global Intel">
+                         <div class="absolute inset-0 flex items-center justify-center p-10 text-center">
+                            <span class="text-[9px] font-mono text-mod-grey-2 uppercase tracking-[0.4em] animate-pulse leading-loose font-black">PERSISTENT_NETWORK_SCAN<br/>SIGINT_CONNECTED_V8.2</span>
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INTEL FEED -->
+            <div class="lg:col-span-4 card-mod !p-10 space-y-10 border-t-8 border-t-mod-red bg-white dark:bg-[#1d2329] shadow-2xl">
+                <div class="flex justify-between items-center border-b border-mod-grey-3 dark:border-mod-grey-1 pb-6">
+                    <h3 class="text-[11px] font-black text-mod-grey-2 uppercase tracking-[0.4em] font-mono">Signal_Net_Feed</h3>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-mod-red rounded-full animate-pulse shadow-[0_0_10px_rgba(212,53,28,0.4)]"></span>
+                        <span class="text-[9px] font-black text-mod-red uppercase tracking-widest">LIVE_SYNC</span>
+                    </div>
+                </div>
+                <div class="space-y-8 font-mono text-[10px]">
+                    <div class="border-l-4 border-mod-purple pl-8 py-2 space-y-2 bg-mod-grey-4/50 dark:bg-mod-black/20">
+                        <span class="text-mod-grey-2 font-black">[{{ now.Format "15:04:05" }}]</span>
+                        <p class="text-mod-black dark:text-mod-grey-3 leading-relaxed uppercase tracking-wider font-bold">INTERCEPT: ENCRYPTION_STRENGTH_DECREASING_NODE_04</p>
+                    </div>
+                    <div class="border-l-4 border-mod-grey-3 dark:border-mod-grey-1 pl-8 py-2 space-y-2">
+                        <span class="text-mod-grey-2 font-black">[{{ now.Format "14:22:18" }}]</span>
+                        <p class="text-mod-grey-2 leading-relaxed uppercase tracking-wider font-bold">ROUTINE: BROADCAST_SYNC_COMPLETED_UK_LON</p>
+                    </div>
+                    <div class="border-l-4 border-mod-red pl-8 py-2 space-y-2 bg-mod-red/5">
+                        <span class="text-mod-grey-2 font-black">[{{ now.Format "12:05:41" }}]</span>
+                        <p class="text-mod-red font-black leading-relaxed uppercase tracking-wider ">ALERT: UNAUTHORIZED_ACCESS_ATTEMPT_G2_VAULT</p>
+                    </div>
+                </div>
+                <div class="pt-8 border-t border-mod-grey-3 dark:border-mod-grey-1">
+                    <span class="text-[9px] text-mod-grey-2 uppercase tracking-[0.3em] font-black italic">Institutional Clearance Level Alpha Required</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

@@ -1,0 +1,93 @@
+{{ define "main" }}
+<div class="workstation-container bg-white dark:bg-mod-black transition-colors duration-300 relative flex-row gap-px bg-mod-grey-3 dark:bg-mod-grey-1">
+    <!-- LEFT: Main Console Area -->
+    <div class="flex-1 flex flex-col bg-white dark:bg-mod-black overflow-hidden relative">
+        <!-- HUD Header -->
+        <header class="h-20 bg-white dark:bg-mod-black border-b border-mod-grey-3 dark:border-mod-grey-1 flex items-center justify-between px-10 shadow-sm z-20">
+            <div class="space-y-1">
+                <span class="text-[9px] font-mono text-mod-purple dark:text-mod-grey-3 uppercase tracking-[0.4em] font-black block leading-none">// Command_And_Control</span>
+                <h1 class="text-3xl font-black text-mod-black dark:text-white uppercase font-industrial m-0 leading-none">C2_Terminal</h1>
+            </div>
+            <div class="flex items-center gap-10">
+                <div class="flex flex-col items-end gap-1">
+                    <span class="text-[8px] font-mono text-mod-grey-2 uppercase tracking-widest font-black">Link_Status</span>
+                    <span id="connection-status" class="text-[10px] text-mod-green font-black font-mono flex items-center gap-3">
+                        <span class="w-2 h-2 bg-mod-green rounded-full animate-pulse"></span>
+                        ● UPLINK_ACTIVE
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Terminal Body -->
+        <div id="terminal-output" class="flex-1 p-12 overflow-y-auto text-base space-y-6 text-mod-grey-1 dark:text-white/60 font-mono custom-scrollbar bg-mod-grey-4 dark:bg-mod-black/50">
+            <div class="text-mod-green font-bold">[00:00:00] INITIALIZING_RSIS_C2_SYTEM...</div>
+            <div class="text-mod-grey-2">[00:00:01] HANDSHAKE_SUCCESSFUL: JSFC_PRIMARY_NODE</div>
+            <div class="text-mod-grey-2">[00:00:02] AUTHORITY_LEVEL: LEVEL_2_OP</div>
+            <div class="text-mod-purple font-black uppercase tracking-widest">[00:00:03] READY_FOR_SIGNAL_INPUT.</div>
+        </div>
+
+        <!-- Input Bar -->
+        <div class="h-24 border-t border-mod-grey-3 dark:border-mod-grey-1 bg-white dark:bg-mod-black flex items-center px-12 gap-8 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+            <span class="text-mod-purple font-black font-mono text-2xl animate-pulse">></span>
+            <input type="text" id="terminal-input" class="flex-1 bg-transparent outline-none text-xl font-mono text-mod-black dark:text-white placeholder:text-mod-grey-3 dark:placeholder:text-mod-grey-1" placeholder="ENTER_COMMAND_OR_SIGNAL..." autocomplete="off">
+        </div>
+    </div>
+
+    <!-- RIGHT: Side Command Panel -->
+    <aside class="w-[400px] flex flex-col bg-mod-grey-4 dark:bg-mod-grey-1/20 border-l border-mod-grey-3 dark:border-mod-grey-1 overflow-hidden">
+        <div class="p-10 space-y-10">
+            <div class="space-y-4">
+                <span class="text-[10px] font-bold text-mod-grey-2 uppercase tracking-[0.3em] font-mono block border-b border-mod-grey-3 dark:border-mod-grey-1 pb-3">// Signal_Injection</span>
+                <div class="card-mod !p-8 bg-white dark:bg-mod-black border-b-8 border-b-mod-red">
+                    <h2 class="text-xl font-black text-mod-black dark:text-white uppercase font-industrial m-0 mb-6">Broadcast</h2>
+                    <textarea id="broadcast-msg" class="w-full bg-mod-grey-4 dark:bg-mod-grey-1/10 border border-mod-grey-3 dark:border-mod-grey-1 p-5 text-sm outline-none focus:border-mod-purple transition-all font-mono text-mod-black dark:text-white min-h-[150px] resize-none" placeholder="SIGNAL_CONTENT..."></textarea>
+                    <button onclick="sendBroadcast()" class="w-full bg-mod-red text-white font-black py-5 text-xs uppercase tracking-[0.4em] shadow-xl hover:bg-red-700 transition-all mt-6 flex items-center justify-center gap-4 group">
+                        Transmit
+                        <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <span class="text-[10px] font-bold text-mod-grey-2 uppercase tracking-[0.3em] font-mono block border-b border-mod-grey-3 dark:border-mod-grey-1 pb-3">// Diagnostics</span>
+                <div class="card-mod !p-8 bg-white dark:bg-mod-black font-mono space-y-6">
+                    <div class="flex justify-between items-center text-[10px] border-b border-mod-grey-3 dark:border-mod-grey-1 pb-3">
+                        <span class="text-mod-grey-2 font-bold uppercase">NODE_ID</span>
+                        <span class="text-mod-black dark:text-white font-black">ALPHA-01</span>
+                    </div>
+                    <div class="flex justify-between items-center text-[10px] border-b border-mod-grey-3 dark:border-mod-grey-1 pb-3">
+                        <span class="text-mod-grey-2 font-bold uppercase">SEC_LEVEL</span>
+                        <span class="text-mod-purple font-black">TIER_2</span>
+                    </div>
+                    <div class="flex justify-between items-center text-[10px]">
+                        <span class="text-mod-grey-2 font-bold uppercase">LATENCY</span>
+                        <span class="text-mod-green font-black">12MS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<script>
+async function sendBroadcast() {
+    const i = document.getElementById('broadcast-msg');
+    if (!i.value) return;
+    try {
+        const res = await fetch('/api/rcon/command', { 
+            method: 'POST', 
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify({ command: `say -1 ${i.value}` }) 
+        });
+        if (res.ok) {
+            i.value = '';
+            if (window.showToast) window.showToast('SIGNAL_TRANSMITTED');
+        }
+    } catch (e) {
+        console.error("UPLINK_FAILURE", e);
+        if (window.showToast) window.showToast('UPLINK_FAILURE', 'danger');
+    }
+}
+</script>
+{{ end }}

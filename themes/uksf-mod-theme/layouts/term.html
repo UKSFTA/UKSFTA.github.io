@@ -1,0 +1,50 @@
+{{ define "main" }}
+<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300">
+    <div class="moduk-width-container py-24 space-y-16">
+        <!-- HEADER -->
+        <header class="border-b-4 border-[#532a45] pb-10 gap-8">
+            <div class="space-y-8">
+                <div class="flex items-center gap-6">
+                    {{ $logo := resources.Get "icons/MOD.png" }}
+                    <img src="{{ $logo.RelPermalink }}" alt="Ministry of Defence" class="h-16 w-auto  dark:opacity-80">
+                    <div class="h-10 w-px bg-[#bfc1c3] dark:bg-[#323e48]"></div>
+                    <span class="text-[9px] font-body font-bold text-[#532a45] dark:text-[#bfc1c3] uppercase tracking-widest">Joint Force Command // Filter Results</span>
+                </div>
+                
+                <div class="space-y-2">
+                    <h1 class="text-moduk-secondaryxl lg:text-8xl font-industrial font-black uppercase text-[#0b0c0c] dark:text-white m-0 leading-none">{{ .Title }}</h1>
+                    <p class="text-moduk-secondary text-[10px] font-body font-bold uppercase tracking-widest">Records matched by classification: <span class="text-[#532a45] dark:text-[#bfc1c3]">{{ .Data.Term }}</span></p>
+                </div>
+            </div>
+        </header>
+
+        <!-- RESULTS GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {{ range .Pages }}
+            <a href="{{ .RelPermalink }}" class="group card-mod no-underline flex flex-col justify-between space-y-8 border-t-4 border-t-[#bfc1c3] dark:border-t-[#323e48] hover:border-t-[#532a45] dark:hover:border-t-[#532a45]">
+                <div class="space-y-6">
+                    <div class="flex justify-between items-start">
+                        <div class="flex flex-col gap-1 font-mono">
+                            <span class="text-[9px] text-[#532a45] dark:text-[#bfc1c3] uppercase tracking-widest font-bold">ID: TFA-{{ upper (substr (sha256 .Title) 0 8) }}</span>
+                            <span class="text-[8px] text-moduk-secondary uppercase tracking-widest font-bold font-mono">{{ .Date.Format "02 JAN 2006" }}</span>
+                        </div>
+                        <span class="text-[8px] font-bold text-moduk-secondary border border-[#bfc1c3] dark:border-[#323e48] px-3 py-1.5 uppercase ">{{ .Section }}</span>
+                    </div>
+                    
+                    <h3 class="text-3xl font-industrial font-bold uppercase text-[#0b0c0c] dark:text-white group-hover:text-[#532a45] transition-colors leading-tight m-0">{{ .Title }}</h3>
+                    
+                    <p class="text-sm text-[#323e48] dark:text-[#bfc1c3] uppercase tracking-widest leading-relaxed line-clamp-3 font-bold">
+                        {{ .Summary }}
+                    </p>
+                </div>
+
+                <div class="pt-6 border-t border-[#bfc1c3] dark:border-[#323e48] flex items-center justify-between opacity-40 group-hover:opacity-100 transition-all">
+                    <span class="text-[8px] font-bold uppercase tracking-widest text-[#0b0c0c] dark:text-white">Open Official Record</span>
+                    <svg class="w-4 h-4 text-[#0b0c0c] dark:text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

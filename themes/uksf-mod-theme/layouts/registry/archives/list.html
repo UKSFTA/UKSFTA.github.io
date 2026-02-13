@@ -1,0 +1,127 @@
+{{ define "main" }}
+  <div class="min-h-screen bg-[#0a0a0a] text-neutral-400 font-mono pt-32 pb-24 px-6 relative overflow-hidden bg-[url('/img/grid.png')]">
+    <!-- SCANLINE EFFECT -->
+    <div class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] z-50 bg-[length:100%_2px,3px_100%]"></div>
+
+    <div class="max-w-[1600px] mx-auto relative z-10">
+      
+      <!-- REGISTRY HEADER -->
+      <header class="border-b-2 border-white/10 pb-12 mb-20">
+        <div class="flex flex-col md:flex-row justify-between items-end gap-12">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <span class="bg-[var(--primary)] text-moduk-secondarylack text-[10px] font-black px-3 py-1 uppercase tracking-[0.3em]">Institutional_Registry</span>
+              <span class="text-[10px] text-neutral-600 uppercase tracking-widest">Node: {{ site.Params.intelligence.node_ref | default "JSFC-01" }}</span>
+            </div>
+            <h1 class="text-moduk-secondaryxl font-black text-white uppercase tracking-tighter  leading-none">
+              Operational<br/><span class="text-neutral-700">Archives</span>
+            </h1>
+          </div>
+          
+          <div class="flex flex-col items-end gap-6">
+            <div class="flex gap-4" id="registry-filters">
+              <button data-filter="all" class="filter-btn active">ALL_FILES</button>
+              <button data-filter="campaigns" class="filter-btn">CAMPAIGNS</button>
+              <button data-filter="stories" class="filter-btn">AAR_REPORTS</button>
+            </div>
+            <div class="text-right">
+              <span class="text-[9px] font-black text-[var(--primary)] uppercase tracking-widest block">System_Sync: Nominal</span>
+              <span class="text-[40px] font-black text-white leading-none tracking-tighter" id="report-count">00</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- REGISTRY GRID -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="stories-grid">
+        {{ $campaigns := where .Site.RegularPages "Section" "campaigns" }}
+        {{ $stories := where .Site.RegularPages "Section" "stories" }}
+        {{ $all := (union $campaigns $stories).ByDate.Reverse }}
+
+        {{ range $all }}
+          {{ if not (and (eq .Section "campaigns") (ne .Layout "campaign")) }}
+          <a href="{{ .RelPermalink }}" 
+             data-type="{{ .Section }}"
+             class="story-card group bg-white/[0.02] border border-white/5 p-8 hover:bg-white/[0.05] hover:border-[var(--primary)]/50 transition-all duration-500 no-underline flex flex-col justify-between h-[450px] relative overflow-hidden">
+            
+            <!-- Type Indicator -->
+            <div class="absolute top-0 right-0 p-4">
+              <span class="text-[8px] font-black uppercase tracking-widest text-neutral-700 border border-neutral-800 px-2 py-1 group-hover:text-[var(--primary)] group-hover:border-[var(--primary)]/30 transition-colors">
+                {{ if eq .Section "campaigns" }}THEATER_FOLDER{{ else }}AAR_DOC{{ end }}
+              </span>
+            </div>
+
+            <div class="space-y-6">
+              <div class="flex flex-col">
+                <span class="text-[9px] font-black text-[var(--primary)] uppercase tracking-widest">{{ if eq .Section "campaigns" }}Operational_Directive{{ else }}After_Action_Report{{ end }}</span>
+                <span class="text-[7px] text-neutral-600 uppercase tracking-widest mt-1">Ref: {{ upper (substr (sha256 .Title) 0 12) }}</span>
+              </div>
+              
+              <h3 class="text-3xl font-black text-white uppercase  leading-none tracking-tighter group-hover:text-[var(--primary)] transition-colors">
+                {{ .Title }}
+              </h3>
+              
+              <p class="text-xs text-neutral-500 font-light leading-relaxed uppercase tracking-widest line-clamp-4">
+                "{{ .Description | default .Summary }}"
+              </p>
+            </div>
+
+            <div class="pt-8 border-t border-white/5 flex justify-between items-end">
+              <div class="flex flex-col">
+                <span class="text-[8px] text-neutral-600 uppercase tracking-widest mb-1">Archive_Date</span>
+                <span class="text-[10px] text-white font-bold">{{ .Date.Format "02 Jan 2006" }}</span>
+              </div>
+              <div class="text-right">
+                <span class="font-['Libre_Barcode_39'] text-3xl text-white opacity-20 group-hover:opacity-60 transition-opacity leading-none">*{{ upper (substr (sha256 .Title) 0 8) }}*</span>
+              </div>
+            </div>
+          </a>
+          {{ end }}
+        {{ end }}
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    .filter-btn {
+      @apply text-[10px] font-black text-neutral-600 uppercase tracking-[0.3em] border border-white/5 px-4 py-2 hover:text-white hover:border-white/20 transition-all;
+    }
+    .filter-btn.active {
+      @apply text-white border-[var(--primary)] bg-[var(--primary)]/10 shadow-[0_0_15px_rgba(var(--primary-rgb),0.1)];
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filters = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.story-card');
+      const countDisplay = document.getElementById('report-count');
+
+      const updateCount = () => {
+        const visible = Array.from(cards).filter(c => c.style.display !== 'none').length;
+        countDisplay.innerText = visible.toString().padStart(2, '0');
+      };
+
+      filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          filters.forEach(f => f.classList.remove('active'));
+          btn.classList.add('active');
+
+          cards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-type') === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          updateCount();
+        });
+      });
+
+      updateCount();
+    });
+  </script>
+{{ end }}
+

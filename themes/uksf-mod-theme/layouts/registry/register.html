@@ -1,0 +1,138 @@
+{{ define "main" }}
+<section class="min-h-screen flex items-center justify-center bg-mod-black relative overflow-hidden transition-colors duration-300">
+    <!-- Institutional Background -->
+    <div class="absolute inset-0 bg-grid-white opacity-[0.02] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-mod-black via-transparent to-mod-black"></div>
+    
+    <div class="moduk-width-container relative z-10 w-full max-w-5xl">
+        <div class="bg-[#1d2329] border border-mod-grey-1 shadow-[0_0_100px_rgba(0,0,0,0.5)] relative overflow-hidden rounded-sm backdrop-blur-xl">
+            <!-- Identity Strip -->
+            <div class="absolute top-0 left-0 w-full h-2 bg-mod-grey-1"></div>
+            <div class="absolute top-0 left-0 w-1/4 h-2 bg-mod-purple"></div>
+
+            <div class="p-12 lg:p-20 space-y-16">
+                <header class="flex flex-col md:flex-row justify-between items-start gap-12 border-b-2 border-white/5 pb-12">
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-8">
+                            {{ $logo := resources.Get "icons/TFA.png" }}
+                            {{ if $logo }}
+                            <img src="{{ $logo.RelPermalink }}" alt="TFA" class="h-16 opacity-80 grayscale no-invert">
+                            {{ end }}
+                            <div class="h-12 w-px bg-mod-grey-1"></div>
+                            <span class="text-[10px] font-mono text-mod-purple dark:text-[#bfc1c3] uppercase tracking-[0.5em] font-black leading-none">Joint Command Registry // JSFC_ENLIST</span>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <h2 class="text-5xl lg:text-6xl font-black tracking-tighter uppercase font-industrial text-white m-0 leading-none">Entry Protocol</h2>
+                            <p class="text-mod-grey-2 text-sm uppercase tracking-[0.3em] font-bold max-w-2xl leading-relaxed italic opacity-80">
+                                Authorized portal for community induction. Provide tactical identifiers to initiate the community assessment pipeline.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-end text-right gap-6 hidden sm:flex">
+                        <div class="px-6 py-3 bg-mod-green/10 border border-mod-green/20 flex items-center gap-4">
+                            <span class="w-3 h-3 bg-mod-green rounded-full animate-pulse shadow-[0_0_15px_rgba(0,112,60,0.4)]"></span>
+                            <span class="text-[11px] font-mono text-mod-green uppercase tracking-widest font-black">Registry_Live</span>
+                        </div>
+                        <div class="font-mono">
+                            <span class="block text-[9px] text-mod-grey-2 uppercase tracking-widest font-black mb-1">Session_Signature</span>
+                            <span class="block text-xs text-white uppercase font-black tracking-widest">UKSFTA-REG-{{ now.Format "2006" }}</span>
+                        </div>
+                    </div>
+                </header>
+
+                <form class="grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-10" onsubmit="return false;">
+                    <div class="md:col-span-6 space-y-4">
+                        <label class="text-[10px] font-mono text-mod-grey-2 uppercase tracking-widest font-black border-l-4 border-mod-purple pl-4 block">Discord Identifier</label>
+                        <input type="text" placeholder="OPERATOR_NAME#0000" class="w-full bg-mod-black/50 border-2 border-mod-grey-1 p-5 text-sm font-mono text-white outline-none focus:border-mod-purple transition-all uppercase tracking-widest shadow-inner" />
+                    </div>
+                    <div class="md:col-span-6 space-y-4">
+                        <label class="text-[10px] font-mono text-mod-grey-2 uppercase tracking-widest font-black border-l-4 border-mod-grey-1 pl-4 block">Theater Region</label>
+                        <input type="text" placeholder="GMT / EUROPE" class="w-full bg-mod-black/50 border-2 border-mod-grey-1 p-5 text-sm font-mono text-white outline-none focus:border-mod-purple transition-all uppercase tracking-widest shadow-inner" />
+                    </div>
+                    <div class="md:col-span-6 space-y-4">
+                        <label class="text-[10px] font-mono text-mod-grey-2 uppercase tracking-widest font-black border-l-4 border-mod-grey-1 pl-4 block">Capability Target</label>
+                        <div class="relative">
+                            <select id="domain-selector" class="w-full bg-mod-black/50 border-2 border-mod-grey-1 p-5 text-sm font-mono text-white outline-none focus:border-mod-purple transition-all uppercase tracking-widest appearance-none cursor-pointer shadow-inner">
+                                <option value="sfsg">SFSG Support (Phase 1 Entry)</option>
+                                <option value="jsfaw">JSFAW Ground Crew (Aviation Entry)</option>
+                                <option value="sas">22nd SAS (Advanced Specialization)</option>
+                                <option value="sbs">Special Boat Service (Advanced Specialization)</option>
+                                <option value="med-det">RAMC Medical Detachment</option>
+                                <option value="asob" class="restricted-option hidden">ASOB (Internal Transfer)</option>
+                                <option value="srr" class="restricted-option hidden">Special Recon Regiment (Internal Transfer)</option>
+                                <option value="signals" class="restricted-option hidden">18 (UKSF) Signals (Technical Entry)</option>
+                                <option value="e-squadron" class="restricted-option hidden">E Squadron (Clandestine Entry)</option>
+                                <option value="int-corps" class="restricted-option hidden">Intelligence Corps (GM Entry)</option>
+                                <option value="tfhq" class="restricted-option hidden">Taskforce HQ (Appointment Only)</option>
+                            </select>
+                            <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-mod-grey-2 font-black">▼</div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-6 space-y-4">
+                        <label class="text-[10px] font-mono text-mod-grey-2 uppercase tracking-widest font-black border-l-4 border-mod-grey-1 pl-4 block">Exp Classification</label>
+                        <div class="relative">
+                            <select class="w-full bg-mod-black/50 border-2 border-mod-grey-1 p-5 text-sm font-mono text-white outline-none focus:border-mod-purple transition-all uppercase tracking-widest appearance-none cursor-pointer shadow-inner">
+                                <option>INITIAL_ENTRY (NEW_TO_MILSIM)</option>
+                                <option>INTERMEDIATE (ARMA_PRO)</option>
+                                <option>ADVANCED (SOP_PROFICIENT)</option>
+                                <option>RE-ENLISTMENT (EX_MILITARY)</option>
+                            </select>
+                            <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-mod-grey-2 font-black">▼</div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-12 pt-12">
+                        <button type="button" class="w-full bg-white hover:bg-mod-purple text-mod-black hover:text-white transition-all duration-500 font-black py-10 text-center no-underline text-sm tracking-[0.6em] uppercase border-b-8 border-mod-grey-1 hover:border-mod-purple flex items-center justify-center gap-12 group shadow-2xl">
+                            Transmit Entry Packet
+                            <span class="hidden sm:inline opacity-20 group-hover:opacity-100 transition-opacity font-mono text-[9px] tracking-[0.2em] font-bold italic">// INITIALIZING_HANDSHAKE</span>
+                        </button>
+                    </div>
+                </form>
+
+                <footer class="pt-12 border-t-2 border-white/5 text-center space-y-6">
+                    <p class="text-[9px] font-mono text-mod-grey-2 uppercase tracking-[0.4em] font-black leading-relaxed max-w-4xl mx-auto italic opacity-60">
+                        Digital Directive: Unauthorized submission attempts are a breach of institutional protocol. Persistent tracking is active.
+                    </p>
+                </footer>
+            </div>
+        </div>
+        
+        <div class="mt-16 text-center">
+            <a href="javascript:history.back()" class="text-[10px] font-black text-mod-grey-2 hover:text-white uppercase tracking-[0.4em] transition-all flex items-center justify-center gap-6 group no-underline hover:-translate-x-2">
+                <div class="w-12 h-1 bg-mod-grey-1 group-hover:w-20 group-hover:bg-mod-purple transition-all duration-500"></div>
+                Return to Command Interface
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetUnit = urlParams.get('unit');
+        const selector = document.getElementById('domain-selector');
+        const isAuthenticated = localStorage.getItem('uksf_auth') === 'authorized';
+
+        if (isAuthenticated) {
+            document.querySelectorAll('.restricted-option').forEach((opt) => {
+                opt.classList.remove('hidden');
+            });
+        }
+
+        if (targetUnit && selector) {
+            for (let i = 0; i < selector.options.length; i++) {
+                if (selector.options[i].value === targetUnit.toLowerCase()) {
+                    if (selector.options[i].classList.contains('restricted-option') && !isAuthenticated) {
+                        selector.selectedIndex = 0;
+                    } else {
+                        selector.selectedIndex = i;
+                    }
+                    break;
+                }
+            }
+        }
+    });
+</script>
+{{ end }}

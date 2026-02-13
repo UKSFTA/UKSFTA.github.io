@@ -1,0 +1,183 @@
+{
+  "timestamp": 1770223236720,
+  "arma": {
+    "name": "UKSF Taskforce Alpha Ops Server V2",
+    "map": "",
+    "players": 0,
+    "maxPlayers": 40,
+    "status": "online"
+  },
+  "unitcommander": {
+    "campaigns": [
+      {
+        "id": 677,
+        "campaignName": "Operation Retrieving Gold ",
+        "map": "Green Sea",
+        "brief": "Situation:\nThe year is 2018, 30 years after Day 0.\nWe are the first expeditionary forces to set foot outside of the UK. We've been tasked with reconnaissance of the surrounding terrain of Chernarus, setting up a fixed FOB and possible retrieval of technology.\n\nWe are in unknown territory, we have little information about the area that surrounds us and we are effectively the first new faces in this terrain. We are under-equipped until the rest of our convoy reaches our location.\n\nMission:\nUKSF has been tasked with reconnaissance of Chernarus, finding a suitable location to settle a permanent FOB and possibly retrieving old technology that is otherwise in working order, or can be restored to working order.",
+        "image": {
+          "id": 33755,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/image.png1769635425047.png",
+          "created_at": "2026-01-28 21:23:45",
+          "updated_at": "2026-01-28 21:23:45"
+        },
+        "created_at": "2026-01-14 23:53:53",
+        "updated_at": "2026-01-28 21:23:45",
+        "status": "ACTIVE",
+        "events": [
+          {
+            "id": 3403,
+            "name": "Op Nightcrawler",
+            "dateTime": "2026-01-30 19:00:00",
+            "time": "19:00:00",
+            "date": "2026-01-30",
+            "locked": false,
+            "discordChannel": "1321236262065274987",
+            "discordPingable": "1321642508161122304",
+            "discordMessage": "1466182377544880169",
+            "discordPingSent": true
+          },
+          {
+            "id": 3348,
+            "name": "Op Thumb Sucking",
+            "dateTime": "2026-01-16 19:00:00",
+            "time": "19:00:00",
+            "date": "2026-01-16",
+            "locked": false,
+            "discordChannel": "1321236262065274987",
+            "discordPingable": "1321642508161122304",
+            "discordMessage": "1461147334292410481",
+            "discordPingSent": true
+          }
+        ]
+      },
+      {
+        "id": 675,
+        "campaignName": "Operation Iron Retribution",
+        "map": "Lythium",
+        "brief": "Situation:\nFollowing the \"Day of Ashes\" mass-casualty terrorist attack on UK soil, intelligence has identified the perpetrator as Al-Khaima Front (AKF), a transnational terrorist organization. AKF operates a sophisticated and compartmentalized network spanning the UK and a foreign sanctuary known as \"Lythium.\"\n\nThe network's cross-border finance, logistics, and international coordination are controlled by a single high-value individual codenamed 'THE FERRYMAN'.\n\nMission:\nUKSF has been tasked with conducting phased counter-terrorism operations to locate, disrupt, and dismantle the AKF leadership and infrastructure, neutralizing their capability to conduct further attacks against the UK and it's allies.",
+        "image": {
+          "id": 33434,
+          "path": "https://cdn.unitcommander.co.uk:9000/community/722/images.steamusercontent.jpg1768170071430.jpg",
+          "created_at": "2026-01-11 22:21:11",
+          "updated_at": "2026-01-11 22:21:11"
+        },
+        "created_at": "2026-01-11 22:21:11",
+        "updated_at": "2026-01-11 22:21:11",
+        "status": "ACTIVE",
+        "events": [
+          {
+            "id": 3421,
+            "name": "Op Iron Retribution 5",
+            "dateTime": "2026-02-04 19:00:00",
+            "time": "19:00:00",
+            "date": "2026-02-04",
+            "locked": false,
+            "discordChannel": "1321236262065274987",
+            "discordPingable": "1321642508161122304",
+            "discordMessage": "1467142027677270167",
+            "discordPingSent": false
+          },
+          {
+            "id": 3391,
+            "name": "Op Iron Retribution 4",
+            "dateTime": "2026-01-28 19:00:00",
+            "time": "19:00:00",
+            "date": "2026-01-28",
+            "locked": false,
+            "discordChannel": "1321236262065274987",
+            "discordPingable": "1321642508161122304",
+            "discordMessage": "1465296559267909766",
+            "discordPingSent": true
+          },
+          {
+            "id": 3363,
+            "name": "Op Iron Retribution 3",
+            "dateTime": "2026-01-21 19:00:00",
+            "time": "19:00:00",
+            "date": "2026-01-21",
+            "locked": false,
+            "discordChannel": "1321236262065274987",
+            "discordPingable": "1321642508161122304",
+            "discordMessage": "1462759999867588747",
+            "discordPingSent": true
+          },
+          {
+            "id": 3331,
+            "name": "Op Iron Retribution 2",
+            "dateTime": "2026-01-14 19:00:00",
+            "time": "19:00:00",
+            "date": "2026-01-14",
+            "locked": false,
+            "discordChannel": "1321236262065274987",
+            "discordPingable": "1321642508161122304",
+            "discordMessage": "1460036293118525584",
+            "discordPingSent": false
+          }
+        ]
+      }
+    ],
+    "standalone": [
+      {
+        "id": 2775,
+        "name": "SF Training Operation for new ORBAT",
+        "description": "Training night in your new teams under the new ORBAT",
+        "image": null,
+        "map": "Bovington",
+        "dateTime": "2025-07-23 18:00:00",
+        "date": "2025-07-23",
+        "time": "19:00:00",
+        "locked": false,
+        "locked_at": null,
+        "status": "ACTIVE",
+        "discordChannel": "1321236262065274987",
+        "discordPingable": "1321642508161122304",
+        "discordMessage": "1396896524704813259",
+        "discordPingSent": false,
+        "frequency": null,
+        "recurringUntil": null,
+        "processedForRecurrence": false
+      },
+      {
+        "id": 2857,
+        "name": "Op Hunter",
+        "description": "**Classified** **TOP SECRET**",
+        "image": null,
+        "map": "Classified ",
+        "dateTime": "2025-08-06 17:00:00",
+        "date": "2025-08-06",
+        "time": "19:00:00",
+        "locked": true,
+        "locked_at": "2025-09-08 15:49:27",
+        "status": "ARCHIVED",
+        "discordChannel": "1321236262065274987",
+        "discordPingable": "1321642508161122304",
+        "discordMessage": "1402399543202418819",
+        "discordPingSent": false,
+        "frequency": null,
+        "recurringUntil": null,
+        "processedForRecurrence": false
+      },
+      {
+        "id": 3003,
+        "name": "Op Snatcher ",
+        "description": "Classified ",
+        "image": null,
+        "map": "Classified ",
+        "dateTime": "2025-09-10 18:00:00",
+        "date": "2025-09-10",
+        "time": "19:00:00",
+        "locked": true,
+        "locked_at": "2025-09-11 12:44:01",
+        "status": "ACTIVE",
+        "discordChannel": "1321236262065274987",
+        "discordPingable": "1321642508161122304",
+        "discordMessage": "1414638960558215208",
+        "discordPingSent": false,
+        "frequency": null,
+        "recurringUntil": null,
+        "processedForRecurrence": false
+      }
+    ]
+  },
+  "status": "STABLE"
+}

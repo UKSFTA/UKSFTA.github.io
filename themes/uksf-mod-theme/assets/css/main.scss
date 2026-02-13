@@ -1,0 +1,175 @@
+@import "tailwindcss.css";
+
+// MOD.UK Official Design Tokens
+$moduk-brand-colour: #532a45;
+$moduk-dark-grey: #323e48;
+$moduk-border-colour: #bfc1c3;
+$moduk-text-colour: #0b0c0c;
+$moduk-bg-colour: #ffffff;
+$moduk-secondary-text: #454a4c; // Even darker for contrast safety
+
+// Service-Specific Tints (Authorized MOD Palette)
+$army-green: #153e35;  // SAS / Army / SFSG
+$navy-blue: #13284c;   // SBS / Navy
+$raf-blue: #005696;    // JSFAW / RAF
+$intel-grey: #323e48;  // SRR / Signals (Institutional Dark)
+
+// Typography (HMG Digital Standards)
+$moduk-font-body: "Roboto", "Arial", sans-serif;
+$moduk-font-header: "Industrial Gothic Pro", "Arial Black", sans-serif;
+
+// GDS Type Scale (Multiples of 5px foundations)
+$text-xl: 48px; // govuk-heading-xl
+$text-l: 36px;  // govuk-heading-l
+$text-m: 24px;  // govuk-heading-m
+$text-s: 19px;  // govuk-heading-s
+$text-body: 16px;
+$text-xs: 14px;
+
+// Layout Offsets
+$top-bar-height: 32px;
+$nav-height: 100px;
+$phase-banner-height: 50px;
+$total-header-height: $top-bar-height + $nav-height + $phase-banner-height;
+
+// Import MOD.UK Frontend Core
+@import "node_modules/@moduk/frontend/src/css/index";
+
+// Institutional Layout Overrides
+:root {
+  --total-header-height: #{$total-header-height};
+  --moduk-bg: #{$moduk-bg-colour};
+  --moduk-text: #{$moduk-text-colour};
+  --moduk-text-secondary: #{$moduk-secondary-text};
+  --moduk-border: #{$moduk-border-colour};
+  --brand-tint: #{$moduk-brand-colour};
+}
+
+// Unit-Specific Skins
+[data-unit-skin="army"], .unit-sas, .unit-sfsg { --brand-tint: #{$army-green}; }
+[data-unit-skin="navy"], .unit-sbs { --brand-tint: #{$navy-blue}; }
+[data-unit-skin="raf"], .unit-jsfaw { --brand-tint: #{$raf-blue}; }
+[data-unit-skin="intel"], .unit-srr, .unit-signals { --brand-tint: #{$intel-grey}; }
+
+.dark {
+  --moduk-bg: #0b0c0c;
+  --moduk-text: #f3f2f1;
+  --moduk-text-secondary: #bfc1c3;
+  --moduk-border: #323e48;
+
+  img {
+    filter: none !important;
+  }
+}
+
+html {
+  scroll-padding-top: #{$total-header-height};
+  // Scroll snapping intentionally removed for natural flow
+}
+
+body {
+  font-family: $moduk-font-body;
+  font-size: 11pt;
+  color: var(--moduk-text);
+  background-color: var(--moduk-bg);
+  padding-top: var(--total-header-height);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $moduk-font-header;
+  text-transform: uppercase;
+  color: var(--moduk-text);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+// The Superior Rule & Modular Blocks
+section {
+  width: 100%;
+  min-height: calc(100vh - #{$total-header-height});
+  min-height: calc(100vh - var(--total-header-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--moduk-bg);
+  border-bottom: 1px solid var(--moduk-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  padding: 5rem 0;
+  box-sizing: border-box;
+  position: relative;
+  
+  .dark & {
+    background-color: #0b0c0c;
+  }
+
+  & > * {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.moduk-width-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+// Standardized Components with Brand Tint
+.card-mod {
+  background-color: var(--moduk-bg);
+  border: 1px solid var(--moduk-border);
+  padding: 2.5rem;
+  transition: all 0.2s ease;
+  &:hover { 
+    border-color: var(--brand-tint); 
+    background-color: #f3f2f1;
+  }
+}
+
+.dark .card-mod:hover {
+  background-color: #1d2329;
+}
+
+.btn-mod-primary {
+  background-color: var(--brand-tint) !important;
+}
+
+// Workstation Overlays (SIS / ORBAT / Filing)
+.canvas-overlay {
+  position: absolute;
+  z-index: 5000; /* Ensure UI is above canvas content */
+  pointer-events: auto;
+}
+
+#hq-admin-bar {
+  z-index: 6000;
+}
+
+.orbat-canvas-container {
+  z-index: 1000;
+}
+
+// HMG Superior Rule Enhancements
+.superior-rule {
+  background-color: #ffffff;
+  border-bottom: 1px solid #bfc1c3;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3000;
+  
+  .dark & {
+    background-color: #0b0c0c;
+    border-bottom: 1px solid #323e48;
+  }
+}
+.dark . {
+  filter: invert(1) !important;
+}
+

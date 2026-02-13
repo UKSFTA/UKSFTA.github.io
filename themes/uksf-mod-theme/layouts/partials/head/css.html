@@ -1,0 +1,5 @@
+{{ $css := resources.Get "css/input.css" | postCSS }}
+{{ if not hugo.IsServer }}
+    {{ $css = $css | fingerprint }}
+{{ end }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" {{ if not hugo.IsServer }}integrity="{{ $css.Data.Integrity }}"{{ end }} />

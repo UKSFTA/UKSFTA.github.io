@@ -1,0 +1,71 @@
+{{ define "main" }}
+<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300">
+    {{ partial "blocks/hero.html" . }}
+</section>
+
+<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300 !justify-start !pt-20">
+    <article class="moduk-width-container relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-24">
+            <!-- MAIN CONTENT -->
+            <div class="lg:col-span-8 space-y-24">
+                <div class="intelligence-body prose prose-2xl max-w-none dark:prose-invert
+                            prose-headings:font-industrial prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tighter
+                            prose-p:font-body prose-p:font-light prose-p:leading-relaxed
+                            prose-strong:text-[#532a45] dark:prose-strong:text-white prose-strong:font-bold">
+                    {{ .Content }}
+                </div>
+
+                {{ partial "backlinks.html" . }}
+
+                <!-- Institutional Footer -->
+                <div class="pt-20 border-t-4 border-[#532a45]/20">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-12 opacity-60">
+                        <div class="flex flex-col font-mono text-[10px] font-bold uppercase tracking-[0.3em]">
+                            <div class="flex items-center gap-4">
+                                <span class="text-[#532a45]">Registry: TFA-{{ upper (substr (sha256 .Title) 0 8) }}</span>
+                                <div class="w-px h-3 bg-[#bfc1c3]"></div>
+                                {{ partial "document-id.html" . }}
+                            </div>
+                            <span class="mt-2">Classification: OFFICIAL_SENSITIVE</span>
+                        </div>
+                        <div class="text-right font-mono text-[10px] font-bold uppercase tracking-[0.3em]">
+                            <span>Unit Permanent Record</span>
+                            <span class="mt-2 block">Archived: {{ .Date.Format "02 JAN 2006" }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <aside class="lg:col-span-4">
+                <div class="card-mod space-y-12 sticky top-48 bg-[#f3f2f1]/30 dark:bg-white/5 backdrop-blur-sm border-b-8 border-b-[#532a45]">
+                    <div>
+                        <h4 class="text-[11px] font-bold text-[#532a45] dark:text-[#bfc1c3] uppercase tracking-[0.4em] mb-8 font-mono">// System_Status</h4>
+                        <div class="flex items-center gap-6 bg-[#00703c]/5 border border-[#00703c]/20 px-8 py-6">
+                            <span class="w-3 h-3 bg-[#00703c] rounded-full animate-pulse shadow-sm"></span>
+                            <span class="text-[10px] font-bold text-[#00703c] tracking-[0.3em] uppercase font-mono">NODE_SYNC_VERIFIED</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-10 border-t border-[#bfc1c3] dark:border-[#323e48] pt-12">
+                        <div class="flex flex-col gap-2">
+                            <span class="text-[9px] font-bold text-moduk-secondary uppercase tracking-widest">Record_Type</span>
+                            <span class="text-lg font-black text-[#0b0c0c] dark:text-white uppercase font-industrial">Operational_Intel</span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-[9px] font-bold text-moduk-secondary uppercase tracking-widest">Primary_Authority</span>
+                            <span class="text-lg font-black text-[#532a45] dark:text-[#bfc1c3] uppercase font-industrial">Taskforce HQ // G2</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-12 border-t border-[#bfc1c3] dark:border-[#323e48]">
+                        <a href="/registry/archives/" class="btn-mod btn-mod-secondary w-full text-center text-[11px] no-underline tracking-[0.3em]">
+                            Return to Registry
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </article>
+</section>
+{{ end }}

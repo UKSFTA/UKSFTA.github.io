@@ -1,0 +1,12 @@
+<div class="bg-uksf-gold/5 border-b border-uksf-gold/10 py-3 relative overflow-hidden group">
+    <div class="container-uksf flex items-center justify-center lg:justify-start gap-6 relative z-10">
+        <span class="bg-uksf-gold text-moduk-secondarylack text-[8px] font-black px-3 py-0.5 uppercase tracking-[0.3em] font-mono shadow-[0_0_10px_rgba(179,153,93,0.3)]">
+            {{ .Site.Params.phase | default "OPERATIONAL" | upper }}
+        </span>
+        <p class="text-[9px] font-mono text-neutral-500 uppercase tracking-widest font-black leading-none m-0">
+            STRATEGIC_INTERFACE_LIVE // YOUR <a class="text-white hover:text-uksf-gold underline transition-colors" href="{{ .Site.Params.feedbackurl }}">UPLINK</a> IS MANDATORY FOR PROTOCOL IMPROVEMENT.
+        </p>
+    </div>
+    <!-- Decorative scan line -->
+    <div class="absolute top-0 left-0 w-full h-px bg-uksf-gold/20 group-hover:translate-y-10 transition-transform duration-[3s] ease-linear"></div>
+</div>

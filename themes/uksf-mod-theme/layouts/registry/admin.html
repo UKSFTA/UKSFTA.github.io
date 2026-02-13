@@ -1,0 +1,208 @@
+{{ define "main" }}
+{{ $stats := .Site.Data.system_stats }}
+<section class="bg-white dark:bg-[#0b0c0c] transition-colors duration-300 !justify-start">
+    <div class="moduk-width-container space-y-12">
+        <!-- MOD HEADER STYLE -->
+        <header class="border-b-8 border-mod-purple pb-10 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 bg-[#f3f2f1] dark:bg-[#1d2329] p-10 shadow-xl">
+            <div class="space-y-8">
+                <div class="flex items-center gap-8">
+                    {{ $logo := resources.Get "icons/TFA.png" }}
+                    {{ if $logo }}
+                    <img src="{{ $logo.RelPermalink }}" alt="Taskforce Alpha" class="h-20 grayscale opacity-80 no-invert">
+                    {{ end }}
+                    <div class="h-16 w-px bg-mod-grey-3 dark:bg-mod-grey-1"></div>
+                    <div class="flex flex-col">
+                        <span class="text-[10px] font-black uppercase tracking-[0.5em] text-mod-grey-2 font-mono">Official Sensitive</span>
+                        <span class="text-xs font-black uppercase tracking-[0.4em] text-mod-purple dark:text-[#bfc1c3] font-mono mt-1">Joint Special Forces Command</span>
+                    </div>
+                </div>
+                
+                <div class="space-y-2">
+                    <h1 class="text-6xl md:text-7xl font-black tracking-tighter text-mod-black dark:text-white uppercase font-industrial m-0 leading-none">Command Deck</h1>
+                    <p class="text-mod-grey-2 text-[11px] uppercase tracking-[0.4em] font-mono font-black italic">Strategic Oversight & Asset Management // Node_{{ $stats.node_id | default "UK_LON_HQ" }}</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-end gap-6">
+                <div class="flex items-center gap-4 px-8 py-4 bg-mod-green/10 border border-mod-green/20">
+                    <span class="w-3 h-3 bg-mod-green rounded-full animate-pulse shadow-[0_0_15px_rgba(0,112,60,0.4)]"></span>
+                    <span class="text-xs font-black text-mod-green tracking-[0.3em] uppercase font-mono">Session_Active</span>
+                </div>
+                <span class="text-[10px] text-mod-grey-2 uppercase tracking-widest font-mono font-black italic">Auth_DTG: {{ now.Format "021504Z JAN 06" }}</span>
+            </div>
+        </header>
+
+        <!-- DASHBOARD GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- LEFT COLUMN: STATUS & QUICK ACTIONS -->
+            <aside class="lg:col-span-4 space-y-10">
+                <!-- System Vitals -->
+                <div class="card-mod border-l-8 border-l-mod-purple space-y-10 relative overflow-hidden bg-white/50 dark:bg-[#1d2329]/50 shadow-2xl">
+                    <h3 class="text-[11px] font-black text-mod-grey-2 uppercase tracking-[0.4em] border-b border-mod-grey-3 dark:border-mod-grey-1 pb-6 font-mono">// System_Vitals</h3>
+                    
+                    <div class="grid grid-cols-2 gap-10 font-mono">
+                        <div class="space-y-3">
+                            <span class="text-[9px] text-mod-grey-2 uppercase tracking-widest block font-black opacity-60">Threat_Level</span>
+                            <span class="text-lg font-black text-mod-red uppercase tracking-tighter">{{ $stats.threat_level | default "SUBSTANTIAL" }}</span>
+                        </div>
+                        <div class="space-y-3 text-right">
+                            <span class="text-[9px] text-mod-grey-2 uppercase tracking-widest block font-black opacity-60">Encryption_Link</span>
+                            <span class="text-lg font-black text-mod-green uppercase tracking-tighter ">ACTIVE_SECURE</span>
+                        </div>
+                        <div class="space-y-3">
+                            <span class="text-[9px] text-mod-grey-2 uppercase tracking-widest block font-black opacity-60">Ops_Load</span>
+                            <span class="text-lg font-black text-mod-black dark:text-white uppercase tracking-tighter">+12.4%</span>
+                        </div>
+                        <div class="space-y-3 text-right">
+                            <span class="text-[9px] text-mod-grey-2 uppercase tracking-widest block font-black opacity-60">Registry_Node</span>
+                            <span class="text-lg font-black text-mod-black dark:text-white uppercase tracking-tighter">{{ $stats.db_size_fmt | default "0 KB" }}</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-8 space-y-4">
+                        <div class="w-full bg-mod-grey-3 dark:bg-mod-grey-1 h-2 rounded-full overflow-hidden">
+                            <div class="bg-mod-purple h-full w-[65%] shadow-[0_0_10px_rgba(83,42,69,0.4)]"></div>
+                        </div>
+                        <div class="flex justify-between items-center text-[9px] font-mono uppercase tracking-[0.3em] text-mod-grey-2">
+                            <span>Primary resource consumption</span>
+                            <span class="text-mod-black dark:text-white font-black ">65.2% Nominal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Uplinks -->
+                <div class="card-mod p-10 space-y-10 border-t-8 border-t-mod-grey-3">
+                    <h3 class="text-[11px] font-black text-mod-grey-2 uppercase tracking-[0.4em] border-b border-mod-grey-3 dark:border-mod-grey-1 pb-6 font-mono">// Service_Uplinks</h3>
+                    <div class="space-y-4 font-mono">
+                        <div class="flex justify-between items-center p-5 bg-mod-grey-4 dark:bg-mod-black/20 border border-mod-grey-3 dark:border-mod-grey-1 hover:border-mod-purple transition-all group cursor-pointer shadow-sm">
+                            <span class="text-[10px] font-black text-mod-grey-2 uppercase tracking-widest group-hover:text-mod-purple transition-colors">RCON_UPLINK</span>
+                            <span id="status-rcon" class="text-[9px] font-black text-mod-grey-2 uppercase group-hover:text-mod-black dark:group-hover:text-white">POLLING...</span>
+                        </div>
+                        <div class="flex justify-between items-center p-5 bg-mod-grey-4 dark:bg-mod-black/20 border border-mod-grey-3 dark:border-mod-grey-1 hover:border-mod-purple transition-all group cursor-pointer shadow-sm">
+                            <span class="text-[10px] font-black text-mod-grey-2 uppercase tracking-widest group-hover:text-mod-purple transition-colors">REGISTRY_API</span>
+                            <span id="status-registry" class="text-[9px] font-black text-mod-grey-2 uppercase group-hover:text-mod-black dark:group-hover:text-white">POLLING...</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- RIGHT COLUMN: PRIMARY MODULES -->
+            <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-10 content-start">
+                
+                <!-- MODULE: FILING -->
+                <a href="/registry/filing/" class="group relative bg-[#f3f2f1] dark:bg-[#1d2329] border border-mod-grey-3 dark:border-mod-grey-1 p-12 flex flex-col justify-between h-[350px] hover:border-mod-purple transition-all duration-500 overflow-hidden shadow-xl border-b-8 border-b-mod-purple">
+                    <div class="space-y-8 relative z-10">
+                        <div class="flex justify-between items-start">
+                            <div class="p-5 bg-mod-purple text-white shadow-lg">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                            </div>
+                            <span class="text-[9px] font-mono text-mod-grey-2 font-black uppercase tracking-[0.4em] italic">// RSIS_VAULT</span>
+                        </div>
+                        <div>
+                            <h2 class="text-4xl font-black text-mod-black dark:text-white uppercase tracking-tighter font-industrial m-0">RSIS Vault</h2>
+                            <p class="text-mod-grey-1 dark:text-mod-grey-3 text-sm uppercase tracking-widest leading-relaxed mt-6 font-medium opacity-80">Tactical SITREPs, operational dossiers, and field intelligence management.</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-10 border-t border-mod-grey-3 dark:border-mod-grey-1 relative z-10">
+                        <span class="text-[10px] font-black text-mod-purple dark:text-white uppercase tracking-[0.3em]">Initialize Interface</span>
+                        <svg class="w-6 h-6 text-mod-purple dark:text-white transform group-hover:translate-x-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </div>
+                </a>
+
+                <!-- MODULE: ORBAT -->
+                <a href="/registry/orbat/" class="group relative bg-[#f3f2f1] dark:bg-[#1d2329] border border-mod-grey-3 dark:border-mod-grey-1 p-12 flex flex-col justify-between h-[350px] hover:border-mod-purple transition-all duration-500 overflow-hidden shadow-xl border-b-8 border-b-mod-purple">
+                    <div class="space-y-8 relative z-10">
+                        <div class="flex justify-between items-start">
+                            <div class="p-5 bg-mod-purple text-white shadow-lg">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                            <span class="text-[9px] font-mono text-mod-grey-2 font-black uppercase tracking-[0.4em] italic">// FORCE_STRUC</span>
+                        </div>
+                        <div>
+                            <h2 class="text-4xl font-black text-mod-black dark:text-white uppercase tracking-tighter font-industrial m-0">Force Structure</h2>
+                            <p class="text-mod-grey-1 dark:text-mod-grey-3 text-sm uppercase tracking-widest leading-relaxed mt-6 font-medium opacity-80">Order of Battle management, personnel tracking, and command hierarchy oversight.</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-10 border-t border-mod-grey-3 dark:border-mod-grey-1 relative z-10">
+                        <span class="text-[10px] font-black text-mod-purple dark:text-white uppercase tracking-[0.3em]">Initialize Interface</span>
+                        <svg class="w-6 h-6 text-mod-purple dark:text-white transform group-hover:translate-x-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </div>
+                </a>
+
+                <!-- MODULE: CONSOLE -->
+                <a href="/registry/console/" class="group relative bg-[#f3f2f1] dark:bg-[#1d2329] border border-mod-grey-3 dark:border-mod-grey-1 p-12 flex flex-col justify-between h-[350px] hover:border-mod-purple transition-all duration-500 overflow-hidden shadow-xl border-b-8 border-b-mod-red">
+                    <div class="space-y-8 relative z-10">
+                        <div class="flex justify-between items-start">
+                            <div class="p-5 bg-mod-red text-white shadow-lg">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v13a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <span class="text-[9px] font-mono text-mod-grey-2 font-black uppercase tracking-[0.4em] italic">// C2_TERMINAL</span>
+                        </div>
+                        <div>
+                            <h2 class="text-4xl font-black text-mod-black dark:text-white uppercase tracking-tighter font-industrial m-0">Command C2</h2>
+                            <p class="text-mod-grey-1 dark:text-mod-grey-3 text-sm uppercase tracking-widest leading-relaxed mt-6 font-medium opacity-80">Direct simulation uplink, RCON administration, and institutional broadcasts.</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-10 border-t border-mod-grey-3 dark:border-mod-grey-1 relative z-10">
+                        <span class="text-[10px] font-black text-mod-red dark:text-white uppercase tracking-[0.3em]">Initialize Interface</span>
+                        <svg class="w-6 h-6 text-mod-red dark:text-white transform group-hover:translate-x-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </div>
+                </a>
+
+                 <!-- MODULE: ARCHIVES -->
+                 <a href="/registry/archives/" class="group relative bg-[#f3f2f1] dark:bg-[#1d2329] border border-mod-grey-3 dark:border-mod-grey-1 p-12 flex flex-col justify-between h-[350px] hover:border-mod-purple transition-all duration-500 overflow-hidden shadow-xl border-b-8 border-b-mod-grey-2">
+                    <div class="space-y-8 relative z-10">
+                        <div class="flex justify-between items-start">
+                            <div class="p-5 bg-mod-grey-2 text-white shadow-lg">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            </div>
+                            <span class="text-[9px] font-mono text-mod-grey-2 font-black uppercase tracking-[0.4em] italic">// OP_HISTORY</span>
+                        </div>
+                        <div>
+                            <h2 class="text-4xl font-black text-mod-black dark:text-white uppercase tracking-tighter font-industrial m-0">Archives</h2>
+                            <p class="text-mod-grey-1 dark:text-mod-grey-3 text-sm uppercase tracking-widest leading-relaxed mt-6 font-medium opacity-80">Permanent mission records, legacy telemetry data, and institutional memory.</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-10 border-t border-mod-grey-3 dark:border-mod-grey-1 relative z-10">
+                        <span class="text-[10px] font-black text-mod-grey-2 dark:text-white uppercase tracking-[0.3em]">Initialize Interface</span>
+                        <svg class="w-6 h-6 text-mod-grey-2 dark:text-white transform group-hover:translate-x-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- AUDIT LOGS -->
+        <div class="card-mod !p-10 space-y-10 border-t-8 border-t-mod-black shadow-2xl bg-white dark:bg-[#1d2329]">
+            <div class="flex justify-between items-center border-b border-mod-grey-3 dark:border-mod-grey-1 pb-6">
+                <h3 class="text-[11px] font-black text-mod-grey-2 uppercase tracking-[0.5em] font-mono">// Digital_Audit_Stream</h3>
+                <div class="flex items-center gap-4">
+                    <span class="w-2 h-2 bg-mod-green rounded-full animate-pulse shadow-[0_0_10px_rgba(0,112,60,0.4)]"></span>
+                    <span class="text-[10px] font-black text-mod-grey-2 uppercase tracking-[0.3em] font-mono">Live_Logging_Active</span>
+                </div>
+            </div>
+            <div id="admin-logs" class="font-mono text-sm space-y-4 h-64 overflow-y-auto custom-scrollbar text-mod-grey-1 dark:text-mod-grey-3 pr-8">
+                <div class="flex gap-8 border-l-4 border-mod-grey-3 dark:border-mod-grey-1 pl-8 py-2 bg-mod-grey-4/50 dark:bg-mod-black/20 shadow-sm"><span class="text-mod-grey-2 font-black">[{{ now.Format "15:04:05" }}]</span> <span class="text-mod-purple font-black uppercase tracking-wider">[SEC] HANDSHAKE_VERIFIED: SESSION_INIT_SUCCESS</span></div>
+                <div class="flex gap-8 border-l-4 border-mod-grey-3 dark:border-mod-grey-1 pl-8 py-2"><span class="text-mod-grey-2 font-black">[{{ now.Format "15:04:06" }}]</span> <span class="uppercase tracking-wider">[SYS] LOADING_CORE_MODULE: RSIS_VAULT_v6.2... OK</span></div>
+                <div class="flex gap-8 border-l-4 border-mod-grey-3 dark:border-mod-grey-1 pl-8 py-2"><span class="text-mod-grey-2 font-black">[{{ now.Format "15:04:06" }}]</span> <span class="uppercase tracking-wider">[SYS] LOADING_CORE_MODULE: FORCE_STRUCTURE_v2.1... OK</span></div>
+                <div class="flex gap-8 border-l-4 border-mod-grey-3 dark:border-mod-grey-1 pl-8 py-2 bg-mod-grey-4/50 dark:bg-mod-black/20 shadow-sm"><span class="text-mod-grey-2 font-black">[{{ now.Format "15:04:07" }}]</span> <span class="text-mod-black dark:text-white font-black uppercase tracking-wider">[USR] NODE_INTERFACE_ESTABLISHED: COMMAND_DECK_ALPHA</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    async function checkServices() {
+        try {
+            const r = await fetch('/api/file', { method: 'GET' });
+            const el = document.getElementById('status-registry');
+            if (el) {
+                el.className = r.status !== 404 ? 'text-[9px] font-black text-mod-green uppercase ' : 'text-[9px] font-black text-mod-red uppercase ';
+                el.innerText = r.status !== 404 ? 'CONNECTED' : 'DISCONNECTED';
+            }
+        } catch(e) { if(document.getElementById('status-registry')) document.getElementById('status-registry').innerText = 'DISCONNECTED'; }
+    }
+    setInterval(checkServices, 30000);
+    checkServices();
+</script>
+{{ end }}

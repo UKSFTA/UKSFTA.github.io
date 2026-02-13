@@ -1,0 +1,58 @@
+<!-- The Superior Rule (Official HMG Identity Standard) -->
+<div class="superior-rule transition-colors duration-300">
+    <div class="moduk-width-container flex justify-between items-center w-full">
+        <div class="flex items-center space-x-6">
+            <span class="text-[9px] font-body font-black text-mod-black dark:text-white uppercase tracking-[0.4em]">Ministry of Defence</span>
+            <div class="h-3 w-px bg-mod-grey-3 dark:bg-mod-grey-1"></div>
+            <span class="text-[9px] font-body text-mod-grey-2 uppercase tracking-[0.4em] hidden sm:block font-black">Official Sensitive</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <button onclick="window.toggleTheme()" class="text-[9px] font-body font-black text-mod-black dark:text-white uppercase tracking-[0.4em] hover:underline decoration-2 underline-offset-4 transition-all">Toggle Interface</button>
+            <div class="h-3 w-px bg-mod-grey-3 dark:bg-mod-grey-1"></div>
+            <span class="text-[9px] font-body font-black text-mod-black dark:text-white uppercase tracking-[0.4em]">UK Government</span>
+        </div>
+    </div>
+</div>
+
+<!-- Institutional Navigation (MOD.UK Master Brand) -->
+<nav class="bg-white dark:bg-mod-black border-b-8 border-[var(--brand-tint)] h-[100px] flex items-center transition-colors duration-300 shadow-lg relative z-[2000]" aria-label="Main navigation">
+    <div class="moduk-width-container flex justify-between items-center h-full w-full">
+        <div class="flex items-center">
+            <a href="/" class="flex items-center gap-10 no-underline group">
+                {{ $logo := resources.Get "icons/MOD.png" }}
+                {{ if $logo }}
+                <div class="py-2">
+                    <img src="{{ $logo.RelPermalink }}" alt="Ministry of Defence" class="h-16 w-auto  no-invert group-hover:scale-105 transition-transform duration-500">
+                </div>
+                {{ end }}
+                <div class="flex flex-col border-l-4 border-mod-grey-3 dark:border-mod-grey-1 pl-10">
+                    <span class="text-mod-black dark:text-white font-black text-2xl tracking-tighter font-industrial uppercase leading-none">UKSF Taskforce Alpha</span>
+                    <span class="text-mod-grey-2 text-[10px] font-mono font-black uppercase tracking-[0.4em] mt-2 italic">Joint Special Forces Command // Operational Node</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-10 h-full">
+            {{ range site.Menus.main }}
+            <a href="{{ .URL }}" class="nav-link {{ if eq $.RelPermalink .URL }}active{{ end }} h-full flex items-center">
+                {{ .Name }}
+            </a>
+            {{ end }}
+        </div>
+
+        <div class="hidden sm:flex items-center gap-10">
+            <a href="/registry/gate/" class="btn-mod btn-mod-primary shadow-xl hover:-translate-y-0.5 transition-all">
+                Secure Access
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    window.toggleTheme = () => {
+        const html = document.documentElement;
+        const isDark = html.classList.toggle('dark');
+        localStorage.setItem('moduk_theme', isDark ? 'dark' : 'light');
+        console.log("Theme toggled. Dark mode:", isDark);
+    }
+</script>
