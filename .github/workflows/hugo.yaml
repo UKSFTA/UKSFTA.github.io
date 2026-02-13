@@ -23,16 +23,8 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - name: Install bercon-cli
-        run: |
-          wget https://github.com/WoozyMasta/bercon-cli/releases/latest/download/bercon-cli-linux-amd64 -O bercon-cli
-          chmod +x bercon-cli
-          sudo mv bercon-cli /usr/bin/bercon-cli
-
       - name: Verify GPG Signature
         run: |
-          # In a production environment, this would verify the GPG signature of the HEAD commit
-          # against a known list of UKSF developer keys.
           COMMIT_SIGNATURE=$(git log -1 --format='%G?')
           if [ "$COMMIT_SIGNATURE" = "N" ]; then
             echo "ERROR: Commit is not GPG signed. UKSF Protocol violation."
@@ -55,6 +47,8 @@ jobs:
       - name: Fetch External Data
         run: npm run fetch-data
         env:
+          BATTLEMETRICS_API_KEY: ${{ secrets.BATTLEMETRICS_API_KEY }}
+          BATTLEMETRICS_SERVER_ID: ${{ secrets.BATTLEMETRICS_SERVER_ID }}
           STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
           STEAM_SERVER_IP: ${{ secrets.STEAM_SERVER_IP }}
           STEAM_QUERY_PORT: ${{ secrets.STEAM_QUERY_PORT }}
@@ -75,19 +69,10 @@ jobs:
         run: |
           hugo --gc --minify
 
-      # - name: Lighthouse Audit
-      #   uses: treosh/lighthouse-ci-action@v11
-      #   with:
-      #     urls: |
-      #       http://localhost:1313/
-      #       http://localhost:1313/sas/
-      #     uploadArtifacts: true
-      #     temporaryPublicStorage: true
-
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs
+          path: ./public
 
   deploy:
     environment:
