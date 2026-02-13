@@ -6,9 +6,10 @@
   "type": "module",
   "scripts": {
     "fetch-data": "node scripts/fetch-external-data.js",
-    "start": "hugo server --disableFastRender -D",
+    "start": "hugo server --environment development --disableFastRender -D",
     "dev": "concurrently -n \"HUGO,INTEL,RCON,REGISTRY\" -c \"blue,yellow,red,green\" \"npm run start\" \"npm run watch:intel\" \"npm run service:rcon\" \"npm run service:registry\"",
-    "build": "npm run fetch-data && node scripts/generate-stats.js && hugo --minify",
+    "build": "npm run fetch-data && node scripts/generate-stats.js && hugo --environment production --minify",
+    "build:dev": "npm run fetch-data && node scripts/generate-stats.js && hugo --environment development --minify",
     "watch:intel": "node -e \"setInterval(() => { try { require('./scripts/fetch-external-data.js') } catch(e){} }, 60000);\"",
     "service:rcon": "node services/rcon-bridge.js",
     "service:registry": "node services/registry-service.js",

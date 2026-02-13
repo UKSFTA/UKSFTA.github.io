@@ -26,6 +26,7 @@
         }
     </style>
     {{ end }}
+
     {{ if and site.Params.maintenance_mode (not hugo.IsProduction) }}
     <script>
         // Maintenance Mode Hard Gate (Non-Production Only)
@@ -35,9 +36,9 @@
     </script>
     {{ end }}
   </head>
+  
   {{ $unit := .Params.unit | default .Section | default "sas" }}
   {{ $isRegistry := or (eq .Section "registry") (eq .Type "registry") (strings.HasPrefix .Layout "registry/") }}
-  {{ $isMaintenance := eq .Type "maintenance" }}
   
   {{ if and $isRegistry (ne .Layout "gate") (ne .Layout "restricted") }}
     <script>
@@ -46,6 +47,7 @@
       }
     </script>
   {{ end }}
+
   <body class="unit-{{ .Params.unit | default .Section | default `global` }}">
     <!-- GLOBAL SYSTEM HUD (Fixed Components) -->
     {{ if not $isMaintenance }}
