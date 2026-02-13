@@ -32,7 +32,7 @@ markup:
 # GLOBAL TACTICAL PARAMETERS
 # ==========================================
 params:
-  maintenance_mode: true # Hard gate for public visitors
+  maintenance_mode: false # Hard gate for public visitors
   # G1 - PERSONNEL & ADMINISTRATION
   builtby: "Taskforce Command"
   builtbyurl: "https://discord.gg/2jNqa3zPRH"
