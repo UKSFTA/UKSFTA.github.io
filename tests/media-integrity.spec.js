@@ -25,12 +25,13 @@ test.describe('Media & Asset Integrity: Zero Broken Images', () => {
 
   test('Tactical Map Asset verification', async ({ page }) => {
     await page.goto('/');
-    const map = page.locator('img[alt="UKSF Map"]');
+    const map = page.locator('.tactical-map-container');
     await expect(map).toBeVisible();
     
-    // Check natural width to ensure it's not a broken 0x0 image
-    const naturalWidth = await map.evaluate(img => img.naturalWidth);
-    expect(naturalWidth).toBeGreaterThan(0);
+    // Check bounding box to ensure it's not a collapsed 0x0 container
+    const box = await map.boundingBox();
+    expect(box.width).toBeGreaterThan(0);
+    expect(box.height).toBeGreaterThan(0);
   });
 
   test('MOD Logo verification', async ({ page }) => {

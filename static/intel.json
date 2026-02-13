@@ -1,5 +1,5 @@
 {
-  "timestamp": 1770919885165,
+  "timestamp": 1770942708471,
   "arma": {
     "name": "UKSF Taskforce Alpha Ops Server V2",
     "map": "dagger_island_summer",
@@ -13,8 +13,8 @@
       {
         "id": 677,
         "campaignName": "Operation Retrieving Gold ",
-        "map": "Green Sea",
-        "brief": "Situation:\nThe year is 2018, 30 years after Day 0.\nWe are the first expeditionary forces to set foot outside of the UK. We've been tasked with reconnaissance of the surrounding terrain of Chernarus, setting up a fixed FOB and possible retrieval of technology.\n\nWe are in unknown territory, we have little information about the area that surrounds us and we are effectively the first new faces in this terrain. We are under-equipped until the rest of our convoy reaches our location.\n\nMission:\nUKSF has been tasked with reconnaissance of Chernarus, finding a suitable location to settle a permanent FOB and possibly retrieving old technology that is otherwise in working order, or can be restored to working order.",
+        "map": "Chernarus Redux",
+        "brief": "Situation:\nThe year is 2018, 30 years after Day 0.\nWe are the first expeditionary forces to set foot outside of the UK. We've been tasked with reconnaissance of the surrounding terrain of Chernarus, setting up a fixed FOB and possible retrieval of technology.\n\nWe are in unknown territory, we have little information about the area that surrounds us and we are effectively the first new faces in this terrain. We are under-equipped until the rest of our convoy reaches our location.\n\nMission:\nUKSF has been tasked with reconnaissance of Chernarus, finding a suitable location to settle a permanent FOB and possibly retrieving old technology that is otherwise in working order, or can be restored to working order.\n\nToday, we got a little headsup that might help us.",
         "image": {
           "id": 33755,
           "path": "https://cdn.unitcommander.co.uk:9000/community/722/image.png1769635425047.png",
@@ -22,7 +22,7 @@
           "updated_at": "2026-01-28 21:23:45"
         },
         "created_at": "2026-01-14 23:53:53",
-        "updated_at": "2026-01-28 21:23:45",
+        "updated_at": "2026-02-12 23:42:18",
         "status": "ACTIVE",
         "events": [
           {
@@ -48,6 +48,18 @@
             "discordPingable": "1321642508161122304",
             "discordMessage": "1466182377544880169",
             "discordPingSent": true
+          },
+          {
+            "id": 3484,
+            "name": "Op Nostalgia",
+            "dateTime": "2026-02-13 19:00:00",
+            "time": "19:00:00",
+            "date": "2026-02-13",
+            "locked": false,
+            "discordChannel": "1321236262065274987",
+            "discordPingable": "1321642508161122304",
+            "discordMessage": "1471652763858501633",
+            "discordPingSent": false
           }
         ]
       },

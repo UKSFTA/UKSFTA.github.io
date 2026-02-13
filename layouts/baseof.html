@@ -1,7 +1,19 @@
 <!doctype html>
-<html lang="{{ site.Language.LanguageCode }}" class="scroll-smooth">
+<html lang="{{ site.Language.LanguageCode | default "en-GB" }}" class="scroll-smooth">
   <head>
     {{ partial "head/index.html" . }}
+    <script>
+        // Early theme application to avoid FOUC and ensure accessibility audit accuracy
+        const savedTheme = localStorage.getItem('moduk_theme');
+        if (savedTheme === 'light') {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+        } else {
+            // Default to dark
+            document.documentElement.classList.remove('light');
+            document.documentElement.classList.add('dark');
+        }
+    </script>
   </head>
   {{ $unit := .Params.unit | default .Section | default "sas" }}
   {{ $isRegistry := or (eq .Section "registry") (eq .Type "registry") (strings.HasPrefix .Layout "registry/") }}
@@ -32,11 +44,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             if (window.initSystem) window.initSystem("{{ site.Params.discord.server_id }}");
-            
-            // Check for saved theme preference
-            if (localStorage.getItem('moduk_theme') === 'dark' || (!localStorage.getItem('moduk_theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-            }
         });
     </script>
     

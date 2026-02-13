@@ -7,6 +7,7 @@ test.describe('Homepage Architecture: Block-by-Block Verification', () => {
   });
 
   test('Section 1: Primary Hero Block', async ({ page }) => {
+    await page.waitForTimeout(2000); // Allow for hydration
     const hero = page.locator('section').nth(0);
     await expect(hero.locator('h1')).toContainText('Always A Little Further');
     await expect(hero.locator('p')).toContainText('Taskforce Alpha coordinates elite special operations');
@@ -34,17 +35,19 @@ test.describe('Homepage Architecture: Block-by-Block Verification', () => {
   });
 
   test('Section 4: AOR Workstation Block', async ({ page }) => {
+    await page.waitForTimeout(2000); // Allow for widgets to load
     const aor = page.locator('section').nth(3);
     // Explicitly target the section h2, not nested widget h2s
     await expect(aor.locator('> .moduk-width-container h2').first()).toContainText('AOR Control');
     await expect(aor.locator('.bg-mod-green')).toContainText('STATION_ACTIVE');
     
     // Map Check
-    const map = aor.locator('img[alt="UKSF Map"]');
+    const map = aor.locator('.tactical-map-container');
     await expect(map).toBeVisible();
+    await expect(map.locator('.unit-node').first()).toBeVisible();
     
     // Comms Hub Check
-    await expect(aor.locator('.live-ops-feed-container')).toBeVisible();
+    await expect(aor.locator('.live-ops-feed-container').first()).toBeVisible();
   });
 
   test('Section 5: Final Selection Gateway', async ({ page }) => {

@@ -15,7 +15,7 @@
 </div>
 
 <!-- Institutional Navigation (MOD.UK Master Brand) -->
-<nav class="bg-white dark:bg-mod-black border-b-8 border-[var(--brand-tint)] h-[100px] flex items-center transition-colors duration-300 shadow-lg relative z-[2000]" aria-label="Main navigation">
+<nav class="bg-[var(--bg-page)] border-b-8 border-[var(--brand-tint)] h-[100px] flex items-center transition-colors duration-300 shadow-lg relative z-[2000]" aria-label="Main navigation">
     <div class="moduk-width-container flex justify-between items-center h-full w-full">
         <div class="flex items-center">
             <a href="/" class="flex items-center gap-10 no-underline group">
@@ -51,8 +51,10 @@
 <script>
     window.toggleTheme = () => {
         const html = document.documentElement;
-        const isDark = html.classList.toggle('dark');
-        localStorage.setItem('moduk_theme', isDark ? 'dark' : 'light');
-        console.log("Theme toggled. Dark mode:", isDark);
+        const isLight = html.classList.toggle('light');
+        localStorage.setItem('moduk_theme', isLight ? 'light' : 'dark');
+        // Also handle the legacy 'dark' class if present
+        if (isLight) html.classList.remove('dark');
+        console.log("Theme toggled. Light mode:", isLight);
     }
 </script>

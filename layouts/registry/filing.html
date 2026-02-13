@@ -9,7 +9,7 @@
             </button>
         </header>
 
-        <div class="p-8 border-b border-mod-grey-3 dark:border-mod-grey-1 bg-white dark:bg-mod-black">
+        <div class="p-8 border-b border-mod-grey-3 dark:border-mod-grey-1 bg-[var(--bg-page)]">
             <div class="relative">
                 <input type="text" placeholder="FILTER_RECORDS..." class="w-full bg-mod-grey-4 dark:bg-mod-grey-1/10 border border-mod-grey-3 dark:border-mod-grey-1 p-4 text-[10px] uppercase tracking-[0.2em] text-mod-black dark:text-white font-mono focus:outline-none focus:border-mod-purple transition-all shadow-inner">
             </div>
@@ -57,10 +57,10 @@
     </aside>
 
     <!-- RIGHT: MAIN WORKSPACE -->
-    <main class="flex-1 flex flex-col bg-white dark:bg-mod-black overflow-hidden relative z-10">
+    <main class="flex-1 flex flex-col bg-[var(--bg-page)] overflow-hidden relative z-10">
         <!-- Tab Bar -->
         <div class="h-20 bg-mod-grey-4 dark:bg-[#1d2329] border-b border-mod-grey-3 dark:border-mod-grey-1 flex items-center px-10 gap-10 shrink-0">
-            <div class="h-full px-12 flex items-center gap-6 bg-white dark:bg-mod-black border-x border-mod-grey-3 dark:border-mod-grey-1 border-t-8 border-t-mod-purple shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+            <div class="h-full px-12 flex items-center gap-6 bg-[var(--bg-page)] border-x border-mod-grey-3 dark:border-mod-grey-1 border-t-8 border-t-mod-purple shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
                 <svg class="w-6 h-6 text-mod-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 <span id="active-file-title" class="font-industrial font-black text-xl tracking-[0.2em] uppercase text-mod-black dark:text-white">AWAITING_SELECTION</span>
             </div>
@@ -78,10 +78,10 @@
         <!-- Editor/Preview Grid -->
         <div class="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden bg-mod-grey-3 dark:bg-mod-grey-1 gap-px">
             <!-- Editor Pane -->
-            <div class="lg:col-span-7 flex flex-col bg-white dark:bg-mod-black relative">
+            <div class="lg:col-span-7 flex flex-col bg-[var(--bg-page)] relative">
                 <div class="h-14 bg-mod-grey-4 dark:bg-[#1d2329] border-b border-mod-grey-3 dark:border-mod-grey-1 flex items-center justify-between px-10 shrink-0">
                     <div id="template-selector-container" class="hidden flex items-center gap-6">
-                        <select id="doc-type-selector" class="bg-white dark:bg-mod-black border border-mod-grey-3 dark:border-mod-grey-1 text-[10px] font-black uppercase tracking-widest px-4 py-2 outline-none cursor-pointer focus:border-mod-purple">
+                        <select id="doc-type-selector" class="bg-[var(--bg-page)] border border-mod-grey-3 dark:border-mod-grey-1 text-[10px] font-black uppercase tracking-widest px-4 py-2 outline-none cursor-pointer focus:border-mod-purple">
                             <option value="">-- INJECT_TEMPLATE --</option>
                             <option value="conop">CONOP_SPEC</option>
                             <option value="sitrep">SITREP_FRAG</option>
@@ -110,7 +110,7 @@
         </div>
 
         <!-- System Footer -->
-        <footer class="h-12 bg-white dark:bg-mod-black border-t border-mod-grey-3 dark:border-mod-grey-1 flex items-center justify-between px-10 shrink-0">
+        <footer class="h-12 bg-[var(--bg-page)] border-t border-mod-grey-3 dark:border-mod-grey-1 flex items-center justify-between px-10 shrink-0">
             <div class="flex gap-12 text-[9px] font-mono font-bold text-mod-grey-2 uppercase tracking-widest">
                 <span id="cursor-pos">Ln 1, Col 1</span>
                 <span id="file-status" class="text-mod-green">NODE_STABLE_READY</span>

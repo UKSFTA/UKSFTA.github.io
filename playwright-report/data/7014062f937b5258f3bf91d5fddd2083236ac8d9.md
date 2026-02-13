@@ -1,0 +1,293 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: Ministry of Defence
+        - generic [ref=e8]: Official Sensitive
+      - generic [ref=e9]:
+        - button "Toggle Interface" [ref=e10]
+        - generic [ref=e12]: UK Government
+    - navigation "Main navigation" [ref=e13]:
+      - generic [ref=e14]:
+        - link "Ministry of Defence UKSF Taskforce Alpha Joint Special Forces Command // Operational Node" [ref=e16] [cursor=pointer]:
+          - /url: /
+          - img "Ministry of Defence" [ref=e18]
+          - generic [ref=e19]:
+            - generic [ref=e20]: UKSF Taskforce Alpha
+            - generic [ref=e21]: Joint Special Forces Command // Operational Node
+        - generic [ref=e22]:
+          - link "SAS" [ref=e23] [cursor=pointer]:
+            - /url: /sas/
+          - link "SBS" [ref=e24] [cursor=pointer]:
+            - /url: /sbs/
+          - link "ASOB" [ref=e25] [cursor=pointer]:
+            - /url: /asob/
+          - link "SFSG" [ref=e26] [cursor=pointer]:
+            - /url: /sfsg/
+          - link "JSFAW" [ref=e27] [cursor=pointer]:
+            - /url: /jsfaw/
+          - link "RAMC" [ref=e28] [cursor=pointer]:
+            - /url: /ramc/
+          - link "Registry" [ref=e29] [cursor=pointer]:
+            - /url: /rsis/
+        - link "Secure Access" [ref=e31] [cursor=pointer]:
+          - /url: /registry/gate/
+    - paragraph [ref=e35]:
+      - strong [ref=e36]: ALPHA
+      - generic [ref=e37]: This is a new service – your feedback will help us to improve it.
+  - main [ref=e38]:
+    - generic [ref=e41]:
+      - generic [ref=e42]: United Kingdom Special Forces
+      - heading "Always A Little Further." [level=1] [ref=e43]:
+        - text: Always A Little
+        - text: Further.
+      - paragraph [ref=e44]: Taskforce Alpha coordinates elite special operations assets to maintain strategic readiness across all simulation theaters.
+      - generic [ref=e45]:
+        - link "Start Selection" [ref=e46] [cursor=pointer]:
+          - /url: /recruitment/
+        - link "Explore Capability" [ref=e47] [cursor=pointer]:
+          - /url: /sas/
+    - generic [ref=e50]:
+      - heading "Strategic Integration." [level=2] [ref=e52]:
+        - text: Strategic
+        - text: Integration.
+      - paragraph [ref=e54]: We adhere to official Ministry of Defence standards for tactical realism and simulation. Our training protocols ensure that all personnel operate with high-fidelity technical aptitude and institutional integrity.
+    - generic [ref=e56]:
+      - generic [ref=e57]:
+        - heading "Taskforce Units" [level=2] [ref=e58]
+        - generic [ref=e59]: Strategic_ORBAT_Registry
+      - generic [ref=e60]:
+        - link "22nd Special Air Service SAS 22nd Special Air Service" [ref=e61] [cursor=pointer]:
+          - /url: /sas/
+          - img "22nd Special Air Service" [ref=e63]
+          - generic [ref=e64]:
+            - heading "SAS" [level=3] [ref=e65]
+            - paragraph [ref=e66]: 22nd Special Air Service
+        - link "Special Boat Service SBS Special Boat Service" [ref=e67] [cursor=pointer]:
+          - /url: /sbs/
+          - img "Special Boat Service" [ref=e69]
+          - generic [ref=e70]:
+            - heading "SBS" [level=3] [ref=e71]
+            - paragraph [ref=e72]: Special Boat Service
+        - link "ASOB ASOB ASOB" [ref=e73] [cursor=pointer]:
+          - /url: /asob/
+          - img "ASOB" [ref=e75]
+          - generic [ref=e76]:
+            - heading "ASOB" [level=3] [ref=e77]
+            - paragraph [ref=e78]: ASOB
+        - link "Special Forces Support Group SFSG Special Forces Support Group" [ref=e79] [cursor=pointer]:
+          - /url: /sfsg/
+          - img "Special Forces Support Group" [ref=e81]
+          - generic [ref=e82]:
+            - heading "SFSG" [level=3] [ref=e83]
+            - paragraph [ref=e84]: Special Forces Support Group
+        - link "Joint Special Forces Aviation Wing JSFAW Joint Special Forces Aviation Wing" [ref=e85] [cursor=pointer]:
+          - /url: /jsfaw/
+          - img "Joint Special Forces Aviation Wing" [ref=e87]
+          - generic [ref=e88]:
+            - heading "JSFAW" [level=3] [ref=e89]
+            - paragraph [ref=e90]: Joint Special Forces Aviation Wing
+        - link "Royal Army Medical Corps RAMC Royal Army Medical Corps" [ref=e91] [cursor=pointer]:
+          - /url: /med-det/
+          - img "Royal Army Medical Corps" [ref=e93]
+          - generic [ref=e94]:
+            - heading "RAMC" [level=3] [ref=e95]
+            - paragraph [ref=e96]: Royal Army Medical Corps
+    - generic [ref=e98]:
+      - generic [ref=e99]:
+        - generic [ref=e100]:
+          - generic [ref=e103]: // Strategic Monitoring
+          - heading "AOR Control" [level=2] [ref=e104]
+        - generic [ref=e105]: STATION_ACTIVE
+      - generic [ref=e106]:
+        - generic [ref=e108]:
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]: // Live_Theater
+              - generic [ref=e114]: STATION_ACTIVE
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - generic [ref=e118]:
+                  - generic [ref=e119]: "// LOG_SERIAL: TF-677"
+                  - generic [ref=e120]: 12 FEB
+                - generic [ref=e123]: ENGAGED
+              - heading "Operation Retrieving Gold" [level=2] [ref=e124]
+              - generic [ref=e125]:
+                - generic [ref=e126]:
+                  - generic [ref=e127]: // Theater_AO
+                  - generic [ref=e128]: CHERNARUS REDUX
+                - generic [ref=e129]:
+                  - generic [ref=e130]: // Persistence
+                  - generic [ref=e131]: 29D IN THEATER
+            - generic [ref=e132]:
+              - generic [ref=e133]:
+                - generic [ref=e134]: // Telemetry
+                - generic [ref=e135]: 0/40 DEPLOYED
+              - generic [ref=e136]:
+                - generic:
+                  - generic: "-- DEPLOYED"
+                  - generic: "--:--:--"
+                - img [ref=e137]
+              - generic [ref=e155]:
+                - generic [ref=e156]:
+                  - button "24H" [ref=e157]
+                  - button "7D" [ref=e158]
+                - generic [ref=e159]: BM_SRV_722
+          - generic [ref=e160]:
+            - generic [ref=e162]: Network_Status
+            - generic [ref=e164]:
+              - generic [ref=e165]:
+                - generic [ref=e166]: "NET_ID: SYNCING..."
+                - generic [ref=e167]: "Signal: --%"
+              - generic [ref=e169]:
+                - generic [ref=e170]: "20"
+                - text: ACTIVE_NODES
+              - generic:
+                - img
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - img [ref=e173]
+            - generic:
+              - generic [ref=e185] [cursor=pointer]:
+                - img "TFHQ" [ref=e188]
+                - generic [ref=e189]: TFHQ
+              - generic [ref=e190] [cursor=pointer]:
+                - img "UKSF" [ref=e193]
+                - generic [ref=e194]: UKSF
+              - generic [ref=e195] [cursor=pointer]:
+                - img "Med Det HQ" [ref=e198]
+                - generic [ref=e199]: Med Det HQ
+              - generic [ref=e200] [cursor=pointer]:
+                - img "JSFAW HQ" [ref=e203]
+                - generic [ref=e204]: JSFAW HQ
+              - generic [ref=e205] [cursor=pointer]:
+                - img "SFSG Training Plt HQ" [ref=e208]
+                - generic [ref=e209]: SFSG Training Plt HQ
+              - generic [ref=e210] [cursor=pointer]:
+                - img "Intelligence Cell" [ref=e213]
+                - generic [ref=e214]: Intelligence Cell
+              - generic [ref=e215] [cursor=pointer]:
+                - img "SAS Troop HQ" [ref=e218]
+                - generic [ref=e219]: SAS Troop HQ
+              - generic [ref=e220] [cursor=pointer]:
+                - img "SBS Troop HQ" [ref=e223]
+                - generic [ref=e224]: SBS Troop HQ
+              - generic [ref=e225] [cursor=pointer]:
+                - img "SRR Troop HQ" [ref=e228]
+                - generic [ref=e229]: SRR Troop HQ
+              - generic [ref=e230] [cursor=pointer]:
+                - img "JSFAW Fixed Wing" [ref=e233]
+                - generic [ref=e234]: JSFAW Fixed Wing
+              - generic [ref=e235] [cursor=pointer]:
+                - img "JSFAW Rotary" [ref=e238]
+                - generic [ref=e239]: JSFAW Rotary
+              - generic [ref=e240] [cursor=pointer]:
+                - img "SAS Team Alpha" [ref=e243]
+                - generic [ref=e244]: SAS Team Alpha
+              - generic [ref=e245] [cursor=pointer]:
+                - img "SBS Team Alpha" [ref=e248]
+                - generic [ref=e249]: SBS Team Alpha
+              - generic [ref=e250] [cursor=pointer]:
+                - img "SRR Team Alpha" [ref=e253]
+                - generic [ref=e254]: SRR Team Alpha
+              - generic [ref=e255] [cursor=pointer]:
+                - img "SAS Team Bravo" [ref=e258]
+                - generic [ref=e259]: SAS Team Bravo
+              - generic [ref=e260] [cursor=pointer]:
+                - img "SBS Team Bravo" [ref=e263]
+                - generic [ref=e264]: SBS Team Bravo
+              - generic [ref=e265] [cursor=pointer]:
+                - img "SRR Team Bravo" [ref=e268]
+                - generic [ref=e269]: SRR Team Bravo
+              - generic [ref=e270] [cursor=pointer]:
+                - img "SAS Team Charlie" [ref=e273]
+                - generic [ref=e274]: SAS Team Charlie
+              - generic [ref=e275] [cursor=pointer]:
+                - img "SBS Team Charlie" [ref=e278]
+                - generic [ref=e279]: SBS Team Charlie
+              - generic [ref=e280] [cursor=pointer]:
+                - img "SRR Team Charlie" [ref=e283]
+                - generic [ref=e284]: SRR Team Charlie
+              - generic [ref=e285] [cursor=pointer]:
+                - img "SFSG Training Plt" [ref=e288]
+                - generic [ref=e289]: SFSG Training Plt
+              - generic [ref=e290] [cursor=pointer]:
+                - img "Medical Det" [ref=e293]
+                - generic [ref=e294]: Medical Det
+            - generic:
+              - generic:
+                - generic: // Strat_Asset_Mapping_V8.2
+                - generic: "Sync_Pulse: Nominal"
+          - generic [ref=e296]:
+            - generic [ref=e297]: // Node_JSFC_AOR
+            - generic [ref=e298]: "Sector: UK_SOUTH // GRID: 3976-5286"
+    - generic [ref=e300]:
+      - generic [ref=e301]:
+        - generic [ref=e302]: Personnel Acquisition
+        - heading "Strategic Enlistment" [level=2] [ref=e303]
+      - paragraph [ref=e304]: Candidates are evaluated based on integrity, maturity, and technical aptitude. Taskforce Alpha maintains a rigorous selection standard.
+      - link "Apply for Selection" [ref=e306] [cursor=pointer]:
+        - /url: /recruitment/
+    - contentinfo [ref=e307]:
+      - generic [ref=e308]:
+        - generic [ref=e309]:
+          - generic [ref=e310]:
+            - generic [ref=e311]:
+              - img "Ministry of Defence" [ref=e312]
+              - generic [ref=e313]:
+                - generic [ref=e314]: UKSFTA
+                - generic [ref=e315]: Joint Special Forces Command
+            - paragraph [ref=e316]: Always A Little Further // Joint simulation environment coordinated by Taskforce Alpha.
+          - generic [ref=e317]:
+            - heading "Operational Elements" [level=4] [ref=e318]
+            - navigation "Operational Units" [ref=e319]:
+              - link "SAS" [ref=e320] [cursor=pointer]:
+                - /url: /sas/
+              - link "SBS" [ref=e321] [cursor=pointer]:
+                - /url: /sbs/
+              - link "ASOB" [ref=e322] [cursor=pointer]:
+                - /url: /asob/
+              - link "SFSG" [ref=e323] [cursor=pointer]:
+                - /url: /sfsg/
+              - link "JSFAW" [ref=e324] [cursor=pointer]:
+                - /url: /jsfaw/
+              - link "RAMC" [ref=e325] [cursor=pointer]:
+                - /url: /ramc/
+              - link "Registry" [ref=e326] [cursor=pointer]:
+                - /url: /rsis/
+          - generic [ref=e327]:
+            - heading "Institutional Links" [level=4] [ref=e328]
+            - navigation "Resources" [ref=e329]:
+              - link "Selection Gateway" [ref=e330] [cursor=pointer]:
+                - /url: /recruitment/
+              - link "Role Directory" [ref=e331] [cursor=pointer]:
+                - /url: /roles/
+              - link "Deployment Logs" [ref=e332] [cursor=pointer]:
+                - /url: /registry/archives/
+          - generic [ref=e333]:
+            - heading "Signal Center" [level=4] [ref=e334]
+            - link "Open Uplink Community Signal Net (Discord)" [ref=e335] [cursor=pointer]:
+              - /url: https://discord.gg/2jNqa3zPRH
+              - generic [ref=e336]:
+                - generic [ref=e337]: Open Uplink
+                - img [ref=e338]
+              - paragraph [ref=e340]: Community Signal Net (Discord)
+        - generic [ref=e341]:
+          - generic [ref=e342]:
+            - generic [ref=e343]:
+              - img [ref=e344]
+              - generic [ref=e346]: Institutional Disclaimer
+            - paragraph [ref=e347]: Unofficial community project. No affiliation with the UK Ministry of Defence. All assets used for simulation purposes only.
+          - generic [ref=e348]: © 2026 UKSF Taskforce Alpha // Directorate
+  - generic [ref=e353]:
+    - generic [ref=e354]:
+      - generic [ref=e356]: // Privacy_Protocol
+      - heading "Cookie Authorization Required" [level=3] [ref=e358]
+      - paragraph [ref=e359]: We use data fragments (cookies) to ensure tactical synchronization, live intelligence feeds, and to analyze operational efficiency. All non-essential protocols are disabled by default.
+    - generic [ref=e360]:
+      - button "Configure" [ref=e361] [cursor=pointer]
+      - button "Accept All" [ref=e362] [cursor=pointer]
+```

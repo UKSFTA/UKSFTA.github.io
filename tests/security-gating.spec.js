@@ -9,6 +9,7 @@ test.describe('RSIS Security Gating & Authentication', () => {
     });
 
     await page.goto('/registry/orbat/');
+    await page.waitForTimeout(5000); // Wait for SVG/Data fragments
     
     // Should be redirected to /registry/gate/ per baseof.html logic
     await expect(page).toHaveURL(/\/registry\/gate\//);
@@ -34,6 +35,7 @@ test.describe('RSIS Security Gating & Authentication', () => {
 
     // Now navigate to ORBAT manually (or via button if we had one)
     await page.goto('/registry/orbat/');
+    await page.waitForTimeout(5000);
     await expect(page).toHaveURL(/\/registry\/orbat\//);
     await expect(page.locator('.workstation-container')).toBeVisible();
   });

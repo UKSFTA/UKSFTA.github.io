@@ -1,6 +1,69 @@
 {
-  "timestamp": 1770919887934,
+  "timestamp": 1770942711587,
   "today": [
+    {
+      "type": "dataPoint",
+      "attributes": {
+        "timestamp": "2026-02-13T00:00:00.000Z",
+        "max": 0,
+        "value": 0,
+        "min": 0
+      }
+    },
+    {
+      "type": "dataPoint",
+      "attributes": {
+        "timestamp": "2026-02-12T22:00:00.000Z",
+        "max": 0,
+        "value": 0,
+        "min": 0
+      }
+    },
+    {
+      "type": "dataPoint",
+      "attributes": {
+        "timestamp": "2026-02-12T21:30:00.000Z",
+        "max": 1,
+        "value": 0,
+        "min": 0
+      }
+    },
+    {
+      "type": "dataPoint",
+      "attributes": {
+        "timestamp": "2026-02-12T21:00:00.000Z",
+        "max": 1,
+        "value": 0,
+        "min": 0
+      }
+    },
+    {
+      "type": "dataPoint",
+      "attributes": {
+        "timestamp": "2026-02-12T20:30:00.000Z",
+        "max": 0,
+        "value": 0,
+        "min": 0
+      }
+    },
+    {
+      "type": "dataPoint",
+      "attributes": {
+        "timestamp": "2026-02-12T18:30:00.000Z",
+        "max": 0,
+        "value": 0,
+        "min": 0
+      }
+    },
+    {
+      "type": "dataPoint",
+      "attributes": {
+        "timestamp": "2026-02-12T18:00:00.000Z",
+        "max": 1,
+        "value": 0,
+        "min": 0
+      }
+    },
     {
       "type": "dataPoint",
       "attributes": {
@@ -81,11 +144,31 @@
         "value": 1,
         "min": 1
       }
+    }
+  ],
+  "week": [
+    {
+      "type": "dataPoint",
+      "attributes": {
+        "timestamp": "2026-02-12T23:00:00.000Z",
+        "max": 0,
+        "value": 0,
+        "min": 0
+      }
     },
     {
       "type": "dataPoint",
       "attributes": {
-        "timestamp": "2026-02-11T23:30:00.000Z",
+        "timestamp": "2026-02-12T22:00:00.000Z",
+        "max": 0,
+        "value": 0,
+        "min": 0
+      }
+    },
+    {
+      "type": "dataPoint",
+      "attributes": {
+        "timestamp": "2026-02-12T21:00:00.000Z",
         "max": 1,
         "value": 0,
         "min": 0
@@ -94,7 +177,7 @@
     {
       "type": "dataPoint",
       "attributes": {
-        "timestamp": "2026-02-11T23:00:00.000Z",
+        "timestamp": "2026-02-12T20:00:00.000Z",
         "max": 0,
         "value": 0,
         "min": 0
@@ -103,7 +186,7 @@
     {
       "type": "dataPoint",
       "attributes": {
-        "timestamp": "2026-02-11T22:00:00.000Z",
+        "timestamp": "2026-02-12T19:00:00.000Z",
         "max": 0,
         "value": 0,
         "min": 0
@@ -112,77 +195,12 @@
     {
       "type": "dataPoint",
       "attributes": {
-        "timestamp": "2026-02-11T21:30:00.000Z",
-        "max": 2,
-        "value": 1,
-        "min": 1
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-11T21:00:00.000Z",
-        "max": 17,
-        "value": 7,
-        "min": 1
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-11T20:30:00.000Z",
-        "max": 17,
-        "value": 17,
-        "min": 17
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-11T20:00:00.000Z",
-        "max": 17,
-        "value": 17,
-        "min": 17
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-11T19:30:00.000Z",
-        "max": 18,
-        "value": 17,
-        "min": 16
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-11T19:00:00.000Z",
-        "max": 17,
-        "value": 17,
-        "min": 16
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-11T18:30:00.000Z",
-        "max": 14,
-        "value": 10,
-        "min": 3
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-11T18:00:00.000Z",
-        "max": 5,
-        "value": 3,
+        "timestamp": "2026-02-12T18:00:00.000Z",
+        "max": 1,
+        "value": 0,
         "min": 0
       }
-    }
-  ],
-  "week": [
+    },
     {
       "type": "dataPoint",
       "attributes": {
@@ -672,34 +690,7 @@
     {
       "type": "dataPoint",
       "attributes": {
-        "timestamp": "2026-02-05T21:00:00.000Z",
-        "max": 0,
-        "value": 0,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-05T20:00:00.000Z",
-        "max": 3,
-        "value": 2,
-        "min": 0
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-05T19:00:00.000Z",
-        "max": 3,
-        "value": 3,
-        "min": 3
-      }
-    },
-    {
-      "type": "dataPoint",
-      "attributes": {
-        "timestamp": "2026-02-05T18:00:00.000Z",
+        "timestamp": "2026-02-06T00:00:00.000Z",
         "max": 0,
         "value": 0,
         "min": 0

@@ -30,7 +30,7 @@
             <!-- Branch: 22 SAS G2 -->
             {{ range $id := slice "sas" "sbs" "srr" "jsfaw" }}
             {{ $unit := index $.Site.Data.units $id }}
-            <a href="/registry/archive-covert/?unit={{ $id }}" class="group relative bg-white dark:bg-mod-black p-10 hover:bg-mod-grey-4 dark:hover:bg-white/5 transition-all overflow-hidden flex flex-col justify-between h-64">
+            <a href="/registry/archive-covert/?unit={{ $id }}" class="group relative bg-[var(--bg-page)] p-10 hover:bg-mod-grey-4 dark:hover:bg-white/5 transition-all overflow-hidden flex flex-col justify-between h-64">
                 <div class="space-y-6 relative z-10">
                     <img src="{{ $unit.icon | relURL }}" class="h-12 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 no-invert" alt="{{ $unit.name }}">
                     <div class="space-y-2">

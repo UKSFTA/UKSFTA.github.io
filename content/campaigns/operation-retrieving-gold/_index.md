@@ -3,7 +3,7 @@ title: "Operation Retrieving Gold "
 date: "2026-01-14 23:53:53"
 layout: "campaign"
 op_id: "TF-677"
-map: "Green Sea"
+map: "Chernarus Redux"
 status: "ACTIVE"
 image: "https://cdn.unitcommander.co.uk:9000/community/722/image.png1769635425047.png"
 ---
@@ -16,3 +16,5 @@ We are in unknown territory, we have little information about the area that surr
 
 Mission:
 UKSF has been tasked with reconnaissance of Chernarus, finding a suitable location to settle a permanent FOB and possibly retrieving old technology that is otherwise in working order, or can be restored to working order.
+
+Today, we got a little headsup that might help us.

@@ -8,7 +8,7 @@ languageCode: "en-gb"
 # theme: ["uksf-mod-theme"]
 
 # High-level configuration
-canonifyURLs: true
+canonifyURLs: false
 enableEmoji: true
 enableGitInfo: false
 enableRobotsTXT: true

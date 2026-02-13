@@ -27,6 +27,7 @@
     "tailwindcss": "^4.1.18"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.11.1",
     "@defencedigital/css-framework": "^2.80.3",
     "@moduk/frontend": "^2.0.31",
     "@playwright/test": "^1.58.2",

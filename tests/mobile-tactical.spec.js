@@ -1,8 +1,9 @@
 import { test, expect, devices } from '@playwright/test';
 
+// Use iPhone 13 as standard mobile reference
+test.use({ ...devices['iPhone 13'] });
+
 test.describe('Mobile Tactical Interface', () => {
-  // Use iPhone 13 as standard mobile reference
-  test.use({ ...devices['iPhone 13'] });
 
   test('Mobile Homepage should be responsive and fit screen', async ({ page }) => {
     await page.goto('/');

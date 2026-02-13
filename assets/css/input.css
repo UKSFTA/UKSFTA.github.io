@@ -1,23 +1,18 @@
 @import "tailwindcss";
 @import "@moduk/frontend/dist/css/index.css";
 
-@source "../../layouts/**/*.html";
-@source "../../content/**/*.md";
-@source "../../static/js/**/*.js";
-@source "../../assets/js/**/*.js";
-
-@plugin "@tailwindcss/typography";
-
 @theme {
+  --variant-dark: &:where(.dark, .dark *);
   --color-mod-black: #0b0c0c;
   --color-mod-grey-1: #323e48;
-  --color-mod-grey-2: #6f777b;
+  --color-mod-grey-2: var(--mod-grey-2-val);
   --color-mod-grey-3: #bfc1c3;
   --color-mod-grey-4: #f3f2f1;
+  --color-mod-dark-grey: #1d2329;
   --color-mod-blue: #003078;
-  --color-mod-green: #00703c;
-  --color-mod-red: #d4351c;
-  --color-mod-purple: #532a45;
+  --color-mod-green: var(--mod-green-val);
+  --color-mod-red: var(--mod-red-val);
+  --color-mod-purple: var(--mod-purple-val);
   --color-uksf-gold: #b3995d;
   
   --font-industrial: "Industrial Gothic Pro", "Arial Black", sans-serif;
@@ -26,25 +21,37 @@
 
 @layer base {
   :root {
-    --bg-page: #ffffff;
-    --text-main: #0b0c0c;
-    --text-secondary: #6f777b;
-    --border-main: #bfc1c3;
-    
+    /* DEFAULT TO TACTICAL DARK */
+    --mod-grey-2-val: #b1b4b6;
+    --mod-green-val: #00ff85;
+    --mod-red-val: #ff6150;
+    --mod-purple-val: #de8ec0;
+    --bg-page: #0b0c0c;
+    --text-main: #f3f2f1;
+    --text-secondary: #bfc1c3;
+    --border-main: #323e48;
+    --btn-text: #0b0c0c;
+
     --top-bar-height: 32px;
     --nav-height: 100px;
     --phase-banner-height: 50px;
     --total-header-height: calc(var(--top-bar-height) + var(--nav-height) + var(--phase-banner-height));
     
-    --brand-tint: var(--color-mod-purple);
+    --brand-tint: var(--mod-purple-val);
     --primary: var(--color-uksf-gold);
   }
 
-  .dark {
-    --bg-page: #0b0c0c;
-    --text-main: #f3f2f1;
-    --text-secondary: #bfc1c3;
-    --border-main: #323e48;
+  /* OPTIONAL LIGHT MODE */
+  .light {
+    --mod-grey-2-val: #505a5f;
+    --mod-green-val: #00703c;
+    --mod-red-val: #d4351c;
+    --mod-purple-val: #532a45;
+    --bg-page: #ffffff;
+    --text-main: #0b0c0c;
+    --text-secondary: #6f777b;
+    --border-main: #bfc1c3;
+    --btn-text: #ffffff;
   }
 
   [data-unit-skin="army"], .unit-sas, .unit-sfsg { --brand-tint: #153e35; }
@@ -132,7 +139,7 @@
 
   .btn-mod-primary {
     background-color: var(--brand-tint);
-    color: #ffffff !important;
+    color: var(--btn-text) !important;
     &:hover { filter: brightness(1.1); }
   }
 
@@ -154,7 +161,7 @@
     }
   }
 
-  .dark .card-mod:hover {
+  .dark .card-mod:hover, .card-mod:hover {
     background-color: rgba(29, 35, 41, 0.5);
   }
 
@@ -164,10 +171,6 @@
     height: 32px;
     display: flex;
     align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
     z-index: 3000;
   }
 

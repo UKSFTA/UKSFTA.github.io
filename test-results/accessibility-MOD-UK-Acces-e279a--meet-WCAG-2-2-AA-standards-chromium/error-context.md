@@ -1,0 +1,123 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: Ministry of Defence
+        - generic [ref=e8]: Official Sensitive
+      - generic [ref=e9]:
+        - button "Toggle Interface" [ref=e10]
+        - generic [ref=e12]: UK Government
+    - navigation "Main navigation" [ref=e13]:
+      - generic [ref=e14]:
+        - link "Ministry of Defence UKSF Taskforce Alpha Joint Special Forces Command // Operational Node" [ref=e16] [cursor=pointer]:
+          - /url: /
+          - img "Ministry of Defence" [ref=e18]
+          - generic [ref=e19]:
+            - generic [ref=e20]: UKSF Taskforce Alpha
+            - generic [ref=e21]: Joint Special Forces Command // Operational Node
+        - generic [ref=e22]:
+          - link "SAS" [ref=e23] [cursor=pointer]:
+            - /url: /sas/
+          - link "SBS" [ref=e24] [cursor=pointer]:
+            - /url: /sbs/
+          - link "ASOB" [ref=e25] [cursor=pointer]:
+            - /url: /asob/
+          - link "SFSG" [ref=e26] [cursor=pointer]:
+            - /url: /sfsg/
+          - link "JSFAW" [ref=e27] [cursor=pointer]:
+            - /url: /jsfaw/
+          - link "RAMC" [ref=e28] [cursor=pointer]:
+            - /url: /ramc/
+          - link "Registry" [ref=e29] [cursor=pointer]:
+            - /url: /rsis/
+        - link "Secure Access" [ref=e31] [cursor=pointer]:
+          - /url: /registry/gate/
+    - paragraph [ref=e35]:
+      - strong [ref=e36]: ALPHA
+      - generic [ref=e37]: This is a new service – your feedback will help us to improve it.
+  - main [ref=e38]:
+    - generic [ref=e42]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - img "TFA" [ref=e47]
+          - generic [ref=e49]:
+            - generic [ref=e50]: Defence Digital
+            - generic [ref=e51]: JSFC_Node_Alpha
+        - generic [ref=e52]:
+          - heading "Authorization" [level=2] [ref=e53]
+          - paragraph [ref=e54]: Restricted Access Service // RAS_v4.2
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: // INITIALIZING_SECURE_HANDSHAKE...
+          - paragraph [ref=e58]: "> ESTABLISHING_TUNNEL: STABLE"
+          - paragraph [ref=e59]: "> LOCAL_DTG: 00:51:32Z"
+          - paragraph [ref=e60]: "Please enter authorization key:"
+        - generic [ref=e62]:
+          - generic [ref=e63]: ">"
+          - textbox "SERIAL_NUMBER" [active] [ref=e64]
+      - generic [ref=e65]:
+        - generic [ref=e68]: Security Warning
+        - paragraph [ref=e69]: Unauthorized access to this node is prohibited under the Computer Misuse Act 1990. Persistent SIGINT monitoring is in effect. All activity is logged and attributed.
+  - contentinfo [ref=e70]:
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - img "Ministry of Defence" [ref=e75]
+            - generic [ref=e76]:
+              - generic [ref=e77]: UKSFTA
+              - generic [ref=e78]: Joint Special Forces Command
+          - paragraph [ref=e79]: Always A Little Further // Joint simulation environment coordinated by Taskforce Alpha.
+        - generic [ref=e80]:
+          - heading "Operational Elements" [level=4] [ref=e81]
+          - navigation "Operational Units" [ref=e82]:
+            - link "SAS" [ref=e83] [cursor=pointer]:
+              - /url: /sas/
+            - link "SBS" [ref=e84] [cursor=pointer]:
+              - /url: /sbs/
+            - link "ASOB" [ref=e85] [cursor=pointer]:
+              - /url: /asob/
+            - link "SFSG" [ref=e86] [cursor=pointer]:
+              - /url: /sfsg/
+            - link "JSFAW" [ref=e87] [cursor=pointer]:
+              - /url: /jsfaw/
+            - link "RAMC" [ref=e88] [cursor=pointer]:
+              - /url: /ramc/
+            - link "Registry" [ref=e89] [cursor=pointer]:
+              - /url: /rsis/
+        - generic [ref=e90]:
+          - heading "Institutional Links" [level=4] [ref=e91]
+          - navigation "Resources" [ref=e92]:
+            - link "Selection Gateway" [ref=e93] [cursor=pointer]:
+              - /url: /recruitment/
+            - link "Role Directory" [ref=e94] [cursor=pointer]:
+              - /url: /roles/
+            - link "Deployment Logs" [ref=e95] [cursor=pointer]:
+              - /url: /registry/archives/
+        - generic [ref=e96]:
+          - heading "Signal Center" [level=4] [ref=e97]
+          - link "Open Uplink Community Signal Net (Discord)" [ref=e98] [cursor=pointer]:
+            - /url: https://discord.gg/2jNqa3zPRH
+            - generic [ref=e99]:
+              - generic [ref=e100]: Open Uplink
+              - img [ref=e101]
+            - paragraph [ref=e103]: Community Signal Net (Discord)
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - generic [ref=e106]:
+            - img [ref=e107]
+            - generic [ref=e109]: Institutional Disclaimer
+          - paragraph [ref=e110]: Unofficial community project. No affiliation with the UK Ministry of Defence. All assets used for simulation purposes only.
+        - generic [ref=e111]: © 2026 UKSF Taskforce Alpha // Directorate
+  - generic [ref=e116]:
+    - generic [ref=e117]:
+      - generic [ref=e119]: // Privacy_Protocol
+      - heading "Cookie Authorization Required" [level=3] [ref=e121]
+      - paragraph [ref=e122]: We use data fragments (cookies) to ensure tactical synchronization, live intelligence feeds, and to analyze operational efficiency. All non-essential protocols are disabled by default.
+    - generic [ref=e123]:
+      - button "Configure" [ref=e124] [cursor=pointer]
+      - button "Accept All" [ref=e125] [cursor=pointer]
+```
