@@ -39,7 +39,15 @@ desktop.ini
 # Project Specific
 docs/
 data/external.json
+data/system_stats.json
+static/*.json
 assets/js/arbor.js
+themes/**/codeql-db/
+themes/**/*.sarif
+themes/**/package-lock.json
+themes/**/node_modules/
+themes/**/public/
+themes/**/resources/
 
 # Logs
 *.log

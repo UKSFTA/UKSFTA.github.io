@@ -1,12 +1,14 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Media & Asset Integrity: Zero Broken Images', () => {
-
   test('All critical unit icons and maps should load', async ({ page }) => {
     // Collect all image requests
     const brokenImages = [];
-    page.on('response', response => {
-      if (response.request().resourceType() === 'image' && response.status() >= 400) {
+    page.on('response', (response) => {
+      if (
+        response.request().resourceType() === 'image' &&
+        response.status() >= 400
+      ) {
         brokenImages.push(`${response.url()} (${response.status()})`);
       }
     });
@@ -20,14 +22,17 @@ test.describe('Media & Asset Integrity: Zero Broken Images', () => {
     await page.goto('/registry/orbat/');
     await page.waitForTimeout(1000);
 
-    expect(brokenImages, `Found broken images: ${brokenImages.join(', ')}`).toHaveLength(0);
+    expect(
+      brokenImages,
+      `Found broken images: ${brokenImages.join(', ')}`,
+    ).toHaveLength(0);
   });
 
   test('Tactical Map Asset verification', async ({ page }) => {
     await page.goto('/');
     const map = page.locator('.tactical-map-container');
     await expect(map).toBeVisible();
-    
+
     // Check bounding box to ensure it's not a collapsed 0x0 container
     const box = await map.boundingBox();
     expect(box.width).toBeGreaterThan(0);
@@ -38,8 +43,8 @@ test.describe('Media & Asset Integrity: Zero Broken Images', () => {
     await page.goto('/');
     const logo = page.locator('nav img[alt="UKSF Taskforce Alpha"]');
     await expect(logo).toBeVisible();
-    
-    const naturalWidth = await logo.evaluate(img => img.naturalWidth);
+
+    const naturalWidth = await logo.evaluate((img) => img.naturalWidth);
     expect(naturalWidth).toBeGreaterThan(0);
   });
 });
