@@ -1,14 +1,17 @@
-const fs = require('node:fs');
-const path = require('node:path');
-const https = require('node:https');
-const { GameDig: Gamedig } = require('gamedig');
-const _ucApi = require('./lib/uc_api');
-require('dotenv').config();
+import fs from 'node:fs';
+import path from 'node:path';
+import https from 'node:https';
+import { fileURLToPath } from 'node:url';
+import { GameDig as Gamedig } from 'gamedig';
+import 'dotenv/config';
 
 /**
  * UKSFTA External Data Fetcher v3.0
  * Redesigned for uksf-mod-theme with Sharding and Dynamic Content Generation
  */
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const config = {
   bmKey: (process.env.BATTLEMETRICS_API_KEY || '').trim(),
