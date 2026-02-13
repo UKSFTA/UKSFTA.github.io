@@ -26,9 +26,9 @@
         }
     </style>
     {{ end }}
-    {{ if site.Params.maintenance_mode }}
+    {{ if and site.Params.maintenance_mode (not hugo.IsProduction) }}
     <script>
-        // Maintenance Mode Hard Gate
+        // Maintenance Mode Hard Gate (Non-Production Only)
         if (window.location.pathname !== '/maintenance/' && localStorage.getItem('dev_access') !== 'granted') {
             window.location.href = '/maintenance/';
         }

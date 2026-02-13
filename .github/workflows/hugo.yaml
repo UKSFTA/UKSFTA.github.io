@@ -68,7 +68,7 @@ jobs:
 
       - name: Build
         run: |
-          hugo --gc --minify
+          hugo --environment production --gc --minify
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
