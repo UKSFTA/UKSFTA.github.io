@@ -34,32 +34,28 @@ class UnitCommanderAPI {
    */
   async saveLink(discordId, ucProfileId) {
     console.log(`[SUPABASE] Linking Discord:${discordId} to UC:${ucProfileId}`);
-    const { error } = await supabase
-      .from('personnel')
-      .upsert(
-        {
-          discord_id: discordId,
-          uc_profile_id: ucProfileId,
-          updated_at: new Date().toISOString(),
-        },
-        { onConflict: 'discord_id' },
-      );
+    const { error } = await supabase.from('personnel').upsert(
+      {
+        discord_id: discordId,
+        uc_profile_id: ucProfileId,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: 'discord_id' },
+    );
 
     if (error) console.error('[SUPABASE] saveLink Error:', error.message);
   }
 
   async saveSteamLink(discordId, steamId) {
     console.log(`[SUPABASE] Linking Discord:${discordId} to Steam:${steamId}`);
-    const { error } = await supabase
-      .from('personnel')
-      .upsert(
-        {
-          discord_id: discordId,
-          steam_id: steamId,
-          updated_at: new Date().toISOString(),
-        },
-        { onConflict: 'discord_id' },
-      );
+    const { error } = await supabase.from('personnel').upsert(
+      {
+        discord_id: discordId,
+        steam_id: steamId,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: 'discord_id' },
+    );
 
     if (error) console.error('[SUPABASE] saveSteamLink Error:', error.message);
   }

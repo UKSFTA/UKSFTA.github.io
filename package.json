@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "UKSF Taskforce Alpha Portal",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "fetch-data": "node scripts/fetch-external-data.js",
     "start": "hugo server --disableFastRender -D",
@@ -12,8 +12,8 @@
     "watch:intel": "node -e \"setInterval(() => { try { require('./scripts/fetch-external-data.js') } catch(e){} }, 60000);\"",
     "service:rcon": "node themes/uksf-mod-theme/services/rcon-bridge.js",
     "service:registry": "node themes/uksf-mod-theme/services/registry-service.js",
-    "lint": "biome check .",
-    "format": "biome format --write .",
+    "lint": "biome check assets/js scripts",
+    "format": "biome format --write assets/js scripts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

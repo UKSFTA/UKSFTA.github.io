@@ -34,8 +34,11 @@
       window.globalTelemetry = data;
       updateBattlemetricsUI();
     } catch (e) {
-      console.warn('[JSFC_INTEL] Telemetry shard warning (non-fatal):', e.message);
-      window.globalTelemetry = {}; 
+      console.warn(
+        '[JSFC_INTEL] Telemetry shard warning (non-fatal):',
+        e.message,
+      );
+      window.globalTelemetry = {};
       updateBattlemetricsUI();
     }
   }
@@ -45,24 +48,24 @@
     if (!container || !uc.campaigns) return;
 
     try {
-        const logs = [...uc.campaigns]
+      const logs = [...uc.campaigns]
         .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
         .slice(0, 4);
 
-        container.innerHTML = logs
+      container.innerHTML = logs
         .map((op) => {
-            const date = new Date(op.created_at)
+          const date = new Date(op.created_at)
             .toLocaleDateString('en-GB', {
-                day: '2-digit',
-                month: 'short',
-                year: '2-digit',
+              day: '2-digit',
+              month: 'short',
+              year: '2-digit',
             })
             .toUpperCase();
-            const slug = op.campaignName
+          const slug = op.campaignName
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, '-')
             .replace(/(^-|-$)/g, '');
-            return `
+          return `
                     <a href="/campaigns/${slug}" class="group flex items-center justify-between p-4 bg-white/[0.01] border border-white/5 hover:border-uksf-gold/30 transition-all no-underline overflow-hidden relative">
                         <div class="absolute top-0 left-0 w-1 h-full bg-neutral-800 group-hover:bg-uksf-gold transition-colors"></div>
                         <div class="flex items-center gap-6">
@@ -80,7 +83,9 @@
                 `;
         })
         .join('');
-    } catch (err) { console.error("UI_LOG_UPDATE_FAILURE", err); }
+    } catch (err) {
+      console.error('UI_LOG_UPDATE_FAILURE', err);
+    }
   }
 
   window.openOperationModal = (opId) => {
@@ -99,17 +104,18 @@
     const map = document.getElementById('modal-op-map');
 
     if (title) title.innerText = op.campaignName;
-    if (date) date.innerText = `COMMENCED: ${new Date(op.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}`;
+    if (date)
+      date.innerText = `COMMENCED: ${new Date(op.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}`;
     if (brief) brief.innerText = op.brief || 'NO_DATA_RECOVERED';
     if (map) map.innerText = `THEATER: ${op.map || 'CLASSIFIED'}`;
 
     if (img) {
-        if (op.image && op.image.path) {
-            img.src = op.image.path;
-            img.classList.remove('hidden');
-        } else {
-            img.classList.add('hidden');
-        }
+      if (op.image && op.image.path) {
+        img.src = op.image.path;
+        img.classList.remove('hidden');
+      } else {
+        img.classList.add('hidden');
+      }
     }
 
     modal.classList.remove('hidden');
@@ -135,17 +141,23 @@
     const maxCapacity = source ? source.maxPlayers || 40 : 40;
 
     if (statusText) {
-        if (source && source.status === 'online') {
-            statusText.innerText = 'STATION_ACTIVE';
-            statusText.className = 'text-[8px] font-black text-mod-green tracking-widest uppercase font-mono';
-            if (statusIndicator) statusIndicator.className = `w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]`;
-            if (playerCount) playerCount.innerText = `${source.players}/${maxCapacity} DEPLOYED`;
-        } else {
-            statusText.innerText = 'LINK_SEVERED';
-            statusText.className = 'text-[8px] font-black text-red-600 tracking-widest uppercase font-mono';
-            if (statusIndicator) statusIndicator.className = 'w-1.5 h-1.5 bg-red-600 rounded-full opacity-40';
-            if (playerCount) playerCount.innerText = 'OFFLINE';
-        }
+      if (source && source.status === 'online') {
+        statusText.innerText = 'STATION_ACTIVE';
+        statusText.className =
+          'text-[8px] font-black text-mod-green tracking-widest uppercase font-mono';
+        if (statusIndicator)
+          statusIndicator.className = `w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]`;
+        if (playerCount)
+          playerCount.innerText = `${source.players}/${maxCapacity} DEPLOYED`;
+      } else {
+        statusText.innerText = 'LINK_SEVERED';
+        statusText.className =
+          'text-[8px] font-black text-red-600 tracking-widest uppercase font-mono';
+        if (statusIndicator)
+          statusIndicator.className =
+            'w-1.5 h-1.5 bg-red-600 rounded-full opacity-40';
+        if (playerCount) playerCount.innerText = 'OFFLINE';
+      }
     }
 
     const containers = document.querySelectorAll('#battlemetrics-graph');
@@ -169,7 +181,9 @@
           });
         }
 
-        containers.forEach((c) => renderBattlemetricsGraph(dataPoints, c, maxCapacity));
+        containers.forEach((c) =>
+          renderBattlemetricsGraph(dataPoints, c, maxCapacity),
+        );
       }
     }
   }
@@ -189,7 +203,11 @@
     const range = window.currentBattlemetricsRange || 'today';
     const nowTime = Date.now();
     const lookback =
-      range === 'month' ? 30 * 24 * 3600000 : range === 'week' ? 7 * 24 * 3600000 : 24 * 3600000;
+      range === 'month'
+        ? 30 * 24 * 3600000
+        : range === 'week'
+          ? 7 * 24 * 3600000
+          : 24 * 3600000;
     const startTime = nowTime - lookback;
     const endTime = nowTime;
     const timeRange = endTime - startTime;
@@ -229,7 +247,12 @@
     let areaPath = `M ${firstX} ${height} L ${firstX} ${firstY}`;
 
     const baselineY = getY(0);
-    const maxGap = range === 'month' ? 12 * 3600000 : range === 'week' ? 3 * 3600000 : 65 * 60000;
+    const maxGap =
+      range === 'month'
+        ? 12 * 3600000
+        : range === 'week'
+          ? 3 * 3600000
+          : 65 * 60000;
 
     points.forEach((p, index) => {
       const curX = getX(p.t);
@@ -286,7 +309,13 @@
     t.style.opacity = '1';
     if (vEl) vEl.innerText = `${val} DEPLOYED`;
     const date = new Date(time);
-    if (tEl) tEl.innerText = isNaN(date) ? 'LINK_ERROR' : date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + 'Z';
+    if (tEl)
+      tEl.innerText = isNaN(date)
+        ? 'LINK_ERROR'
+        : date.toLocaleTimeString('en-GB', {
+            hour: '2-digit',
+            minute: '2-digit',
+          }) + 'Z';
   };
 
   window.hideGraphTooltip = () => {
@@ -306,7 +335,16 @@
       const events = (uc.campaignEvents && uc.campaignEvents[op.id]) || [];
       let opTime = new Date(op.updated_at || op.created_at || 0).getTime();
       if (events.length > 0) {
-        const eventTimes = events.map((e) => new Date(e.startDate || e.startTime || e.event_date || e.dateTime || e.updated_at || e.created_at).getTime());
+        const eventTimes = events.map((e) =>
+          new Date(
+            e.startDate ||
+              e.startTime ||
+              e.event_date ||
+              e.dateTime ||
+              e.updated_at ||
+              e.created_at,
+          ).getTime(),
+        );
         opTime = Math.max(opTime, ...eventTimes);
       }
       if (opTime > absoluteLatestTime) {
@@ -317,10 +355,22 @@
 
     if (uc.standalone) {
       uc.standalone.forEach((ev) => {
-        const evTime = new Date(ev.startDate || ev.startTime || ev.event_date || ev.dateTime || ev.updated_at || ev.created_at).getTime();
+        const evTime = new Date(
+          ev.startDate ||
+            ev.startTime ||
+            ev.event_date ||
+            ev.dateTime ||
+            ev.updated_at ||
+            ev.created_at,
+        ).getTime();
         if (evTime > absoluteLatestTime) {
           absoluteLatestTime = evTime;
-          bestOp = { ...ev, isStandalone: true, campaignName: ev.title || ev.eventName, status: 'ACTIVE' };
+          bestOp = {
+            ...ev,
+            isStandalone: true,
+            campaignName: ev.title || ev.eventName,
+            status: 'ACTIVE',
+          };
         }
       });
     }
@@ -331,10 +381,16 @@
   function renderUnitCommanderHTML(latestOp) {
     const createdDate = new Date(latestOp.created_at);
     const today = new Date();
-    const durationStr = Math.floor(Math.abs(today - createdDate) / (1000 * 60 * 60 * 24)) + 'D';
+    const durationStr =
+      Math.floor(Math.abs(today - createdDate) / (1000 * 60 * 60 * 24)) + 'D';
     const opTitle = latestOp.campaignName || latestOp.title || 'OP_UNNAMED';
-    const cleanLocation = (latestOp.map || latestOp.location || 'CLASSIFIED').split('(')[0].trim().toUpperCase();
-    const dateStr = new Date(latestOp.updated_at || latestOp.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }).toUpperCase();
+    const cleanLocation = (latestOp.map || latestOp.location || 'CLASSIFIED')
+      .split('(')[0]
+      .trim()
+      .toUpperCase();
+    const dateStr = new Date(latestOp.updated_at || latestOp.created_at)
+      .toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })
+      .toUpperCase();
 
     const html = `
             <div class="p-6 border border-[#bfc1c3] dark:border-[#323e48] bg-white dark:bg-white/5 relative group overflow-hidden transition-all duration-300">
@@ -361,20 +417,28 @@
                 </div>
             </div>
         `;
-    document.querySelectorAll('.live-ops-feed-container').forEach((f) => (f.innerHTML = html));
+    document
+      .querySelectorAll('.live-ops-feed-container')
+      .forEach((f) => (f.innerHTML = html));
   }
 
   async function updateDiscordStatus(serverId) {
     if (!serverId) return;
     try {
-      const response = await fetch(`https://discord.com/api/guilds/${serverId}/widget.json`);
+      const response = await fetch(
+        `https://discord.com/api/guilds/${serverId}/widget.json`,
+      );
       const data = await response.json();
       if (data && data.presence_count !== undefined) {
         const countStr = data.presence_count.toString().padStart(2, '0');
-        document.querySelectorAll('.discord-online-count').forEach((el) => { el.innerText = countStr; });
+        document.querySelectorAll('.discord-online-count').forEach((el) => {
+          el.innerText = countStr;
+        });
       }
     } catch (error) {
-      document.querySelectorAll('.discord-online-count').forEach((el) => { el.innerText = '??'; });
+      document.querySelectorAll('.discord-online-count').forEach((el) => {
+        el.innerText = '??';
+      });
     }
   }
 
@@ -392,7 +456,9 @@
     setInterval(() => updateDiscordStatus(serverId), 60000);
     setInterval(updateClock, 1000);
     updateClock();
-    window.addEventListener('resize', () => { if (window.globalTelemetry) updateBattlemetricsUI(); });
+    window.addEventListener('resize', () => {
+      if (window.globalTelemetry) updateBattlemetricsUI();
+    });
   };
 
   window.showToast = (message, type = 'info') => {
@@ -400,7 +466,8 @@
     if (!container) {
       container = document.createElement('div');
       container.id = 'toast-container';
-      container.className = 'fixed top-32 right-8 z-[9999] flex flex-col items-end space-y-3 pointer-events-none';
+      container.className =
+        'fixed top-32 right-8 z-[9999] flex flex-col items-end space-y-3 pointer-events-none';
       document.body.appendChild(container);
     }
     const toast = document.createElement('div');

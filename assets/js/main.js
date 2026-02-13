@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.toggleTheme = () => {
     const html = document.documentElement;
     const isDark = html.classList.contains('dark');
-    
+
     if (isDark) {
       html.classList.remove('dark');
       html.classList.add('light');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       html.classList.add('dark');
       localStorage.setItem('moduk_theme', 'dark');
     }
-    
+
     console.log(
       '[MODUK_THEME] Setting toggled. New State:',
       html.classList.contains('dark') ? 'DARK' : 'LIGHT',
