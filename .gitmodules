@@ -3,4 +3,4 @@
 	url = https://github.com/co-analysis/govukhugo.git
 [submodule "themes/uksf-mod-theme"]
 	path = themes/uksf-mod-theme
-	url = https://github.com/UKSFTA/uksf-mod-theme.git
+	url = https://github.com/matt/uksf-mod-theme.git
