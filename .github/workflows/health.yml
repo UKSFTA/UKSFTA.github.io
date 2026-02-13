@@ -22,4 +22,4 @@ jobs:
       - name: Check Runner Health
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node themes/uksf-mod-theme/scripts/check-runners.js
+        run: node scripts/check-runners.js

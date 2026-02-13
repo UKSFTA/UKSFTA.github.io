@@ -10,8 +10,8 @@
     "dev": "concurrently -n \"HUGO,INTEL,RCON,REGISTRY\" -c \"blue,yellow,red,green\" \"npm run start\" \"npm run watch:intel\" \"npm run service:rcon\" \"npm run service:registry\"",
     "build": "npm run fetch-data && node scripts/generate-stats.js && hugo --minify",
     "watch:intel": "node -e \"setInterval(() => { try { require('./scripts/fetch-external-data.js') } catch(e){} }, 60000);\"",
-    "service:rcon": "node themes/uksf-mod-theme/services/rcon-bridge.js",
-    "service:registry": "node themes/uksf-mod-theme/services/registry-service.js",
+    "service:rcon": "node services/rcon-bridge.js",
+    "service:registry": "node services/registry-service.js",
     "lint": "biome check assets/js scripts",
     "format": "biome format --write assets/js scripts",
     "test": "echo \"Error: no test specified\" && exit 1"
