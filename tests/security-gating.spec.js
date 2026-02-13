@@ -1,8 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('RSIS Security Gating & Authentication', () => {
-
-  test('Unauthenticated users should be redirected to Gate from ORBAT', async ({ page }) => {
+  test('Unauthenticated users should be redirected to Gate from ORBAT', async ({
+    page,
+  }) => {
     // Clear any existing auth
     await page.addInitScript(() => {
       window.localStorage.removeItem('uksf_auth');
@@ -10,13 +11,15 @@ test.describe('RSIS Security Gating & Authentication', () => {
 
     await page.goto('/registry/orbat/');
     await page.waitForTimeout(5000); // Wait for SVG/Data fragments
-    
+
     // Should be redirected to /registry/gate/ per baseof.html logic
     await expect(page).toHaveURL(/\/registry\/gate\//);
     await expect(page.locator('h1')).toContainText('Authorization');
   });
 
-  test('Unauthenticated users should be redirected to Gate from Console', async ({ page }) => {
+  test('Unauthenticated users should be redirected to Gate from Console', async ({
+    page,
+  }) => {
     await page.addInitScript(() => {
       window.localStorage.removeItem('uksf_auth');
     });
@@ -25,9 +28,11 @@ test.describe('RSIS Security Gating & Authentication', () => {
     await expect(page).toHaveURL(/\/registry\/gate\//);
   });
 
-  test('Successful authentication should unlock the workstation', async ({ page }) => {
+  test('Successful authentication should unlock the workstation', async ({
+    page,
+  }) => {
     await page.goto('/registry/gate/');
-    
+
     // Simulate manual auth injection (simulating the CTF result)
     await page.evaluate(() => {
       localStorage.setItem('uksf_auth', 'authorized');

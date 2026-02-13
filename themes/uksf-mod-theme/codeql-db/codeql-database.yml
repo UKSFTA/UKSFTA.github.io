@@ -1,0 +1,13 @@
+---
+sourceLocationPrefix: /home/matt/Development/themes/uksf-mod-theme
+baselineLinesOfCode: 2716
+unicodeNewlines: true
+columnKind: utf16
+primaryLanguage: javascript
+creationMetadata:
+  sha: a6a204ce802861d39ec5512e9a0b4bf447c1f29c
+  cliVersion: 2.23.8
+  creationTime: 2026-02-02T13:34:22.506503167Z
+overlayBaseDatabase: false
+overlayDatabase: false
+finalised: true

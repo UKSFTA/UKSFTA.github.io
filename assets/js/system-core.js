@@ -88,24 +88,25 @@
     }
   }
 
-  window.openOperationModal = (opId) => {
-    const uc = window.globalIntel ? window.globalIntel.unitcommander : null;
-    if (!uc || !uc.campaigns) return;
-    const op = uc.campaigns.find((c) => c.id === opId);
-    if (!op) return;
-
-    const modal = document.getElementById('operation-modal');
-    if (!modal) return;
-
-    const img = document.getElementById('modal-op-image');
+  function updateModalContent(op) {
     const title = document.getElementById('modal-op-title');
     const date = document.getElementById('modal-op-date');
     const brief = document.getElementById('modal-op-brief');
     const map = document.getElementById('modal-op-map');
+    const img = document.getElementById('modal-op-image');
 
     if (title) title.innerText = op.campaignName;
-    if (date)
-      date.innerText = `COMMENCED: ${new Date(op.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}`;
+    if (date) {
+      const formattedDate = new Date(op.created_at).toLocaleDateString(
+        'en-GB',
+        {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        },
+      );
+      date.innerText = `COMMENCED: ${formattedDate.toUpperCase()}`;
+    }
     if (brief) brief.innerText = op.brief || 'NO_DATA_RECOVERED';
     if (map) map.innerText = `THEATER: ${op.map || 'CLASSIFIED'}`;
 
@@ -117,6 +118,18 @@
         img.classList.add('hidden');
       }
     }
+  }
+
+  window.openOperationModal = (opId) => {
+    const uc = window.globalIntel ? window.globalIntel.unitcommander : null;
+    if (!uc || !uc.campaigns) return;
+    const op = uc.campaigns.find((c) => c.id === opId);
+    if (!op) return;
+
+    const modal = document.getElementById('operation-modal');
+    if (!modal) return;
+
+    updateModalContent(op);
 
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
@@ -132,33 +145,41 @@
     if (e.key === 'Escape') window.closeOperationModal();
   });
 
-  function updateBattlemetricsUI() {
+  function updateStatusIndicator(source, maxCapacity) {
     const statusText = document.getElementById('status-text');
     const statusIndicator = document.getElementById('status-indicator');
     const playerCount = document.getElementById('player-count');
 
+    if (!statusText) return;
+
+    if (source && source.status === 'online') {
+      statusText.innerText = 'STATION_ACTIVE';
+      statusText.className =
+        'text-[8px] font-black text-mod-green tracking-widest uppercase font-mono';
+      if (statusIndicator) {
+        statusIndicator.className =
+          'w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]';
+      }
+      if (playerCount) {
+        playerCount.innerText = `${source.players}/${maxCapacity} DEPLOYED`;
+      }
+    } else {
+      statusText.innerText = 'LINK_SEVERED';
+      statusText.className =
+        'text-[8px] font-black text-red-600 tracking-widest uppercase font-mono';
+      if (statusIndicator) {
+        statusIndicator.className =
+          'w-1.5 h-1.5 bg-red-600 rounded-full opacity-40';
+      }
+      if (playerCount) playerCount.innerText = 'OFFLINE';
+    }
+  }
+
+  function updateBattlemetricsUI() {
     const source = window.globalIntel ? window.globalIntel.arma : null;
     const maxCapacity = source ? source.maxPlayers || 40 : 40;
 
-    if (statusText) {
-      if (source && source.status === 'online') {
-        statusText.innerText = 'STATION_ACTIVE';
-        statusText.className =
-          'text-[8px] font-black text-mod-green tracking-widest uppercase font-mono';
-        if (statusIndicator)
-          statusIndicator.className = `w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]`;
-        if (playerCount)
-          playerCount.innerText = `${source.players}/${maxCapacity} DEPLOYED`;
-      } else {
-        statusText.innerText = 'LINK_SEVERED';
-        statusText.className =
-          'text-[8px] font-black text-red-600 tracking-widest uppercase font-mono';
-        if (statusIndicator)
-          statusIndicator.className =
-            'w-1.5 h-1.5 bg-red-600 rounded-full opacity-40';
-        if (playerCount) playerCount.innerText = 'OFFLINE';
-      }
-    }
+    updateStatusIndicator(source, maxCapacity);
 
     const containers = document.querySelectorAll('#battlemetrics-graph');
     if (containers.length > 0) {
@@ -188,29 +209,15 @@
     }
   }
 
-  function renderBattlemetricsGraph(data, container, maxVal = 40) {
-    if (!container) return;
+  function getGraphData(data, startTime, safeMax, height, width, timeRange) {
+    const points = data
+      .map((d) => ({
+        v: d.attributes.value === 255 ? 0 : d.attributes.value,
+        t: d.attributes.timestamp,
+      }))
+      .filter((p) => p.v < 500 && new Date(p.t).getTime() >= startTime);
 
-    const width = container.clientWidth;
-    const height = container.clientHeight || 100;
-    const safeMax = Math.max(maxVal, 10);
-
-    if (width === 0) {
-      // Avoid infinite recursion if container is hidden
-      return;
-    }
-
-    const range = window.currentBattlemetricsRange || 'today';
-    const nowTime = Date.now();
-    const lookback =
-      range === 'month'
-        ? 30 * 24 * 3600000
-        : range === 'week'
-          ? 7 * 24 * 3600000
-          : 24 * 3600000;
-    const startTime = nowTime - lookback;
-    const endTime = nowTime;
-    const timeRange = endTime - startTime;
+    points.sort((a, b) => new Date(a.t) - new Date(b.t));
 
     const getX = (t) => {
       if (timeRange === 0) return 0;
@@ -223,28 +230,42 @@
       return Math.max(2, Math.min(height - 2, y + 2));
     };
 
-    let points = [];
-    if (data && data.length > 0) {
-      points = data
-        .map((d) => ({
-          v: d.attributes.value === 255 ? 0 : d.attributes.value,
-          t: d.attributes.timestamp,
-        }))
-        .filter((p) => p.v < 500 && new Date(p.t).getTime() >= startTime);
+    return { points, getX, getY };
+  }
 
-      points.sort((a, b) => new Date(a.t) - new Date(b.t));
-    }
+  function renderBattlemetricsGraph(data, container, maxVal = 40) {
+    if (!container) return;
+
+    const width = container.clientWidth;
+    const height = container.clientHeight || 100;
+    if (width === 0) return;
+
+    const range = window.currentBattlemetricsRange || 'today';
+    const nowTime = Date.now();
+    const lookback =
+      range === 'month'
+        ? 30 * 24 * 3600000
+        : range === 'week'
+          ? 7 * 24 * 3600000
+          : 24 * 3600000;
+    const startTime = nowTime - lookback;
+    const timeRange = nowTime - startTime;
+    const safeMax = Math.max(maxVal, 10);
+
+    const { points, getX, getY } = getGraphData(
+      data,
+      startTime,
+      safeMax,
+      height,
+      width,
+      timeRange,
+    );
 
     if (points.length === 0) {
-      container.innerHTML = `<div class="h-full flex items-center justify-center font-mono text-[8px] text-neutral-800 uppercase tracking-[0.4em] ">No_Telemetry_Detected</div>`;
+      container.innerHTML =
+        '<div class="h-full flex items-center justify-center font-mono text-[8px] text-neutral-800 uppercase tracking-[0.4em] ">No_Telemetry_Detected</div>';
       return;
     }
-
-    const firstX = getX(points[0].t);
-    const firstY = getY(points[0].v);
-
-    let pathData = `M ${firstX} ${firstY}`;
-    let areaPath = `M ${firstX} ${height} L ${firstX} ${firstY}`;
 
     const baselineY = getY(0);
     const maxGap =
@@ -254,32 +275,29 @@
           ? 3 * 3600000
           : 65 * 60000;
 
+    let pathData = `M ${getX(points[0].t)} ${getY(points[0].v)}`;
+    let areaPath = `M ${getX(points[0].t)} ${height} L ${getX(points[0].t)} ${getY(points[0].v)}`;
+
     points.forEach((p, index) => {
+      if (index === 0) return;
       const curX = getX(p.t);
       const curY = getY(p.v);
+      const prevP = points[index - 1];
 
-      if (index > 0) {
-        const prevP = points[index - 1];
-        const timeDiff = new Date(p.t).getTime() - new Date(prevP.t).getTime();
-
-        if (timeDiff > maxGap) {
-          pathData += ` L ${getX(prevP.t)} ${baselineY} M ${getX(p.t)} ${baselineY} L ${curX} ${curY}`;
-          areaPath += ` L ${getX(prevP.t)} ${baselineY} L ${getX(p.t)} ${baselineY} L ${curX} ${curY}`;
-        } else {
-          pathData += ` L ${curX} ${curY}`;
-          areaPath += ` L ${curX} ${curY}`;
-        }
+      if (new Date(p.t).getTime() - new Date(prevP.t).getTime() > maxGap) {
+        pathData += ` L ${getX(prevP.t)} ${baselineY} M ${getX(p.t)} ${baselineY} L ${curX} ${curY}`;
+        areaPath += ` L ${getX(prevP.t)} ${baselineY} L ${getX(p.t)} ${baselineY} L ${curX} ${curY}`;
+      } else {
+        pathData += ` L ${curX} ${curY}`;
+        areaPath += ` L ${curX} ${curY}`;
       }
     });
 
     const lastP = points[points.length - 1];
-    const lastY = getY(lastP.v);
-
-    if (endTime - new Date(lastP.t).getTime() > 10 * 60000) {
-      pathData += ` L ${width} ${lastY}`;
-      areaPath += ` L ${width} ${lastY}`;
+    if (nowTime - new Date(lastP.t).getTime() > 10 * 60000) {
+      pathData += ` L ${width} ${getY(lastP.v)}`;
+      areaPath += ` L ${width} ${getY(lastP.v)}`;
     }
-
     areaPath += ` L ${width} ${height} Z`;
 
     container.innerHTML = `

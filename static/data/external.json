@@ -1,0 +1,14 @@
+{
+  "steam": {
+    "current_players": 12,
+    "max_players": 100,
+    "server_name": "UKSF Official | Milsim",
+    "map": "Chernarus",
+    "status": "ACTIVE"
+  },
+  "battlemetrics": {
+    "rank": 420,
+    "uptime": "99.9%",
+    "activity_30d": [10, 15, 8, 12, 25, 30, 22]
+  }
+}

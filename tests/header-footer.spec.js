@@ -1,7 +1,6 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Global Infrastructure: Header, Banner & Footer', () => {
-  
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(() => {
       window.localStorage.setItem('dev_access', 'granted');
@@ -9,23 +8,29 @@ test.describe('Global Infrastructure: Header, Banner & Footer', () => {
     await page.goto('/');
   });
 
-  test('Superior Rule (HMG Standard) should be perfectly rendered', async ({ page }) => {
+  test('Superior Rule (HMG Standard) should be perfectly rendered', async ({
+    page,
+  }) => {
     const superiorRule = page.locator('.superior-rule');
     await expect(superiorRule).toBeVisible();
     await expect(superiorRule).toContainText('UKSF Taskforce Alpha');
     await expect(superiorRule).toContainText('Private Milsim Site');
     await expect(superiorRule).toContainText('Non-Official');
-    
+
     // Check toggle button
-    const toggleBtn = superiorRule.locator('button:has-text("Toggle Interface")');
+    const toggleBtn = superiorRule.locator(
+      'button:has-text("Toggle Interface")',
+    );
     await expect(toggleBtn).toBeVisible();
     await expect(toggleBtn).toHaveCSS('text-transform', 'uppercase');
   });
 
-  test('Main Navigation Bar should contain all core unit links', async ({ page }) => {
+  test('Main Navigation Bar should contain all core unit links', async ({
+    page,
+  }) => {
     const nav = page.locator('nav[aria-label="Main navigation"]');
     await expect(nav).toBeVisible();
-    
+
     // Check Logo
     const logo = nav.locator('img[alt="UKSF Taskforce Alpha - Milsim Logo"]');
     await expect(logo).toBeVisible();
@@ -33,10 +38,21 @@ test.describe('Global Infrastructure: Header, Banner & Footer', () => {
     expect(logoSrc).not.toBeNull();
 
     // Check Navigation Links (Explicitly)
-    const expectedLinks = ['SAS', 'SBS', 'ASOB', 'SFSG', 'JSFAW', 'RAMC', 'Registry'];
+    const expectedLinks = [
+      'SAS',
+      'SBS',
+      'ASOB',
+      'SFSG',
+      'JSFAW',
+      'RAMC',
+      'Registry',
+    ];
     for (const linkText of expectedLinks) {
       const link = nav.locator(`a:has-text("${linkText}")`);
-      await expect(link, `Link "${linkText}" missing from header`).toBeVisible();
+      await expect(
+        link,
+        `Link "${linkText}" missing from header`,
+      ).toBeVisible();
     }
 
     // Check CTA
@@ -69,7 +85,9 @@ test.describe('Global Infrastructure: Header, Banner & Footer', () => {
 
     // Verify Column 3: Resources
     await expect(footer).toContainText('Institutional Links');
-    await expect(footer.locator('a:has-text("Selection Gateway")')).toBeVisible();
+    await expect(
+      footer.locator('a:has-text("Selection Gateway")'),
+    ).toBeVisible();
     await expect(footer.locator('a:has-text("Deployment Logs")')).toBeVisible();
 
     // Verify Column 4: Signal Center
@@ -78,6 +96,8 @@ test.describe('Global Infrastructure: Header, Banner & Footer', () => {
 
     // Verify Disclaimer
     await expect(footer).toContainText('Unofficial community project');
-    await expect(footer).toContainText('No affiliation with the UK Ministry of Defence');
+    await expect(footer).toContainText(
+      'No affiliation with the UK Ministry of Defence',
+    );
   });
 });

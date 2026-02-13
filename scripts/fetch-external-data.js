@@ -1,6 +1,6 @@
 import fs from 'node:fs';
-import path from 'node:path';
 import https from 'node:https';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GameDig as Gamedig } from 'gamedig';
 import 'dotenv/config';
