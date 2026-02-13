@@ -1,0 +1,48 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-gb'
+title = 'UKSF Taskforce Alpha'
+theme = 'uksf-mod-theme'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  unit_theme = 'global'
+  builtby = 'UKSF Taskforce Alpha'
+
+[[menus.main]]
+  name = "SAS"
+  url = "/sas/"
+  weight = 10
+
+[[menus.main]]
+  name = "SBS"
+  url = "/sbs/"
+  weight = 20
+
+[[menus.main]]
+  name = "ASOB"
+  url = "/asob/"
+  weight = 25
+
+[[menus.main]]
+  name = "SFSG"
+  url = "/sfsg/"
+  weight = 40
+
+[[menus.main]]
+  name = "JSFAW"
+  url = "/jsfaw/"
+  weight = 50
+
+[[menus.main]]
+  name = "RAMC"
+  url = "/med-det/"
+  weight = 55
+
+[[menus.main]]
+  name = "Recruitment"
+  url = "/recruitment/"
+  weight = 60
