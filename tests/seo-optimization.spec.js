@@ -1,19 +1,22 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('SEO & Metadata Integrity', () => {
-  
-  const PAGES = [
+  const _PAGES = [
     { path: '/', expectedTitle: 'UKSF Taskforce Alpha | Joint Force Command' },
     { path: '/sas/', expectedTitle: 'Special Air Service (SAS)' },
     { path: '/sbs/', expectedTitle: 'Special Boat Service' },
-    { path: '/registry/orbat/', expectedTitle: 'Order of Battle' }
+    { path: '/registry/orbat/', expectedTitle: 'Order of Battle' },
   ];
 
   test('Homepage Metadata', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
-    expect(await page.title()).toContain('UKSF Taskforce Alpha | Joint Force Command');
-    const desc = await page.locator('meta[name="description"]').getAttribute('content');
+    expect(await page.title()).toContain(
+      'UKSF Taskforce Alpha | Joint Force Command',
+    );
+    const desc = await page
+      .locator('meta[name="description"]')
+      .getAttribute('content');
     expect(desc?.length).toBeGreaterThan(10);
   });
 

@@ -8,7 +8,7 @@
   async function fetchIntegratedIntel() {
     console.log('[JSFC_INTEL] Initiating heartbeat synchronization...');
     try {
-      const response = await fetch('/intel.json?t=' + Date.now());
+      const response = await fetch(`/intel.json?t=${Date.now()}`);
       if (!response.ok) throw new Error(`HTTP_${response.status}`);
       const data = await response.json();
       window.globalIntel = data;
@@ -28,7 +28,7 @@
   async function fetchTelemetry() {
     try {
       console.log('[JSFC_INTEL] Pulling telemetry shard...');
-      const response = await fetch('/telemetry.json?t=' + Date.now());
+      const response = await fetch(`/telemetry.json?t=${Date.now()}`);
       if (!response.ok) throw new Error(`HTTP_${response.status}`);
       const data = await response.json();
       window.globalTelemetry = data;
@@ -91,7 +91,7 @@
   window.openOperationModal = (opId) => {
     const uc = window.globalIntel ? window.globalIntel.unitcommander : null;
     if (!uc || !uc.campaigns) return;
-    const op = uc.campaigns.find((c) => c.id == opId);
+    const op = uc.campaigns.find((c) => c.id === opId);
     if (!op) return;
 
     const modal = document.getElementById('operation-modal');
@@ -110,7 +110,7 @@
     if (map) map.innerText = `THEATER: ${op.map || 'CLASSIFIED'}`;
 
     if (img) {
-      if (op.image && op.image.path) {
+      if (op.image?.path) {
         img.src = op.image.path;
         img.classList.remove('hidden');
       } else {
@@ -181,9 +181,9 @@
           });
         }
 
-        containers.forEach((c) =>
-          renderBattlemetricsGraph(dataPoints, c, maxCapacity),
-        );
+        containers.forEach((c) => {
+          renderBattlemetricsGraph(dataPoints, c, maxCapacity);
+        });
       }
     }
   }
@@ -310,12 +310,12 @@
     if (vEl) vEl.innerText = `${val} DEPLOYED`;
     const date = new Date(time);
     if (tEl)
-      tEl.innerText = isNaN(date)
+      tEl.innerText = Number.isNaN(date)
         ? 'LINK_ERROR'
-        : date.toLocaleTimeString('en-GB', {
+        : `${date.toLocaleTimeString('en-GB', {
             hour: '2-digit',
             minute: '2-digit',
-          }) + 'Z';
+          })}Z`;
   };
 
   window.hideGraphTooltip = () => {
@@ -332,7 +332,7 @@
     const allCandidates = [...uc.campaigns];
 
     allCandidates.forEach((op) => {
-      const events = (uc.campaignEvents && uc.campaignEvents[op.id]) || [];
+      const events = uc.campaignEvents?.[op.id] || [];
       let opTime = new Date(op.updated_at || op.created_at || 0).getTime();
       if (events.length > 0) {
         const eventTimes = events.map((e) =>
@@ -381,8 +381,7 @@
   function renderUnitCommanderHTML(latestOp) {
     const createdDate = new Date(latestOp.created_at);
     const today = new Date();
-    const durationStr =
-      Math.floor(Math.abs(today - createdDate) / (1000 * 60 * 60 * 24)) + 'D';
+    const durationStr = `${Math.floor(Math.abs(today - createdDate) / (1000 * 60 * 60 * 24))}D`;
     const opTitle = latestOp.campaignName || latestOp.title || 'OP_UNNAMED';
     const cleanLocation = (latestOp.map || latestOp.location || 'CLASSIFIED')
       .split('(')[0]
@@ -417,9 +416,9 @@
                 </div>
             </div>
         `;
-    document
-      .querySelectorAll('.live-ops-feed-container')
-      .forEach((f) => (f.innerHTML = html));
+    document.querySelectorAll('.live-ops-feed-container').forEach((f) => {
+      f.innerHTML = html;
+    });
   }
 
   async function updateDiscordStatus(serverId) {
@@ -435,7 +434,7 @@
           el.innerText = countStr;
         });
       }
-    } catch (error) {
+    } catch (_error) {
       document.querySelectorAll('.discord-online-count').forEach((el) => {
         el.innerText = '??';
       });

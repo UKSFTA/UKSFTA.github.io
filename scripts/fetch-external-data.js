@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const https = require('node:https');
 const { GameDig: Gamedig } = require('gamedig');
-const ucApi = require('./lib/uc_api');
+const _ucApi = require('./lib/uc_api');
 require('dotenv').config();
 
 /**
@@ -16,7 +16,7 @@ const config = {
   ucId: process.env.UNIT_COMMANDER_COMMUNITY_ID || '722',
   ucToken: (process.env.UNIT_COMMANDER_BOT_TOKEN || '').trim(),
   serverIp: process.env.STEAM_SERVER_IP || '127.0.0.1',
-  serverPort: parseInt(process.env.STEAM_QUERY_PORT || '2303'),
+  serverPort: parseInt(process.env.STEAM_QUERY_PORT || '2303', 10),
 };
 
 async function request(url, headers = {}) {
@@ -31,7 +31,9 @@ async function request(url, headers = {}) {
     https
       .get(url, options, (res) => {
         let data = '';
-        res.on('data', (chunk) => (data += chunk));
+        res.on('data', (chunk) => {
+          data += chunk;
+        });
         res.on('end', () => {
           if (res.statusCode >= 200 && res.statusCode < 300) {
             try {
@@ -129,6 +131,48 @@ function compress(data) {
   return result;
 }
 
+function processCampaigns(campaigns, contentDir) {
+  campaigns.forEach((op) => {
+    const slug = op.campaignName
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+    const campaignDir = path.join(contentDir, slug);
+    if (!fs.existsSync(campaignDir)) {
+      fs.mkdirSync(campaignDir, { recursive: true });
+    }
+
+    const filePath = path.join(campaignDir, '_index.md');
+    const latestEvent = op.events?.length
+      ? [...op.events].sort((a, b) => new Date(b.date) - new Date(a.date))[0]
+      : null;
+    const activeLimit = new Date();
+    activeLimit.setDate(activeLimit.getDate() - 30);
+
+    let status = 'ARCHIVED';
+    if (
+      op.status === 'ACTIVE' ||
+      (latestEvent && new Date(latestEvent.date) > activeLimit)
+    ) {
+      status = 'ACTIVE';
+    }
+
+    const mdContent = `---
+title: "${op.campaignName}"
+date: "${op.created_at}"
+layout: "campaign"
+op_id: "TF-${op.id}"
+map: "${op.map || 'CLASSIFIED'}"
+status: "${status}"
+image: "${op.image ? op.image.path : ''}"
+---
+
+${op.brief || 'No tactical briefing recovered for this operation.'}
+`;
+    fs.writeFileSync(filePath, mdContent);
+  });
+}
+
 async function main() {
   console.log('[JSFC_FETCH] Initiating data sharding sequence...');
   const staticDir = path.join(__dirname, '..', 'static');
@@ -164,7 +208,7 @@ async function main() {
           ping: p.ping,
         })),
       };
-    } catch (e) {
+    } catch (_e) {
       console.warn('[ARMA_QUERY] Server unreachable.');
     }
 
@@ -176,48 +220,11 @@ async function main() {
         JSON.stringify(uc, null, 2),
       );
 
-      if (!fs.existsSync(contentDir))
+      if (!fs.existsSync(contentDir)) {
         fs.mkdirSync(contentDir, { recursive: true });
+      }
 
-      uc.campaigns.forEach((op) => {
-        const slug = op.campaignName
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/(^-|-$)/g, '');
-        const campaignDir = path.join(contentDir, slug);
-        if (!fs.existsSync(campaignDir))
-          fs.mkdirSync(campaignDir, { recursive: true });
-
-        const filePath = path.join(campaignDir, `_index.md`);
-        const latestEvent = op.events?.length
-          ? [...op.events].sort(
-              (a, b) => new Date(b.date) - new Date(a.date),
-            )[0]
-          : null;
-        const activeLimit = new Date();
-        activeLimit.setDate(activeLimit.getDate() - 30);
-
-        let status = 'ARCHIVED';
-        if (
-          op.status === 'ACTIVE' ||
-          (latestEvent && new Date(latestEvent.date) > activeLimit)
-        )
-          status = 'ACTIVE';
-
-        const mdContent = `---
-title: "${op.campaignName}"
-date: "${op.created_at}"
-layout: "campaign"
-op_id: "TF-${op.id}"
-map: "${op.map || 'CLASSIFIED'}"
-status: "${status}"
-image: "${op.image ? op.image.path : ''}"
----
-
-${op.brief || 'No tactical briefing recovered for this operation.'}
-`;
-        fs.writeFileSync(filePath, mdContent);
-      });
+      processCampaigns(uc.campaigns, contentDir);
 
       state.unitcommander = {
         campaigns: uc.campaigns
