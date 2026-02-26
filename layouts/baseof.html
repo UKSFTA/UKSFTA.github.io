@@ -4,16 +4,8 @@
   <head>
     {{ partial "head/index.html" . }}
     <script>
-        // Early theme application to avoid FOUC and ensure accessibility audit accuracy
-        const savedTheme = localStorage.getItem('moduk_theme');
-        if (savedTheme === 'light') {
-            document.documentElement.classList.add('light');
-            document.documentElement.classList.remove('dark');
-        } else {
-            // Default to dark
-            document.documentElement.classList.remove('light');
-            document.documentElement.classList.add('dark');
-        }
+        const savedTheme = localStorage.getItem('moduk_theme') || 'dark';
+        document.documentElement.classList.add(savedTheme);
     </script>
     {{ if $isMaintenance }}
     <style>
@@ -37,21 +29,17 @@
     {{ end }}
   </head>
   
-  {{ $unit := .Params.unit | default .Section | default "sas" }}
-  {{ $isRegistry := or (eq .Section "registry") (eq .Type "registry") (strings.HasPrefix .Layout "registry/") }}
-  
-  {{ if and $isRegistry (ne .Layout "gate") (ne .Layout "restricted") }}
-    <script>
-      if (localStorage.getItem('uksf_auth') !== 'authorized') {
-        window.location.href = '/registry/gate/';
-      }
-    </script>
+  {{ $unitId := .Params.unit | default .Section }}
+  {{ $unitData := index site.Data.units $unitId }}
+  {{ $skin := "global" }}
+  {{ if $unitData }}
+    {{ $skin = $unitData.skin | default "global" }}
   {{ end }}
 
-  <body class="unit-{{ .Params.unit | default .Section | default `global` }}">
-    <!-- GLOBAL SYSTEM HUD (Fixed Components) -->
+  <body class="unit-{{ $unitId }} skin-{{ $skin }} {{ if .IsHome }}home{{ end }}">
+    <!-- GLOBAL SYSTEM HUD (Fixed) -->
     {{ if not $isMaintenance }}
-    <div class="fixed top-0 left-0 w-full z-[3000]">
+    <div class="fixed top-0 left-0 w-full z-[3000] bg-[var(--bg-page)] border-b border-[var(--border-main)]">
         {{ partial "core/header.html" . }}
         {{ partial "core/phase-banner.html" . }}
     </div>

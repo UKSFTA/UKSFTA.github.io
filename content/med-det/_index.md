@@ -3,7 +3,7 @@ title: "Royal Army Medical Corps"
 description: "The primary provider of medical support and CASEVAC training for UKSFTA."
 date: 2026-01-28
 unit: "med-det"
-layout: "dossier"
+type: "branch"
 ---
 
 The Royal Army Medical Corps (RAMC) provides critical medical support and training to UKSFTA, including emergency care, treatment, and evacuation of casualties during high-intensity operations.

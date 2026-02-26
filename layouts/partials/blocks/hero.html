@@ -1,60 +1,70 @@
-<div class="absolute inset-0 z-0 overflow-hidden">
-    {{ with .Params.hero_image }}
-        <img src="{{ . | absURL }}" class="w-full h-full object-cover opacity-20 grayscale" alt="" />
-    {{ else }}
-        <img src="https://images.unsplash.com/photo-1590233064032-909772a6b225?auto=format&fit=crop&q=80&w=2400" class="w-full h-full object-cover opacity-20 grayscale" alt="" />
-    {{ end }}
-    <div class="absolute inset-0 bg-gradient-to-r from-[var(--bg-page)] via-[var(--bg-page)]/60 to-transparent"></div>
-</div>
+<div class="bg-[var(--bg-page)] border-b-8 border-[var(--text-main)] min-h-[40vh] flex flex-col justify-center">
+    <div class="moduk-width-container py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-16 items-end">
+            <!-- 2/3rds Column for Main Title Area -->
+            <div class="lg:col-span-2 space-y-10">
+                <!-- Breadcrumbs -->
+                <nav class="flex items-center gap-2 text-[16px]" aria-label="Breadcrumb">
+                    <a href="/" class="text-govuk-blue hover:underline font-bold">Home</a>
+                    <svg class="w-3 h-3 text-[var(--text-secondary)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                    
+                    {{ if .Section }}
+                        {{ $s := lower .Section }}
+                        {{ $st := .Section | humanize }}
+                        {{ if or (eq $s "sas") (eq $s "sbs") (eq $s "srr") (eq $s "sf") (eq $s "uksf") (eq $s "asob") (eq $s "jsfaw") (eq $s "rsis") (eq $s "int-corps") (eq $s "ramc") }}
+                            {{ if or (eq $s "int-corps") (eq $s "rsis") }}{{ $st = "RSIS" }}
+                            {{ else if or (eq $s "sas") (eq $s "sf") (eq $s "uksf") }}{{ $st = "UKSF" }}
+                            {{ else }}{{ $st = upper $s }}{{ end }}
+                        {{ end }}
+                        <a href="/{{ .Section | urlize }}/" class="text-govuk-blue hover:underline font-bold">{{ $st }}</a>
+                        <svg class="w-3 h-3 text-[var(--text-secondary)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                    {{ end }}
 
-<div class="moduk-width-container relative z-20 w-full flex flex-col justify-center">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-end">
-        <div class="lg:col-span-8 space-y-12">
-            <!-- Meta Status -->
-            <div class="flex items-center gap-6">
-                <span class="bg-[#532a45]/5 border border-[#532a45]/10 px-4 py-2 text-[10px] font-bold text-[#532a45] dark:text-[#bfc1c3] uppercase tracking-[0.3em] font-body">
-                    {{ .Section | default "Institutional Node" }}
-                </span>
-                <div class="h-px w-16 bg-[#bfc1c3] dark:bg-[#323e48]"></div>
-                <span class="text-[9px] font-mono text-moduk-secondary uppercase tracking-widest font-bold">
-                    Ref: {{ if .File }}{{ .File.UniqueID }}{{ else }}JSFC_VIRTUAL_NODE{{ end }}
-                </span>
+                    <span class="text-[var(--text-main)] font-bold">
+                        {{ $t := .Title }}
+                        {{ if or (eq (lower $t) "sas") (eq (lower $t) "sbs") (eq (lower $t) "srr") (eq (lower $t) "sf") (eq (lower $t) "uksf") (eq (lower $t) "asob") (eq (lower $t) "jsfaw") (eq (lower $t) "rsis") (eq (lower $t) "ramc") (eq (lower $t) "e-squadron") }}
+                            {{ if or (eq (lower $t) "sas") (eq (lower $t) "sf") (eq (lower $t) "uksf") }}UKSF{{ else }}{{ upper $t }}{{ end }}
+                        {{ else }}
+                            {{ $t }}
+                        {{ end }}
+                    </span>
+                </nav>
+
+                <div class="flex items-start gap-8">
+                    {{ $unitId := .Params.unit | default .Section }}
+                    {{ $unit := index .Site.Data.units $unitId }}
+                    {{ if $unit }}
+                        {{ $icon := resources.Get $unit.icon }}
+                        {{ if $icon }}
+                            <img src="{{ $icon.RelPermalink }}" alt="{{ .Title }}" class="h-24 w-auto no-invert shrink-0">
+                        {{ end }}
+                    {{ end }}
+                    
+                    <div>
+                        <h1 class="text-5xl md:text-7xl font-bold text-[var(--text-main)] m-0 tracking-tight leading-tight">
+                            {{ if or (eq (lower .Title) "sas") (eq (lower .Title) "sbs") (eq (lower .Title) "srr") (eq (lower .Title) "sf") (eq (lower .Title) "uksf") (eq (lower .Title) "asob") (eq (lower .Title) "jsfaw") (eq (lower .Title) "rsis") }}
+                                {{ upper .Title }}
+                            {{ else }}
+                                {{ .Title }}
+                            {{ end }}
+                        </h1>
+                        {{ $leadText := .Params.lead | default .Description }}
+                        {{ if $leadText }}
+                        <p class="text-2xl mt-8 font-light text-[var(--text-secondary)] leading-snug">
+                            {{ $leadText }}
+                        </p>
+                        {{ end }}
+                    </div>
+                </div>
             </div>
 
-            <!-- Title -->
-            <h1 class="text-[#0b0c0c] dark:text-white leading-[0.85] m-0 font-black uppercase tracking-tighter text-6xl md:text-8xl lg:text-[8rem] font-industrial">
-                {{ .Title }}
-            </h1>
-
-            <!-- Summary -->
-            <div class="max-w-3xl border-l-8 border-[#532a45] pl-16 py-8 bg-[#f3f2f1]/50 dark:bg-[var(--bg-page)]/5 backdrop-blur-sm">
-                <p class="text-2xl md:text-3xl font-body text-[#323e48] dark:text-[#bfc1c3] leading-relaxed m-0 font-light italic">
-                    {{ .Description | default .Summary }}
-                </p>
-            </div>
-        </div>
-
-        <!-- Context Sidebar -->
-        <div class="lg:col-span-4 hidden lg:block">
-            <div class="card-mod border-t-8 border-[#532a45] space-y-10 bg-[var(--bg-page)]/50 backdrop-blur-md">
-                <div class="space-y-10">
-                    <div class="flex flex-col border-b border-[#bfc1c3] dark:border-[#323e48] pb-10">
-                        <span class="text-[10px] font-mono text-moduk-secondary uppercase tracking-[0.3em] mb-4 font-bold">// Operational Status</span>
-                        <div class="flex items-center gap-6">
-                            <span class="w-3 h-3 bg-[#00703c] rounded-full animate-pulse shadow-[0_0_15px_rgba(0,112,60,0.4)]"></span>
-                            <span class="text-4xl font-black text-[#0b0c0c] dark:text-white tracking-tight uppercase font-industrial">Ready_Tasking</span>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-10 font-mono">
-                        <div class="space-y-3">
-                            <span class="text-[9px] text-moduk-secondary uppercase tracking-widest font-bold">Classification</span>
-                            <span class="text-[11px] font-bold text-[#800000] uppercase tracking-widest block">Restricted</span>
-                        </div>
-                        <div class="space-y-3 text-right">
-                            <span class="text-[9px] text-moduk-secondary uppercase tracking-widest font-bold">Auth_Level</span>
-                            <span class="text-[11px] font-bold text-[#0b0c0c] dark:text-white uppercase tracking-widest block">Tier_2_JSFC</span>
-                        </div>
-                    </div>
+            <!-- 1/3rd Column for Registry Sidebar -->
+            <div class="hidden lg:block">
+                <div class="inset-text !m-0 !border-l-4">
+                    <p class="text-sm font-bold uppercase tracking-widest text-[var(--text-secondary)] mb-2">Registry Reference</p>
+                    <p class="text-lg font-mono font-bold m-0 text-[var(--text-main)]">
+                        JSFC-{{ upper (substr (sha256 .Title) 0 12) }}
+                    </p>
                 </div>
             </div>
         </div>

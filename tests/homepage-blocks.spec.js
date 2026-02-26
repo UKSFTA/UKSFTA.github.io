@@ -2,13 +2,18 @@ import { expect, test } from '@playwright/test';
 
 test.describe('Homepage Architecture: Block-by-Block Verification', () => {
   test.beforeEach(async ({ page }) => {
+    // Bypass maintenance mode before navigation
+    await page.addInitScript(() => {
+      localStorage.setItem('dev_access', 'granted');
+    });
     await page.goto('/');
   });
 
   test('Section 1: Primary Hero Block', async ({ page }) => {
     await page.waitForTimeout(2000); // Allow for hydration
     const hero = page.locator('section').nth(0);
-    await expect(hero.locator('h1')).toContainText('Always A Little Further');
+    await expect(hero.locator('h1')).toContainText('Always A Little');
+    await expect(hero.locator('h1')).toContainText('Further');
     await expect(hero.locator('p')).toContainText(
       'Taskforce Alpha coordinates elite special operations',
     );
@@ -22,8 +27,9 @@ test.describe('Homepage Architecture: Block-by-Block Verification', () => {
 
   test('Section 2: Mission Directive Block', async ({ page }) => {
     const mission = page.locator('section').nth(1);
-    await expect(mission.locator('h2')).toContainText('Strategic Integration');
-    await expect(mission).toContainText('UKSF Taskforce Alpha standards');
+    await expect(mission.locator('h2')).toContainText('Strategic');
+    await expect(mission.locator('h2')).toContainText('Integration');
+    await expect(mission).toContainText('Ministry of Defence standards');
   });
 
   test('Section 3: Unit Directory Block', async ({ page }) => {
@@ -31,7 +37,7 @@ test.describe('Homepage Architecture: Block-by-Block Verification', () => {
     await expect(units.locator('h2')).toContainText('Taskforce Units');
 
     // Check for specific unit cards
-    const unitCards = ['SAS', 'SBS', 'ASOB', 'SFSG', 'JSFAW', 'RAMC'];
+    const unitCards = ['UKSF', 'ASOB', 'JSFAW', 'RAMC'];
     for (const unit of unitCards) {
       await expect(units.locator(`h3:has-text("${unit}")`)).toBeVisible();
     }
@@ -51,7 +57,7 @@ test.describe('Homepage Architecture: Block-by-Block Verification', () => {
     // Map Check
     const map = aor.locator('.tactical-map-container');
     await expect(map).toBeVisible();
-    await expect(map.locator('.unit-node').first()).toBeVisible();
+    await expect(map.locator('.strategic-badge-container').first()).toBeVisible();
 
     // Comms Hub Check
     await expect(aor.locator('.live-ops-feed-container').first()).toBeVisible();

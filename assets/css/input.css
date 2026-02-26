@@ -4,176 +4,214 @@
 @theme {
   --variant-dark: &:where(.dark, .dark *);
   --color-mod-black: #0b0c0c;
-  --color-mod-grey-1: var(--mod-grey-1-val);
-  --color-mod-grey-2: var(--mod-grey-2-val);
-  --color-mod-grey-3: var(--mod-grey-3-val);
+  --color-mod-grey-1: #505a5f;
+  --color-mod-grey-2: #b1b4b6;
+  --color-mod-grey-3: #d8d8d8;
   --color-mod-grey-4: var(--mod-grey-4-val);
-  --color-mod-dark-grey: #1d2329;
-  --color-mod-blue: #003078;
-  --color-mod-green: var(--mod-green-val);
-  --color-mod-red: var(--mod-red-val);
-  --color-mod-purple: var(--mod-purple-val);
-  --color-uksf-gold: #b3995d;
   
-  --font-industrial: "Industrial Gothic Pro", "Arial Black", sans-serif;
-  --font-body: "Roboto", "Arial", sans-serif;
+  /* Official Service Colors */
+  --color-govuk-blue: #4d5d53; /* Pivoted to Army Green */
+  --color-govuk-green: #00823b;
+  --color-govuk-red: #d4351c;
+  
+  --color-mod-navy: #003078;
+  --color-army-red: #4d5d53;
+  --color-navy-blue: #00205B;
+  --color-raf-blue: #005696;
+  --color-marines-green: #004b44;
+  --color-special-forces: #2fb060;
+  
+  --font-industrial: "Arial Black", "Arial", sans-serif;
+  --font-body: "Arial", sans-serif;
 }
 
 @layer base {
   :root {
-    /* DEFAULT TO TACTICAL DARK */
-    --mod-grey-1-val: #b1b4b6;
-    --mod-grey-2-val: #d2d3d5;
-    --mod-grey-3-val: #f3f2f1;
-    --mod-grey-4-val: #1d2329; /* Dark background for cards in dark mode */
-    --mod-green-val: #00ff85;
-    --mod-red-val: #ff6150;
-    --mod-purple-val: #de8ec0;
-    --bg-page: #0b0c0c;
-    --text-main: #f3f2f1;
-    --text-secondary: #b1b4b6;
-    --border-main: #323e48;
-    --btn-text: #0b0c0c;
-
-    --top-bar-height: 32px;
-    --nav-height: 100px;
-    --phase-banner-height: 50px;
-    --total-header-height: calc(var(--top-bar-height) + var(--nav-height) + var(--phase-banner-height));
-    
-    --brand-tint: var(--mod-purple-val);
-    --primary: var(--color-uksf-gold);
-  }
-
-  /* OPTIONAL LIGHT MODE */
-  .light {
-    --mod-grey-1-val: #323e48;
-    --mod-grey-2-val: #505a5f;
-    --mod-grey-3-val: #bfc1c3;
+    --bg-page-val: #ffffff;
+    --text-main-val: #0b0c0c;
+    --text-secondary-val: #505a5f;
+    --border-main-val: #b1b4b6;
     --mod-grey-4-val: #f3f2f1;
-    --mod-green-val: #00703c;
-    --mod-red-val: #d4351c;
-    --mod-purple-val: #532a45;
-    --bg-page: #ffffff;
-    --text-main: #0b0c0c;
-    --text-secondary: #6f777b;
-    --border-main: #bfc1c3;
+    
+    --brand-tint: var(--color-govuk-blue);
+    --primary: var(--brand-tint);
+    --success: var(--color-govuk-green);
+    
+    --bg-page: var(--bg-page-val);
+    --text-main: var(--text-main-val);
+    --text-secondary: var(--text-secondary-val);
+    --border-main: var(--border-main-val);
+    --mod-grey-4: var(--mod-grey-4-val);
     --btn-text: #ffffff;
+
+    /* Dynamic Header Scaling */
+    --header-height: 192px;
+    --top-bar-height: 32px;
+    --nav-height: 110px;
+    --phase-banner-height: 50px;
   }
 
-  .light [data-unit-skin="army"], .light .unit-sas, .light .unit-sfsg { --brand-tint: #153e35; }
-  .light [data-unit-skin="navy"], .light .unit-sbs { --brand-tint: #13284c; }
-  .light [data-unit-skin="raf"], .light .unit-jsfaw { --brand-tint: #005696; }
-  .light [data-unit-skin="intel"], .light .unit-srr, .light .unit-signals { --brand-tint: #323e48; }
-
-  .dark [data-unit-skin="army"], .dark .unit-sas, .dark .unit-sfsg { --brand-tint: #3dc070; }
-  .dark [data-unit-skin="navy"], .dark .unit-sbs { --brand-tint: #5d99ff; }
-  .dark [data-unit-skin="raf"], .dark .unit-jsfaw { --brand-tint: #5ec2ff; }
-  .dark [data-unit-skin="intel"], .dark .unit-srr, .dark .unit-signals { --brand-tint: #b1b4b6; }
-
-  /* CRITICAL: DO NOT INVERT IMAGES */
-  img, .no-invert {
-    filter: none !important;
+  .dark {
+    --bg-page-val: #0b0c0c;
+    --text-main-val: #ffffff;
+    --text-secondary-val: #b1b4b6;
+    --border-main-val: #323e48;
+    --mod-grey-4-val: #1d2329;
+    
+    --bg-page: var(--bg-page-val);
+    --text-main: var(--text-main-val);
+    --text-secondary: var(--text-secondary-val);
+    --border-main: var(--border-main-val);
+    --mod-grey-4: var(--mod-grey-4-val);
   }
 
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: var(--total-header-height);
-    height: 100%;
-    overflow-x: hidden;
+  /* Service Skinning Logic */
+  .skin-army { --brand-tint: #4d5d53; }
+  .skin-navy { --brand-tint: var(--color-navy-blue); }
+  .skin-raf { --brand-tint: var(--color-raf-blue); }
+  .skin-marines { --brand-tint: var(--color-marines-green); }
+  .skin-sf { --brand-tint: var(--color-special-forces); }
+
+  .dark .skin-army { --brand-tint: #6b7c71; }
+  .dark .skin-navy { --brand-tint: #3366ff; }
+  .dark .skin-raf { --brand-tint: #4d94ff; }
+  .dark .skin-marines { --brand-tint: #008073; }
+  .dark .skin-sf { --brand-tint: #2fb060; }
+
+  /* Scroll Snapping - Homepage Only */
+  .home html {
+    scroll-snap-type: y mandatory;
   }
 
   body {
     background-color: var(--bg-page);
     color: var(--text-main);
     font-family: var(--font-body);
-    font-size: 16px;
+    font-size: 19px; /* GOV.UK Standard */
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    padding-top: 0;
-    transition: background-color 0.2s ease, color 0.2s ease;
     margin: 0;
+    padding-top: var(--header-height); /* Dynamically take header into account */
+    transition: background-color 0.2s ease, color 0.2s ease;
     height: 100%;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-industrial);
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    color: var(--text-main);
-    line-height: 1.1;
-    font-weight: 900;
-    margin: 0;
-  }
+  h1 { font-size: 48px; line-height: 1.1; letter-spacing: -1px; }
+  h2 { font-size: 36px; border-bottom: 4px solid var(--text-main); padding-bottom: 10px; margin-top: 60px; }
+  h3 { font-size: 24px; margin-top: 40px; }
 
-  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
-  h2 { font-size: clamp(2rem, 4vw, 3rem); }
-
+  /* Section Base Styles */
   section {
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-bottom: 1px solid var(--border-main);
     background-color: var(--bg-page);
     box-sizing: border-box;
-    padding-top: var(--total-header-height);
-    padding-bottom: 5rem;
-    position: relative;
+    padding: 80px 0;
+    min-height: 0;
+  }
+
+  /* Full Viewport Lock - Homepage Only */
+  .home section {
+    height: calc(100vh - var(--header-height));
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 40px 0;
     overflow: hidden;
+  }
+
+  img, .no-invert {
+    filter: none !important;
   }
 }
 
 @layer components {
   .moduk-width-container {
     width: 100%;
-    max-width: 1300px;
+    max-width: 1600px;
     margin-inline: auto;
     padding-inline: 30px;
   }
 
-  .btn-mod {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 24px;
-    font-family: var(--font-body);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    font-size: 13px;
+  .grid-rule-three {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 30px;
   }
 
-  .btn-mod-primary {
-    background-color: var(--brand-tint);
-    color: var(--btn-text) !important;
-    &:hover { filter: brightness(1.1); }
-  }
-
-  .btn-mod-secondary {
-    background-color: transparent;
-    border: 2px solid var(--text-main);
-    color: var(--text-main);
-    &:hover { background-color: var(--text-main); color: var(--bg-page); }
-  }
-
-  .card-mod {
-    background-color: var(--bg-page);
-    border: 1px solid var(--border-main);
-    padding: 2.5rem;
-    transition: all 0.2s ease;
-    &:hover { 
-      border-color: var(--brand-tint); 
-      background-color: rgba(243, 242, 241, 0.5);
+  @media (min-width: 1024px) {
+    .grid-rule-three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
-  .card-mod:hover {
-    background-color: rgba(29, 35, 41, 0.5);
+  /* GOV.UK Start Button */
+  .btn-gov {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--success);
+    color: #ffffff !important;
+    padding: 12px 24px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    border-bottom: 4px solid #005a25;
+    font-size: 19px;
+    cursor: pointer;
+    &:hover { background-color: #00692f; }
+    &:active { transform: translateY(2px); border-bottom-width: 2px; }
+  }
+
+  .btn-gov-secondary {
+    background-color: var(--mod-grey-4);
+    color: var(--text-main) !important;
+    border-bottom: 4px solid var(--border-main);
+    &:hover { background-color: #dbdad9; }
+  }
+
+  .dark .btn-gov-secondary {
+    background-color: #323e48;
+    color: #ffffff !important;
+    border-bottom-color: #0b0c0c;
+    &:hover { background-color: #454e55; }
+  }
+
+  .inset-text {
+    border-left: 10px solid var(--border-main);
+    padding: 15px 30px;
+    margin: 30px 0;
+    background-color: var(--mod-grey-4);
+    color: var(--text-main);
+  }
+
+  .dark .inset-text {
+    background-color: #1d2329;
+    border-left-color: var(--brand-tint);
+  }
+
+  .card-mod {
+    background-color: var(--mod-grey-4);
+    border: 1px solid var(--border-main);
+    padding: 30px;
+    transition: background-color 0.2s ease;
+  }
+
+  .dark .card-mod {
+    background-color: #1d2329;
+  }
+
+  .nav-link {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-main);
+    border-bottom: 4px solid transparent;
+    padding-bottom: 5px;
+    &:hover, &.active {
+      border-bottom-color: var(--brand-tint);
+    }
   }
 
   .superior-rule {
@@ -182,32 +220,36 @@
     height: 32px;
     display: flex;
     align-items: center;
+    position: relative;
     z-index: 3000;
   }
+}
 
-  .nav-link {
-    font-family: var(--font-body);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 700;
-    text-decoration: none;
-    color: var(--text-secondary);
-    transition: all 0.2s;
-    border-bottom: 4px solid transparent;
-    &:hover, &.active {
-      color: var(--text-main);
-      border-bottom-color: var(--brand-tint);
-    }
-  }
+/* Prose Overrides for GOV.UK style */
+.intelligence-body.prose {
+  max-width: 100%;
+  font-size: 19px;
+  line-height: 1.6;
+}
 
-  .connection-points {
-    pointer-events: none;
-  }
-  .connection-points > * {
-    pointer-events: auto;
-  }
-  .orbat-node-wrapper.selected .orbat-node-card {
-    border-color: var(--brand-tint);
-    box-shadow: 0 0 20px var(--brand-tint);
-  }
+  .prose ul, .prose ol { margin-bottom: 30px; padding-left: 30px; }
+  .prose li { margin-bottom: 15px; }
+  .prose li::marker { color: var(--brand-tint); font-weight: bold; }
+  .prose hr { border: none; border-top: 1px solid var(--border-main); margin: 60px 0; }
+.prose table {
+  width: 100%;
+  margin: 40px 0;
+  border-collapse: collapse;
+}
+
+.prose th {
+  text-align: left;
+  padding: 15px 10px;
+  border-bottom: 1px solid var(--text-main);
+  font-weight: 700;
+}
+
+.prose td {
+  padding: 15px 10px;
+  border-bottom: 1px solid var(--border-main);
 }

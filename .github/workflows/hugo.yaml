@@ -45,8 +45,15 @@ jobs:
       - name: Run Lint & Format Check
         run: npm run lint
 
-      - name: Fetch External Data
-        run: npm run fetch-data
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Build
+        run: |
+          npm run build
         env:
           BATTLEMETRICS_API_KEY: ${{ secrets.BATTLEMETRICS_API_KEY }}
           BATTLEMETRICS_SERVER_ID: ${{ secrets.BATTLEMETRICS_SERVER_ID }}
@@ -59,16 +66,6 @@ jobs:
           UNIT_COMMANDER_BOT_TOKEN: ${{ secrets.UNIT_COMMANDER_BOT_TOKEN }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: 'latest'
-          extended: true
-
-      - name: Build
-        run: |
-          hugo --environment production --gc --minify
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3

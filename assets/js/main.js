@@ -39,6 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. System Handshake
   console.log(
     '%c[JSFC_NODE] HANDSHAKE_COMPLETE',
-    'color: #532a45; font-weight: bold; font-family: sans-serif;',
+    'color: #2fb060; font-weight: bold; font-family: sans-serif;',
   );
 });

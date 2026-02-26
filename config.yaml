@@ -32,7 +32,7 @@ markup:
 # GLOBAL TACTICAL PARAMETERS
 # ==========================================
 params:
-  maintenance_mode: true # Hard gate for public visitors
+  maintenance_mode: false # Hard gate for public visitors
   # G1 - PERSONNEL & ADMINISTRATION
   builtby: "Taskforce Command"
   builtbyurl: "https://discord.gg/2jNqa3zPRH"
@@ -80,24 +80,24 @@ params:
 # ==========================================
 menu:
   main:
-    - name: "SAS"
-      url: "/sas/"
-      weight: 10
-    - name: "SBS"
-      url: "/sbs/"
-      weight: 20
-    - name: "ASOB"
+    - name: "About"
+      url: "/about/"
+      weight: 5
+    - name: "Rangers"
       url: "/asob/"
-      weight: 25
-    - name: "SFSG"
-      url: "/sfsg/"
-      weight: 40
+      weight: 10
+    - name: "UKSF"
+      url: "/uksf/"
+      weight: 20
+    - name: "RSIS"
+      url: "/rsis/"
+      weight: 30
     - name: "JSFAW"
       url: "/jsfaw/"
-      weight: 50
+      weight: 40
     - name: "RAMC"
       url: "/ramc/"
-      weight: 55
+      weight: 50
     - name: "Registry"
       url: "/rsis/"
       weight: 70

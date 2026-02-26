@@ -14,6 +14,40 @@
       window.globalIntel = data;
 
       updateBattlemetricsUI();
+      if (data.average_attendance !== undefined) {
+        const avgEl = document.getElementById('avg-deployed-count');
+        if (avgEl) avgEl.innerText = data.average_attendance.toString().padStart(2, '0');
+      }
+      if (data.personnel_count !== undefined) {
+        const pEl = document.getElementById('personnel-count');
+        if (pEl) pEl.innerText = data.personnel_count.toString().padStart(2, '0');
+      }
+      if (data.uptime_percentage !== undefined) {
+        const uEl = document.getElementById('uptime-count');
+        if (uEl) uEl.innerText = `${data.uptime_percentage}%`;
+        
+        document.querySelectorAll('.signal-strength').forEach((el) => {
+          el.innerText = `Signal: ${data.uptime_percentage}%`;
+        });
+        document.querySelectorAll('.link-id').forEach((el) => {
+          el.innerText = `NET_ID: UKSF_INTEL`;
+        });
+      }
+
+      // Handle Alerts Feed (Service Updates)
+      const alertsContainer = document.getElementById('service-updates-container');
+      const alertsFeed = document.getElementById('alerts-feed');
+      if (alertsContainer && alertsFeed && data.unitcommander?.alerts?.length > 0) {
+        alertsContainer.classList.remove('hidden');
+        alertsFeed.innerHTML = data.unitcommander.alerts.map(alert => `
+          <div class="bg-govuk-blue/5 border-l-8 border-govuk-blue p-6">
+            <h4 class="text-xl font-bold mb-2">${alert.title}</h4>
+            <div class="text-lg leading-relaxed text-mod-grey-1 dark:text-mod-grey-3">${alert.content}</div>
+            <div class="text-sm font-bold mt-4 text-govuk-blue uppercase tracking-widest">Published: ${new Date(alert.date).toLocaleDateString('en-GB')}</div>
+          </div>
+        `).join('');
+      }
+
       if (data.unitcommander) {
         updateUnitCommanderUI(data.unitcommander);
         updateOperationLogsUI(data.unitcommander);
@@ -153,6 +187,7 @@
     if (!statusText) return;
 
     if (source && source.status === 'online') {
+      const pCount = source.rcon_verified || source.players;
       statusText.innerText = 'STATION_ACTIVE';
       statusText.className =
         'text-[8px] font-black text-mod-green tracking-widest uppercase font-mono';
@@ -161,7 +196,11 @@
           'w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]';
       }
       if (playerCount) {
-        playerCount.innerText = `${source.players}/${maxCapacity} DEPLOYED`;
+        playerCount.innerText = `${pCount}/${maxCapacity} DEPLOYED`;
+      }
+      // Log Steam Info if present
+      if (source.steam) {
+        console.log(`[JSFC_INTEL] Steam Node: v${source.steam.version} (${source.steam.os})`);
       }
     } else {
       statusText.innerText = 'LINK_SEVERED';
@@ -212,10 +251,10 @@
   function getGraphData(data, startTime, safeMax, height, width, timeRange) {
     const points = data
       .map((d) => ({
-        v: d.attributes.value === 255 ? 0 : d.attributes.value,
+        v: d.attributes.value,
         t: d.attributes.timestamp,
       }))
-      .filter((p) => p.v < 500 && new Date(p.t).getTime() >= startTime);
+      .filter((p) => p.v !== 255 && p.v < 500 && new Date(p.t).getTime() >= startTime);
 
     points.sort((a, b) => new Date(a.t) - new Date(b.t));
 
@@ -234,14 +273,16 @@
   }
 
   function renderBattlemetricsGraph(data, container, maxVal = 40) {
-    if (!container) return;
+    if (!container || !data) return;
 
     const width = container.clientWidth;
     const height = container.clientHeight || 100;
+    console.log(`[JSFC_GRAPH] Rendering to ${container.id}, width: ${width}, height: ${height}, points: ${data.length}`);
     if (width === 0) return;
 
     const range = window.currentBattlemetricsRange || 'today';
-    const nowTime = Date.now();
+    // Use the shard's timestamp as the 'now' baseline
+    const nowTime = window.globalTelemetry?.timestamp || Date.now();
     const lookback =
       range === 'month'
         ? 30 * 24 * 3600000
@@ -262,36 +303,28 @@
     );
 
     if (points.length === 0) {
+      console.warn(`[JSFC_GRAPH] No points passed filter. StartTime: ${new Date(startTime).toISOString()}, Range: ${range}`);
       container.innerHTML =
         '<div class="h-full flex items-center justify-center font-mono text-[8px] text-neutral-800 uppercase tracking-[0.4em] ">No_Telemetry_Detected</div>';
       return;
     }
 
-    const baselineY = getY(0);
-    const maxGap =
-      range === 'month'
-        ? 12 * 3600000
-        : range === 'week'
-          ? 3 * 3600000
-          : 65 * 60000;
+    // Force the line to start at the absolute beginning of the graph (x=0) using the first known value
+    const firstX = 0;
+    const firstY = getY(points[0].v);
 
-    let pathData = `M ${getX(points[0].t)} ${getY(points[0].v)}`;
-    let areaPath = `M ${getX(points[0].t)} ${height} L ${getX(points[0].t)} ${getY(points[0].v)}`;
+    let pathData = `M ${firstX} ${firstY}`;
+    let areaPath = `M ${firstX} ${height} L ${firstX} ${firstY}`;
 
     points.forEach((p, index) => {
-      if (index === 0) return;
       const curX = getX(p.t);
       const curY = getY(p.v);
-      const prevP = points[index - 1];
 
-      if (new Date(p.t).getTime() - new Date(prevP.t).getTime() > maxGap) {
-        pathData += ` L ${getX(prevP.t)} ${baselineY} M ${getX(p.t)} ${baselineY} L ${curX} ${curY}`;
-        areaPath += ` L ${getX(prevP.t)} ${baselineY} L ${getX(p.t)} ${baselineY} L ${curX} ${curY}`;
-      } else {
-        pathData += ` L ${curX} ${curY}`;
-        areaPath += ` L ${curX} ${curY}`;
-      }
+      pathData += ` L ${curX} ${curY}`;
+      areaPath += ` L ${curX} ${curY}`;
     });
+
+    console.log(`[JSFC_GRAPH] Generated path: ${pathData.substring(0, 50)}...`);
 
     const lastP = points[points.length - 1];
     if (nowTime - new Date(lastP.t).getTime() > 10 * 60000) {
@@ -339,6 +372,14 @@
   window.hideGraphTooltip = () => {
     const t = document.getElementById('graph-tooltip');
     if (t) t.style.opacity = '0';
+  };
+
+  window.setBattlemetricsRange = (range) => {
+    window.currentBattlemetricsRange = range;
+    document.querySelectorAll('.bm-range-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.getAttribute('data-range') === range);
+    });
+    updateBattlemetricsUI();
   };
 
   function updateUnitCommanderUI(uc) {
@@ -409,28 +450,51 @@
       .toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })
       .toUpperCase();
 
+    const avgVal = window.globalIntel?.average_attendance;
+    const avgDeployed = (avgVal !== undefined && avgVal !== null) ? avgVal.toString().padStart(2, '0') : '--';
+
     const html = `
-            <div class="p-6 border border-[#bfc1c3] dark:border-[#323e48] bg-white dark:bg-white/5 relative group overflow-hidden transition-all duration-300">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="space-y-1">
-                        <span class="block text-[7px] text-[#6f777b] uppercase font-bold tracking-widest">// LOG_SERIAL: ${latestOp.isStandalone ? 'EV' : 'TF'}-${latestOp.id}</span>
-                        <span class="block text-[8px] text-[#532a45] dark:text-[#bfc1c3] uppercase font-bold tracking-widest">${dateStr}</span>
+            <div class="space-y-6 group cursor-default">
+                <div class="space-y-1">
+                    <span class="block text-[7px] text-mod-green font-black uppercase tracking-[0.3em]">// LOG_SERIAL: ${latestOp.isStandalone ? 'EV' : 'TF'}-${latestOp.id}</span>
+                    <h2 class="text-2xl font-bold text-white uppercase tracking-tighter leading-none m-0 group-hover:text-mod-green transition-colors">${opTitle}</h2>
+                </div>
+
+                <div class="grid grid-cols-1 gap-px bg-white/5 border border-white/10">
+                    <div class="p-4 bg-[#0b0c0c]/40">
+                        <span class="block text-[8px] text-white/30 font-bold uppercase tracking-widest mb-2">Theater_AO</span>
+                        <span class="block text-lg font-bold text-white uppercase truncate">${cleanLocation}</span>
                     </div>
-                    <div class="flex items-center gap-2 px-2 py-0.5 border border-[#bfc1c3] dark:border-[#323e48]">
-                        <span class="w-1 h-1 bg-[#00703c] rounded-full animate-pulse shadow-sm"></span>
-                        <span class="text-[7px] font-bold text-[#0b0c0c] dark:text-white uppercase tracking-widest">ENGAGED</span>
+                    <div class="p-4 bg-[#0b0c0c]/40 border-t border-white/5">
+                        <span class="block text-[8px] text-white/30 font-bold uppercase tracking-widest mb-2">Operational Status</span>
+                        <div class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-mod-green rounded-full animate-pulse"></span>
+                            <span class="text-xs font-bold text-white uppercase tracking-widest">Active_Engagement // ${durationStr}_DEPLOYED</span>
+                        </div>
                     </div>
                 </div>
-                <h2 class="text-2xl font-bold text-[#0b0c0c] dark:text-white uppercase tracking-tight leading-none mb-6 group-hover:text-[#532a45] transition-colors font-industrial">${opTitle}</h2>
-                <div class="grid grid-cols-2 gap-6 border-t border-[#bfc1c3] dark:border-[#323e48] pt-6">
+
+                <div class="space-y-4">
                     <div class="space-y-1">
-                        <span class="text-[6px] text-[#6f777b] uppercase font-bold tracking-widest block">// Theater_AO</span>
-                        <span class="text-[9px] text-[#0b0c0c] dark:text-white font-bold uppercase tracking-tight truncate block">${cleanLocation}</span>
+                        <span class="text-[8px] text-white/30 font-bold uppercase tracking-widest block">Strategic Objective</span>
+                        <p class="text-[11px] text-white/70 leading-relaxed m-0 font-mono italic">"Dismantle adversary coordination networks through precision strikes and partner-force advisement."</p>
                     </div>
-                    <div class="space-y-1 border-l border-[#bfc1c3] dark:border-[#323e48] pl-6">
-                        <span class="text-[6px] text-[#6f777b] uppercase font-bold tracking-widest block">// Persistence</span>
-                        <span class="text-[9px] text-[#323e48] dark:text-[#bfc1c3] font-bold uppercase tracking-tight block">${durationStr} IN THEATER</span>
+                    
+                    <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-4">
+                        <div class="flex flex-col">
+                            <span class="text-[8px] text-white/30 font-bold uppercase tracking-widest block mb-1">Command Authority</span>
+                            <span class="text-[9px] text-white font-bold uppercase">JSFC_TFHQ_G3</span>
+                        </div>
+                        <div class="flex flex-col text-right">
+                            <span class="text-[8px] text-white/30 font-bold uppercase tracking-widest block mb-1">Personnel_Str</span>
+                            <span class="text-[11px] text-mod-green font-bold">${avgDeployed} VERIFIED</span>
+                        </div>
                     </div>
+                </div>
+
+                <div class="pt-2 flex justify-between items-center text-[8px] font-mono text-white/20">
+                    <span>REF_ID: ${latestOp.updated_at ? 'SYNC_COMPLETE' : 'CACHED'}</span>
+                    <span class="uppercase tracking-widest">${dateStr} // LOG_CLOSED</span>
                 </div>
             </div>
         `;

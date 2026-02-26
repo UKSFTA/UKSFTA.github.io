@@ -39,10 +39,8 @@ test.describe('Global Infrastructure: Header, Banner & Footer', () => {
 
     // Check Navigation Links (Explicitly)
     const expectedLinks = [
-      'SAS',
-      'SBS',
+      'Special Forces',
       'ASOB',
-      'SFSG',
       'JSFAW',
       'RAMC',
       'Registry',

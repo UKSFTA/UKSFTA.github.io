@@ -1,22 +1,22 @@
 ---
-title: "Regional Special Intelligence System (RSIS)"
-description: "Restricted UKSF Intel Portal"
-lead: "Access to the RSIS is restricted to authorised UKSF personnel and verified Signal Intelligence officers."
-layout: "registry/intelligence"
-type: "registry"
-restricted: true
+title: "SRR"
+description: "The Royal Signals & Intelligence Squadron (RSIS). Providing strategic reconnaissance, signals intelligence, and precision fire support."
+date: 2026-01-30
+unit: "int-corps"
+type: "branch"
 ---
 
-<!-- [RSIS TIER 1 GATEWAY - INSPECT WHAT YOU EXPECT] -->
-<!-- FLAG: UKSF{V1SUAL_C0NF1RM4T10N} -->
+The Royal Signals & Intelligence Squadron (**RSIS**) is the taskforce's primary Intelligence, Surveillance, and Reconnaissance (ISR) element. Operating as the **SRR** (Special Reconnaissance Regiment) within the UKSF directorate, this unit ensures total battlespace awareness through clandestine observation and signal mastery.
 
-Welcome to the Regional Special Intelligence System. This portal serves as the operational hub for intelligence dissemination, mission reporting, and doctrinal updates across the UKSF directorate.
+## Operational Capabilities
 
-## Access Tiers
-Access to this system is gated by technical proficiency. 
+### Special Reconnaissance
+Operating as the taskforce's eyes and ears, RSIS specialized patrols conduct long-range reconnaissance and target identification behind enemy lines.
 
-1. **Public Intel:** General briefings and declassified unit information.
-2. **Member Access:** Requires successful completion of the Signal Analysis CTF.
-3. **Command Tier:** Administrative access for unit leadership only.
+### Precision Effects
+The squadron maintains highly trained sniper and observer teams, providing precision fire support and overwatch for UK Ranger Regiment maneuvers.
 
-[BEGIN AUTHENTICATION CHALLENGE](/rsis/gateway/)
+### Signals Intelligence
+Interception and analysis of adversary communications to identify high-value targets and dismantle coordination networks.
+
+{{< recruitment-form unit="int-corps" title="RSIS_SELECTION" headline="Register Specialist Interest" description="Join the RSIS. Selection is focused on methodical players who contribute through information and precision." >}}

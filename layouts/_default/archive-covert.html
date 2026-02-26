@@ -26,7 +26,7 @@
                 </h1>
                 
                 <div class="max-w-3xl border-l-8 border-mod-red pl-16 py-8 bg-[#f3f2f1]/50 dark:bg-[var(--bg-page)]/5 backdrop-blur-sm">
-                    <p class="text-2xl lg:text-3xl font-body font-light leading-relaxed text-mod-grey-1 dark:text-white/80 italic m-0">
+                    <p class="text-2xl lg:text-3xl font-body font-light leading-relaxed text-mod-grey-1 dark:text-white/80  m-0">
                         The Directorate coordinates clandestine assets, managing strategic SIGINT, HUMINT surveillance, and deniable operations across all simulation theaters.
                     </p>
                 </div>
@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <p class="max-w-2xl text-mod-grey-1 dark:text-mod-grey-3 font-body text-lg leading-relaxed lg:text-right font-light italic">
+            <p class="max-w-2xl text-mod-grey-1 dark:text-mod-grey-3 font-body text-lg leading-relaxed lg:text-right font-light ">
                 Institutional oversight of G2 intelligence, tactical Zeus coordination, and technical infrastructure protocols for Taskforce Alpha operations.
             </p>
         </div>
@@ -176,7 +176,7 @@
                     </div>
                     <div class="space-y-4">
                         <span class="text-[9px] text-mod-grey-2 uppercase font-black tracking-[0.3em] font-mono block border-b border-mod-grey-3 dark:border-mod-grey-1 pb-2">// System_Logs</span>
-                        <div class="font-mono text-[9px] space-y-3 uppercase text-mod-grey-2 font-black italic">
+                        <div class="font-mono text-[9px] space-y-3 uppercase text-mod-grey-2 font-black ">
                             <p class="m-0 text-mod-purple">[14:32:01] SIS_UPLINK_SYNC</p>
                             <p class="m-0">[14:32:05] SECTOR_7_SCAN</p>
                             <p class="m-0">[14:33:00] TELEMETRY_ACK</p>
@@ -187,14 +187,14 @@
             </div>
 
             <!-- Center: Tactical Map -->
-            <div class="lg:col-span-6 flex flex-col relative bg-mod-grey-1">
+            <div class="lg:col-span-6 flex flex-col relative bg-tactical-grey">
                 <!-- Layer Controls -->
                 <div class="absolute bottom-10 left-10 flex flex-col gap-3 z-30">
                     <button onclick="toggleMapLayer('intel')" id="btn-intel-layer" class="bg-mod-black border border-mod-purple text-white font-mono font-black text-[10px] px-6 py-3 hover:bg-mod-purple transition-all uppercase shadow-2xl">Intel_Layer</button>
                     <button onclick="toggleMapLayer('uksf')" id="btn-uksf-layer" class="bg-mod-black border border-mod-grey-1 text-mod-grey-2 font-mono font-black text-[10px] px-6 py-3 hover:bg-mod-grey-1 transition-all uppercase shadow-2xl">Public_AOR</button>
                 </div>
 
-                <div class="relative flex-1 bg-mod-grey-3 flex items-center justify-center overflow-hidden shadow-inner group">
+                <div class="relative flex-1 bg-tactical-grey-light flex items-center justify-center overflow-hidden shadow-inner group">
                     <div id="map-intel" class="absolute inset-0 flex items-center justify-center transition-opacity duration-500">
                         {{ $intel_map_path := site.Params.intelligence.intel_map_path | default "icons/intelligence-map.png" }}
                         {{ $mapIntel := resources.Get $intel_map_path }}
@@ -210,7 +210,7 @@
                     </div>
                     
                     <!-- Grid Overlay -->
-                    <div class="absolute inset-0 z-20 opacity-10 pointer-events-none" style="background-image: linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+                    <div class="absolute inset-0 z-20 opacity-[0.02] pointer-events-none" style="background-image: linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px); background-size: 50px 50px;"></div>
                 </div>
             </div>
 

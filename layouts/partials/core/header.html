@@ -1,5 +1,5 @@
 <!-- The Superior Rule (Official HMG Identity Standard) -->
-<div class="superior-rule transition-colors duration-300">
+<div class="superior-rule transition-colors duration-300 bg-[#f3f2f1] dark:bg-mod-black">
     <div class="moduk-width-container flex justify-between items-center w-full">
         <div class="flex items-center space-x-6">
             <span class="text-[9px] font-body font-black text-mod-black dark:text-white uppercase tracking-[0.4em]">UKSF Taskforce Alpha</span>
@@ -15,29 +15,48 @@
 </div>
 
 <!-- Institutional Navigation (MOD.UK Master Brand) -->
-<nav class="bg-[var(--bg-page)] border-b-8 border-[var(--brand-tint)] h-[100px] flex items-center transition-colors duration-300 shadow-lg relative z-[2000]" aria-label="Main navigation">
-    <div class="moduk-width-container flex justify-between items-center h-full w-full">
+<nav class="bg-[var(--bg-page)] border-b-8 border-[var(--brand-tint)] min-h-[110px] flex items-center transition-colors duration-300 relative z-[2000]" aria-label="Main navigation">
+    <div class="moduk-width-container flex flex-col md:flex-row justify-between items-center h-full w-full py-4 gap-8">
         <div class="flex items-center">
-            <a href="/" class="flex items-center gap-10 no-underline group">
-                {{ $logo := resources.Get "icons/MOD.png" }}
+            <a href="/" class="flex items-center gap-8 no-underline group">
+                {{ $logo := resources.Get "icons/TFA.png" }}
                 {{ if $logo }}
-                <div class="py-2">
-                    <img src="{{ $logo.RelPermalink }}" alt="UKSF Taskforce Alpha - Milsim Logo" class="h-16 w-auto  no-invert group-hover:scale-105 transition-transform duration-500">
+                <div class="shrink-0">
+                    <img src="{{ $logo.RelPermalink }}" alt="UKSF Taskforce Alpha" class="h-20 w-auto no-invert group-hover:scale-105 transition-transform duration-500">
                 </div>
                 {{ end }}
-                <div class="flex flex-col border-l-4 border-mod-grey-3 dark:border-mod-grey-1 pl-10">
-                    <span class="text-mod-black dark:text-white font-black text-2xl tracking-tighter font-industrial uppercase leading-none">UKSF Taskforce Alpha</span>
-                    <span class="text-mod-grey-2 text-[10px] font-mono font-black uppercase tracking-[0.4em] mt-2 italic">Milsim Community Hub // Simulation Archive</span>
+                <div class="flex flex-col border-l-4 border-mod-grey-3 dark:border-mod-grey-1 pl-8">
+                    <span class="text-mod-black dark:text-white font-bold text-2xl tracking-tight leading-none mb-1">UKSF Taskforce Alpha</span>
+                    <span class="text-mod-grey-1 dark:text-mod-grey-2 text-[14px] font-bold leading-tight">Institutional Service Gateway</span>
                 </div>
             </a>
         </div>
 
-        <div class="hidden lg:flex items-center gap-10 h-full">
-            {{ range site.Menus.main }}
-            <a href="{{ .URL }}" class="nav-link {{ if eq $.RelPermalink .URL }}active{{ end }} h-full flex items-center">
-                {{ .Name }}
-            </a>
-            {{ end }}
+        <!-- Community Centric Navigation -->
+        <div class="flex items-center gap-2 h-full">
+            <a href="/about/" class="nav-link py-4 px-4 text-[19px]">About</a>
+            
+            <div class="relative group/dropdown h-full flex items-center">
+                <button onclick="this.parentElement.classList.toggle('is-open')" class="nav-link px-4 text-[19px] flex items-center gap-2 border-none bg-transparent cursor-pointer h-full">
+                    Sections
+                    <svg class="w-4 h-4 transition-transform group-[.is-open]/dropdown:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="absolute top-full left-0 w-64 bg-white dark:bg-mod-black border-4 border-mod-black dark:border-white shadow-2xl opacity-0 translate-y-2 pointer-events-none group-hover/dropdown:opacity-100 group-hover/dropdown:translate-y-0 group-hover/dropdown:pointer-events-auto group-[.is-open]/dropdown:opacity-100 group-[.is-open]/dropdown:translate-y-0 group-[.is-open]/dropdown:pointer-events-auto transition-all duration-200 z-[3000]">
+                    <a href="/asob/" class="block p-4 text-[16px] font-bold hover:bg-govuk-blue hover:text-white no-underline text-mod-black dark:text-white border-b border-mod-grey-3 dark:border-mod-grey-1">Rangers</a>
+                    <a href="/uksf/" class="block p-4 text-[16px] font-bold hover:bg-govuk-blue hover:text-white no-underline text-mod-black dark:text-white border-b border-mod-grey-3 dark:border-mod-grey-1">UKSF</a>
+                    <a href="/rsis/" class="block p-4 text-[16px] font-bold hover:bg-govuk-blue hover:text-white no-underline text-mod-black dark:text-white border-b border-mod-grey-3 dark:border-mod-grey-1">RSIS</a>
+                    <a href="/jsfaw/" class="block p-4 text-[16px] font-bold hover:bg-govuk-blue hover:text-white no-underline text-mod-black dark:text-white border-b border-mod-grey-3 dark:border-mod-grey-1">JSFAW</a>
+                    <a href="/ramc/" class="block p-4 text-[16px] font-bold hover:bg-govuk-blue hover:text-white no-underline text-mod-black dark:text-white">RAMC</a>
+                </div>
+            </div>
+
+            <a href="/recruitment/" class="nav-link py-4 px-4 text-[19px]">Registry</a>
+            
+            <div class="ml-4">
+                <a href="/recruitment/" class="btn-gov !py-2 !px-6 !text-[16px]">
+                    Join now
+                </a>
+            </div>
         </div>
 
     </div>
@@ -46,10 +65,17 @@
 <script>
     window.toggleTheme = () => {
         const html = document.documentElement;
-        const isLight = html.classList.toggle('light');
-        localStorage.setItem('moduk_theme', isLight ? 'light' : 'dark');
-        // Also handle the legacy 'dark' class if present
-        if (isLight) html.classList.remove('dark');
-        console.log("Theme toggled. Light mode:", isLight);
+        const isCurrentlyLight = html.classList.contains('light');
+        
+        if (isCurrentlyLight) {
+            html.classList.remove('light');
+            html.classList.add('dark');
+            localStorage.setItem('moduk_theme', 'dark');
+        } else {
+            html.classList.remove('dark');
+            html.classList.add('light');
+            localStorage.setItem('moduk_theme', 'light');
+        }
+        console.log("Theme toggled. Mode:", html.classList.contains('light') ? 'light' : 'dark');
     }
 </script>

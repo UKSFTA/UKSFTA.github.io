@@ -1,7 +1,7 @@
-const { exec, spawn } = require('node:child_process');
-const util = require('node:util');
+import { exec, spawn } from 'node:child_process';
+import util from 'node:util';
+import 'dotenv/config';
 const execPromise = util.promisify(exec);
-require('dotenv').config();
 
 class RconManager {
   constructor() {
@@ -129,4 +129,4 @@ class RconManager {
   }
 }
 
-module.exports = new RconManager();
+export default new RconManager();

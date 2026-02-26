@@ -5,7 +5,7 @@
         <header class="flex flex-col md:flex-row justify-between items-start md:items-end border-b-8 border-mod-purple pb-10 gap-12 bg-[#f3f2f1] dark:bg-[#1d2329] p-10 shadow-xl relative overflow-hidden">
             <div class="space-y-8 relative z-10">
                 <div class="flex items-center gap-8">
-                    {{ $logo := resources.Get "icons/MOD.png" }}
+                    {{ $logo := resources.Get "icons/TFA.png" }}
                     {{ if $logo }}
                     <img src="{{ $logo.RelPermalink }}" alt="UKSF Taskforce Alpha - Milsim Logo" class="h-16 w-auto  no-invert opacity-80">
                     {{ end }}
@@ -15,7 +15,7 @@
                 
                 <div class="space-y-2">
                     <h1 class="text-6xl lg:text-7xl font-industrial font-black uppercase text-mod-black dark:text-white m-0 leading-none tracking-tighter">Deployment Logs</h1>
-                    <p class="text-mod-grey-2 text-[11px] font-mono font-black uppercase tracking-[0.4em] italic opacity-80">Community Engagement & Historical Records Registry</p>
+                    <p class="text-mod-grey-2 text-[11px] font-mono font-black uppercase tracking-[0.4em]  opacity-80">Community Engagement & Historical Records Registry</p>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
                 <div class="bg-mod-black dark:bg-mod-black/40 text-white px-6 py-3 shadow-lg">
                     <span class="block text-[10px] font-bold uppercase tracking-[0.2em]">Total Records: <span id="archive-count" class="text-mod-purple dark:text-white">--</span></span>
                 </div>
-                <span class="block text-[9px] text-mod-grey-2 uppercase tracking-widest font-black italic">Registry Node: JSFC-ALPHA-01</span>
+                <span class="block text-[9px] text-mod-grey-2 uppercase tracking-widest font-black ">Registry Node: JSFC-ALPHA-01</span>
             </div>
         </header>
 
@@ -32,7 +32,7 @@
             <div class="flex items-center gap-10">
                 <span class="text-[11px] font-black text-mod-purple dark:text-mod-grey-3 uppercase tracking-[0.4em] font-mono leading-none">Search_Registry:</span>
                 <div class="flex-grow h-px bg-mod-grey-3 dark:bg-mod-grey-1"></div>
-                <span class="text-[10px] font-mono text-mod-grey-2 uppercase tracking-widest font-black animate-pulse italic">Initializing Data Handshake...</span>
+                <span class="text-[10px] font-mono text-mod-grey-2 uppercase tracking-widest font-black animate-pulse ">Initializing Data Handshake...</span>
             </div>
         </div>
 
@@ -40,7 +40,7 @@
         <div id="archives-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-mod-grey-3 dark:bg-mod-grey-1 border border-mod-grey-3 dark:border-mod-grey-1 shadow-2xl">
             <!-- JS Injected Archives -->
             <div class="py-40 text-center col-span-full bg-[var(--bg-page)]">
-                <span class="text-[11px] font-mono text-mod-grey-2 animate-pulse tracking-[0.4em] uppercase font-black italic">Handshaking Institutional Database...</span>
+                <span class="text-[11px] font-mono text-mod-grey-2 animate-pulse tracking-[0.4em] uppercase font-black ">Handshaking Institutional Database...</span>
             </div>
         </div>
     </div>
@@ -102,7 +102,7 @@
             if (container) {
                 container.innerHTML = `
                     <div class="py-40 text-center col-span-full bg-mod-red/5">
-                        <span class="text-[11px] font-mono text-mod-red tracking-[0.4em] uppercase font-black animate-pulse italic">Uplink Failure: ${err.message}</span>
+                        <span class="text-[11px] font-mono text-mod-red tracking-[0.4em] uppercase font-black animate-pulse ">Uplink Failure: ${err.message}</span>
                     </div>
                 `;
             }

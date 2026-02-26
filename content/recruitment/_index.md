@@ -1,54 +1,69 @@
 ---
-title: "Selection & Recruitment"
-description: "The official unified selection pipeline for the Directorate of Special Forces. Assessment for SAS, SBS, and SFSG assets."
+title: "Apply to join Taskforce Alpha"
+description: "Information on the selection process, requirements, and structural elements of the United Kingdom Special Forces simulation community."
 date: 2026-01-28
 layout: "page"
 ---
 
-United Kingdom Special Forces recruitment is simulated through Taskforce Alpha's joint-service assessment. Our intake process ensures that every member is trained to a high standard before entering the operational rotation.
+## Overview
 
-## The Recruitment Pipeline
+Taskforce Alpha is a structured simulation unit conducting semi-realistic operations based on the British Armed Forces. We are currently undergoing a major restructure to implement three specialized operational elements.
 
-TFA follows a structured entry standard. Candidates move through the following gateways:
+Our objective is to ensure every role has a distinct operational purpose and contributes to the success of the wider task group.
 
-1. **Application & Interview**: Initial screening via our secure Discord to ensure maturity and technical readiness.
-2. **Phase 1: Basic Training (1 Week)**: Mastery of Basic CQB, Section Tactics, Radio Protocols, and the core unit modpack.
-3. **Phase 2: Progression Training (2-4 Weeks)**: Advanced skills development within SFSG, including specialized weaponry and medical training.
-4. **Operational Probation**: Candidates must complete **2 full weeks of operations** within SFSG before they are eligible to apply for advanced specialization.
+---
 
-## The Entry Standard
+## Selection journey
 
-TFA entry is not a competition; it is a validation of your ability to operate as part of a high-fidelity milsim team.
+The path to joining the taskforce is divided into 4 operational phases.
 
-### Primary Entry Points
+### Application and interview
+You must first uplink to our communication node. You will undergo a screening interview with Taskforce HQ to verify your technical readiness and suitability for the community.
 
-- **SFSG Support**: The required starting point for all ground-based operators. Master the fundamentals of Special Forces support.
-- **JSFAW Ground Crew**: The starting point for all aviation candidates. Prove your competence on the ground before moving to rotary flight training.
+### The Ranger Cadre
+Successful applicants are assigned to the Ranger Regiment. During this 2-week training period, you will be evaluated on your mastery of:
+- small unit tactics: standard operating procedures for urban and rural combat
+- communication protocols: operation of tactical radio systems
+- medical SOPs: application of the ACE3 medical simulation system
 
-## Advanced Specialization
+### Operational validation
+After completing the cadre, you will deploy on active operations as a Ranger. This probationary period validates your ability to maintain standards under operational stress.
 
-Upon successful completion of the probationary period, members may apply for selection into specialized detachments:
+### Specialist selection
+Once validated, you may apply for selection into specialized Tier 1 detachments, including the SAS, SBS, and Intelligence elements.
 
-- **22nd SAS**: Direct Action and Counter-Terrorism specialization.
-- **SBS**: Maritime Operations and Amphibious Warfare.
-- **ASOB**: Partner Force Integration and Asymmetric Warfare.
-- **SRR**: Covert Surveillance and SIGINT specialists.
-- **Royal Army Medical Corps**: Advanced field surgery and CASEVAC simulation.
+---
 
-<div class="my-32">
-    {{< recruitment-form unit="sfsg" title="UKSFTA_GATEWAY" headline="Initiate Entry Protocol" description="Join the Taskforce Alpha intake cycle. All applications are reviewed by Taskforce HQ." >}}
-</div>
+## Active recruitment gateways
 
-## Minimum Requirements
+We are currently accepting applications for the following elements:
 
-- **Availability**: Commitment to our Primary Operations on **Wednesdays at 19:00 GMT**.
-- **Maturity**: Minimum age of 18 (exceptions after interview).
-- **Communication**: Functional microphone and clear English communication skills.
+| ID | Branch | Role | Status |
+| :--- | :--- | :--- | :--- |
+| **G-ELM-01** | UK Ranger Regiment | Main Combat Element | **OPEN** |
+| **A-ELM-01** | JSFAW | Aviation Support | **OPEN** |
+| **I-ELM-03** | Intelligence & Sniper | ISR & Precision Support | **OPEN** |
 
-### Unofficial Status Disclosure
+---
 
-Taskforce Alpha is an unofficial milsim community. We are not affiliated with the UK Ministry of Defence.
+{{< recruitment-form unit="asob" title="Start your application" headline="Initiate entry packet" description="Use this service to begin your selection for the UK Ranger Regiment or specialist support roles." >}}
+
+---
+
+## Requirements
+
+To join Taskforce Alpha, you must meet the following baseline criteria:
+
+- you must have a working microphone
+- you must be willing to learn and follow unit procedures
+- you must show respect for other players and leadership
+- you must be reliable for scheduled operations on **Wednesdays at 19:00 GMT**
+
+---
+
+### Official status disclosure
+Taskforce Alpha is an unofficial milsim community and is not affiliated with the UK Ministry of Defence.
 
 {{< mandate id="RECRUIT-SECURITY" >}}
-Selection coordinates and modpack credentials provided only after successful interview.
+Full operational coordinates and repository credentials are provided only after successful interview.
 {{< /mandate >}}

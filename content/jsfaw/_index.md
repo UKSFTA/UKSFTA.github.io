@@ -3,7 +3,7 @@ title: "Joint Special Forces Aviation Wing"
 description: "The United Kingdom's specialist Tier 2 aviation unit. Experts in covert air insertion, tactical extraction, and real-time battlefield intelligence."
 date: 2026-01-28
 unit: "jsfaw"
-layout: "dossier"
+type: "branch"
 ---
 
 The Joint Special Forces Aviation Wing (JSFAW) provides Taskforce Alpha with essential air capabilities, including transport, reconnaissance, and Close Air Support (CAS).

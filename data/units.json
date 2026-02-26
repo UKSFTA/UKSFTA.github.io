@@ -2,6 +2,7 @@
   "sas": {
     "id": "SAS",
     "name": "22nd Special Air Service",
+    "skin": "sf",
     "specialization": "Direct Action / CQB / CT",
     "role": "Assault Element / Door-Kickers",
     "motto": "Who Dares Wins",
@@ -9,9 +10,22 @@
     "icon": "icons/SAS.png",
     "entry": "Internal Transfer Required"
   },
+  "uksf": {
+    "id": "UKSF",
+    "display_id": "UKSF",
+    "name": "United Kingdom Special Forces",
+    "skin": "sf",
+    "specialization": "Tier 1 Special Operations / SAS / SBS",
+    "role": "Elite Special Forces",
+    "motto": "Always A Little Further",
+    "color": "#b3995d",
+    "icon": "icons/TFA.png",
+    "entry": "Internal Transfer Only"
+  },
   "sbs": {
     "id": "SBS",
     "name": "Special Boat Service",
+    "skin": "navy",
     "specialization": "Amphibious Insertion / EOD / Support",
     "role": "Maritime & Support Specialists",
     "motto": "By Strength and Guile",
@@ -20,19 +34,22 @@
     "entry": "Internal Transfer Required"
   },
   "asob": {
-    "id": "ASOB",
-    "name": "ASOB",
-    "specialization": "Special Operations / Partner Force Integration",
-    "role": "Army Special Operations",
+    "id": "RANGER",
+    "display_id": "Rangers",
+    "name": "UK Ranger Regiment",
+    "skin": "army",
+    "specialization": "Direct Action / Air Assault / Mechanized",
+    "role": "Main Combat Element",
     "motto": "By All Means",
     "color": "#536878",
     "icon": "icons/RANGERS.png",
-    "entry": "Internal Transfer Required"
+    "entry": "Initial Entry"
   },
   "srr": {
     "id": "SRR",
     "hidden": true,
     "name": "Special Reconnaissance Regiment",
+    "skin": "sf",
     "specialization": "Covert Surveillance / ELINT / ISR",
     "role": "Intelligence & Recce Specialists",
     "motto": "Reconnaissance",
@@ -42,7 +59,9 @@
   },
   "sfsg": {
     "id": "SFSG",
+    "hidden": true,
     "name": "Special Forces Support Group",
+    "skin": "army",
     "specialization": "Logistics / Driving / Heavy Weapons",
     "role": "Primary Entry Point / SOP Mastery",
     "motto": "Always A Little Further",
@@ -53,6 +72,7 @@
   "jsfaw": {
     "id": "JSFAW",
     "name": "Joint Special Forces Aviation Wing",
+    "skin": "raf",
     "specialization": "Rotary / Attack / Fixed Wing / Drones",
     "role": "Aviation Support & CAS",
     "motto": "Resolute",
@@ -60,10 +80,11 @@
     "icon": "icons/JSFAW.png",
     "entry": "Initial Entry (Ground Crew Start)"
   },
-  "med-det": {
-    "id": "MED_DET",
+  "ramc": {
+    "id": "RAMC",
     "display_id": "RAMC",
     "name": "Royal Army Medical Corps",
+    "skin": "army",
     "specialization": "Field Surgery / CASEVAC / Medical Training",
     "role": "Medical Support Specialists",
     "motto": "In Arduis Fidelis",
@@ -75,6 +96,7 @@
     "id": "SIGNALS",
     "hidden": true,
     "name": "18 (UKSF) Signal Regiment",
+    "skin": "sf",
     "specialization": "SIGINT / Cyber / Electronic Warfare",
     "role": "Technical Intelligence",
     "motto": "Colloquendo Imperamus",
@@ -86,6 +108,7 @@
     "id": "SECTION_6",
     "hidden": true,
     "name": "Secret Intelligence Service (MI6)",
+    "skin": "sf",
     "specialization": "Clandestine Operations / Black Ops",
     "role": "Deniable Assets",
     "motto": "Semper Occultus",
@@ -97,6 +120,7 @@
     "id": "SIS",
     "hidden": true,
     "name": "Secret Intelligence Service",
+    "skin": "sf",
     "specialization": "Strategic Oversight / Intelligence",
     "role": "Command Directorate",
     "motto": "Semper Occultus",
@@ -105,22 +129,24 @@
     "entry": "Directorate Only"
   },
   "int-corps": {
-    "id": "INT_CORPS",
-    "hidden": true,
-    "name": "Intelligence Corps",
-    "specialization": "Mission Design / Narrative / Zeus",
-    "role": "Operational Architects",
+    "id": "RSIS",
+    "display_id": "RSIS",
+    "name": "RSIS",
+    "skin": "sf",
+    "specialization": "Special Reconnaissance / Intelligence / Snipers",
+    "role": "Strategic Intelligence & Precision Support",
     "motto": "Manui Dat Cognitio Vires",
     "color": "#1b4d3e",
-    "icon": "icons/Intelligence-Corps.png",
-    "entry": "Application Only"
+    "icon": "icons/SRR.png",
+    "entry": "Selection Required"
   },
-  "e-squadron": {
-    "id": "E_SQN",
-    "hidden": true,
-    "name": "E Squadron (UKSF)",
+  "sf": {
+    "id": "UKSF",
+    "display_id": "UKSF",
+    "name": "UKSF",
+    "skin": "sf",
     "specialization": "Clandestine / Deniable Operations",
-    "role": "Covert Strike Element",
+    "role": "Tier 1 Clandestine Element",
     "motto": "Semper Occultus",
     "color": "#093388",
     "icon": "icons/SAS.png",
@@ -131,11 +157,12 @@
     "hidden": true,
     "display_id": "HQ",
     "name": "Taskforce Headquarters",
+    "skin": "sf",
     "specialization": "Zeus / Mission Making / Intelligence",
     "role": "Command & Mission Control",
     "motto": "Vigilance",
     "color": "#1a1a1a",
-    "icon": "icons/Intelligence-Corps.png",
+    "icon": "icons/TFA.png",
     "entry": "Appointment Only"
   }
 }

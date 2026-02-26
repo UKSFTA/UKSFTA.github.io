@@ -1,7 +1,7 @@
 <div class="flex flex-col h-full">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-px bg-[var(--bg-page)]/10 border border-white/10">
         {{ $units := .Site.Data.units }}
-        {{ $order := slice "sas" "sbs" "asob" "sfsg" "jsfaw" "med-det" }}
+        {{ $order := slice "sas" "sbs" "asob" "jsfaw" "med-det" }}
         {{ range $id := $order }}
         {{ with (index $units $id) }}
         <a href="/{{ $id }}/" class="group bg-tactical-black p-6 lg:p-8 no-underline relative overflow-hidden transition-all duration-500 hover:bg-tactical-dark flex flex-col h-full min-h-[350px] lg:min-h-[400px]">

@@ -1,43 +1,86 @@
 {{ define "main" }}
 <!-- 1. PRIMARY INSTITUTIONAL HERO -->
-<section class="relative bg-[var(--bg-page)] border-b-4 border-mod-purple">
-    <div class="moduk-width-container relative z-10">
-        <div class="max-w-4xl space-y-4">
-            <span class="text-mod-purple dark:text-mod-grey-1 font-body font-bold text-xs uppercase tracking-[0.4em] block">United Kingdom Special Forces</span>
-            
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-industrial font-black uppercase leading-none tracking-tighter m-0">
-                Always A Little <br><span class="text-mod-purple dark:text-white">Further.</span>
-            </h1>
-            
-            <p class="text-lg lg:text-xl font-body font-light leading-relaxed max-w-2xl text-[var(--text-secondary)] dark:text-white/80 italic m-0">
-                Taskforce Alpha coordinates elite special operations assets to maintain strategic readiness across all simulation theaters.
-            </p>
-            
-            <div class="flex flex-wrap gap-4 pt-4">
-                <a href="/recruitment/" class="btn-mod btn-mod-primary shadow-lg hover:-translate-y-0.5 transition-all">
-                    Start Selection
-                </a>
-                <a href="/sas/" class="btn-mod btn-mod-secondary hover:-translate-y-0.5 transition-all">
-                    Explore Capability
-                </a>
+<section class="bg-[var(--bg-page)] border-b-8 border-[var(--text-main)]">
+    <div class="moduk-width-container">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid-rule-three items-end">
+                <div class="lg:col-span-2">
+                    <span class="bg-govuk-blue text-white px-2 py-0.5 text-[14px] font-bold uppercase mb-8 inline-block">Official</span>
+                    
+                    <h1 class="text-5xl md:text-7xl font-bold text-[var(--text-main)] leading-none tracking-tight m-0 mb-12">
+                        United Kingdom Special Forces Service Gateway
+                    </h1>
+                    
+                    <p class="text-2xl font-light text-[var(--text-secondary)] leading-relaxed mb-12 max-w-2xl">
+                        Taskforce Alpha coordinates elite special operations assets to maintain strategic readiness across all simulation theaters.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-6">
+                        <a href="/recruitment/" class="btn-gov">
+                            Start selection now
+                            <svg class="ml-4 w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </a>
+                        <a href="/about/" class="btn-gov btn-gov-secondary">
+                            About the taskforce
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="inset-text !m-0 !border-l-4">
+                        <p class="text-lg leading-relaxed m-0 text-[var(--text-secondary)]">
+                            Strategic ORBAT Registry Node: <br>
+                            <strong>JSFC-ALPHA-GATEWAY</strong>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 2. MISSION DIRECTIVE -->
-<section class="bg-mod-grey-4 dark:bg-mod-dark-grey border-y border-mod-grey-3 dark:border-mod-grey-1">
+<!-- 2. SERVICE UPDATES & METRICS -->
+<section class="bg-[var(--mod-grey-4)] border-b border-[var(--border-main)]">
     <div class="moduk-width-container">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-5">
-                <h2 class="text-4xl lg:text-5xl font-industrial font-black uppercase m-0 leading-[0.9]">
-                    Strategic <br><span class="text-mod-purple">Integration.</span>
-                </h2>
+        <!-- Institutional Metrics (Rule of Three) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-1 mb-20 bg-[var(--border-main)] border border-[var(--border-main)]">
+            <div class="bg-[var(--bg-page)] p-10 flex flex-col items-center text-center">
+                <span class="text-5xl font-bold text-[var(--text-main)] leading-none mb-4" id="personnel-count">--</span>
+                <span class="text-sm font-bold text-[var(--text-secondary)] uppercase tracking-widest">Active Personnel</span>
             </div>
-            <div class="lg:col-span-7 border-l-4 border-mod-purple pl-10">
-                <p class="text-lg lg:text-xl font-body font-light leading-relaxed text-mod-grey-1 dark:text-mod-grey-3 m-0">
-                    We adhere to official Ministry of Defence standards for tactical realism and simulation. Our training protocols ensure that all personnel operate with high-fidelity technical aptitude and institutional integrity.
-                </p>
+            <div class="bg-[var(--bg-page)] p-10 flex flex-col items-center text-center">
+                <span class="text-5xl font-bold text-[var(--text-main)] leading-none mb-4" id="avg-deployed-count">--</span>
+                <span class="text-sm font-bold text-[var(--text-secondary)] uppercase tracking-widest">Avg Deployed</span>
+            </div>
+            <div class="bg-[var(--bg-page)] p-10 flex flex-col items-center text-center">
+                <span class="text-5xl font-bold text-[var(--text-main)] leading-none mb-4" id="uptime-count">--%</span>
+                <span class="text-sm font-bold text-[var(--text-secondary)] uppercase tracking-widest">Srv Uptime (30D)</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+            <div class="lg:col-span-2">
+                <!-- Service Updates (Alerts) -->
+                <div id="service-updates-container" class="hidden mb-20">
+                    <h2 class="text-3xl font-bold mb-10 border-none p-0 text-[var(--text-main)]">Service updates</h2>
+                    <div id="alerts-feed" class="space-y-6">
+                        <!-- Alerts injected here -->
+                    </div>
+                </div>
+
+                <div class="inset-text">
+                    <p class="text-xl leading-relaxed m-0 text-[var(--text-main)]">
+                        Taskforce Alpha is a semi-realistic simulation community focusing on the Special Forces component of the United Kingdom Armed Forces. We host high-fidelity Arma 3 missions and persistent campaigns, prioritizing tactical excellence and institutional integrity.
+                    </p>
+                </div>
+            </div>
+            <div class="space-y-8">
+                <h3 class="text-xl font-bold m-0 text-[var(--text-main)] uppercase tracking-widest">Operational Status</h3>
+                <div class="p-6 bg-[var(--bg-page)] border border-[var(--border-main)]">
+                    <div class="flex items-center gap-4">
+                        <span class="w-3 h-3 bg-mod-green rounded-full animate-pulse"></span>
+                        <span class="text-lg font-bold text-[var(--text-main)]">Systems Nominal</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -46,30 +89,27 @@
 <!-- 3. UNIT DIRECTORY -->
 <section class="bg-[var(--bg-page)]">
     <div class="moduk-width-container">
-        <div class="mb-8 border-b-2 border-mod-purple pb-4 flex justify-between items-end">
-            <h2 class="text-3xl lg:text-4xl font-industrial font-black uppercase m-0 leading-none">Taskforce Units</h2>
-            <span class="text-[9px] font-mono text-mod-grey-2 font-black uppercase tracking-widest hidden md:block">Strategic_ORBAT_Registry</span>
-        </div>
+        <h2 class="text-4xl font-bold mb-12 border-none p-0 text-[var(--text-main)]">Operational elements</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {{ $units := .Site.Data.units }}
-            {{ $order := slice "sas" "sbs" "asob" "sfsg" "jsfaw" "med-det" }}
+            {{ $order := slice "asob" "sf" "int-corps" "jsfaw" "ramc" }}
             {{ range $id := $order }}
             {{ with (index $units $id) }}
-            <a href="/{{ $id }}/" class="group relative flex flex-row items-center bg-mod-grey-4 dark:bg-mod-dark-grey border border-mod-grey-3 dark:border-mod-grey-1 p-4 no-underline transition-all hover:shadow-lg hover:border-mod-purple border-l-4 border-l-mod-purple h-24">
-                <div class="w-16 shrink-0 flex justify-center border-r border-mod-grey-3 dark:border-mod-grey-1 mr-4 pr-4">
+            <a href="/{{ $id }}/" class="group block bg-[var(--mod-grey-4)] border-l-8 border-[var(--brand-tint)] p-10 no-underline transition-all hover:brightness-95 dark:hover:brightness-110 h-full">
+                <div class="flex items-start gap-8">
                     {{ $icon := resources.Get .icon }}
                     {{ if $icon }}
-                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="h-8 w-auto grayscale group-hover:grayscale-0 transition-all duration-500 no-invert">
+                    <img src="{{ $icon.RelPermalink }}" alt="{{ .name }}" class="h-20 w-auto no-invert shrink-0">
                     {{ end }}
-                </div>
-                <div class="flex-1 min-w-0">
-                    <h3 class="text-base font-industrial font-black uppercase m-0 group-hover:text-mod-purple transition-colors leading-none truncate">
-                        {{ .display_id | default .id }}
-                    </h3>
-                    <p class="text-[9px] font-body text-mod-grey-1 dark:text-mod-grey-3 font-bold uppercase tracking-widest mt-1 truncate">
-                        {{ .name }}
-                    </p>
+                    <div>
+                        <h3 class="text-2xl font-bold text-[var(--brand-tint)] underline group-hover:text-[var(--text-main)] m-0 mb-4 transition-colors">
+                            {{ .name }}
+                        </h3>
+                        <p class="text-lg text-[var(--text-secondary)] m-0">
+                            {{ .specialization }}
+                        </p>
+                    </div>
                 </div>
             </a>
             {{ end }}
@@ -78,35 +118,80 @@
     </div>
 </section>
 
-<!-- 4. AOR WORKSTATION (Dynamic SVG Version) -->
-<section class="bg-mod-black border-y border-mod-grey-1">
-    <div class="moduk-width-container">
-        <div class="mb-6 flex flex-col lg:flex-row justify-between items-end gap-6 border-b border-white/10 pb-4">
-            <div class="space-y-1">
-                <div class="flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 bg-mod-green rounded-full animate-ping"></span>
-                    <span class="text-white/60 font-mono font-bold text-[9px] uppercase tracking-[0.4em] block">// Strategic Monitoring</span>
+<!-- 4. OPERATIONAL MONITORING (Wide Station) -->
+<section class="bg-[#0b0c0c] border-y border-[var(--border-main)] overflow-hidden">
+    <div class="moduk-width-container h-full flex flex-col py-12">
+        <div class="flex-1 flex flex-col min-h-0">
+            <!-- Header -->
+            <div class="mb-8 flex justify-between items-end shrink-0 max-w-6xl mx-auto w-full">
+                <div class="space-y-1">
+                    <h2 class="text-3xl font-bold text-white m-0 p-0 border-none">Operational monitoring</h2>
+                    <p class="text-lg text-white/40 m-0 uppercase tracking-widest font-mono text-[14px]">AOR_TERMINAL // HANDSHAKE: ACTIVE</p>
                 </div>
-                <h2 class="text-3xl lg:text-4xl font-industrial font-black text-white uppercase m-0 leading-none">AOR Control</h2>
+                <div class="hidden md:flex items-center gap-4 bg-white/5 border border-white/10 px-4 py-2">
+                    <span class="w-2 h-2 bg-mod-green rounded-full animate-pulse"></span>
+                    <span class="text-sm font-bold text-white uppercase tracking-widest">Systems Nominal</span>
+                </div>
             </div>
-            <div class="text-right">
-                <span class="bg-mod-green text-mod-black px-3 py-1 text-[9px] font-black uppercase tracking-[0.2em] shadow-lg">STATION_ACTIVE</span>
-            </div>
-        </div>
+            
+            <!-- Three Column Integrated Grid -->
+            <div class="flex-1 grid grid-cols-1 lg:grid-cols-12 border border-white/10 bg-white/[0.02] min-h-0">
+                <!-- Column 1: Deployment (3 Cols) -->
+                <div class="lg:col-span-3 border-r border-white/10 flex flex-col min-h-0">
+                    <div class="p-6 flex-1 overflow-y-auto custom-scrollbar">
+                        <div class="live-ops-feed-container">
+                            {{ partial "widgets/unitcommander.html" (dict "class" "!p-0 !bg-transparent !border-0") }}
+                        </div>
+                    </div>
+                </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-px bg-white/5 border border-white/10 overflow-hidden shadow-2xl h-[600px] items-stretch">
-            <!-- LEFT: COMMS HUD -->
-            <div class="lg:col-span-4 bg-mod-black border-r border-white/5 flex flex-col">
-                {{ partial "widgets/comms-hub.html" (dict "class" "!border-0 !bg-transparent") }}
-            </div>
-            <!-- RIGHT: TACTICAL SVG MAP -->
-            <div class="lg:col-span-8 bg-mod-black relative flex items-center justify-center overflow-hidden h-full">
-                {{ partial "widgets/tactical-map.html" . }}
-                
-                <div class="absolute bottom-4 right-4 z-40 bg-mod-black/80 backdrop-blur-md border border-white/10 p-4 shadow-2xl">
-                    <div class="flex flex-col gap-1">
-                        <span class="text-[8px] font-mono text-mod-purple uppercase tracking-[0.4em] font-black block leading-none">// Node_JSFC_AOR</span>
-                        <span class="text-[6px] font-mono text-white/20 uppercase tracking-widest block leading-none italic">Sector: UK_SOUTH // GRID: 3976-5286</span>
+                <!-- Column 2: Tactical Map (6 Cols) -->
+                <div class="lg:col-span-6 relative bg-[#001a2e] flex flex-col min-h-0 overflow-hidden">
+                    <div class="flex-1 relative">
+                        <div class="absolute inset-0">
+                            {{ partial "widgets/tactical-map.html" . }}
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-white/10 bg-[#0b0c0c]/40 flex justify-between items-center font-mono shrink-0">
+                        <div class="flex gap-8 text-[10px]">
+                            <div class="flex gap-2"><span class="text-white/30">MGRS:</span><span class="text-white font-bold text-mod-green">30U WB 1234 5678</span></div>
+                            <div class="flex gap-2"><span class="text-white/30">LAT:</span><span class="text-white">51.5074° N</span></div>
+                            <div class="flex gap-2"><span class="text-white/30">LNG:</span><span class="text-white">0.1278° W</span></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-[9px] text-white/20 uppercase tracking-widest">Projection: EPSG:27700</span>
+                            <span class="text-[10px] text-mod-green font-bold">NODE: JSFC_LONDON_CENTRAL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 3: Telemetry & Signal (3 Cols) -->
+                <div class="lg:col-span-3 border-l border-white/10 flex flex-col divide-y divide-white/10 min-h-0">
+                    <!-- Telemetry -->
+                    <div class="p-6 flex flex-col min-h-0">
+                        <h3 class="text-xs font-bold text-white/40 uppercase tracking-[0.2em] mb-4 shrink-0">Live Telemetry</h3>
+                        <div id="player-count" class="text-2xl font-bold text-white mb-2 shrink-0">--</div>
+                        <div id="battlemetrics-graph" class="flex-1 min-h-0 w-full mb-4"></div>
+                        <div class="flex gap-4 shrink-0">
+                            <button onclick="setBattlemetricsRange('today')" class="bm-range-btn active text-[10px] font-bold text-white/40 uppercase border-b-2 border-transparent hover:text-white" data-range="today">24H</button>
+                            <button onclick="setBattlemetricsRange('week')" class="bm-range-btn text-[10px] font-bold text-white/40 uppercase border-b-2 border-transparent hover:text-white" data-range="week">7D</button>
+                        </div>
+                    </div>
+                    <!-- System Log Feed -->
+                    <div class="p-6 flex-1 overflow-hidden flex flex-col min-h-0">
+                        <h3 class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-4 shrink-0">System Log Feed</h3>
+                        <div class="flex-1 font-mono text-[8px] text-white/20 space-y-1 overflow-hidden">
+                            <div class="flex gap-2"><span>[16:42:01]</span><span class="text-mod-green/40">SHARD_SYNC_SUCCESS</span></div>
+                            <div class="flex gap-2"><span>[16:41:58]</span><span>QUERY_NODE_722_REPLY</span></div>
+                            <div class="flex gap-2"><span>[16:41:55]</span><span>AUTH_HANDSHAKE_INIT</span></div>
+                            <div class="flex gap-2"><span>[16:41:50]</span><span class="text-white/40">G2_ORBAT_CACHE_REFRESH</span></div>
+                            <div class="flex gap-2"><span>[16:41:45]</span><span>MAP_ASSET_READY</span></div>
+                        </div>
+                    </div>
+                    <!-- Signal -->
+                    <div class="p-6 bg-white/[0.02] shrink-0">
+                        <h3 class="text-xs font-bold text-white/40 uppercase tracking-[0.2em] mb-4 shrink-0">Network Signal</h3>
+                        {{ partial "widgets/discord.html" (dict "class" "!p-0 !bg-transparent !border-0 scale-90 origin-left") }}
                     </div>
                 </div>
             </div>
@@ -115,24 +200,19 @@
 </section>
 
 <!-- 5. FINAL GATEWAY -->
-<section class="bg-[var(--bg-page)] text-center relative overflow-hidden">
-    <div class="moduk-width-container max-w-3xl space-y-6 relative z-10">
-        <div class="space-y-2">
-            <span class="text-mod-purple font-mono font-bold text-xs uppercase tracking-[0.6em] block">Personnel Acquisition</span>
-            <h2 class="text-4xl lg:text-5xl font-industrial font-black uppercase m-0 leading-none tracking-tighter">Strategic Enlistment</h2>
-        </div>
-        
-        <p class="text-base lg:text-lg font-body text-mod-grey-1 dark:text-mod-grey-3 leading-relaxed max-w-xl mx-auto font-light italic m-0 opacity-80">
-            Candidates are evaluated based on integrity, maturity, and technical aptitude. Taskforce Alpha maintains a rigorous selection standard.
-        </p>
-        
-        <div class="pt-4">
-            <a href="/recruitment/" class="bg-mod-green text-[var(--btn-text)] font-body font-bold px-10 py-4 uppercase text-lg tracking-[0.4em] no-underline hover:brightness-110 transition-all inline-block shadow-lg hover:-translate-y-1">
-                Apply for Selection
+<section class="bg-[var(--bg-page)] border-none">
+    <div class="moduk-width-container text-center">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <h2 class="text-5xl font-bold m-0 border-none p-0 text-[var(--text-main)]">Join the taskforce</h2>
+            
+            <p class="text-2xl font-light text-[var(--text-secondary)] leading-relaxed">
+                Candidates are evaluated based on integrity, maturity, and technical aptitude. Taskforce Alpha maintains a rigorous selection standard.
+            </p>
+            
+            <a href="/recruitment/" class="btn-gov">
+                Start your application
             </a>
         </div>
     </div>
 </section>
-
-{{ partial "core/footer.html" . }}
 {{ end }}

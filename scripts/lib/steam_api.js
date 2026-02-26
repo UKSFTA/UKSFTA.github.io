@@ -1,5 +1,5 @@
-const axios = require('axios');
-require('dotenv').config();
+import axios from 'axios';
+import 'dotenv/config';
 
 /**
  * SteamAPI Client
@@ -77,4 +77,4 @@ class SteamAPI {
   }
 }
 
-module.exports = new SteamAPI();
+export default new SteamAPI();
