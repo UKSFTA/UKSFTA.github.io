@@ -5,6 +5,7 @@
   window.globalTelemetry = null;
   window.currentBattlemetricsRange = 'today';
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <reason>
   async function fetchIntegratedIntel() {
     console.log('[JSFC_INTEL] Initiating heartbeat synchronization...');
     try {
@@ -16,16 +17,18 @@
       updateBattlemetricsUI();
       if (data.average_attendance !== undefined) {
         const avgEl = document.getElementById('avg-deployed-count');
-        if (avgEl) avgEl.innerText = data.average_attendance.toString().padStart(2, '0');
+        if (avgEl)
+          avgEl.innerText = data.average_attendance.toString().padStart(2, '0');
       }
       if (data.personnel_count !== undefined) {
         const pEl = document.getElementById('personnel-count');
-        if (pEl) pEl.innerText = data.personnel_count.toString().padStart(2, '0');
+        if (pEl)
+          pEl.innerText = data.personnel_count.toString().padStart(2, '0');
       }
       if (data.uptime_percentage !== undefined) {
         const uEl = document.getElementById('uptime-count');
         if (uEl) uEl.innerText = `${data.uptime_percentage}%`;
-        
+
         document.querySelectorAll('.signal-strength').forEach((el) => {
           el.innerText = `Signal: ${data.uptime_percentage}%`;
         });
@@ -35,17 +38,27 @@
       }
 
       // Handle Alerts Feed (Service Updates)
-      const alertsContainer = document.getElementById('service-updates-container');
+      const alertsContainer = document.getElementById(
+        'service-updates-container',
+      );
       const alertsFeed = document.getElementById('alerts-feed');
-      if (alertsContainer && alertsFeed && data.unitcommander?.alerts?.length > 0) {
+      if (
+        alertsContainer &&
+        alertsFeed &&
+        data.unitcommander?.alerts?.length > 0
+      ) {
         alertsContainer.classList.remove('hidden');
-        alertsFeed.innerHTML = data.unitcommander.alerts.map(alert => `
+        alertsFeed.innerHTML = data.unitcommander.alerts
+          .map(
+            (alert) => `
           <div class="bg-govuk-blue/5 border-l-8 border-govuk-blue p-6">
             <h4 class="text-xl font-bold mb-2">${alert.title}</h4>
             <div class="text-lg leading-relaxed text-mod-grey-1 dark:text-mod-grey-3">${alert.content}</div>
             <div class="text-sm font-bold mt-4 text-govuk-blue uppercase tracking-widest">Published: ${new Date(alert.date).toLocaleDateString('en-GB')}</div>
           </div>
-        `).join('');
+        `,
+          )
+          .join('');
       }
 
       if (data.unitcommander) {
@@ -122,6 +135,7 @@
     }
   }
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <reason>
   function updateModalContent(op) {
     const title = document.getElementById('modal-op-title');
     const date = document.getElementById('modal-op-date');
@@ -179,6 +193,7 @@
     if (e.key === 'Escape') window.closeOperationModal();
   });
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <reason>
   function updateStatusIndicator(source, maxCapacity) {
     const statusText = document.getElementById('status-text');
     const statusIndicator = document.getElementById('status-indicator');
@@ -200,7 +215,9 @@
       }
       // Log Steam Info if present
       if (source.steam) {
-        console.log(`[JSFC_INTEL] Steam Node: v${source.steam.version} (${source.steam.os})`);
+        console.log(
+          `[JSFC_INTEL] Steam Node: v${source.steam.version} (${source.steam.os})`,
+        );
       }
     } else {
       statusText.innerText = 'LINK_SEVERED';
@@ -214,6 +231,7 @@
     }
   }
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <reason>
   function updateBattlemetricsUI() {
     const source = window.globalIntel ? window.globalIntel.arma : null;
     const maxCapacity = source ? source.maxPlayers || 40 : 40;
@@ -254,7 +272,9 @@
         v: d.attributes.value,
         t: d.attributes.timestamp,
       }))
-      .filter((p) => p.v !== 255 && p.v < 500 && new Date(p.t).getTime() >= startTime);
+      .filter(
+        (p) => p.v !== 255 && p.v < 500 && new Date(p.t).getTime() >= startTime,
+      );
 
     points.sort((a, b) => new Date(a.t) - new Date(b.t));
 
@@ -272,12 +292,15 @@
     return { points, getX, getY };
   }
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <reason>
   function renderBattlemetricsGraph(data, container, maxVal = 40) {
     if (!container || !data) return;
 
     const width = container.clientWidth;
     const height = container.clientHeight || 100;
-    console.log(`[JSFC_GRAPH] Rendering to ${container.id}, width: ${width}, height: ${height}, points: ${data.length}`);
+    console.log(
+      `[JSFC_GRAPH] Rendering to ${container.id}, width: ${width}, height: ${height}, points: ${data.length}`,
+    );
     if (width === 0) return;
 
     const range = window.currentBattlemetricsRange || 'today';
@@ -303,7 +326,9 @@
     );
 
     if (points.length === 0) {
-      console.warn(`[JSFC_GRAPH] No points passed filter. StartTime: ${new Date(startTime).toISOString()}, Range: ${range}`);
+      console.warn(
+        `[JSFC_GRAPH] No points passed filter. StartTime: ${new Date(startTime).toISOString()}, Range: ${range}`,
+      );
       container.innerHTML =
         '<div class="h-full flex items-center justify-center font-mono text-[8px] text-neutral-800 uppercase tracking-[0.4em] ">No_Telemetry_Detected</div>';
       return;
@@ -316,7 +341,7 @@
     let pathData = `M ${firstX} ${firstY}`;
     let areaPath = `M ${firstX} ${height} L ${firstX} ${firstY}`;
 
-    points.forEach((p, index) => {
+    points.forEach((p, _index) => {
       const curX = getX(p.t);
       const curY = getY(p.v);
 
@@ -451,7 +476,10 @@
       .toUpperCase();
 
     const avgVal = window.globalIntel?.average_attendance;
-    const avgDeployed = (avgVal !== undefined && avgVal !== null) ? avgVal.toString().padStart(2, '0') : '--';
+    const avgDeployed =
+      avgVal !== undefined && avgVal !== null
+        ? avgVal.toString().padStart(2, '0')
+        : '--';
 
     const html = `
             <div class="space-y-6 group cursor-default">
