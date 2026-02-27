@@ -6,6 +6,7 @@ import { GameDig as Gamedig } from 'gamedig';
 import 'dotenv/config';
 import rcon from './lib/rcon.js';
 import steamApi from './lib/steam_api.js';
+import { supabase } from './lib/supabase.js';
 
 /**
  * UKSFTA External Data Fetcher v3.0
@@ -153,31 +154,74 @@ async function fetchUC() {
 }
 
 async function fetchBM(range) {
-  if (!config.bmKey) {
-    console.warn('[BM_FETCH] API Key missing.');
-    return [];
+  const serverId = config.bmId;
+  let cachedData = null;
+
+  // 1. Try to get from Supabase Cache first
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from('server_telemetry')
+        .select('payload, updated_at')
+        .eq('server_id', serverId)
+        .eq('range_type', range)
+        .single();
+
+      if (!error && data) {
+        cachedData = data.payload;
+        const age = Date.now() - new Date(data.updated_at).getTime();
+        
+        // If cache is fresh (less than 30 mins), return it immediately
+        if (age < 30 * 60000) {
+          console.log(`[BM_CACHE] Using fresh Supabase data for ${range} (${Math.round(age / 60000)}m old)`);
+          return cachedData;
+        }
+      }
+    } catch (_e) {
+      // Continue to API fetch
+    }
   }
+
+  // 2. Fetch from Battlemetrics if cache is old or missing
+  if (!config.bmKey) {
+    console.warn('[BM_FETCH] API Key missing. Falling back to cache.');
+    return cachedData || [];
+  }
+
   const d = new Date();
   if (range === 'month') d.setMonth(d.getMonth() - 1);
   else if (range === 'week') d.setDate(d.getDate() - 7);
   else d.setHours(d.getHours() - 24);
 
-  const url = `https://api.battlemetrics.com/servers/${config.bmId}/player-count-history?start=${d.toISOString()}&stop=${new Date().toISOString()}`;
+  const url = `https://api.battlemetrics.com/servers/${serverId}/player-count-history?start=${d.toISOString()}&stop=${new Date().toISOString()}`;
+  
   try {
-    console.log(
-      `[BM_FETCH] Querying ${range} telemetry from BM:${config.bmId}...`,
-    );
+    console.log(`[BM_API] Requesting ${range} from Battlemetrics...`);
     const res = await axios.get(url, {
       headers: { Authorization: `Bearer ${config.bmKey}` },
     });
-    const data = res.data.data || [];
-    console.log(`[BM_FETCH] Retrieved ${data.length} points for ${range}.`);
-    return data;
-  } catch (_err) {
-    console.error(
-      `[BM_FETCH] Failed for ${range}:`,
-      _err.response?.data || _err.message,
-    );
+    const freshData = res.data.data || [];
+
+    if (freshData.length > 0 && supabase) {
+      console.log(`[BM_CACHE] Updating Supabase with ${freshData.length} points for ${range}...`);
+      await supabase.from('server_telemetry').upsert({
+        server_id: serverId,
+        range_type: range,
+        payload: freshData,
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'server_id,range_type' });
+    }
+
+    return freshData;
+  } catch (err) {
+    const status = err.response?.status;
+    console.warn(`[BM_API] Fetch failed (${status || err.message}).`);
+    
+    if (cachedData) {
+      console.log(`[BM_FALLBACK] API blocked. Using stale Supabase cache for ${range}.`);
+      return cachedData;
+    }
+    
     return [];
   }
 }

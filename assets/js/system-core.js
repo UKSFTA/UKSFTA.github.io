@@ -211,7 +211,7 @@
           'w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]';
       }
       if (playerCount) {
-        playerCount.innerText = `${pCount}/${maxCapacity} DEPLOYED`;
+        playerCount.innerText = pCount.toString().padStart(2, '0');
       }
       // Log Steam Info if present
       if (source.steam) {
@@ -231,10 +231,20 @@
     }
   }
 
-  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <reason>
   function updateBattlemetricsUI() {
     const source = window.globalIntel ? window.globalIntel.arma : null;
     const maxCapacity = source ? source.maxPlayers || 40 : 40;
+
+    // 1. Update large numeric player-count display
+    const playerCountEl = document.getElementById('player-count');
+    if (playerCountEl) {
+      if (source && source.status === 'online') {
+        const pCount = source.rcon_verified || source.players || 0;
+        playerCountEl.innerText = pCount.toString().padStart(2, '0');
+      } else {
+        playerCountEl.innerText = '--';
+      }
+    }
 
     updateStatusIndicator(source, maxCapacity);
 
@@ -250,10 +260,11 @@
           dataPoints = [...window.globalTelemetry[range]];
         }
 
-        if (source) {
-          dataPoints.unshift({
+        // Add 'Live' point if server is online
+        if (source && source.status === 'online') {
+          dataPoints.push({
             attributes: {
-              value: source.players,
+              value: source.rcon_verified || source.players || 0,
               timestamp: new Date().toISOString(),
             },
           });
@@ -296,16 +307,14 @@
   function renderBattlemetricsGraph(data, container, maxVal = 40) {
     if (!container || !data) return;
 
+    // Ensure container is relative for absolute tooltip positioning
+    container.style.position = 'relative';
     const width = container.clientWidth;
     const height = container.clientHeight || 100;
-    console.log(
-      `[JSFC_GRAPH] Rendering to ${container.id}, width: ${width}, height: ${height}, points: ${data.length}`,
-    );
     if (width === 0) return;
 
     const range = window.currentBattlemetricsRange || 'today';
-    // Use the shard's timestamp as the 'now' baseline
-    const nowTime = window.globalTelemetry?.timestamp || Date.now();
+    const nowTime = Date.now();
     const lookback =
       range === 'month'
         ? 30 * 24 * 3600000
@@ -326,55 +335,70 @@
     );
 
     if (points.length === 0) {
-      console.warn(
-        `[JSFC_GRAPH] No points passed filter. StartTime: ${new Date(startTime).toISOString()}, Range: ${range}`,
-      );
       container.innerHTML =
         '<div class="h-full flex items-center justify-center font-mono text-[8px] text-neutral-800 uppercase tracking-[0.4em] ">No_Telemetry_Detected</div>';
       return;
     }
 
-    // Force the line to start at the absolute beginning of the graph (x=0) using the first known value
     const firstX = 0;
     const firstY = getY(points[0].v);
 
     let pathData = `M ${firstX} ${firstY}`;
     let areaPath = `M ${firstX} ${height} L ${firstX} ${firstY}`;
 
-    points.forEach((p, _index) => {
+    points.forEach((p) => {
       const curX = getX(p.t);
       const curY = getY(p.v);
-
       pathData += ` L ${curX} ${curY}`;
       areaPath += ` L ${curX} ${curY}`;
     });
 
-    console.log(`[JSFC_GRAPH] Generated path: ${pathData.substring(0, 50)}...`);
-
-    const lastP = points[points.length - 1];
-    if (nowTime - new Date(lastP.t).getTime() > 10 * 60000) {
-      pathData += ` L ${width} ${getY(lastP.v)}`;
-      areaPath += ` L ${width} ${getY(lastP.v)}`;
-    }
     areaPath += ` L ${width} ${height} Z`;
 
     container.innerHTML = `
-            <div id="graph-tooltip" class="absolute top-2 right-2 bg-black/90 border border-white/10 px-3 py-2 pointer-events-none opacity-0 transition-opacity z-20 shadow-2xl font-mono">
-                <span class="text-[9px] font-black text-uksf-gold uppercase block tracking-widest" id="tooltip-val">-- DEPLOYED</span>
-                <span class="text-[7px] font-black text-neutral-600 uppercase block tracking-widest " id="tooltip-time">--:--:--</span>
-            </div>
-            <svg width="100%" height="100%" viewBox="0 0 ${width} ${height}" class="overflow-visible" preserveAspectRatio="none">
-                <defs>
-                    <linearGradient id="graphGradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.3" />
-                        <stop offset="100%" stop-color="var(--primary)" stop-opacity="0" />
-                    </linearGradient>
-                </defs>
-                <path d="${areaPath}" fill="url(#graphGradient)" stroke="none" />
-                <path d="${pathData}" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                ${points.map((p) => `<rect x="${getX(p.t) - 5}" y="0" width="10" height="${height}" fill="white" fill-opacity="0" class="cursor-crosshair" onmouseover="showGraphTooltip(${p.v}, '${p.t}')" onmouseout="hideGraphTooltip()" />`).join('')}
-            </svg>
-        `;
+      <div id="graph-tooltip" class="absolute top-0 right-0 bg-[#0b0c0c] border border-white/20 p-3 pointer-events-none opacity-0 transition-opacity z-50 shadow-2xl font-mono min-w-[140px]" style="visibility: hidden;">
+          <span class="text-[10px] font-bold text-mod-green uppercase block tracking-widest mb-1" id="tooltip-val">-- DEPLOYED</span>
+          <span class="text-[8px] font-bold text-white/40 uppercase block tracking-widest" id="tooltip-time">--:--:--</span>
+      </div>
+      <svg width="100%" height="100%" viewBox="0 0 ${width} ${height}" class="overflow-visible" preserveAspectRatio="none">
+          <defs>
+              <linearGradient id="graphGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#2fb060" stop-opacity="0.2" />
+                  <stop offset="100%" stop-color="#2fb060" stop-opacity="0" />
+              </linearGradient>
+          </defs>
+          <path d="${areaPath}" fill="url(#graphGradient)" stroke="none" />
+          <path d="${pathData}" fill="none" stroke="#2fb060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div id="graph-interaction-layer" class="absolute inset-0 z-40 cursor-crosshair"></div>
+    `;
+
+    // High-performance single-listener interaction
+    const interactionLayer = container.querySelector('#graph-interaction-layer');
+    if (interactionLayer) {
+      interactionLayer.addEventListener('mousemove', (e) => {
+        const rect = interactionLayer.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        
+        // Find nearest point
+        let nearest = points[0];
+        let minDist = Math.abs(getX(points[0].t) - mouseX);
+        
+        for (const p of points) {
+          const dist = Math.abs(getX(p.t) - mouseX);
+          if (dist < minDist) {
+            minDist = dist;
+            nearest = p;
+          }
+        }
+        
+        window.showGraphTooltip(nearest.v, nearest.t);
+      });
+
+      interactionLayer.addEventListener('mouseleave', () => {
+        window.hideGraphTooltip();
+      });
+    }
   }
 
   window.showGraphTooltip = (val, time) => {
@@ -382,21 +406,27 @@
     const vEl = document.getElementById('tooltip-val');
     const tEl = document.getElementById('tooltip-time');
     if (!t) return;
-    t.style.opacity = '1';
-    if (vEl) vEl.innerText = `${val} DEPLOYED`;
+    
+    if (vEl) vEl.innerText = `${val.toString().padStart(2, '0')} DEPLOYED`;
     const date = new Date(time);
     if (tEl)
-      tEl.innerText = Number.isNaN(date)
+      tEl.innerText = Number.isNaN(date.getTime())
         ? 'LINK_ERROR'
         : `${date.toLocaleTimeString('en-GB', {
             hour: '2-digit',
             minute: '2-digit',
           })}Z`;
+    
+    t.style.opacity = '1';
+    t.style.visibility = 'visible';
   };
 
   window.hideGraphTooltip = () => {
     const t = document.getElementById('graph-tooltip');
-    if (t) t.style.opacity = '0';
+    if (t) {
+      t.style.opacity = '0';
+      t.style.visibility = 'hidden';
+    }
   };
 
   window.setBattlemetricsRange = (range) => {

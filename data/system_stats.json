@@ -1,9 +1,9 @@
 {
-  "record_count": 102,
-  "db_size_bytes": 50853,
-  "db_size_fmt": "49.66 KB",
-  "last_sync": "2026-02-13T19:45:53.531Z",
-  "node_id": "UK_JSFC_ALPHA_297DB37",
+  "record_count": 104,
+  "db_size_bytes": 58386,
+  "db_size_fmt": "57.02 KB",
+  "last_sync": "2026-02-27T22:45:38.402Z",
+  "node_id": "UK_JSFC_ALPHA_7CBF800",
   "threat_level": "SUBSTANTIAL",
   "active_ops": 0
 }
