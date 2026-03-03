@@ -4,10 +4,13 @@
 @theme {
   --variant-dark: &:where(.dark, .dark *);
   --color-mod-black: #0b0c0c;
+  --color-mod-dark-grey: #1d2329;
   --color-mod-grey-1: #505a5f;
   --color-mod-grey-2: #b1b4b6;
   --color-mod-grey-3: #d8d8d8;
   --color-mod-grey-4: var(--mod-grey-4-val);
+  --color-mod-purple: #2fb060;
+  --color-mod-green: #00823b;
   
   /* Official Service Colors */
   --color-govuk-blue: #4d5d53; /* Pivoted to Army Green */
