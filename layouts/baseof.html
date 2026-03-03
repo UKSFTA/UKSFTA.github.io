@@ -22,7 +22,7 @@
     {{ if and site.Params.maintenance_mode (not hugo.IsServer) }}
     <script>
         // Maintenance Mode Hard Gate (Non-Production Only)
-        if (window.location.pathname !== '/maintenance/' && localStorage.getItem('dev_access') !== 'granted') {
+        if (!window.location.pathname.includes('/maintenance/') && localStorage.getItem('dev_access') !== 'granted') {
             window.location.href = '/maintenance/';
         }
     </script>

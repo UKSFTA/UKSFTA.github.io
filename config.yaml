@@ -1,7 +1,7 @@
 # UKSF Taskforce Alpha | Joint Force Command Portal
 # Master Implementation Authority (G6 Signal Regt)
 
-baseURL: "/"
+baseURL: "https://uksfta.github.io/"
 title: "UKSF Taskforce Alpha | Joint Force Command"
 languageCode: "en-gb"
 # Integrated theme directly into root layouts/assets
