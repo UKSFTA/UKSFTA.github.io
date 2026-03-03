@@ -153,6 +153,7 @@ async function fetchUC() {
   }
 }
 
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <reason>
 async function fetchBM(range) {
   const serverId = config.bmId;
   let cachedData = null;
@@ -170,10 +171,12 @@ async function fetchBM(range) {
       if (!error && data) {
         cachedData = data.payload;
         const age = Date.now() - new Date(data.updated_at).getTime();
-        
+
         // If cache is fresh (less than 30 mins), return it immediately
         if (age < 30 * 60000) {
-          console.log(`[BM_CACHE] Using fresh Supabase data for ${range} (${Math.round(age / 60000)}m old)`);
+          console.log(
+            `[BM_CACHE] Using fresh Supabase data for ${range} (${Math.round(age / 60000)}m old)`,
+          );
           return cachedData;
         }
       }
@@ -194,7 +197,7 @@ async function fetchBM(range) {
   else d.setHours(d.getHours() - 24);
 
   const url = `https://api.battlemetrics.com/servers/${serverId}/player-count-history?start=${d.toISOString()}&stop=${new Date().toISOString()}`;
-  
+
   try {
     console.log(`[BM_API] Requesting ${range} from Battlemetrics...`);
     const res = await axios.get(url, {
@@ -203,25 +206,32 @@ async function fetchBM(range) {
     const freshData = res.data.data || [];
 
     if (freshData.length > 0 && supabase) {
-      console.log(`[BM_CACHE] Updating Supabase with ${freshData.length} points for ${range}...`);
-      await supabase.from('server_telemetry').upsert({
-        server_id: serverId,
-        range_type: range,
-        payload: freshData,
-        updated_at: new Date().toISOString()
-      }, { onConflict: 'server_id,range_type' });
+      console.log(
+        `[BM_CACHE] Updating Supabase with ${freshData.length} points for ${range}...`,
+      );
+      await supabase.from('server_telemetry').upsert(
+        {
+          server_id: serverId,
+          range_type: range,
+          payload: freshData,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'server_id,range_type' },
+      );
     }
 
     return freshData;
   } catch (err) {
     const status = err.response?.status;
     console.warn(`[BM_API] Fetch failed (${status || err.message}).`);
-    
+
     if (cachedData) {
-      console.log(`[BM_FALLBACK] API blocked. Using stale Supabase cache for ${range}.`);
+      console.log(
+        `[BM_FALLBACK] API blocked. Using stale Supabase cache for ${range}.`,
+      );
       return cachedData;
     }
-    
+
     return [];
   }
 }

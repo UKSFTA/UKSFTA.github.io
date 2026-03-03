@@ -194,7 +194,7 @@
   });
 
   // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <reason>
-  function updateStatusIndicator(source, maxCapacity) {
+  function updateStatusIndicator(source, _maxCapacity) {
     const statusText = document.getElementById('status-text');
     const statusIndicator = document.getElementById('status-indicator');
     const playerCount = document.getElementById('player-count');
@@ -231,6 +231,7 @@
     }
   }
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <reason>
   function updateBattlemetricsUI() {
     const source = window.globalIntel ? window.globalIntel.arma : null;
     const maxCapacity = source ? source.maxPlayers || 40 : 40;
@@ -374,16 +375,18 @@
     `;
 
     // High-performance single-listener interaction
-    const interactionLayer = container.querySelector('#graph-interaction-layer');
+    const interactionLayer = container.querySelector(
+      '#graph-interaction-layer',
+    );
     if (interactionLayer) {
       interactionLayer.addEventListener('mousemove', (e) => {
         const rect = interactionLayer.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
-        
+
         // Find nearest point
         let nearest = points[0];
         let minDist = Math.abs(getX(points[0].t) - mouseX);
-        
+
         for (const p of points) {
           const dist = Math.abs(getX(p.t) - mouseX);
           if (dist < minDist) {
@@ -391,7 +394,7 @@
             nearest = p;
           }
         }
-        
+
         window.showGraphTooltip(nearest.v, nearest.t);
       });
 
@@ -406,7 +409,7 @@
     const vEl = document.getElementById('tooltip-val');
     const tEl = document.getElementById('tooltip-time');
     if (!t) return;
-    
+
     if (vEl) vEl.innerText = `${val.toString().padStart(2, '0')} DEPLOYED`;
     const date = new Date(time);
     if (tEl)
@@ -416,7 +419,7 @@
             hour: '2-digit',
             minute: '2-digit',
           })}Z`;
-    
+
     t.style.opacity = '1';
     t.style.visibility = 'visible';
   };

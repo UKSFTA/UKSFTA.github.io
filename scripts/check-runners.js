@@ -15,10 +15,10 @@ async function checkRunnerHealth() {
       { encoding: 'utf8' },
     );
     const runs = JSON.parse(rawRuns);
-    
+
     // Group by workflow name and only keep the latest for each
     const latestRuns = new Map();
-    runs.forEach(run => {
+    runs.forEach((run) => {
       if (!latestRuns.has(run.name)) {
         latestRuns.set(run.name, run);
       }
