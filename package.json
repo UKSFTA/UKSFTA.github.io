@@ -39,7 +39,7 @@
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
     "gamedig": "^5.2.0",
-    "govuk-frontend": "^5.14.0",
+    "govuk-frontend": "^6.0.0",
     "milsymbol": "^3.0.3",
     "multer": "^2.0.2"
   }
