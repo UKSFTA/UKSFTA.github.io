@@ -38,7 +38,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
-    "gamedig": "^5.2.0",
+    "gamedig": "^5.3.2",
     "govuk-frontend": "^5.14.0",
     "milsymbol": "^3.0.3",
     "multer": "^2.0.2"
