@@ -1,6 +1,7 @@
 import { exec, spawn } from 'node:child_process';
 import util from 'node:util';
 import 'dotenv/config';
+
 const execPromise = util.promisify(exec);
 
 class RconManager {

@@ -170,7 +170,7 @@
 
   window.openOperationModal = (opId) => {
     const uc = window.globalIntel ? window.globalIntel.unitcommander : null;
-    if (!uc || !uc.campaigns) return;
+    if (!uc?.campaigns) return;
     const op = uc.campaigns.find((c) => c.id === opId);
     if (!op) return;
 
