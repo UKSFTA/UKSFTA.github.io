@@ -1,4 +1,4 @@
-{{ $css := resources.Get "css/input.css" | postCSS }}
+{{ $css := resources.Get "css/output.css" }}
 {{ if not hugo.IsServer }}
     {{ $css = $css | fingerprint }}
 {{ end }}

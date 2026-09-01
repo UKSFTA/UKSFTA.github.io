@@ -8,14 +8,15 @@
     "fetch-data": "node scripts/fetch-external-data.js",
     "start": "hugo server --environment development",
     "dev": "NODE_ENV=development concurrently -n \"HUGO,INTEL,RCON,REGISTRY\" -c \"blue,yellow,red,green\" \"npm run start\" \"npm run watch:intel\" \"npm run service:rcon\" \"npm run service:registry\"",
-    "build": "npm run fetch-data && node scripts/generate-stats.js && hugo --environment production --gc --minify",
-    "build:dev": "npm run fetch-data && node scripts/generate-stats.js && hugo --environment development --gc --minify",
+    "build": "npm run build:css && npm run fetch-data && node scripts/generate-stats.js && hugo --environment production --gc --minify",
+    "build:dev": "npm run build:css && npm run fetch-data && node scripts/generate-stats.js && hugo --environment development --gc --minify",
     "watch:intel": "node -e \"setInterval(() => { try { require('./scripts/fetch-external-data.js') } catch(e){} }, 60000);\"",
     "service:rcon": "node services/rcon-bridge.js",
     "service:registry": "node services/registry-service.js",
     "lint": "biome check assets/js scripts",
     "format": "biome format --write assets/js scripts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i assets/css/input.css -o assets/css/output.css --minify"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.11",
@@ -49,5 +50,9 @@
     "glob": {
       "minimatch": ">=10.2.3"
     }
+  },
+  "optionalDependencies": {
+    "lightningcss-linux-x64-gnu": "1.32.0",
+    "lightningcss-linux-x64-musl": "1.32.0"
   }
 }
