@@ -32,7 +32,7 @@
     "@defencedigital/css-framework": "^2.80.3",
     "@moduk/frontend": "^2.0.31",
     "@playwright/test": "^1.58.2",
-    "@supabase/supabase-js": "^2.95.3",
+    "@supabase/supabase-js": "^2.97.0",
     "@tailwindcss/typography": "^0.5.19",
     "axios": "^1.13.5",
     "cors": "^2.8.5",
