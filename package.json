@@ -19,7 +19,7 @@
     "build:css": "tailwindcss -i assets/css/input.css -o assets/css/output.css --minify"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.11",
+    "@biomejs/biome": "^2.5.13",
     "@tailwindcss/cli": "^4.2.0",
     "@tailwindcss/postcss": "^4.3.3",
     "autoprefixer": "^10.4.24",
