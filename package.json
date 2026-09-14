@@ -22,7 +22,7 @@
     "@biomejs/biome": "^2.5.11",
     "@tailwindcss/cli": "^4.2.0",
     "@tailwindcss/postcss": "^4.3.3",
-    "autoprefixer": "^10.4.24",
+    "autoprefixer": "^10.5.6",
     "concurrently": "^9.2.4",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
