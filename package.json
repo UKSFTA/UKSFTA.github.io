@@ -42,7 +42,7 @@
     "gamedig": "^5.3.3",
     "govuk-frontend": "^5.14.0",
     "milsymbol": "^3.0.3",
-    "multer": "^2.2.0"
+    "multer": "^2.4.0"
   },
   "overrides": {
     "minimatch": ">=10.2.3",
